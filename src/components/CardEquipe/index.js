@@ -1,10 +1,24 @@
 import { Link } from "react-router-dom";
-import aim from '../../assets/icons/aim.svg'
-import profile from '../../assets/icons/Profile.svg'
+//import aim from '../../assets/icons/aim.svg'
+//import profile from '../../assets/icons/Profile.svg'
+import api from '../../api';
 
-function CardEquipe({linkUrl, equipe, membros, total}) {
-    return (
+function CardEquipes({linkUrl, equipe, membros, total}) {
+  class cardEquipes{
+    state = {
+      equipes: [],
+    }
+  
+    async componentDidMount(){
+      const response = await api.get('https://golang-posgre-brisanet.herokuapp.com/equipes/');
+      console.log(response.data)
+      
+      this.setState({equipes:response.data});
+    }
+  }
+  return (
       <>
+      <cardEquipes/>
         <Link to={linkUrl} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
             <div>
               <div className="card-part1 mb-3">
@@ -24,7 +38,7 @@ function CardEquipe({linkUrl, equipe, membros, total}) {
             </div>
         </Link>
       </>
-    )
+    );
 }
 
-export default CardEquipe;
+export default CardEquipes
