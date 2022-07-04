@@ -43,9 +43,11 @@ function Menu_index() {
         >
           <div className="col-8 mt-2 ms-3">
             <div className="row CardsContainer my-4 mt-4 d-flex">
-              <Card linkUrl={"projeto/:id"} />
-              <Card linkUrl={"projeto/:id"} />
-              <Card linkUrl={"projeto/:id"} />
+            <Card linkUrl={"../projeto/:id"} titulo="API Rest" descricao="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." equipe="Komanda" progresso="70%" />
+
+            <Card linkUrl={"../projeto/:id"} titulo="Projeto 2" descricao="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." equipe="Devs Cariri" progresso="63%"/>
+
+            <Card linkUrl={"../projeto/:id"} titulo="Projeto 3" descricao="LIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." equipe="Komanda" progresso="48%" />
             </div>
           </div>
 
