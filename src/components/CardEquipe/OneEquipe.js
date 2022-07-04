@@ -7,7 +7,6 @@ class ExibirEquipes extends Component {
 
     state = {
         equipes: [],
-        pessoas: [],
     }
     async componentDidMount() {
         const response = await api.get('/equipes/');
