@@ -1,7 +1,8 @@
-import HeaderDt from "../../components/HeaderDt"
+/*import HeaderDt from "../../components/HeaderDt"
 import Divider from '@mui/material/Divider';
 import CircularProgressWithLabel from '../../components/CircularProgressWithLabel'
 import Table from "../../components/Table";
+*/
 import Header from "../../components/Header"
 
 const pessoaDT_index = () => {
