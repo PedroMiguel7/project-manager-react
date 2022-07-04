@@ -2,30 +2,18 @@ import PropTypes from 'prop-types';
 import {useState, useEffect} from 'react';
 
 function HeaderDt({pagina, titulo, status}) {
-    /*function mudarStatus(status) {
-        const statusBg = window.document.getElementsByClassName('Status');
-
-        if (status === "Em andamento" || "Em Andamento") {
-            statusBg[0].style.background = 'red';
-        } else if (status === "Concluído") {
-            statusBg[0].style.background = 'green';
-        } else {
-            statusBg[0].style.background = 'gray'
-        }
-    }*/
-
     const [statusBg, mudarStatus] = useState(0);
     
     useEffect(() => {
         const statusBg = window.document.getElementsByClassName('Status');
 
         if (status === "Em andamento" || "Em Andamento") {
-            statusBg[0].style.background = '#28aef3cc';
+            statusBg[0].style.background = '#28aef3b3';
         } 
         if (status === "Concluído") {
-            statusBg[0].style.background = 'red';
+            statusBg[0].style.background = '#28f33cb3';
         } if (status === "Cancelado") {
-            statusBg[0].style.background = 'gray'
+            statusBg[0].style.background = '#898989b3'
         }
     })
 
