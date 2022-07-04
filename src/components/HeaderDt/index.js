@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { Header } from 'rsuite';
 
 function HeaderDt({pagina, titulo, status}) {
     return (

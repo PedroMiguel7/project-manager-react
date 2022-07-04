@@ -1,4 +1,3 @@
-import CardEquipes from "../../components/CardEquipe"
 import Header from "../../components/Header"
 import filter from '../../assets/icons/filter.svg'
 import BasicModal from '../../components/NewProject'
