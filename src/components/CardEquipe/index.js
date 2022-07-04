@@ -13,9 +13,9 @@ function CardEquipe({linkUrl, equipe, membros, total}) {
                 <div className="card-part2 d-flex justify-content-between">
                   <div className="card-members">
                     <h6>Membros</h6>
-                    <div className=''>
-                      {membros}
-                    </div>
+                    <ul className=''>
+                      <li>{membros}</li>
+                    </ul>
                   </div>
                   <div className="card-progress">
                     <h6>Total: {total}</h6>
