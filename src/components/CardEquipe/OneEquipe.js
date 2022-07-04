@@ -8,19 +8,23 @@ class ExibirEquipes extends Component {
 
     state = {
         equipes: [],
+        membros: [],
     }
     async componentDidMount() {
 
-        const response = await api.get('/equipes/membros');
+        const response = await api.get('/equipes');
+        const ponse = await api.get('/equipes/membros');
 
         console.log(response.data);
 
         this.setState({ equipes: response.data });
+        this.setState({ membros: ponse.data });
     }
 
 
     render() {
         const { equipes } = this.state;
+        const { membros } = this.state;
 
 
         return (
@@ -45,19 +49,24 @@ class ExibirEquipes extends Component {
                                                     <th scope="col">NOME</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                {equipes.map(r => (
-                                                        <tr>
-                                                            <th scope="row">
-                                                                {r.id_pessoa}
-                                                            </th>
-                                                            <td>
-                                                                {r.nome_pessoa}
-                                                            </td>
-                                                        </tr>
-                                                ))}
-                                            </tbody>
-                                        </table></div>
+                                            {membros.map(r => (
+                                                {p:equipes.id_equipe === membros.id_equipe
+                                                        ? <tbody>
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    {r.id_pessoa}
+                                                                </th>
+                                                                <td>
+                                                                    {r.nome_pessoa}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        : <div> sem membros</div>
+                                                }
+                                            ))
+                                            }
+                                        </table>
+                                        </div>
                                     </div>
                                     <div className="card-progress">
                                         <h6>Total: { }</h6>
@@ -66,7 +75,8 @@ class ExibirEquipes extends Component {
                             </div>
                         </div>
                     </Link>
-                ))}
+                ))
+                }
             </div>
 
         );
