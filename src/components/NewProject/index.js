@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import Modal from '@mui/material/Modal';
 import NewProject from '../../assets/icons/new.svg'
 import BasicSelect from '../Select/index.js'
+import { useState } from 'react';
 
 const style = {
   position: 'absolute',
@@ -23,6 +24,15 @@ export default function BasicModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  
+  function cadastrarProjeto(e) {
+    e.preventDefault()
+    console.log(`Projeto ${nome} foi cadastrado com sucesso`)
+  }
+  
+
+  const [nome, setNome] = useState ()
+
   return (
     <div>
       <button onClick={handleOpen} className="new-project "><img src={NewProject} alt="" /></button>
@@ -32,11 +42,11 @@ export default function BasicModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style} onSubmit={cadastrarProjeto}>
           <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-3'>
             Adicionar Projeto
           </Typography>
-          <TextField required id="outlined-basic" label="Nome" variant="outlined" margin="dense" fullWidth className='textField'/>
+          <TextField required id="nome" name='nome' label="Nome" onChange={(e) => setNome(e.target.value)} variant="outlined" margin="dense" fullWidth className='textField'/>
           <TextField
           id="outlined-multiline-flexible"
           label="Descrição"
@@ -56,7 +66,7 @@ export default function BasicModal() {
             color: "#F4F5FA",
             background: "#F46E27"
           }}
-          variant="contained" type="submit" onClick={handleClose}>Salvar</Button>
+          variant="contained" type="submit">Salvar</Button>
         </div>
         </Box>
       </Modal>
