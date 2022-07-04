@@ -10,7 +10,8 @@ class ExibirEquipes extends Component {
         equipes: [],
     }
     async componentDidMount() {
-        const response = await api.get('/equipes/');
+
+        const response = await api.get('/equipes/membros');
 
         console.log(response.data);
 
@@ -37,7 +38,26 @@ class ExibirEquipes extends Component {
                                 <div className="card-part2 d-flex justify-content-between">
                                     <div className="card-members">
                                         <h6>Membros</h6>
-                                        <div><PessoasEquipe /></div>
+                                        <div><table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">NOME</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {equipes.map(r => (
+                                                        <tr>
+                                                            <th scope="row">
+                                                                {r.id_pessoa}
+                                                            </th>
+                                                            <td>
+                                                                {r.nome_pessoa}
+                                                            </td>
+                                                        </tr>
+                                                ))}
+                                            </tbody>
+                                        </table></div>
                                     </div>
                                     <div className="card-progress">
                                         <h6>Total: { }</h6>
