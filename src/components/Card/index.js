@@ -23,7 +23,7 @@ function Card({linkUrl, titulo, descricao, equipe, progresso}) {
                 </div>
                 <div className="card-progress">
                   <h6>Progresso</h6>
-                  {progresso}
+                  {progresso}%
                 </div>
             </div>
         </Link>
