@@ -2,6 +2,7 @@ import CardEquipes from "../../components/CardEquipe"
 import Header from "../../components/Header"
 import filter from '../../assets/icons/filter.svg'
 import BasicModal from '../../components/NewProject'
+import ExibirEquipes from "../../components/CardEquipe/OneEquipe"
 
 function Equipes() {
     return (
@@ -28,17 +29,7 @@ function Equipes() {
                 </div>
 
                 <div className="row CardsContainer my-4">
-                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total={3} />
-
-                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total={3} />
-
-                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total={3} />
-
-                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total={3} />
-
-                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total={3} />
-
-                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total={3} />
+                    <ExibirEquipes/>
                 </div>
             </main>
         </>
