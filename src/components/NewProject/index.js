@@ -27,11 +27,12 @@ export default function BasicModal() {
   
   function cadastrarProjeto(e) {
     e.preventDefault()
-    console.log(`Projeto ${nome} foi cadastrado com sucesso`)
+    console.log(`Projeto ${nome} com descrição ${descricao} foi cadastrado com sucesso`)
   }
   
 
-  const [nome, setNome] = useState ()
+  const [nome, setNome] = useState()
+  const [descricao, setDescricao] = useState()
 
   return (
     <div>
@@ -42,32 +43,45 @@ export default function BasicModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} onSubmit={cadastrarProjeto}>
-          <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-3'>
-            Adicionar Projeto
-          </Typography>
-          <TextField required id="nome" name='nome' label="Nome" onChange={(e) => setNome(e.target.value)} variant="outlined" margin="dense" fullWidth className='textField'/>
-          <TextField
-          id="outlined-multiline-flexible"
-          label="Descrição"
-          multiline
-          maxRows={4}
-          margin="dense"
-          fullWidth className='textField'
-         />
-         <BasicSelect />
-        <div className='d-flex justify-content-end mt-5'>
-          <Button style={{
-            color: "#F4F5FA",
-            opacity: 0.5
-          }} 
-          variant="text" className='' onClick={handleClose}>Cancelar</Button>
-          <Button style={{
-            color: "#F4F5FA",
-            background: "#F46E27"
-          }}
-          variant="contained" type="submit">Salvar</Button>
-        </div>
+        <Box sx={style}>
+          <form onSubmit={cadastrarProjeto}>
+            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-3'>
+              Adicionar Projeto
+            </Typography>
+            <TextField 
+              required 
+              id="nome" 
+              name='nome' 
+              label="Nome"
+              onChange={(e) => setNome(e.target.value)} 
+              variant="outlined" 
+              margin="dense" 
+              fullWidth 
+              className='textField'/>
+            <TextField
+              id="descricao"
+              name='descricao'
+              label="Descrição"
+              onChange={(e) => setDescricao(e.target.value)}
+              multiline
+              maxRows={4}
+              margin="dense"
+              fullWidth className='textField'
+            />
+            <BasicSelect />
+            <div className='d-flex justify-content-end mt-5'>
+              <Button style={{
+                color: "#F4F5FA",
+                opacity: 0.5
+              }} 
+              variant="text" className='' onClick={handleClose}>Cancelar</Button>
+              <Button style={{
+                color: "#F4F5FA",
+                background: "#F46E27"
+              }}
+              variant="contained" type="submit">Salvar</Button>
+            </div>
+          </form>
         </Box>
       </Modal>
     </div>
