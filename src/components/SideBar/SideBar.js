@@ -10,7 +10,7 @@ import person from '../../assets/icons/person.svg'
 import personActive from '../../assets/icons/person-active.svg'
 
 function SideBar() {
-  const  location = useLocation();
+  const location = useLocation();
     return(
         <div>
             <header className="col-1 col-lg-1 d-flex flex-column justify-content-center align-items-center">
