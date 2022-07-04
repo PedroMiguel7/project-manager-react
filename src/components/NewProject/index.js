@@ -33,7 +33,7 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center'>
+          <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-3'>
             Adicionar Projeto
           </Typography>
           <TextField required id="outlined-basic" label="Nome" variant="outlined" margin="dense" fullWidth className='textField'/>
@@ -56,7 +56,7 @@ export default function BasicModal() {
             color: "#F4F5FA",
             background: "#F46E27"
           }}
-          variant="contained">Salvar</Button>
+          variant="contained" type="submit" onClick={handleClose}>Salvar</Button>
         </div>
         </Box>
       </Modal>

@@ -1,12 +1,29 @@
-function HeaderDt({titulo, nomeProjeto}) {
+import PropTypes from 'prop-types';
+import { Header } from 'rsuite';
+
+function HeaderDt({pagina, titulo, status}) {
     return (
         <>
             <div className='row mt-5 pb-3 main-header'>
-                <h1 className="TituloDt col-lg-3 fs-2">{titulo} <span className="nomeProjeto">{nomeProjeto}</span></h1>
-                <input className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Search here..."/>
+                <div className="d-flex align-items-center col-lg-4">
+                    <h1 className="TituloDt fs-2">{pagina} <span className="nomeProjeto">{titulo}</span></h1>
+                    <div className="Status ms-4 mb-2 px-2">{status}</div>
+                </div>
+                <input className="col-lg-3 offset-lg-5" type="search" name="main-search" id="main-search" placeholder="Search here..."/>
             </div>
         </>
     )
+}
+
+HeaderDt.protoTypes = {
+    pagina: PropTypes.string.isRequired,
+    titulo: PropTypes.string.isRequired,
+    status: PropTypes.string,
+}
+
+HeaderDt.defaultProps = {
+    pagina: "Página",
+    titulo: "Título"
 }
 
 export default HeaderDt

@@ -42,6 +42,8 @@ function ProjetoIndex() {
                     <Card linkUrl={"../projeto/:id"} titulo="Projeto 5" descricao="Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy." equipe="Cariri Inovação" progresso={21} />
 
                     <Card linkUrl={"../projeto/:id"} titulo="Projeto X" descricao="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text." equipe="Komanda" progresso={5} />
+
+                    <Card />
                 </div>
 
             </main>

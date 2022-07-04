@@ -191,6 +191,19 @@ main h1 {
     font-size: 0.85rem;
 }
 
+.Status {
+    background-color: rgb(40, 174, 243, 0.8);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.Status:hover {
+    background-color: var(--azul-claro);
+    transition: 0.3s;
+}
+
 .InfoProjeto {
     min-height: 35vh;
 }

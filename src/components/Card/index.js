@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import aim from '../../assets/icons/aim.svg'
 import profile from '../../assets/icons/Profile.svg'
+import PropTypes from 'prop-types';
 
 function Card({linkUrl, titulo, descricao, equipe, progresso}) {
     return (
@@ -29,6 +30,22 @@ function Card({linkUrl, titulo, descricao, equipe, progresso}) {
         </Link>
       </>
     )
+}
+
+Card.protoTypes = {
+  linkUrl: PropTypes.string.isRequired,
+  titulo: PropTypes.string.isRequired,
+  descricao: PropTypes.string,
+  equipe: PropTypes.string,
+  progresso: PropTypes.number
+}
+
+Card.defaultProps = {
+  linkUrl: "../projeto/:id",
+  titulo: "Título",
+  descricao: "Descrição",
+  equipe: "Equipe",
+  progresso: 0
 }
 
 export default Card
