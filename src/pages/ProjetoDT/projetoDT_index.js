@@ -17,7 +17,7 @@ const projetoDT_index = () => {
                             <div>
                                 <div>
                                     <h4 className="text-center">Funções</h4>
-                                    <div className="d-flex justify-content-between">
+                                    <div className="d-flex justify-content-between flex-wrap col-md-11">
                                         <div>
                                             <h6 style={{color: "#F46E27"}}>Gerente de Projeto</h6>
                                             <ul style={{ fontWeight: 300}}>
