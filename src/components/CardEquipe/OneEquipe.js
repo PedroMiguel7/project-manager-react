@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 //import Rout from "./routes";
 import api from '../../api';
+import PessoasEquipe from "./PeopleEquipe";
 
 class ExibirEquipes extends Component {
 
@@ -25,8 +26,8 @@ class ExibirEquipes extends Component {
             <div>
                 {equipes.map(p => (
 
-                    <div className="col-lg-3 col-md-12 Card p-4">
-                        <Link to={'/equipes/' + p.id_equipe} className="Link text-reset text-decoration-none ">
+                    <Link to={'/equipes/' + p.id_equipe} className="Link text-reset text-decoration-none ">
+                        <div className="col-lg-3 col-md-12 Card p-4">
                             <div key={equipes.id_equipe}>
                                 <div className="card-part1 mb-3">
                                     <h2 class="fs-4">
@@ -36,17 +37,15 @@ class ExibirEquipes extends Component {
                                 <div className="card-part2 d-flex justify-content-between">
                                     <div className="card-members">
                                         <h6>Membros</h6>
-                                        <ul className=''>
-                                                <li>{ }</li>
-                                        </ul>
+                                        <div><PessoasEquipe /></div>
                                     </div>
                                     <div className="card-progress">
                                         <h6>Total: { }</h6>
                                     </div>
                                 </div>
                             </div>
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 ))}
             </div>
 
