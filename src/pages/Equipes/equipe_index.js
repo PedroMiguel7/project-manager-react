@@ -28,12 +28,17 @@ function Equipes() {
                 </div>
 
                 <div className="row CardsContainer my-4">
-                    <CardEquipe linkUrl={"../equipe/:id"}/>
-                    <CardEquipe linkUrl={"../equipe/:id"}/>
-                    <CardEquipe linkUrl={"../equipe/:id"}/>
-                    <CardEquipe linkUrl={"../equipe/:id"}/>
-                    <CardEquipe linkUrl={"../equipe/:id"}/>
-                    <CardEquipe linkUrl={"../equipe/:id"}/>
+                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+
+                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+
+                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+
+                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+
+                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+                    
+                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
                 </div>
             </main>
         </>
