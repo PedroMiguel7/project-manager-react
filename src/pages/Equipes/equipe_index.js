@@ -1,4 +1,4 @@
-import CardEquipe from "../../components/CardEquipe"
+import CardEquipes from "../../components/CardEquipe"
 import Header from "../../components/Header"
 import filter from '../../assets/icons/filter.svg'
 import BasicModal from '../../components/NewProject'
@@ -28,17 +28,17 @@ function Equipes() {
                 </div>
 
                 <div className="row CardsContainer my-4">
-                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
 
-                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
 
-                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
 
-                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
 
-                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
-                    
-                    <CardEquipe linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
+
+                    <CardEquipes linkUrl={"../equipe/:id"} equipe="Fulanos" membros="Caio, Dayanne, Pedro Miguel" total="3" />
                 </div>
             </main>
         </>
