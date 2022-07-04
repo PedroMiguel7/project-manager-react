@@ -1,6 +1,16 @@
 import PropTypes from 'prop-types';
 
 function HeaderDt({pagina, titulo, status}) {
+    function mudarStatus(status) {
+        const statusBg = window.document.getElementsByClassName('Status');
+
+        if (status === "Em andamento" || "Em Andamento") {
+            statusBg[0].style.background = 'red';
+        } else if (status === "Concluído") {
+            statusBg[0].style.background = 'green';
+        }
+    }
+    
     return (
         <>
             <div className='row mt-5 pb-3 main-header'>
@@ -11,6 +21,7 @@ function HeaderDt({pagina, titulo, status}) {
                 <input className="col-lg-3 offset-lg-5" type="search" name="main-search" id="main-search" placeholder="Search here..."/>
             </div>
         </>
+    
     )
 }
 
