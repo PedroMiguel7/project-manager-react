@@ -67,6 +67,10 @@ body {
     color: var(--laranja);
 }
 
+.TituloDt {
+    color: var(--branco);
+}
+
 .cardLateralHome{
     background-color: var(--preto-medio);
     height: 350px;
