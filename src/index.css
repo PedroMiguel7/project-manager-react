@@ -303,8 +303,13 @@ main h1 {
     transition: 0.5s;
 }
 
+.CardPessoas:hover {
+    transform: scale(1.03);
+    transition: 0.5s;
+}
+
 .NomePessoa {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 

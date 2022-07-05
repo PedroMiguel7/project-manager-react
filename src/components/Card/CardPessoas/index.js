@@ -4,6 +4,7 @@ import aim from '../../../assets/icons/aim.svg'
 import profile from '../../../assets/icons/Profile.svg'
 //import PropTypes from 'prop-types';
 import api from '../../../api';
+import TagPessoas from "../../TagPessoas";
 
 class CardPessoas extends Component {
     state = {
@@ -24,7 +25,7 @@ class CardPessoas extends Component {
             <>
                 {pessoas.map(p => (
                     <Link to={'/pessoas/' + p.id_pessoa} className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
-                        <div className="CardPessoaTag">Front-End</div>
+                        <TagPessoas funcao={p.funcao_pessoa}/>
                         <div key={pessoas.id_pessoa} className=" ">
                             <div className="CardPessoas1 mb-3">
                                 <h2 class="NomePessoa">{p.nome_pessoa}</h2>
