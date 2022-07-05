@@ -28,10 +28,10 @@ class ExibirEquipes extends Component {
 
 
         return (
-            <div>
+            <>
                 {equipes.map(p => (
-                    <Link to={'/equipes/' + p.id_equipe} className="Link text-reset text-decoration-none ">
-                        <div className="col-lg-3 col-md-12 Card p-4">
+                    <Link to={'/equipes/' + p.id_equipe} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
+                        
                             <div key={equipes.id_equipe}>
                                 <div className="card-part1 mb-3">
                                     <h2 class="fs-4">
@@ -66,11 +66,11 @@ class ExibirEquipes extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
                     </Link>
                 ))
                 }
-            </div >
+            </>
 
         );
     }

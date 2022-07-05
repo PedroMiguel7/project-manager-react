@@ -23,25 +23,18 @@ class CardPessoas extends Component {
         return (
             <>
                 {pessoas.map(p => (
-                    <Link to={'/pessoas/' + p.id_pessoa} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
-                        <div key={pessoas.id_pessoa}>
-                            <div className="card-part1 mb-3">
+                    <Link to={'/pessoas/' + p.id_pessoa} className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
+                        <div key={pessoas.id_pessoa} className=" ">
+                            <div className="CardPessoas1 mb-3">
                                 <h2 class="fs-4">{p.nome_pessoa}</h2>
-                                <p className="description overflow-hidden">{p.funcao_pessoa}</p>
+                                
                                 <div className="mb-3">
                                     <img src={aim} alt="" /> <span>{p.id_equipe}</span>
                                 </div>
                             </div>
-                            <div className="card-part2 d-flex justify-content-between">
-                                <div className="card-members">
-                                    <h6>Membros</h6>
-                                    <div className='d-flex gap-1'>
-                                        <img src={profile} alt="" />
-                                        <img src={profile} alt="" />
-                                    </div>
-                                </div>
-                                <div className="card-progress">
-                                    <h6>Status</h6>
+                            <div className="CardPessoas2 d-flex justify-content-between">
+                                <div className="CardResumo">
+
                                 </div>
                             </div>
                         </div>
