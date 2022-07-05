@@ -32,9 +32,14 @@ class CardPessoas extends Component {
                                     <img src={aim} alt="" /> <span>{p.id_equipe}</span>
                                 </div>
                             </div>
-                            <div className="CardPessoas2 d-flex justify-content-between">
-                                <div className="CardResumo">
-
+                            <div className="CardPessoas2">
+                                <div>
+                                    <div>15</div>
+                                    <div>Projetos</div>
+                                </div>
+                                <div>
+                                    <div>8</div>
+                                    <div>Tarefas</div>
                                 </div>
                             </div>
                         </div>
