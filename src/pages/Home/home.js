@@ -1,8 +1,7 @@
 import Sidebar from "../../components/SideBar/SideBar";
 import Card from "../../components/Card";
 import BasicModal from '../../components/NewProject'
-import Button from '@mui/material/Button';
-import { Link } from "react-router-dom";
+import CardBaixoHome from "./CardBaixoHome";
 
 function Menu_index() {
   return (
@@ -31,10 +30,6 @@ function Menu_index() {
               <option value="crescente">A - Z</option>
               <option value="decrescente">Z - A</option>
             </select>
-
-            <button className="filter px-2 py-1">
-              <span>Filter</span> <img src={"../../assets/icons/filter.svg"} />
-            </button>
           </div>
         </div>
         <div
@@ -47,7 +42,6 @@ function Menu_index() {
 
             <Card linkUrl={"../projeto/:id"} titulo="Projeto 2" descricao="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." equipe="Devs Cariri" progresso={63}/>
 
-            <Card linkUrl={"../projeto/:id"} titulo="Projeto 3" descricao="LIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." equipe="Komanda" progresso={48} />
             </div>
           </div>
 
@@ -91,72 +85,8 @@ function Menu_index() {
             </div>
           </div>
         </div>
-
-        <div className="CardBaixoHome pt-1 ps-2 pe-2">
-          <div className="LeftOptions col-lg-2 mt-sm-2">
-            <span className="me-2 ms-4 mt-3">Projetos</span>
-          </div>
-          <table class="table" style={{ color: 'white' }}>
-            <thead>
-              <tr className="LeftOptions">
-                <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
-                <th scope="col" style={{ width: '20%' }}>Titulo</th>
-                <th scope="col" style={{ width: '40%' }}>Progresso</th>
-                <th scope="col" style={{ width: '20%' }}>Status</th>
-                <th scope="col" style={{ width: '10%' }}></th>
-              </tr>
-            </thead>
-            <tbody className="">
-              <tr>
-                <th scope="row">1</th>
-                <td>projeto API</td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style={{ width: "25%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                  </div>
-                </td>
-                <td>Em Andamento</td>
-                <td><Link to="projeto/:id" className="text-reset text-decoration-none"><Button style={{
-                  color: "#F4F5FA",
-                  background: "#F46E27"
-                }}
-                  variant="contained" >DETALHAR</Button></Link></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>projeto API-2</td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style={{ width: "100%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">100%</div>
-                  </div>
-
-                </td>
-                <td>Concluído</td>
-                <td><Link to="projeto/:id"  className="text-reset text-decoration-none"><Button style={{
-                  color: "#F4F5FA",
-                  background: "#F46E27"
-                }}
-                  variant="contained" >DETALHAR</Button></Link></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>projeto API-3</td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style={{ width: "50%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">50%</div>
-                  </div>
-                </td>
-                <td>Em Andamento</td>
-                <td><Link to="projeto/:id"  className="text-reset text-decoration-none"><Button style={{
-                  color: "#F4F5FA",
-                  background: "#F46E27"
-                }}
-                  variant="contained" >DETALHAR</Button></Link></td>
-              </tr>
-            </tbody>
-
-          </table>
-
+        <div>
+          <CardBaixoHome/>
         </div>
       </main>
     </div>
