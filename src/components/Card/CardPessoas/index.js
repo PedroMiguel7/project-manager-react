@@ -26,7 +26,7 @@ class CardPessoas extends Component {
                     <Link to={'/pessoas/' + p.id_pessoa} className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
                         <div key={pessoas.id_pessoa} className=" ">
                             <div className="CardPessoas1 mb-3">
-                                <h2 class="fs-4">{p.nome_pessoa}</h2>
+                                <h2 class="NomePessoa">{p.nome_pessoa}</h2>
                                 
                                 <div className="mb-3">
                                     <img src={aim} alt="" /> <span>{p.id_equipe}</span>
