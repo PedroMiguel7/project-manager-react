@@ -21,7 +21,7 @@ class CardBaixoHome extends Component {
 
         return (
             <>
-                <div className="CardBaixoHome pt-1 ps-2 pe-2">
+                <div className="CardBaixoHome pt-1 ps-2 pe-2 ">
                     <div className="LeftOptions col-lg-2 mt-sm-2">
                         <span className="me-2 ms-4 mt-3">Projetos</span>
                     </div>
@@ -39,9 +39,9 @@ class CardBaixoHome extends Component {
                                 {projetosHome.map(p => (
                                     <tr key={projetosHome.id_projeto}>
                                         <th scope="row">{p.id_projeto}</th>
-                                        <td>{p.nome_projeto}</td>
+                                        <td className="">{p.nome_projeto}</td>
                                         <td>
-                                            <div class="progress" style={{backgroundColor: "gray"}}>
+                                            <div class="progress mt-2" style={{backgroundColor: "gray"}}>
                                                 <div class="progress-bar" role="progressbar" style={{backgroundColor : "#28AEF3" , width: "25%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                                             </div>
                                         </td>
