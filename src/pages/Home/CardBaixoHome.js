@@ -41,8 +41,8 @@ class CardBaixoHome extends Component {
                                         <th scope="row">{p.id_projeto}</th>
                                         <td>{p.nome_projeto}</td>
                                         <td>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style={{ width: "25%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                            <div class="progress" style={{backgroundColor: "gray"}}>
+                                                <div class="progress-bar" role="progressbar" style={{backgroundColor : "#28AEF3" , width: "25%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                                             </div>
                                         </td>
                                         <td>{p.status}</td>

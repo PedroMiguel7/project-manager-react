@@ -3,6 +3,7 @@ import Card from "../../components/Card";
 import BasicModal from '../../components/NewProject'
 import CardBaixoHome from "./CardBaixoHome";
 import CardLateralDireitoHome from "./CardLateralDireitoHome";
+import CardLateralEsquerdoHome from "./CardLateralEsquerdaHome";
 
 function Menu_index() {
   return (
@@ -32,22 +33,15 @@ function Menu_index() {
           className="d-flex justify-content-between"
           style={{ width: "100%" }}
         >
-          <div className="col-8 mt-2 ms-3">
-            <div className="row CardsContainer my-4 mt-4 d-flex">
-            <Card linkUrl={"../projeto/:id"} titulo="API Rest" descricao="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." equipe="Komanda" progresso={70} />
-
-            <Card linkUrl={"../projeto/:id"} titulo="Projeto 2" descricao="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." equipe="Devs Cariri" progresso={63}/>
-
-            </div>
+          <div className="CardlateralesquerdoHome col-9 mt-2 ms-3 ">
+            <CardLateralEsquerdoHome/>
           </div>
-
-
-          <div>
-            <CardLateralDireitoHome/>
+          <div className="mt-2 me-2">
+            <CardLateralDireitoHome />
           </div>
         </div>
         <div>
-          <CardBaixoHome/>
+          <CardBaixoHome />
         </div>
       </main>
     </div>

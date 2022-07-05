@@ -84,6 +84,11 @@ body {
     border-radius: 10px;
 }
 
+.CardlateralesquerdoHome{
+    max-height: 400px;
+    overflow: hidden;
+}
+
 .nomeProjeto {
     color: var(--laranja);
 }
