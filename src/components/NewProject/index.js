@@ -4,15 +4,18 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
+import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
-import NewProject from '../../assets/icons/new.svg'
-import BasicSelect from '../Select/index.js'
+import Divider from '@mui/material/Divider';
+import NewProject from '../../assets/icons/new.svg';
+import BasicSelect from '../Select/index.js';
 import { useState } from 'react';
 
 const CssTextField = styled(TextField) ({
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
       borderColor: '#F4F5FA',
+      borderRadius: 5,
     },
     '&:hover fieldset': {
       borderColor: '#C2C3C6',
@@ -33,7 +36,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   bgcolor: '#494A58',
-  borderRadius: 5,
+  borderRadius: 2,
   boxShadow: 24,
   p: 5
 };
@@ -63,9 +66,10 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose}/>
           <form onSubmit={cadastrarProjeto}>
-            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-3'>
-              Adicionar Projeto
+            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
+              Adicionar<span style={{color: '#F46E27'}}> Projeto</span>
             </Typography>
             <CssTextField 
               required 
@@ -84,21 +88,26 @@ export default function BasicModal() {
               label="Descrição"
               onChange={(e) => setDescricao(e.target.value)}
               multiline
-              maxRows={4}
+              minRows={4}
+              maxRows={8}
               margin="dense"
               fullWidth className='textField'
             />
-
+            
             <BasicSelect />
+            <Divider light className='mt-3'/>
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
                 color: "#F4F5FA",
-                opacity: 0.5
+                opacity: 0.5,
+                textTransform: 'capitalize'
               }} 
               variant="text" className='' onClick={handleClose}>Cancelar</Button>
               <Button style={{
                 color: "#F4F5FA",
-                background: "#F46E27"
+                background: "#F46E27",
+                textTransform: 'capitalize',
+                boxShadow: 'none'
               }}
               variant="contained" type="submit">Salvar</Button>
             </div>
