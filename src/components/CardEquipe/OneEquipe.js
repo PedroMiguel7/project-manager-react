@@ -15,7 +15,7 @@ class ExibirEquipes extends Component {
         const response = await api.get('/equipes');
         //const ponse = await api.get('/equipes/membros');
 
-        console.log(response.data);
+        //console.log(response.data);
 
         this.setState({ equipes: response.data });
        // this.setState({ membros: ponse.data });

@@ -2,6 +2,7 @@ import Header from "../../components/Header"
 import filter from '../../assets/icons/filter.svg'
 import BasicModal from '../../components/NewProject'
 import Card from "../../components/Card"
+import CardPessoas from "../../components/Card/CardPessoas"
 
 function Pessoas() {
     return (
@@ -28,12 +29,7 @@ function Pessoas() {
                 </div>
 
                 <div className="row CardsContainer my-4">
-                    <Card linkUrl={"../pessoa/:id"}/>
-                    <Card linkUrl={"../pessoa/:id"}/>
-                    <Card linkUrl={"../pessoa/:id"}/>
-                    <Card linkUrl={"../pessoa/:id"}/>
-                    <Card linkUrl={"../pessoa/:id"}/>
-                    <Card linkUrl={"../pessoa/:id"}/>
+                    <CardPessoas />
                 </div>
             </main>
         </>
