@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 //import Rout from "./routes";
 import api from '../../api';
-import PessoasEquipe from "./PeopleEquipe";
+//import PessoasEquipe from "./PeopleEquipe";
 
 class ExibirEquipes extends Component {
 
@@ -12,25 +12,23 @@ class ExibirEquipes extends Component {
     }
     async componentDidMount() {
 
-        const response = await api.get('/equipes');
-        const ponse = await api.get('/equipes/membros');
+        const response = await api.get('/equipes/', '/equipes/membros/');
+        
 
         console.log(response.data);
 
         this.setState({ equipes: response.data });
-        this.setState({ membros: ponse.data });
+        //this.setState({ membros: ponse.data });
     }
 
 
     render() {
         const { equipes } = this.state;
-        const { membros } = this.state;
-
+     //   const { membros } = this.state;
 
         return (
             <div>
                 {equipes.map(p => (
-
                     <Link to={'/equipes/' + p.id_equipe} className="Link text-reset text-decoration-none ">
                         <div className="col-lg-3 col-md-12 Card p-4">
                             <div key={equipes.id_equipe}>
@@ -49,22 +47,16 @@ class ExibirEquipes extends Component {
                                                     <th scope="col">NOME</th>
                                                 </tr>
                                             </thead>
-                                            {membros.map(r => (
-                                                {p:equipes.id_equipe === membros.id_equipe
-                                                        ? <tbody>
-                                                            <tr>
-                                                                <th scope="row">
-                                                                    {r.id_pessoa}
-                                                                </th>
-                                                                <td>
-                                                                    {r.nome_pessoa}
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                        : <div> sem membros</div>
-                                                }
-                                            ))
-                                            }
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">
+                                                        a
+                                                    </th>
+                                                    <td>
+                                                        a
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                         </div>
                                     </div>
