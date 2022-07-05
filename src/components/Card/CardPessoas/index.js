@@ -24,7 +24,7 @@ class CardPessoas extends Component {
         return (
             <>
                 {pessoas.map(p => (
-                    <Link to={'/pessoas/' + p.id_pessoa} className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
+                    <Link to={'/pessoa/' + p.id_pessoa} className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
                         <TagPessoas funcao={p.funcao_pessoa}/>
                         <div key={pessoas.id_pessoa} className=" ">
                             <div className="CardPessoas1 mb-3">
