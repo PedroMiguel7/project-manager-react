@@ -273,6 +273,26 @@ main h1 {
     border: 1px solid wheat;
 }*/
 
+.CardPessoaTag {
+    margin: auto;
+    background-color: #A9DFD8;
+    color: var(--preto);
+    /*font-weight: 500;*/
+    border-radius: 5px;
+    padding: 5px 7px;
+    width: fit-content;
+    position: relative;
+    top: -25%;
+    font-size: 0.8rem;
+    opacity: 0.85;
+    transition: 0.5s;
+}
+
+.CardPessoas:hover .CardPessoaTag{
+    opacity: 1;
+    transition: 0.5s;
+}
+
 .CardPessoas {
     background-color: var(--preto-medio);
     max-width: 350px;
@@ -285,9 +305,11 @@ main h1 {
 
 .NomePessoa {
     font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .CardPessoas1 {
+    margin-top: -5%;
     display: flex;
     flex-direction: column;
     text-align: center;
