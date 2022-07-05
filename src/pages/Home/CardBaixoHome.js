@@ -20,7 +20,7 @@ class CardBaixoHome extends Component {
         const { projetosHome } = this.state;
 
         return (
-            <div>
+            <>
                 <div className="CardBaixoHome pt-1 ps-2 pe-2">
                     <div className="LeftOptions col-lg-2 mt-sm-2">
                         <span className="me-2 ms-4 mt-3">Projetos</span>
@@ -58,7 +58,7 @@ class CardBaixoHome extends Component {
                     </table>
 
                 </div>
-            </div>
+            </>
         )
     }
 }
