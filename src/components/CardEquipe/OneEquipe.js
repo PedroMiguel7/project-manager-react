@@ -12,7 +12,7 @@ class ExibirEquipes extends Component {
     }
     async componentDidMount() {
 
-        const response = await api.get('/equipes');
+        const response = await api.get('/equipes/');
         //const ponse = await api.get('/equipes/membros');
 
         //console.log(response.data);
