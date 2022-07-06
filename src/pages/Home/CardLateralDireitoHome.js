@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-//import { Link } from "react-router-dom";
-//import PropTypes from 'prop-types';
 import api from '../../api';
-//import Button from '@mui/material/Button';
 
 class CardLateralDireitoHome extends Component {
     state = {
