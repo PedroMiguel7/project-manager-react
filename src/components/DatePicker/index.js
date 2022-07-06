@@ -3,11 +3,14 @@ import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import FilterPopper from '../FilterPopper';
 import { alpha, styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 
-export default function ResponsiveDatePickers() {
+export default function ResponsiveDatePickers(props) {
   const [value, setValue] = React.useState(new Date());
+
+  const limparFiltro = () => setValue(null);
 
   /*const CssDate = styled(DatePicker) ({
     '& .MuiOutlinedInput-root': {

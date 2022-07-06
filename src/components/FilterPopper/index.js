@@ -10,11 +10,11 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
-import DatePicker from '../DatePicker'
+import DatePicker from '../DatePicker';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 
-function FilterPopper(){
+function FilterPopper(props){
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(false);
     const handleClose = () => setOpen(false);
@@ -24,6 +24,12 @@ function FilterPopper(){
         setAnchorEl(event.currentTarget);
         setOpen((prev) => placement !== newPlacement || !prev);
         setPlacement(newPlacement);
+    };
+
+    const [limparFiltro, setFiltro] = React.useState();
+    const clickLimpar = (props) => {
+        /*setValue(null);*/
+        setFiltro(null);
     };
 
     const CheckboxStyle = styled(Checkbox) ({
@@ -83,7 +89,7 @@ function FilterPopper(){
                                 opacity: 0.7,
                                 textTransform: 'capitalize'
                                 }} 
-                                variant="text" className='' /*onClick={handleClose}*/>Limpar Filtros</Button>
+                                variant="text" className='' onClick={clickLimpar}>Limpar Filtros</Button>
                                 <div className='d-flex align-items-center'>
                                     <Button style={{
                                     color: "#C2C3C6",
