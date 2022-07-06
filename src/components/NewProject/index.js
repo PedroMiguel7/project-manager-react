@@ -14,6 +14,7 @@ import { useState } from 'react';
 
 const CssTextField = styled(TextField) ({
   '& .MuiOutlinedInput-root': {
+    color: "#F4F5FA",
     '& fieldset': {
       borderColor: '#F4F5FA',
       borderRadius: 5

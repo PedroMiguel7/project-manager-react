@@ -12,8 +12,9 @@ export default function ResponsiveDatePickers(props) {
 
   const limparFiltro = () => setValue(null);
 
-  /*const CssDate = styled(DatePicker) ({
+  const DateTextField = styled(TextField) ({
     '& .MuiOutlinedInput-root': {
+      color: "#F4F5FA",
       '& fieldset': {
         borderColor: '#F4F5FA',
         borderRadius: 5,
@@ -23,9 +24,11 @@ export default function ResponsiveDatePickers(props) {
       },
       '&.Mui-focused fieldset': {
         borderColor: '#F46E27',
+        color: '#F46E27',
       },
     },
-  })*/
+  })
+  
 
   return (
     <>
@@ -41,7 +44,7 @@ export default function ResponsiveDatePickers(props) {
                 onChange={(newValue) => {
                     setValue(newValue);
                 }}
-                renderInput={(params) => <TextField {...params} />}
+                renderInput={(params) => <DateTextField {...params} />}
                 />
                 <span>-</span>
                 <DatePicker
@@ -53,7 +56,7 @@ export default function ResponsiveDatePickers(props) {
                 onChange={(newValue) => {
                     setValue(newValue);
                 }}
-                renderInput={(params) => <TextField {...params} />}
+                renderInput={(params) => <DateTextField {...params} />}
                 />
             </LocalizationProvider>
         </div>
