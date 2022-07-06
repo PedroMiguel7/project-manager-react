@@ -36,6 +36,7 @@ export default function ResponsiveDatePickers(props) {
             <span style={{color: "#C2C3C6", fontWeight: 500}}>Data</span>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <DatePicker
+                inputFormat="dd/MM/yyyy"
                 disableFuture
                 label="Início"
                 openTo="year"
@@ -44,10 +45,12 @@ export default function ResponsiveDatePickers(props) {
                 onChange={(newValue) => {
                     setValue(newValue);
                 }}
-                renderInput={(params) => <DateTextField {...params} />}
+                renderInput={(params) => <DateTextField {...params} sx={{
+                  svg: { color: '#F4F5FA' }}} />}
                 />
                 <span>-</span>
                 <DatePicker
+                inputFormat="dd/MM/yyyy"
                 disableFuture
                 label="Fim"
                 openTo="year"
@@ -56,7 +59,8 @@ export default function ResponsiveDatePickers(props) {
                 onChange={(newValue) => {
                     setValue(newValue);
                 }}
-                renderInput={(params) => <DateTextField {...params} />}
+                renderInput={(params) => <DateTextField {...params} sx={{
+                  svg: { color: '#F4F5FA' }}} />}
                 />
             </LocalizationProvider>
         </div>
