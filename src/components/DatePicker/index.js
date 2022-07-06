@@ -75,10 +75,7 @@ export default function ResponsiveDatePickers(props) {
                     color: '#F4F5FA'
                   },
                   "& label.Mui-focused": {
-                    display: "none"
-                  },
-                  "& legend": {
-                    display: "none"
+                    color: '#F46E27'
                   },
                   svg: { color: '#F4F5FA' }}} />}
                 />

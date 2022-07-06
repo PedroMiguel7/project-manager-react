@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { alpha, styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,10 +13,29 @@ export default function BasicSelect() {
     setEquipe(event.target.value);
   };
 
+  const CssBasicSelect = styled(BasicSelect) ({
+    '& .MuiSelect-root': {
+      color: '#fff',
+    },
+    'input': {
+      '&::placeholder': {
+        color: '#C2C3C6',
+      }
+    }
+  })
+
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl required fullWidth margin="dense">
-        <InputLabel id="demo-simple-select-label">Equipe</InputLabel>
+      <FormControl required fullWidth margin="dense" sx={{
+          "& label": {
+            color: '#F4F5FA'
+          },
+          "& label.Mui-focused": {
+            color: '#F46E27'
+          }
+        }}
+        >
+        <InputLabel sx={{color: '#C2C3C6'}} id="demo-simple-select-label">Equipe</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"

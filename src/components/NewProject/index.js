@@ -28,10 +28,6 @@ const CssTextField = styled(TextField) ({
   },
 })
 
-const CssBasicSelect = styled(BasicSelect) ({
-  
-})
-
 const style = {
   position: 'absolute',
   top: '50%',
