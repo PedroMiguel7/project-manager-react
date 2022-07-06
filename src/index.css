@@ -198,7 +198,7 @@ main h1 {
     height: 350px;
 }
 
-.Cards:hover {
+.Cards:hover, .Card:hover {
     transform: scale(1.03);
     transition: 0.5s;
 }
