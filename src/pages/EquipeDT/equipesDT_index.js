@@ -13,9 +13,6 @@ class equipeDT_index extends Component {
         const response = await api.get('/projetos/');
         const response2 = await api.get('/equipes/');
 
-        console.log(response.data);
-        console.log(response2.data);
-
         this.setState({ projetos: response.data });
         this.setState({ equipesEsq: response2.data });
 

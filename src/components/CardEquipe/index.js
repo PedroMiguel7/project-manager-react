@@ -11,7 +11,6 @@ class CardEquipes extends Component {
   }
   async componentDidMount() {
     const response = await api.get('/equipes/');
-    console.log(response.data);
 
     this.setState({ equipes: response.data });
   }

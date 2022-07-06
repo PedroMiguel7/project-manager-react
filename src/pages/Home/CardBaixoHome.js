@@ -11,8 +11,6 @@ class CardBaixoHome extends Component {
     async componentDidMount() {
         const response = await api.get('/projetos/');
 
-        console.log(response.data);
-
         this.setState({ projetosHome: response.data });
     }
 

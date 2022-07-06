@@ -11,7 +11,6 @@ class PessoasEquipe extends Component {
     }
     async componentDidMount() {
         const pessoasEquipe = await api.get('/equipes/' + (ExibirEquipes).equipes.id_equipe + '/pessoas')
-        console.log(pessoasEquipe.data);
 
         this.setState({ pessoas: pessoasEquipe.data });
     }

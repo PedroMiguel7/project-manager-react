@@ -13,8 +13,6 @@ class CardPessoas extends Component {
     async componentDidMount() {
         const response = await api.get('/pessoas/');
 
-        console.log(response.data);
-
         this.setState({ pessoas: response.data });
     }
 
