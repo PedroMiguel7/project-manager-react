@@ -44,7 +44,7 @@ function FilterPopper(){
                         backgroundColor: "#494A58",
                         color: "#C2C3C6",
                         minWidth: "200px",
-                        
+                        maxWidth: "80vw"                        
                     }}>
                     <Box
                     sx={{
@@ -63,7 +63,7 @@ function FilterPopper(){
                         }
                     }}
                     />
-                        <div className='p-3'>
+                        <div className='Popper p-3'>
                             <div className='d-flex align-items-center mb-3'>
                                 <span className='me-5' style={{fontWeight: 500}}>Status</span>
                                 <FormGroup className='d-flex flex-row gap-3'>

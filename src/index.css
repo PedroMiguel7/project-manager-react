@@ -147,6 +147,10 @@ main h1 {
     border: none;
 }
 
+.Popper {
+    box-shadow: 0 7px 15px 4px #1718218c;
+}
+
 .ClearRoundedIcon {
     cursor: pointer;
     position: relative;
