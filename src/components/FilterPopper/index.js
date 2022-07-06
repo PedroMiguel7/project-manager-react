@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import filter from '../../assets/icons/filter.svg';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
@@ -8,6 +9,7 @@ import { Box } from '@mui/system';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import Divider from '@mui/material/Divider';
 import { Typography } from '@mui/material';
 
 function FilterPopper(){
@@ -20,6 +22,13 @@ function FilterPopper(){
         setOpen((prev) => placement !== newPlacement || !prev);
         setPlacement(newPlacement);
     };
+
+    const CheckboxStyle = styled(Checkbox) ({
+        color: "#C2C3C6",
+        '&.Mui-checked': {
+          color: "#F46E27",
+        }
+    })
 
     return (
         <>
@@ -47,19 +56,20 @@ function FilterPopper(){
                         height: 12,
                         top: -6,
                         transform: "rotate(45deg)",
-                        left: "calc(85% - 6px)"
+                        left: "calc(93% - 6px)"
                         }
                     }}
                     />
-                        <div className='p-2'>
-                            <div className='d-flex'>
-                                <span>Status</span>
-                                <FormGroup className='d-flex'>
-                                    <FormControlLabel control={<Checkbox defaultChecked />} label="Em Andamento" />
-                                    <FormControlLabel control={<Checkbox defaultChecked />} label="Concluído" />
-                                    <FormControlLabel control={<Checkbox />} label="Cancelado" />
+                        <div className='p-3'>
+                            <div className='d-flex align-items-center'>
+                                <span className='me-5'>Status</span>
+                                <FormGroup className='d-flex flex-row gap-3'>
+                                    <FormControlLabel control={<CheckboxStyle defaultChecked />} label="Em Andamento"  />
+                                    <FormControlLabel control={<CheckboxStyle defaultChecked />} label="Concluído" />
+                                    <FormControlLabel control={<CheckboxStyle />} label="Cancelado" />
                                 </FormGroup>
                             </div>
+                            <Divider  />
                         </div>
                     </Paper>
                 </Fade>
