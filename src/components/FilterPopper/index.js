@@ -59,12 +59,12 @@ function FilterPopper(){
                         height: 12,
                         top: -6,
                         transform: "rotate(45deg)",
-                        left: "calc(93% - 6px)"
+                        left: "calc(94% - 6px)"
                         }
                     }}
                     />
                         <div className='p-3'>
-                            <div className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center mb-3'>
                                 <span className='me-5' style={{fontWeight: 500}}>Status</span>
                                 <FormGroup className='d-flex flex-row gap-3'>
                                     <FormControlLabel control={<CheckboxStyle defaultChecked />} label="Em Andamento"  />
@@ -73,11 +73,11 @@ function FilterPopper(){
                                 </FormGroup>
                             </div>
                             <Divider  />
-                            <div className='my-3'>
+                            <div className='my-4'>
                                 <DatePicker />
                             </div>
                             <Divider  />
-                            <div className='d-flex align-items-center justify-content-between my-3'>
+                            <div className='d-flex align-items-center justify-content-between mt-3'>
                                 <Button style={{
                                 color: "#F66E6E",
                                 opacity: 0.7,
