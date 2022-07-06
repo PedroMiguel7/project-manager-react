@@ -8,17 +8,24 @@ import api from '../../../api';
 class Cards extends Component {
     state = {
         projetos: [],
+        equipes : [],
+
     }
     async componentDidMount() {
         const response = await api.get('/projetos/');
+        const response2 = await api.get('/equipes/');
 
         console.log(response.data);
 
         this.setState({ projetos: response.data });
+        this.setState({ equipesEsq: response2.data });
+
+
     }
 
     render() {
         const { projetos } = this.state;
+        const { equipesEsq } = this.state;
 
         return (
             <>
@@ -30,7 +37,7 @@ class Cards extends Component {
                                 <h2 class="fs-4">{p.nome_projeto}</h2>
                                 <p className="description overflow-hidden">{p.descricao_projeto}</p>
                                 <div className="mb-3">
-                                    <img src={aim} alt="" /> <span>{p.id_equipe}</span>
+                                    <img src={aim} alt="" /> <span>{p.equipe_id}</span>
                                 </div>
                             </div>
                             <div className="card-part2 d-flex justify-content-between">
