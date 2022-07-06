@@ -38,7 +38,9 @@ const style = {
   bgcolor: '#494A58',
   borderRadius: 2,
   boxShadow: 24,
-  p: 5
+  p: 5,
+  minWidth: '400px',
+  width: '35vw'
 };
 
 export default function BasicModal() {
