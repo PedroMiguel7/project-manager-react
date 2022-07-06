@@ -41,7 +41,7 @@ const style = {
   boxShadow: 24,
   p: 5,
   minWidth: '400px',
-  width: '35vw'
+  width: '40vw'
 };
 
 export default function BasicModal() {
