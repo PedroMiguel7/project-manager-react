@@ -26,6 +26,11 @@ export default function ResponsiveDatePickers(props) {
         borderColor: '#F46E27',
         color: '#F46E27',
       },
+      'input': {
+        '&::placeholder': {
+          color: '#C2C3C6',
+        }
+      }
     },
   })
   
@@ -46,6 +51,12 @@ export default function ResponsiveDatePickers(props) {
                     setValue(newValue);
                 }}
                 renderInput={(params) => <DateTextField {...params} sx={{
+                  "& label": {
+                    color: '#F4F5FA'
+                  },
+                  "& label.Mui-focused": {
+                    color: '#F46E27'
+                  },
                   svg: { color: '#F4F5FA' }}} />}
                 />
                 <span>-</span>
@@ -59,7 +70,16 @@ export default function ResponsiveDatePickers(props) {
                 onChange={(newValue) => {
                     setValue(newValue);
                 }}
-                renderInput={(params) => <DateTextField {...params} sx={{
+                renderInput={(params) => <DateTextField {...params} InputLabelProps={{className: 'TextFieldLabel'}} sx={{
+                  "& label": {
+                    color: '#F4F5FA'
+                  },
+                  "& label.Mui-focused": {
+                    display: "none"
+                  },
+                  "& legend": {
+                    display: "none"
+                  },
                   svg: { color: '#F4F5FA' }}} />}
                 />
             </LocalizationProvider>

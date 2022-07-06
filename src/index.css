@@ -172,6 +172,10 @@ main h1 {
     border-radius: 5px;
 }
 
+.TextFieldLabel {
+    color: 'red' !important;
+}
+
 .Card {
     background-color: var(--preto-medio);
     /*width: 380px;*/

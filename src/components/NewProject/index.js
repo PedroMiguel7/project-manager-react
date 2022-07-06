@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 const CssTextField = styled(TextField) ({
   '& .MuiOutlinedInput-root': {
-    color: "#F4F5FA",
+    color: '#F4F5FA',
     '& fieldset': {
       borderColor: '#F4F5FA',
       borderRadius: 5
@@ -84,7 +84,15 @@ export default function BasicModal() {
               margin="dense" 
               color='primary'
               fullWidth 
-              className='textField'/>
+              className='textField'
+              sx={{
+                "& label": {
+                  color: '#F4F5FA'
+                },
+                "& label.Mui-focused": {
+                  color: '#F46E27'
+                },
+              }} />
             <CssTextField
               id="descricao"
               name='descricao'
@@ -95,6 +103,14 @@ export default function BasicModal() {
               maxRows={8}
               margin="dense"
               fullWidth className='textField'
+              sx={{
+                "& label": {
+                  color: '#F4F5FA'
+                },
+                "& label.Mui-focused": {
+                  color: '#F46E27'
+                },
+              }} 
             />
             
             <BasicSelect />
