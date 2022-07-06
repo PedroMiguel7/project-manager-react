@@ -10,11 +10,14 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
+import DatePicker from '../DatePicker'
+import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 
 function FilterPopper(){
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(false);
+    const handleClose = () => setOpen(false);
     const [placement, setPlacement] = React.useState();
 
     const handleClick = (newPlacement) => (event) => {
@@ -34,7 +37,7 @@ function FilterPopper(){
         <>
             <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
                 {({ TransitionProps }) => (
-                <Fade {...TransitionProps} timeout={350}>
+                <Fade {...TransitionProps} timeout={250}>
                     
                     <Paper sx={{ 
                         mt: 2,
@@ -62,7 +65,7 @@ function FilterPopper(){
                     />
                         <div className='p-3'>
                             <div className='d-flex align-items-center'>
-                                <span className='me-5'>Status</span>
+                                <span className='me-5' style={{fontWeight: 500}}>Status</span>
                                 <FormGroup className='d-flex flex-row gap-3'>
                                     <FormControlLabel control={<CheckboxStyle defaultChecked />} label="Em Andamento"  />
                                     <FormControlLabel control={<CheckboxStyle defaultChecked />} label="Concluído" />
@@ -70,6 +73,31 @@ function FilterPopper(){
                                 </FormGroup>
                             </div>
                             <Divider  />
+                            <div className='my-3'>
+                                <DatePicker />
+                            </div>
+                            <Divider  />
+                            <div className='d-flex align-items-center justify-content-between my-3'>
+                                <Button style={{
+                                color: "#F66E6E",
+                                opacity: 0.7,
+                                textTransform: 'capitalize'
+                                }} 
+                                variant="text" className='' /*onClick={handleClose}*/>Limpar Filtros</Button>
+                                <div className='d-flex align-items-center'>
+                                    <Button style={{
+                                    color: "#C2C3C6",
+                                    opacity: 0.5,
+                                    textTransform: 'capitalize'
+                                    }} 
+                                    variant="text" className='' onClick={handleClose}>Cancelar</Button>
+                                    <Button style={{
+                                    color: "#C2C3C6",
+                                    textTransform: 'capitalize'
+                                    }} 
+                                    variant="text" className='' /*onClick={handleClose}*/>Salvar</Button>
+                                </div>
+                            </div>
                         </div>
                     </Paper>
                 </Fade>
