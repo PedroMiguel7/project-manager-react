@@ -14,7 +14,6 @@ class CardLateralDireitoHome extends Component {
         const response3 = await api.get('/projetos/status/Em Andamento');
         const response4 = await api.get('/equipes/');
         
-        console.log(response.data);
         this.setState({ projetosHomeLateral: response.data });
         this.setState({ concluidos: response2.data });
         this.setState({ andamento: response3.data });

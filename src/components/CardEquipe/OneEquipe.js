@@ -8,23 +8,20 @@ class ExibirEquipes extends Component {
 
     state = {
         equipes: [],
-        //membros: [],
+        membros: [],
     }
+
     async componentDidMount() {
 
         const response = await api.get('/equipes/');
-        //const ponse = await api.get('/equipes/membros');
-
-        //console.log(response.data);
 
         this.setState({ equipes: response.data });
-       // this.setState({ membros: ponse.data });
     }
 
 
     render() {
         const { equipes } = this.state;
-        //const { membros } = this.state;
+        const { membros } = this.state;
 
 
         return (
@@ -51,11 +48,11 @@ class ExibirEquipes extends Component {
                                             <tbody>
                                                 <tr>
                                                     <th scope="row">
-                                                        a
+                                                        01
                                                     </th>
-                                                    <td>
-                                                        a
-                                                    </td>
+                                                    <th>
+                                                        Pedro Miguel
+                                                    </th>
                                                 </tr>
                                             </tbody>
                                         </table>
