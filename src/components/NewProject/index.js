@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Fade from '@mui/material/Fade';
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
@@ -48,7 +49,6 @@ export default function BasicModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  
   function cadastrarProjeto(e) {
     e.preventDefault()
     console.log(`Projeto ${nome} com descrição ${descricao} foi cadastrado com sucesso`)

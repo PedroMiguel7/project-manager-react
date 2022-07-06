@@ -1,10 +1,11 @@
 import Header from "../../components/Header"
 import Card from "../../components/Card"
 //import NewProject from '../../assets/icons/new.svg'
-import filter from '../../assets/icons/filter.svg'
+
 import BasicModal from '../../components/NewProject'
 //import FilterMenu from "../../components/FilterMenu"
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos"
+import FilterPopper from "../../components/FilterPopper"
 
 function ProjetoIndex() {
     return (
@@ -25,9 +26,7 @@ function ProjetoIndex() {
                             <option value="decrescente">Z - A</option>
                         </select>
 
-                        <button className="filter px-2 py-1">
-                            <span>Filter</span> <img src={filter} alt="" />
-                        </button>
+                        <FilterPopper />
                     </div>
                 </div>
 
