@@ -13,15 +13,10 @@ export default function BasicSelect() {
     setEquipe(event.target.value);
   };
 
-  const CssBasicSelect = styled(BasicSelect) ({
-    '& .MuiSelect-root': {
-      color: '#fff',
+  const CssSelect = styled(Select) ({
+    '& .MuiSelect-select': {
+      color: "#F4F5FA",
     },
-    'input': {
-      '&::placeholder': {
-        color: '#C2C3C6',
-      }
-    }
   })
 
   return (
@@ -36,18 +31,19 @@ export default function BasicSelect() {
         }}
         >
         <InputLabel sx={{color: '#C2C3C6'}} id="demo-simple-select-label">Equipe</InputLabel>
-        <Select
+        <CssSelect
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={equipe}
           label="Age"
           onChange={handleChange}
-        
+          /*sx={{color: '#F4F5FA', borderColor: "#F4F5FA"}}*/
         >
-          <MenuItem value={10}>Komanda</MenuItem>
-          <MenuItem value={20}>Devs Cariri</MenuItem>
-          <MenuItem value={30}>Cariri Inovação</MenuItem>
-        </Select>
+          <MenuItem value={1}>Komanda</MenuItem>
+          <MenuItem value={2}>Cariri Inovação</MenuItem>
+          <MenuItem value={3}>Cariri Teste</MenuItem>
+          
+        </CssSelect>
       </FormControl>
     </Box>
   );

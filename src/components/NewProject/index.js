@@ -33,7 +33,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  bgcolor: '#494A58',
+  bgcolor: '#21222D',
   borderRadius: 2,
   boxShadow: 24,
   p: 5,

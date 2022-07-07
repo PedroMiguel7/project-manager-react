@@ -14,7 +14,7 @@ import DatePicker from '../DatePicker';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 
-function FilterPopper(props){
+function FilterPopper(){
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(false);
     const handleClose = () => setOpen(false);
@@ -26,10 +26,10 @@ function FilterPopper(props){
         setPlacement(newPlacement);
     };
 
-    const [limparFiltro, setFiltro] = React.useState();
-    const clickLimpar = (props) => {
-        /*setValue(null);*/
-        setFiltro(null);
+    const [checkboxState, setUnchecked] = React.useState();
+    const uncheck = () => setUnchecked(false);
+    const limpar = () => {
+        setUnchecked(false);
     };
 
     const CheckboxStyle = styled(Checkbox) ({
@@ -89,7 +89,7 @@ function FilterPopper(props){
                                 opacity: 0.7,
                                 textTransform: 'capitalize'
                                 }} 
-                                variant="text" className='' onClick={clickLimpar}>Limpar Filtros</Button>
+                                variant="text" className='' onClick={{uncheck}}>Limpar Filtros</Button>
                                 <div className='d-flex align-items-center'>
                                     <Button style={{
                                     color: "#C2C3C6",
@@ -101,7 +101,7 @@ function FilterPopper(props){
                                     color: "#C2C3C6",
                                     textTransform: 'capitalize'
                                     }} 
-                                    variant="text" className='' /*onClick={handleClose}*/>Salvar</Button>
+                                    variant="text" className='' type="submit">Salvar</Button>
                                 </div>
                             </div>
                         </div>
