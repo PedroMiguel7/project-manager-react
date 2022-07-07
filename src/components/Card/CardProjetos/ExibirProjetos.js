@@ -4,9 +4,6 @@ import aim from '../../../assets/icons/aim.svg'
 import profile from '../../../assets/icons/Profile.svg'
 import api from '../../../api';
 
-
-
-
 class Cards extends Component {
     state = {
         projetos: [],
@@ -30,7 +27,7 @@ class Cards extends Component {
         return (
             <>
                 {projetos.map(p => (
-                    <Link to={'/projeto/' + p.id_projeto} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
+                    <Link to={'/projetos/' + p.id_projeto} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
 
                         <div key={projetos.id_projeto}>
                             <div className="card-part1 mb-3">

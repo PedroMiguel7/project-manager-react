@@ -19,7 +19,7 @@ const Rout = () =>{
             <Routes>
                 <Route exect path="/" element={<Home />}/>
                 <Route exect path="/projetos" element={<ProjetoIndex />}/>
-                <Route exect path="/projeto/:id" element={<ProjetoDT />}/>
+                <Route exect path="/projetos/:id" element={<ProjetoDT />}/>
 
                 <Route exect path="/equipes" element={<Equipes />}/>
                 <Route exect path="/equipe/:id" element={<EquipeDT />}/>

@@ -10,7 +10,7 @@ function HeaderDt({pagina, titulo, status}) {
         if (status === "Em andamento" || "Em Andamento") {
             statusBg[0].style.background = '#28aef3b3';
         } 
-        if (status === "Concluído") {
+        if (status === "Concluído" || "Concluido") {
             statusBg[0].style.background = '#28f33cb3';
         } if (status === "Cancelado") {
             statusBg[0].style.background = '#898989b3'

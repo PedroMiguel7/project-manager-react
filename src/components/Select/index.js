@@ -14,8 +14,18 @@ export default function BasicSelect() {
   };
 
   const CssSelect = styled(Select) ({
-    '& .MuiSelect-select': {
+    '& .MuiSelect-outlined': {
       color: "#F4F5FA",
+    }, '& fieldset': {
+      borderColor: '#F4F5FA',
+      borderRadius: 5,
+    },
+    '&:focus':{
+      backgroundColor:'yellow'
+    },
+    '&:hover': {
+      borderColor: '#F46E27',
+      color: '#F46E27',
     },
   })
 
@@ -37,7 +47,8 @@ export default function BasicSelect() {
           value={equipe}
           label="Age"
           onChange={handleChange}
-          /*sx={{color: '#F4F5FA', borderColor: "#F4F5FA"}}*/
+          sx={{
+            svg: { color: '#F4F5FA' }}}
         >
           <MenuItem value={1}>Komanda</MenuItem>
           <MenuItem value={2}>Cariri Inovação</MenuItem>
