@@ -14,14 +14,20 @@ class ExibirEquipes extends Component {
     async componentDidMount() {
 
         const response = await api.get('/equipes/');
+        const response2 = await api.get("/equipes/" + this.buscarMembros +"/pessoas/")
 
         this.setState({ equipes: response.data });
+        this.setState({ membros: response2.data });
+    }
+
+    buscarMembros = (id_equipe) => {
+        return id_equipe
     }
 
 
     render() {
         const { equipes } = this.state;
-        const { membros } = this.state;
+
 
 
         return (
@@ -45,15 +51,18 @@ class ExibirEquipes extends Component {
                                                     <th scope="col">NOME</th>
                                                 </tr>
                                             </thead>
+                                            buscarMembros({p.id_equipe})
                                             <tbody>
+                                                
                                                 <tr>
                                                     <th scope="row">
-                                                        01
+                                                        
                                                     </th>
                                                     <th>
-                                                        Pedro Miguel
+                                                        
                                                     </th>
                                                 </tr>
+                                               
                                             </tbody>
                                         </table>
                                         </div>
