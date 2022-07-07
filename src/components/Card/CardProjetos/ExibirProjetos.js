@@ -27,7 +27,7 @@ class Cards extends Component {
         return (
             <>
                 {projetos.map(p => (
-                    <Link to={'/projetos/' + p.id_projeto} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
+                    <Link reloadDocument to={'/projetos/' + p.id_projeto} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
 
                         <div key={projetos.id_projeto}>
                             <div className="card-part1 mb-3">
