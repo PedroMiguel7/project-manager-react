@@ -52,16 +52,17 @@ class ExibirEquipes extends Component {
                                                     <th scope="col">NOME</th>
                                                 </tr>
                                             </thead>
-                                            buscarMembros({p.id_equipe})
+                                            {/* buscarMembros({p.id_equipe}) */}
                                             <tbody>
                                                 {membros.map(r =>(
-                                                    <tr>
-                                                    <th scope="row">
-                                                        {r.id_pessoa}
-                                                    </th>
-                                                    <th>
-                                                        {r.nome_pessoa}
-                                                    </th>
+                                                <tr key={membros.id_equipe}>
+                                                        {((equipes.id_equipe) === (r.id_equipe)) &&
+                                                    <><th scope="row">
+                                                                {r.id_pessoa}
+                                                            </th><th>
+                                                                    {r.nome_pessoa}
+                                                                </th></>
+                                                    }
                                                 </tr>
                                                 ))}
                                                
