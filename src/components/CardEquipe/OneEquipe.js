@@ -14,21 +14,22 @@ class ExibirEquipes extends Component {
     async componentDidMount() {
 
         const response = await api.get('/equipes/');
-        const response2 = await api.get("/equipes/" + this.buscarMembros +"/pessoas/")
+        const response2 = await api.get('/pessoas/');
 
-        this.setState({ equipes: response.data });
-        this.setState({ membros: response2.data });
+        console.log(this.membros)
+
+        this.setState({ equipes: response.data , membros: response2.data});
+       
     }
 
     buscarMembros = (id_equipe) => {
-        return id_equipe
+        fetch('/equipes/'+id_equipe+'/pessoas/')
     }
 
 
     render() {
         const { equipes } = this.state;
-
-
+        const { membros } = this.state;
 
         return (
             <>
@@ -42,7 +43,7 @@ class ExibirEquipes extends Component {
                                     </h2>
                                 </div>
                                 <div className="card-part2 d-flex justify-content-between">
-                                    <div className="card-members">
+                                    <div className="card-members" style={{gap: 'none',}}>
                                         <h6>Membros</h6>
                                         <div><table class="table">
                                             <thead>
@@ -53,22 +54,20 @@ class ExibirEquipes extends Component {
                                             </thead>
                                             buscarMembros({p.id_equipe})
                                             <tbody>
-                                                
-                                                <tr>
+                                                {membros.map(r =>(
+                                                    <tr>
                                                     <th scope="row">
-                                                        
+                                                        {r.id_pessoa}
                                                     </th>
                                                     <th>
-                                                        
+                                                        {r.nome_pessoa}
                                                     </th>
                                                 </tr>
+                                                ))}
                                                
                                             </tbody>
                                         </table>
                                         </div>
-                                    </div>
-                                    <div className="card-progress">
-                                        <h6>Total: { }</h6>
                                     </div>
                                 </div>
                             </div>
