@@ -15,6 +15,7 @@ class ExibirEquipes extends Component {
 
         const response = await api.get('/equipes/');
         const response2 = await api.get('/pessoas/');
+        const response3 = await api.get(this.buscarMembros)
 
         console.log(this.membros)
 
