@@ -10,7 +10,7 @@ class CardEquipes extends Component {
     equipes: [],
   }
   async componentDidMount() {
-    const response = await api.get('/equipe/');
+    const response = await api.get('/equipes/');
 
     this.setState({ equipes: response.data });
   }
