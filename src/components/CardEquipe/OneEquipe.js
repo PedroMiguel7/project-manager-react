@@ -59,7 +59,7 @@ class ExibirEquipes extends Component {
                                                 <tr key={membros.id_equipe}>
                                                         {((equipes.id_equipe) === (r.id_equipe)) &&
                                                     <><th scope="row">
-                                                                {r.id_pessoa}aaa
+                                                                {r.id_pessoa}
                                                             </th><th>
                                                                     {r.nome_pessoa}
                                                                 </th></>
