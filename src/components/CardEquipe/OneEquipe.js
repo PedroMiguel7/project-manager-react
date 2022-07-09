@@ -61,7 +61,7 @@ class ExibirEquipes extends Component {
                                                     <><th scope="row">
                                                                 {r.id_pessoa}aaa
                                                             </th><th>
-                                                                    {r.nome_pessoa}aaa
+                                                                    {r.nome_pessoa}
                                                                 </th></>
                                                     }
                                                 </tr>
