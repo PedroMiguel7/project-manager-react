@@ -10,7 +10,7 @@ const tarefaDT_index = () => {
         <>
             <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
             <div>
-                <Header titulo="Samuel"/>
+                <Header titulo="Tarefa"/>
             </div>
             </main>
         </>
