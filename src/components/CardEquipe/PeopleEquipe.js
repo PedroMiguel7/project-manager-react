@@ -27,13 +27,13 @@ class PessoasEquipe extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {pessoas.map(p => (
+                        {pessoas.map(r => (
                             <tr>
                                 <th scope="row">
-                                    {p.id_pessoa}
+                                    {r.id_pessoa}
                                 </th>
                                 <td>
-                                    {p.nome_pessoa}
+                                    {r.nome_pessoa}
                                 </td>
                             </tr>
                         ))}
