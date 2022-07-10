@@ -11,6 +11,7 @@ class equipeDT_index extends Component {
     state = {
         projetos: [],
         equipesEsq: [],
+        equipe: [],
     }
     async componentDidMount() {
         const response3 = await api.get(equipePath);
@@ -19,6 +20,7 @@ class equipeDT_index extends Component {
 
         this.setState({ projetos: response.data });
         this.setState({ equipesEsq: response2.data });
+        this.setState({ equipe: response3.data });
 
     }
 
