@@ -27,6 +27,7 @@ class equipeDT_index extends Component {
     render() {
         const { projetos } = this.state;
         const { equipesEsq } = this.state;
+        const { equipe } = this.state;
 
 
         return (
