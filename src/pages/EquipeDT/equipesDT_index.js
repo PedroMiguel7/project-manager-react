@@ -4,6 +4,9 @@ import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 
+const equipePath = window.location.pathname;
+console.log(equipePath);
+
 class equipeDT_index extends Component {
     state = {
         projetos: [],
