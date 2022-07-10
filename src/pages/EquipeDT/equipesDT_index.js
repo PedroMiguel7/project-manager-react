@@ -13,6 +13,7 @@ class equipeDT_index extends Component {
         equipesEsq: [],
     }
     async componentDidMount() {
+        const response3 = await api.get(equipePath);
         const response = await api.get('/projetos/');
         const response2 = await api.get('/equipes/');
 
