@@ -72,7 +72,7 @@ class equipeDT_index extends Component {
                         </table>
                     </div>
                     <div className="col-5 ms-4">
-                        aa
+                        estatisticas
                     </div>
                 </div>
                 </main>
