@@ -1,30 +1,36 @@
-/*import HeaderDt from "../../components/HeaderDt"
-import Divider from '@mui/material/Divider';
-import CircularProgressWithLabel from '../../components/CircularProgressWithLabel'
-import Table from "../../components/Table";
-*/
-import Header from "../../components/Header"
-import HeaderPessoas from "../../components/HeaderPessoas";
-import profile from '../../assets/icons/Profile.svg'
-import Avatar from '@mui/material/Avatar';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+//import PropTypes from 'prop-types';
+import api from '../../api';
+import TagPessoas from "../../components/TagPessoas";
 
-const pessoaDT_index = () => {
-    return(
-        <>
-            <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
-            <div className="row offset-lg-2">
-                <h6>Front-End</h6>
-                <h1>Fulana de Tal</h1> 
-            </div>
-            <div className="row">
-                 
-                <div className="CardDT InfoProjeto row py-4">
-                    <Avatar className="ProfilePessoa col-lg-2" sx={{ width: 250, height: 250 }}>A</Avatar>
-                </div>
-            </div>
-            </main>
-        </>
-    );
+const pessoaPath = window.location.pathname;
+console.log(pessoaPath);
+
+class PessoasDT extends Component {
+    state = {
+        pessoa: [],
+    }
+    async componentDidMount() {
+        const response = await api.get(pessoaPath);
+
+        this.setState({ pessoa: response.data });
+    }
+
+    render() {
+        const { pessoa } = this.state;
+
+        return (
+            <>
+                {pessoa.map(p => (
+                    <div className='col-11 offset-1 col-lg-11 offset-lg-1 px-5' key={pessoa.id_pessoa}>
+                        <h1>{p.id_pessoa}</h1>
+                    </div>
+                ))}
+            </>
+        )
+    }
 }
 
-export default pessoaDT_index;
+
+export default PessoasDT;

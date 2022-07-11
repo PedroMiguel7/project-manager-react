@@ -25,7 +25,7 @@ const Rout = () =>{
                 <Route exect path="/equipe/:id" element={<EquipeDT />}/>
 
                 <Route exect path="/pessoas" element={<Pessoas />}/>
-                <Route exect path="/pessoa/:id" element={<PessoaDT />}/>
+                <Route exect path="/pessoas/:id" element={<PessoaDT />}/>
 
                 <Route exect path="/tarefas" element={<Tarefas />}/>
                 <Route exect path="/tarefa/:id" element={<TarefaDT />}/>
