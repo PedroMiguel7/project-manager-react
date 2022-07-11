@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 //import PropTypes from 'prop-types';
 import api from '../../api';
 import Button from '@mui/material/Button';
+import BarraProgresso from "../../components/Card/CardProjetos/BarraDeProgresso";
 
 class CardBaixoHome extends Component {
     state = {
@@ -39,9 +40,7 @@ class CardBaixoHome extends Component {
                                         <th scope="row">{p.id_projeto}</th>
                                         <td className="">{p.nome_projeto}</td>
                                         <td>
-                                            <div class="progress mt-2" style={{backgroundColor: "gray"}}>
-                                                <div class="progress-bar" role="progressbar" style={{backgroundColor : "#28AEF3" , width: "25%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                            </div>
+                                            <BarraProgresso/>
                                         </td>
                                         <td>{p.status}</td>
                                         <td><Link to={'/projeto/' + p.id_projeto} className="text-reset text-decoration-none"><Button style={{

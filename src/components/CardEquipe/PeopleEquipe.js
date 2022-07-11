@@ -16,8 +16,6 @@ function BuscarMembros(props) {
         fetchEquipe()
     });
 
-    console.log(pessoas)
-
     return (
         <>
             <table class="table">
