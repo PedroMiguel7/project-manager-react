@@ -36,7 +36,7 @@ class Cards extends Component {
                                 <div className="mb-3">
                                     <img src={aim} alt="" />
                                     <span>
-                                        {p.equipe_id}
+                                        {p.nome_equipe}
                                     </span>
                                 </div>
                             </div>

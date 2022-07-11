@@ -19,7 +19,7 @@ function BuscarMembros(props) {
     console.log(pessoas)
 
     return (
-        <div>
+        <>
             <table class="table">
                 <thead>
                     <tr>
@@ -41,7 +41,7 @@ function BuscarMembros(props) {
                     ))}
                 </tbody>
             </table>
-        </div >
+        </>
     )
 
 }
