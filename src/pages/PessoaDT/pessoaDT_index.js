@@ -6,6 +6,7 @@ import Table from "../../components/Table";
 import Header from "../../components/Header"
 import HeaderPessoas from "../../components/HeaderPessoas";
 import profile from '../../assets/icons/Profile.svg'
+import Avatar from '@mui/material/Avatar';
 
 const pessoaDT_index = () => {
     return(
@@ -16,8 +17,9 @@ const pessoaDT_index = () => {
                 <h1>Fulana de Tal</h1> 
             </div>
             <div className="row">
+                 
                 <div className="CardDT InfoProjeto row py-4">
-                    <img className="col-lg-2" src={profile} alt="" />
+                    <Avatar className="ProfilePessoa col-lg-2" sx={{ width: 250, height: 250 }}>A</Avatar>
                 </div>
             </div>
             </main>

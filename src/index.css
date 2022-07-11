@@ -343,3 +343,11 @@ main h1 {
     justify-content: space-evenly;
     font-size: 0.9rem;
 }
+
+.ProfilePessoa {
+    margin-top: -7rem;
+    border-radius: 100%;
+    box-shadow: 0 20px 20px black;
+    width: 250px;
+    height: 250px;
+}
