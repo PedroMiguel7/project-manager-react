@@ -19,14 +19,13 @@ class PessoasDT extends Component {
 
     render() {
         const { pessoa } = this.state;
+        console.log(pessoa);
 
         return (
             <>
-                {pessoa.map(p => (
-                    <div className='col-11 offset-1 col-lg-11 offset-lg-1 px-5' key={pessoa.id_pessoa}>
-                        <h1>{p.id_pessoa}</h1>
-                    </div>
-                ))}
+                <div className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
+                    <h1>{pessoa.nome_pessoa}</h1>
+                </div>
             </>
         )
     }
