@@ -4,13 +4,21 @@ import CircularProgressWithLabel from '../../components/CircularProgressWithLabe
 import Table from "../../components/Table";
 */
 import Header from "../../components/Header"
+import HeaderPessoas from "../../components/HeaderPessoas";
+import profile from '../../assets/icons/Profile.svg'
 
 const pessoaDT_index = () => {
     return(
         <>
             <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
-            <div>
-                <Header titulo="Samuel"/>
+            <div className="row offset-lg-2">
+                <h6>Front-End</h6>
+                <h1>Fulana de Tal</h1> 
+            </div>
+            <div className="row">
+                <div className="CardDT InfoProjeto row py-4">
+                    <img className="col-lg-2" src={profile} alt="" />
+                </div>
             </div>
             </main>
         </>
