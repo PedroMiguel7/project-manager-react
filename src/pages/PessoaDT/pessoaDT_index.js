@@ -32,5 +32,4 @@ class PessoasDT extends Component {
     }
 }
 
-
 export default PessoasDT;
