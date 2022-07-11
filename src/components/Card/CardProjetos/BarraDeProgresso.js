@@ -23,13 +23,12 @@ const [tasks, setTasks] = useState([]);
         }
         BarrinhaProgresso = (QtdTasksConcluidas*100)/QtdTasks
     }
-    console.log(BarrinhaProgresso)
    
 
     return (
         <>
             <div class="progress mt-2" style={{ backgroundColor: "gray" }}>
-                <div class="progress-bar" role="progressbar" style={{ backgroundColor: "#28AEF3", width:'40px' }} aria-valuenow="25"  aria-valuemin="0" aria-valuemax="100">25%</div>
+                <div class="progress-bar" role="progressbar" style={{ backgroundColor: "#28AEF3", width:`${BarrinhaProgresso}%` }} aria-valuenow="25"  aria-valuemin="0" aria-valuemax="100">25%</div>
             </div>
         </>
     )
