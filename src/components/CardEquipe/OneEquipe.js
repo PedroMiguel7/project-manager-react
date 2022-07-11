@@ -2,35 +2,21 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 //import Rout from "./routes";
 import api from '../../api';
-//import PessoasEquipe from "./PeopleEquipe";
+import PessoasEquipe from "./PeopleEquipe";
+import BuscarMembros from "./PeopleEquipe";
 
 class ExibirEquipes extends Component {
-
     state = {
         equipes: [],
-        membros: [],
     }
 
     async componentDidMount() {
-
         const response = await api.get('/equipes/');
-        const response2 = await api.get('/pessoas/');
-        const response3 = await api.get(this.buscarMembros)
-
-        console.log(this.membros)
-
-        this.setState({ equipes: response.data , membros: response2.data});
-       
+        this.setState({ equipes: response.data})
     }
-
-    buscarMembros = (id_equipe) => {
-        fetch('/equipes/'+id_equipe+'/pessoas/')
-    }
-
 
     render() {
         const { equipes } = this.state;
-        const { membros } = this.state;
 
         return (
             <>
@@ -44,33 +30,7 @@ class ExibirEquipes extends Component {
                                     </h2>
                                 </div>
                                 <div className="card-part2 d-flex justify-content-between">
-                                    <div className="card-members" style={{gap: 'none',}}>
-                                        <h6>Membros</h6>
-                                        <div><table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">NOME</th>
-                                                </tr>
-                                            </thead>
-                                            {/* buscarMembros({p.id_equipe}) */}
-                                            <tbody>
-                                                {membros.map(r =>(
-                                                <tr key={membros.id_equipe}>
-                                                        {((equipes.id_equipe) === (r.id_equipe)) &&
-                                                    <><th scope="row">
-                                                                {r.id_pessoa}
-                                                            </th><th>
-                                                                    {r.nome_pessoa}
-                                                                </th></>
-                                                    }
-                                                </tr>
-                                                ))}
-                                               
-                                            </tbody>
-                                        </table>
-                                        </div>
-                                    </div>
+                                <BuscarMembros id_equipe={p.id_equipe}/>
                                 </div>
                             </div>
                         
