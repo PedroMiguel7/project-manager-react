@@ -18,6 +18,7 @@ class CardPessoas extends Component {
 
     render() {
         const { pessoas } = this.state;
+        console.log(pessoas);
 
         return (
             <>
@@ -29,7 +30,7 @@ class CardPessoas extends Component {
                                 <h2 class="NomePessoa">{p.nome_pessoa}</h2>
                                 
                                 <div className="mb-3">
-                                    <img src={aim} alt="" /> <span>{p.id_equipe}</span>
+                                    <img src={aim} alt="" /> <span>{p.equipe_id}</span>
                                 </div>
                             </div>
                             <div className="CardPessoas2">

@@ -345,9 +345,14 @@ main h1 {
 }
 
 .ProfilePessoa {
-    margin-top: -7rem;
-    border-radius: 100%;
-    box-shadow: 0 20px 20px black;
-    width: 250px;
-    height: 250px;
+    background-color: var(--preto-medio);
+    border-radius: 10px;
+    gap: 2rem;
+    box-shadow: 0px 2px 12px 5px rgb(0, 0, 0, 0.08);
+    transition: 0.5s;
+    height: 90vh;
+}
+
+.Avatar {
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
 }
