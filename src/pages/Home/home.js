@@ -1,5 +1,5 @@
 import Sidebar from "../../components/SideBar/SideBar";
-import Card from "../../components/Card";
+//import Card from "../../components/Card";
 import BasicModal from '../../components/NewProject'
 import CardBaixoHome from "./CardBaixoHome";
 import CardLateralDireitoHome from "./CardLateralDireitoHome";
