@@ -12,8 +12,12 @@ const [tasks, setTasks] = useState([]);
         }
         fetchTask()
     });
+    const QtdTasks = tasks.length
 
-    console.log(tasks)
+    const barrinha = tasks.filter((tasks) => tasks.status === "Em Andamento").length
+
+    console.log(barrinha)
+    console.log(QtdTasks)
     
     return (
         <>

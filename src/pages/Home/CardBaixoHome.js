@@ -40,7 +40,7 @@ class CardBaixoHome extends Component {
                                         <th scope="row">{p.id_projeto}</th>
                                         <td className="">{p.nome_projeto}</td>
                                         <td>
-                                            <BarraProgresso/>
+                                            <BarraProgresso id_projeto={p.id_projeto}/>
                                         </td>
                                         <td>{p.status}</td>
                                         <td><Link to={'/projeto/' + p.id_projeto} className="text-reset text-decoration-none"><Button style={{
