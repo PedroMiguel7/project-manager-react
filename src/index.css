@@ -368,7 +368,11 @@ main h1 {
     padding: 5px 9px;
     width: fit-content;
     position: relative;
-    top: -55px;
+    top: -25px;
     font-size: 0.8rem;
     transition: 0.5s;
+}
+
+.ResumoPessoa p {
+    max-width: 7rem;
 }
