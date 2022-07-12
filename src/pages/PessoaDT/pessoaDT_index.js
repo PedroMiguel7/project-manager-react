@@ -25,10 +25,17 @@ class PessoasDT extends Component {
 
         return (
             <>
+            
                 <div className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
                     <div className="col-lg-2 ProfilePessoa mt-5 d-flex flex-column align-items-center p-4">
-                        <Avatar className="Avatar"sx={{width: 150, height: 150}} />
-                        <h6 className="text-center">{pessoa.funcao_pessoa}</h6>
+                        <div className="AvatarBorder d-flex align-items-center justify-content-center">
+                            <Avatar className="Avatar"sx={{width: 150, height: 150}} />
+                            
+                        </div>
+                        <div className="AvatarTag">
+                            {pessoa.funcao_pessoa}
+                        </div>
+                        
                         <h1 className="text-center">{pessoa.nome_pessoa}</h1>
                         <div className="mb-3">
                             <img src={aim} alt="" /> <span>{pessoa.nome_equipe}</span>
