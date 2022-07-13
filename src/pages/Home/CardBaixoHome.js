@@ -19,7 +19,11 @@ class CardBaixoHome extends Component {
         fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/"+id_projeto, {method: "DELETE"})
         .then(resposta => {
             if(resposta.ok){
-                <CardBaixoHome/>
+                fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/")
+                .then(novareposta => novareposta.json())
+                .then(dados =>{
+                    this.setState({projetosHome: dados})
+                })
             }
         })
     }
