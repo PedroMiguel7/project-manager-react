@@ -7,6 +7,7 @@ import aim from '../../assets/icons/aim.svg';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import CustomizedAccordion from "../../components/CustomizedAccordion";
+import TabelaTarefas from "../../components/TabelaTarefas";
 
 const pessoaPath = window.location.pathname;
 console.log(pessoaPath);
@@ -76,6 +77,7 @@ class PessoasDT extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <TabelaTarefas />
                         </div>
                     </div>
                 
