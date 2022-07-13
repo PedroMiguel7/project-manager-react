@@ -24,17 +24,17 @@ class Cards extends Component {
         const { projetos } = this.state;
         const { equipesEsq } = this.state;
 
-
         return (
             <>
                 {projetos.map(p => (
                     <Link reloadDocument to={'/projetos/' + p.id_projeto} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
-
                         <div key={projetos.id_projeto}>
                             <div className="card-part1 mb-3">
                                 <div className="d-flex justify-content-between">
                                     <h2 class="fs-4">{p.nome_projeto}</h2>
-                                    <CardDelete />
+                                    <Link to="/projetos">
+                                        <CardDelete />
+                                    </Link>
                                 </div>
                                 <p className="description overflow-hidden">{p.descricao_projeto}</p>
                                 <div className="mb-3">
