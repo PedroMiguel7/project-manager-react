@@ -68,18 +68,35 @@ export default function CardDelete() {
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        PaperProps={{
+            style: {
+              backgroundColor: '#494A58',
+              color: '#fff'
+            },
+          }}
         >
             <DialogTitle id="alert-dialog-title">
             {"Tem certeza que deseja deletar?"}
             </DialogTitle>
             <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <DialogContentText id="alert-dialog-description" sx={{color: '#C2C3C6'}}>
                 Essa ação é permanente.
             </DialogContentText>
             </DialogContent>
             <DialogActions>
-            <Button onClick={handleCloseAlert}>Cancelar</Button>
-            <Button autoFocus>
+            <Button onClick={handleCloseAlert}
+            sx={{
+                color: "#C2C3C6",
+                opacity: 0.7
+            }}>Cancelar</Button>
+            <Button autoFocus variant="contained"
+            sx={{
+                color: "#FFF",
+                backgroundColor: "#F66E6E",
+                '&:hover': {
+                    backgroundColor: "#ED5F5F",
+                }
+            }}>
                 Deletar
             </Button>
             </DialogActions>
