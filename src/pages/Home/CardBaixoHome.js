@@ -44,7 +44,7 @@ class CardBaixoHome extends Component {
                                             <BarraProgresso id_projeto={p.id_projeto}/>
                                         </td>
                                         <td>{p.status}</td>
-                                        <td className="d-flex"><Link to={'/projeto/' + p.id_projeto} className="text-reset text-decoration-none"><Button className=" md-4" style={{
+                                        <td className="d-flex"><Link to={'/projetos/' + p.id_projeto} className="text-reset text-decoration-none"><Button className=" md-4" style={{
                                             color: "#F4F5FA",
                                             background: "#F46E27"
                                         }}
