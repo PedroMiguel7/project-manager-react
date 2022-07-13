@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import aim from '../../../assets/icons/aim.svg'
 import profile from '../../../assets/icons/Profile.svg'
 import api from '../../../api';
+import CardDelete from "../../CardDelete";
 
 class Cards extends Component {
     state = {
@@ -31,7 +32,10 @@ class Cards extends Component {
 
                         <div key={projetos.id_projeto}>
                             <div className="card-part1 mb-3">
-                                <h2 class="fs-4">{p.nome_projeto}</h2>
+                                <div className="d-flex justify-content-between">
+                                    <h2 class="fs-4">{p.nome_projeto}</h2>
+                                    <CardDelete />
+                                </div>
                                 <p className="description overflow-hidden">{p.descricao_projeto}</p>
                                 <div className="mb-3">
                                     <img src={aim} alt="" />
