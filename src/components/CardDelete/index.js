@@ -10,6 +10,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import WarningIcon from '@mui/icons-material/Warning';
 
 export default function CardDelete() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -76,7 +77,8 @@ export default function CardDelete() {
           }}
         >
             <DialogTitle id="alert-dialog-title">
-            {"Tem certeza que deseja deletar?"}
+                <WarningIcon />
+            {"Tem certeza que deseja excluir este projeto?"}
             </DialogTitle>
             <DialogContent>
             <DialogContentText id="alert-dialog-description" sx={{color: '#C2C3C6'}}>
