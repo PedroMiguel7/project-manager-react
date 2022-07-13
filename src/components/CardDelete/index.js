@@ -4,6 +4,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 export default function CardDelete() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -12,6 +18,17 @@ export default function CardDelete() {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const [openAlert, setOpenAlert] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpenAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setOpenAlert(false);
     setAnchorEl(null);
   };
 
@@ -43,10 +60,30 @@ export default function CardDelete() {
         }}
       >
         
-        <MenuItem onClick={handleClose} sx={{color: '#C2C3C6'}} className="gap-1">
+        <MenuItem onClick={handleClickOpen} sx={{color: '#C2C3C6'}} className="gap-1">
             <DeleteIcon sx={{color: '#C2C3C6'}} /> <span>Deletar</span>
         </MenuItem>
-        
+        <Dialog
+        open={openAlert}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        >
+            <DialogTitle id="alert-dialog-title">
+            {"Tem certeza que deseja deletar?"}
+            </DialogTitle>
+            <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+                Essa ação é permanente.
+            </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+            <Button onClick={handleCloseAlert}>Cancelar</Button>
+            <Button autoFocus>
+                Deletar
+            </Button>
+            </DialogActions>
+        </Dialog>
       </Menu>
     </div>
   );
