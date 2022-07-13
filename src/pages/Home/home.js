@@ -1,6 +1,6 @@
 import Sidebar from "../../components/SideBar/SideBar";
 //import Card from "../../components/Card";
-import BasicModal from '../../components/NewProject'
+import AdicionarProjeto2 from '../../components/NewProject/AddNewProject'
 import CardBaixoHome from "./CardBaixoHome";
 import CardLateralDireitoHome from "./CardLateralDireitoHome";
 import CardLateralEsquerdoHome from "./CardLateralEsquerdaHome";
@@ -26,7 +26,7 @@ function Menu_index() {
             <span className="me-2 fs-4">Projetos recentes</span>
           </div>
           <div className="RightOptions d-flex col-lg-2 offset-lg-8 mt-sm-2">
-            <BasicModal />
+            <AdicionarProjeto2 />
           </div>
         </div>
         <div
