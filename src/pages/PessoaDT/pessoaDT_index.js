@@ -27,9 +27,10 @@ class PessoasDT extends Component {
 
         return (
             <>
-            
-                <div className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
-                    <div className="col-lg-3 ProfilePessoa mt-5 d-flex flex-column align-items-center p-4">
+                <div className="row">
+                <div className='col-11 offset-1 col-lg-11 offset-lg-1 px-5 d-flex mt-5 gap-5'>
+                    
+                    <div className="col-lg-3 ProfilePessoa d-flex flex-column align-items-center p-4">
                         <div className="d-flex flex-column align-items-center">
                             <div className="AvatarBorder d-flex align-items-center justify-content-center">
                                 <Avatar className="Avatar"sx={{width: 150, height: 150}} />
@@ -61,8 +62,27 @@ class PessoasDT extends Component {
                         <CustomizedAccordion />
 
                     </div>
-                    
+                    <div className="col-lg-8">
+                        <div className="row Teste h-50 p-4">
+                            Rendimento
+                        </div>
+                        <div className="Teste row  h-50 p-4">
+                            <div className="d-flex justify-content-between">
+                                <h5>Tarefas</h5>
+                                <div>
+                                    <span>4/5 Completas</span>
+                                    <div class="progress Progress" >
+                                        <div class="ProgressBar progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                 </div>
                 </div>
+                
             </>
         )
     }
