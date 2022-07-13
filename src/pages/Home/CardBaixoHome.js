@@ -31,7 +31,8 @@ class CardBaixoHome extends Component {
                                 <th scope="col" style={{ width: '20%' }}>Titulo</th>
                                 <th scope="col" style={{ width: '40%' }}>Progresso</th>
                                 <th scope="col" style={{ width: '20%' }}>Status</th>
-                                <th scope="col" style={{ width: '10%' }}></th>
+                                <th scope="col" style={{ width: '5%' }}></th>
+                                <th scope="col" style={{ width: '5%' }}></th>
                             </tr>
                         </thead>
                         <tbody className="">
@@ -43,11 +44,13 @@ class CardBaixoHome extends Component {
                                             <BarraProgresso id_projeto={p.id_projeto}/>
                                         </td>
                                         <td>{p.status}</td>
-                                        <td><Link to={'/projeto/' + p.id_projeto} className="text-reset text-decoration-none"><Button style={{
+                                        <td className="d-flex"><Link to={'/projeto/' + p.id_projeto} className="text-reset text-decoration-none"><Button className=" md-4" style={{
                                             color: "#F4F5FA",
                                             background: "#F46E27"
                                         }}
-                                            variant="contained" >DETALHAR</Button></Link></td>
+                                            variant="contained" >DETALHAR</Button></Link>
+                                            </td>
+                                            <td><Button style={{color: "#F4F5FA", background: "red"}}variant="contained" >EXCLUIR</Button></td>
                                     </tr>
                                 ))}
                         </tbody>
