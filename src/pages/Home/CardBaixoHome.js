@@ -15,6 +15,15 @@ class CardBaixoHome extends Component {
         this.setState({ projetosHome: response.data });
     }
 
+    DeletaProjeto = (id_projeto) => {
+        fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/"+id_projeto, {method: "DELETE"})
+        .then(resposta => {
+            if(resposta.ok){
+                <CardBaixoHome/>
+            }
+        })
+    }
+
     render() {
         const { projetosHome } = this.state;
 
@@ -50,7 +59,7 @@ class CardBaixoHome extends Component {
                                         }}
                                             variant="contained" >DETALHAR</Button></Link>
                                             </td>
-                                            <td><Button style={{color: "#F4F5FA", background: "red"}}variant="contained" >EXCLUIR</Button></td>
+                                            <td><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaProjeto(p.id_projeto)}>EXCLUIR</Button></td>
                                     </tr>
                                 ))}
                         </tbody>
