@@ -8,6 +8,8 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import CustomizedAccordion from "../../components/CustomizedAccordion";
 import TabelaTarefas from "../../components/TabelaTarefas";
+import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
 
 const pessoaPath = window.location.pathname;
 console.log(pessoaPath);
@@ -78,6 +80,9 @@ class PessoasDT extends Component {
                                 </div>
                             </div>
                             <TabelaTarefas />
+                            <div>
+                                <Button />
+                            </div>
                         </div>
                     </div>
                 
