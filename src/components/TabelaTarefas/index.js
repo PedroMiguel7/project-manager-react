@@ -1,10 +1,8 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 function createData(nome, tempo, inicio, conclusao) {
   return { nome, tempo, inicio, conclusao };
@@ -20,32 +18,153 @@ const rows = [
 
 export default function TabelaTarefas() {
   return (
-    <TableContainer>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow >
-            <TableCell sx={{color: '#fff'}} align='center'>Nome</TableCell>
-            <TableCell sx={{color: '#fff'}} align='center'>Tempo Restante</TableCell>
-            <TableCell sx={{color: '#fff'}} align='center'>Início</TableCell>
-            <TableCell sx={{color: '#fff'}} align='center'>Conclusão</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.nome}
-              sx={{'&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell sx={{color: '#fff'}} align='center' component="th" scope="row">
-                {row.nome}
-              </TableCell>
-              <TableCell sx={{color: '#fff'}} align='center'>{row.tempo}</TableCell>
-              <TableCell sx={{color: '#fff'}} align='center'>{row.inicio}</TableCell>
-              <TableCell sx={{color: '#fff'}} align='center'>{row.conclusao}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Tempo Restante</th>
+          <th scope="col">Início</th>
+          <th scope="col">Conclusão</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+            </div>
+          </td>
+          <td>
+            Lorem ipsum dolor sit amet
+          </td>
+          <td>
+            -
+          </td>
+          <td>
+            01/01/2022
+          </td>
+          <td>
+            31/01/2022
+          </td>
+          <td>
+            <Tooltip title="Excluir" placement="right">
+              <IconButton>
+                <DeleteIcon sx={{color: '#fff'}} />
+              </IconButton>
+            </Tooltip>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+            </div>
+          </td>
+          <td>
+            Lorem ipsum dolor sit amet
+          </td>
+          <td>
+            -
+          </td>
+          <td>
+            01/01/2022
+          </td>
+          <td>
+            31/01/2022
+          </td>
+          <td>
+            <Tooltip title="Excluir" placement="right">
+              <IconButton>
+                <DeleteIcon sx={{color: '#fff'}} />
+              </IconButton>
+            </Tooltip>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+            </div>
+          </td>
+          <td>
+            Lorem ipsum dolor sit amet
+          </td>
+          <td>
+            <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> <span>6 dias</span>
+          </td>
+          <td>
+            01/01/2022
+          </td>
+          <td>
+            -
+          </td>
+          <td>
+            <Tooltip title="Excluir" placement="right">
+              <IconButton>
+                <DeleteIcon sx={{color: '#fff'}} />
+              </IconButton>
+            </Tooltip>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+            </div>
+          </td>
+          <td>
+            Lorem ipsum dolor sit amet
+          </td>
+          <td>
+            <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> <span>2 dias</span>
+          </td>
+          <td>
+            01/01/2022
+          </td>
+          <td>
+            -
+          </td>
+          <td>
+            <Tooltip title="Excluir" placement="right">
+              <IconButton>
+                <DeleteIcon sx={{color: '#fff'}} />
+              </IconButton>
+            </Tooltip>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+            </div>
+          </td>
+          <td>
+            Lorem ipsum dolor sit amet
+          </td>
+          <td>
+            <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> <span>15 horas</span>
+          </td>
+          <td>
+            01/01/2022
+          </td>
+          <td>
+            -
+          </td>
+          <td>
+            <Tooltip title="Excluir" placement="right">
+              <IconButton>
+                <DeleteIcon sx={{color: '#fff'}} />
+              </IconButton>
+            </Tooltip>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }

@@ -397,3 +397,7 @@ main h1 {
     border-radius: 100px;
     background-color: var(--azul-claro);
 }
+
+.table {
+    color: white;
+}
