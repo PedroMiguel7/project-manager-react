@@ -9,30 +9,8 @@ import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import NewProject from '../../assets/icons/new.svg';
-import AdicionarProjeto2 from '../Select/EquipeSelect';
+import BasicSelect2 from '../Select/EquipesSelect';
 import { useState } from 'react';
-
-
-class AdicionarProjeto extends React.Component {
-    constructor(props){
-        super(props);
-        this.state ={
-            nome: '',
-            descricao:'', 
-            id_equipe:'',
-            equipe: [],
-        }
-    }
-
-    async componentDidMount(){
-        fetch("https://golang-posgre-brisanet.herokuapp.com/equipes/")
-        .then(novareposta => novareposta.json())
-        .then(dados => {
-          this.setState({ equipe: dados })
-        })
-    }
-
-}
 
 const CssTextField = styled(TextField) ({
   '& .MuiOutlinedInput-root': {
@@ -131,7 +109,7 @@ export default function BasicModal2() {
               }} 
             />
             
-            <AdicionarProjeto2 />
+            <BasicSelect2 />
             <Divider light className='mt-3'/>
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{

@@ -7,6 +7,10 @@ class CardLateralDireitoHome extends Component {
         concluidos : [],
         andamento : [],
         totalequipes: [],
+        QtdProjetos: '',
+        QtdAndamento: '',
+        QtdConcluidos: '',
+        QtdTotalEquipes: '',
     }
     async componentDidMount() {
         const response = await api.get('/projetos/');
@@ -25,7 +29,25 @@ class CardLateralDireitoHome extends Component {
         const { concluidos } = this.state;
         const { andamento } = this.state;
         const { totalequipes } = this.state;
+        
+        
+        let QtdProjetos = projetosHomeLateral.length;
+        let QtdAndamento = andamento.length;
+        let QtdConcluidos = concluidos.length;
+        let QtdTotalEquipes = totalequipes.length;
 
+        if( projetosHomeLateral.length === null ){
+            QtdProjetos = 0;
+        }
+        if( concluidos.length === null ){
+            QtdConcluidos = 0;
+        }
+        if( andamento.length === null ){
+            QtdAndamento = 0;
+        }
+        if( totalequipes.length === null ){
+            QtdTotalEquipes = 0;
+        }
         return (
             <>
                 <div >
@@ -36,27 +58,27 @@ class CardLateralDireitoHome extends Component {
                             <div className="d-flex align-items-center justify-content-center">
                                 <div className="Resumo col-md-12 col-lg-12 justify-content-center ">
                                     <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
-                                        <h6 >{totalequipes.length}</h6>
+                                        <h6 >{QtdTotalEquipes}</h6>
                                         <strong>
                                             <p className="ms-4 ">Total de <br /> Equipes</p>
                                         </strong>
                                     </div>
                                         <div className="row col-12">
                                             <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
-                                                <h6 className="col">{projetosHomeLateral.length}</h6>
+                                                <h6 className="col">{QtdProjetos}</h6>
                                                 <strong>
                                                     <p className="text-center col">Total de <br /> Projetos</p>
                                                 </strong>
                                             </div>
                                             <div className="col-6 d-flex flex-column align-items-center justify-content-center">
                                                 <div className="TarefasAnd d-flex align-items-center justify-content-center">
-                                                    <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{andamento.length}</h6>
+                                                    <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{QtdAndamento}</h6>
                                                     <strong>
                                                         <p className="ms-2">Projetos em Andamento</p>
                                                     </strong>
                                                 </div>
                                                 <div className="TarefasConc d-flex align-items-center justify-content-center">
-                                                    <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{concluidos.length}</h6>
+                                                    <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{QtdConcluidos}</h6>
                                                     <strong>
                                                         <p className=" ms-2">Projetos Concluídos</p>
                                                     </strong>

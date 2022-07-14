@@ -5,9 +5,21 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useEffect, useState } from 'react';
+import api from '../../api';
 
 
 export default function BasicSelect() {
+  const [equipes, setEquipes] = useState([]);
+    const url = '/equipes/';
+    useEffect(() => {
+        const fetchEquipe = async () => {
+            const response = await api.get(url)
+            setEquipes(response.data)
+        }
+        fetchEquipe()
+    });
+
   const [equipe, setEquipe] = React.useState('');
 
   const handleChange = (event) => {
@@ -51,10 +63,7 @@ export default function BasicSelect() {
           sx={{
             svg: { color: '#F4F5FA' }}}
         >
-          <MenuItem value={1}>Komanda</MenuItem>
-          <MenuItem value={2}>Cariri Inovação</MenuItem>
-          <MenuItem value={3}>Cariri Teste</MenuItem>
-          
+          {equipes.map((e, index) => <MenuItem key={e.id_equipe} value={index}>{e.nome_equipe}</MenuItem>)}
         </CssSelect>
       </FormControl>
     </Box>

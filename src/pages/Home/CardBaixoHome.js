@@ -49,6 +49,7 @@ class CardBaixoHome extends Component {
                             </tr>
                         </thead>
                         <tbody className="">
+                            
                                 {projetosHome.map(p => (
                                     <tr key={projetosHome.id_projeto}>
                                         <th scope="row">{p.id_projeto}</th>
