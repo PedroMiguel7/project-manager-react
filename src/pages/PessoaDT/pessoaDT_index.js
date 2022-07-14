@@ -80,9 +80,20 @@ class PessoasDT extends Component {
                                 </div>
                             </div>
                             <TabelaTarefas />
-                            <div>
-                                <Button />
+                            
+                            <div className="d-flex justify-content-end">
+                                <Button variant="contained" sx={{width: 'fit-content', color: "#F4F5FA",
+                                background: "#F46E27",
+                                textTransform: 'capitalize',
+                                boxShadow: 'none',
+                                ':hover': {
+                                    background: "#F57D3D",
+                                }}}>
+                                <AddIcon sx={{fontSize: '1.15rem'}} /> Nova Tarefa
+                                </Button>
                             </div>
+                            
+                            
                         </div>
                     </div>
                 
