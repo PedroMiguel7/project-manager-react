@@ -11,6 +11,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import WarningIcon from '@mui/icons-material/Warning';
+//import DeletaProjeto from '../DELETES/DeletaProjeto';
 
 export default function CardDelete() {
   const [anchorEl, setAnchorEl] = React.useState(null);

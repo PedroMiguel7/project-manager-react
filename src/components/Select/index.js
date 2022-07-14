@@ -19,7 +19,7 @@ export default function BasicSelect() {
         }
         fetchEquipe()
     });
-
+    
   const [equipe, setEquipe] = React.useState('');
 
   const handleChange = (event) => {
@@ -63,7 +63,10 @@ export default function BasicSelect() {
           sx={{
             svg: { color: '#F4F5FA' }}}
         >
-          {equipes.map((e, index) => <MenuItem key={e.id_equipe} value={index}>{e.nome_equipe}</MenuItem>)}
+          <MenuItem value={1}>Komanda</MenuItem>
+          <MenuItem value={2}>Cariri Inovação</MenuItem>
+          <MenuItem value={3}>Cariri Teste</MenuItem>
+          
         </CssSelect>
       </FormControl>
     </Box>
