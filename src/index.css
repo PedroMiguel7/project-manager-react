@@ -405,7 +405,21 @@ main h1 {
 
 .TabelaTarefas {
     height: 70%;
+}
 
+.TabelaTarefas::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+.TabelaTarefas::-webkit-scrollbar-track {
+    background-color: #2B2B36;
+    border-radius: 20px;
+}
+
+.TabelaTarefas::-webkit-scrollbar-thumb {
+    background-color: #40404F;
+    border-radius: 20px;
+    border: 1px solid #2B2B36;
 }
 
 .TabelaTarefasHead {
