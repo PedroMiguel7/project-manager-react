@@ -11,9 +11,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import WarningIcon from '@mui/icons-material/Warning';
-//import DeletaProjeto from '../DELETES/DeletaProjeto';
+import DeletaProjeto from '../DELETES/DeletaProjeto';
 
-export default function CardDelete() {
+export default function CardDelete(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -92,14 +92,14 @@ export default function CardDelete() {
                 color: "#C2C3C6",
                 opacity: 0.7
             }}>Cancelar</Button>
-            <Button autoFocus variant="contained"
+            <Button autoFocus variant="contained" 
             sx={{
                 color: "#FFF",
                 backgroundColor: "#F66E6E",
                 '&:hover': {
                     backgroundColor: "#ED5F5F",
                 }
-            }}>
+            }}  onClick={DeletaProjeto(props.id)}>
                 Deletar
             </Button>
             </DialogActions>
