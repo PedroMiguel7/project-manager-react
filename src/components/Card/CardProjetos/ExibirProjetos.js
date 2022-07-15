@@ -22,8 +22,6 @@ class Cards extends Component {
 
     render() {
         const { projetos } = this.state;
-        const { equipesEsq } = this.state;
-
         return (
             <>
                 {projetos.map(p => (
@@ -33,7 +31,7 @@ class Cards extends Component {
                                 <div className="d-flex justify-content-between">
                                     <h2 class="fs-4">{p.nome_projeto}</h2>
                                     <Link to="/projetos">
-                                        <CardDelete />
+                                        <CardDelete id = {p.id_projeto}/>
                                     </Link>
                                 </div>
                                 <p className="description overflow-hidden">{p.descricao_projeto}</p>
