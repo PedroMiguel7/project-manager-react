@@ -61,7 +61,7 @@ export default function BasicModal() {
     fetchEquipe()
   });
 
-  const [equipe, setEquipe] = React.useState([]);
+  const [equipe, setEquipe] = React.useState('');
 
   const handleChange = (event) => {
     setEquipe(event.target.value);
@@ -91,28 +91,6 @@ export default function BasicModal() {
 
   const [nome, setNome] = useState()
   const [descricao, setDescricao] = useState()
-
-  function AtualizaProjeto (e) {
-    this.SetState(
-      {
-        nome: e.target.value
-      }
-    )
-  }
-  function AtualizaDescricao (e) {
-    this.SetState(
-      {
-        descricao: e.target.value
-      }
-    )
-  }
-  function AtualizaEquipe (e) {
-    this.SetState(
-      {
-        equipe: e.target.value
-      }
-    )
-  }
 
   return (
     <div>
@@ -189,7 +167,7 @@ export default function BasicModal() {
                     svg: { color: '#F4F5FA' }
                   }}
                 >
-                  {equipes.map((e, index) => <MenuItem key={index} value={e.id_equipe}>{e.nome_equipe}</MenuItem>)}
+                  {equipes.map((p, index) => <MenuItem key={p.id_equipe} value={index}>{p.nome_equipe}</MenuItem>)}
                 </CssSelect>
               </FormControl>
             </Box>
