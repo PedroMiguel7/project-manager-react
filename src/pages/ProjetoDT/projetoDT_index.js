@@ -42,6 +42,35 @@ class ProjetoDT extends Component {
             totalMembros
         );
     }
+
+    BuscarMembrosFunc = (props) => {
+        const [pessoas, setPessoas] = useState([]);
+        const url = '/equipes/' + props.equipe_id + '/pessoas';
+        useEffect(() => {
+            const fetchEquipe = async () => {
+                const response2 = await api.get(url)
+                setPessoas(response2.data)
+            }
+            fetchEquipe()
+        });
+        console.log(setPessoas)
+        let totalMembros = pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`).length;
+        if(totalMembros === null){
+            totalMembros = 'sem ninguém mané';
+            return (
+                totalMembros
+            );
+        }else{
+            return (
+                pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`).map(f =>(
+                    <li>{f.nome_pessoa}</li>
+                ))
+            );
+        }
+    }
+
+
+    
     
     
     render() {
@@ -81,31 +110,28 @@ class ProjetoDT extends Component {
                                             <div>
                                                 <h6 style={{color: "#F46E27"}}>Gerente de Projeto</h6>
                                                 <ul style={{ fontWeight: 300}}>
-                                                    <li>Fulano de Tal</li>
+                                                <this.BuscarMembrosFunc equipe_id = {p.equipe_id} funcao_pessoa = 'Gerente de Projeto'/>
                                                 </ul>
                                             </div>
     
                                             <div>
                                                 <h6 style={{color: "#F46E27"}}>Dev. BackEnd</h6>
                                                 <ul style={{ fontWeight: 300}}>
-                                                    <li>Fulano de Tal</li>
-                                                    <li>Fulano de Tal</li>
+                                                <this.BuscarMembrosFunc equipe_id = {p.equipe_id} funcao_pessoa = 'Back-End'/>
                                                 </ul>
                                             </div>
     
                                             <div>
                                                 <h6 style={{color: "#F46E27"}}>Dev. FrontEnd</h6>
                                                 <ul style={{ fontWeight: 300}}>
-                                                    <li>Fulano de Tal</li>
-                                                    <li>Fulano de Tal</li>
+                                                <this.BuscarMembrosFunc equipe_id = {p.equipe_id} funcao_pessoa = 'Front-End'/>
                                                 </ul>
                                             </div>
     
                                             <div>
                                                 <h6 style={{color: "#F46E27"}}>Tester</h6>
                                                 <ul style={{ fontWeight: 300}}>
-                                                    <li>Fulano de Tal</li>
-                                                    <li>Fulano de Tal</li>
+                                                <this.BuscarMembrosFunc equipe_id = {p.equipe_id} funcao_pessoa = 'Tester'/>
                                                 </ul>
                                             </div>
                                         </div>
