@@ -20,6 +20,11 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 const CssTextField = styled(TextField) ({
     '& .MuiOutlinedInput-root': {
@@ -82,6 +87,12 @@ export default function TarefasMenu() {
     setOpenAlert(false);
     setAnchorEl(null);
   };
+
+  /*const [color, setColor] = useState([]);
+
+  const handleChange = (event) => {
+    setColor(event.target.value);
+  };*/
 
   return (
     <div>
@@ -162,15 +173,14 @@ export default function TarefasMenu() {
         onClose={handleCloseEdit}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-      >
+        >
         <Box sx={style}>
           <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleCloseEdit}/>
           <form /*onSubmit={cadastrarProjeto}*/>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-              Adicionar<span style={{color: '#F46E27'}}> Projeto</span>
+              Editar<span style={{color: '#F46E27'}}> Tarefa</span>
             </Typography>
-            <CssTextField 
-              required 
+            <CssTextField
               id="nome" 
               name='nome' 
               label="Nome"
@@ -188,26 +198,27 @@ export default function TarefasMenu() {
                   color: '#F46E27'
                 },
               }} />
-            <CssTextField
-              id="descricao"
-              name='descricao'
-              label="Descrição"
-              /*onChange={(e) => setDescricao(e.target.value)}*/
-              multiline
-              minRows={4}
-              maxRows={8}
-              margin="dense"
-              fullWidth className='textField'
-              sx={{
-                "& label": {
-                  color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                },
-              }} 
-            />
-
+            
+            <FormControl>
+                <FormLabel 
+                sx={{color: '#fff'}}
+                id="demo-radio-buttons-group-label">Cor da Tarefa</FormLabel>
+                <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="female"
+                    name="radio-buttons-group"
+                >
+                    <FormControlLabel
+                    value="female" control={<Radio />} label={<div className='ColorDiv' style={{backgroundColor: "#E7DF9B"}}></div>} />
+                    <FormControlLabel 
+                    value="male" control={<Radio />} label={<div className='ColorDiv' style={{backgroundColor: "#F2C8ED"}}></div>} />
+                    <FormControlLabel 
+                    value="other" control={<Radio />} label={<div className='ColorDiv' style={{backgroundColor: "#A9DFD8"}}></div>} />
+                    <FormControlLabel 
+                    value="other1" control={<Radio />} label={<div className='ColorDiv' style={{backgroundColor: "#A7CAFF"}}></div>} />
+                </RadioGroup>
+            </FormControl>
+            
             <Divider light className='mt-3'/>
                 <div className='d-flex justify-content-end mt-5'>
                     <Button style={{
