@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import api from '../../api'
+import { useEffect, useState} from "react";
 
 function CircularProgressWithLabel(props) {
   return (
@@ -37,8 +39,32 @@ CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-export default function CircularStatic() {
-  const [progress, setProgress] = React.useState(57);
+export default function CircularStatic(props) {
 
-  return <CircularProgressWithLabel value={progress} />;
+  const [tasks, setTasks] = useState([]);
+  const url = '/projetos/' + props.id_projeto + '/tasks';
+  useEffect(() => {
+    const fetchTask = async () => {
+      const response = await api.get(url)
+      setTasks(response.data)
+    }
+    fetchTask()
+  });
+
+  var QtdTasksConcluidas = 0
+  var BarrinhaProgresso = 0
+  if ((tasks != null)) {
+    let QtdTasks = tasks.length
+    const tasksConcluidas = tasks.filter((tasks) => tasks.status === "Concluido")
+    if ((tasksConcluidas != null)) {
+      QtdTasksConcluidas = tasksConcluidas.length
+    }
+    BarrinhaProgresso = (QtdTasksConcluidas * 100) / QtdTasks
+  } else {
+    BarrinhaProgresso = 0;
+  }
+  console.log(BarrinhaProgresso)
+  
+
+  return <CircularProgressWithLabel value={BarrinhaProgresso} />;
 }

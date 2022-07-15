@@ -141,7 +141,7 @@ class ProjetoDT extends Component {
                                     <div className="row">
                                         <div className="col-md-12 col-lg-6">
                                         <h6>Progresso</h6>
-                                        <CircularProgressWithLabel value="20" />
+                                        <CircularProgressWithLabel value="20" id_projeto = {p.id_projeto} />
                                         </div>
                                         <div className="Resumo col-md-12 col-lg-9 offset-lg-4 justify-content-center ">
                                             <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
