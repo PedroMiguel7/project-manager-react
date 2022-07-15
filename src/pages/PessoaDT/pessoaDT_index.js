@@ -10,6 +10,7 @@ import CustomizedAccordion from "../../components/CustomizedAccordion";
 import TabelaTarefas from "../../components/TabelaTarefas";
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
+import NovaTarefa from '../../components/NovaTarefa';
 
 const pessoaPath = window.location.pathname;
 console.log(pessoaPath);
@@ -31,9 +32,9 @@ class PessoasDT extends Component {
         return (
             <>
                 <div className="row">
-                <div className='col-11 offset-1 col-lg-11 offset-lg-1 px-5 d-flex mt-5 gap-5'>
+                <div className='col-11 offset-1 col-lg-11 offset-lg-1 px-5 d-flex flex-wrap mt-5 gap-5'>
                     
-                    <div className="col-lg-3 ProfilePessoa d-flex flex-column align-items-center p-4">
+                    <div className="col-lg-3 col-md-12 ProfilePessoa d-flex flex-column align-items-center p-4">
                         <div className="d-flex flex-column align-items-center">
                             <div className="AvatarBorder d-flex align-items-center justify-content-center">
                                 <Avatar className="Avatar"sx={{width: 150, height: 150}} />
@@ -82,15 +83,7 @@ class PessoasDT extends Component {
                             <TabelaTarefas />
                             
                             <div className="d-flex justify-content-end">
-                                <Button variant="contained" sx={{width: 'fit-content', color: "#F4F5FA",
-                                background: "#F46E27",
-                                textTransform: 'capitalize',
-                                boxShadow: 'none',
-                                ':hover': {
-                                    background: "#F57D3D",
-                                }}}>
-                                <AddIcon sx={{fontSize: '1.15rem'}} /> Nova Tarefa
-                                </Button>
+                                <NovaTarefa />
                             </div>
                             
                             

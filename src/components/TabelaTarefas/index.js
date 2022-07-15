@@ -1,8 +1,6 @@
 import * as React from 'react';
-import DeleteIcon from '@mui/icons-material/Delete';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import TarefasMenu from '../TarefasMenu';
 
 function createData(nome, tempo, inicio, conclusao) {
   return { nome, tempo, inicio, conclusao };
@@ -19,8 +17,8 @@ const rows = [
 export default function TabelaTarefas() {
   return (
     <div className='TabelaTarefas table-responsive'>
-      <table className="table align-middle">
-        <thead className="TabelaTarefasHead position-sticky top-0">
+      <table className="table align-middle text-center ">
+        <thead className="TabelaTarefasHead align-middle">
           <tr>
             <th scope="col"></th>
             <th scope="col">Nome</th>
@@ -31,7 +29,7 @@ export default function TabelaTarefas() {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr className='CorTarefa'>
             <td>
               <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
@@ -50,11 +48,7 @@ export default function TabelaTarefas() {
               31/01/2022
             </td>
             <td>
-              <Tooltip title="Excluir" placement="right">
-                <IconButton>
-                  <DeleteIcon sx={{color: '#fff'}} />
-                </IconButton>
-              </Tooltip>
+              <TarefasMenu />
             </td>
           </tr>
 
@@ -77,11 +71,7 @@ export default function TabelaTarefas() {
               31/01/2022
             </td>
             <td>
-              <Tooltip title="Excluir" placement="right">
-                <IconButton>
-                  <DeleteIcon sx={{color: '#fff'}} />
-                </IconButton>
-              </Tooltip>
+              <TarefasMenu />
             </td>
           </tr>
 
@@ -104,11 +94,7 @@ export default function TabelaTarefas() {
               -
             </td>
             <td>
-              <Tooltip title="Excluir" placement="right">
-                <IconButton>
-                  <DeleteIcon sx={{color: '#fff'}} />
-                </IconButton>
-              </Tooltip>
+              <TarefasMenu />
             </td>
           </tr>
 
@@ -131,11 +117,7 @@ export default function TabelaTarefas() {
               -
             </td>
             <td>
-              <Tooltip title="Excluir" placement="right">
-                <IconButton>
-                  <DeleteIcon sx={{color: '#fff'}} />
-                </IconButton>
-              </Tooltip>
+              <TarefasMenu />
             </td>
           </tr>
 
@@ -158,11 +140,7 @@ export default function TabelaTarefas() {
               -
             </td>
             <td>
-              <Tooltip title="Excluir" placement="right">
-                <IconButton>
-                  <DeleteIcon sx={{color: '#fff'}} />
-                </IconButton>
-              </Tooltip>
+             <TarefasMenu />
             </td>
           </tr>
         </tbody>

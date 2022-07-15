@@ -350,7 +350,7 @@ main h1 {
     gap: 2rem;
     box-shadow: 0px 2px 12px 5px rgb(0, 0, 0, 0.08);
     transition: 0.5s;
-    height: 90vh;
+    min-height: 90vh;
 }
 
 .AvatarBorder {
@@ -401,6 +401,7 @@ main h1 {
 .table {
     color: white;
     height: 2rem;
+    border-bottom: 1px solid black !important;
 }
 
 .TabelaTarefas {
@@ -423,5 +424,13 @@ main h1 {
 }
 
 .TabelaTarefasHead {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
     background-color: var(--preto-medio);
+    z-index: 1;
+}
+
+.CorTarefa {
+    border-left: 2px solid plum;
 }
