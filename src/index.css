@@ -401,7 +401,7 @@ main h1 {
 .table {
     color: white;
     height: 2rem;
-    border-bottom: 1px solid black !important;
+    border-bottom: 1px solid var(--preto-claro) !important;
 }
 
 .TabelaTarefas {

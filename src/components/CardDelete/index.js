@@ -14,6 +14,17 @@ import WarningIcon from '@mui/icons-material/Warning';
 import DeletaProjeto from '../DELETES/DeletaProjeto';
 
 export default function CardDelete(props) {
+  fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/"+props.id_projeto, {method: "DELETE"})
+    .then(resposta => {
+        if(resposta.ok){
+            fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/")
+            .then(novareposta => novareposta.json())
+            .then(dados =>{
+                this.setState({projetos: dados})
+            })
+        }
+    })
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -99,7 +110,7 @@ export default function CardDelete(props) {
                 '&:hover': {
                     backgroundColor: "#ED5F5F",
                 }
-            }}  onClick={DeletaProjeto(props.id)}>
+            }}  onClick={DeletaProjeto(props.id_projeto)}>
                 Deletar
             </Button>
             </DialogActions>
