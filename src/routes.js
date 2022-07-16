@@ -22,13 +22,13 @@ const Rout = () =>{
                 <Route exect path="/projetos/:id" element={<ProjetoDT />}/>
 
                 <Route exect path="/equipes" element={<Equipes />}/>
-                <Route exect path="/equipe/:id" element={<EquipeDT />}/>
+                <Route exect path="/equipes/:id" element={<EquipeDT />}/>
 
                 <Route exect path="/pessoas" element={<Pessoas />}/>
                 <Route exect path="/pessoas/:id" element={<PessoaDT />}/>
 
                 <Route exect path="/tarefas" element={<Tarefas />}/>
-                <Route exect path="/tarefa/:id" element={<TarefaDT />}/>
+                <Route exect path="/tarefas/:id" element={<TarefaDT />}/>
             </Routes>
         </BrowserRouter>
     );

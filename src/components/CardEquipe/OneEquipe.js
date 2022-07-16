@@ -21,7 +21,7 @@ class ExibirEquipes extends Component {
         return (
             <>
                 {equipes.map(p => (
-                    <Link to={'/equipe/' + p.id_equipe} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
+                    <Link to={'/equipes/' + p.id_equipe} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
                         
                             <div key={equipes.id_equipe}>
                                 <div className="card-part1 mb-3">

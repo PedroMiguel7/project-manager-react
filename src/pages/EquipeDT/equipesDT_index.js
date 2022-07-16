@@ -16,7 +16,7 @@ class equipeDT_index extends Component {
     async componentDidMount() {
         const response3 = await api.get(equipePath);
         const response = await api.get('/projetos/');
-        const response2 = await api.get('/equipes/');
+        const response2 = await api.get(equipePath +'/pessoas/');
 
         this.setState({ projetos: response.data });
         this.setState({ equipesEsq: response2.data });
@@ -45,10 +45,10 @@ class equipeDT_index extends Component {
                             <thead>
                                 <tr className="LeftOptions">
                                     <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
-                                    <th scope="col" style={{ width: '20%' }}>Nome</th>
-                                    <th scope="col" style={{ width: '30%' }}>função</th>
+                                    <th scope="col" style={{ width: '25%' }}>Nome</th>
+                                    <th scope="col" style={{ width: '35%' }}>função</th>
                                     <th scope="col" style={{ width: '40%' }}>ID - Tarefas</th>
-                                    <th scope="col" style={{ width: '10%' }}></th>
+                                    <th scope="col" style={{ width: '5%' }}></th>
                                 </tr>
                             </thead>
                             <tbody className="">
