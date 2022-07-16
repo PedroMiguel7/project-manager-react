@@ -61,7 +61,7 @@ class equipeDT_index extends Component {
                                         <td className="">{p.nome_pessoa}</td>
                                         <td>{p.funcao_pessoa}</td>
                                         <td></td>
-                                        <td><Link to={'/projeto/' + p.id_projeto} className="text-reset text-decoration-none"><Button style={{
+                                        <td><Link to={'/pessoas/' + p.id_pessoa} className="text-reset text-decoration-none"><Button style={{
                                             color: "#F4F5FA",
                                             background: "#F46E27"
                                         }}
