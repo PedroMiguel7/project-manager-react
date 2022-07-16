@@ -39,7 +39,7 @@ class equipeDT_index extends Component {
                 <div className="d-flex">
                     <div className="col-7" style = {{backgroundColor: "#21222D"}}>
                         <div className="LeftOptions col-lg-2 mt-sm-2">
-                            <span className="me-2 ms-4 mt-3">Projetos</span>
+                            <span className="me-2 ms-4 mt-3">Equipes</span>
                         </div>
                         <table class="table" style={{ color: 'white' }}>
                             <thead>
