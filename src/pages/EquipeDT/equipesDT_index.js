@@ -45,9 +45,9 @@ class equipeDT_index extends Component {
                             <thead>
                                 <tr className="LeftOptions">
                                     <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
-                                    <th scope="col" style={{ width: '20%' }}>Titulo</th>
-                                    <th scope="col" style={{ width: '40%' }}>Progresso</th>
-                                    <th scope="col" style={{ width: '20%' }}>Status</th>
+                                    <th scope="col" style={{ width: '20%' }}>Nome</th>
+                                    <th scope="col" style={{ width: '30%' }}>função</th>
+                                    <th scope="col" style={{ width: '40%' }}>ID - Tarefas</th>
                                     <th scope="col" style={{ width: '10%' }}></th>
                                 </tr>
                             </thead>
