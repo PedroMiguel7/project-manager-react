@@ -11,24 +11,27 @@ class equipeDT_index extends Component {
     state = {
         projetos: [],
         equipesEsq: [],
-        equipe: [],
+        PessoasEquipe: [],
     }
     async componentDidMount() {
+        var url = equipePath;
         const response3 = await api.get(equipePath);
+        const response2 = await api.get(url+'/pessoas');
         const response = await api.get('/projetos/');
-        const response2 = await api.get(equipePath +'/pessoas/');
 
+        
         this.setState({ projetos: response.data });
-        this.setState({ equipesEsq: response2.data });
-        this.setState({ equipe: response3.data });
-
+        this.setState({ equipesEsq: response3.data });
+        this.setState({ PessoasEquipe: response2.data });
+        
     }
-
+    
     render() {
         const { projetos } = this.state;
         const { equipesEsq } = this.state;
-        const { equipe } = this.state;
-
+        const { PessoasEquipe } = this.state;
+        
+        console.log(PessoasEquipe)
 
         return (
             <>
@@ -52,16 +55,12 @@ class equipeDT_index extends Component {
                                 </tr>
                             </thead>
                             <tbody className="">
-                                {projetos.map(p => (
-                                    <tr key={projetos.id_projeto}>
-                                        <th scope="row">{p.id_projeto}</th>
-                                        <td className="">{p.nome_projeto}</td>
-                                        <td>
-                                            <div class="progress mt-2" style={{ backgroundColor: "gray" }}>
-                                                <div class="progress-bar" role="progressbar" style={{ backgroundColor: "#28AEF3", width: "25%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                            </div>
-                                        </td>
-                                        <td>{p.status}</td>
+                                {PessoasEquipe.map(p => (
+                                    <tr key={PessoasEquipe.id_pessoa}>
+                                        <th scope="row">{p.id_pessoa}</th>
+                                        <td className="">{p.nome_pessoa}</td>
+                                        <td>{p.funcao_pessoa}</td>
+                                        <td></td>
                                         <td><Link to={'/projeto/' + p.id_projeto} className="text-reset text-decoration-none"><Button style={{
                                             color: "#F4F5FA",
                                             background: "#F46E27"
