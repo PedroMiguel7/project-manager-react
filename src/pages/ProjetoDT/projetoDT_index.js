@@ -67,10 +67,6 @@ class ProjetoDT extends Component {
             );
         }
     }
-
-
-    
-    
     
     render() {
         const { projetos } = this.state;

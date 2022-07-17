@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
 import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
@@ -25,11 +25,44 @@ class equipeDT_index extends Component {
         this.setState({ equipe: response3.data });
         
     }
+
+    BuscarMembros = (props) => {
+        const [pessoas, setPessoas] = useState([]);
+        const url = '/equipes/' + props.equipe_id + '/pessoas';
+        useEffect(() => {
+            const fetchEquipe = async () => {
+                const response2 = await api.get(url)
+                setPessoas(response2.data)
+            }
+            fetchEquipe()
+        });
+        console.log(setPessoas)
+        let totalMembros = pessoas.length;
+        if(totalMembros === null){
+            totalMembros = 0;
+        }
+        return (
+            totalMembros
+        );
+    }
     
     render() {
         const { projetos } = this.state;
         const { equipe } = this.state;
         const { PessoasEquipe } = this.state;
+
+        var totalDetasks = 0;
+        if(totalDetasks === null){
+            totalDetasks = 0;
+        }
+        var TotalTaksConcluidas = 0;
+        if(TotalTaksConcluidas === null){
+            TotalTaksConcluidas = 0;
+        }
+        var TotalTasksAndamento = 0;
+        if(TotalTasksAndamento === null){
+            TotalTasksAndamento = 0;
+        }
 
         return (
             <>
@@ -70,7 +103,36 @@ class equipeDT_index extends Component {
                         </table>
                     </div>
                     <div className="col-5 ms-4" style={{background: "#21222D", }}>
-                        estatisticas
+                        <div className="Resumo col-md-12 col-lg-9 offset-lg-4 justify-content-center ">
+                                            <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
+                                                <h6><this.BuscarMembros equipe_id = {equipe.equipe_id}/></h6>
+                                                <strong>
+                                                <p className="ms-4 ">Total de <br/>Colaboradores</p>    
+                                                </strong>
+                                            </div>
+                                            <div className="row col-12">
+                                                <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
+                                                    <h6 className="col">{totalDetasks}</h6> 
+                                                    <strong>
+                                                    <p className="text-center col">Total de <br/> Tarefas</p>
+                                                    </strong>
+                                                </div>
+                                                <div className="col-6 d-flex flex-column align-items-center justify-content-center">
+                                                    <div className="TarefasAnd d-flex align-items-center justify-content-center">
+                                                        <h6 className="col-4 md-5" style={{fontFamily: "'Roboto Mono', monospace"}}>{TotalTasksAndamento}</h6>
+                                                        <strong>
+                                                        <p className="ms-2">Tarefas em Andamento</p>
+                                                        </strong>
+                                                    </div>
+                                                    <div className="TarefasConc d-flex align-items-center justify-content-center">
+                                                        <h6 className="col-4 md-5" style={{fontFamily: "'Roboto Mono', monospace"}}>{TotalTaksConcluidas}</h6>
+                                                        <strong>
+                                                        <p className=" ms-2">Tarefas Concluídas</p>
+                                                        </strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
                 </main>
