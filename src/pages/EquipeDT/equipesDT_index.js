@@ -133,7 +133,7 @@ class equipeDT_index extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div>aa</div>
+                                        <div className="mt-3 ">aa</div>
                     </div>
                 </div>
                 </main>
