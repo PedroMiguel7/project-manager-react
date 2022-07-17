@@ -71,7 +71,7 @@ class equipeDT_index extends Component {
                             </tbody>
                         </table>
                     </div>
-                    <div className="col-5 ms-4">
+                    <div className="col-5 ms-4" style={{background: "#21222D", }}>
                         estatisticas
                     </div>
                 </div>
