@@ -46,10 +46,45 @@ class equipeDT_index extends Component {
         );
     }
     
+    ImprimeMembros = (props) => {
+        var teste = props.PessoasEquipe;
+        if( teste === null){
+            return(
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            );
+        } else{
+            return(
+            props.PessoasEquipe.map(p => (
+                <tr key={teste.id_pessoa}>
+                    <th scope="row">{p.id_pessoa}</th>
+                    <td className="">{p.nome_pessoa}</td>
+                    <td>{p.funcao_pessoa}</td>
+                    <td></td>
+                    <td><Link to={'/pessoas/' + p.id_pessoa} className="text-reset text-decoration-none"><Button style={{
+                        color: "#F4F5FA",
+                        background: "#F46E27"
+                    }}
+                        variant="contained" >DETALHAR</Button></Link></td>
+                </tr>
+            ))
+            );
+        }
+    }
     render() {
         const { projetos } = this.state;
         const { equipe } = this.state;
         const { PessoasEquipe } = this.state;
+
+        var totalMembros = PessoasEquipe.length;
+        if(totalMembros === null){
+            totalMembros = 0;
+        }
 
         var totalDetasks = 0;
         if(totalDetasks === null){
@@ -64,13 +99,14 @@ class equipeDT_index extends Component {
             TotalTasksAndamento = 0;
         }
 
+
         return (
             <>
                 <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
                     <div>
                         <HeaderDt pagina="EQUIPE" titulo={equipe.nome_equipe} Status='' />
                     </div>
-                <div className="d-flex">
+                <div className="d-flex" style={{height: "50%"}}>
                     <div className="col-7" style = {{backgroundColor: "#21222D"}}>
                         <div className="LeftOptions col-lg-2 mt-sm-2">
                             <span className="me-2 ms-4 mt-3">Membros</span>
@@ -86,26 +122,14 @@ class equipeDT_index extends Component {
                                 </tr>
                             </thead>
                             <tbody className="">
-                                {PessoasEquipe.map(p => (
-                                    <tr key={PessoasEquipe.id_pessoa}>
-                                        <th scope="row">{p.id_pessoa}</th>
-                                        <td className="">{p.nome_pessoa}</td>
-                                        <td>{p.funcao_pessoa}</td>
-                                        <td></td>
-                                        <td><Link to={'/pessoas/' + p.id_pessoa} className="text-reset text-decoration-none"><Button style={{
-                                            color: "#F4F5FA",
-                                            background: "#F46E27"
-                                        }}
-                                            variant="contained" >DETALHAR</Button></Link></td>
-                                    </tr>
-                                ))}
+                                <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
                             </tbody>
                         </table>
                     </div>
                     <div className="col-5 ms-4" style={{background: "#21222D", }}>
                         <div className="Resumo col-md-12 col-lg-9 offset-lg-4 justify-content-center ">
                                             <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
-                                                <h6>{PessoasEquipe.length}</h6>
+                                                <h6>{totalMembros}</h6>
                                                 <strong>
                                                 <p className="ms-4 ">Total de <br/>Colaboradores</p>    
                                                 </strong>
