@@ -105,7 +105,7 @@ class equipeDT_index extends Component {
                     <div className="col-5 ms-4" style={{background: "#21222D", }}>
                         <div className="Resumo col-md-12 col-lg-9 offset-lg-4 justify-content-center ">
                                             <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
-                                                <h6><this.BuscarMembros equipe_id = {equipe.equipe_id}/></h6>
+                                                <h6>{PessoasEquipe.length}</h6>
                                                 <strong>
                                                 <p className="ms-4 ">Total de <br/>Colaboradores</p>    
                                                 </strong>
@@ -133,6 +133,7 @@ class equipeDT_index extends Component {
                                                 </div>
                                             </div>
                                         </div>
+                                        <div>aa</div>
                     </div>
                 </div>
                 </main>
