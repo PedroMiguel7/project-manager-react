@@ -5,7 +5,6 @@ import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
 
 const projetoPath = window.location.pathname;
-console.log(projetoPath);
 
 
 

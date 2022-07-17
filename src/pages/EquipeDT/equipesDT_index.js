@@ -10,39 +10,37 @@ console.log(equipePath);
 class equipeDT_index extends Component {
     state = {
         projetos: [],
-        equipesEsq: [],
+        equipe: [],
         PessoasEquipe: [],
     }
     async componentDidMount() {
         var url = equipePath;
-        const response3 = await api.get(equipePath);
-        const response2 = await api.get(url+'/pessoas');
         const response = await api.get('/projetos/');
+        const response2 = await api.get(url+'/pessoas');
+        const response3 = await api.get(equipePath);
 
         
         this.setState({ projetos: response.data });
-        this.setState({ equipesEsq: response3.data });
         this.setState({ PessoasEquipe: response2.data });
+        this.setState({ equipe: response3.data });
         
     }
     
     render() {
         const { projetos } = this.state;
-        const { equipesEsq } = this.state;
+        const { equipe } = this.state;
         const { PessoasEquipe } = this.state;
-        
-        console.log(PessoasEquipe)
 
         return (
             <>
                 <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
                     <div>
-                        <HeaderDt pagina="EQUIPE" titulo="" Status='' />
+                        <HeaderDt pagina="EQUIPE" titulo={equipe.nome_equipe} Status='' />
                     </div>
                 <div className="d-flex">
                     <div className="col-7" style = {{backgroundColor: "#21222D"}}>
                         <div className="LeftOptions col-lg-2 mt-sm-2">
-                            <span className="me-2 ms-4 mt-3">Equipes</span>
+                            <span className="me-2 ms-4 mt-3">Membros</span>
                         </div>
                         <table class="table" style={{ color: 'white' }}>
                             <thead>
