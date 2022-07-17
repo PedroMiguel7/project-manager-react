@@ -81,9 +81,9 @@ class equipeDT_index extends Component {
         const { equipe } = this.state;
         const { PessoasEquipe } = this.state;
 
-        var totalMembros = PessoasEquipe.length;
-        if(totalMembros === null){
-            totalMembros = 0;
+        var totalMembros = 0;
+        if(PessoasEquipe !== null){
+            totalMembros =  PessoasEquipe.length;
         }
 
         var totalDetasks = 0;
@@ -101,7 +101,7 @@ class equipeDT_index extends Component {
 
 
         return (
-            <>
+            <>v
                 <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
                     <div>
                         <HeaderDt pagina="EQUIPE" titulo={equipe.nome_equipe} Status='' />
@@ -115,7 +115,7 @@ class equipeDT_index extends Component {
                             <thead>
                                 <tr className="LeftOptions">
                                     <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
-                                    <th scope="col" style={{ width: '25%' }}>Nome</th>
+                                    <th scope="col" style={{ width: '20%' }}>Nome</th>
                                     <th scope="col" style={{ width: '35%' }}>função</th>
                                     <th scope="col" style={{ width: '40%' }}>ID - Tarefas</th>
                                     <th scope="col" style={{ width: '5%' }}></th>
