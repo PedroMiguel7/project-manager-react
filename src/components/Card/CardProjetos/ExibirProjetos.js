@@ -21,7 +21,6 @@ class Cards extends Component {
     }
 
     exibeprojeto = (props) => {
-        var ProjetoS = 0;
         if(props.projetos === null){
             <div className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
                     <div>

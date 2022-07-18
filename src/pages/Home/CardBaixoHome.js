@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import api from '../../api';
 import Button from '@mui/material/Button';
 import BarraProgresso from "../../components/Card/CardProjetos/BarraDeProgresso";
-import { ThirtyFpsSelect } from "@mui/icons-material";
+//import { ThirtyFpsSelect } from "@mui/icons-material";
 
 class CardBaixoHome extends Component {
     state = {
