@@ -5,6 +5,7 @@ da equipe podem se atribuir.
 
 ## Detalhes
 
+- Rodando em: https://api-brisa-react.vercel.app/
 - Utilizando Go e gin, ReactJS e PostgreSQL
 - Disponível em(HEROKU): 
 - Swagger: (ainda não finalizado)
