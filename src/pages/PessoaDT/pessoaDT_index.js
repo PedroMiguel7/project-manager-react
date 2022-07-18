@@ -67,10 +67,10 @@ class PessoasDT extends Component {
 
                     </div>
                     <div className="col-lg-8">
-                        <div className="row Teste h-50 p-4">
+                        <div className="row Teste h-lg-50 p-4">
                             Rendimento
                         </div>
-                        <div className="Teste row  h-50 p-4">
+                        <div className="Teste row  h-lg-50 p-4">
                             <div className="d-flex justify-content-between">
                                 <h5>Tarefas</h5>
                                 <div>

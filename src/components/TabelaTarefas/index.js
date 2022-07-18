@@ -38,10 +38,52 @@ export default function TabelaTarefas() {
 
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
 
+  const [changeIcon, setIcon] = React.useState(false);
+
   const handleClickSim = () => {
     setOpenSnackbar(true);
     setOpenAlert(false);
+    setIcon(true);
   };
+
+  const icon = (changeIcon === true) ? <TaskAltIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
+
+  const data = new Date();
+  const dataConclusao = [data.getDate(), data.getMonth() + 1, data.getFullYear()]
+  const dataConclusaoFormatada = `${dataConclusao[0]}/${dataConclusao[1]}/${dataConclusao[2]}`;
+
+  /*let dataHoje = `${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`;*/
+
+  /*const dataHoje = [data.getDate(), data.getMonth() + 1, data.getFullYear()]; */
+  const inicio = "14-07-2022";
+  const dataInicio = inicio.split('-');
+  console.log(dataInicio);
+
+  function TempoRestante() {
+    const dataFormatada = new Date(`${dataInicio[1]}/${dataInicio[0]}/${dataInicio[2]}`);
+    console.log(dataFormatada);
+    const dataTeste = new Date();
+    console.log(dataTeste);
+    if ((dataTeste - dataFormatada) === 86400000) {
+      return console.log('1 dia');
+    } else {
+      const tempo = (dataTeste - dataFormatada) / 86400000;
+      return console.log(`${tempo} dias`)
+    }
+  }
+
+  console.log(TempoRestante());
+
+  /*
+  console.log(dataHoje);
+  console.log(dataFormatada);
+  console.log(dataTeste);
+
+  console.log(`${dataTeste - dataFormatada}`);*/
+
+  const setTempoRestante = (changeIcon === true) ? '-' : '';
+
+  const setDataConclusao = (changeIcon === true) ? dataConclusaoFormatada : '-';
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -68,20 +110,20 @@ export default function TabelaTarefas() {
           <tr className='CorTarefa'>
             <td>
               <IconButton>
-                <TaskAltIcon sx={{color: "#F46E27"}} />
+                {icon}
               </IconButton>
             </td>
             <td>
               Lorem ipsum dolor sit amet
             </td>
             <td>
-              -
+              {setTempoRestante}
             </td>
             <td>
               01/01/2022
             </td>
             <td>
-              31/01/2022
+              {setDataConclusao}
             </td>
             <td>
               <TarefasMenu />
@@ -91,20 +133,20 @@ export default function TabelaTarefas() {
           <tr>
             <td>
               <IconButton>
-                <TaskAltIcon sx={{color: "#F46E27"}} />
+                {icon}
               </IconButton>
             </td>
             <td>
               Lorem ipsum dolor sit amet
             </td>
             <td>
-              -
+              {setTempoRestante}
             </td>
             <td>
               01/01/2022
             </td>
             <td>
-              31/01/2022
+              {setDataConclusao}
             </td>
             <td>
               <TarefasMenu />
@@ -114,7 +156,7 @@ export default function TabelaTarefas() {
           <tr>
             <td>
               <IconButton onClick={handleCheck}>
-                <RadioButtonUncheckedIcon />
+                <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>
               </IconButton>
             </td>
             <td>
@@ -137,7 +179,7 @@ export default function TabelaTarefas() {
           <tr>
             <td>
               <IconButton>
-                <RadioButtonUncheckedIcon />
+                <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}} />
               </IconButton>
             </td>
             <td>
@@ -160,7 +202,7 @@ export default function TabelaTarefas() {
           <tr>
             <td>
               <IconButton>
-                <RadioButtonUncheckedIcon />
+                <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}} />
               </IconButton>
             </td>
             <td>
