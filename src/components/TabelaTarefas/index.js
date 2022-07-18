@@ -55,20 +55,24 @@ export default function TabelaTarefas() {
   /*let dataHoje = `${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`;*/
 
   /*const dataHoje = [data.getDate(), data.getMonth() + 1, data.getFullYear()]; */
-  const inicio = "14-07-2022";
+  /*const inicio = "14-07-2022";
   const dataInicio = inicio.split('-');
-  console.log(dataInicio);
+  console.log(dataInicio);*/
+  const prazo = "20-07-2022";
+  const dataPrazo = prazo.split('-');
+  console.log(dataPrazo);
 
   function TempoRestante() {
-    const dataFormatada = new Date(`${dataInicio[1]}/${dataInicio[0]}/${dataInicio[2]}`);
-    console.log(dataFormatada);
-    const dataTeste = new Date();
-    console.log(dataTeste);
-    if ((dataTeste - dataFormatada) === 86400000) {
+    const dataPrazoFormatada = new Date(`${dataPrazo[1]}/${dataPrazo[0]}/${dataPrazo[2]}`);
+    console.log(dataPrazoFormatada);
+    const dataHoje = new Date();
+    console.log(dataHoje);
+    console.log(dataPrazoFormatada - dataHoje);
+    if ((dataPrazoFormatada - dataHoje) <= 86400000 && (dataPrazoFormatada - dataHoje) > 0) {
       return console.log('1 dia');
     } else {
-      const tempo = (dataTeste - dataFormatada) / 86400000;
-      return console.log(`${tempo} dias`)
+      const tempo = (dataPrazoFormatada - dataHoje) / 86400000;
+      return console.log(`${tempo.toFixed()} dias`)
     }
   }
 
@@ -81,7 +85,7 @@ export default function TabelaTarefas() {
 
   console.log(`${dataTeste - dataFormatada}`);*/
 
-  const setTempoRestante = (changeIcon === true) ? '-' : '';
+  const setTempoRestante = (changeIcon === true) ? '-' : TempoRestante();
 
   const setDataConclusao = (changeIcon === true) ? dataConclusaoFormatada : '-';
 
@@ -117,6 +121,7 @@ export default function TabelaTarefas() {
               Lorem ipsum dolor sit amet
             </td>
             <td>
+              <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
               {setTempoRestante}
             </td>
             <td>
@@ -140,6 +145,7 @@ export default function TabelaTarefas() {
               Lorem ipsum dolor sit amet
             </td>
             <td>
+              <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
               {setTempoRestante}
             </td>
             <td>
