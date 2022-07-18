@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import api from '../../api';
 import Button from '@mui/material/Button';
 import BarraProgresso from "../../components/Card/CardProjetos/BarraDeProgresso";
+//import { ThirtyFpsSelect } from "@mui/icons-material";
 
 class CardBaixoHome extends Component {
     state = {
@@ -28,8 +29,48 @@ class CardBaixoHome extends Component {
         })
     }
 
+
+    ExibirProjetos = (props) => {
+        if(props.ProjetosDaHome !== 0){
+            return(
+            props.ProjetosDaHome.map(p => (
+                <tr key={props.ProjetosDaHome.id_projeto}>
+                    <th scope="row">{p.id_projeto}</th>
+                    <td className="">{p.nome_projeto}</td>
+                    <td>
+                        <BarraProgresso id_projeto={p.id_projeto}/>
+                    </td>
+                    <td>{p.status}</td>
+                    <td className="d-flex"><Link to={'/projetos/' + p.id_projeto} className="text-reset text-decoration-none"><Button className=" md-4" style={{
+                        color: "#F4F5FA",
+                        background: "#F46E27"
+                    }}
+                        variant="contained" >DETALHAR</Button></Link>
+                        </td>
+                        <td><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaProjeto(p.id_projeto)}>EXCLUIR</Button></td>
+                </tr>
+            ))
+            )
+        }else{
+            return(
+                <tr>
+                    <th scope="row"></th>
+                    <td className=""></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            )
+        }
+    }
+
     render() {
         const { projetosHome } = this.state;
+        var ProjetosDaHome = 0;
+        if(projetosHome !== null){
+            ProjetosDaHome = projetosHome;
+        }
 
         return (
             <>
@@ -49,24 +90,7 @@ class CardBaixoHome extends Component {
                             </tr>
                         </thead>
                         <tbody className="">
-                            
-                                {projetosHome.map(p => (
-                                    <tr key={projetosHome.id_projeto}>
-                                        <th scope="row">{p.id_projeto}</th>
-                                        <td className="">{p.nome_projeto}</td>
-                                        <td>
-                                            <BarraProgresso id_projeto={p.id_projeto}/>
-                                        </td>
-                                        <td>{p.status}</td>
-                                        <td className="d-flex"><Link to={'/projetos/' + p.id_projeto} className="text-reset text-decoration-none"><Button className=" md-4" style={{
-                                            color: "#F4F5FA",
-                                            background: "#F46E27"
-                                        }}
-                                            variant="contained" >DETALHAR</Button></Link>
-                                            </td>
-                                            <td><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaProjeto(p.id_projeto)}>EXCLUIR</Button></td>
-                                    </tr>
-                                ))}
+                                <this.ExibirProjetos ProjetosDaHome = {ProjetosDaHome}/>
                         </tbody>
 
                     </table>

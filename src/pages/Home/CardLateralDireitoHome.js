@@ -31,22 +31,22 @@ class CardLateralDireitoHome extends Component {
         const { totalequipes } = this.state;
         
         
-        let QtdProjetos = projetosHomeLateral.length;
-        let QtdAndamento = andamento.length;
-        let QtdConcluidos = concluidos.length;
-        let QtdTotalEquipes = totalequipes.length;
+        let QtdProjetos = 0;
+        let QtdAndamento = 0;
+        let QtdConcluidos = 0;
+        let QtdTotalEquipes = 0;
 
-        if( projetosHomeLateral.length === null ){
-            QtdProjetos = 0;
+        if( projetosHomeLateral !== null ){
+            QtdProjetos = projetosHomeLateral.length;
         }
-        if( concluidos.length === null ){
-            QtdConcluidos = 0;
+        if( concluidos !== null ){
+            QtdConcluidos = concluidos.length;
         }
-        if( andamento.length === null ){
-            QtdAndamento = 0;
+        if( andamento !== null ){
+            QtdAndamento = andamento.length;
         }
-        if( totalequipes.length === null ){
-            QtdTotalEquipes = 0;
+        if( totalequipes !== null ){
+            QtdTotalEquipes = totalequipes.length;
         }
         return (
             <>

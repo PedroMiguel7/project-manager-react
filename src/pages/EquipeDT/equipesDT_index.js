@@ -106,7 +106,7 @@ class equipeDT_index extends Component {
                     <div>
                         <HeaderDt pagina="EQUIPE" titulo={equipe.nome_equipe} Status='' />
                     </div>
-                <div className="d-flex" style={{minheight: "50%"}}>
+                <div className="d-flex" style={{height: "650px"}}>
                     <div className="col-7" style = {{backgroundColor: "#21222D"}}>
                         <div className="LeftOptions col-lg-2 mt-sm-2">
                             <span className="me-2 ms-4 mt-3">Membros</span>
@@ -127,7 +127,7 @@ class equipeDT_index extends Component {
                         </table>
                     </div>
                     <div className="col-5 ms-4" style={{background: "#21222D", }}>
-                        <div className="Resumo col-md-12 col-lg-9 offset-lg-4 justify-content-center ">
+                        <div className="Resumo col-md-12 col-lg-9 align-items-center justify-content-center">
                                             <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
                                                 <h6>{totalMembros}</h6>
                                                 <strong>
