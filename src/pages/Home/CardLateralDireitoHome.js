@@ -13,10 +13,10 @@ class CardLateralDireitoHome extends Component {
         QtdTotalEquipes: '',
     }
     async componentDidMount() {
-        const response = await api.get('/projetos/');
+        const response = await api.get('/projetos');
         const response2 = await api.get('/projetos/status/Concluido');
         const response3 = await api.get('/projetos/status/Em Andamento');
-        const response4 = await api.get('/equipes/');
+        const response4 = await api.get('/equipes');
         
         this.setState({ projetosHomeLateral: response.data });
         this.setState({ concluidos: response2.data });
