@@ -40,7 +40,7 @@ function Menu_index() {
             <CardLateralDireitoHome />
           </div>
         </div>
-        <div>
+        <div className="mt-3">
           <CardBaixoHome />
         </div>
       </main>
