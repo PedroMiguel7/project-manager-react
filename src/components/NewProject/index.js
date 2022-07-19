@@ -52,7 +52,7 @@ export default function BasicModal() {
   const handleClose = () => setOpen(false);
 
   const [equipes, setEquipes] = useState([]);
-  const url = '/equipes/';
+  const url = "/equipes/";
   useEffect(() => {
     const fetchEquipe = async () => {
       const response = await api.get(url)
@@ -91,6 +91,25 @@ export default function BasicModal() {
 
   const [nome, setNome] = useState()
   const [descricao, setDescricao] = useState()
+
+  
+  function cadastraProjeto (projeto){
+    fetch(api + "/projetos/",
+    {method: 'POST', 
+    headers: {'Content-type': 'application/json'},
+    body: JSON.stringify(projeto)
+  })
+ }
+
+ function submita (){
+  const projeto = {
+    nome_projeto : React.useState.SetNome,
+    descricao_projeto : React.useState.SetDescricao,
+    equipe_id : React.useState.SetEquipe,
+  }
+  cadastraProjeto(projeto)
+  {/*React JS - How to post form data to API with React JS */}
+ }
 
   return (
     <div>
@@ -167,7 +186,6 @@ export default function BasicModal() {
                     svg: { color: '#F4F5FA' }
                   }}
                 >
-
                 {equipes.map((p, index) => <MenuItem key={p.id_equipe} value={index}>{p.nome_equipe}</MenuItem>)}
                 </CssSelect>
               </FormControl>
@@ -186,7 +204,7 @@ export default function BasicModal() {
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-                variant="contained" type="submit">Salvar</Button>
+                variant="contained" type="submit" onClick={submita} >Salvar</Button>
             </div>
           </form>
         </Box>
