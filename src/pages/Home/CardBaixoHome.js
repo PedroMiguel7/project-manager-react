@@ -11,16 +11,16 @@ class CardBaixoHome extends Component {
         projetosHome: [],
     }
     async componentDidMount() {
-        const response = await api.get('/projetos');
+        const response = await api.get('/projetos/');
 
         this.setState({ projetosHome: response.data });
     }
 
     DeletaProjeto = (id_projeto) => {
-        fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/"+id_projeto, {method: "DELETE"})
+        api.get("/projetos/"+id_projeto, {method: "DELETE"})
         .then(resposta => {
             if(resposta.ok){
-                fetch("https://golang-posgre-brisanet.herokuapp.com/projetos")
+                api.get("/projetos/")
                 .then(novareposta => novareposta.json())
                 .then(dados =>{
                     this.setState({projetosHome: dados})
