@@ -19,7 +19,7 @@ da equipe podem se atribuir.
 
 ## Membros:
 <div>-<a href="https://github.com/caiosousaf"> Caio Sousa:</a>  Desenvolvimento dos metódos GET, POST, PUT e DELETE, mais conexão com o Banco de dados, desenvolvimento do swagger.</div>
-<div>-<a href="https://github.com/PedroMiguel7"> Pedro Miguel:</a>  Desenvolvimento dos metódos GET, POST, PUT e DELETE, </div> 
+<div>-<a href="https://github.com/PedroMiguel7"> Pedro Miguel:</a>  Desenvolvimento do FrontEnd, mais conexão com API </div> 
 <div>-<a href="https://github.com/dayannebugarim"> Dayanne Bugarim:</a> Desenvolvimento do FrontEnd</div>
 
 
