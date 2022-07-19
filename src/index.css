@@ -404,6 +404,11 @@ main h1 {
     border-bottom: 1px solid var(--preto-claro) !important;
 }
 
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    color: #fff;
+    background-color: #21222D;
+  }
+
 .TabelaTarefas {
     height: 70%;
 }

@@ -100,7 +100,7 @@ export default function TabelaTarefas() {
 
   return (
     <div className='TabelaTarefas table-responsive'>
-      <table className="table align-middle text-center ">
+      <table className="table align-middle text-center table-hover">
         <tbody>
           <tr>
             <th scope="col"></th>
