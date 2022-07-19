@@ -11,15 +11,14 @@ class Cards extends Component {
     equipesEsq: [],
   };
   async componentDidMount() {
-    const response = await api.get("/projetos");
-    const response2 = await api.get("/equipes");
+    const response = await api.get("/projetos/");
+    const response2 = await api.get("/equipes/");
 
     this.setState({ projetos: response.data });
     this.setState({ equipesEsq: response2.data });
   }
   exibeprojeto = (props) => {
-    var ExibaProjetos = props.projetos;
-    if (props.projetos === null) {
+    if (props.Projetos === null) {
       return (
         <div className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
           <div>
@@ -53,7 +52,7 @@ class Cards extends Component {
       );
     } else {
       return (
-        ExibaProjetos.map(p => (
+        props.Projetos.map(p => (
         <Link
           reloadDocument
           to={"/projetos/" + p.id_projeto}
@@ -64,7 +63,7 @@ class Cards extends Component {
               <div className="d-flex justify-content-between">
                 <h2 class="fs-4">{p.nome_projeto}</h2>
                 <Link to="/projetos">
-                  <CardDelete id={p.id_projeto} />
+                  
                 </Link>
               </div>
               <p className="description overflow-hidden">
@@ -97,10 +96,9 @@ class Cards extends Component {
 
   render() {
     const { projetos } = this.state;
-    console.log(projetos);
     return (
       <>
-        <this.exibeprojeto projetos={projetos} />
+        <this.exibeprojeto Projetos={projetos} />
       </>
     );
   }
