@@ -108,6 +108,7 @@ export default function BasicModal() {
     equipe_id : React.useState.SetEquipe,
   }
   cadastraProjeto(projeto)
+  {/*React JS - How to post form data to API with React JS */}
  }
 
   return (
