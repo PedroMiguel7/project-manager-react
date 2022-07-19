@@ -33,9 +33,9 @@ class ProjetoDT extends Component {
             fetchEquipe()
         });
         console.log(setPessoas)
-        let totalMembros = pessoas.length;
-        if(totalMembros === null){
-            totalMembros = 0;
+        let totalMembros = 0;
+        if(pessoas !== null){
+            totalMembros = pessoas.length;
         }
         return (
             totalMembros
