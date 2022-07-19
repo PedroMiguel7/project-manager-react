@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import TabelaTarefas from '../TabelaTarefas';
 
@@ -39,6 +39,40 @@ function a11yProps(index) {
   };
 }
 
+const StyledTabs = styled((props) => (
+  <Tabs
+    {...props}
+    TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
+  />
+))({
+  '& .MuiTabs-indicator': {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  '& .MuiTabs-indicatorSpan': {
+    maxWidth: '70%',
+    width: '100%',
+    backgroundColor: '#F46E27',
+  },
+});
+
+const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
+  ({ theme }) => ({
+    textTransform: 'none',
+    fontWeight: 400,
+    fontSize: 15,
+    marginRight: theme.spacing(1),
+    color: '#87888C',
+    '&.Mui-selected': {
+      color: '#C2C3C6',
+    },
+    '&.Mui-focusVisible': {
+      backgroundColor: 'rgba(100, 95, 228, 0.32)',
+    },
+  }),
+);
+
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
 
@@ -50,11 +84,11 @@ export default function BasicTabs() {
     <>
       <div className="d-flex justify-content-between">
       <h5>Tarefas</h5>
-      <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
-          <Tab label="Em Andamento" {...a11yProps(0)} />
-          <Tab label="Concluídas" {...a11yProps(1)} />
-          <Tab label="Canceladas" {...a11yProps(2)} />
-      </Tabs>
+      <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
+          <StyledTab label="Em Andamento" {...a11yProps(0)} />
+          <StyledTab label="Concluídas" {...a11yProps(1)} />
+          <StyledTab label="Canceladas" {...a11yProps(2)} />
+      </StyledTabs>
       <div>
           <span>4/5 Completas</span>
           <div class="progress Progress" >

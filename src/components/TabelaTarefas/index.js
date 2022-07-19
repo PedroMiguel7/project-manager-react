@@ -23,7 +23,6 @@ const rows = [
   createData('Tarefa Tal', '15 horas', '01/01/2022', '-'),
 ];
 
-
 export default function TabelaTarefas() {
   const [openAlert, setOpenAlert] = React.useState(false);
 
@@ -39,10 +38,13 @@ export default function TabelaTarefas() {
 
   const [changeIcon, setIcon] = React.useState(false);
 
+  const tarefasConcluidas = 0;
+
   const handleClickSim = () => {
     setOpenSnackbar(true);
     setOpenAlert(false);
     setIcon(true);
+    tarefasConcluidas++;
   };
 
   const icon = (changeIcon === true) ? <TaskAltIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
