@@ -167,7 +167,8 @@ export default function BasicModal() {
                     svg: { color: '#F4F5FA' }
                   }}
                 >
-                  {equipes.map((p, index) => <MenuItem key={p.id_equipe} value={index}>{p.nome_equipe}</MenuItem>)}
+
+                {equipes.map((p, index) => <MenuItem key={p.id_equipe} value={index}>{p.nome_equipe}</MenuItem>)}
                 </CssSelect>
               </FormControl>
             </Box>
