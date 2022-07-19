@@ -388,7 +388,7 @@ main h1 {
 
 .Progress {
     width: 110px;
-    height: 0.32rem;
+    height: 0.24rem;
     border-radius: 100px;
     background-color: #2B2B36;
 }
@@ -431,13 +431,6 @@ main h1 {
     z-index: 1;
 }
 
-.CorTarefa {
+/*.CorTarefa {
     border-left: 2px solid plum;
-}
-
-.ColorDiv {
-    width: 20px;
-    height: 20px;
-    /*background-color: red;*/
-    border-radius: 5px;
-}
+}*/

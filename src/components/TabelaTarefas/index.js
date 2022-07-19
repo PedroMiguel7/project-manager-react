@@ -101,21 +101,19 @@ export default function TabelaTarefas() {
   return (
     <div className='TabelaTarefas table-responsive'>
       <table className="table align-middle text-center ">
-        <thead className="TabelaTarefasHead align-middle">
+        <tbody>
           <tr>
             <th scope="col"></th>
             <th scope="col">Nome</th>
             <th scope="col">Prioridade</th>
             <th scope="col">Tempo Restante</th>
             <th scope="col">Início</th>
-            <th scope="col">Conclusão</th>
             <th scope="col"></th>
           </tr>
-        </thead>
-        <tbody>
-          <tr className='CorTarefa'>
+        
+          <tr>
             <td>
-              <IconButton>
+              <IconButton onClick={handleCheck}>
                 {icon}
               </IconButton>
             </td>
@@ -133,21 +131,21 @@ export default function TabelaTarefas() {
               01/01/2022
             </td>
             <td>
-              {setDataConclusao}
-            </td>
-            <td>
               <TarefasMenu />
             </td>
           </tr>
 
           <tr>
             <td>
-              <IconButton>
+              <IconButton onClick={handleCheck}>
                 {icon}
               </IconButton>
             </td>
             <td>
               Lorem ipsum dolor sit amet
+            </td>
+            <td>
+              Alta
             </td>
             <td>
               <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
@@ -157,9 +155,6 @@ export default function TabelaTarefas() {
               01/01/2022
             </td>
             <td>
-              {setDataConclusao}
-            </td>
-            <td>
               <TarefasMenu />
             </td>
           </tr>
@@ -167,71 +162,28 @@ export default function TabelaTarefas() {
           <tr>
             <td>
               <IconButton onClick={handleCheck}>
-                <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>
+                {icon}
               </IconButton>
             </td>
             <td>
               Lorem ipsum dolor sit amet
             </td>
             <td>
-              <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> <span>6 dias</span>
+              Alta
+            </td>
+            <td>
+              <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
+              {setTempoRestante}
             </td>
             <td>
               01/01/2022
-            </td>
-            <td>
-              -
             </td>
             <td>
               <TarefasMenu />
             </td>
           </tr>
 
-          <tr>
-            <td>
-              <IconButton>
-                <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}} />
-              </IconButton>
-            </td>
-            <td>
-              Lorem ipsum dolor sit amet
-            </td>
-            <td>
-              <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> <span>2 dias</span>
-            </td>
-            <td>
-              01/01/2022
-            </td>
-            <td>
-              -
-            </td>
-            <td>
-              <TarefasMenu />
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <IconButton>
-                <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}} />
-              </IconButton>
-            </td>
-            <td>
-              Lorem ipsum dolor sit amet
-            </td>
-            <td>
-              <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> <span>15 horas</span>
-            </td>
-            <td>
-              01/01/2022
-            </td>
-            <td>
-              -
-            </td>
-            <td>
-             <TarefasMenu />
-            </td>
-          </tr>
+          
         </tbody>
       </table>
       <Dialog

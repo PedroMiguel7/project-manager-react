@@ -82,13 +82,13 @@ export default function BasicTabs() {
 
   return (
     <>
-      <div className="d-flex justify-content-between">
-      <h5>Tarefas</h5>
-      <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
-          <StyledTab label="Em Andamento" {...a11yProps(0)} />
-          <StyledTab label="Concluídas" {...a11yProps(1)} />
-          <StyledTab label="Canceladas" {...a11yProps(2)} />
-      </StyledTabs>
+      <div className="d-flex justify-content-between align-items-center">
+        <h5>Tarefas</h5>
+        <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
+            <StyledTab label="Em Andamento" {...a11yProps(0)} />
+            <StyledTab label="Concluídas" {...a11yProps(1)} />
+            <StyledTab label="Canceladas" {...a11yProps(2)} />
+        </StyledTabs>
       <div>
           <span>4/5 Completas</span>
           <div class="progress Progress" >
@@ -101,10 +101,34 @@ export default function BasicTabs() {
         <TabelaTarefas />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <div className='TabelaTarefas table-responsive'>
+          <table className="table align-middle text-center ">
+            <tbody>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Nome</th>
+                <th scope="col">Prioridade</th>
+                <th scope="col">Início</th>
+                <th scope="col">Conclusão</th>
+                <th scope="col"></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <div className='TabelaTarefas table-responsive'>
+            <table className="table align-middle text-center ">
+              <tbody>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Início</th>
+                  <th scope="col"></th>
+                </tr>
+              </tbody>
+            </table>
+        </div>
       </TabPanel>
     </>
     
