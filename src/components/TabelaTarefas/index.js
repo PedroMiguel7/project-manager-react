@@ -11,7 +11,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-
 function createData(nome, tempo, inicio, conclusao) {
   return { nome, tempo, inicio, conclusao };
 }
@@ -104,6 +103,7 @@ export default function TabelaTarefas() {
           <tr>
             <th scope="col"></th>
             <th scope="col">Nome</th>
+            <th scope="col">Prioridade</th>
             <th scope="col">Tempo Restante</th>
             <th scope="col">Início</th>
             <th scope="col">Conclusão</th>
@@ -119,6 +119,9 @@ export default function TabelaTarefas() {
             </td>
             <td>
               Lorem ipsum dolor sit amet
+            </td>
+            <td>
+              Alta
             </td>
             <td>
               <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 

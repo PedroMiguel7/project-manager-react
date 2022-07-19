@@ -1,13 +1,13 @@
 import { Link,useLocation } from "react-router-dom";
-import logo from '../../assets/logo.svg'
-import home from '../../assets/icons/home.svg'
-import homeActive from '../../assets/icons/home-active.svg'
-import project from '../../assets/icons/project.svg'
-import projectActive from '../../assets/icons/project-active.svg'
-import team from '../../assets/icons/team.svg'
-import teamActive from '../../assets/icons/team-active.svg'
-import person from '../../assets/icons/person.svg'
-import personActive from '../../assets/icons/person-active.svg'
+import logo from '../../assets/logo.svg';
+import home from '../../assets/icons/home.svg';
+import homeActive from '../../assets/icons/home-active.svg';
+import project from '../../assets/icons/project.svg';
+import projectActive from '../../assets/icons/project-active.svg';
+import team from '../../assets/icons/team.svg';
+import teamActive from '../../assets/icons/team-active.svg';
+import person from '../../assets/icons/person.svg';
+import personActive from '../../assets/icons/person-active.svg';
 
 function SideBar() {
   const location = useLocation();
