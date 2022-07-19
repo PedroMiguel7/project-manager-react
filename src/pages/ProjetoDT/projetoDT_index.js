@@ -52,10 +52,8 @@ class ProjetoDT extends Component {
             }
             fetchEquipe()
         });
-        console.log(setPessoas)
-        let totalMembros = pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`).length;
-        if(totalMembros === null){
-            totalMembros = 'sem ninguém mané';
+        let totalMembros = 0;
+        if(pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`) === null){
             return (
                 totalMembros
             );
@@ -73,17 +71,18 @@ class ProjetoDT extends Component {
         const { tarefasPJ } = this.state;
         
         
-        var totalDetasks = tarefasPJ.length;
-        if(totalDetasks === null){
-            totalDetasks = 0;
-        }
-        var TotalTaksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido").length
-        if(TotalTaksConcluidas === null){
-            TotalTaksConcluidas = 0;
-        }
-        var TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento").length
-        if(TotalTasksAndamento === null){
-            TotalTasksAndamento = 0;
+        var totalDetasks = 0;
+        var TotalTaksConcluidas = 0;
+        var TotalTasksAndamento = 0;
+        if(tarefasPJ !== null){
+            totalDetasks = tarefasPJ.length;
+            if(tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido") !== null){
+                TotalTaksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido").length
+            }
+            
+            if(tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento") !== null){
+                TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento").length;
+            }
         }
 
         return(
