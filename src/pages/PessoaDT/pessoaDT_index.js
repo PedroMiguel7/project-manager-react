@@ -11,6 +11,7 @@ import TabelaTarefas from "../../components/TabelaTarefas";
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import NovaTarefa from '../../components/NovaTarefa';
+import HeaderTarefas from '../../components/HeaderTarefas';
 
 const pessoaPath = window.location.pathname;
 console.log(pessoaPath);
@@ -71,16 +72,8 @@ class PessoasDT extends Component {
                             Rendimento
                         </div>
                         <div className="Teste row  h-lg-50 p-4">
-                            <div className="d-flex justify-content-between">
-                                <h5>Tarefas</h5>
-                                <div>
-                                    <span>4/5 Completas</span>
-                                    <div class="progress Progress" >
-                                        <div class="ProgressBar progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <TabelaTarefas />
+                            
+                            <HeaderTarefas />
                             
                             <div className="d-flex justify-content-end">
                                 <NovaTarefa />
