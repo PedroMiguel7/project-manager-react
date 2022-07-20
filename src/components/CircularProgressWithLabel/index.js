@@ -63,8 +63,6 @@ export default function CircularStatic(props) {
   } else {
     BarrinhaProgresso = 0;
   }
-  console.log(BarrinhaProgresso)
-  
 
   return <CircularProgressWithLabel value={BarrinhaProgresso} />;
 }
