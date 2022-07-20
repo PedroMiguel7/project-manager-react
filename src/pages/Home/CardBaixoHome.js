@@ -31,7 +31,7 @@ class CardBaixoHome extends Component {
 
 
     ExibirProjetos = (props) => {
-        if(props.ProjetosDaHome !== 0){
+        if(props.ProjetosDaHome !== null){
             return(
             props.ProjetosDaHome.map(p => (
                 <tr key={props.ProjetosDaHome.id_projeto}>
