@@ -30,13 +30,13 @@ function Menu_index() {
           </div>
         </div>
         <div
-          className="d-flex justify-content-between"
+          className="d-flex justify-content-between flex-wrap"
           style={{ width: "100%" }}
         >
-          <div className="CardlateralesquerdoHome col-9 mt-2 ms-3 ">
+          <div className="CardlateralesquerdoHome col-9 col-md-12 mt-2 ms-3 ">
             <CardLateralEsquerdoHome/>
           </div>
-          <div className="mt-2 me-2">
+          <div className="col-md-12 col-sm-12 mt-2 me-2">
             <CardLateralDireitoHome />
           </div>
         </div>
