@@ -18,39 +18,31 @@ class CardPessoas extends Component {
 
     render() {
         const { pessoas } = this.state;
-        console.log(pessoas);
 
         const funcaoBackground = window.document.getElementsByClassName('CardPessoaTag');
         console.log(funcaoBackground);
 
-        /*function mudarBackground(funcao) {
+        function mudarBackground() {
             const funcaoBackground = window.document.getElementsByClassName('CardPessoaTag');
 
-            if (funcao === "Front-End" || "Front End") {
-                funcaoBackground[4].style.background = '#FFC16A';
-            } 
-            else if (funcao === "Back-End" || "Back End") {
-                funcaoBackground[1].style.background = '#A9DFD8';
-            } 
-            else if (funcao === "Dev-Ops" || "Dev Ops") {
-                funcaoBackground[0].style.background = '#F2C8ED';
-            } 
-            else if (funcao === "Tester") {
-                funcaoBackground[0].style.background = '#A7CAFF';
-            } 
-            else if (funcao === "Mobile") {
-                funcaoBackground[0].style.background = '#E7DF9B';
-            } 
-            else if (funcao === "Banco de Dados") {
-                funcaoBackground[0].style.background = '#F2A7A7';
+            for (let i = 0; i < funcaoBackground.length; i++) {
+                //console.log(funcaoBackground[i])
+                //funcaoBackground[i].style.background = 'red';
+                if (funcaoBackground[i].textContent === "Front-End" || "Front End") {
+                    return funcaoBackground[i].style.backgroundColor = 'green';
+                }
+                else if (funcaoBackground[i].textContent === "Back-End" || "Back End") {
+                    return funcaoBackground[i].style.backgroundColor = 'blue';
+                }
+                console.log(funcaoBackground[i]);
             }
-        }*/
+        }
 
         return (
             <>
                 {pessoas.map(p => (
                     <Link reloadDocument to={'/pessoas/' + p.id_pessoa} className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
-                        <div className="CardPessoaTag" /*onLoad={mudarBackground(p.funcao_pessoa)}*/>
+                        <div className="CardPessoaTag" /*onLoad={() => mudarBackground(p.funcao_pessoa)}*/>
                             {p.funcao_pessoa}
                         </div>
                         <div key={pessoas.id_pessoa} className=" ">
