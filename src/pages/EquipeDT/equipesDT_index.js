@@ -4,9 +4,6 @@ import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 
-const equipePath = window.location.pathname;
-console.log(equipePath);
-
 class equipeDT_index extends Component {
     state = {
         projetos: [],
@@ -14,6 +11,8 @@ class equipeDT_index extends Component {
         PessoasEquipe: [],
     }
     async componentDidMount() {
+        var equipePath = window.location.pathname;
+        
         var url = equipePath;
         const response = await api.get('/projetos/');
         const response2 = await api.get(url+'/pessoas');
