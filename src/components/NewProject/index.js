@@ -92,6 +92,35 @@ export default function BasicModal() {
   const [nome, setNome] = useState()
   const [descricao, setDescricao] = useState()
 
+  function EquipesPraNewProject(props){
+    return(
+      <Box sx={{ minWidth: 120 }}>
+              <FormControl required fullWidth margin="dense" sx={{
+                "& label": {
+                  color: '#F4F5FA'
+                },
+                "& label.Mui-focused": {
+                  color: '#F46E27'
+                }
+              }}
+              >
+                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Equipe</InputLabel>
+                <CssSelect
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={equipe}
+                  label="Age"
+                  onChange={handleChange}
+                  sx={{
+                    svg: { color: '#F4F5FA' }
+                  }}
+                >
+                {props.equipes.map((p, index) => <MenuItem key={p.id_equipe} value={index}>{p.nome_equipe}</MenuItem>)}
+                </CssSelect>
+              </FormControl>
+            </Box>
+    )
+  }
   
   function cadastraProjeto (projeto){
     fetch(api + "/projetos/",
@@ -164,32 +193,7 @@ export default function BasicModal() {
                 },
               }}
             />
-
-            <Box sx={{ minWidth: 120 }}>
-              <FormControl required fullWidth margin="dense" sx={{
-                "& label": {
-                  color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                }
-              }}
-              >
-                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Equipe</InputLabel>
-                <CssSelect
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={equipe}
-                  label="Age"
-                  onChange={handleChange}
-                  sx={{
-                    svg: { color: '#F4F5FA' }
-                  }}
-                >
-                {equipes.map((p, index) => <MenuItem key={p.id_equipe} value={index}>{p.nome_equipe}</MenuItem>)}
-                </CssSelect>
-              </FormControl>
-            </Box>
+              <EquipesPraNewProject equipes = {equipes}/>
             <Divider light className='mt-3' />
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
