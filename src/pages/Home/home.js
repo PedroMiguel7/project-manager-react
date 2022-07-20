@@ -29,18 +29,19 @@ function Menu_index() {
             <AdicionarProjeto />
           </div>
         </div>
+
         <div
-          className="d-flex justify-content-between flex-wrap"
-          style={{ width: "100%" }}
+          className="row d-flex justify-content-between flex-wrap"
         >
-          <div className="CardlateralesquerdoHome col-9 col-md-12 mt-2 ms-3 ">
+          <div className="CardlateralesquerdoHome col-lg-8 col-md-12 mt-2 ms-3 ">
             <CardLateralEsquerdoHome/>
           </div>
-          <div className="col-md-12 col-sm-12 mt-2 me-2">
+          <div className="col-lg-3 col-md-12 col-sm-12 mt-2 me-2">
             <CardLateralDireitoHome />
           </div>
         </div>
-        <div className="mt-3">
+
+        <div className="row mt-3">
           <CardBaixoHome />
         </div>
       </main>

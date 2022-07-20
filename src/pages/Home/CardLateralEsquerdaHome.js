@@ -9,7 +9,7 @@ class CardLateralEsquerdoHome extends Component {
     render() {
         return (
             <>
-                <div className="row CardsContainer my-4 mt-4 d-flex ms-1">
+                <div className="row CardsContainer my-4 mt-4 d-flex">
                     <Cards/>
                 </div>
 
