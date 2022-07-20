@@ -16,6 +16,7 @@ import Select from '@mui/material/Select';
 import { useState, useEffect } from 'react';
 import api from '../../api';
 import InputLabel from '@mui/material/InputLabel';
+import Form from 'rsuite/Form';
 
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
@@ -58,7 +59,7 @@ export default function BasicModal() {
       const response = await api.get(url)
       setEquipes(response.data)
     }
-    fetchEquipe()
+    fetchEquipe() 
   });
 
   const [equipe, setEquipe] = React.useState('');
@@ -104,10 +105,10 @@ export default function BasicModal() {
                 }
               }}
               >
-                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Equipe</InputLabel>
+                <InputLabel sx={{ color: '#C2C3C6' }} id="select-10">Equipe</InputLabel>
                 <CssSelect
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
+                  controlId="select-10"
+                  id="select-10"
                   value={equipe}
                   label="Age"
                   onChange={handleChange}
@@ -115,7 +116,7 @@ export default function BasicModal() {
                     svg: { color: '#F4F5FA' }
                   }}
                 >
-                {props.equipes.map((p, index) => <MenuItem key={p.id_equipe} value={index}>{p.nome_equipe}</MenuItem>)}
+                {props.equipes.map((p, index) => <MenuItem key={p.id_equipe} value={index+1}>{p.nome_equipe}</MenuItem>)}
                 </CssSelect>
               </FormControl>
             </Box>

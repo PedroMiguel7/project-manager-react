@@ -35,7 +35,6 @@ class equipeDT_index extends Component {
             }
             fetchEquipe()
         });
-        console.log(setPessoas)
         let totalMembros = pessoas.length;
         if(totalMembros === null){
             totalMembros = 0;
