@@ -6,6 +6,8 @@ import {useState, useEffect} from 'react';
 import api from '../../../api';
 import TagPessoas from "../../TagPessoas";
 
+
+
 class CardPessoas extends Component {
     state = {
         pessoas: [],
@@ -14,6 +16,37 @@ class CardPessoas extends Component {
         const response = await api.get('/pessoas/');
 
         this.setState({ pessoas: response.data });
+    }
+
+    mudarBackground = () => () => {
+        const [funcaoBackground, mudarBackground] = useState(0);
+    
+    useEffect(() => {
+        const funcaoBackground = window.document.getElementsByClassName('CardPessoaTag');
+        console.log(funcaoBackground);
+        
+        let i = 0;
+
+        if (funcaoBackground[i].textContent === "Front-End" || "Front End") {
+            funcaoBackground[i].style.background = '#FFC16A';
+        } 
+        else if (funcaoBackground[i].textContent === "Back-End" || "Back End") {
+            funcaoBackground[i].style.background = '#A9DFD8';
+        } 
+        else if (funcaoBackground[i].textContent === "Dev-Ops" || "Dev Ops") {
+            funcaoBackground[i].style.background = '#F2C8ED';
+        } 
+        else if (funcaoBackground[i].textContent === "Tester") {
+            funcaoBackground[i].style.background = '#A7CAFF';
+        } 
+        else if (funcaoBackground[i].textContent === "Mobile") {
+            funcaoBackground[i].style.background = '#E7DF9B';
+        } 
+        else if (funcaoBackground[i].textContent === "Banco de Dados") {
+            funcaoBackground[i].style.background = '#F2A7A7';
+        }
+        i++;
+    })
     }
 
     render() {
@@ -42,7 +75,7 @@ class CardPessoas extends Component {
             <>
                 {pessoas.map(p => (
                     <Link reloadDocument to={'/pessoas/' + p.id_pessoa} className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
-                        <div className="CardPessoaTag" /*onLoad={() => mudarBackground(p.funcao_pessoa)}*/>
+                        <div className="CardPessoaTag" onChange={() => mudarBackground(funcaoBackground)}>
                             {p.funcao_pessoa}
                         </div>
                         <div key={pessoas.id_pessoa} className=" ">
