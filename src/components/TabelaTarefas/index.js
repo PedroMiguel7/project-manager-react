@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Component } from "react";
+import api from '../../api';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import TarefasMenu from '../TarefasMenu';
 import IconButton from '@mui/material/IconButton';
@@ -23,7 +25,51 @@ const rows = [
   createData('Tarefa Tal', '15 horas', '01/01/2022', '-'),
 ];
 
-export default function TabelaTarefas() {
+class TabelaTarefas extends Component {
+  state = {
+    tarefas: [],
+  }
+  async componentDidMount() {
+      const pessoaPath = window.location.pathname;
+      console.log(pessoaPath);
+      
+      const response = await api.get(pessoaPath+'/tasks');
+
+      
+      this.setState({ tarefas: response.data });
+  }
+
+  ImprimeTarefas = (props) => {
+
+  }
+
+  render() {
+    const { tarefas} = this.state;
+    
+    return (
+      <>
+        <div className='TabelaTarefas table-responsive'>
+          <table className="table align-middle text-center table-hover">
+            <tbody>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Nome</th>
+                <th scope="col">Prioridade</th>
+                <th scope="col">Tempo Restante</th>
+                <th scope="col">Início</th>
+                <th scope="col"></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </>
+    )
+  }
+}
+
+export default TabelaTarefas;
+
+/*export default function TabelaTarefas() {
   const [openAlert, setOpenAlert] = React.useState(false);
 
   const handleCheck = () => {
@@ -53,12 +99,6 @@ export default function TabelaTarefas() {
   const dataConclusao = [data.getDate(), data.getMonth() + 1, data.getFullYear()]
   const dataConclusaoFormatada = `${dataConclusao[0]}/${dataConclusao[1]}/${dataConclusao[2]}`;
 
-  /*let dataHoje = `${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`;*/
-
-  /*const dataHoje = [data.getDate(), data.getMonth() + 1, data.getFullYear()]; */
-  /*const inicio = "14-07-2022";
-  const dataInicio = inicio.split('-');
-  console.log(dataInicio);*/
   const prazo = "20-07-2022";
   const dataPrazo = prazo.split('-');
   console.log(dataPrazo);
@@ -79,12 +119,7 @@ export default function TabelaTarefas() {
 
   console.log(TempoRestante());
 
-  /*
-  console.log(dataHoje);
-  console.log(dataFormatada);
-  console.log(dataTeste);
-
-  console.log(`${dataTeste - dataFormatada}`);*/
+  
 
   const setTempoRestante = (changeIcon === true) ? '-' : TempoRestante();
 
@@ -229,3 +264,4 @@ export default function TabelaTarefas() {
     
   );
 }
+*/

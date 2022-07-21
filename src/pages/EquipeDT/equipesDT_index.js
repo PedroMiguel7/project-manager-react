@@ -12,6 +12,7 @@ class equipeDT_index extends Component {
     }
     async componentDidMount() {
         var equipePath = window.location.pathname;
+        console.log(equipePath);
         
         var url = equipePath;
         const response = await api.get('/projetos/');

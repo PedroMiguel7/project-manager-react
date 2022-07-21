@@ -13,21 +13,25 @@ import Button from '@mui/material/Button';
 import NovaTarefa from '../../components/NovaTarefa';
 import HeaderTarefas from '../../components/HeaderTarefas';
 
-const pessoaPath = window.location.pathname;
-console.log(pessoaPath);
-
 class PessoasDT extends Component {
     state = {
         pessoa: [],
+        tarefas: [],
+        //projetos: [],
     }
     async componentDidMount() {
+        const pessoaPath = window.location.pathname;
+        console.log(pessoaPath);
+        
         const response = await api.get(pessoaPath);
 
+        
         this.setState({ pessoa: response.data });
     }
 
     render() {
         const { pessoa } = this.state;
+        const { tarefas} = this.state;
         //console.log(pessoa);
 
         return (
