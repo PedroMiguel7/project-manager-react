@@ -98,7 +98,7 @@ export default function BasicTabs() {
     </div>
         
       <TabPanel value={value} index={0}>
-        <TabelaTarefas />
+        <TabelaTarefas index={0} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div className='TabelaTarefas table-responsive'>

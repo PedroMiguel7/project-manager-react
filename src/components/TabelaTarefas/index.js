@@ -34,18 +34,61 @@ class TabelaTarefas extends Component {
       console.log(pessoaPath);
       
       const response = await api.get(pessoaPath+'/tasks');
+      console.log(response);
 
-      
       this.setState({ tarefas: response.data });
   }
 
   ImprimeTarefas = (props) => {
+    const qtdTarefas = props.tarefas;
 
+    const [changeIcon, setIcon] = React.useState(false);
+    const icon = (changeIcon === true) ? <TaskAltIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
+
+    if( qtdTarefas === null){
+        return(
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        );
+    } else{
+        return (
+          props.tarefas.map(t => (
+            <tr>
+              <td>
+                <IconButton /*onClick={handleCheck}*/>
+                  {icon}
+                </IconButton>
+              </td>
+              <td>
+                {t.descricao_task}
+              </td>
+              <td>
+                Alta
+              </td>
+              <td>
+                <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
+                data
+              </td>
+              <td>
+                01/01/2022
+              </td>
+              <td>
+                <TarefasMenu />
+              </td>
+            </tr>
+          ))
+        );
+    }
   }
 
   render() {
     const { tarefas} = this.state;
-    
+
     return (
       <>
         <div className='TabelaTarefas table-responsive'>
@@ -59,6 +102,8 @@ class TabelaTarefas extends Component {
                 <th scope="col">Início</th>
                 <th scope="col"></th>
               </tr>
+
+              <this.ImprimeTarefas tarefas={tarefas} />
             </tbody>
           </table>
         </div>
