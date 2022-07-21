@@ -75,6 +75,11 @@ class equipeDT_index extends Component {
             );
         }
     }
+
+    DeletaEquipe(id_equipe) {
+        api.delete("/equipes/"+id_equipe)
+    }
+
     render() {
         const { projetos } = this.state;
         const { equipe } = this.state;
@@ -156,7 +161,7 @@ class equipeDT_index extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="mt-3 ">aa</div>
+                                        <div className="mt-3 "><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaEquipe(equipe.id_equipe)}>EXCLUIR</Button></div>
                     </div>
                 </div>
                 </main>

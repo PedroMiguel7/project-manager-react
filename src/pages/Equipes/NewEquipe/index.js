@@ -8,10 +8,11 @@ import { alpha, styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
-import NewProject from '../../assets/icons/new.svg';
-import BasicSelect from '../Select/index.js';
+import NewProject from '../../../assets/icons/new.svg';
 import { useState } from 'react';
 import { PropaneSharp } from '@mui/icons-material';
+import api from "../../../api"
+import ExibirEquipes from "../../../components/CardEquipe/OneEquipe"
 
 const CssTextField = styled(TextField) ({
   '& .MuiOutlinedInput-root': {
@@ -42,20 +43,40 @@ const style = {
   width: '40vw'
 };
 
-export default function BasicModal() {
+export default function BasicModalEquipe() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-
   function cadastrarProjeto(e) {
     e.preventDefault()
-    console.log(`Projeto ${nome} com descrição ${descricao} foi cadastrado com sucesso`)
+    console.log(`Equipe ${nome} foi cadastrado com sucesso`)
   }
-  
 
   const [nome, setNome] = useState()
-  const [descricao, setDescricao] = useState()
+
+  function PostaEquipe(equipe) {
+    fetch("https://golang-posgre-brisanet.herokuapp.com/equipes/",
+    {method: 'POST', 
+    headers: {'Content-type': 'application/json'},
+    body: JSON.stringify(equipe)
+  })
+  .then(resposta => {
+    if(resposta.ok){
+        <ExibirEquipes/>
+    }else{
+        alert('Não foi possivel cadastrar equipe')
+    }
+  })
+  }
+
+  function submita (){
+    const equipe = {
+      nome_equipe : nome
+    }
+    PostaEquipe(equipe)
+    }
+
 
   return (
     <div>
@@ -70,12 +91,13 @@ export default function BasicModal() {
           <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose}/>
           <form onSubmit={cadastrarProjeto}>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-              Adicionar<span style={{color: '#F46E27'}}> Projeto</span>
+              Adicionar<span style={{color: '#F46E27'}}> Equipe</span>
             </Typography>
             <CssTextField 
               required 
               id="nome" 
               name='nome' 
+              value={nome}
               label="Nome"
               onChange={(e) => setNome(e.target.value)} 
               variant="outlined" 
@@ -91,27 +113,6 @@ export default function BasicModal() {
                   color: '#F46E27'
                 },
               }} />
-            <CssTextField
-              id="descricao"
-              name='descricao'
-              label="Descrição"
-              onChange={(e) => setDescricao(e.target.value)}
-              multiline
-              minRows={4}
-              maxRows={8}
-              margin="dense"
-              fullWidth className='textField'
-              sx={{
-                "& label": {
-                  color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                },
-              }} 
-            />
-            
-            <BasicSelect />
             <Divider light className='mt-3'/>
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
@@ -126,7 +127,7 @@ export default function BasicModal() {
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-              variant="contained" type="submit">Salvar</Button>
+              variant="contained" type="submit" onClick={submita}>Salvar</Button>
             </div>
           </form>
         </Box>

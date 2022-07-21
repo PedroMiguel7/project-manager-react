@@ -17,7 +17,7 @@ class CardBaixoHome extends Component {
     }
 
     DeletaProjeto = (id_projeto) => {
-        api.get("/projetos/"+id_projeto, {method: "DELETE"})
+        api.delete("/projetos/"+id_projeto, {method: "DELETE"})
         .then(resposta => {
             if(resposta.ok){
                 api.get("/projetos/")
