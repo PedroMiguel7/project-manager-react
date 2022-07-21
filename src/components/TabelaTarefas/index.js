@@ -13,17 +13,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-function createData(nome, tempo, inicio, conclusao) {
-  return { nome, tempo, inicio, conclusao };
-}
-
-const rows = [
-  createData('Tarefa Tal', '-', '01/01/2022', '31/01/2022'),
-  createData('Tarefa Tal', '-', '01/01/2022', '31/01/2022'),
-  createData('Tarefa Tal', '6 dias', '01/01/2022', '-'),
-  createData('Tarefa Tal', '2 dias', '01/01/2022', '-'),
-  createData('Tarefa Tal', '15 horas', '01/01/2022', '-'),
-];
 
 class TabelaTarefas extends Component {
   state = {
@@ -47,13 +36,9 @@ class TabelaTarefas extends Component {
 
     if( qtdTarefas === null){
         return(
-            <tr>
-                <th></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+          <tr>
+            <p>Sem tarefas em andamento</p>
+          </tr>
         );
     } else{
         return (
