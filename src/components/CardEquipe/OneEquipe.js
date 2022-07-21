@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 //import Rout from "./routes";
 import api from '../../api';
 //import PessoasEquipe from "./PeopleEquipe";
 import BuscarMembros from "./PeopleEquipe";
+
+
 
 class ExibirEquipes extends Component {
     state = {
@@ -15,6 +17,7 @@ class ExibirEquipes extends Component {
         this.setState({ equipes: response.data})
     }
 
+    
     render() {
         const { equipes } = this.state;
 
