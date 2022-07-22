@@ -35,9 +35,9 @@ class equipeDT_index extends Component {
             }
             fetchEquipe()
         });
-        let totalMembros = pessoas.length;
-        if(totalMembros === null){
-            totalMembros = 0;
+        let totalMembros = 0;
+        if(pessoas === null){
+            totalMembros = pessoas.length;
         }
         return (
             totalMembros
