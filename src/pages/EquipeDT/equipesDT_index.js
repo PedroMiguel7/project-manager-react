@@ -160,7 +160,7 @@ class equipeDT_index extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="mt-3 "><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaEquipe(equipe.id_equipe)}>EXCLUIR</Button></div>
+                                        <div className="mt-3 "><Link to={'/equipes/'}><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaEquipe(equipe.id_equipe)}>EXCLUIR</Button></Link></div>
                     </div>
                 </div>
                 </main>
