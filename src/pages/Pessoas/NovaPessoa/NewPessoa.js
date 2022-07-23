@@ -75,12 +75,15 @@ export default function BasicModalPessoa() {
   }
   
   const [nome, setNome] = useState("")
-  const [funcao, setfuncao] = useState("")
-  const [equipe, setEquipe] = React.useState();
+  const [funcao, setFuncao] = useState("")
+  const [equipe, setEquipe] = React.useState()
 
   const handleChange = (event) => {
     setEquipe(event.target.value);
-};
+    };
+    const handleChangeFun = (evento) => {
+        setFuncao(evento.target.value);
+    };
 
   function PostaPessoa() {
     api.post("/pessoas/",
@@ -125,7 +128,35 @@ export default function BasicModalPessoa() {
                   color: '#F46E27'
                 },
               }} />
-            
+
+            <Box sx={{ minWidth: 120 }}>
+            <FormControl required fullWidth margin="dense" sx={{
+                "& label": {
+                    color: '#F4F5FA'
+                },
+                "& label.Mui-focused": {
+                    color: '#F46E27'
+                }
+            }}
+            >
+                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Função</InputLabel>
+                <CssSelect
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={funcao}
+                    label="Age"
+                    onChange={handleChangeFun}
+                    sx={{
+                        svg: { color: '#F4F5FA' }
+                    }}
+                >
+                    <MenuItem value={1}>Back-End</MenuItem>
+                    <MenuItem value={2}>Front-End</MenuItem>
+                    <MenuItem value={3}>Tester</MenuItem>
+                    <MenuItem value={4}>Gerente de Projeto</MenuItem>
+                </CssSelect>
+            </FormControl>
+        </Box>
             
             <Box sx={{ minWidth: 120 }}>
             <FormControl required fullWidth margin="dense" sx={{
