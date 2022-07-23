@@ -10,8 +10,13 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import NewProject from '../../assets/icons/new.svg';
 import BasicSelect from '../Select/index.js';
+import InputLabel from '@mui/material/InputLabel';
 import { useState } from 'react';
 import { PropaneSharp } from '@mui/icons-material';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+
 
 const CssTextField = styled(TextField) ({
   '& .MuiOutlinedInput-root': {
@@ -28,6 +33,22 @@ const CssTextField = styled(TextField) ({
     },
   },
 })
+
+const CssSelect = styled(Select)({
+        '& .MuiSelect-outlined': {
+            color: "#F4F5FA",
+        }, '& fieldset': {
+            borderColor: '#F4F5FA',
+            borderRadius: 5,
+        },
+        '&:focus': {
+            backgroundColor: 'yellow'
+        },
+        '&:hover': {
+            borderColor: '#F46E27',
+            color: '#F46E27',
+        },
+    })
 
 const style = {
   position: 'absolute',
@@ -56,6 +77,35 @@ export default function BasicModal() {
 
   const [nome, setNome] = useState()
   const [descricao, setDescricao] = useState()
+  const [equipe, setEquipe] = React.useState('');
+
+  const handleChange = (event) => {
+    setEquipe(event.target.value);
+};
+
+  function PostaProjeto(projeto) {
+    fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/",
+    {method: 'POST', 
+    headers: {'Content-type': 'application/json'},
+    body: JSON.stringify(projeto)
+  })
+  .then(resposta => {
+    if(resposta.ok){
+      
+    }else{
+        alert('Não foi possivel cadastrar equipe')
+    }
+  })
+  }
+
+  function submita (){
+    const projeto = {
+      nome_projeto : nome,
+      descricao_projeto : descricao,
+      id_equipe: equipe,
+    }
+    PostaProjeto(projeto)
+    }
 
   return (
     <div>
@@ -111,7 +161,33 @@ export default function BasicModal() {
               }} 
             />
             
-            <BasicSelect />
+            <Box sx={{ minWidth: 120 }}>
+            <FormControl required fullWidth margin="dense" sx={{
+                "& label": {
+                    color: '#F4F5FA'
+                },
+                "& label.Mui-focused": {
+                    color: '#F46E27'
+                }
+            }}
+            >
+                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Equipe</InputLabel>
+                <CssSelect
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={equipe}
+                    label="Age"
+                    onChange={handleChange}
+                    sx={{
+                        svg: { color: '#F4F5FA' }
+                    }}
+                >
+                    <MenuItem value={1}>Komanda</MenuItem>
+                    <MenuItem value={2}>Cariri Inovação</MenuItem>
+                    <MenuItem value={3}>Cariri Teste</MenuItem>
+                </CssSelect>
+            </FormControl>
+        </Box>
             <Divider light className='mt-3'/>
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
@@ -126,7 +202,7 @@ export default function BasicModal() {
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-              variant="contained" type="submit">Salvar</Button>
+              variant="contained" type="submit" onClick={submita}>Salvar</Button>
             </div>
           </form>
         </Box>
