@@ -90,7 +90,7 @@ export default function BasicModalPessoa() {
     {
       nome_pessoa : nome,
       funcao_pessoa : funcao,
-      equipe_id: equipe,
+      equipeId: equipe,
   })
   }
 
