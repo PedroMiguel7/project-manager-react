@@ -8,8 +8,13 @@ import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import NewProject from '../../../assets/icons/new.svg';
+import InputLabel from '@mui/material/InputLabel';
 import { useState } from 'react';
-import api from "../../../api"
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import api from "../../../api";
+
 
 const CssTextField = styled(TextField) ({
   '& .MuiOutlinedInput-root': {
@@ -27,6 +32,22 @@ const CssTextField = styled(TextField) ({
   },
 })
 
+const CssSelect = styled(Select)({
+        '& .MuiSelect-outlined': {
+            color: "#F4F5FA",
+        }, '& fieldset': {
+            borderColor: '#F4F5FA',
+            borderRadius: 5,
+        },
+        '&:focus': {
+            backgroundColor: 'yellow'
+        },
+        '&:hover': {
+            borderColor: '#F46E27',
+            color: '#F46E27',
+        },
+    })
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -40,33 +61,34 @@ const style = {
   width: '40vw'
 };
 
-export default function BasicModalEquipe() {
+export default function BasicModalPessoas() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+
   function cadastrarProjeto(e) {
     e.preventDefault()
-    console.log(`Equipe ${nome} foi cadastrado com sucesso`)
+    console.log(`Projeto ${nome} com descrição ${descricao} foi cadastrado com sucesso`)
   }
+  
 
   const [nome, setNome] = useState("")
+  const [descricao, setDescricao] = useState("")
+  const [equipe, setEquipe] = React.useState();
 
-  function PostaEquipe(equipe) {
-    api.post("/equipes/",
+  const handleChange = (event) => {
+    setEquipe(event.target.value);
+};
+
+  function PostaProjeto() {
+    api.post("/projetos/",
     {
-      nome_equipe : nome,
-  })
-  .then(resposta => {
-    if(resposta.ok){
-
-    }else{
-        alert('Não foi possivel cadastrar equipe')
-    }
+      nome_projeto : nome,
+      descricao_projeto : descricao,
+      equipe_id: equipe,
   })
   }
-
-
 
   return (
     <div>
@@ -81,13 +103,12 @@ export default function BasicModalEquipe() {
           <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose}/>
           <form onSubmit={cadastrarProjeto}>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-              Adicionar<span style={{color: '#F46E27'}}> Equipe</span>
+              Adicionar<span style={{color: '#F46E27'}}> Projeto</span>
             </Typography>
             <CssTextField 
               required 
               id="nome" 
               name='nome' 
-              value={nome}
               label="Nome"
               onChange={(e) => setNome(e.target.value)} 
               variant="outlined" 
@@ -103,6 +124,53 @@ export default function BasicModalEquipe() {
                   color: '#F46E27'
                 },
               }} />
+            <CssTextField
+              id="descricao"
+              name='descricao'
+              label="Descrição"
+              onChange={(e) => setDescricao(e.target.value)}
+              multiline
+              minRows={4}
+              maxRows={8}
+              margin="dense"
+              fullWidth className='textField'
+              sx={{
+                "& label": {
+                  color: '#F4F5FA'
+                },
+                "& label.Mui-focused": {
+                  color: '#F46E27'
+                },
+              }} 
+            />
+            
+            <Box sx={{ minWidth: 120 }}>
+            <FormControl required fullWidth margin="dense" sx={{
+                "& label": {
+                    color: '#F4F5FA'
+                },
+                "& label.Mui-focused": {
+                    color: '#F46E27'
+                }
+            }}
+            >
+                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Equipe</InputLabel>
+                <CssSelect
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={equipe}
+                    label="Age"
+                    onChange={handleChange}
+                    sx={{
+                        svg: { color: '#F4F5FA' }
+                    }}
+                >
+                    <MenuItem value={1}>Komanda</MenuItem>
+                    <MenuItem value={2}>Cariri Inovação</MenuItem>
+                    <MenuItem value={3}>Cariri Teste</MenuItem>
+                </CssSelect>
+            </FormControl>
+        </Box>
             <Divider light className='mt-3'/>
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
@@ -117,7 +185,7 @@ export default function BasicModalEquipe() {
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-              variant="contained" type="submit" onClick={PostaEquipe}>Salvar</Button>
+              variant="contained" type="submit" onClick={PostaProjeto}>Salvar</Button>
             </div>
           </form>
         </Box>
