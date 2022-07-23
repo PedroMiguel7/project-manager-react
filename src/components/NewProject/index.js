@@ -16,6 +16,7 @@ import { PropaneSharp } from '@mui/icons-material';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import api from "../../api"
 
 
 const CssTextField = styled(TextField) ({
@@ -75,37 +76,22 @@ export default function BasicModal() {
   }
   
 
-  const [nome, setNome] = useState()
-  const [descricao, setDescricao] = useState()
-  const [equipe, setEquipe] = React.useState('');
+  const [nome, setNome] = useState("")
+  const [descricao, setDescricao] = useState("")
+  const [equipe, setEquipe] = React.useState();
 
   const handleChange = (event) => {
     setEquipe(event.target.value);
 };
 
-  function PostaProjeto(projeto) {
-    fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/",
-    {method: 'POST', 
-    headers: {'Content-type': 'application/json'},
-    body: JSON.stringify(projeto)
-  })
-  .then(resposta => {
-    if(resposta.ok){
-      
-    }else{
-        alert('Não foi possivel cadastrar equipe')
-    }
-  })
-  }
-
-  function submita (){
-    const projeto = {
+  function PostaProjeto() {
+    api.post("https://golang-posgre-brisanet.herokuapp.com/projetos/",
+    {
       nome_projeto : nome,
       descricao_projeto : descricao,
-      id_equipe: equipe,
-    }
-    PostaProjeto(projeto)
-    }
+      equipe_id: equipe,
+  })
+  }
 
   return (
     <div>
@@ -202,7 +188,7 @@ export default function BasicModal() {
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-              variant="contained" type="submit" onClick={submita}>Salvar</Button>
+              variant="contained" type="submit" onClick={PostaProjeto}>Salvar</Button>
             </div>
           </form>
         </Box>
