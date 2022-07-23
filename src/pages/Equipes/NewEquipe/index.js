@@ -53,29 +53,22 @@ export default function BasicModalEquipe() {
     console.log(`Equipe ${nome} foi cadastrado com sucesso`)
   }
 
-  const [nome, setNome] = useState()
+  const [nome, setNome] = useState("")
 
   function PostaEquipe(equipe) {
-    fetch("https://golang-posgre-brisanet.herokuapp.com/equipes/",
-    {method: 'POST', 
-    headers: {'Content-type': 'application/json'},
-    body: JSON.stringify(equipe)
+    api.post("/equipes/",
+    {
+      nome_equipe : nome,
   })
   .then(resposta => {
     if(resposta.ok){
-        <ExibirEquipes/>
+      
     }else{
         alert('Não foi possivel cadastrar equipe')
     }
   })
   }
 
-  function submita (){
-    const equipe = {
-      nome_equipe : nome
-    }
-    PostaEquipe(equipe)
-    }
 
 
   return (
@@ -127,7 +120,7 @@ export default function BasicModalEquipe() {
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-              variant="contained" type="submit" onClick={submita}>Salvar</Button>
+              variant="contained" type="submit" onClick={PostaEquipe}>Salvar</Button>
             </div>
           </form>
         </Box>

@@ -85,7 +85,7 @@ export default function BasicModal() {
 };
 
   function PostaProjeto() {
-    api.post("https://golang-posgre-brisanet.herokuapp.com/projetos/",
+    api.post("/projetos/",
     {
       nome_projeto : nome,
       descricao_projeto : descricao,
