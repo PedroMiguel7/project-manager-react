@@ -1,6 +1,6 @@
 import Header from "../../components/Header"
 import filter from '../../assets/icons/filter.svg'
-import BasicModal from '../../components/NewProject'
+import BasicModalPessoa from '../Pessoas/NovaPessoa/NewPessoa'
 import Card from "../../components/Card"
 import CardPessoas from "../../components/Card/CardPessoas"
 
@@ -15,7 +15,7 @@ function Pessoas() {
                         <input type="" name="txt-show" id="txt-show" size="1" />
                     </div>
                     <div className="RightOptions d-flex justify-content-end align-items-center flex-wrap gap-3 col-lg-2 offset-lg-8 offset-md-8 mt-sm-2 mt-2">
-                        <BasicModal />
+                        <BasicModalPessoa />
 
                         <select className="ps-1" name="order-select" id="order-select">
                             <option value="crescente">A - Z</option>
