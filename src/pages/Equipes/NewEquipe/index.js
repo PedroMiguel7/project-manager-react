@@ -2,14 +2,17 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Fade from '@mui/material/Fade';
 import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import NewProject from '../../../assets/icons/new.svg';
 import { useState } from 'react';
+import { PropaneSharp } from '@mui/icons-material';
 import api from "../../../api"
+import ExibirEquipes from "../../../components/CardEquipe/OneEquipe"
 
 const CssTextField = styled(TextField) ({
   '& .MuiOutlinedInput-root': {
@@ -59,7 +62,7 @@ export default function BasicModalEquipe() {
   })
   .then(resposta => {
     if(resposta.ok){
-
+      
     }else{
         alert('Não foi possivel cadastrar equipe')
     }
