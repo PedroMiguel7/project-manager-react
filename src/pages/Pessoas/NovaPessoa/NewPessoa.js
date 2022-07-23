@@ -74,13 +74,14 @@ export default function BasicModalPessoa() {
     console.log(`Pessoa ${nome} com funcao ${funcao} foi cadastrado com sucesso`)
   }
   
-  const [nome, setNome] = useState("")
-  const [funcao, setFuncao] = useState("")
-  const [equipe, setEquipe] = React.useState()
+  const [nome, setNome] = useState("");
+  const [funcao, setFuncao] = React.useState("");
+  const [equipe, setEquipe] = React.useState();
 
   const handleChange = (event) => {
     setEquipe(event.target.value);
     };
+    
     const handleChangeFun = (evento) => {
         setFuncao(evento.target.value);
     };
