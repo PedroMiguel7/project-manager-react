@@ -6,6 +6,7 @@ import api from '../../api';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 
+
 const projetoPath = window.location.pathname;
 
 class ProjetoDT extends Component {
@@ -237,7 +238,7 @@ class ProjetoDT extends Component {
                             </div>                        
                         </div>
     
-                        <div className="row d-flex gap-4">
+                        <div className="row d-flex gap-4" style={{height: "400px"}}>
                             <div className="CardDT col">
                                 <div className="LeftOptions col-lg-2 mt-sm-2">
                                     <span className="me-2 ms-4 mt-3">Equipe</span>
@@ -255,6 +256,11 @@ class ProjetoDT extends Component {
                             <tbody className="">
                                 <this.MostrarEquipe equipe_id = {p.equipe_id}/>
                             </tbody>
+                            <tfoot> 
+                                <tr>
+
+                                </tr>
+                            </tfoot>
                         </table>
                             </div>
                             <div className="CardDT col">
@@ -272,9 +278,14 @@ class ProjetoDT extends Component {
                                     <th scope="col" style={{ width: '5%' }}></th>
                                 </tr>
                             </thead>
-                            <tbody className="">
+                            <tbody className="" style={{overflowy: 'auto' }}>
                                 <this.MostraTarefas tarefasPJ = {tarefasPJ}/>
                             </tbody>
+                            <tfoot> 
+                                <tr>
+                                    
+                                </tr>
+                            </tfoot>
                         </table>
                             </div>
                         </div>
