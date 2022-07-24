@@ -73,7 +73,7 @@ class ProjetoDT extends Component {
                         <th scope="row">{p.id_task}</th>
                         <td className="">{p.descricao_task}</td>
                         <td>{p.nome_pessoa}</td>
-                        <td></td>
+                        <td>{p.prioridade}</td>
                         <td></td>
                     </tr>
                 ))
@@ -90,10 +90,19 @@ class ProjetoDT extends Component {
             )
         }
     }
-    MostrarEquipe = (equipe) =>{
-        if(equipe !== null){
+    MostrarEquipe = (props) =>{
+        const [pessoas, setPessoas] = useState([]);
+        const url = '/equipes/' + props.equipe_id + '/pessoas';
+        useEffect(() => {
+            const fetchEquipe = async () => {
+                const response2 = await api.get(url)
+                setPessoas(response2.data)
+            }
+            fetchEquipe()
+        });
+        if(pessoas !== null){
             return(
-                equipe.map(p => (
+                pessoas.map(p => (
                     <tr key={p.id_pessoa}>
                         <th scope="row">{p.id_pessoa}</th>
                         <td className="">{p.nome_pessoa}</td>
@@ -228,6 +237,9 @@ class ProjetoDT extends Component {
     
                         <div className="row d-flex gap-4">
                             <div className="CardDT col">
+                                <div className="LeftOptions col-lg-2 mt-sm-2">
+                                    <span className="me-2 ms-4 mt-3">Equipe</span>
+                                </div>
                             <table class="table" style={{ color: 'white' }}>
                             <thead>
                                 <tr className="LeftOptions">
@@ -239,23 +251,26 @@ class ProjetoDT extends Component {
                                 </tr>
                             </thead>
                             <tbody className="">
-                                
+                                <this.MostrarEquipe equipe_id = {p.equipe_id}/>
                             </tbody>
                         </table>
                             </div>
                             <div className="CardDT col">
+                                <div className="LeftOptions col-lg-2 mt-sm-2">
+                                    <span className="me-2 ms-4 mt-3">Tarefas</span>
+                                </div>
                             <table class="table" style={{ color: 'white' }}>
                             <thead>
                                 <tr className="LeftOptions">
                                     <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
-                                    <th scope="col" style={{ width: '20%' }}>Descricao</th>
-                                    <th scope="col" style={{ width: '35%' }}>Pessoa</th>
-                                    <th scope="col" style={{ width: '40%' }}>Prioridade</th>
+                                    <th scope="col" style={{ width: '30%' }}>Descricao</th>
+                                    <th scope="col" style={{ width: '20%' }}>Pessoa</th>
+                                    <th scope="col" style={{ width: '20%' }}>Prioridade</th>
                                     <th scope="col" style={{ width: '5%' }}></th>
                                 </tr>
                             </thead>
                             <tbody className="">
-                                
+                                <this.MostraTarefas tarefasPJ = {tarefasPJ}/>
                             </tbody>
                         </table>
                             </div>
