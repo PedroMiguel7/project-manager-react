@@ -74,6 +74,7 @@ class ProjetoDT extends Component {
                         <td className="">{p.descricao_task}</td>
                         <td>{p.nome_pessoa}</td>
                         <td>{p.prioridade}</td>
+                        <td>{p.status}</td>
                         <td></td>
                     </tr>
                 ))
@@ -82,6 +83,7 @@ class ProjetoDT extends Component {
             return(
                 <tr>
                     <th></th>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -265,7 +267,8 @@ class ProjetoDT extends Component {
                                     <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
                                     <th scope="col" style={{ width: '30%' }}>Descricao</th>
                                     <th scope="col" style={{ width: '20%' }}>Pessoa</th>
-                                    <th scope="col" style={{ width: '20%' }}>Prioridade</th>
+                                    <th scope="col" style={{ width: '10%' }}>Prioridade</th>
+                                    <th scope="col" style={{ width: '20%' }}>status</th>
                                     <th scope="col" style={{ width: '5%' }}></th>
                                 </tr>
                             </thead>
