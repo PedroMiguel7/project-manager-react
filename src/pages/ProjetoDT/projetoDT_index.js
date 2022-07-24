@@ -3,10 +3,10 @@ import CircularProgressWithLabel from '../../components/CircularProgressWithLabe
 import Table from "../../components/Table";
 import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
+import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
 
 const projetoPath = window.location.pathname;
-
-
 
 class ProjetoDT extends Component {
     state = {
@@ -32,7 +32,6 @@ class ProjetoDT extends Component {
             }
             fetchEquipe()
         });
-        console.log(setPessoas)
         let totalMembros = 0;
         if(pessoas !== null){
             totalMembros = pessoas.length;
@@ -63,6 +62,61 @@ class ProjetoDT extends Component {
                     <li>{f.nome_pessoa}</li>
                 ))
             );
+        }
+    }
+
+    MostraTarefas = (props) =>{
+        if(props.tarefasPJ !== null){
+            return(
+                props.tarefasPJ.map(p => (
+                    <tr key={p.id_task}>
+                        <th scope="row">{p.id_task}</th>
+                        <td className="">{p.descricao_task}</td>
+                        <td>{p.nome_pessoa}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                ))
+            )
+        }else{
+            return(
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            )
+        }
+    }
+    MostrarEquipe = (equipe) =>{
+        if(equipe !== null){
+            return(
+                equipe.map(p => (
+                    <tr key={p.id_pessoa}>
+                        <th scope="row">{p.id_pessoa}</th>
+                        <td className="">{p.nome_pessoa}</td>
+                        <td>{p.funcao_pessoa}</td>
+                        <td></td>
+                        <td><Link to={'/pessoas/' + p.id_pessoa} className="text-reset text-decoration-none"><Button style={{
+                            color: "#F4F5FA",
+                            background: "#F46E27"
+                        }}
+                        variant="contained" >DETALHAR</Button></Link></td>
+                    </tr>
+                ))
+            )
+        }else{
+            return(
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            )
         }
     }
     
@@ -174,10 +228,36 @@ class ProjetoDT extends Component {
     
                         <div className="row d-flex gap-4">
                             <div className="CardDT col">
-                                <Table />
+                            <table class="table" style={{ color: 'white' }}>
+                            <thead>
+                                <tr className="LeftOptions">
+                                    <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
+                                    <th scope="col" style={{ width: '20%' }}>Nome</th>
+                                    <th scope="col" style={{ width: '35%' }}>função</th>
+                                    <th scope="col" style={{ width: '40%' }}>ID - Tarefas</th>
+                                    <th scope="col" style={{ width: '5%' }}></th>
+                                </tr>
+                            </thead>
+                            <tbody className="">
+                                
+                            </tbody>
+                        </table>
                             </div>
                             <div className="CardDT col">
-                                <Table />
+                            <table class="table" style={{ color: 'white' }}>
+                            <thead>
+                                <tr className="LeftOptions">
+                                    <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
+                                    <th scope="col" style={{ width: '20%' }}>Descricao</th>
+                                    <th scope="col" style={{ width: '35%' }}>Pessoa</th>
+                                    <th scope="col" style={{ width: '40%' }}>Prioridade</th>
+                                    <th scope="col" style={{ width: '5%' }}></th>
+                                </tr>
+                            </thead>
+                            <tbody className="">
+                                
+                            </tbody>
+                        </table>
                             </div>
                         </div>
                            
