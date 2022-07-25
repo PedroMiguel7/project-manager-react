@@ -7,9 +7,6 @@ import aim from '../../assets/icons/aim.svg';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import CustomizedAccordion from "../../components/CustomizedAccordion";
-import TabelaTarefas from "../../components/TabelaTarefas";
-import AddIcon from '@mui/icons-material/Add';
-import Button from '@mui/material/Button';
 import NovaTarefa from '../../components/NovaTarefa';
 import HeaderTarefas from '../../components/HeaderTarefas';
 

@@ -1,20 +1,14 @@
 import * as React from 'react';
 import { Component } from "react";
-import api from '../../api';
+import api from '../../../api';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import TarefasMenu from '../TarefasMenu';
+import TarefasMenu from '../../TarefasMenu';
 import IconButton from '@mui/material/IconButton';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogTitle from '@mui/material/DialogTitle';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
 
 
-class TabelaTarefas extends Component {
+class TarefasConcluidas extends Component {
   state = {
     tarefas: [],
   }
@@ -39,7 +33,7 @@ class TabelaTarefas extends Component {
             <p>Sem tarefas em andamento</p>
           </tr>
         );
-    } else{
+    } else {
         function Prioridade(prioridade) {
           if (prioridade === 0) {
             return "Baixa"
@@ -73,38 +67,42 @@ class TabelaTarefas extends Component {
           return dataInicioFormatada;
         }
 
-        return (
-          props.tarefas.map(t => (
-            <tr>
-              <td>
-                <IconButton /*onClick={handleCheck}*/>
-                  {icon}
-                </IconButton>
-              </td>
-              <td>
-                {t.descricao_task}
-              </td>
-              <td>
-                {Prioridade(t.prioridade)}
-              </td>
-              <td>
-                <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
-                {TempoRestante(t.data_criacao, t.prazo_entrega)}
-              </td>
-              <td>
-                {Inicio(t.data_criacao)}
-              </td>
-              <td>
-                <TarefasMenu />
-              </td>
-            </tr>
-          ))
-        );
+        props.tarefas.map(t => {
+          if (t.status === "Em Andamento") {  
+            console.log(t.status)
+            return (
+              <tr>
+                <td>
+                  <IconButton /*onClick={handleCheck}*/>
+                    {icon}
+                  </IconButton>
+                </td>
+                <td>
+                  {t.descricao_task}
+                </td>
+                <td>
+                  {Prioridade(t.prioridade)}
+                </td>
+                <td>
+                  <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
+                  {TempoRestante(t.data_criacao, t.prazo_entrega)}
+                </td>
+                <td>
+                  {Inicio(t.data_criacao)}
+                </td>
+                <td>
+                  <TarefasMenu />
+                </td>
+              </tr>
+            )
+          }
+        });
+        
     }
   }
 
   render() {
-    const { tarefas} = this.state;
+    const { tarefas } = this.state;
 
     return (
       <>
@@ -115,8 +113,8 @@ class TabelaTarefas extends Component {
                 <th scope="col"></th>
                 <th scope="col">Nome</th>
                 <th scope="col">Prioridade</th>
-                <th scope="col">Tempo Restante</th>
                 <th scope="col">Início</th>
+                <th scope="col">Conclusão</th>
                 <th scope="col"></th>
               </tr>
 
@@ -129,7 +127,7 @@ class TabelaTarefas extends Component {
   }
 }
 
-export default TabelaTarefas;
+export default TarefasConcluidas;
 
 /*export default function TabelaTarefas() {
   const [openAlert, setOpenAlert] = React.useState(false);

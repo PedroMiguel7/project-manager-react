@@ -4,7 +4,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import TabelaTarefas from '../TabelaTarefas';
+import TarefasAndamento from '../TabelaTarefas/TarefasAndamento';
+import TarefasConcluidas from '../TabelaTarefas/TarefasConcluidas';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -98,23 +99,10 @@ export default function BasicTabs() {
     </div>
         
       <TabPanel value={value} index={0}>
-        <TabelaTarefas index={0} />
+        <TarefasAndamento index={0} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div className='TabelaTarefas table-responsive'>
-          <table className="table align-middle text-center ">
-            <tbody>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Nome</th>
-                <th scope="col">Prioridade</th>
-                <th scope="col">Início</th>
-                <th scope="col">Conclusão</th>
-                <th scope="col"></th>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <TarefasConcluidas index={1}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <div className='TabelaTarefas table-responsive'>
