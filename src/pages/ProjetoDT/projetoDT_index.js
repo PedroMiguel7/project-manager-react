@@ -5,6 +5,7 @@ import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
+import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
 
 
 const projetoPath = window.location.pathname;
@@ -283,7 +284,7 @@ class ProjetoDT extends Component {
                             </tbody>
                             <tfoot> 
                                 <tr>
-                                    
+                                    <BasicModalTarefa id_projeto ={p.id_projeto}/>
                                 </tr>
                             </tfoot>
                         </table>
