@@ -239,7 +239,7 @@ class ProjetoDT extends Component {
                             </div>                        
                         </div>
     
-                        <div className="row d-flex gap-4" style={{height: "400px"}}>
+                        <div className="row d-flex gap-4" style={{maxHeight: "400px"}}>
                             <div className="CardDT col">
                                 <div className="LeftOptions col-lg-2 mt-sm-2">
                                     <span className="me-2 ms-4 mt-3">Equipe</span>
@@ -279,7 +279,7 @@ class ProjetoDT extends Component {
                                     <th scope="col" style={{ width: '5%' }}></th>
                                 </tr>
                             </thead>
-                            <tbody className="" style={{overflowy: 'auto' }}>
+                            <tbody className="" style={{maxHeight: "400px" , overflowy: 'auto' }}>
                                 <this.MostraTarefas tarefasPJ = {tarefasPJ}/>
                             </tbody>
                             <tfoot> 

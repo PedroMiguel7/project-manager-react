@@ -69,12 +69,13 @@ export default function BasicModalTarefa(props) {
 
     function cadastrarProjeto(e) {
         e.preventDefault()
-        console.log(`Tarefa ${nome} para ${pessoa} com prioridade ${prioridade} foi cadastrada com sucesso no projeto ${props.id_projeto}`)
+        console.log(`Tarefa ${nome} para ${pessoa} com prioridade ${prioridade} foi cadastrada com sucesso`)
+        console.log(prazoEntrega)
     }
 
     const [nome, setNome] = useState("");
     const [pessoa, setPessoa] = React.useState();
-    const [prazoEntrega, setPrazoEntrega] = useState(Date);
+    const [prazoEntrega, setPrazoEntrega] = useState();
     const [prioridade, setPrioridade] = React.useState();
 
 
@@ -93,7 +94,7 @@ export default function BasicModalTarefa(props) {
                 descricao_task: nome,
                 pessoa_id: pessoa,
                 projeto_id: props.id_projeto,
-                prazo_entrega: prazoEntrega,
+                prazo_entrega: parseInt(prazoEntrega),
                 prioridade: prioridade,
             })
     }
