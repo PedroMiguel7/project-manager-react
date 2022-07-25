@@ -30,6 +30,7 @@ class TabelaTarefas extends Component {
 
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
+    console.log((qtdTarefas));
 
     const [changeIcon, setIcon] = React.useState(false);
     const icon = (changeIcon === true) ? <TaskAltIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
@@ -41,6 +42,15 @@ class TabelaTarefas extends Component {
           </tr>
         );
     } else{
+        function Teste(prioridade) {
+          if (prioridade === 0) {
+            return "Baixa"
+          } else if (prioridade == 1) {
+            return "Média"
+          } else if (prioridade === 2) {
+            return "Alta"
+          }
+        }
         return (
           props.tarefas.map(t => (
             <tr>
@@ -53,7 +63,7 @@ class TabelaTarefas extends Component {
                 {t.descricao_task}
               </td>
               <td>
-                Alta
+                {Teste(t.prioridade)}
               </td>
               <td>
                 <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
