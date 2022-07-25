@@ -47,73 +47,52 @@ const style = {
   width: '40vw'
 };
 
+const CssSelect = styled(Select)({
+  '& .MuiSelect-outlined': {
+    color: "#F4F5FA",
+  }, '& fieldset': {
+    borderColor: '#F4F5FA',
+    borderRadius: 5,
+  },
+  '&:focus': {
+    backgroundColor: 'yellow'
+  },
+  '&:hover': {
+    borderColor: '#F46E27',
+    color: '#F46E27',
+  },
+})
+
+
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [equipes, setEquipes] = useState([]);
-  const url = '/equipes/';
-  useEffect(() => {
-    const fetchEquipe = async () => {
-      const response = await api.get(url)
-      setEquipes(response.data)
-    }
-    fetchEquipe()
-  });
-
-  const [tarefas, setTarefa] = React.useState([]);
-
-  const handleChange = (event) => {
-    setTarefa(event.target.value);
-  };
-
-  const CssSelect = styled(Select)({
-    '& .MuiSelect-outlined': {
-      color: "#F4F5FA",
-    }, '& fieldset': {
-      borderColor: '#F4F5FA',
-      borderRadius: 5,
-    },
-    '&:focus': {
-      backgroundColor: 'yellow'
-    },
-    '&:hover': {
-      borderColor: '#F46E27',
-      color: '#F46E27',
-    },
-  })
+  const pessoaPath = window.location.pathname;
+  const PathArray = pessoaPath.split('/');
+  const idPessoa = parseInt(PathArray[2]);
 
   function cadastrarTarefa(e) {
     e.preventDefault()
-    console.log(`Tarefa ${nome} com descrição foi cadastrada com sucesso`)
+    console.log(`Tarefa com descrição ${descricao} e prioridade {prioridade} foi cadastrada com sucesso`)
   }
+  
+  const [descricao, setDescricao] = useState("")
+  const [id_pessoa, setIdPessoa] = React.useState(idPessoa);
+  const [status, setStatus] = React.useState("Em Andamento");
+  const [prioridade, setPrioridade] = React.useState(0);
 
+  const handleChange = (event) => {
+    setPrioridade(event.target.value);
+};
 
-  const [nome, setNome] = useState();
-  const [inicio, setInicio] = useState();
-  const [tempo, setTempo] = useState();
-
-  function AtualizaNome (e) {
-    this.SetState(
-      {
-        nome: e.target.value
-      }
-    )
-  }
-  function AtualizaInicio (e) {
-    this.SetState(
-      {
-        inicio: e.target.value
-      }
-    )
-  }
-  function AtualizaTempo (e) {
-    this.SetState(
-      {
-        tempo: e.target.value
-      }
-    )
+  function PostaTarefa() {
+    api.post("/tasks/",
+    {
+      pessoa_id: idPessoa,
+      descricao_task : descricao,
+  })
   }
 
   return (
@@ -140,33 +119,15 @@ export default function BasicModal() {
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
               Adicionar<span style={{ color: '#F46E27' }}> Tarefa</span>
             </Typography>
-            <CssTextField
-              required
-              id="nome"
-              name='nome'
-              label="Nome"
-              onChange={(e) => setNome(e.target.value)}
-              variant="outlined"
-              margin="dense"
-              color='primary'
-              fullWidth
-              className='textField'
-              sx={{
-                "& label": {
-                  color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                },
-              }} />
+        
             <CssTextField
               id="descricao"
               name='descricao'
               label="Descrição"
               //onChange={(e) => setDescricao(e.target.value)}
               multiline
-              minRows={4}
-              maxRows={8}
+              minRows={1}
+              maxRows={2}
               margin="dense"
               fullWidth className='textField'
               sx={{
@@ -180,29 +141,31 @@ export default function BasicModal() {
             />
 
             <Box sx={{ minWidth: 120 }}>
-              <FormControl required fullWidth margin="dense" sx={{
+            <FormControl required fullWidth margin="dense" sx={{
                 "& label": {
-                  color: '#F4F5FA'
+                    color: '#F4F5FA'
                 },
                 "& label.Mui-focused": {
-                  color: '#F46E27'
+                    color: '#F46E27'
                 }
-              }}
-              >
-                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Equipe</InputLabel>
+            }}
+            >
+                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Prioridade</InputLabel>
                 <CssSelect
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  //value={equipe}
-                  label="Age"
-                  onChange={handleChange}
-                  sx={{
-                    svg: { color: '#F4F5FA' }
-                  }}
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    //value={prioridade}
+                    label="Age"
+                    onChange={handleChange}
+                    sx={{
+                        svg: { color: '#F4F5FA' }
+                    }}
                 >
-                  {equipes.map((e, index) => <MenuItem key={index} value={e.id_equipe}>{e.nome_equipe}</MenuItem>)}
+                    <MenuItem value={0}>Baixa</MenuItem>
+                    <MenuItem value={1}>Média</MenuItem>
+                    <MenuItem value={2}>Alta</MenuItem>
                 </CssSelect>
-              </FormControl>
+            </FormControl>
             </Box>
             <Divider light className='mt-3' />
             <div className='d-flex justify-content-end mt-5'>

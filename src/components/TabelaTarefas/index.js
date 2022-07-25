@@ -23,14 +23,12 @@ class TabelaTarefas extends Component {
       console.log(pessoaPath);
       
       const response = await api.get(pessoaPath+'/tasks');
-      console.log(response);
 
       this.setState({ tarefas: response.data });
   }
 
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
-    console.log((qtdTarefas));
 
     const [changeIcon, setIcon] = React.useState(false);
     const icon = (changeIcon === true) ? <TaskAltIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
