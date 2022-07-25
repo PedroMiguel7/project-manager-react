@@ -49,6 +49,24 @@ class TabelaTarefas extends Component {
             return "Alta"
           }
         }
+
+        function TempoRestante(inicio, prazo) {
+          const dataInicioFormatada = new Date(inicio);
+          console.log(dataInicioFormatada);
+
+          const dataPrazoFormatada = new Date(prazo);
+          console.log(dataPrazoFormatada);
+
+          console.log(dataPrazoFormatada - dataInicioFormatada);
+          if ((dataPrazoFormatada - dataInicioFormatada) <= 86400000 && (dataPrazoFormatada - dataInicioFormatada) > 0) {
+            
+            return '1 dia';
+          } else {
+            const tempo = (dataPrazoFormatada - dataInicioFormatada) / 86400000;
+            return `${tempo.toFixed()} dias`;
+          }
+        }
+
         return (
           props.tarefas.map(t => (
             <tr>
@@ -65,10 +83,10 @@ class TabelaTarefas extends Component {
               </td>
               <td>
                 <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
-                data
+                {TempoRestante(t.data_criacao, t.prazo_entrega)}
               </td>
               <td>
-                01/01/2022
+                {t.data_criacao}
               </td>
               <td>
                 <TarefasMenu />

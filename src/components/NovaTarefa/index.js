@@ -198,7 +198,7 @@ export default function BasicModal() {
             </Box>
 
             <div className="d-flex align-items-center justify-content-center gap-2 my-2">
-              <LocalizationProvider dateAdapter={AdapterDateFns} fullWidth>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DatePicker
                   disablePast
                   inputFormat="dd/MM/yyyy"
@@ -206,7 +206,9 @@ export default function BasicModal() {
                   openTo="year"
                   views={['year', 'month', 'day']}
                   value={prazo}
-                  onChange={(e) => setPrazo(e.target.value)}
+                  onChange={(newValue) => {
+                    setPrazo(newValue);
+                  }}
                   renderInput={(params) => <DateTextField {...params} sx={{
                     "& label": {
                       color: '#F4F5FA'
