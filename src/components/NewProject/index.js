@@ -93,6 +93,11 @@ export default function BasicModal() {
   })
   }
 
+
+  function MostraEquipes(){
+    api.get("/equipes/")
+  }
+
   return (
     <div>
       <button onClick={handleOpen} className="new-project "><img src={NewProject} alt="" /></button>

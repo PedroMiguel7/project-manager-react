@@ -75,7 +75,7 @@ export default function BasicModalPessoa() {
   }
   
   const [nome, setNome] = useState("");
-  const [funcao, setFuncao] = React.useState("");
+  const [funcao, setFuncao] = React.useState();
   const [equipe, setEquipe] = React.useState();
 
   const handleChange = (event) => {
@@ -91,7 +91,7 @@ export default function BasicModalPessoa() {
     {
       nome_pessoa : nome,
       funcao_pessoa : funcao,
-      equipeId: equipe,
+      equipe_Id: equipe,
   })
   }
 
@@ -151,10 +151,10 @@ export default function BasicModalPessoa() {
                         svg: { color: '#F4F5FA' }
                     }}
                 >
-                    <MenuItem value={1}>Back-End</MenuItem>
-                    <MenuItem value={2}>Front-End</MenuItem>
-                    <MenuItem value={3}>Tester</MenuItem>
-                    <MenuItem value={4}>Gerente de Projeto</MenuItem>
+                    <MenuItem value={"Back-End"}>Back-End</MenuItem>
+                    <MenuItem value={"Front-End"}>Front-End</MenuItem>
+                    <MenuItem value={"Tester"}>Tester</MenuItem>
+                    <MenuItem value={"Gerente de Projeto"}>Gerente de Projeto</MenuItem>
                 </CssSelect>
             </FormControl>
         </Box>
