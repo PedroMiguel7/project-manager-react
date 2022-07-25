@@ -10,7 +10,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
-import CssDatePicker from '../DatePicker';
+import CssDatePicker from '../DatePicker/disableFuture';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 

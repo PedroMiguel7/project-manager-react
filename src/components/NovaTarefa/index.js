@@ -9,7 +9,6 @@ import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
-import NewProject from '../../assets/icons/new.svg';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 //import BasicSelect from '../Select/index.js';
@@ -17,6 +16,9 @@ import { useState, useEffect } from 'react';
 import api from '../../api';
 import InputLabel from '@mui/material/InputLabel';
 import AddIcon from '@mui/icons-material/Add';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
@@ -97,23 +99,27 @@ export default function BasicModal() {
 
   function cadastrarTarefa(e) {
     e.preventDefault()
-    console.log(`Tarefa com descrição ${descricao} e prioridade {prioridade} foi cadastrada com sucesso`)
+    console.log(`Tarefa com descrição ${descricao}, prioridade ${prioridade} e prazo para ${prazo} foi cadastrada com sucesso`)
   }
   
   const [descricao, setDescricao] = useState("")
-  const [id_pessoa, setIdPessoa] = React.useState(idPessoa);
+  const [pessoa, setIdPessoa] = React.useState(idPessoa);
   const [status, setStatus] = React.useState("Em Andamento");
-  const [prioridade, setPrioridade] = React.useState(0);
+  const [prioridade, setPrioridade] = React.useState();
+  const [prazo, setPrazo] = React.useState(new Date());
 
   const handleChange = (event) => {
     setPrioridade(event.target.value);
-};
+  };
 
   function PostaTarefa() {
     api.post("/tasks/",
     {
-      pessoa_id: idPessoa,
+      pessoa_id: pessoa,
       descricao_task : descricao,
+      prioridade: prioridade,
+      status: status,
+      prazo_entrega: prazo
   })
   }
 
@@ -143,10 +149,11 @@ export default function BasicModal() {
             </Typography>
         
             <CssTextField
+              required
               id="descricao"
               name='descricao'
               label="Descrição"
-              //onChange={(e) => setDescricao(e.target.value)}
+              onChange={(e) => setDescricao(e.target.value)}
               multiline
               minRows={1}
               maxRows={2}
@@ -163,7 +170,7 @@ export default function BasicModal() {
             />
 
             <Box sx={{ minWidth: 120 }}>
-            <FormControl required fullWidth margin="dense" sx={{
+            <FormControl fullWidth margin="dense" sx={{
                 "& label": {
                     color: '#F4F5FA'
                 },
@@ -176,7 +183,7 @@ export default function BasicModal() {
                 <CssSelect
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    //value={prioridade}
+                    value={prioridade}
                     label="Prioridade"
                     onChange={handleChange}
                     sx={{
@@ -189,6 +196,30 @@ export default function BasicModal() {
                 </CssSelect>
             </FormControl>
             </Box>
+
+            <div className="d-flex align-items-center justify-content-center gap-2 my-2">
+              <LocalizationProvider dateAdapter={AdapterDateFns} fullWidth>
+                  <DatePicker
+                  disablePast
+                  inputFormat="dd/MM/yyyy"
+                  label="Prazo"
+                  openTo="year"
+                  views={['year', 'month', 'day']}
+                  value={prazo}
+                  onChange={(e) => setPrazo(e.target.value)}
+                  renderInput={(params) => <DateTextField {...params} sx={{
+                    "& label": {
+                      color: '#F4F5FA'
+                    },
+                    "& label.Mui-focused": {
+                      color: '#F46E27'
+                    },
+                    svg: { color: '#F4F5FA' }}} />}
+                  />
+              </LocalizationProvider>
+            </div>
+            
+
             <Divider light className='mt-3' />
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{

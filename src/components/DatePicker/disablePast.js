@@ -37,31 +37,27 @@ export default function CssDatePicker(props) {
 
   return (
     <>
-        <div className="d-flex align-items-center justify-content-center gap-2">
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <DatePicker
-                inputFormat="dd/MM/yyyy"
-                disableFuture
-                label="Início"
-                openTo="year"
-                views={['year', 'month', 'day']}
-                value={value}
-                onChange={(newValue) => {
-                    setValue(newValue);
-                }}
-                renderInput={(params) => <DateTextField {...params} sx={{
-                  "& label": {
-                    color: '#F4F5FA'
-                  },
-                  "& label.Mui-focused": {
-                    color: '#F46E27'
-                  },
-                  svg: { color: '#F4F5FA' }}} />}
-                />
-            </LocalizationProvider>
-        </div>
-        
+        <LocalizationProvider dateAdapter={AdapterDateFns} fullWidth>
+            <DatePicker
+            disablePast
+            inputFormat="dd/MM/yyyy"
+            label="Prazo"
+            openTo="year"
+            views={['year', 'month', 'day']}
+            value={value}
+            onChange={(newValue) => {
+                setValue(newValue);
+            }}
+            renderInput={(params) => <DateTextField {...params} sx={{
+              "& label": {
+                color: '#F4F5FA'
+              },
+              "& label.Mui-focused": {
+                color: '#F46E27'
+              },
+              svg: { color: '#F4F5FA' }}} />}
+            />
+        </LocalizationProvider>
     </>
-    
   );
 }
