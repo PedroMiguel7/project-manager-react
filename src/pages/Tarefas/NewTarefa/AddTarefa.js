@@ -13,7 +13,7 @@ import { useState } from 'react';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import api from "../../../api"
+import api from "../../../api"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 
 
 const CssTextField = styled(TextField)({
@@ -69,13 +69,13 @@ export default function BasicModalTarefa(props) {
 
     function cadastrarProjeto(e) {
         e.preventDefault()
-        console.log(`Tarefa ${nome} para ${pessoa} com prioridade ${prioridade} foi cadastrada com sucesso`)
+        console.log(`Tarefa ${nome} para ${pessoa} com prioridade ${prioridade} foi cadastrada com sucesso no projeto ${props.id_projeto}`)
     }
 
     const [nome, setNome] = useState("");
     const [pessoa, setPessoa] = React.useState();
-    const [prazoEntrega, setPrazoEntrega] = useState();
-    const [prioridade, setPrioridade] = useState();
+    const [prazoEntrega, setPrazoEntrega] = useState(Date);
+    const [prioridade, setPrioridade] = React.useState();
 
 
 
@@ -164,7 +164,7 @@ export default function BasicModalTarefa(props) {
                             id="prazoEntrega"
                             name='prazo de entrega'
                             label="Prazo de entrega"
-                            onChange={(e) => setPrazoEntrega(e.target.value)}
+                            onChange={(a) => setPrazoEntrega(a.target.value)}
                             variant="outlined"
                             margin="dense"
                             color='primary'
