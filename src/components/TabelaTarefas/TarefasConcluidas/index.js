@@ -67,37 +67,36 @@ class TarefasConcluidas extends Component {
           return dataInicioFormatada;
         }
 
-        props.tarefas.map(t => {
-          if (t.status === "Em Andamento") {  
-            console.log(t.status)
+        return (
+          props.tarefas.map(t => 
+            {if (t.status === "Concluido")
             return (
-              <tr>
-                <td>
-                  <IconButton /*onClick={handleCheck}*/>
-                    {icon}
-                  </IconButton>
-                </td>
-                <td>
-                  {t.descricao_task}
-                </td>
-                <td>
-                  {Prioridade(t.prioridade)}
-                </td>
-                <td>
-                  <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
-                  {TempoRestante(t.data_criacao, t.prazo_entrega)}
-                </td>
-                <td>
-                  {Inicio(t.data_criacao)}
-                </td>
-                <td>
-                  <TarefasMenu />
-                </td>
-              </tr>
+            <tr>
+              <td>
+                <IconButton /*onClick={handleCheck}*/>
+                  {icon}
+                </IconButton>
+              </td>
+              <td>
+                {t.descricao_task}
+              </td>
+              <td>
+                {Prioridade(t.prioridade)}
+              </td>
+              <td>
+                <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
+                {TempoRestante(t.data_criacao, t.prazo_entrega)}
+              </td>
+              <td>
+                {Inicio(t.data_criacao)}
+              </td>
+              <td>
+                <TarefasMenu />
+              </td>
+            </tr>
             )
           }
-        });
-        
+        ));
     }
   }
 
