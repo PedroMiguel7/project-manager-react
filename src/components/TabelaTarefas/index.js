@@ -40,7 +40,7 @@ class TabelaTarefas extends Component {
           </tr>
         );
     } else{
-        function Teste(prioridade) {
+        function Prioridade(prioridade) {
           if (prioridade === 0) {
             return "Baixa"
           } else if (prioridade == 1) {
@@ -52,19 +52,25 @@ class TabelaTarefas extends Component {
 
         function TempoRestante(inicio, prazo) {
           const dataInicioFormatada = new Date(inicio);
-          console.log(dataInicioFormatada);
+          //console.log(dataInicioFormatada);
 
           const dataPrazoFormatada = new Date(prazo);
-          console.log(dataPrazoFormatada);
+          //console.log(dataPrazoFormatada);
 
-          console.log(dataPrazoFormatada - dataInicioFormatada);
+          //console.log(dataPrazoFormatada - dataInicioFormatada);
           if ((dataPrazoFormatada - dataInicioFormatada) <= 86400000 && (dataPrazoFormatada - dataInicioFormatada) > 0) {
-            
             return '1 dia';
           } else {
             const tempo = (dataPrazoFormatada - dataInicioFormatada) / 86400000;
             return `${tempo.toFixed()} dias`;
           }
+        }
+
+        function Inicio(inicio) {
+          const dataInicio = new Date(inicio);
+          const dataInicioArray = [dataInicio.getDate(), dataInicio.getMonth() + 1, dataInicio.getFullYear()]
+          const dataInicioFormatada = `${dataInicioArray[0]}/${dataInicioArray[1]}/${dataInicioArray[2]}`;
+          return dataInicioFormatada;
         }
 
         return (
@@ -79,14 +85,14 @@ class TabelaTarefas extends Component {
                 {t.descricao_task}
               </td>
               <td>
-                {Teste(t.prioridade)}
+                {Prioridade(t.prioridade)}
               </td>
               <td>
                 <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
                 {TempoRestante(t.data_criacao, t.prazo_entrega)}
               </td>
               <td>
-                {t.data_criacao}
+                {Inicio(t.data_criacao)}
               </td>
               <td>
                 <TarefasMenu />
