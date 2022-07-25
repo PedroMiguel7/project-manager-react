@@ -11,7 +11,6 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-//import BasicSelect from '../Select/index.js';
 import { useState, useEffect } from 'react';
 import api from '../../api';
 import InputLabel from '@mui/material/InputLabel';

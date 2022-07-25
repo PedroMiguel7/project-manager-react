@@ -20,40 +20,79 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import InputLabel from '@mui/material/InputLabel';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-const CssTextField = styled(TextField) ({
-    '& .MuiOutlinedInput-root': {
-      color: '#F4F5FA',
-      '& fieldset': {
-        borderColor: '#F4F5FA',
-        borderRadius: 5
-      },
-      '&:hover fieldset': {
-        borderColor: '#C2C3C6',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#F46E27',
-      },
+const CssTextField = styled(TextField)({
+  '& .MuiOutlinedInput-root': {
+    color: '#F4F5FA',
+    '& fieldset': {
+      borderColor: '#F4F5FA',
+      borderRadius: 5
     },
-  })
-  
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: '#21222D',
-    borderRadius: 2,
-    boxShadow: 24,
-    p: 5,
-    minWidth: '400px',
-    width: '40vw'
-  };
+    '&:hover fieldset': {
+      borderColor: '#C2C3C6',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#F46E27',
+    },
+  },
+})
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  bgcolor: '#21222D',
+  borderRadius: 2,
+  boxShadow: 24,
+  p: 5,
+  minWidth: '400px',
+  width: '40vw'
+};
+
+const CssSelect = styled(Select)({
+  '& .MuiSelect-outlined': {
+    color: "#F4F5FA",
+  }, '& fieldset': {
+    borderColor: '#F4F5FA',
+    borderRadius: 5,
+  },
+  '&:focus': {
+    backgroundColor: 'yellow'
+  },
+  '&:hover': {
+    borderColor: '#F46E27',
+    color: '#F46E27',
+  },
+})
+
+const DateTextField = styled(TextField) ({
+  '& .MuiOutlinedInput-root': {
+    color: "#F4F5FA",
+    '& fieldset': {
+      borderColor: '#F4F5FA',
+      borderRadius: 5,
+    },
+    '&:hover fieldset': {
+      borderColor: '#C2C3C6',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#F46E27',
+      color: '#F46E27',
+    },
+    'input': {
+      '&::placeholder': {
+        color: '#C2C3C6',
+      }
+    }
+  },
+})
 
 export default function TarefasMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -87,12 +126,7 @@ export default function TarefasMenu() {
     setOpenAlert(false);
     setAnchorEl(null);
   };
-
-  /*const [color, setColor] = useState([]);
-
-  const handleChange = (event) => {
-    setColor(event.target.value);
-  };*/
+  
 
   return (
     <div>
@@ -175,21 +209,22 @@ export default function TarefasMenu() {
         aria-describedby="modal-modal-description"
         >
         <Box sx={style}>
-          <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleCloseEdit}/>
-          <form /*onSubmit={cadastrarProjeto}*/>
+          <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
+          <form /*onSubmit={cadastrarTarefa}*/>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-              Editar<span style={{color: '#F46E27'}}> Tarefa</span>
+              Editar<span style={{ color: '#F46E27' }}> Tarefa</span>
             </Typography>
+        
             <CssTextField
-              id="nome" 
-              name='nome' 
-              label="Nome"
-              /*onChange={(e) => setNome(e.target.value)} */
-              variant="outlined" 
-              margin="dense" 
-              color='primary'
-              fullWidth 
-              className='textField'
+              id="descricao"
+              name='descricao'
+              label="Descrição"
+              //onChange={(e) => setDescricao(e.target.value)}
+              multiline
+              minRows={1}
+              maxRows={2}
+              margin="dense"
+              fullWidth className='textField'
               sx={{
                 "& label": {
                   color: '#F4F5FA'
@@ -197,27 +232,60 @@ export default function TarefasMenu() {
                 "& label.Mui-focused": {
                   color: '#F46E27'
                 },
-              }} />
-            
-            <FormControl>
-                <FormLabel 
-                sx={{color: '#fff'}}
-                id="demo-radio-buttons-group-label">Cor da Tarefa</FormLabel>
-                <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="female"
-                    name="radio-buttons-group"
+              }}
+            />
+
+            <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth margin="dense" sx={{
+                "& label": {
+                    color: '#F4F5FA'
+                },
+                "& label.Mui-focused": {
+                    color: '#F46E27'
+                }
+            }}
+            >
+                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Prioridade</InputLabel>
+                <CssSelect
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    //value={prioridade}
+                    label="Prioridade"
+                    //onChange={handleChange}
+                    sx={{
+                        svg: { color: '#F4F5FA' }
+                    }}
                 >
-                    <FormControlLabel
-                    value="female" control={<Radio />} label={<div className='ColorDiv' style={{backgroundColor: "#E7DF9B"}}></div>} />
-                    <FormControlLabel 
-                    value="male" control={<Radio />} label={<div className='ColorDiv' style={{backgroundColor: "#F2C8ED"}}></div>} />
-                    <FormControlLabel 
-                    value="other" control={<Radio />} label={<div className='ColorDiv' style={{backgroundColor: "#A9DFD8"}}></div>} />
-                    <FormControlLabel 
-                    value="other1" control={<Radio />} label={<div className='ColorDiv' style={{backgroundColor: "#A7CAFF"}}></div>} />
-                </RadioGroup>
+                    <MenuItem value={0}>Baixa</MenuItem>
+                    <MenuItem value={1}>Média</MenuItem>
+                    <MenuItem value={2}>Alta</MenuItem>
+                </CssSelect>
             </FormControl>
+            </Box>
+
+            <div className="d-flex align-items-center justify-content-center gap-2 my-2">
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DatePicker
+                  disablePast
+                  inputFormat="dd/MM/yyyy"
+                  label="Prazo"
+                  openTo="year"
+                  views={['year', 'month', 'day']}
+                  //value={prazo}
+                  /*onChange={(newValue) => {
+                    setPrazo(newValue);
+                  }}*/
+                  renderInput={(params) => <DateTextField {...params} sx={{
+                    "& label": {
+                      color: '#F4F5FA'
+                    },
+                    "& label.Mui-focused": {
+                      color: '#F46E27'
+                    },
+                    svg: { color: '#F4F5FA' }}} />}
+                  />
+              </LocalizationProvider>
+            </div>
             
             <Divider light className='mt-3'/>
                 <div className='d-flex justify-content-end mt-5'>
