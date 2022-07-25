@@ -24,7 +24,8 @@ class TarefasConcluidas extends Component {
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
 
-    const [changeIcon, setIcon] = React.useState(false);
+    const [changeIcon, setIcon] = React.useState(true);
+
     const icon = (changeIcon === true) ? <TaskAltIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
 
     if( qtdTarefas === null){
@@ -67,33 +68,39 @@ class TarefasConcluidas extends Component {
           return dataInicioFormatada;
         }
 
+        function Conclusao(conclusao) {
+          const dataConclusao = new Date(conclusao);
+          const dataConclusaoArray = [dataConclusao.getDate(), dataConclusao.getMonth() + 1, dataConclusao.getFullYear()]
+          const dataConclusaoFormatada = `${dataConclusaoArray[0]}/${dataConclusaoArray[1]}/${dataConclusaoArray[2]}`;
+          return dataConclusaoFormatada;
+        }
+
         return (
           props.tarefas.map(t => 
             {if (t.status === "Concluido")
             return (
-            <tr>
-              <td>
-                <IconButton /*onClick={handleCheck}*/>
-                  {icon}
-                </IconButton>
-              </td>
-              <td>
-                {t.descricao_task}
-              </td>
-              <td>
-                {Prioridade(t.prioridade)}
-              </td>
-              <td>
-                <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
-                {TempoRestante(t.data_criacao, t.prazo_entrega)}
-              </td>
-              <td>
-                {Inicio(t.data_criacao)}
-              </td>
-              <td>
-                <TarefasMenu />
-              </td>
-            </tr>
+              <tr>
+                <td>
+                  <IconButton onLoad={setIcon}>
+                    {icon}
+                  </IconButton>
+                </td>
+                <td>
+                  {t.descricao_task}
+                </td>
+                <td>
+                  {Prioridade(t.prioridade)}
+                </td>
+                <td>
+                  {Inicio(t.data_criacao)}
+                </td>
+                <td>
+                  {Conclusao(t.data_conclusao)}
+                </td>
+                <td>
+                  <TarefasMenu />
+                </td>
+              </tr>
             )
           }
         ));

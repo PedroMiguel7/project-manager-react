@@ -6,6 +6,12 @@ import TarefasMenu from '../../TarefasMenu';
 import IconButton from '@mui/material/IconButton';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 
 class TarefasAndamento extends Component {
@@ -24,7 +30,34 @@ class TarefasAndamento extends Component {
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
 
+    const [openAlert, setOpenAlert] = React.useState(false);
+
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpenSnackbar(false);
+    };
+
+    const handleCheck = () => {
+      setOpenAlert(true);
+    }
+
+    const handleCloseAlert = () => {
+      setOpenAlert(false);
+    }
+
+    const [openSnackbar, setOpenSnackbar] = React.useState(false);
+
     const [changeIcon, setIcon] = React.useState(false);
+
+    const handleClickSim = () => {
+      setOpenSnackbar(true);
+      setOpenAlert(false);
+      setIcon(true);
+    };
+
     const icon = (changeIcon === true) ? <TaskAltIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
 
     if( qtdTarefas === null){
@@ -71,29 +104,71 @@ class TarefasAndamento extends Component {
           props.tarefas.map(t => 
             {if (t.status === "Em Andamento")
             return (
-            <tr>
-              <td>
-                <IconButton /*onClick={handleCheck}*/>
-                  {icon}
-                </IconButton>
-              </td>
-              <td>
-                {t.descricao_task}
-              </td>
-              <td>
-                {Prioridade(t.prioridade)}
-              </td>
-              <td>
-                <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
-                {TempoRestante(t.data_criacao, t.prazo_entrega)}
-              </td>
-              <td>
-                {Inicio(t.data_criacao)}
-              </td>
-              <td>
-                <TarefasMenu />
-              </td>
-            </tr>
+              <>
+                <tr>
+                  <td>
+                    <IconButton onClick={handleCheck}>
+                      {icon}
+                    </IconButton>
+                  </td>
+                  <td>
+                    {t.descricao_task}
+                  </td>
+                  <td>
+                    {Prioridade(t.prioridade)}
+                  </td>
+                  <td>
+                    <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
+                    {TempoRestante(t.data_criacao, t.prazo_entrega)}
+                  </td>
+                  <td>
+                    {Inicio(t.data_criacao)}
+                  </td>
+                  <td>
+                    <TarefasMenu />
+                  </td>
+                </tr>
+
+                <Dialog
+                  open={openAlert}
+                  onClose={handleCloseAlert}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                  PaperProps={{
+                      style: {
+                        backgroundColor: '#494A58',
+                        color: '#fff'
+                      },
+                    }}
+                  >
+                      <DialogTitle id="alert-dialog-title">
+                      {"Marcar tarefa como concluída?"}
+                      </DialogTitle>
+                      
+                      <DialogActions>
+                      <Button onClick={handleCloseAlert}
+                      sx={{
+                          color: "#C2C3C6",
+                          opacity: 0.7
+                      }}>Não</Button>
+                      <Button autoFocus onClick={handleClickSim} variant="contained"
+                      sx={{
+                          color: "#FFF",
+                          backgroundColor: "#F57D3D",
+                          '&:hover': {
+                              backgroundColor: "#F46E27",
+                          }
+                      }}>
+                          Sim
+                      </Button>
+                      </DialogActions>
+                  </Dialog>
+                  <Snackbar open={openSnackbar} autoHideDuration={2500} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
+                    <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
+                      Tarefa concluída!
+                    </MuiAlert>
+                </Snackbar>
+              </>
             )
           }
         ));

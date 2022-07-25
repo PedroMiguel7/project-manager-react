@@ -38,8 +38,6 @@ export default function TabelaTarefas() {
 
   const [changeIcon, setIcon] = React.useState(false);
 
-  const tarefasConcluidas = 0;
-
   const handleClickSim = () => {
     setOpenSnackbar(true);
     setOpenAlert(false);
