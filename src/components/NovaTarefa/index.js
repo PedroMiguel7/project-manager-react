@@ -63,6 +63,28 @@ const CssSelect = styled(Select)({
   },
 })
 
+const DateTextField = styled(TextField) ({
+  '& .MuiOutlinedInput-root': {
+    color: "#F4F5FA",
+    '& fieldset': {
+      borderColor: '#F4F5FA',
+      borderRadius: 5,
+    },
+    '&:hover fieldset': {
+      borderColor: '#C2C3C6',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#F46E27',
+      color: '#F46E27',
+    },
+    'input': {
+      '&::placeholder': {
+        color: '#C2C3C6',
+      }
+    }
+  },
+})
+
 
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
@@ -155,7 +177,7 @@ export default function BasicModal() {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     //value={prioridade}
-                    label="Age"
+                    label="Prioridade"
                     onChange={handleChange}
                     sx={{
                         svg: { color: '#F4F5FA' }

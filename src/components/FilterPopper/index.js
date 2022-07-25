@@ -10,7 +10,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
-import DatePicker from '../DatePicker';
+import CssDatePicker from '../DatePicker';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 
@@ -79,9 +79,14 @@ function FilterPopper(){
                                 </FormGroup>
                             </div>
                             <Divider  />
-                            <div className='my-4'>
-                                <DatePicker />
+                            
+                            <div className="d-flex align-items-center justify-content-center gap-2 my-4">
+                                <span style={{color: "#C2C3C6", fontWeight: 500}}>Data</span>
+                                <CssDatePicker />
+                                <span>-</span>
+                                <CssDatePicker />
                             </div>
+
                             <Divider  />
                             <div className='d-flex align-items-center justify-content-between mt-3'>
                                 <Button style={{
