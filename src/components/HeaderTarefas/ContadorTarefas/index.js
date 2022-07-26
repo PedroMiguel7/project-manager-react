@@ -61,14 +61,21 @@ class TarefasConcluidas extends Component {
         const { tarefas } = this.state;
 
         const TotalTarefas = tarefas.length;
-        const Concluidas = 0;
+        
+        let Concluidas = 0;
+        for (var prop in tarefas) {
+            if (tarefas[prop].status === "Concluido") {
+                Concluidas++;
+            }
+        }
+        const TotalConcluidas = Concluidas;
 
-        const progressValue = Math.round((1/TotalTarefas) * 100);
+        const progressValue = Math.round((TotalConcluidas/TotalTarefas) * 100);
 
         return(
             <>
                 <div>
-                    <span>{this.ContConcluidas} /{TotalTarefas} Completas</span>
+                    <span>{TotalConcluidas}/{TotalTarefas} Completas</span>
                     <div className="progress Progress" >
                         <div className="ProgressBar progress-bar" 
                         style={{width: `${progressValue}%`}}
