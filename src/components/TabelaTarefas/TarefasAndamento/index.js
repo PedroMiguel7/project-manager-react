@@ -89,15 +89,15 @@ class TarefasAndamento extends Component {
           }
         }
 
-        function TempoRestante(inicio, prazo) {
-          const dataInicioFormatada = new Date(inicio);
+        function TempoRestante(hoje, prazo) {
+          const dataHojeFormatada = new Date();
 
           const dataPrazoFormatada = new Date(prazo);
           
-          if ((dataPrazoFormatada - dataInicioFormatada) <= 86400000 && (dataPrazoFormatada - dataInicioFormatada) > 0) {
+          if ((dataPrazoFormatada - dataHojeFormatada) <= 86400000 && (dataPrazoFormatada - dataHojeFormatada) > 0) {
             return '1 dia';
           } else {
-            const tempo = (dataPrazoFormatada - dataInicioFormatada) / 86400000;
+            const tempo = (dataPrazoFormatada - dataHojeFormatada) / 86400000;
             return `${tempo.toFixed()} dias`;
           }
         }

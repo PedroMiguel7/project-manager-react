@@ -126,6 +126,8 @@ export default function TarefasMenu() {
     setOpenAlert(false);
     setAnchorEl(null);
   };
+
+  const [prazo, setPrazo] = React.useState(new Date());
   
 
   return (
@@ -271,10 +273,10 @@ export default function TarefasMenu() {
                   label="Prazo"
                   openTo="year"
                   views={['year', 'month', 'day']}
-                  //value={prazo}
-                  /*onChange={(newValue) => {
+                  value={prazo}
+                  onChange={(newValue) => {
                     setPrazo(newValue);
-                  }}*/
+                  }}
                   renderInput={(params) => <DateTextField {...params} sx={{
                     "& label": {
                       color: '#F4F5FA'
