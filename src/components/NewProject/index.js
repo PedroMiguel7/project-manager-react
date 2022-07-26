@@ -70,11 +70,10 @@ export default function BasicModal() {
   const handleClose = () => setOpen(false);
 
 
-  function cadastrarProjeto(e) {
+  /*function cadastrarProjeto(e) {
     e.preventDefault()
     console.log(`Projeto ${nome} com descrição ${descricao} foi cadastrado com sucesso`)
-  }
-
+  }*/
 
   const [nome, setNome] = useState("")
   const [descricao, setDescricao] = useState("")
@@ -90,6 +89,10 @@ export default function BasicModal() {
       })
   }
 
+  function FechaModal() {
+    setOpen(false);
+    window.location.reload();
+  }
 
   const [age, setAge] = React.useState('');
   const handleChangeAge = (eventA) => {
@@ -120,7 +123,7 @@ export default function BasicModal() {
       >
         <Box sx={style}>
           <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
-          <form onSubmit={cadastrarProjeto}>
+          <form onSubmit={FechaModal}>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
               Adicionar<span style={{ color: '#F46E27' }}> Projeto</span>
             </Typography>
