@@ -73,15 +73,13 @@ class TarefasConcluidas extends Component {
                 Concluidas++;
             }
         }
-        
-        const TotalConcluidas = Concluidas;
 
-        const progressValue = Math.round((TotalConcluidas/TotalTarefas) * 100);
+        const progressValue = Math.round((Concluidas/TotalTarefas) * 100);
 
         return(
             <>
                 <div>
-                    <span>{TotalConcluidas}/{TotalTarefas} Completas</span>
+                    <span>{Concluidas}/{TotalTarefas} Completas</span>
                     <div className="progress Progress" >
                         <div className="ProgressBar progress-bar" 
                         style={{width: `${progressValue}%`}}
