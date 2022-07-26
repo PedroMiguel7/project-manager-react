@@ -102,10 +102,9 @@ export default function BasicModal() {
 
     const fetchequipe = async () => {
       try {
-        const response = await fetch('https://golang-posgre-brisanet.herokuapp.com/equipes/');
-        const data = await response.json();
-        setInitialequipe(data);
-        setequipe(data);
+        const response = await api.get('/equipes/');
+        setInitialequipe(response.data);
+        setequipe(response.data);
 
       } catch (error) {
         console.log(error);
