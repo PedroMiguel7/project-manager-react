@@ -48,10 +48,10 @@ export default function BasicModalEquipe() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  function cadastrarProjeto(e) {
+  /*function cadastrarProjeto(e) {
     e.preventDefault()
     console.log(`Equipe ${nome} foi cadastrado com sucesso`)
-  }
+  }*/
 
   const [nome, setNome] = useState("")
 
@@ -69,7 +69,10 @@ export default function BasicModalEquipe() {
   })
   }
 
-
+  function FechaModal() {
+    setOpen(false);
+    window.location.reload();
+  }
 
   return (
     <div>
@@ -82,7 +85,7 @@ export default function BasicModalEquipe() {
       >
         <Box sx={style}>
           <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose}/>
-          <form onSubmit={cadastrarProjeto}>
+          <form onSubmit={FechaModal}>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
               Adicionar<span style={{color: '#F46E27'}}> Equipe</span>
             </Typography>
