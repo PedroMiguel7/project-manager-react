@@ -60,7 +60,12 @@ class TarefasConcluidas extends Component {
     render(props) {
         const { tarefas } = this.state;
 
-        const TotalTarefas = tarefas.length;
+        let TotalTarefas;
+        if (tarefas === null) {
+            TotalTarefas = 0;
+        } else {
+            TotalTarefas = tarefas.length;
+        }
         
         let Concluidas = 0;
         for (var prop in tarefas) {
