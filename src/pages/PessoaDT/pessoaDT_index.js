@@ -21,15 +21,29 @@ class PessoasDT extends Component {
         console.log(pessoaPath);
         
         const response = await api.get(pessoaPath);
-
+        const response2 = await api.get(pessoaPath+'/tasks');
         
-        this.setState({ pessoa: response.data });
+        this.setState({ pessoa: response.data, tarefas: response2.data });
     }
 
     render() {
         const { pessoa } = this.state;
         const { tarefas} = this.state;
-        //console.log(pessoa);
+
+        let TotalTarefas;
+        if (tarefas === null) {
+            TotalTarefas = 0;
+        } else {
+            TotalTarefas = tarefas.length;
+        }
+        
+        let Concluidas = 0;
+        for (var prop in tarefas) {
+            if (tarefas[prop].status === "Concluido") {
+                console.log(tarefas[prop].status);
+                Concluidas++;
+            }
+        }
 
         return (
             <>
@@ -61,7 +75,7 @@ class PessoasDT extends Component {
                                 <p>Projetos Concluídos</p>
                             </div>
                             <div className="d-flex flex-column text-center">
-                                <h5>71</h5>
+                                <h5>{Concluidas}</h5>
                                 <p>Tarefas Concluídas</p>
                             </div>
                         </div>
