@@ -73,6 +73,7 @@ class TarefasConcluidas extends Component {
                 Concluidas++;
             }
         }
+        
         const TotalConcluidas = Concluidas;
 
         const progressValue = Math.round((TotalConcluidas/TotalTarefas) * 100);
