@@ -45,7 +45,7 @@ class CardPessoas extends Component {
                                 <h2 class="NomePessoa">{p.nome_pessoa}</h2>
                                 
                                 <div className="mb-3">
-                                    <img src={aim} alt="" /> <span>{p.equipe_id}</span>
+                                    <img src={aim} alt="" /> <span>{p.nome_equipe}</span>
                                 </div>
                             </div>
                             <div className="CardPessoas2">
