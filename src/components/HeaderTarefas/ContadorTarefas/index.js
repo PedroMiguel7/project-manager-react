@@ -26,10 +26,11 @@ class TarefasConcluidas extends Component {
         const Concluidas = 0;
             
         props.tarefas.map(t => 
-            {if (t.status === "Concluido")
+            {if (t.status === "Concluido") {
             Concluidas++;
             console.log(Concluidas);
             return Concluidas;
+            }
             }    
         )
             
@@ -60,15 +61,18 @@ class TarefasConcluidas extends Component {
         const { tarefas } = this.state;
 
         const TotalTarefas = tarefas.length;
-        console.log(TotalTarefas);
+        const Concluidas = 0;
 
+        const progressValue = Math.round((1/TotalTarefas) * 100);
 
         return(
             <>
                 <div>
                     <span>{this.ContConcluidas} /{TotalTarefas} Completas</span>
                     <div className="progress Progress" >
-                        <div className="ProgressBar progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div className="ProgressBar progress-bar" 
+                        style={{width: `${progressValue}%`}}
+                        role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
             </>
