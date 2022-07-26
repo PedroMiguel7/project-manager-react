@@ -11,7 +11,7 @@ import Divider from '@mui/material/Divider';
 import NewProject from '../../assets/icons/new.svg';
 import BasicSelect from '../Select/index.js';
 import InputLabel from '@mui/material/InputLabel';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PropaneSharp } from '@mui/icons-material';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -95,7 +95,19 @@ export default function BasicModal() {
 
 
   function MostraEquipes(){
-    api.get("/equipes/")
+    const [equipes, setEquipes] = useState([]);
+    useEffect(() => {
+      const fetchEquipe = async () => {
+        const response = await api.get("/equipes/")
+        setEquipes(response.data)
+      }
+      fetchEquipe()
+      console.log(equipes)
+    });
+
+    return(
+      equipes.map(p => (<MenuItem key={p.id_equipe} value={p.id_equipe}>{p.nome_equipe}</MenuItem>))
+    )
   }
 
   return (
@@ -173,9 +185,7 @@ export default function BasicModal() {
                         svg: { color: '#F4F5FA' }
                     }}
                 >
-                    <MenuItem value={1}>Komanda</MenuItem>
-                    <MenuItem value={2}>Cariri Inovação</MenuItem>
-                    <MenuItem value={3}>Cariri Teste</MenuItem>
+                    <MostraEquipes/>
                 </CssSelect>
             </FormControl>
         </Box>
