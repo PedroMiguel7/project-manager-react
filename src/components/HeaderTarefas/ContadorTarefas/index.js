@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Component } from "react";
 import api from '../../../api';
+import Tooltip from '@mui/material/Tooltip';
 
 class TarefasConcluidas extends Component {
     state = {
@@ -16,48 +17,7 @@ class TarefasConcluidas extends Component {
       }
 
 
-    ContConcluidas = (props) => {
-        const qtdTarefas = props.tarefas;
-        const TotalTarefas = qtdTarefas.length;
-
-        /*if( qtdTarefas === null) {
-            qtdTarefas = 0;
-        } else {*/
-        const Concluidas = 0;
-            
-        props.tarefas.map(t => 
-            {if (t.status === "Concluido") {
-            Concluidas++;
-            console.log(Concluidas);
-            return Concluidas;
-            }
-            }    
-        )
-            
-        
-    }
-
-    /*ProgressoTarefas = (props) => {
-        const qtdTarefas = props.tarefas;
-        const TotalTarefas = qtdTarefas.lenght;
-        console.log(TotalTarefas);
-
-        if( qtdTarefas === null || qtdTarefas === 0){
-            return 0;
-        } else {
-            
-        }
-
-        props.tarefas.map( t => (
-            {if (t.status === "Concluido") {
-
-            }}
-        ));
-
-        
-    }*/
-
-    render(props) {
+    render() {
         const { tarefas } = this.state;
 
         let TotalTarefas;
@@ -75,17 +35,25 @@ class TarefasConcluidas extends Component {
         }
 
         const progressValue = Math.round((Concluidas/TotalTarefas) * 100);
+        console.log(progressValue);
+
+        const testando = Math.round((0/0) * 100);
+        console.log(testando);
 
         return(
             <>
-                <div>
-                    <span>{Concluidas}/{TotalTarefas} Completas</span>
-                    <div className="progress Progress" >
-                        <div className="ProgressBar progress-bar" 
-                        style={{width: `${progressValue}%`}}
-                        role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                <Tooltip title={(progressValue !== NaN) ? `${progressValue}%` : "0%" } arrow>
+                    <div>
+                        <span>{Concluidas}/{TotalTarefas} Completas</span>
+                        
+                        <div className="progress Progress" >
+                            <div className="ProgressBar progress-bar" 
+                            style={{width: `${progressValue}%`}}
+                            role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        
                     </div>
-                </div>
+                </Tooltip>
             </>
         )
     }
