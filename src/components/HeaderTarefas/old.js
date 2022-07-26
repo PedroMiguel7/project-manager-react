@@ -6,7 +6,6 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import TarefasAndamento from '../TabelaTarefas/TarefasAndamento';
 import TarefasConcluidas from '../TabelaTarefas/TarefasConcluidas';
-import ContadorTarefas from './ContadorTarefas'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -91,7 +90,12 @@ export default function BasicTabs() {
             <StyledTab label="Concluídas" {...a11yProps(1)} />
             <StyledTab label="Canceladas" {...a11yProps(2)} />
         </StyledTabs>
-        <ContadorTarefas />
+      <div>
+          <span>4/5 Completas</span>
+          <div class="progress Progress" >
+              <div class="ProgressBar progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+      </div>
     </div>
         
       <TabPanel value={value} index={0}>
