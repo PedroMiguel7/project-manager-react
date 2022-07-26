@@ -69,11 +69,23 @@ class TarefasAndamento extends Component {
     } else{
         function Prioridade(prioridade) {
           if (prioridade === 0) {
-            return "Baixa"
+            return (
+              <span className='PrioridadeBaixa'>
+                Baixa
+              </span>
+            )
           } else if (prioridade == 1) {
-            return "Média"
+            return (
+              <span className='PrioridadeMedia'>
+                Média
+              </span>
+            )
           } else if (prioridade === 2) {
-            return "Alta"
+            return (
+              <span className='PrioridadeAlta'>
+                Alta
+              </span>
+            )
           }
         }
 
