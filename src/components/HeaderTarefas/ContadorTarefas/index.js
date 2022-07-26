@@ -35,10 +35,6 @@ class TarefasConcluidas extends Component {
         }
 
         const progressValue = Math.round((Concluidas/TotalTarefas) * 100);
-        console.log(progressValue);
-
-        const testando = Math.round((0/0) * 100);
-        console.log(testando);
 
         return(
             <>
