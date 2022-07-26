@@ -39,8 +39,8 @@ class TarefasConcluidas extends Component {
         return(
             <>
                 <Tooltip title={(progressValue !== NaN) ? `${progressValue}%` : "0%" } arrow>
-                    <div>
-                        <span>{Concluidas}/{TotalTarefas} Completas</span>
+                    <div className='d-flex flex-column align-items-center'>
+                        <span className='ContadorTarefas'>{Concluidas}/{TotalTarefas} Completas</span>
                         
                         <div className="progress Progress" >
                             <div className="ProgressBar progress-bar" 

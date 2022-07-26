@@ -63,28 +63,37 @@ class TarefasAndamento extends Component {
     if( qtdTarefas === null){
         return(
           <tr>
-            <p>Sem tarefas em andamento</p>
+            Sem tarefas em andamento
           </tr>
         );
     } else{
         function Prioridade(prioridade) {
           if (prioridade === 0) {
-            return "Baixa"
+            return (
+              <span className='PrioridadeBaixa'>
+                Baixa
+              </span>
+            )
           } else if (prioridade == 1) {
-            return "Média"
+            return (
+              <span className='PrioridadeMedia'>
+                Média
+              </span>
+            )
           } else if (prioridade === 2) {
-            return "Alta"
+            return (
+              <span className='PrioridadeAlta'>
+                Alta
+              </span>
+            )
           }
         }
 
         function TempoRestante(inicio, prazo) {
           const dataInicioFormatada = new Date(inicio);
-          //console.log(dataInicioFormatada);
 
           const dataPrazoFormatada = new Date(prazo);
-          //console.log(dataPrazoFormatada);
-
-          //console.log(dataPrazoFormatada - dataInicioFormatada);
+          
           if ((dataPrazoFormatada - dataInicioFormatada) <= 86400000 && (dataPrazoFormatada - dataInicioFormatada) > 0) {
             return '1 dia';
           } else {

@@ -61,13 +61,15 @@ const StyledTabs = styled((props) => (
 
 const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
+    fontFamily: 'Inter, sans-serif',
     textTransform: 'none',
     fontWeight: 400,
-    fontSize: 15,
+    fontSize: 14,
     marginRight: theme.spacing(1),
     color: '#87888C',
     '&.Mui-selected': {
       color: '#C2C3C6',
+      fontWeight: 500,
     },
     '&.Mui-focusVisible': {
       backgroundColor: 'rgba(100, 95, 228, 0.32)',
@@ -85,12 +87,14 @@ export default function BasicTabs() {
   return (
     <>
       <div className="d-flex justify-content-between align-items-center">
-        <h5>Tarefas</h5>
-        <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
-            <StyledTab label="Em Andamento" {...a11yProps(0)} />
-            <StyledTab label="Concluídas" {...a11yProps(1)} />
-            <StyledTab label="Canceladas" {...a11yProps(2)} />
-        </StyledTabs>
+        <div className='d-flex align-items-center gap-5'>
+          <h5 className='m-0'>Tarefas</h5>
+          <StyledTabs className="mx-4" value={value} onChange={handleChange} aria-label="basic tabs" centered>
+              <StyledTab className="StyledTab" label="Em Andamento" {...a11yProps(0)} />
+              <StyledTab className="StyledTab" label="Concluídas" {...a11yProps(1)} />
+          </StyledTabs>
+        </div>
+        
         <ContadorTarefas />
     </div>
         

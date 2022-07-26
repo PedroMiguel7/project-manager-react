@@ -436,6 +436,49 @@ main h1 {
     z-index: 1;
 }
 
-/*.CorTarefa {
-    border-left: 2px solid plum;
-}*/
+.ContadorTarefas {
+    font-size: 15px;
+    color: var(--branco);
+}
+
+.PrioridadeBaixa {
+    background-color: #BDFAD9;
+    padding: 3px 7px;
+    border-radius: 10px;
+    color: var(--preto);
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.PrioridadeMedia {
+    background-color: #FAF7BD;
+    padding: 3px 7px;
+    border-radius: 10px;
+    color: var(--preto);
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.PrioridadeAlta {
+    background-color: #FAA8A8;
+    padding: 3px 7px;
+    border-radius: 10px;
+    color: var(--preto);
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.PrioridadeBaixa:hover {
+    background-color: #A7F9CC;
+    transition: 0.2s;
+}
+
+.PrioridadeMedia:hover {
+    background-color: #F9F5A7;
+    transition: 0.2s;
+}
+
+.PrioridadeAlta:hover {
+    background-color: #FA9191;
+    transition: 0.2s;
+}
