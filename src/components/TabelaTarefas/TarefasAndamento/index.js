@@ -63,7 +63,7 @@ class TarefasAndamento extends Component {
     if( qtdTarefas === null){
         return(
           <tr>
-            <p>Sem tarefas em andamento</p>
+            Sem tarefas em andamento
           </tr>
         );
     } else{

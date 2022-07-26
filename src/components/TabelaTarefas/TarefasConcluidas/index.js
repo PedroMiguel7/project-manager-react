@@ -30,7 +30,7 @@ class TarefasConcluidas extends Component {
     if( qtdTarefas === null){
         return(
           <tr>
-            <p>Sem tarefas em andamento</p>
+            Sem tarefas concluídas
           </tr>
         );
     } else {
