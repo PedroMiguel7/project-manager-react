@@ -17,9 +17,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../api"
+import { useParams } from 'react-router-dom'
 
 
-const CssTextField = styled(TextField) ({
+const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
     '& fieldset': {
@@ -36,20 +37,20 @@ const CssTextField = styled(TextField) ({
 })
 
 const CssSelect = styled(Select)({
-        '& .MuiSelect-outlined': {
-            color: "#F4F5FA",
-        }, '& fieldset': {
-            borderColor: '#F4F5FA',
-            borderRadius: 5,
-        },
-        '&:focus': {
-            backgroundColor: 'yellow'
-        },
-        '&:hover': {
-            borderColor: '#F46E27',
-            color: '#F46E27',
-        },
-    })
+  '& .MuiSelect-outlined': {
+    color: "#F4F5FA",
+  }, '& fieldset': {
+    borderColor: '#F4F5FA',
+    borderRadius: 5,
+  },
+  '&:focus': {
+    backgroundColor: 'yellow'
+  },
+  '&:hover': {
+    borderColor: '#F46E27',
+    color: '#F46E27',
+  },
+})
 
 const style = {
   position: 'absolute',
@@ -74,41 +75,44 @@ export default function BasicModal() {
     e.preventDefault()
     console.log(`Projeto ${nome} com descrição ${descricao} foi cadastrado com sucesso`)
   }
-  
+
 
   const [nome, setNome] = useState("")
   const [descricao, setDescricao] = useState("")
-  const [equipe, setEquipe] = React.useState();
 
-  const handleChange = (event) => {
-    setEquipe(event.target.value);
-};
+  const [initialequipe, setInitialequipe] = useState([])
+  const [equipe, setequipe] = useState([])
 
   function PostaProjeto() {
     api.post("/projetos/",
-    {
-      nome_projeto : nome,
-      descricao_projeto : descricao,
-      equipe_id: equipe,
-  })
+      {
+        nome_projeto: nome,
+        descricao_projeto: descricao,
+        equipe_id: parseInt(age),
+      })
   }
 
 
-  function MostraEquipes(){
-    const [equipes, setEquipes] = useState([]);
-    useEffect(() => {
-      const fetchEquipe = async () => {
-        const response = await api.get("/equipes/")
-        setEquipes(response.data)
+  const [age, setAge] = React.useState('');
+  const handleChangeAge = (eventA) => {
+    setAge(eventA.target.value);
+  };
+
+  useEffect(() => {
+
+    const fetchequipe = async () => {
+      try {
+        const response = await fetch('https://golang-posgre-brisanet.herokuapp.com/equipes/');
+        const data = await response.json();
+        setInitialequipe(data);
+        setequipe(data);
+
+      } catch (error) {
+        console.log(error);
       }
-      fetchEquipe()
-      console.log(equipes)
-    });
-
-    return(
-      equipes.map(p => (<MenuItem key={p.id_equipe} value={p.id_equipe}>{p.nome_equipe}</MenuItem>))
-    )
-  }
+    };
+    fetchequipe();
+  }, []);
 
   return (
     <div>
@@ -120,21 +124,21 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose}/>
+          <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
           <form onSubmit={cadastrarProjeto}>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-              Adicionar<span style={{color: '#F46E27'}}> Projeto</span>
+              Adicionar<span style={{ color: '#F46E27' }}> Projeto</span>
             </Typography>
-            <CssTextField 
-              required 
-              id="nome" 
-              name='nome' 
+            <CssTextField
+              required
+              id="nome"
+              name='nome'
               label="Nome"
-              onChange={(e) => setNome(e.target.value)} 
-              variant="outlined" 
-              margin="dense" 
+              onChange={(e) => setNome(e.target.value)}
+              variant="outlined"
+              margin="dense"
               color='primary'
-              fullWidth 
+              fullWidth
               className='textField'
               sx={{
                 "& label": {
@@ -161,49 +165,42 @@ export default function BasicModal() {
                 "& label.Mui-focused": {
                   color: '#F46E27'
                 },
-              }} 
+              }}
             />
-            
+
             <Box sx={{ minWidth: 120 }}>
-            <FormControl required fullWidth margin="dense" sx={{
-                "& label": {
-                    color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                    color: '#F46E27'
-                }
-            }}
-            >
-                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Equipe</InputLabel>
-                <CssSelect
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={equipe}
-                    label="Age"
-                    onChange={handleChange}
-                    sx={{
-                        svg: { color: '#F4F5FA' }
-                    }}
-                >
-                    <MostraEquipes/>
-                </CssSelect>
-            </FormControl>
-        </Box>
-            <Divider light className='mt-3'/>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Equipe</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id_equipe="demo-simple-select"
+                  value={age}
+                  label="Age"
+                  onChange={handleChangeAge}
+                  sx={{
+                    svg: { color: '#F4F5FA' }
+                }}>
+                  {equipe.map(p =>(
+                    <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
+                  )}
+                </Select>
+              </FormControl>
+            </Box>
+            <Divider light className='mt-3' />
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
                 color: "#F4F5FA",
                 opacity: 0.5,
                 textTransform: 'capitalize'
-              }} 
-              variant="text" className='' onClick={handleClose}>Cancelar</Button>
+              }}
+                variant="text" className='' onClick={handleClose}>Cancelar</Button>
               <Button style={{
                 color: "#F4F5FA",
                 background: "#F46E27",
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-              variant="contained" type="submit" onClick={PostaProjeto}>Salvar</Button>
+                variant="contained" type="submit" onClick={PostaProjeto}>Salvar</Button>
             </div>
           </form>
         </Box>
