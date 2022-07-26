@@ -17,7 +17,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../api"
-import { useParams } from 'react-router-dom'
 
 
 const CssTextField = styled(TextField)({
@@ -80,7 +79,6 @@ export default function BasicModal() {
   const [nome, setNome] = useState("")
   const [descricao, setDescricao] = useState("")
 
-  const [initialequipe, setInitialequipe] = useState([])
   const [equipe, setequipe] = useState([])
 
   function PostaProjeto() {
@@ -102,11 +100,8 @@ export default function BasicModal() {
 
     const fetchequipe = async () => {
       try {
-        const response = await fetch('https://golang-posgre-brisanet.herokuapp.com/equipes/');
-        const data = await response.json();
-        setInitialequipe(data);
-        setequipe(data);
-
+        const response = await api.get('/equipes/');
+        setequipe(response.data);
       } catch (error) {
         console.log(error);
       }
