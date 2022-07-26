@@ -79,12 +79,9 @@ class TarefasAndamento extends Component {
 
         function TempoRestante(inicio, prazo) {
           const dataInicioFormatada = new Date(inicio);
-          //console.log(dataInicioFormatada);
 
           const dataPrazoFormatada = new Date(prazo);
-          //console.log(dataPrazoFormatada);
-
-          //console.log(dataPrazoFormatada - dataInicioFormatada);
+          
           if ((dataPrazoFormatada - dataInicioFormatada) <= 86400000 && (dataPrazoFormatada - dataInicioFormatada) > 0) {
             return '1 dia';
           } else {

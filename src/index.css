@@ -436,6 +436,7 @@ main h1 {
     z-index: 1;
 }
 
-/*.CorTarefa {
-    border-left: 2px solid plum;
-}*/
+.ContadorTarefas {
+    font-size: 15px;
+    color: var(--branco);
+}
