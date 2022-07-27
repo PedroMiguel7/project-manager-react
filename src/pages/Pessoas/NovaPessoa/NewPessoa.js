@@ -56,25 +56,24 @@ const style = {
 export default function BasicModalPessoa() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-
-  function cadastrarProjeto(e) {
-    e.preventDefault()
-    console.log(`Pessoa ${nome} com funcao ${funcao} foi cadastrado com sucesso`)
-  }
+  const handleClose = () => {setOpen(false); setEquipe(); setFuncao();}
   
   const [nome, setNome] = useState("");
   const [funcao, setFuncao] = React.useState();
   const [equipe, setEquipe] = React.useState();
 
+  function FechaModal() {
+    setOpen(false);
+    window.location.reload();
+  }
+
   const handleChange = (event) => {
     setEquipe(event.target.value);
     };
     
-    const handleChangeFun = (evento) => {
-        setFuncao(evento.target.value);
-    };
+  const handleChangeFun = (evento) => {
+      setFuncao(evento.target.value);
+  };
 
   function PostaPessoa() {
     api.post("/pessoas/",
@@ -102,7 +101,7 @@ export default function BasicModalPessoa() {
               Adicionar<span style={{ color: '#F46E27' }}> Pessoa</span>
             </Typography>
           </div>
-          <form onSubmit={cadastrarProjeto}>
+          <form onSubmit={FechaModal}>
             <CssTextField 
               required 
               id="nome" 
