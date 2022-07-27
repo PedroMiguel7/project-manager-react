@@ -67,7 +67,7 @@ const style = {
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {setOpen(false); setDadoEquipe()};
 
 
   /*function cadastrarProjeto(e) {
@@ -77,7 +77,6 @@ export default function BasicModal() {
 
   const [nome, setNome] = useState("")
   const [descricao, setDescricao] = useState("")
-
   const [equipe, setequipe] = useState([])
 
   function PostaProjeto() {
@@ -85,7 +84,7 @@ export default function BasicModal() {
       {
         nome_projeto: nome,
         descricao_projeto: descricao,
-        equipe_id: parseInt(age),
+        equipe_id: parseInt(dadoEquipe),
       })
   }
 
@@ -94,9 +93,9 @@ export default function BasicModal() {
     window.location.reload();
   }
 
-  const [age, setAge] = React.useState('');
+  const [dadoEquipe, setDadoEquipe] = React.useState('');
   const handleChangeAge = (eventA) => {
-    setAge(eventA.target.value);
+    setDadoEquipe(eventA.target.value);
   };
 
   useEffect(() => {
@@ -166,14 +165,14 @@ export default function BasicModal() {
               }}
             />
 
-            <Box sx={{ minWidth: 120 }}>
+            <Box className='my-2' sx={{ minWidth: 120 }}>
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Equipe</InputLabel>
-                <Select
+                <InputLabel id="demo-simple-select-label" sx={{color: '#fff',}}>Equipe</InputLabel>
+                <CssSelect
                   labelId="demo-simple-select-label"
                   id_equipe="demo-simple-select"
-                  value={age}
-                  label="Age"
+                  value={dadoEquipe}
+                  label="Equipe"
                   onChange={handleChangeAge}
                   sx={{
                     svg: { color: '#F4F5FA' }
@@ -181,7 +180,7 @@ export default function BasicModal() {
                   {equipe.map(p =>(
                     <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
                   )}
-                </Select>
+                </CssSelect>
               </FormControl>
             </Box>
             <Divider light className='mt-3' />
