@@ -152,11 +152,13 @@ main h1 {
     box-shadow: 0 7px 15px 4px #1718218c;
 }
 
+.OcuparEspaco {
+    width: 24px;
+    height: 24px;
+}
+
 .ClearRoundedIcon {
     cursor: pointer;
-    position: relative;
-    top: 0%;
-    left: 95%;
 }
 
 #order-select {

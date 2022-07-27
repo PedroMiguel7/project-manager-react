@@ -108,11 +108,16 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
-          <form onSubmit={FechaModal}>
-            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
+          <div className='d-flex align-items-center justify-content-between mb-4'>
+            <div className='OcuparEspaco'></div>
+            <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleClose} />
+            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
               Adicionar<span style={{ color: '#F46E27' }}> Projeto</span>
             </Typography>
+          </div>
+          
+          <form onSubmit={FechaModal}>
+            
             <CssTextField
               required
               id="nome"
