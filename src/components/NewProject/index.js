@@ -17,6 +17,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../api"
+import { createTheme } from '@mui/system';
 
 
 const CssTextField = styled(TextField)({
@@ -35,20 +36,43 @@ const CssTextField = styled(TextField)({
   },
 })
 
+const theme = createTheme({
+  
+    MuiSelect: {
+      select: {
+        "&:focus": {
+          backgroundColor: '#ffddec',
+          borderColor: 'brown'
+        },
+        '&:before': {
+          borderColor: 'orange'
+        },
+        '&:after': {
+          borderColor: 'green',
+        }
+      }
+    }
+  
+})
+
 const CssSelect = styled(Select)({
-  '& .MuiSelect-outlined': {
+  /*'& .MuiSelect-outlined': {
     color: "#F4F5FA",
   }, '& fieldset': {
     borderColor: '#F4F5FA',
     borderRadius: 5,
-  },
-  '&:focus': {
-    backgroundColor: 'yellow'
-  },
-  '&:hover': {
-    borderColor: '#F46E27',
-    color: '#F46E27',
-  },
+  },'& fieldset': {
+      borderColor: 'red',
+    },
+    '&:hover fieldset': {
+      borderColor: 'yellow',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'green',
+    },
+  '& .MuiSelect-outlined': {
+    
+  },*/
 })
 
 const style = {
@@ -166,16 +190,33 @@ export default function BasicModal() {
             />
 
             <Box className='my-2' sx={{ minWidth: 120 }}>
-              <FormControl fullWidth>
+              <FormControl fullWidth sx={{
+                "& label.Mui-focused": {
+                  color: '#F46E27'
+                }, '& .Mui-focused fieldset': {
+                  color: '#C4C',
+                },
+                }}>
                 <InputLabel id="demo-simple-select-label" sx={{color: '#fff',}}>Equipe</InputLabel>
                 <CssSelect
+                  theme={theme}
                   labelId="demo-simple-select-label"
                   id_equipe="demo-simple-select"
                   value={dadoEquipe}
                   label="Equipe"
                   onChange={handleChangeAge}
+                  MenuProps={{
+                    PaperProps: {
+                      style: {
+                        maxHeight: 300,
+                        backgroundColor: '#494A58',
+                        color: '#fff',
+                      }
+                  }}}
                   sx={{
-                    svg: { color: '#F4F5FA' }
+                    svg: { color: '#F4F5FA', '& fieldset.Mui-focused': {
+                      color: '#C4C',}
+                    }
                 }}>
                   {equipe.map(p =>(
                     <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
