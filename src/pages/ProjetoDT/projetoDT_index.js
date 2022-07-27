@@ -94,6 +94,7 @@ class ProjetoDT extends Component {
             )
         }
     }
+    
     MostrarEquipe = (props) =>{
         const [pessoas, setPessoas] = useState([]);
         const url = '/equipes/' + props.equipe_id + '/pessoas';
