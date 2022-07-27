@@ -41,14 +41,17 @@ class ExibirEquipes extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">
-                                                {r.id_pessoa}
-                                            </th>
-                                            <td style={{ color: "#fff" }}>
-                                                {r.nome_pessoa}
-                                            </td>
-                                        </tr>
+                                        {p.pessoas &&
+                                            p.pessoas.map((r) => (
+                                                <tr key={r.id_pessoa}>
+                                                    <th scope="row">
+                                                        {r.id_pessoa}
+                                                    </th>
+                                                    <td style={{ color: "#fff" }}>
+                                                        {r.nome_pessoa}
+                                                    </td>
+                                                </tr>
+                                            ))}
                                     </tbody>
                                 </table>
                             </div>
