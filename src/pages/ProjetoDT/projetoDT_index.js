@@ -256,7 +256,7 @@ class ProjetoDT extends Component {
                                 </tr>
                             </thead>
                             <tbody className="">
-                                <this.MostrarEquipe equipe_id = {p.equipe_id}/>
+                                {/*<this.MostrarEquipe equipe_id = {p.equipe_id}/>*/}
                             </tbody>
                             <tfoot> 
                                 <tr>
