@@ -36,10 +36,11 @@ const CssTextField = styled(TextField)({
   },
 })
 
-const theme = createTheme({
+/*const theme = createTheme({
   
     MuiSelect: {
       select: {
+        borderColor: 'brown',
         "&:focus": {
           backgroundColor: '#ffddec',
           borderColor: 'brown'
@@ -52,27 +53,55 @@ const theme = createTheme({
         }
       }
     }
-  
-})
+})*/
 
 const CssSelect = styled(Select)({
+  /*'.MuiOutlinedInput-root': {
+    borderColor: '#c4c',
+ 
+  '.Mui-focused': {
+    borderColor: '#c4c',
+  },
+ },
+  '.MuiInputBase-root' : {
+      borderColor: '#c4c',
+  },
+
+  '.MuiInputBase' :{
+      borderColor: '#c4c',
+  },
+
+  '.MuiSelect-select': {
+      borderColor: '#c4c',
+  },*/
+
   /*'& .MuiSelect-outlined': {
     color: "#F4F5FA",
-  }, '& fieldset': {
-    borderColor: '#F4F5FA',
-    borderRadius: 5,
-  },'& fieldset': {
-      borderColor: 'red',
+    '& fieldset': {
+      borderColor: '#F4F5FA',
+      borderRadius: 5
     },
     '&:hover fieldset': {
-      borderColor: 'yellow',
+      borderColor: '#C2C3C6',
     },
     '&.Mui-focused fieldset': {
-      borderColor: 'green',
+      borderColor: '#F46E27',
     },
-  '& .MuiSelect-outlined': {
-    
   },*/
+
+  '& .MuiInputBase-root': {
+    color: "#F4F5FA",
+    '& fieldset': {
+      borderColor: '#F4F5FA',
+      borderRadius: 5
+    },
+    '&:hover fieldset': {
+      borderColor: '#C2C3C6',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#F46E27',
+    },
+  }
 })
 
 const style = {
@@ -193,13 +222,10 @@ export default function BasicModal() {
               <FormControl fullWidth sx={{
                 "& label.Mui-focused": {
                   color: '#F46E27'
-                }, '& .Mui-focused fieldset': {
-                  color: '#C4C',
-                },
+                }
                 }}>
                 <InputLabel id="demo-simple-select-label" sx={{color: '#fff',}}>Equipe</InputLabel>
                 <CssSelect
-                  theme={theme}
                   labelId="demo-simple-select-label"
                   id_equipe="demo-simple-select"
                   value={dadoEquipe}
@@ -214,9 +240,7 @@ export default function BasicModal() {
                       }
                   }}}
                   sx={{
-                    svg: { color: '#F4F5FA', '& fieldset.Mui-focused': {
-                      color: '#C4C',}
-                    }
+                    svg: { color: '#F4F5FA', }
                 }}>
                   {equipe.map(p =>(
                     <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
