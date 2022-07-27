@@ -14,9 +14,14 @@ import { PropaneSharp } from '@mui/icons-material';
 import api from "../../../api"
 import ExibirEquipes from "../../../components/CardEquipe/OneEquipe"
 
-const CssTextField = styled(TextField) ({
+const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
+    svg: {color: '#F4F5FA'},
+    '&.Mui-focused': {
+      borderColor: '#F4F5FA',
+      svg: {color: '#F57D3D'}
+    },
     '& fieldset': {
       borderColor: '#F4F5FA',
       borderRadius: 5
@@ -26,6 +31,12 @@ const CssTextField = styled(TextField) ({
     },
     '&.Mui-focused fieldset': {
       borderColor: '#F46E27',
+    },
+  },
+  '.MuiInputLabel-outlined': {
+    color: '#F4F5FA',
+    '&.Mui-focused': {
+      color:'#F46E27',
     },
   },
 })
@@ -46,12 +57,7 @@ const style = {
 export default function BasicModalEquipe() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  /*function cadastrarProjeto(e) {
-    e.preventDefault()
-    console.log(`Equipe ${nome} foi cadastrado com sucesso`)
-  }*/
+  const handleClose = () => {setOpen(false); setNome()}
 
   const [nome, setNome] = useState("")
 
@@ -84,11 +90,15 @@ export default function BasicModalEquipe() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose}/>
-          <form onSubmit={FechaModal}>
-            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-              Adicionar<span style={{color: '#F46E27'}}> Equipe</span>
+          <div className='d-flex align-items-center justify-content-between mb-4'>
+            <div className='OcuparEspaco'></div>
+            <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleClose} />
+            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
+              Adicionar<span style={{ color: '#F46E27' }}> Equipe</span>
             </Typography>
+          </div>
+
+          <form onSubmit={FechaModal}>
             <CssTextField 
               required 
               id="nome" 
@@ -97,18 +107,9 @@ export default function BasicModalEquipe() {
               label="Nome"
               onChange={(e) => setNome(e.target.value)} 
               variant="outlined" 
-              margin="dense" 
-              color='primary'
+              margin="dense"
               fullWidth 
-              className='textField'
-              sx={{
-                "& label": {
-                  color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                },
-              }} />
+              className='textField'/>
             <Divider light className='mt-3'/>
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
