@@ -33,7 +33,7 @@ class ExibirEquipes extends Component {
                                     </h2>
                                 </div>
                                 <div className="card-part2 d-flex justify-content-between">
-                                <BuscarMembros id_equipe={p.id_equipe}/>
+                                
                                 </div>
                             </div>
                         
