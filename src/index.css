@@ -504,18 +504,31 @@ main h1 {
     border-color: #c4c !important;
 }
 
-.MuiOutlinedInput-root {
+.MuiOutlinedInput-root:focus {
     border-color: #c4c !important;
 }
 
-.MuiInputBase-root  {
+.MuiInputBase-root:focus  {
     border-color: #c4c !important;
 }
 
-.MuiInputBase{
+.MuiInputBase:focus{
     border-color: #c4c !important;
 }
 
-.MuiSelect-select {
+.MuiSelect-select:focus {
     border-color: #c4c !important;
 }
+
+select:focus-visible {
+    border-color: '#C4C',
+}
+
+.teste:-moz-focusring {
+    border-color: '#c4c';
+    background-color: green;
+}
+
+.MuiOutlinedInput-root > .MuiSelect-select .Mui-focused {
+    border-color: red !important;
+  }

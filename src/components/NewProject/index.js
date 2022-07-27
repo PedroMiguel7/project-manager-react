@@ -55,54 +55,25 @@ const CssTextField = styled(TextField)({
     }
 })*/
 
-const CssSelect = styled(Select)({
-  /*'.MuiOutlinedInput-root': {
-    borderColor: '#c4c',
- 
-  '.Mui-focused': {
-    borderColor: '#c4c',
-  },
- },
-  '.MuiInputBase-root' : {
-      borderColor: '#c4c',
-  },
-
-  '.MuiInputBase' :{
-      borderColor: '#c4c',
-  },
-
-  '.MuiSelect-select': {
-      borderColor: '#c4c',
-  },*/
-
-  /*'& .MuiSelect-outlined': {
-    color: "#F4F5FA",
-    '& fieldset': {
-      borderColor: '#F4F5FA',
-      borderRadius: 5
-    },
-    '&:hover fieldset': {
-      borderColor: '#C2C3C6',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: '#F46E27',
-    },
-  },*/
-
-  '& .MuiInputBase-root': {
-    color: "#F4F5FA",
-    '& fieldset': {
-      borderColor: '#F4F5FA',
-      borderRadius: 5
-    },
-    '&:hover fieldset': {
-      borderColor: '#C2C3C6',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: '#F46E27',
-    },
+/*const useStyles = makeStyles((theme) => ({
+  selectRoot: {
+  //...other styles
+    '&:focus':{
+      backgroundColor:'yellow'
+    }
   }
-})
+}));*/
+
+const CssSelect = styled(Select)({
+
+  "& .MuiOutlinedInput-root": {
+    "& .MuiSelect-select .Mui-focused select": {
+      borderColor: '#c4c',
+    }
+  }
+  
+});
+
 
 const style = {
   position: 'absolute',
@@ -121,7 +92,6 @@ export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {setOpen(false); setDadoEquipe()};
-
 
   /*function cadastrarProjeto(e) {
     e.preventDefault()
@@ -219,34 +189,46 @@ export default function BasicModal() {
             />
 
             <Box className='my-2' sx={{ minWidth: 120 }}>
-              <FormControl fullWidth sx={{
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                }
-                }}>
-                <InputLabel id="demo-simple-select-label" sx={{color: '#fff',}}>Equipe</InputLabel>
-                <CssSelect
-                  labelId="demo-simple-select-label"
-                  id_equipe="demo-simple-select"
-                  value={dadoEquipe}
-                  label="Equipe"
-                  onChange={handleChangeAge}
-                  MenuProps={{
-                    PaperProps: {
-                      style: {
-                        maxHeight: 300,
-                        backgroundColor: '#494A58',
-                        color: '#fff',
+                <FormControl fullWidth sx={{
+                  "& .MuiInputLabel-root": {
+                    color: '#fff',
+                    '& .Mui-focused': {
+                      color: '#F46E27',
+                  },
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    color: 'blue',
+                    borderColor: 'green',
+                  },
+                  '& .MuiSelect-select': {
+                    borderColor: 'red',
+                  }
+                  }}>
+                  <InputLabel id="demo-simple-select-label" /*sx={{color: '#fff',}}*/>Equipe</InputLabel>
+                  <CssSelect
+                  className="teste"
+                    labelId="demo-simple-select-label"
+                    id_equipe="demo-simple-select"
+                    value={dadoEquipe}
+                    label="Equipe"
+                    onChange={handleChangeAge}
+                    MenuProps={{
+                      PaperProps: {
+                        style: {
+                          maxHeight: 300,
+                          backgroundColor: '#494A58',
+                          color: '#fff',
+                        }
                       }
-                  }}}
-                  sx={{
-                    svg: { color: '#F4F5FA', }
-                }}>
-                  {equipe.map(p =>(
-                    <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
-                  )}
-                </CssSelect>
-              </FormControl>
+                  }}
+                    sx={{
+                      svg: { color: '#F4F5FA', }
+                  }}>
+                    {equipe.map(p =>(
+                      <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
+                    )}
+                  </CssSelect>
+                </FormControl>
             </Box>
             <Divider light className='mt-3' />
             <div className='d-flex justify-content-end mt-5'>
