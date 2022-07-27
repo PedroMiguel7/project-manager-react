@@ -137,11 +137,12 @@ export default function BasicModal() {
               fullWidth className='textField'
             />
 
-            <Box className='my-2' sx={{ minWidth: 120 }}>
+            <Box sx={{ minWidth: 120 }}>
                   <CssTextField 
                   select
                   label="Equipe"
                   fullWidth
+                  margin="dense"
                   value={dadoEquipe}
                   onChange={handleChangeAge}
                   >
