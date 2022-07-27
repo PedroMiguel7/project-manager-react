@@ -2,27 +2,25 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Fade from '@mui/material/Fade';
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import NewProject from '../../assets/icons/new.svg';
-import BasicSelect from '../Select/index.js';
-import InputLabel from '@mui/material/InputLabel';
 import { useState, useEffect } from 'react';
-import { PropaneSharp } from '@mui/icons-material';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../api"
-import { createTheme } from '@mui/system';
 
 
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
+    svg: {color: '#F4F5FA'},
+    '&.Mui-focused': {
+      borderColor: '#F4F5FA',
+      svg: {color: '#F57D3D'}
+    },
     '& fieldset': {
       borderColor: '#F4F5FA',
       borderRadius: 5
@@ -34,46 +32,13 @@ const CssTextField = styled(TextField)({
       borderColor: '#F46E27',
     },
   },
+  '.MuiInputLabel-outlined': {
+    color: '#F4F5FA',
+    '&.Mui-focused': {
+      color:'#F46E27',
+    },
+  },
 })
-
-/*const theme = createTheme({
-  
-    MuiSelect: {
-      select: {
-        borderColor: 'brown',
-        "&:focus": {
-          backgroundColor: '#ffddec',
-          borderColor: 'brown'
-        },
-        '&:before': {
-          borderColor: 'orange'
-        },
-        '&:after': {
-          borderColor: 'green',
-        }
-      }
-    }
-})*/
-
-/*const useStyles = makeStyles((theme) => ({
-  selectRoot: {
-  //...other styles
-    '&:focus':{
-      backgroundColor:'yellow'
-    }
-  }
-}));*/
-
-const CssSelect = styled(Select)({
-
-  "& .MuiOutlinedInput-root": {
-    "& .MuiSelect-select .Mui-focused select": {
-      borderColor: '#c4c',
-    }
-  }
-  
-});
-
 
 const style = {
   position: 'absolute',
@@ -122,7 +87,6 @@ export default function BasicModal() {
   };
 
   useEffect(() => {
-
     const fetchequipe = async () => {
       try {
         const response = await api.get('/equipes/');
@@ -157,17 +121,10 @@ export default function BasicModal() {
               onChange={(e) => setNome(e.target.value)}
               variant="outlined"
               margin="dense"
-              color='primary'
               fullWidth
               className='textField'
-              sx={{
-                "& label": {
-                  color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                },
-              }} />
+            />
+            
             <CssTextField
               id="descricao"
               name='descricao'
@@ -178,58 +135,22 @@ export default function BasicModal() {
               maxRows={8}
               margin="dense"
               fullWidth className='textField'
-              sx={{
-                "& label": {
-                  color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                },
-              }}
             />
 
             <Box className='my-2' sx={{ minWidth: 120 }}>
-                <FormControl fullWidth sx={{
-                  "& .MuiInputLabel-root": {
-                    color: '#fff',
-                    '& .Mui-focused': {
-                      color: '#F46E27',
-                  },
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    color: 'blue',
-                    borderColor: 'green',
-                  },
-                  '& .MuiSelect-select': {
-                    borderColor: 'red',
-                  }
-                  }}>
-                  <InputLabel id="demo-simple-select-label" /*sx={{color: '#fff',}}*/>Equipe</InputLabel>
-                  <CssSelect
-                  className="teste"
-                    labelId="demo-simple-select-label"
-                    id_equipe="demo-simple-select"
-                    value={dadoEquipe}
-                    label="Equipe"
-                    onChange={handleChangeAge}
-                    MenuProps={{
-                      PaperProps: {
-                        style: {
-                          maxHeight: 300,
-                          backgroundColor: '#494A58',
-                          color: '#fff',
-                        }
-                      }
-                  }}
-                    sx={{
-                      svg: { color: '#F4F5FA', }
-                  }}>
+                  <CssTextField 
+                  select
+                  label="Equipes"
+                  fullWidth
+                  value={dadoEquipe}
+                  onChange={handleChangeAge}
+                  >
                     {equipe.map(p =>(
                       <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
                     )}
-                  </CssSelect>
-                </FormControl>
+                  </CssTextField>
             </Box>
+            
             <Divider light className='mt-3' />
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
