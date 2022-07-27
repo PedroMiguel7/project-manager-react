@@ -2,25 +2,25 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Fade from '@mui/material/Fade';
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import NewProject from '../../../assets/icons/new.svg';
-import InputLabel from '@mui/material/InputLabel';
 import { useState } from 'react';
-import { PropaneSharp } from '@mui/icons-material';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../../api"
 
 
-const CssTextField = styled(TextField) ({
+const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
+    svg: {color: '#F4F5FA'},
+    '&.Mui-focused': {
+      borderColor: '#F4F5FA',
+      svg: {color: '#F57D3D'}
+    },
     '& fieldset': {
       borderColor: '#F4F5FA',
       borderRadius: 5
@@ -32,23 +32,13 @@ const CssTextField = styled(TextField) ({
       borderColor: '#F46E27',
     },
   },
+  '.MuiInputLabel-outlined': {
+    color: '#F4F5FA',
+    '&.Mui-focused': {
+      color:'#F46E27',
+    },
+  },
 })
-
-const CssSelect = styled(Select)({
-        '& .MuiSelect-outlined': {
-            color: "#F4F5FA",
-        }, '& fieldset': {
-            borderColor: '#F4F5FA',
-            borderRadius: 5,
-        },
-        '&:focus': {
-            backgroundColor: 'yellow'
-        },
-        '&:hover': {
-            borderColor: '#F46E27',
-            color: '#F46E27',
-        },
-    })
 
 const style = {
   position: 'absolute',
@@ -105,11 +95,14 @@ export default function BasicModalPessoa() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose}/>
-          <form onSubmit={cadastrarProjeto}>
-            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-              Adicionar<span style={{color: '#F46E27'}}> Pessoa</span>
+          <div className='d-flex align-items-center justify-content-between mb-4'>
+            <div className='OcuparEspaco'></div>
+            <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleClose} />
+            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
+              Adicionar<span style={{ color: '#F46E27' }}> Pessoa</span>
             </Typography>
+          </div>
+          <form onSubmit={cadastrarProjeto}>
             <CssTextField 
               required 
               id="nome" 
@@ -131,61 +124,36 @@ export default function BasicModalPessoa() {
               }} />
 
             <Box sx={{ minWidth: 120 }}>
-            <FormControl required fullWidth margin="dense" sx={{
-                "& label": {
-                    color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                    color: '#F46E27'
-                }
-            }}
-            >
-                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Função</InputLabel>
-                <CssSelect
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={funcao}
-                    label="Age"
-                    onChange={handleChangeFun}
-                    sx={{
-                        svg: { color: '#F4F5FA' }
-                    }}
-                >
-                    <MenuItem value={"Back-End"}>Back-End</MenuItem>
-                    <MenuItem value={"Front-End"}>Front-End</MenuItem>
-                    <MenuItem value={"Tester"}>Tester</MenuItem>
-                    <MenuItem value={"Gerente de Projeto"}>Gerente de Projeto</MenuItem>
-                </CssSelect>
-            </FormControl>
-        </Box>
+              <CssTextField 
+              select
+              label="Função"
+              fullWidth
+              margin="dense"
+              value={funcao}
+              onChange={handleChangeFun}
+              >
+                <MenuItem value={"Back-End"}>Back-End</MenuItem>
+                <MenuItem value={"Front-End"}>Front-End</MenuItem>
+                <MenuItem value={"Tester"}>Tester</MenuItem>
+                <MenuItem value={"Gerente de Projeto"}>Gerente de Projeto</MenuItem>
+              </CssTextField>
+            </Box>
             
             <Box sx={{ minWidth: 120 }}>
-            <FormControl required fullWidth margin="dense" sx={{
-                "& label": {
-                    color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                    color: '#F46E27'
-                }
-            }}
-            >
-                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Equipe</InputLabel>
-                <CssSelect
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={equipe}
-                    label="Age"
-                    onChange={handleChange}
-                    sx={{
-                        svg: { color: '#F4F5FA' }
-                    }}
-                >
-                    <MenuItem value={1}>Komanda</MenuItem>
-                    <MenuItem value={2}>Cariri Inovação</MenuItem>
-                    <MenuItem value={3}>Cariri Teste</MenuItem>
-                </CssSelect>
-            </FormControl>
-        </Box>
+              <CssTextField 
+              select
+              label="Equipe"
+              fullWidth
+              margin="dense"
+              value={equipe}
+              onChange={handleChange}
+              >
+                <MenuItem value={1}>Komanda</MenuItem>
+                <MenuItem value={2}>Cariri Inovação</MenuItem>
+                <MenuItem value={3}>Cariri Teste</MenuItem>
+              </CssTextField>
+            </Box>
+
             <Divider light className='mt-3'/>
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
