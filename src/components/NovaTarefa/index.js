@@ -9,15 +9,9 @@ import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import { useState, useEffect } from 'react';
 import api from '../../api';
-import InputLabel from '@mui/material/InputLabel';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
@@ -38,8 +32,8 @@ const CssTextField = styled(TextField)({
       borderColor: '#F46E27',
     },
     '& .MuiInputAdornment-root': {
-      color: '#F4F5FA',
-    }
+    color: '#87888C',
+  }
   },
   '.MuiInputLabel-outlined': {
     color: '#F4F5FA',
@@ -62,28 +56,6 @@ const style = {
   minWidth: '400px',
   width: '40vw'
 };
-
-const DateTextField = styled(TextField) ({
-  '& .MuiOutlinedInput-root': {
-    color: "#F4F5FA",
-    '& fieldset': {
-      borderColor: '#F4F5FA',
-      borderRadius: 5,
-    },
-    '&:hover fieldset': {
-      borderColor: '#C2C3C6',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: '#F46E27',
-      color: '#F46E27',
-    },
-    'input': {
-      '&::placeholder': {
-        color: '#C2C3C6',
-      }
-    }
-  },
-})
 
 
 export default function BasicModal() {
@@ -115,10 +87,15 @@ export default function BasicModal() {
     {
       pessoa_id: pessoa,
       descricao_task : descricao,
-      prioridade: prioridade,
+      prioridade: parseInt(prioridade),
       status: status,
       prazo_entrega: prazo
-  })
+    })
+  }
+
+  function FechaModal() {
+    setOpen(false);
+    window.location.reload();
   }
 
   return (
@@ -141,7 +118,7 @@ export default function BasicModal() {
       >
         <Box sx={style}>
           <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
-          <form onSubmit={cadastrarTarefa}>
+          <form onSubmit={FechaModal}>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
               Adicionar<span style={{ color: '#F46E27' }}> Tarefa</span>
             </Typography>
@@ -176,8 +153,7 @@ export default function BasicModal() {
             </Box>
 
             <CssTextField
-              type="number"         
-              min={0}
+              type="number"
               id="prazo"
               name='prazo'
               label="Prazo"
@@ -185,7 +161,9 @@ export default function BasicModal() {
               margin="dense"
               fullWidth className='textField'
               InputProps={{
-                endAdornment: <InputAdornment position="end">dias</InputAdornment>,
+                endAdornment: <InputAdornment position="end">
+                  <span>dias</span>
+                </InputAdornment>,
                 inputProps: { min: 0 }
               }}
             />
@@ -205,7 +183,7 @@ export default function BasicModal() {
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-                variant="contained" type="submit">Salvar</Button>
+                variant="contained" type="submit" onClick={PostaTarefa}>Salvar</Button>
             </div>
           </form>
         </Box>
