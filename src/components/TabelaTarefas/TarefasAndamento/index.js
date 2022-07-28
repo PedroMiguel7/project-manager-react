@@ -93,7 +93,7 @@ class TarefasAndamento extends Component {
           }
         }
 
-        function TempoRestante(hoje, prazo) {
+        function TempoRestante(prazo) {
           const dataHojeFormatada = new Date();
 
           const dataPrazoFormatada = new Date(prazo);
@@ -131,8 +131,8 @@ class TarefasAndamento extends Component {
                     {Prioridade(t.prioridade)}
                   </td>
                   <td>
-                    <AccessTimeIcon sx={{fontSize: '1.25rem'}} /> 
-                    {TempoRestante(t.data_criacao, t.prazo_entrega)}
+                    <AccessTimeIcon sx={{fontSize: '1.1rem', marginRight: '0.2rem'}} /> 
+                    {TempoRestante(t.prazo_entrega)}
                   </td>
                   <td>
                     {Inicio(t.data_criacao)}

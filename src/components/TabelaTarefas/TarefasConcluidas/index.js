@@ -60,22 +60,6 @@ class TarefasConcluidas extends Component {
           }
         }
 
-        function TempoRestante(inicio, prazo) {
-          const dataInicioFormatada = new Date(inicio);
-          //console.log(dataInicioFormatada);
-
-          const dataPrazoFormatada = new Date(prazo);
-          //console.log(dataPrazoFormatada);
-
-          //console.log(dataPrazoFormatada - dataInicioFormatada);
-          if ((dataPrazoFormatada - dataInicioFormatada) <= 86400000 && (dataPrazoFormatada - dataInicioFormatada) > 0) {
-            return '1 dia';
-          } else {
-            const tempo = (dataPrazoFormatada - dataInicioFormatada) / 86400000;
-            return `${tempo.toFixed()} dias`;
-          }
-        }
-
         function Inicio(inicio) {
           const dataInicio = new Date(inicio);
           const dataInicioArray = [dataInicio.getDate(), dataInicio.getMonth() + 1, dataInicio.getFullYear()]
