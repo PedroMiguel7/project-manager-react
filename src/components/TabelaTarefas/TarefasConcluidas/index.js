@@ -5,6 +5,9 @@ import TarefasMenu from '../../TarefasMenu';
 import IconButton from '@mui/material/IconButton';
 import TaskAltRoundedIcon from '@mui/icons-material/TaskAltRounded';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import PrioridadeAlta from '../../../assets/icons/prioridade-alta.svg';
+import PrioridadeMedia from '../../../assets/icons/prioridade-media.svg';
+import PrioridadeBaixa from '../../../assets/icons/prioridade-baixa.svg';
 
 
 class TarefasConcluidas extends Component {
@@ -36,11 +39,17 @@ class TarefasConcluidas extends Component {
     } else {
         function Prioridade(prioridade) {
           if (prioridade === 0) {
-            return "Baixa"
+            return (
+              <img className='IconesPrioridade' src={PrioridadeBaixa}/>
+            )
           } else if (prioridade == 1) {
-            return "Média"
+            return (
+              <img className='IconesPrioridade' src={PrioridadeMedia}/>
+            )
           } else if (prioridade === 2) {
-            return "Alta"
+            return (
+              <img className='IconesPrioridade' src={PrioridadeAlta}/>
+            )
           }
         }
 

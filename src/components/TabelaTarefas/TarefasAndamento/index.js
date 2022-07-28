@@ -4,7 +4,7 @@ import api from '../../../api';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import TarefasMenu from '../../TarefasMenu';
 import IconButton from '@mui/material/IconButton';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import TaskAltRoundedIcon from '@mui/icons-material/TaskAltRounded';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -12,6 +12,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import PrioridadeAlta from '../../../assets/icons/prioridade-alta.svg';
+import PrioridadeMedia from '../../../assets/icons/prioridade-media.svg';
+import PrioridadeBaixa from '../../../assets/icons/prioridade-baixa.svg';
+import Tooltip from '@mui/material/Tooltip';
 
 
 class TarefasAndamento extends Component {
@@ -58,7 +62,7 @@ class TarefasAndamento extends Component {
       setIcon(true);
     };
 
-    const icon = (changeIcon === true) ? <TaskAltIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
+    const icon = (changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
 
     if( qtdTarefas === null){
         return(
@@ -70,21 +74,21 @@ class TarefasAndamento extends Component {
         function Prioridade(prioridade) {
           if (prioridade === 0) {
             return (
-              <span className='PrioridadeBaixa'>
-                Baixa
-              </span>
+              <Tooltip title='Baixa' arrow>
+                <img className='IconesPrioridade' src={PrioridadeBaixa}/>
+              </Tooltip>
             )
           } else if (prioridade == 1) {
             return (
-              <span className='PrioridadeMedia'>
-                Média
-              </span>
+              <Tooltip title='Média' arrow>
+                <img className='IconesPrioridade' src={PrioridadeMedia}/>
+              </Tooltip>
             )
           } else if (prioridade === 2) {
             return (
-              <span className='PrioridadeAlta'>
-                Alta
-              </span>
+              <Tooltip title='Alta' arrow>
+                <img className='IconesPrioridade' src={PrioridadeAlta}/>
+              </Tooltip>
             )
           }
         }

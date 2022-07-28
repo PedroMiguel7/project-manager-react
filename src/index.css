@@ -444,7 +444,12 @@ main h1 {
     color: var(--branco);
 }
 
-.PrioridadeBaixa {
+.IconesPrioridade {
+    width: 18px;
+    height: 18px;
+}
+
+/*.PrioridadeBaixa {
     background-color: #BDFAD9;
     padding: 3px 7px;
     border-radius: 10px;
@@ -484,7 +489,7 @@ main h1 {
 .PrioridadeAlta:hover {
     background-color: #FA9191;
     transition: 0.2s;
-}
+}*/
 
 .TagFrontEnd {
     background-color: gray;
