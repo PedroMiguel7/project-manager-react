@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-//import Fade from '@mui/material/Fade';
+import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/material/styles';
@@ -14,7 +14,7 @@ import Select from '@mui/material/Select';
 import { useState, useEffect } from 'react';
 import api from '../../api';
 import InputLabel from '@mui/material/InputLabel';
-import AddIcon from '@mui/icons-material/Add';
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -22,6 +22,11 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
+    svg: {color: '#F4F5FA'},
+    '&.Mui-focused': {
+      borderColor: '#F4F5FA',
+      svg: {color: '#F57D3D'}
+    },
     '& fieldset': {
       borderColor: '#F4F5FA',
       borderRadius: 5
@@ -32,7 +37,17 @@ const CssTextField = styled(TextField)({
     '&.Mui-focused fieldset': {
       borderColor: '#F46E27',
     },
+    '& .MuiInputAdornment-root': {
+      color: '#F4F5FA',
+    }
   },
+  '.MuiInputLabel-outlined': {
+    color: '#F4F5FA',
+    '&.Mui-focused': {
+      color:'#F46E27',
+    },
+  },
+  
 })
 
 const style = {
@@ -47,22 +62,6 @@ const style = {
   minWidth: '400px',
   width: '40vw'
 };
-
-const CssSelect = styled(Select)({
-  '& .MuiSelect-outlined': {
-    color: "#F4F5FA",
-  }, '& fieldset': {
-    borderColor: '#F4F5FA',
-    borderRadius: 5,
-  },
-  '&:focus': {
-    backgroundColor: 'yellow'
-  },
-  '&:hover': {
-    borderColor: '#F46E27',
-    color: '#F46E27',
-  },
-})
 
 const DateTextField = styled(TextField) ({
   '& .MuiOutlinedInput-root': {
@@ -90,7 +89,7 @@ const DateTextField = styled(TextField) ({
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {setOpen(false); setPrioridade()};
 
   const pessoaPath = window.location.pathname;
   const PathArray = pessoaPath.split('/');
@@ -131,8 +130,8 @@ export default function BasicModal() {
         ':hover': {
             background: "#F57D3D",
         }}}>
-        <AddIcon sx={{fontSize: '1.15rem'}} />
-            Nova Tarefa
+        <AddRoundedIcon sx={{fontSize: '1.10rem'}} />
+            Adicionar Tarefa
         </Button>
       <Modal
         open={open}
@@ -158,67 +157,38 @@ export default function BasicModal() {
               maxRows={2}
               margin="dense"
               fullWidth className='textField'
-              sx={{
-                "& label": {
-                  color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                },
-              }}
             />
 
             <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth margin="dense" sx={{
-                "& label": {
-                    color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                    color: '#F46E27'
-                }
-            }}
-            >
-                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Prioridade</InputLabel>
-                <CssSelect
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={prioridade}
-                    label="Prioridade"
-                    onChange={handleChange}
-                    sx={{
-                        svg: { color: '#F4F5FA' }
-                    }}
-                >
-                    <MenuItem value={0}>Baixa</MenuItem>
-                    <MenuItem value={1}>Média</MenuItem>
-                    <MenuItem value={2}>Alta</MenuItem>
-                </CssSelect>
-            </FormControl>
+              <CssTextField 
+              required
+              select
+              label="Prioridade"
+              fullWidth
+              margin="dense"
+              value={prioridade}
+              onChange={handleChange}
+              >
+                <MenuItem value={0}>Baixa</MenuItem>
+                <MenuItem value={1}>Média</MenuItem>
+                <MenuItem value={2}>Alta</MenuItem>
+              </CssTextField>
             </Box>
 
-            <div className="d-flex align-items-center justify-content-center gap-2 my-2">
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DatePicker
-                  disablePast
-                  inputFormat="dd/MM/yyyy"
-                  label="Prazo"
-                  openTo="year"
-                  views={['year', 'month', 'day']}
-                  value={prazo}
-                  onChange={(newValue) => {
-                    setPrazo(newValue);
-                  }}
-                  renderInput={(params) => <DateTextField {...params} sx={{
-                    "& label": {
-                      color: '#F4F5FA'
-                    },
-                    "& label.Mui-focused": {
-                      color: '#F46E27'
-                    },
-                    svg: { color: '#F4F5FA' }}} />}
-                  />
-              </LocalizationProvider>
-            </div>
+            <CssTextField
+              type="number"         
+              min={0}
+              id="prazo"
+              name='prazo'
+              label="Prazo"
+              onChange={(e) => setPrazo(e.target.value)}
+              margin="dense"
+              fullWidth className='textField'
+              InputProps={{
+                endAdornment: <InputAdornment position="end">dias</InputAdornment>,
+                inputProps: { min: 0 }
+              }}
+            />
             
 
             <Divider light className='mt-3' />
