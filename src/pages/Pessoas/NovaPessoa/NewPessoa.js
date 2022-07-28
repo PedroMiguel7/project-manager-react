@@ -8,7 +8,7 @@ import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import NewProject from '../../../assets/icons/new.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../../api"
 
@@ -16,10 +16,10 @@ import api from "../../../api"
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
-    svg: {color: '#F4F5FA'},
+    svg: { color: '#F4F5FA' },
     '&.Mui-focused': {
       borderColor: '#F4F5FA',
-      svg: {color: '#F57D3D'}
+      svg: { color: '#F57D3D' }
     },
     '& fieldset': {
       borderColor: '#F4F5FA',
@@ -35,7 +35,7 @@ const CssTextField = styled(TextField)({
   '.MuiInputLabel-outlined': {
     color: '#F4F5FA',
     '&.Mui-focused': {
-      color:'#F46E27',
+      color: '#F46E27',
     },
   },
 })
@@ -56,33 +56,47 @@ const style = {
 export default function BasicModalPessoa() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => {setOpen(false); setEquipe(); setFuncao();}
-  
+  const handleClose = () => { setOpen(false); setEquipe(); setFuncao(); }
+
   const [nome, setNome] = useState("");
   const [funcao, setFuncao] = React.useState();
-  const [equipe, setEquipe] = React.useState();
+  const [equipe, setEquipe] = React.useState([]);
+
+  const [dadoEquipe, setDadoEquipe] = React.useState('');
+  const handleChangeAge = (eventA) => {
+    setDadoEquipe(eventA.target.value);
+  };
 
   function FechaModal() {
     setOpen(false);
     window.location.reload();
   }
 
-  const handleChange = (event) => {
-    setEquipe(event.target.value);
-    };
-    
+
   const handleChangeFun = (evento) => {
-      setFuncao(evento.target.value);
+    setFuncao(evento.target.value);
   };
 
   function PostaPessoa() {
     api.post("/pessoas/",
-    {
-      nome_pessoa : nome,
-      funcao_pessoa : funcao,
-      equipe_Id: equipe,
-  })
+      {
+        nome_pessoa: nome,
+        funcao_pessoa: funcao,
+        equipe_Id: parseInt(dadoEquipe),
+      })
   }
+  useEffect(() => {
+    const fetchequipe = async () => {
+      try {
+        const response = await api.get('/equipes/');
+        setEquipe(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchequipe();
+  }, []);
+
 
   return (
     <div>
@@ -102,16 +116,16 @@ export default function BasicModalPessoa() {
             </Typography>
           </div>
           <form onSubmit={FechaModal}>
-            <CssTextField 
-              required 
-              id="nome" 
-              name='nome' 
+            <CssTextField
+              required
+              id="nome"
+              name='nome'
               label="Nome"
-              onChange={(e) => setNome(e.target.value)} 
-              variant="outlined" 
-              margin="dense" 
+              onChange={(e) => setNome(e.target.value)}
+              variant="outlined"
+              margin="dense"
               color='primary'
-              fullWidth 
+              fullWidth
               className='textField'
               sx={{
                 "& label": {
@@ -123,6 +137,15 @@ export default function BasicModalPessoa() {
               }} />
 
             <Box sx={{ minWidth: 120 }}>
+<<<<<<< HEAD
+              <CssTextField
+                select
+                label="Função"
+                fullWidth
+                margin="dense"
+                value={funcao}
+                onChange={handleChangeFun}
+=======
               <CssTextField 
               select
               label="Função"
@@ -130,6 +153,18 @@ export default function BasicModalPessoa() {
               margin="dense"
               value={funcao}
               onChange={handleChangeFun}
+              SelectProps={{
+                MenuProps: {
+                  PaperProps: {
+                    style: {
+                      maxHeight: '23vh',
+                      backgroundColor: '#494A58',
+                      color: '#fff',
+                    }
+                  }
+                }
+              }}
+>>>>>>> a4ce641ee3cae19d6a00a2b12e167d4632b270e7
               >
                 <MenuItem value={"Back-End"}>Back-End</MenuItem>
                 <MenuItem value={"Front-End"}>Front-End</MenuItem>
@@ -137,8 +172,17 @@ export default function BasicModalPessoa() {
                 <MenuItem value={"Gerente de Projeto"}>Gerente de Projeto</MenuItem>
               </CssTextField>
             </Box>
-            
+
             <Box sx={{ minWidth: 120 }}>
+<<<<<<< HEAD
+              <CssTextField
+                select
+                label="Equipe"
+                fullWidth
+                margin="dense"
+                value={dadoEquipe}
+                onChange={handleChangeAge}
+=======
               <CssTextField 
               select
               label="Equipe"
@@ -146,28 +190,40 @@ export default function BasicModalPessoa() {
               margin="dense"
               value={equipe}
               onChange={handleChange}
+              SelectProps={{
+                MenuProps: {
+                  PaperProps: {
+                    style: {
+                      maxHeight: '23vh',
+                      backgroundColor: '#494A58',
+                      color: '#fff',
+                    }
+                  }
+                }
+              }}
+>>>>>>> a4ce641ee3cae19d6a00a2b12e167d4632b270e7
               >
-                <MenuItem value={1}>Komanda</MenuItem>
-                <MenuItem value={2}>Cariri Inovação</MenuItem>
-                <MenuItem value={3}>Cariri Teste</MenuItem>
+                {equipe.map(p => (
+                  <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
+                )}
               </CssTextField>
             </Box>
 
-            <Divider light className='mt-3'/>
+            <Divider light className='mt-3' />
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
                 color: "#F4F5FA",
                 opacity: 0.5,
                 textTransform: 'capitalize'
-              }} 
-              variant="text" className='' onClick={handleClose}>Cancelar</Button>
+              }}
+                variant="text" className='' onClick={handleClose}>Cancelar</Button>
               <Button style={{
                 color: "#F4F5FA",
                 background: "#F46E27",
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-              variant="contained" type="submit" onClick={PostaPessoa}>Salvar</Button>
+                variant="contained" type="submit" onClick={PostaPessoa}>Salvar</Button>
             </div>
           </form>
         </Box>

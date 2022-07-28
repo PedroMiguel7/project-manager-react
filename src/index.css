@@ -505,37 +505,8 @@ main h1 {
     width: fit-content;
 }
 
-/* TENTANDO MUDAR A BORDA DO SELECT >;@*/
-
-.Mui-focused {
-    border-color: #c4c !important;
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
-
-.MuiOutlinedInput-root:focus {
-    border-color: #c4c !important;
-}
-
-.MuiInputBase-root:focus  {
-    border-color: #c4c !important;
-}
-
-.MuiInputBase:focus{
-    border-color: #c4c !important;
-}
-
-.MuiSelect-select:focus {
-    border-color: #c4c !important;
-}
-
-select:focus-visible {
-    border-color: '#C4C',
-}
-
-.teste:-moz-focusring {
-    border-color: '#c4c';
-    background-color: green;
-}
-
-.MuiOutlinedInput-root > .MuiSelect-select .Mui-focused {
-    border-color: red !important;
-  }

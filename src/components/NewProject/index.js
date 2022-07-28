@@ -150,6 +150,17 @@ export default function BasicModal() {
                   margin="dense"
                   value={dadoEquipe}
                   onChange={handleChangeAge}
+                  SelectProps={{
+                    MenuProps: {
+                      PaperProps: {
+                        style: {
+                          maxHeight: '23vh',
+                          backgroundColor: '#494A58',
+                          color: '#fff',
+                        }
+                      }
+                    }
+                  }}
                   >
                     {equipe.map(p =>(
                       <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
