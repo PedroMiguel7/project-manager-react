@@ -137,15 +137,6 @@ export default function BasicModalPessoa() {
               }} />
 
             <Box sx={{ minWidth: 120 }}>
-<<<<<<< HEAD
-              <CssTextField
-                select
-                label="Função"
-                fullWidth
-                margin="dense"
-                value={funcao}
-                onChange={handleChangeFun}
-=======
               <CssTextField 
               select
               label="Função"
@@ -164,7 +155,6 @@ export default function BasicModalPessoa() {
                   }
                 }
               }}
->>>>>>> a4ce641ee3cae19d6a00a2b12e167d4632b270e7
               >
                 <MenuItem value={"Back-End"}>Back-End</MenuItem>
                 <MenuItem value={"Front-End"}>Front-End</MenuItem>
@@ -174,22 +164,13 @@ export default function BasicModalPessoa() {
             </Box>
 
             <Box sx={{ minWidth: 120 }}>
-<<<<<<< HEAD
-              <CssTextField
-                select
-                label="Equipe"
-                fullWidth
-                margin="dense"
-                value={dadoEquipe}
-                onChange={handleChangeAge}
-=======
               <CssTextField 
               select
               label="Equipe"
               fullWidth
               margin="dense"
               value={equipe}
-              onChange={handleChange}
+              onChange={handleChangeAge}
               SelectProps={{
                 MenuProps: {
                   PaperProps: {
@@ -201,7 +182,6 @@ export default function BasicModalPessoa() {
                   }
                 }
               }}
->>>>>>> a4ce641ee3cae19d6a00a2b12e167d4632b270e7
               >
                 {equipe.map(p => (
                   <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
