@@ -3,7 +3,7 @@ import { Component } from "react";
 import api from '../../../api';
 import TarefasMenu from '../../TarefasMenu';
 import IconButton from '@mui/material/IconButton';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import TaskAltRoundedIcon from '@mui/icons-material/TaskAltRounded';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 
 
@@ -25,7 +25,7 @@ class TarefasConcluidas extends Component {
 
     const [changeIcon, setIcon] = React.useState(true);
 
-    const icon = (changeIcon === true) ? <TaskAltIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
+    const icon = (changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
 
     if( qtdTarefas === null){
         return(
