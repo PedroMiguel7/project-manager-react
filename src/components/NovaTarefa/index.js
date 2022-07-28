@@ -67,12 +67,13 @@ export default function BasicModal() {
   const PathArray = pessoaPath.split('/');
   const idPessoa = parseInt(PathArray[2]);
 
-  function cadastrarTarefa(e) {
+  /*function cadastrarTarefa(e) {
     e.preventDefault()
     console.log(`Tarefa com descrição ${descricao}, prioridade ${prioridade} e prazo para ${prazo} foi cadastrada com sucesso`)
-  }
+  }*/
   
-  const [descricao, setDescricao] = useState("")
+  const [idProjeto, setIdProjeto] = useState();
+  const [descricao, setDescricao] = useState("");
   const [pessoa, setIdPessoa] = React.useState(idPessoa);
   const [status, setStatus] = React.useState("Em Andamento");
   const [prioridade, setPrioridade] = React.useState();
@@ -138,6 +139,20 @@ export default function BasicModal() {
               margin="dense"
               fullWidth className='textField'
             />
+
+            <Box sx={{ minWidth: 120 }}>
+              <CssTextField 
+              required
+              select
+              label="Projeto"
+              fullWidth
+              margin="dense"
+              value={prioridade}
+              onChange={handleChange}
+              >
+                <MenuItem value={0}></MenuItem>
+              </CssTextField>
+            </Box>
 
             <Box sx={{ minWidth: 120 }}>
               <CssTextField 
