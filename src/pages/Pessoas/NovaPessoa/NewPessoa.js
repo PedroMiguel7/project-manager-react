@@ -130,6 +130,17 @@ export default function BasicModalPessoa() {
               margin="dense"
               value={funcao}
               onChange={handleChangeFun}
+              SelectProps={{
+                MenuProps: {
+                  PaperProps: {
+                    style: {
+                      maxHeight: '23vh',
+                      backgroundColor: '#494A58',
+                      color: '#fff',
+                    }
+                  }
+                }
+              }}
               >
                 <MenuItem value={"Back-End"}>Back-End</MenuItem>
                 <MenuItem value={"Front-End"}>Front-End</MenuItem>
@@ -146,6 +157,17 @@ export default function BasicModalPessoa() {
               margin="dense"
               value={equipe}
               onChange={handleChange}
+              SelectProps={{
+                MenuProps: {
+                  PaperProps: {
+                    style: {
+                      maxHeight: '23vh',
+                      backgroundColor: '#494A58',
+                      color: '#fff',
+                    }
+                  }
+                }
+              }}
               >
                 <MenuItem value={1}>Komanda</MenuItem>
                 <MenuItem value={2}>Cariri Inovação</MenuItem>

@@ -147,8 +147,19 @@ export default function BasicModal() {
               label="Projeto"
               fullWidth
               margin="dense"
-              value={prioridade}
-              onChange={handleChange}
+              //value={prioridade}
+              //onChange={handleChange}
+              SelectProps={{
+                MenuProps: {
+                  PaperProps: {
+                    style: {
+                      maxHeight: '23vh',
+                      backgroundColor: '#494A58',
+                      color: '#fff',
+                    }
+                  }
+                }
+              }}
               >
                 <MenuItem value={0}></MenuItem>
               </CssTextField>
@@ -163,6 +174,17 @@ export default function BasicModal() {
               margin="dense"
               value={prioridade}
               onChange={handleChange}
+              SelectProps={{
+                MenuProps: {
+                  PaperProps: {
+                    style: {
+                      maxHeight: '23vh',
+                      backgroundColor: '#494A58',
+                      color: '#fff',
+                    }
+                  }
+                }
+              }}
               >
                 <MenuItem value={0}>Baixa</MenuItem>
                 <MenuItem value={1}>Média</MenuItem>
