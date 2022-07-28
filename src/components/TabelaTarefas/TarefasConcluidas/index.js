@@ -8,6 +8,7 @@ import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import PrioridadeAlta from '../../../assets/icons/prioridade-alta.svg';
 import PrioridadeMedia from '../../../assets/icons/prioridade-media.svg';
 import PrioridadeBaixa from '../../../assets/icons/prioridade-baixa.svg';
+import Tooltip from '@mui/material/Tooltip';
 
 
 class TarefasConcluidas extends Component {
@@ -40,15 +41,21 @@ class TarefasConcluidas extends Component {
         function Prioridade(prioridade) {
           if (prioridade === 0) {
             return (
-              <img className='IconesPrioridade' src={PrioridadeBaixa}/>
+              <Tooltip title='Baixa' arrow>
+                <img className='IconesPrioridade' src={PrioridadeBaixa}/>
+              </Tooltip>
             )
           } else if (prioridade == 1) {
             return (
-              <img className='IconesPrioridade' src={PrioridadeMedia}/>
+              <Tooltip title='Média' arrow>
+                <img className='IconesPrioridade' src={PrioridadeMedia}/>
+              </Tooltip>
             )
           } else if (prioridade === 2) {
             return (
-              <img className='IconesPrioridade' src={PrioridadeAlta}/>
+              <Tooltip title='Alta' arrow>
+                <img className='IconesPrioridade' src={PrioridadeAlta}/>
+              </Tooltip>
             )
           }
         }
