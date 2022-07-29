@@ -64,15 +64,44 @@ export default function BasicModal() {
   const handleClose = () => {setOpen(false); setPrioridade()};
 
   const pessoaPath = window.location.pathname;
+  console.log(pessoaPath);
   const PathArray = pessoaPath.split('/');
   const idPessoa = parseInt(PathArray[2]);
-
-  /*function cadastrarTarefa(e) {
-    e.preventDefault()
-    console.log(`Tarefa com descrição ${descricao}, prioridade ${prioridade} e prazo para ${prazo} foi cadastrada com sucesso`)
-  }*/
   
-  const [idProjeto, setIdProjeto] = useState();
+
+  const [dadosPessoa, setPessoa] = useState([]);
+  useEffect(() => {
+    const fetchPessoa = async () => {
+      const respondePessoa = await api.get(pessoaPath)
+      setPessoa(respondePessoa.data)
+    }
+    fetchPessoa()
+  }, []);
+
+  const getIdEquipe = dadosPessoa.equipe_Id;
+
+  console.log(getIdEquipe);
+
+  const [projetos, setProjeto] = useState([]);
+  const url = `/equipes/${getIdEquipe}/projetos`;
+
+  useEffect(() => {
+    const fetchProjetos = async () => {
+      try {
+        const responseProjetos = await api.get(url);
+        setProjeto(responseProjetos.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProjetos();
+  }, []);
+
+  
+
+  const getIdProjetos = projetos.id_projeto;
+  console.log(projetos);
+
   const [descricao, setDescricao] = useState("");
   const [pessoa, setIdPessoa] = React.useState(idPessoa);
   const [status, setStatus] = React.useState("Em Andamento");
@@ -83,14 +112,20 @@ export default function BasicModal() {
     setPrioridade(event.target.value);
   };
 
+  const [dadoProjetos, setDadoProjetos] = React.useState('');
+  const handleChangeProjetos = (eventA) => {
+    setDadoProjetos(eventA.target.value);
+  };
+
   function PostaTarefa() {
     api.post("/tasks/",
     {
-      pessoa_id: pessoa,
+      pessoa_id: parseInt(pessoa),
       descricao_task : descricao,
       prioridade: parseInt(prioridade),
       status: status,
-      prazo_entrega: prazo
+      prazo_entrega: prazo,
+      projeto_id: parseInt(dadoProjetos),
     })
   }
 
@@ -147,8 +182,8 @@ export default function BasicModal() {
               label="Projeto"
               fullWidth
               margin="dense"
-              //value={prioridade}
-              //onChange={handleChange}
+              value={dadoProjetos}
+              onChange={handleChangeProjetos}
               SelectProps={{
                 MenuProps: {
                   PaperProps: {
@@ -161,7 +196,9 @@ export default function BasicModal() {
                 }
               }}
               >
-                <MenuItem value={0}></MenuItem>
+                {projetos.map(p =>(
+                  <MenuItem value={p.id_projeto} key={p.id_projeto}>{p.nome_projeto}</MenuItem>)
+                )}
               </CssTextField>
             </Box>
 
