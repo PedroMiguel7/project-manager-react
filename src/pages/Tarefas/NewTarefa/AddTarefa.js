@@ -15,9 +15,6 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../../api"
 
-
-const projetoPath = window.location.pathname;
-
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
         color: '#F4F5FA',
@@ -66,7 +63,7 @@ const style = {
 export default function BasicModalTarefa(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {setOpen(false); setDadoEquipe()};
 
 
     function cadastrarProjeto(e) {
@@ -113,7 +110,7 @@ export default function BasicModalTarefa(props) {
         api.post("/tasks/",
             {
                 descricao_task: nome,
-                pessoa_id: dadoEquipe,
+                pessoa_id: parseInt(dadoEquipe),
                 projeto_id: props.id_projeto,
                 prazo_entrega: parseInt(prazoEntrega),
                 prioridade: prioridade,
@@ -186,7 +183,7 @@ export default function BasicModalTarefa(props) {
                             required
                             id="prazoEntrega"
                             name='prazo de entrega'
-                            label="Prazo de entrega"
+                            label="Dias até a Entrega"
                             onChange={(a) => setPrazoEntrega(a.target.value)}
                             variant="outlined"
                             margin="dense"

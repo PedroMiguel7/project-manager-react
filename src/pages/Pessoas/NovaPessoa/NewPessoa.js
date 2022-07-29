@@ -169,7 +169,7 @@ export default function BasicModalPessoa() {
               label="Equipe"
               fullWidth
               margin="dense"
-              value={equipe}
+              value={dadoEquipe}
               onChange={handleChangeAge}
               SelectProps={{
                 MenuProps: {
