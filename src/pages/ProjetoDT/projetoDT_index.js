@@ -228,7 +228,7 @@ class ProjetoDT extends Component {
                             </tbody>
                             <tfoot> 
                                 <tr>
-                                    <BasicModalTarefa id_projeto ={p.id_projeto}/>
+                                    <BasicModalTarefa id_projeto ={p.id_projeto} equipe_id={p.equipe_id}/>
                                 </tr>
                             </tfoot>
                         </table>

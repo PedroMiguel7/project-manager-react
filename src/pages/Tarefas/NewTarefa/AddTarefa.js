@@ -9,12 +9,14 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import NewProject from '../../../assets/icons/new.svg';
 import InputLabel from '@mui/material/InputLabel';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import api from "../../../api"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+import api from "../../../api"
 
+
+const projetoPath = window.location.pathname;
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -69,15 +71,19 @@ export default function BasicModalTarefa(props) {
 
     function cadastrarProjeto(e) {
         e.preventDefault()
-        console.log(`Tarefa ${nome} para ${pessoa} com prioridade ${prioridade} foi cadastrada com sucesso`)
+        console.log(`Tarefa ${nome} para ${dadoEquipe} com prioridade ${prioridade} foi cadastrada com sucesso`)
         console.log(prazoEntrega)
     }
 
     const [nome, setNome] = useState("");
-    const [pessoa, setPessoa] = React.useState();
+    const [pessoa, setPessoa] = useState([]);
     const [prazoEntrega, setPrazoEntrega] = useState();
     const [prioridade, setPrioridade] = React.useState();
 
+    const [dadoEquipe, setDadoEquipe] = React.useState('');
+    const handleChangeAge = (eventA) => {
+        setDadoEquipe(eventA.target.value);
+    };
 
 
     const handleChangePrior = (event) => {
@@ -88,11 +94,26 @@ export default function BasicModalTarefa(props) {
         setPessoa(evento.target.value);
     };
 
+
+    useEffect(() => {
+        const fetchequipe = async () => {
+            try {
+                const url = ("/equipes/" + props.equipe_id+"/pessoas")
+                const response = await api.get(url);
+                setPessoa(response.data);
+                console.log(pessoa)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchequipe();
+    }, []);
+
     function PostaTarefa() {
         api.post("/tasks/",
             {
                 descricao_task: nome,
-                pessoa_id: pessoa,
+                pessoa_id: dadoEquipe,
                 projeto_id: props.id_projeto,
                 prazo_entrega: parseInt(prazoEntrega),
                 prioridade: prioridade,
@@ -144,19 +165,20 @@ export default function BasicModalTarefa(props) {
                                 }
                             }}
                             >
-                                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Pessoa</InputLabel>
+                                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Responsável</InputLabel>
                                 <CssSelect
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value={pessoa}
+                                    value={dadoEquipe}
                                     label="Age"
-                                    onChange={handleChangePes}
+                                    onChange={handleChangeAge}
                                     sx={{
                                         svg: { color: '#F4F5FA' }
                                     }}
                                 >
-                                    <MenuItem value={4}>Caio</MenuItem>
-                                    <MenuItem value={10}>Bruno</MenuItem>
+                                    {pessoa.map(f => (
+                                        <MenuItem value={f.id_pessoa} key={f.id_pessoa}>{f.nome_pessoa}</MenuItem>)
+                                    )}
                                 </CssSelect>
                             </FormControl>
                         </Box>
