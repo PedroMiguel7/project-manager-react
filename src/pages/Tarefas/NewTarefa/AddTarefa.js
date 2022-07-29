@@ -1,49 +1,44 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import InputAdornment from '@mui/material/InputAdornment';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
-import NewProject from '../../../assets/icons/new.svg';
-import InputLabel from '@mui/material/InputLabel';
 import { useState, useEffect } from 'react';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../../api"
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
-        color: '#F4F5FA',
-        '& fieldset': {
-            borderColor: '#F4F5FA',
-            borderRadius: 5
-        },
-        '&:hover fieldset': {
-            borderColor: '#C2C3C6',
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: '#F46E27',
-        },
-    },
-})
-
-const CssSelect = styled(Select)({
-    '& .MuiSelect-outlined': {
-        color: "#F4F5FA",
-    }, '& fieldset': {
+      color: '#F4F5FA',
+      svg: {color: '#F4F5FA'},
+      '&.Mui-focused': {
         borderColor: '#F4F5FA',
-        borderRadius: 5,
-    },
-    '&:focus': {
-        backgroundColor: 'yellow'
-    },
-    '&:hover': {
+        svg: {color: '#F57D3D'}
+      },
+      '& fieldset': {
+        borderColor: '#F4F5FA',
+        borderRadius: 5
+      },
+      '&:hover fieldset': {
+        borderColor: '#C2C3C6',
+      },
+      '&.Mui-focused fieldset': {
         borderColor: '#F46E27',
-        color: '#F46E27',
+      },
+      '& .MuiInputAdornment-root': {
+      color: '#87888C',
+    }
+    },
+    '.MuiInputLabel-outlined': {
+      color: '#F4F5FA',
+      '&.Mui-focused': {
+        color:'#F46E27',
+      },
     },
 })
 
@@ -63,14 +58,14 @@ const style = {
 export default function BasicModalTarefa(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => {setOpen(false); setDadoEquipe()};
+    const handleClose = () => {setOpen(false); setDadoEquipe(); setPrioridade()};
 
 
-    function cadastrarProjeto(e) {
+    /*function cadastrarProjeto(e) {
         e.preventDefault()
         console.log(`Tarefa ${nome} para ${dadoEquipe} com prioridade ${prioridade} foi cadastrada com sucesso`)
         console.log(prazoEntrega)
-    }
+    }*/
 
     const [nome, setNome] = useState("");
     const [pessoa, setPessoa] = useState([]);
@@ -117,9 +112,24 @@ export default function BasicModalTarefa(props) {
             })
     }
 
+    function FechaModal() {
+        setOpen(false);
+        console.log(`Tarefa ${nome} para ${dadoEquipe} com prioridade ${prioridade} foi cadastrada com sucesso`)
+        console.log(prazoEntrega)
+        window.location.reload();
+    }
+
     return (
         <div>
-            <button onClick={handleOpen} className="new-project "><img src={NewProject} alt="" /></button>
+            <Button onClick={handleOpen} variant="contained" sx={{width: 'fit-content', color: "#F4F5FA",
+            background: "#F46E27",
+            textTransform: 'capitalize',
+            boxShadow: 'none',
+            ':hover': {
+                background: "#F57D3D",
+            }}}>
+                Atribuir Tarefa
+            </Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -127,11 +137,14 @@ export default function BasicModalTarefa(props) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
-                    <form onSubmit={cadastrarProjeto}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-                            Adicionar<span style={{ color: '#F46E27' }}> Tarefa</span>
+                    <div className='d-flex align-items-center justify-content-between mb-4'>
+                        <div className='OcuparEspaco'></div>
+                        <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleClose} />
+                        <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
+                        Atribuir<span style={{ color: '#F46E27' }}> Tarefa</span>
                         </Typography>
+                    </div>
+                    <form onSubmit={FechaModal}>
                         <CssTextField
                             required
                             id="nome"
@@ -143,89 +156,75 @@ export default function BasicModalTarefa(props) {
                             color='primary'
                             fullWidth
                             className='textField'
-                            sx={{
-                                "& label": {
-                                    color: '#F4F5FA'
-                                },
-                                "& label.Mui-focused": {
-                                    color: '#F46E27'
-                                },
-                            }} />
+                             />
 
                         <Box sx={{ minWidth: 120 }}>
-                            <FormControl required fullWidth margin="dense" sx={{
-                                "& label": {
-                                    color: '#F4F5FA'
-                                },
-                                "& label.Mui-focused": {
-                                    color: '#F46E27'
-                                }
-                            }}
-                            >
-                                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Responsável</InputLabel>
-                                <CssSelect
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    value={dadoEquipe}
-                                    label="Age"
-                                    onChange={handleChangeAge}
-                                    sx={{
-                                        svg: { color: '#F4F5FA' }
-                                    }}
-                                >
-                                    {pessoa.map(f => (
-                                        <MenuItem value={f.id_pessoa} key={f.id_pessoa}>{f.nome_pessoa}</MenuItem>)
-                                    )}
-                                </CssSelect>
-                            </FormControl>
-                        </Box>
-                        <CssTextField
-                            required
-                            id="prazoEntrega"
-                            name='prazo de entrega'
-                            label="Dias até a Entrega"
-                            onChange={(a) => setPrazoEntrega(a.target.value)}
-                            variant="outlined"
-                            margin="dense"
-                            color='primary'
+                            <CssTextField 
+                            select
+                            label="Responsável"
                             fullWidth
-                            className='textField'
-                            sx={{
-                                "& label": {
-                                    color: '#F4F5FA'
-                                },
-                                "& label.Mui-focused": {
-                                    color: '#F46E27'
-                                },
-                            }} />
-
-                        <Box sx={{ minWidth: 120 }}>
-                            <FormControl required fullWidth margin="dense" sx={{
-                                "& label": {
-                                    color: '#F4F5FA'
-                                },
-                                "& label.Mui-focused": {
-                                    color: '#F46E27'
+                            margin="dense"
+                            value={dadoEquipe}
+                            onChange={handleChangeAge}
+                            SelectProps={{
+                                MenuProps: {
+                                PaperProps: {
+                                    style: {
+                                    maxHeight: '23vh',
+                                    backgroundColor: '#494A58',
+                                    color: '#fff',
+                                    }
+                                }
                                 }
                             }}
                             >
-                                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Prioridade</InputLabel>
-                                <CssSelect
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    value={prioridade}
-                                    label="Age"
-                                    onChange={handleChangePrior}
-                                    sx={{
-                                        svg: { color: '#F4F5FA' }
-                                    }}
-                                >
-                                    <MenuItem value={0}>Baixa</MenuItem>
-                                    <MenuItem value={1}>Média</MenuItem>
-                                    <MenuItem value={2}>Alta</MenuItem>
-                                </CssSelect>
-                            </FormControl>
+                                {pessoa.map(f => (
+                                    <MenuItem value={f.id_pessoa} key={f.id_pessoa}>{f.nome_pessoa}</MenuItem>)
+                                )}
+                            </CssTextField>
                         </Box>
+
+                        <Box sx={{ minWidth: 120 }}>
+                            <CssTextField 
+                            select
+                            label="Prioridade"
+                            fullWidth
+                            margin="dense"
+                            value={prioridade}
+                            onChange={handleChangePrior}
+                            SelectProps={{
+                                MenuProps: {
+                                PaperProps: {
+                                    style: {
+                                    maxHeight: '23vh',
+                                    backgroundColor: '#494A58',
+                                    color: '#fff',
+                                    }
+                                }
+                                }
+                            }}
+                            >
+                                <MenuItem value={0}>Baixa</MenuItem>
+                                <MenuItem value={1}>Média</MenuItem>
+                                <MenuItem value={2}>Alta</MenuItem>
+                            </CssTextField>
+                        </Box>
+
+                        <CssTextField
+                        type="number"
+                        id="prazo"
+                        name='prazo'
+                        label="Prazo"
+                        onChange={(a) => setPrazoEntrega(a.target.value)}
+                        margin="dense"
+                        fullWidth className='textField'
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">
+                            <span>dias</span>
+                            </InputAdornment>,
+                            inputProps: { min: 0 }
+                        }}
+                        />
 
                         <Divider light className='mt-3' />
                         <div className='d-flex justify-content-end mt-5'>
