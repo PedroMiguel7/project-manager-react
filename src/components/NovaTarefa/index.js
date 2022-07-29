@@ -78,6 +78,8 @@ export default function BasicModal() {
     fetchPessoa()
   }, []);
 
+  console.log(dadosPessoa);
+
   const getIdEquipe = dadosPessoa.equipe_Id;
 
   console.log(getIdEquipe);
@@ -95,16 +97,12 @@ export default function BasicModal() {
       }
     };
     fetchProjetos();
-  }, []);
+  });
 
-  
-
-  const getIdProjetos = projetos.id_projeto;
   console.log(projetos);
 
   const [descricao, setDescricao] = useState("");
   const [pessoa, setIdPessoa] = React.useState(idPessoa);
-  const [status, setStatus] = React.useState("Em Andamento");
   const [prioridade, setPrioridade] = React.useState();
   const [prazo, setPrazo] = React.useState(new Date());
 
@@ -120,12 +118,11 @@ export default function BasicModal() {
   function PostaTarefa() {
     api.post("/tasks/",
     {
-      pessoa_id: parseInt(pessoa),
       descricao_task : descricao,
-      prioridade: parseInt(prioridade),
-      status: status,
-      prazo_entrega: prazo,
+      pessoa_id: parseInt(pessoa),
       projeto_id: parseInt(dadoProjetos),
+      prazo_entrega: parseInt(prazo),
+      prioridade: parseInt(prioridade),
     })
   }
 
