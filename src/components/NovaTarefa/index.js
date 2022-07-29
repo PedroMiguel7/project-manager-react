@@ -97,7 +97,7 @@ export default function BasicModal() {
       }
     };
     fetchProjetos();
-  });
+  }, []);
 
   console.log(projetos);
 

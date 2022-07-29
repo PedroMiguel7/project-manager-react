@@ -29,6 +29,7 @@ class PessoasDT extends Component {
     render() {
         const { pessoa } = this.state;
         const { tarefas} = this.state;
+        console.log(pessoa.equipe_Id);
 
         let TotalTarefas;
         if (tarefas === null) {
@@ -92,7 +93,7 @@ class PessoasDT extends Component {
                             <HeaderTarefas />
                             
                             <div className="d-flex justify-content-end">
-                                <NovaTarefa />
+                                {/*<NovaTarefa />*/}
                             </div>
                             
                             
