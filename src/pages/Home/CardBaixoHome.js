@@ -28,7 +28,7 @@ class CardBaixoHome extends Component {
             }
         })
     }
-
+    
 
     ExibirProjetos = (props) => {
         if(props.ProjetosDaHome !== null){
@@ -65,6 +65,8 @@ class CardBaixoHome extends Component {
         }
     }
 
+    
+
     render() {
         const { projetosHome } = this.state;
         var ProjetosDaHome = 0;
@@ -74,7 +76,7 @@ class CardBaixoHome extends Component {
 
         return (
             <>
-                <div className="CardBaixoHome pt-1 ps-2 pe-2 ">
+                <div className="CardBaixoHome pt-1 ps-2 pe-2 scrollar">
                     <div className="LeftOptions col-lg-2 mt-sm-2">
                         <span className="me-2 ms-4 mt-3">Projetos</span>
                     </div>
