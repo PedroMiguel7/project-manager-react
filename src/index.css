@@ -103,6 +103,16 @@ body {
     box-shadow: 0 0 5px solid rgba(0, 0, 0, 0.3);
 }
 
+.scrollar ::-webkit-scrollbar{
+    width: 15px;
+    border: 1px solid rgba(200, 200, 200);
+}
+
+.scrollar :: ::-webkit-scrollbar-thumb{
+    background-color: #21222D;
+    border-radius: 6px;
+}
+
 main h1 {
     color: var(--laranja);
 }
