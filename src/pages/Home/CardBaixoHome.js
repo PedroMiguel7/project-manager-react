@@ -47,7 +47,7 @@ class CardBaixoHome extends Component {
                     }}
                         variant="contained" >DETALHAR</Button></Link>
                         </td>
-                        <td><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaProjeto(p.id_projeto)}>EXCLUIR</Button></td>
+                        {/*<td><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaProjeto(p.id_projeto)}>EXCLUIR</Button></td>*/}
                 </tr>
             ))
             )
@@ -87,7 +87,6 @@ class CardBaixoHome extends Component {
                                 <th scope="col" style={{ width: '20%' }}>Titulo</th>
                                 <th scope="col" style={{ width: '40%' }}>Progresso</th>
                                 <th scope="col" style={{ width: '20%' }}>Status</th>
-                                <th scope="col" style={{ width: '5%' }}></th>
                                 <th scope="col" style={{ width: '5%' }}></th>
                             </tr>
                         </thead>
