@@ -88,6 +88,7 @@ class CardBaixoHome extends Component {
                                 <th scope="col" style={{ width: '40%' }}>Progresso</th>
                                 <th scope="col" style={{ width: '20%' }}>Status</th>
                                 <th scope="col" style={{ width: '5%' }}></th>
+                                {/*<th scope="col" style={{ width: '5%' }}></th>*/}
                             </tr>
                         </thead>
                         <tbody className="">
