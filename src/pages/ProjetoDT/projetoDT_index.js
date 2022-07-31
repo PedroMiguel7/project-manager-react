@@ -35,7 +35,6 @@ class ProjetoDT extends Component {
             fetchEquipe()
         });
         let totalMembros = 0;
-        console.log(pessoas)
         if (pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`) === null) {
             return (
                 totalMembros
@@ -128,28 +127,28 @@ class ProjetoDT extends Component {
                                                 <div>
                                                     <h6 style={{ color: "#F46E27" }}>Gerente de Projeto</h6>
                                                     <ul style={{ fontWeight: 300 }}>
-                                                        <this.BuscarMembrosFunc equipe_id={projetos.equipe_id} funcao_pessoa='Gerente de Projeto' />
+                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Gerente de Projeto' />
                                                     </ul>
                                                 </div>
 
                                                 <div>
                                                     <h6 style={{ color: "#F46E27" }}>Dev. BackEnd</h6>
                                                     <ul style={{ fontWeight: 300 }}>
-                                                        <this.BuscarMembrosFunc equipe_id={projetos.equipe_id} funcao_pessoa='Back-End' />
+                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Back-End' />
                                                     </ul>
                                                 </div>
 
                                                 <div>
                                                     <h6 style={{ color: "#F46E27" }}>Dev. FrontEnd</h6>
                                                     <ul style={{ fontWeight: 300 }}>
-                                                        <this.BuscarMembrosFunc equipe_id={projetos.equipe_id} funcao_pessoa='Front-End' />
+                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Front-End' />
                                                     </ul>
                                                 </div>
 
                                                 <div>
                                                     <h6 style={{ color: "#F46E27" }}>Tester</h6>
                                                     <ul style={{ fontWeight: 300 }}>
-                                                        <this.BuscarMembrosFunc equipe_id={projetos.equipe_id} funcao_pessoa='Tester' />
+                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Tester' />
                                                     </ul>
                                                 </div>
                                             </div>
