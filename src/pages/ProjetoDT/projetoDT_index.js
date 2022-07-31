@@ -98,10 +98,6 @@ class ProjetoDT extends Component {
 
         return (
             <>
-
-
-
-
                 {projetos.map(p => (
                     <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5' key={p.id_projeto}>
                         <HeaderDt pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
