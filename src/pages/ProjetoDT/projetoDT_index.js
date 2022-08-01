@@ -120,6 +120,10 @@ class ProjetoDT extends Component {
 
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <div className="row align-items-start mt-3">
+                                    <div>
+                                    <h4>Descrição</h4>
+                                    <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
+                                    </div>
                                     <div className="col-md-12 text-center">
                                         <h6>Progresso</h6>
                                         <CircularProgressWithLabel value="20" id_projeto={projetos.id_projeto} />
