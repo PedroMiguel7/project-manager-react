@@ -9,6 +9,7 @@ import Divider from '@mui/material/Divider';
 import CustomizedAccordion from "../../components/CustomizedAccordion";
 import NovaTarefa from '../../components/NovaTarefa';
 import HeaderTarefas from '../../components/HeaderTarefas';
+import LinearChart from "../../components/LinearChart";
 
 class PessoasDT extends Component {
     state = {
@@ -85,8 +86,7 @@ class PessoasDT extends Component {
                     </div>
                     <div className="col-lg-8">
                         <div className="row Teste h-lg-50 p-3">
-                            Rendimento
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                            <LinearChart />
                         </div>
                         <div className="Teste row  h-lg-50 p-3">
                             
