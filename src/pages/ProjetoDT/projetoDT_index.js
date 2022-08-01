@@ -16,7 +16,7 @@ class ProjetoDT extends Component {
         projetos: [],
         PessoasEquipe: [],
         tarefasPJ: [],
-        
+
     }
     async componentDidMount() {
         const response = await api.get(projetoPath);
@@ -38,7 +38,7 @@ class ProjetoDT extends Component {
         let totalMembros = 0;
         if (pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`) === null) {
             return (
-                totalMembros
+                <li>sem pessoa</li>
             );
         } else {
             return (
@@ -50,6 +50,34 @@ class ProjetoDT extends Component {
     }
 
     MostraTarefas = (props) => {
+        if (props.tarefasPJ !== null) {
+            return (
+                props.tarefasPJ.map(p => (
+                    <tr key={p.id_task}>
+                        <th scope="row">{p.id_task}</th>
+                        <td className="">{p.descricao_task}</td>
+                        <td>{p.nome_pessoa}</td>
+                        <td>{p.prioridade}</td>
+                        <td>{p.status}</td>
+                        <td></td>
+                    </tr>
+                ))
+            )
+        } else {
+            return (
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            )
+        }
+    }
+
+    MostraTarefasCard = (props) => {
         if (props.tarefasPJ !== null) {
             return (
                 props.tarefasPJ.map(p => (
@@ -103,12 +131,94 @@ class ProjetoDT extends Component {
                         <HeaderDt pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
 
                         <div className="d-flex row">
-                            <div className="col-9 TPtrello">
-                                aaa
+                            <div className="col-9 d-flex justify-content-between">
+                                <div className="col-2 TPtrello">
+                                    <h4 className="text-center mt-2">A fazer</h4>
+                                </div>
+                                <div className="col-2 TPtrello">
+                                    <h4 className="text-center mt-2">Em Andamento</h4>
+                                </div>
+                                <div className="col-2 TPtrello">
+                                    <h4 className="text-center mt-2">Em Teste</h4>
+                                </div>
+                                <div className="col-2 TPtrello">
+                                    <h4 className="text-center mt-2">Concluida</h4>
+                                </div>
                             </div>
 
-                            <div className="col-3 TPtrello">
-                            <h4 className="text-center">Funções</h4>
+                            <div className="row col-3 TPtrello2 justify-content-between ms-1">
+                                <div className="row align-items-start mt-3">
+                                    <div>
+                                    <h4>Descrição</h4>
+                                    <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
+                                    </div>
+                                    <div className="col-md-12 text-center">
+                                        <h6>Progresso</h6>
+                                        <CircularProgressWithLabel value="20" id_projeto={projetos.id_projeto} />
+                                    </div>
+                                </div>
+
+                                <div className="row col-12 align-items-center">
+                                    <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
+                                        <h6 className="col">{totalDetasks}</h6>
+                                        <strong>
+                                            <p className="text-center col">Total de <br /> Tarefas</p>
+                                        </strong>
+                                    </div>
+                                    <div className="col-6 d-flex flex-column align-items-center justify-content-center">
+                                        <div className="TarefasAnd d-flex align-items-center justify-content-center">
+                                            <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{TotalTasksAndamento}</h6>
+                                            <strong>
+                                                <p className="ms-2">Tarefas em Andamento</p>
+                                            </strong>
+                                        </div>
+                                        <div className="TarefasConc d-flex align-items-center justify-content-center">
+                                            <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{TotalTaksConcluidas}</h6>
+                                            <strong>
+                                                <p className=" ms-2">Tarefas Concluídas</p>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row align-items-end">
+                                    <h4 className="container text-center">Funções</h4>
+                                    <div className="container ">
+                                        <div className="d-flex text-center justify-content-between">
+                                            <div className="">
+                                                <div className="">
+                                                    <h6 style={{ color: "#F46E27" }}>Gerente de Projeto</h6>
+                                                    <ul style={{ fontWeight: 300 }}>
+                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Gerente de Projeto' />
+                                                    </ul>
+                                                </div>
+
+                                                <div className="">
+                                                    <h6 style={{ color: "#F46E27" }}>Dev. BackEnd</h6>
+                                                    <ul style={{ fontWeight: 300 }}>
+                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Back-End' />
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div>
+
+                                                <div>
+                                                    <h6 style={{ color: "#F46E27" }}>Dev. FrontEnd</h6>
+                                                    <ul style={{ fontWeight: 300 }}>
+                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Front-End' />
+                                                    </ul>
+                                                </div>
+
+                                                <div>
+                                                    <h6 style={{ color: "#F46E27" }}>Tester</h6>
+                                                    <ul style={{ fontWeight: 300 }}>
+                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Tester' />
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
 
 
                             </div>
@@ -239,7 +349,7 @@ class ProjetoDT extends Component {
                                             </tr>
                                         </thead>
                                         <tbody className="" style={{ maxHeight: "400px", overflowy: 'auto' }}>
-
+                                            <this.MostraTarefas tarefasPJ={tarefasPJ} />
                                         </tbody>
                                         <tfoot>
                                             <tr>
