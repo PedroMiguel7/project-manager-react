@@ -48,6 +48,16 @@ header {
     transition: 0.3s;
 }
 
+.TPtrello{
+    background-color: var(--preto-medio);
+    height: 800px;
+}
+
+.TPtrello2{
+    background-color: var(--preto-medio);
+    height: 800px;
+}
+
 .azulzinhoClaro{
     color: #28AEF3;
 }

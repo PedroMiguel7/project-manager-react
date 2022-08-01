@@ -6,6 +6,7 @@ import api from '../../api';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
+import { breakpoints } from "@mui/system";
 
 
 const projetoPath = window.location.pathname;
@@ -15,6 +16,7 @@ class ProjetoDT extends Component {
         projetos: [],
         PessoasEquipe: [],
         tarefasPJ: [],
+        
     }
     async componentDidMount() {
         const response = await api.get(projetoPath);
@@ -26,14 +28,13 @@ class ProjetoDT extends Component {
 
     BuscarMembrosFunc = (props) => {
         const [pessoas, setPessoas] = useState([]);
-        const url = '/equipes/' + props.equipe_id + '/pessoas';
         useEffect(() => {
             const fetchEquipe = async () => {
-                const response2 = await api.get(url)
+                const response2 = await api.get('/equipes/' + props.equipe_id + '/pessoas')
                 setPessoas(response2.data)
             }
             fetchEquipe()
-        });
+        }, []);
         let totalMembros = 0;
         if (pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`) === null) {
             return (
@@ -102,12 +103,14 @@ class ProjetoDT extends Component {
                         <HeaderDt pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
 
                         <div className="d-flex row">
-                            <div className="col-8">
+                            <div className="col-9 TPtrello">
                                 aaa
                             </div>
 
-                            <div className="col-4" style={{backgroundcolor: "#21222D"}}>
-                                bbb
+                            <div className="col-3 TPtrello">
+                            <h4 className="text-center">Funções</h4>
+
+
                             </div>
 
                         </div>
