@@ -77,6 +77,34 @@ class ProjetoDT extends Component {
         }
     }
 
+    MostraTarefasCard = (props) => {
+        if (props.tarefasPJ !== null) {
+            return (
+                props.tarefasPJ.map(p => (
+                    <tr key={p.id_task}>
+                        <th scope="row">{p.id_task}</th>
+                        <td className="">{p.descricao_task}</td>
+                        <td>{p.nome_pessoa}</td>
+                        <td>{p.prioridade}</td>
+                        <td>{p.status}</td>
+                        <td></td>
+                    </tr>
+                ))
+            )
+        } else {
+            return (
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            )
+        }
+    }
+
 
     render() {
         const { projetos } = this.state;
