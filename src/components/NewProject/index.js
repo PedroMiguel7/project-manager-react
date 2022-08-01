@@ -78,7 +78,7 @@ export default function BasicModal() {
 
   function FechaModal() {
     setOpen(false);
-    window.location.reload();
+    //window.location.reload();
   }
 
   const [dadoEquipe, setDadoEquipe] = React.useState('');
@@ -96,7 +96,7 @@ export default function BasicModal() {
       }
     };
     fetchequipe();
-  }, []);
+  }, [equipe]);
 
   return (
     <div>
