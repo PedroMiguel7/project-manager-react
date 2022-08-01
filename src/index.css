@@ -51,11 +51,14 @@ header {
 .TPtrello{
     background-color: var(--preto-medio);
     height: 800px;
+    width: 270px;
+    border-radius: 5%;
 }
 
 .TPtrello2{
     background-color: var(--preto-medio);
     height: 800px;
+    border-radius: 5%;
 }
 
 .azulzinhoClaro{
