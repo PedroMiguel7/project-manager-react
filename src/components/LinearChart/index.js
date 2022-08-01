@@ -6,7 +6,7 @@ class LinearChart extends Component {
     render () {
         const data = [
             {
-              "id": "tarefas",
+              "id": "Tarefas",
               "color": "hsl(337, 70%, 50%)",
               "data": [
                 {
@@ -37,7 +37,7 @@ class LinearChart extends Component {
         return (
           <ResponsiveLine
                 data={data}
-                margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
+                margin={{ top: 10, right: 50, bottom: 50, left: 60 }}
                 theme={{
                   textColor: "#C2C3C6",
                   axis: {
