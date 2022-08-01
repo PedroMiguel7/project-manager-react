@@ -79,8 +79,24 @@ class ProjetoDT extends Component {
 
     MostraTarefasCard = (props) => {
         if (props.tarefasPJ !== null) {
-            return (
-                props.tarefasPJ.map(p => (
+            var tarefas = props.tarefasPJ
+            if (tarefas.filter(tarefas => tarefas.status === `${props.status}`) === null) {
+                return (
+                    <></>
+                )
+            } else {
+                return (
+                    tarefas.filter(tarefas => tarefas.status === `${props.status}`).map(f => (
+                        <div className="card" key={f.id_task} style={{ width: "18rem" }}>
+                            <div className="card-body">
+                                <h5 className="card-title">{f.descricao_task}</h5>
+                                <p className="card-text">{f.nome_pessoa}</p>
+                                <a href="#" className="btn btn-primary">detalhes</a>
+                            </div>
+                        </div>
+                    ))
+                )
+                /*props.tarefasPJ.map(p => (
                     <tr key={p.id_task}>
                         <th scope="row">{p.id_task}</th>
                         <td className="">{p.descricao_task}</td>
@@ -89,19 +105,8 @@ class ProjetoDT extends Component {
                         <td>{p.status}</td>
                         <td></td>
                     </tr>
-                ))
-            )
-        } else {
-            return (
-                <tr>
-                    <th></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            )
+                ))*/
+            }
         }
     }
 
@@ -134,23 +139,27 @@ class ProjetoDT extends Component {
                             <div className="col-9 d-flex justify-content-between">
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">A fazer</h4>
+                                    <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'A Fazer'}/>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Em Andamento</h4>
+                                    <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'Em Andamento'}/>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Em Teste</h4>
+                                    <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'Em Teste'}/>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Concluida</h4>
+                                    <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'Concluida'}/>
                                 </div>
                             </div>
 
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <div className="row align-items-start mt-3">
                                     <div>
-                                    <h4>Descrição</h4>
-                                    <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
+                                        <h4>Descrição</h4>
+                                        <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
                                     </div>
                                     <div className="col-md-12 text-center">
                                         <h6>Progresso</h6>
