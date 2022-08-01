@@ -87,10 +87,10 @@ class ProjetoDT extends Component {
             } else {
                 return (
                     tarefas.filter(tarefas => tarefas.status === `${props.status}`).map(f => (
-                        <div className="card" key={f.id_task} style={{ width: "18rem" }}>
+                        <div className="card" key={f.id_task} style={{ width: "14rem" }}>
                             <div className="card-body">
-                                <h5 className="card-title">{f.descricao_task}</h5>
-                                <p className="card-text">{f.nome_pessoa}</p>
+                                <h5 className="card-title" style={{color:"black"}}>{f.descricao_task}</h5>
+                                <p className="card-text" style={{color:"black"}}>{f.nome_pessoa}</p>
                                 <a href="#" className="btn btn-primary">detalhes</a>
                             </div>
                         </div>
@@ -137,19 +137,19 @@ class ProjetoDT extends Component {
 
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
-                                <div className="col-2 TPtrello">
+                                <div className="col-2 TPtrello scrollar text-center ">
                                     <h4 className="text-center mt-2">A fazer</h4>
                                     <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'A Fazer'}/>
                                 </div>
-                                <div className="col-2 TPtrello">
+                                <div className="col-2 TPtrello scrollar text-center ">
                                     <h4 className="text-center mt-2">Em Andamento</h4>
                                     <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'Em Andamento'}/>
                                 </div>
-                                <div className="col-2 TPtrello">
+                                <div className="col-2 TPtrello scrollar text-center ">
                                     <h4 className="text-center mt-2">Em Teste</h4>
                                     <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'Em Teste'}/>
                                 </div>
-                                <div className="col-2 TPtrello">
+                                <div className="col-2 TPtrello scrollar text-center ">
                                     <h4 className="text-center mt-2">Concluida</h4>
                                     <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'Concluida'}/>
                                 </div>
