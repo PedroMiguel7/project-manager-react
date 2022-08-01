@@ -137,19 +137,19 @@ class ProjetoDT extends Component {
 
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
-                                <div className="col-2 TPtrello scrollar">
+                                <div className="col-2 TPtrello scrollar text-center ">
                                     <h4 className="text-center mt-2">A fazer</h4>
                                     <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'A Fazer'}/>
                                 </div>
-                                <div className="col-2 TPtrello scrollar">
+                                <div className="col-2 TPtrello scrollar text-center ">
                                     <h4 className="text-center mt-2">Em Andamento</h4>
                                     <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'Em Andamento'}/>
                                 </div>
-                                <div className="col-2 TPtrello scrollar">
+                                <div className="col-2 TPtrello scrollar text-center ">
                                     <h4 className="text-center mt-2">Em Teste</h4>
                                     <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'Em Teste'}/>
                                 </div>
-                                <div className="col-2 TPtrello scrollar">
+                                <div className="col-2 TPtrello scrollar text-center ">
                                     <h4 className="text-center mt-2">Concluida</h4>
                                     <this.MostraTarefasCard tarefasPJ = {tarefasPJ} status = {'Concluida'}/>
                                 </div>
