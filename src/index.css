@@ -408,6 +408,10 @@ main h1 {
     max-width: 7rem;
 }
 
+.ChartContainer {
+    height: 40vh;
+}
+
 .Teste {
     background-color: var(--preto-medio);
     border-radius: 10px;
