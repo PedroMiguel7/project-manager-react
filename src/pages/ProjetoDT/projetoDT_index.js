@@ -87,25 +87,14 @@ class ProjetoDT extends Component {
             } else {
                 return (
                     tarefas.filter(tarefas => tarefas.status === `${props.status}`).map(f => (
-                        <div className="card" key={f.id_task} style={{ width: "14rem" }}>
+                        <div className="card mt-2" key={f.id_task} style={{ width: "14rem" }}>
                             <div className="card-body">
                                 <h5 className="card-title" style={{color:"black"}}>{f.descricao_task}</h5>
                                 <p className="card-text" style={{color:"black"}}>{f.nome_pessoa}</p>
-                                <a href="#" className="btn btn-primary">detalhes</a>
                             </div>
                         </div>
                     ))
                 )
-                /*props.tarefasPJ.map(p => (
-                    <tr key={p.id_task}>
-                        <th scope="row">{p.id_task}</th>
-                        <td className="">{p.descricao_task}</td>
-                        <td>{p.nome_pessoa}</td>
-                        <td>{p.prioridade}</td>
-                        <td>{p.status}</td>
-                        <td></td>
-                    </tr>
-                ))*/
             }
         }
     }
