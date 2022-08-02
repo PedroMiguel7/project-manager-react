@@ -22,6 +22,21 @@ class LinearChart extends Component {
         const { pessoa } = this.state;
         const { tarefas} = this.state;
 
+        let DataHoje = new Date();
+        console.log(DataHoje);
+
+        var datas = new Date();
+        //var DiaAnterior = new Date();
+        //DiaAnterior.setDate(today.getDate()-1);
+
+        const UltimosDias = [];
+
+        for (let i = 0; i < 7; i++) {
+          UltimosDias.push(new Date(datas.setDate(datas.getDate() - 1)));
+        }
+
+        console.log(UltimosDias);
+
         let Concluidas = 0;
         const UltimasConcluidas = [];
         tarefas.map( t => {
@@ -33,6 +48,39 @@ class LinearChart extends Component {
         console.log(Concluidas);
         console.log(UltimasConcluidas);
 
+        
+
+        const data2 = [
+          {
+            "x": "", //data
+            "y": "", //qtd tarefas concluidas
+          },
+          {
+            "x": "", //data
+            "y": "", //qtd tarefas concluidas
+          },
+          {
+            "x": "", //data
+            "y": "", //qtd tarefas concluidas
+          },
+          {
+            "x": "", //data
+            "y": "", //qtd tarefas concluidas
+          },
+          {
+            "x": "", //data
+            "y": "", //qtd tarefas concluidas
+          },
+          {
+            "x": "", //data
+            "y": "", //qtd tarefas concluidas
+          },
+          {
+            "x": "", //data
+            "y": "", //qtd tarefas concluidas
+          },
+        ]
+        
         const data = [
             {
               "id": "Tarefas",
