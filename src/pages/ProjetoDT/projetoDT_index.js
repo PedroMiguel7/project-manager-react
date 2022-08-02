@@ -235,7 +235,7 @@ class ProjetoDT extends Component {
 
 
                         <div className="row gap-3 mt-10">
-                            <div className="CardDT InfoProjeto row py-4">
+                            <div className="CardDT InfoProjeto row py-4 mt-4">
                                 <div className="col-12 col-lg-5 me-4">
                                     <h4>Descrição</h4>
                                     <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
