@@ -88,12 +88,11 @@ class ProjetoDT extends Component {
             } else {
                 return (
                     tarefas.filter(tarefas => tarefas.status === `${props.status}`).map(f => (
-                        <div className="card mt-2" key={f.id_task} style={{ width: "14rem", backgroundcolor: "black" }}>
-                            <div className="card-body" style={{backgroundColor: f.prioridade === 0 ? "green" : f.prioridade === 1 ? "orange" : f.prioridade === 3 ? "red" : "gray"}}>
-                                <h5 className="card-title" style={{ color: "black" }}>{f.descricao_task}</h5>
-                                <p className="card-text" style={{ color: "black" }}>{f.nome_pessoa}</p>
+                        <div className="card mt-3" key={f.id_task} style={{ width: "14rem", backgroundColor: "var(--preto-medio)", borderTop: "13px solid", borderColor: f.prioridade === 0 ? "#49b675" : f.prioridade === 1 ? "#ffbf40" : f.prioridade === 2 ? "#ed5269" : "gray"}}>
+                            <div className="card-body" style={{}}>
+                                <h5 className="card-title" style={{ color: "" }}>{f.descricao_task}</h5>
+                                <p className="card-text" style={{ color: "" }}>{f.nome_pessoa}</p>
                                 <TarefasMenu />
-                                
                             </div>
                         </div>
                     ))
@@ -131,25 +130,25 @@ class ProjetoDT extends Component {
                             <div className="col-9 d-flex justify-content-between">
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">A fazer</h4>
-                                    <div className="scrollar" style={{ height: "745px" }}>
+                                    <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
                                         <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'A Fazer'} />
                                     </div>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Em Andamento</h4>
-                                    <div className="scrollar" style={{ height: "745px" }}>
+                                    <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
                                         <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Andamento'} />
                                     </div>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Em Teste</h4>
-                                    <div className="scrollar" style={{ height: "745px" }}>
+                                    <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
                                         <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Teste'} />
                                     </div>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Concluida</h4>
-                                    <div className="scrollar" style={{ height: "745px" }}>
+                                    <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
                                         <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Concluida'} />
                                     </div>
                                 </div>
@@ -236,7 +235,7 @@ class ProjetoDT extends Component {
 
 
                         <div className="row gap-3 mt-10">
-                            <div className="CardDT InfoProjeto row py-4">
+                            <div className="CardDT InfoProjeto row py-4 mt-4">
                                 <div className="col-12 col-lg-5 me-4">
                                     <h4>Descrição</h4>
                                     <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>

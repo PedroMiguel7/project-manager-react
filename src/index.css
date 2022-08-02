@@ -49,7 +49,7 @@ header {
 }
 
 .TPtrello{
-    background-color: var(--preto-medio);
+    border-color: var(--preto-medio);
     height: 800px;
     width: 270px;
     border-radius: 5%;

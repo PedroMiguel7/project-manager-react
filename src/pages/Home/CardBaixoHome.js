@@ -78,10 +78,10 @@ class CardBaixoHome extends Component {
             <>
                 <div className="CardBaixoHome pt-1 ps-2 pe-2 scrollar">
                     <div className="LeftOptions col-lg-2 mt-sm-2">
-                        <span className="me-2 ms-4 mt-3">Projetos</span>
+                        <h5 className="me-2 ms-4 mt-3">Projetos</h5>
                     </div>
                     <table className="table" style={{ color: 'white' }}>
-                        <thead>
+                        <thead style={{position: "sticky"}}>
                             <tr className="LeftOptions">
                                 <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
                                 <th scope="col" style={{ width: '20%' }}>Titulo</th>

@@ -107,7 +107,6 @@ export default function BasicModalTarefa(props) {
     function FechaModal() {
         setOpen(false);
         console.log(`Tarefa ${nome} para ${dadoEquipe} com prioridade ${prioridade} foi cadastrada com sucesso`)
-        window.location.reload();
     }
 
     return (
