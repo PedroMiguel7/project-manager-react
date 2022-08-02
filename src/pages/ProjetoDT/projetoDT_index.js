@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
 import { breakpoints } from "@mui/system";
+import TarefasMenu from "../../components/TarefasMenu";
 
 
 const projetoPath = window.location.pathname;
@@ -91,6 +92,7 @@ class ProjetoDT extends Component {
                             <div className="card-body">
                                 <h5 className="card-title" style={{color:"black"}}>{f.descricao_task}</h5>
                                 <p className="card-text" style={{color:"black"}}>{f.nome_pessoa}</p>
+                                <TarefasMenu/>
                             </div>
                         </div>
                     ))
