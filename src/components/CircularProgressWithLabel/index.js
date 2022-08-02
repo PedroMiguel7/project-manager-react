@@ -42,14 +42,13 @@ CircularProgressWithLabel.propTypes = {
 export default function CircularStatic(props) {
 
   const [tasks, setTasks] = useState([]);
-  const url = '/projetos/' + props.id_projeto + '/tasks';
   useEffect(() => {
     const fetchTask = async () => {
-      const response = await api.get(url)
+      const response = await api.get('/projetos/' + props.id_projeto + '/tasks')
       setTasks(response.data)
     }
     fetchTask()
-  });
+  }, [setTasks]);
 
   var QtdTasksConcluidas = 0
   var BarrinhaProgresso = 0

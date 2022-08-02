@@ -24,7 +24,6 @@ class TarefasAndamento extends Component {
   }
   async componentDidMount() {
       const pessoaPath = window.location.pathname;
-      console.log(pessoaPath);
       
       const response = await api.get(pessoaPath+'/tasks');
 
