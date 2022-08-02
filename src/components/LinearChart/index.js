@@ -128,7 +128,7 @@ class LinearChart extends Component {
                     stacked: true,
                     reverse: false
                 }}
-                yFormat=" >-.2f"
+                yFormat=" >-.2d"
                 curve="monotoneX"
                 axisTop={null}
                 axisRight={null}
@@ -143,6 +143,7 @@ class LinearChart extends Component {
                 }}
                 axisLeft={{
                     orient: 'left',
+                    //tickValues: data.reduce((set, { y }) => set.add(y), new Set()).size
                     tickSize: 0,
                     tickPadding: 15,
                     tickRotation: 0,
