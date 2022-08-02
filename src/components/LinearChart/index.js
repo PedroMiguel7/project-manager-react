@@ -123,13 +123,13 @@ class LinearChart extends Component {
                 xScale={{ type: 'point' }}
                 yScale={{
                     type: 'linear',
-                    min: 'auto',
+                    min: 0,
                     max: 'auto',
                     stacked: true,
                     reverse: false
                 }}
                 yFormat=" >-.2f"
-                curve="cardinal"
+                curve="monotoneX"
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{
@@ -162,7 +162,7 @@ class LinearChart extends Component {
                 enableArea={true}
                 areaBlendMode="soft-light"
                 areaOpacity={0.1}
-                areaBaselineValue={1}
+                areaBaselineValue={0}
                 enableSlices="x"
                 useMesh={true}
             />
