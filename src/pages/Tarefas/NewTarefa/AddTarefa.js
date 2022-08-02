@@ -60,13 +60,6 @@ export default function BasicModalTarefa(props) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => {setOpen(false); setDadoEquipe(); setPrioridade()};
 
-
-    /*function cadastrarProjeto(e) {
-        e.preventDefault()
-        console.log(`Tarefa ${nome} para ${dadoEquipe} com prioridade ${prioridade} foi cadastrada com sucesso`)
-        console.log(prazoEntrega)
-    }*/
-
     const [nome, setNome] = useState("");
     const [pessoa, setPessoa] = useState([]);
     const [prazoEntrega, setPrazoEntrega] = useState();
@@ -93,7 +86,6 @@ export default function BasicModalTarefa(props) {
                 const url = ("/equipes/" + props.equipe_id+"/pessoas")
                 const response = await api.get(url);
                 setPessoa(response.data);
-                console.log(pessoa)
             } catch (error) {
                 console.log(error);
             }
@@ -115,7 +107,6 @@ export default function BasicModalTarefa(props) {
     function FechaModal() {
         setOpen(false);
         console.log(`Tarefa ${nome} para ${dadoEquipe} com prioridade ${prioridade} foi cadastrada com sucesso`)
-        console.log(prazoEntrega)
         window.location.reload();
     }
 

@@ -19,7 +19,6 @@ function MostrandoEquipes() {
             setEquipes(response.data)
         }
         fetchEquipe()
-        console.log(equipes)
     });
 
     return (

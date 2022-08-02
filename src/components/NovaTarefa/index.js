@@ -64,7 +64,6 @@ export default function BasicModal() {
   const handleClose = () => {setOpen(false); setPrioridade()};
 
   const pessoaPath = window.location.pathname;
-  console.log(pessoaPath);
   const PathArray = pessoaPath.split('/');
   const idPessoa = parseInt(PathArray[2]);
   
@@ -78,11 +77,9 @@ export default function BasicModal() {
     fetchPessoa()
   }, []);
 
-  console.log(dadosPessoa);
 
   const getIdEquipe = dadosPessoa.equipe_Id;
 
-  console.log(getIdEquipe);
 
   const [projetos, setProjeto] = useState([]);
   const url = `/equipes/${getIdEquipe}/projetos`;
@@ -99,7 +96,6 @@ export default function BasicModal() {
     fetchProjetos();
   }, []);
 
-  console.log(projetos);
 
   const [descricao, setDescricao] = useState("");
   const [pessoa, setIdPessoa] = React.useState(idPessoa);
