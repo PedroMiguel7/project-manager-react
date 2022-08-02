@@ -85,7 +85,7 @@ class LinearChart extends Component {
         ];
         
         for (let i = 0; i < 7; i++) {
-          const obj = {"x": UltimosDias[i].toISOString().split('T')[0], "y": QtdTarefas[i]};
+          const obj = {"x": UltimosDias[i], "y": QtdTarefas[i]};
           //console.log(obj);
           data[0].data.push(obj);
         }
