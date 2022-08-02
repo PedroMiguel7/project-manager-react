@@ -21,7 +21,7 @@ class Cards extends Component {
           <div>
             <div className="card-part1 mb-3">
               <div className="d-flex justify-content-between">
-                <h2 class="fs-4">Cadastre um projeto</h2>
+                <h2 className="fs-4">Cadastre um projeto</h2>
               </div>
               <p className="description overflow-hidden">
                 não tem descrição se não tem projeto
@@ -50,15 +50,15 @@ class Cards extends Component {
     } else {
       return (
         props.Projetos.map(p => (
-        <Link
+        <Link key={p.id_projeto}
           reloadDocument
           to={"/projetos/" + p.id_projeto}
           className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4"
         >
-          <div key={p.id_projeto}>
+          <div >
             <div className="card-part1 mb-3">
               <div className="d-flex justify-content-between">
-                <h2 class="fs-4">{p.nome_projeto}</h2>
+                <h2 className="fs-4">{p.nome_projeto}</h2>
                 <Link to="/projetos">
                   
                 </Link>
