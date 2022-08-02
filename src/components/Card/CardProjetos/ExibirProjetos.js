@@ -8,15 +8,12 @@ import CardDelete from "../../CardDelete";
 class Cards extends Component {
   state = {
     projetos: [],
-    equipesEsq: [],
   };
   async componentDidMount() {
     const response = await api.get("/projetos/");
-    const response2 = await api.get("/equipes/");
-
     this.setState({ projetos: response.data });
-    this.setState({ equipesEsq: response2.data });
   }
+
   exibeprojeto = (props) => {
     if (props.Projetos === null) {
       return (
