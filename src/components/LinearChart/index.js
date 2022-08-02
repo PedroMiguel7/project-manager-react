@@ -143,7 +143,7 @@ class LinearChart extends Component {
                 }}
                 axisLeft={{
                     orient: 'left',
-                    //tickValues: data.reduce((set, { y }) => set.add(y), new Set()).size
+                    format: e => Math.floor(e) === e && e,
                     tickSize: 0,
                     tickPadding: 15,
                     tickRotation: 0,
