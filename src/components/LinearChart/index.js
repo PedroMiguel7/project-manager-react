@@ -51,18 +51,17 @@ class LinearChart extends Component {
         
         const DataTeste = [];
     
-        var QtdTarefas0 = 0;
-        var QtdTarefas1 = 0;
-        var QtdTarefas2 = 0;
-        var QtdTarefas3 = 0;
-        var QtdTarefas4 = 0;
-        var QtdTarefas5 = 0;
-        var QtdTarefas6 = 0;
+        var QtdTarefas = [0, 0, 0, 0, 0, 0, 0];
+        
         tarefas.map ( t => {
           
           //if (t.status === "Concluido") {
+            var i = -1;
             UltimosDias.map( u => {
+              //console.log(`t: ${new Date(t.data_criacao).toISOString().split('T')[0]}, u: ${u.toISOString().split('T')[0]}`)
+              i++;
               if (new Date(t.data_criacao).toISOString().split('T')[0] == u.toISOString().split('T')[0]) {
+                QtdTarefas[i]++;
                 console.log(`t: ${new Date(t.data_criacao).toISOString().split('T')[0]}, u: ${u.toISOString().split('T')[0]}`)
               }
               
@@ -73,6 +72,8 @@ class LinearChart extends Component {
             })
          // }
         })
+
+        console.log(QtdTarefas);
         
         //console.log(this.QtdTarefas);
 
