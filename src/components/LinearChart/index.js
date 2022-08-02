@@ -24,7 +24,7 @@ class LinearChart extends Component {
         //let DataHoje = new Date('07-20-2022');
         //
 
-        var datas = new Date('07-30-2022'); // Simular dia 20 jul
+        var datas = new Date(); // Simular dia 20 jul
         console.log(datas); 
         //var DiaAnterior = new Date();
         //DiaAnterior.setDate(today.getDate()-1);
@@ -85,7 +85,7 @@ class LinearChart extends Component {
         ];
         
         for (let i = 0; i < 7; i++) {
-          const obj = {"x": UltimosDias[i], "y": QtdTarefas[i]};
+          const obj = {"x": UltimosDias[i].toISOString().split('T')[0], "y": QtdTarefas[i]};
           //console.log(obj);
           data[0].data.push(obj);
         }
