@@ -19,7 +19,6 @@ class LinearChart extends Component {
     }
 
     render () {
-        const { pessoa } = this.state;
         const { tarefas} = this.state;
 
         //let DataHoje = new Date('07-20-2022');
@@ -49,7 +48,7 @@ class LinearChart extends Component {
         console.log(Concluidas);
         console.log(UltimasConcluidas);
         
-        const DataTeste = [];
+        
     
         var QtdTarefas = [0, 0, 0, 0, 0, 0, 0];
         
@@ -74,70 +73,26 @@ class LinearChart extends Component {
         })
 
         console.log(QtdTarefas);
-        
-        //console.log(this.QtdTarefas);
 
-        const data2 = [
-          {
-            "x": "", //data
-            "y": "", //qtd tarefas concluidas
-          },
-          {
-            "x": "", //data
-            "y": "", //qtd tarefas concluidas
-          },
-          {
-            "x": "", //data
-            "y": "", //qtd tarefas concluidas
-          },
-          {
-            "x": "", //data
-            "y": "", //qtd tarefas concluidas
-          },
-          {
-            "x": "", //data
-            "y": "", //qtd tarefas concluidas
-          },
-          {
-            "x": "", //data
-            "y": "", //qtd tarefas concluidas
-          },
-          {
-            "x": "", //data
-            "y": "", //qtd tarefas concluidas
-          },
-        ]
-        
         const data = [
-            {
-              "id": "Tarefas",
+          {
+            "id": "Tarefas",
               "color": "hsl(337, 70%, 50%)",
               "data": [
-                {
-                  "x": "seg",
-                  "y": 2
-                },
-                {
-                  "x": "ter",
-                  "y": 3
-                },
-                {
-                  "x": "qua",
-                  "y": 7
-                },
-                {
-                  "x": "qui",
-                  "y": 1
-                },
-                {
-                  "x": "sex",
-                  "y": 9
-                },
                 
               ]
-            },
-          ]
+          }
+        ];
+        
+        for (let i = 0; i < 7; i++) {
+          const obj = {"x": UltimosDias[i].toISOString().split('T')[0], "y": QtdTarefas[i]};
+          //console.log(obj);
+          data[0].data.push(obj);
+        }
+            
+        console.log(data);
 
+        
         return (
           <ResponsiveLine
                 data={data}
