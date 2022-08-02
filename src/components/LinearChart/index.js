@@ -21,7 +21,7 @@ class LinearChart extends Component {
     render () {
         const { tarefas} = this.state;
 
-        var datas = new Date(); // Simular dia 20 jul
+        var datas = new Date();
         console.log(datas);
 
         const UltimosDias = [];
@@ -56,7 +56,11 @@ class LinearChart extends Component {
               i++;
               if (new Date(t.data_criacao).toISOString().split('T')[0] == u.toISOString().split('T')[0]) {
                 QtdTarefas[i]++;
-                console.log(`t: ${new Date(t.data_criacao).toISOString().split('T')[0]}, u: ${u.toISOString().split('T')[0]}`)
+                let tData = new Date(t.data_criacao);
+                let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
+                let uData = new Date(u);
+                let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
+                console.log(`t: ${tFormatada}, u: ${uFormatada}`)
               }
               
               //if (new Date(t.data_conclusao) === u) {
@@ -80,8 +84,8 @@ class LinearChart extends Component {
         ];
         
         for (let i = 0; i < 7; i++) {
-          const obj = {"x": UltimosDias[i].toISOString().split('T')[0], "y": QtdTarefas[i]};
-          //console.log(obj);
+          let uFormatada = `${UltimosDias[i].getDate()}/${UltimosDias[i].getMonth() + 1}`;
+          const obj = {"x": uFormatada, "y": QtdTarefas[i]};
           data[0].data.push(obj);
         }
             
