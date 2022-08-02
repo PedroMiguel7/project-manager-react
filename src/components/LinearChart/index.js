@@ -21,13 +21,8 @@ class LinearChart extends Component {
     render () {
         const { tarefas} = this.state;
 
-        //let DataHoje = new Date('07-20-2022');
-        //
-
         var datas = new Date(); // Simular dia 20 jul
-        console.log(datas); 
-        //var DiaAnterior = new Date();
-        //DiaAnterior.setDate(today.getDate()-1);
+        console.log(datas);
 
         const UltimosDias = [];
 
