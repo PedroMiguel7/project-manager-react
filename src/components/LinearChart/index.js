@@ -22,10 +22,11 @@ class LinearChart extends Component {
         const { pessoa } = this.state;
         const { tarefas} = this.state;
 
-        let DataHoje = new Date();
-        console.log(DataHoje);
+        //let DataHoje = new Date('07-20-2022');
+        //
 
-        var datas = new Date();
+        var datas = new Date('07-30-2022'); // Simular dia 20 jul
+        console.log(datas); 
         //var DiaAnterior = new Date();
         //DiaAnterior.setDate(today.getDate()-1);
 
@@ -47,8 +48,33 @@ class LinearChart extends Component {
         })
         console.log(Concluidas);
         console.log(UltimasConcluidas);
-
         
+        const DataTeste = [];
+    
+        var QtdTarefas0 = 0;
+        var QtdTarefas1 = 0;
+        var QtdTarefas2 = 0;
+        var QtdTarefas3 = 0;
+        var QtdTarefas4 = 0;
+        var QtdTarefas5 = 0;
+        var QtdTarefas6 = 0;
+        tarefas.map ( t => {
+          
+          //if (t.status === "Concluido") {
+            UltimosDias.map( u => {
+              if (new Date(t.data_criacao).toISOString().split('T')[0] == u.toISOString().split('T')[0]) {
+                console.log(`t: ${new Date(t.data_criacao).toISOString().split('T')[0]}, u: ${u.toISOString().split('T')[0]}`)
+              }
+              
+              //if (new Date(t.data_conclusao) === u) {
+                
+              //}
+              //console.log(new Date(t.data_conclusao));
+            })
+         // }
+        })
+        
+        //console.log(this.QtdTarefas);
 
         const data2 = [
           {
