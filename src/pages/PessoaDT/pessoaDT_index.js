@@ -42,7 +42,7 @@ class PessoasDT extends Component {
         let Concluidas = 0;
         for (var prop in tarefas) {
             if (tarefas[prop].status === "Concluido") {
-                console.log(tarefas[prop].status);
+                //console.log(tarefas[prop].status);
                 Concluidas++;
             }
         }

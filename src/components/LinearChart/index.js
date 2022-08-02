@@ -1,9 +1,38 @@
 import { grid } from '@mui/system';
 import { ResponsiveLine } from '@nivo/line';
 import { Component } from 'react';
+import api from '../../api';
 
 class LinearChart extends Component {
+    state = {
+      pessoa: [],
+      tarefas: [],
+    }
+    async componentDidMount() {
+        const pessoaPath = window.location.pathname;
+        //console.log(pessoaPath);
+        
+        const response = await api.get(pessoaPath);
+        const response2 = await api.get(pessoaPath+'/tasks');
+        
+        this.setState({ pessoa: response.data, tarefas: response2.data });
+    }
+
     render () {
+        const { pessoa } = this.state;
+        const { tarefas} = this.state;
+
+        let Concluidas = 0;
+        const UltimasConcluidas = [];
+        tarefas.map( t => {
+          if (t.status === "Concluido") {
+            Concluidas++;
+            UltimasConcluidas.push(new Date(t.data_conclusao));
+          }
+        })
+        console.log(Concluidas);
+        console.log(UltimasConcluidas);
+
         const data = [
             {
               "id": "Tarefas",
