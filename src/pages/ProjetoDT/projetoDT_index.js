@@ -163,7 +163,7 @@ class ProjetoDT extends Component {
                                     </div>
                                     <div className="col-md-12 text-center">
                                         <h6>Progresso</h6>
-                                        <CircularProgressWithLabel value="20" id_projeto={projetos.id_projeto} />
+                                        <CircularProgressWithLabel value="20" id_projeto={p.id_projeto} />
                                     </div>
                                 </div>
 
@@ -280,7 +280,7 @@ class ProjetoDT extends Component {
                                         <div className="row">
                                             <div className="col-md-12 col-lg-6">
                                                 <h6>Progresso</h6>
-                                                <CircularProgressWithLabel value="20" id_projeto={projetos.id_projeto} />
+                                                <CircularProgressWithLabel value="20" id_projeto={p.id_projeto} />
                                             </div>
                                             <div className="Resumo col-md-12 col-lg-9 offset-lg-4 justify-content-center ">
                                                 <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
@@ -322,7 +322,7 @@ class ProjetoDT extends Component {
                                     <div className="LeftOptions col-lg-2 mt-sm-2">
                                         <span className="me-2 ms-4 mt-3">Equipe</span>
                                     </div>
-                                    <table class="table" style={{ color: 'white' }}>
+                                    <table className="table" style={{ color: 'white' }}>
                                         <thead>
                                             <tr className="LeftOptions">
                                                 <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
