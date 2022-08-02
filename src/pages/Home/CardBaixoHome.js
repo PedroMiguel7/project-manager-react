@@ -34,7 +34,7 @@ class CardBaixoHome extends Component {
         if(props.ProjetosDaHome !== null){
             return(
             props.ProjetosDaHome.map(p => (
-                <tr key={props.ProjetosDaHome.id_projeto}>
+                <tr key={p.id_projeto}>
                     <th scope="row">{p.id_projeto}</th>
                     <td className="">{p.nome_projeto}</td>
                     <td>
@@ -80,7 +80,7 @@ class CardBaixoHome extends Component {
                     <div className="LeftOptions col-lg-2 mt-sm-2">
                         <span className="me-2 ms-4 mt-3">Projetos</span>
                     </div>
-                    <table class="table" style={{ color: 'white' }}>
+                    <table className="table" style={{ color: 'white' }}>
                         <thead>
                             <tr className="LeftOptions">
                                 <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>

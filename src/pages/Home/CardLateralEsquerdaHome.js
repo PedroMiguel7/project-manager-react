@@ -8,12 +8,10 @@ import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 class CardLateralEsquerdoHome extends Component {
     render() {
         return (
-            <>
-                <div className="row CardsContainer my-4 mt-4 d-flex">
-                    <Cards/>
-                </div>
+            <div className="row CardsContainer my-4 mt-4 d-flex">
+                <Cards />
+            </div>
 
-            </>
         )
     }
 }
