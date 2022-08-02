@@ -46,7 +46,8 @@ class LinearChart extends Component {
         
     
         var QtdTarefas = [0, 0, 0, 0, 0, 0, 0];
-        
+        UltimosDias.reverse();
+
         tarefas.map ( t => {
           
           //if (t.status === "Concluido") {
@@ -84,7 +85,25 @@ class LinearChart extends Component {
         ];
         
         for (let i = 0; i < 7; i++) {
-          let uFormatada = `${UltimosDias[i].getDate()}/${UltimosDias[i].getMonth() + 1}`;
+          const DiasSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+          let DiaNum = UltimosDias[i].getDay();
+          let DiaSemana;
+          if (DiaNum === 0) {
+            DiaSemana = DiasSemana[0];
+          } else if (DiaNum === 1) {
+            DiaSemana = DiasSemana[1];
+          } else if (DiaNum === 2) {
+            DiaSemana = DiasSemana[2];
+          } else if (DiaNum === 3) {
+            DiaSemana = DiasSemana[3];
+          } else if (DiaNum === 4) {
+            DiaSemana = DiasSemana[4];
+          } else if (DiaNum === 5) {
+            DiaSemana = DiasSemana[5];
+          } else if (DiaNum === 6) {
+            DiaSemana = DiasSemana[6];
+          }
+          let uFormatada = `${DiaSemana} ${UltimosDias[i].getDate()}`;
           const obj = {"x": uFormatada, "y": QtdTarefas[i]};
           data[0].data.push(obj);
         }

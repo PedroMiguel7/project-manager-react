@@ -86,7 +86,7 @@ class PessoasDT extends Component {
                     </div>
                     <div className="col-lg-8">
                         <div className="row Teste h-lg-50 p-3">
-                            <h5 className='m-0'>Rendimento</h5>
+                            <h5 className='m-0'>Rendimento Semanal</h5>
                             <div className="ChartContainer" >
                               <LinearChart />  
                             </div>
