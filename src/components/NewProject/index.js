@@ -96,7 +96,7 @@ export default function BasicModal() {
       }
     };
     fetchequipe();
-  }, [nome, descricao, equipe, dadoEquipe]);
+  }, []);
 
   return (
     <div>
