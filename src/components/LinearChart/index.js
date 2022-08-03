@@ -24,9 +24,9 @@ class LinearChart extends Component {
         var datas = new Date();
         console.log(datas);
 
-        const UltimosDias = [];
+        const UltimosDias = [new Date(),];
 
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 6; i++) {
           UltimosDias.push(new Date(datas.setDate(datas.getDate() - 1)));
         }
 
@@ -42,45 +42,57 @@ class LinearChart extends Component {
         })
         console.log(Concluidas);
         console.log(UltimasConcluidas);
-        
-        
     
-        var QtdTarefas = [0, 0, 0, 0, 0, 0, 0];
+        var TarefasAndamento = [0, 0, 0, 0, 0, 0, 0];
+        var TarefasConcluidas = [0, 0, 0, 0, 0, 0, 0];
         UltimosDias.reverse();
 
         tarefas.map ( t => {
-          
-          //if (t.status === "Concluido") {
-            var i = -1;
+          if (t.status === "Em Andamento") {
+            let i = -1;
             UltimosDias.map( u => {
-              //console.log(`t: ${new Date(t.data_criacao).toISOString().split('T')[0]}, u: ${u.toISOString().split('T')[0]}`)
               i++;
               if (new Date(t.data_criacao).toISOString().split('T')[0] == u.toISOString().split('T')[0]) {
-                QtdTarefas[i]++;
+                TarefasAndamento[i]++;
                 let tData = new Date(t.data_criacao);
                 let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
                 let uData = new Date(u);
                 let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
                 console.log(`t: ${tFormatada}, u: ${uFormatada}`)
               }
-              
-              //if (new Date(t.data_conclusao) === u) {
-                
-              //}
-              //console.log(new Date(t.data_conclusao));
             })
-         // }
+          } else if (t.status === "Concluido") {
+            let i = -1;
+            UltimosDias.map( u => {
+              i++;
+              if (new Date(t.data_conclusao).toISOString().split('T')[0] == u.toISOString().split('T')[0]) {
+                TarefasConcluidas[i]++;
+                let tData = new Date(t.data_criacao);
+                let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
+                let uData = new Date(u);
+                let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
+                console.log(`t: ${tFormatada}, u: ${uFormatada}`)
+              }
+            })
+          }
         })
 
-        console.log(QtdTarefas);
+        console.log(TarefasAndamento);
 
         const data = [
           {
-            "id": "Tarefas",
-              "color": "hsl(337, 70%, 50%)",
-              "data": [
+            "id": "Em Andamento",
+            "color": "hsl(200, 70%, 50%)",
+            "data": [
                 
-              ]
+            ],
+          },
+          {  
+            "id": "Concluidas",
+            "color": "hsl(100, 70%, 50%)",
+            "data": [
+                  
+            ],
           }
         ];
         
@@ -104,12 +116,15 @@ class LinearChart extends Component {
             DiaSemana = DiasSemana[6];
           }
           let uFormatada = `${DiaSemana} ${UltimosDias[i].getDate()}`;
-          const obj = {"x": uFormatada, "y": QtdTarefas[i]};
-          data[0].data.push(obj);
+          const obj1 = {"x": uFormatada, "y": TarefasAndamento[i]};
+          const obj2 = {"x": uFormatada, "y": TarefasConcluidas[i]};
+          data[0].data.push(obj1);
+          data[1].data.push(obj2);
         }
             
         console.log(data);
-
+        console.log(data[0].data);
+        console.log(data[1].data);
         
         return (
           <ResponsiveLine
@@ -133,7 +148,7 @@ class LinearChart extends Component {
                   tooltip: {
                     container: {
                         background: "#87888c",
-                        color: "#c2c3c6",
+                        color: "#fff",
                         fontSize: 14
                     },
                   }
@@ -170,8 +185,8 @@ class LinearChart extends Component {
                     legendPosition: 'middle'*/
                 }}
                 enableGridX={false}
-                colors= '#F46E27'
-                lineWidth={3}
+                colors={['#C2C3C6', '#F46E27']}
+                lineWidth={2}
                 pointSize={6}
                 pointColor={{ from: 'color', modifiers: [] }}
                 pointBorderWidth={2}
