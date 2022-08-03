@@ -99,6 +99,8 @@ class TarefasAndamento extends Component {
           
           if ((dataPrazoFormatada - dataHojeFormatada) <= 86400000 && (dataPrazoFormatada - dataHojeFormatada) > 0) {
             return '1 dia';
+          } else if (dataPrazoFormatada < dataHojeFormatada) {
+            return 'Atraso'
           } else {
             const tempo = (dataPrazoFormatada - dataHojeFormatada) / 86400000;
             return `${tempo.toFixed()} dias`;
@@ -107,8 +109,8 @@ class TarefasAndamento extends Component {
 
         function Inicio(inicio) {
           const dataInicio = new Date(inicio);
-          const dataInicioArray = [dataInicio.getDate(), dataInicio.getMonth() + 1, dataInicio.getFullYear()]
-          const dataInicioFormatada = `${dataInicioArray[0]}/${dataInicioArray[1]}/${dataInicioArray[2]}`;
+          dataInicio.setDate(dataInicio.getDate() + 1);
+          const dataInicioFormatada = dataInicio.toLocaleDateString("pt-BR");
           return dataInicioFormatada;
         }
 
