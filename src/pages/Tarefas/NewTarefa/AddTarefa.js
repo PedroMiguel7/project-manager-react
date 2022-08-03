@@ -75,10 +75,6 @@ export default function BasicModalTarefa(props) {
         setPrioridade(event.target.value);
     };
 
-    const handleChangePes = (evento) => {
-        setPessoa(evento.target.value);
-    };
-
 
     useEffect(() => {
         const fetchequipe = async () => {
