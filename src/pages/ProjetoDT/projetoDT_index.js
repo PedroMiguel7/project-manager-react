@@ -92,7 +92,7 @@ class ProjetoDT extends Component {
                             <div className="card-body" style={{}}>
                                 <div className="d-flex justify-content-between" style={{}}>
                                     <h5 className="card-title" style={{ color: "" }}>{f.descricao_task}</h5>
-                                    <TarefasMenu />
+                                    <TarefasMenu id_task={f.id_task} />
                                 </div>
                                 <p className="card-text" style={{ color: "" }}>{f.nome_pessoa}</p>
                             </div>

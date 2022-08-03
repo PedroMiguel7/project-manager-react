@@ -14,7 +14,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import WarningIcon from '@mui/icons-material/Warning';
 import TextField from '@mui/material/TextField';
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
@@ -26,6 +26,7 @@ import InputLabel from '@mui/material/InputLabel';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import api from '../../api';
 
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
@@ -94,7 +95,8 @@ const DateTextField = styled(TextField) ({
   },
 })
 
-export default function TarefasMenu() {
+
+export default function TarefasMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -129,6 +131,12 @@ export default function TarefasMenu() {
 
   const [prazo, setPrazo] = React.useState(new Date());
   
+
+
+  function DeletaTask (){
+    api.delete('/tasks/'+ props.id_task)
+    this.handleCloseAlert()
+  }
 
   return (
     <div>
@@ -199,7 +207,7 @@ export default function TarefasMenu() {
                 '&:hover': {
                     backgroundColor: "#ED5F5F",
                 }
-            }}>
+            }} onClick={DeletaTask}>
                 Deletar
             </Button>
             </DialogActions>
