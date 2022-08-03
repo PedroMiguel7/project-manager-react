@@ -158,7 +158,7 @@ class LinearChart extends Component {
                     type: 'linear',
                     min: 0,
                     max: 'auto',
-                    stacked: true,
+                    stacked: false,
                     reverse: false
                 }}
                 yFormat=" >-.2d"
@@ -195,7 +195,7 @@ class LinearChart extends Component {
                 pointLabelYOffset={-12}
                 enableArea={true}
                 areaBlendMode="soft-light"
-                areaOpacity={0.1}
+                areaOpacity={0.15}
                 areaBaselineValue={0}
                 enableSlices="x"
                 useMesh={true}
