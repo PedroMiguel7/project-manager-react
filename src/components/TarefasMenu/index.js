@@ -27,10 +27,16 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import api from '../../api';
+import { useEffect, useState } from 'react';
 
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
+    svg: {color: '#F4F5FA'},
+    '&.Mui-focused': {
+      borderColor: '#F4F5FA',
+      svg: {color: '#F57D3D'}
+    },
     '& fieldset': {
       borderColor: '#F4F5FA',
       borderRadius: 5
@@ -40,6 +46,15 @@ const CssTextField = styled(TextField)({
     },
     '&.Mui-focused fieldset': {
       borderColor: '#F46E27',
+    },
+    '& .MuiInputAdornment-root': {
+    color: '#87888C',
+  }
+  },
+  '.MuiInputLabel-outlined': {
+    color: '#F4F5FA',
+    '&.Mui-focused': {
+      color:'#F46E27',
     },
   },
 })
@@ -73,7 +88,7 @@ const CssSelect = styled(Select)({
   },
 })
 
-const DateTextField = styled(TextField) ({
+const DateTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: "#F4F5FA",
     '& fieldset': {
@@ -130,28 +145,62 @@ export default function TarefasMenu(props) {
   };
 
   const [prazo, setPrazo] = React.useState(new Date());
-  
 
 
-  function DeletaTask (){
-    api.delete('/tasks/'+ props.id_task)
+  const [nome, setNome] = useState("");
+  const [pessoa, setPessoa] = useState([]);
+  const [prazoEntrega, setPrazoEntrega] = useState();
+  const [prioridade, setPrioridade] = React.useState();
+
+  const [dadoEquipe, setDadoEquipe] = React.useState('');
+  const handleChangeAge = (eventA) => {
+    setDadoEquipe(eventA.target.value);
+  };
+
+
+  const handleChangePrior = (event) => {
+    setPrioridade(event.target.value);
+  };
+
+  const handleChangePes = (evento) => {
+    setPessoa(evento.target.value);
+  };
+
+
+  useEffect(() => {
+    const fetchequipe = async () => {
+      try {
+        const url = ("/equipes/" + props.equipe_id + "/pessoas")
+        const response = await api.get(url);
+        setPessoa(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchequipe();
+  }, []);
+
+
+
+  function DeletaTask() {
+    api.delete('/tasks/' + props.id_task)
     this.handleCloseAlert()
   }
 
   return (
     <div>
-        <Tooltip title="Opções" placement="right">
-            <IconButton
-                aria-label="more"
-                id="long-button"
-                aria-controls={open ? 'long-menu' : undefined}
-                aria-expanded={open ? 'true' : undefined}
-                aria-haspopup="true"
-                onClick={handleClick}
-                sx={{color: '#C2C3C6'}}
-            >
-                <MoreVertIcon />
-            </IconButton>
+      <Tooltip title="Opções" placement="right">
+        <IconButton
+          aria-label="more"
+          id="long-button"
+          aria-controls={open ? 'long-menu' : undefined}
+          aria-expanded={open ? 'true' : undefined}
+          aria-haspopup="true"
+          onClick={handleClick}
+          sx={{ color: '#C2C3C6' }}
+        >
+          <MoreVertIcon />
+        </IconButton>
       </Tooltip>
       <Menu
         id="long-menu"
@@ -167,155 +216,182 @@ export default function TarefasMenu(props) {
           },
         }}
       >
-        <MenuItem onClick={handleClickEdit} sx={{color: '#C2C3C6'}} className="gap-1">
-            <EditIcon sx={{color: '#C2C3C6'}} /> <span>Editar</span>
+        <MenuItem onClick={handleClickEdit} sx={{ color: '#C2C3C6' }} className="gap-1">
+          <EditIcon sx={{ color: '#C2C3C6' }} /> <span>Editar</span>
         </MenuItem>
-        <MenuItem onClick={handleClickDelete} sx={{color: '#C2C3C6'}} className="gap-1">
-            <DeleteIcon sx={{color: '#C2C3C6'}} /> <span>Deletar</span>
+        <MenuItem onClick={handleClickDelete} sx={{ color: '#C2C3C6' }} className="gap-1">
+          <DeleteIcon sx={{ color: '#C2C3C6' }} /> <span>Deletar</span>
         </MenuItem>
         <Dialog
-        open={openAlert}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        PaperProps={{
+          open={openAlert}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          PaperProps={{
             style: {
               backgroundColor: '#494A58',
               color: '#fff'
             },
           }}
         >
-            <DialogTitle id="alert-dialog-title">
-                <WarningIcon />
+          <DialogTitle id="alert-dialog-title">
+            <WarningIcon />
             {"Tem certeza que deseja excluir esta tarefa?"}
-            </DialogTitle>
-            <DialogContent>
-            <DialogContentText id="alert-dialog-description" sx={{color: '#C2C3C6'}}>
-                Essa ação é permanente.
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description" sx={{ color: '#C2C3C6' }}>
+              Essa ação é permanente.
             </DialogContentText>
-            </DialogContent>
-            <DialogActions>
+          </DialogContent>
+          <DialogActions>
             <Button onClick={handleCloseAlert}
-            sx={{
+              sx={{
                 color: "#C2C3C6",
                 opacity: 0.7
-            }}>Cancelar</Button>
+              }}>Cancelar</Button>
             <Button autoFocus variant="contained"
-            sx={{
+              sx={{
                 color: "#FFF",
                 backgroundColor: "#F66E6E",
                 '&:hover': {
-                    backgroundColor: "#ED5F5F",
+                  backgroundColor: "#ED5F5F",
                 }
-            }} onClick={DeletaTask}>
-                Deletar
+              }} onClick={DeletaTask}>
+              Deletar
             </Button>
-            </DialogActions>
+          </DialogActions>
         </Dialog>
         <Modal
-        open={openEdit}
-        onClose={handleCloseEdit}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+          open={openEdit}
+          onClose={handleCloseEdit}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
         >
-        <Box sx={style}>
-          <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
-          <form /*onSubmit={cadastrarTarefa}*/>
-            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-              Editar<span style={{ color: '#F46E27' }}> Tarefa</span>
-            </Typography>
-        
-            <CssTextField
-              id="descricao"
-              name='descricao'
-              label="Descrição"
-              //onChange={(e) => setDescricao(e.target.value)}
-              multiline
-              minRows={1}
-              maxRows={2}
-              margin="dense"
-              fullWidth className='textField'
-              sx={{
-                "& label": {
-                  color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                },
-              }}
-            />
+          <Box sx={style}>
+            <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
+            <form /*onSubmit={cadastrarTarefa}*/>
+              <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
+                Editar<span style={{ color: '#F46E27' }}> Tarefa</span>
+              </Typography>
 
-            <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth margin="dense" sx={{
-                "& label": {
+              <CssTextField
+                id="descricao"
+                name='descricao'
+                label="Descrição"
+                //onChange={(e) => setDescricao(e.target.value)}
+                multiline
+                minRows={1}
+                maxRows={2}
+                margin="dense"
+                fullWidth className='textField'
+                sx={{
+                  "& label": {
                     color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
+                  },
+                  "& label.Mui-focused": {
                     color: '#F46E27'
-                }
-            }}
-            >
-                <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Prioridade</InputLabel>
-                <CssSelect
+                  },
+                }}
+              />
+
+              <Box sx={{ minWidth: 120 }}>
+                <CssTextField
+                  select
+                  label="Responsável"
+                  fullWidth
+                  margin="dense"
+                  value={dadoEquipe}
+                  onChange={handleChangeAge}
+                  SelectProps={{
+                    MenuProps: {
+                      PaperProps: {
+                        style: {
+                          maxHeight: '23vh',
+                          backgroundColor: '#494A58',
+                          color: '#fff',
+                        }
+                      }
+                    }
+                  }}
+                >
+                  {pessoa.map(f => (
+                    <MenuItem value={f.id_pessoa} key={f.id_pessoa}>{f.nome_pessoa}</MenuItem>)
+                  )}
+                </CssTextField>
+              </Box>
+
+              <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth margin="dense" sx={{
+                  "& label": {
+                    color: '#F4F5FA'
+                  },
+                  "& label.Mui-focused": {
+                    color: '#F46E27'
+                  }
+                }}
+                >
+                  <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Prioridade</InputLabel>
+                  <CssSelect
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     //value={prioridade}
                     label="Prioridade"
                     //onChange={handleChange}
                     sx={{
-                        svg: { color: '#F4F5FA' }
+                      svg: { color: '#F4F5FA' }
                     }}
-                >
+                  >
                     <MenuItem value={0}>Baixa</MenuItem>
                     <MenuItem value={1}>Média</MenuItem>
                     <MenuItem value={2}>Alta</MenuItem>
-                </CssSelect>
-            </FormControl>
-            </Box>
+                  </CssSelect>
+                </FormControl>
+              </Box>
 
-            <div className="d-flex align-items-center justify-content-center gap-2 my-2">
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <div className="d-flex align-items-center justify-content-center gap-2 my-2">
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DatePicker
-                  disablePast
-                  inputFormat="dd/MM/yyyy"
-                  label="Prazo"
-                  openTo="year"
-                  views={['year', 'month', 'day']}
-                  value={prazo}
-                  onChange={(newValue) => {
-                    setPrazo(newValue);
-                  }}
-                  renderInput={(params) => <DateTextField {...params} sx={{
-                    "& label": {
-                      color: '#F4F5FA'
-                    },
-                    "& label.Mui-focused": {
-                      color: '#F46E27'
-                    },
-                    svg: { color: '#F4F5FA' }}} />}
-                  />
-              </LocalizationProvider>
-            </div>
-            
-            <Divider light className='mt-3'/>
-                <div className='d-flex justify-content-end mt-5'>
-                    <Button style={{
-                        color: "#F4F5FA",
-                        opacity: 0.5,
-                        textTransform: 'capitalize'
-                    }} 
-                    variant="text" className='' onClick={handleCloseEdit}>Cancelar</Button>
-                    <Button style={{
-                        color: "#F4F5FA",
-                        background: "#F46E27",
-                        textTransform: 'capitalize',
-                        boxShadow: 'none'
+                    disablePast
+                    inputFormat="dd/MM/yyyy"
+                    label="Prazo"
+                    openTo="year"
+                    views={['year', 'month', 'day']}
+                    value={prazo}
+                    onChange={(newValue) => {
+                      setPrazo(newValue);
                     }}
-                    variant="contained" type="submit">Salvar</Button>
-                    </div>
-                </form>
-                </Box>
-            </Modal>
+                    renderInput={(params) => <DateTextField {...params} sx={{
+                      "& label": {
+                        color: '#F4F5FA'
+                      },
+                      "& label.Mui-focused": {
+                        color: '#F46E27'
+                      },
+                      svg: { color: '#F4F5FA' }
+                    }} />}
+                  />
+                </LocalizationProvider>
+              </div>
+
+              <Divider light className='mt-3' />
+              <div className='d-flex justify-content-end mt-5'>
+                <Button style={{
+                  color: "#F4F5FA",
+                  opacity: 0.5,
+                  textTransform: 'capitalize'
+                }}
+                  variant="text" className='' onClick={handleCloseEdit}>Cancelar</Button>
+                <Button style={{
+                  color: "#F4F5FA",
+                  background: "#F46E27",
+                  textTransform: 'capitalize',
+                  boxShadow: 'none'
+                }}
+                  variant="contained" type="submit">Salvar</Button>
+              </div>
+            </form>
+          </Box>
+        </Modal>
       </Menu>
     </div>
   );

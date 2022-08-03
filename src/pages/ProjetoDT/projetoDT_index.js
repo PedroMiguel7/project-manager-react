@@ -92,7 +92,7 @@ class ProjetoDT extends Component {
                             <div className="card-body" style={{}}>
                                 <div className="d-flex justify-content-between" style={{}}>
                                     <h5 className="card-title" style={{ color: "" }}>{f.descricao_task}</h5>
-                                    <TarefasMenu id_task={f.id_task} />
+                                    <TarefasMenu id_task={f.id_task} equipe_id={props.equipe_id}/>
                                 </div>
                                 <p className="card-text" style={{ color: "" }}>{f.nome_pessoa}</p>
                             </div>
@@ -133,25 +133,25 @@ class ProjetoDT extends Component {
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">A fazer</h4>
                                     <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'A Fazer'} />
+                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'A Fazer'} equipe_id={p.equipe_id}/>
                                     </div>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Em Andamento</h4>
                                     <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Andamento'} />
+                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Andamento'} equipe_id={p.equipe_id}/>
                                     </div>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Em Teste</h4>
                                     <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Teste'} />
+                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Teste'} equipe_id={p.equipe_id}/>
                                     </div>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Concluida</h4>
                                     <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Concluida'} />
+                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Concluida'} equipe_id={p.equipe_id}/>
                                     </div>
                                 </div>
                             </div>
