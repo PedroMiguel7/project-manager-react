@@ -43,7 +43,12 @@ class TarefasAndamento extends Component {
       setOpenSnackbar(false);
     };
 
-    const handleCheck = () => {
+
+
+    const handleCheck = (id) => {
+      // usar o id pro post
+      console.log(id);
+
       setOpenAlert(true);
     }
 
@@ -56,6 +61,8 @@ class TarefasAndamento extends Component {
     const [changeIcon, setIcon] = React.useState(false);
 
     const handleClickSim = () => {
+      //Post de status para Concluido
+      //pegar o id da linha
       setOpenSnackbar(true);
       setOpenAlert(false);
       setIcon(true);
@@ -114,14 +121,15 @@ class TarefasAndamento extends Component {
           return dataInicioFormatada;
         }
 
+        var getId;
         return (
           props.tarefas.map(t => 
             {if (t.status === "Em Andamento")
             return (
               <>
-                <tr>
+                <tr id={t.id_task}>
                   <td>
-                    <IconButton onClick={handleCheck}>
+                    <IconButton onClick={() => {handleCheck(t.id_task);}}>
                       {icon}
                     </IconButton>
                   </td>
@@ -139,7 +147,7 @@ class TarefasAndamento extends Component {
                     {Inicio(t.data_criacao)}
                   </td>
                   <td>
-                    <TarefasMenu />
+                    <TarefasMenu equipe_id={t.id_equipe} id_task={t.id_task} />
                   </td>
                 </tr>
 
@@ -190,12 +198,12 @@ class TarefasAndamento extends Component {
   }
 
   render() {
-    const { tarefas} = this.state;
+    const { tarefas } = this.state;
 
     return (
       <>
         <div className='TabelaTarefas table-responsive'>
-          <table className="table align-middle text-center table-hover">
+          <table id='table' className="table align-middle text-center table-hover">
             <tbody>
               <tr>
                 <th scope="col"></th>
