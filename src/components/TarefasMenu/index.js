@@ -20,6 +20,7 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import InputAdornment from '@mui/material/InputAdornment';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -32,10 +33,10 @@ import { useEffect, useState } from 'react';
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
-    svg: {color: '#F4F5FA'},
+    svg: { color: '#F4F5FA' },
     '&.Mui-focused': {
       borderColor: '#F4F5FA',
-      svg: {color: '#F57D3D'}
+      svg: { color: '#F57D3D' }
     },
     '& fieldset': {
       borderColor: '#F4F5FA',
@@ -48,13 +49,13 @@ const CssTextField = styled(TextField)({
       borderColor: '#F46E27',
     },
     '& .MuiInputAdornment-root': {
-    color: '#87888C',
-  }
+      color: '#87888C',
+    }
   },
   '.MuiInputLabel-outlined': {
     color: '#F4F5FA',
     '&.Mui-focused': {
-      color:'#F46E27',
+      color: '#F46E27',
     },
   },
 })
@@ -321,57 +322,46 @@ export default function TarefasMenu(props) {
               </Box>
 
               <Box sx={{ minWidth: 120 }}>
-                <FormControl fullWidth margin="dense" sx={{
-                  "& label": {
-                    color: '#F4F5FA'
-                  },
-                  "& label.Mui-focused": {
-                    color: '#F46E27'
-                  }
-                }}
+                <CssTextField
+                  select
+                  label="Prioridade"
+                  fullWidth
+                  margin="dense"
+                  value={prioridade}
+                  onChange={handleChangePrior}
+                  SelectProps={{
+                    MenuProps: {
+                      PaperProps: {
+                        style: {
+                          maxHeight: '23vh',
+                          backgroundColor: '#494A58',
+                          color: '#fff',
+                        }
+                      }
+                    }
+                  }}
                 >
-                  <InputLabel sx={{ color: '#C2C3C6' }} id="demo-simple-select-label">Prioridade</InputLabel>
-                  <CssSelect
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    //value={prioridade}
-                    label="Prioridade"
-                    //onChange={handleChange}
-                    sx={{
-                      svg: { color: '#F4F5FA' }
-                    }}
-                  >
-                    <MenuItem value={0}>Baixa</MenuItem>
-                    <MenuItem value={1}>Média</MenuItem>
-                    <MenuItem value={2}>Alta</MenuItem>
-                  </CssSelect>
-                </FormControl>
+                  <MenuItem value={0}>Baixa</MenuItem>
+                  <MenuItem value={1}>Média</MenuItem>
+                  <MenuItem value={2}>Alta</MenuItem>
+                </CssTextField>
               </Box>
 
-              <div className="d-flex align-items-center justify-content-center gap-2 my-2">
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DatePicker
-                    disablePast
-                    inputFormat="dd/MM/yyyy"
-                    label="Prazo"
-                    openTo="year"
-                    views={['year', 'month', 'day']}
-                    value={prazo}
-                    onChange={(newValue) => {
-                      setPrazo(newValue);
-                    }}
-                    renderInput={(params) => <DateTextField {...params} sx={{
-                      "& label": {
-                        color: '#F4F5FA'
-                      },
-                      "& label.Mui-focused": {
-                        color: '#F46E27'
-                      },
-                      svg: { color: '#F4F5FA' }
-                    }} />}
-                  />
-                </LocalizationProvider>
-              </div>
+              <CssTextField
+                        type="number"
+                        id="prazo"
+                        name='prazo'
+                        label="Prazo"
+                        onChange={(a) => setPrazoEntrega(a.target.value)}
+                        margin="dense"
+                        fullWidth className='textField'
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">
+                            <span>dias</span>
+                            </InputAdornment>,
+                            inputProps: { min: 0 }
+                        }}
+                        />
 
               <Divider light className='mt-3' />
               <div className='d-flex justify-content-end mt-5'>
