@@ -60,15 +60,24 @@ class TarefasAndamento extends Component {
 
     const [changeIcon, setIcon] = React.useState(false);
 
-    const handleClickSim = () => {
+    const handleClickSim = (id) => {
       //Post de status para Concluido
       //pegar o id da linha
+      EditaTask(id);
       setOpenSnackbar(true);
       setOpenAlert(false);
       setIcon(true);
     };
 
     const icon = (changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
+
+    function EditaTask(id) {
+      api.put('/tasks/' + id, {
+        status: "Concluido",
+        data_conclusao: new Date(),
+      })
+      console.log('/tasks/' + id);
+    }
 
     if( qtdTarefas === null){
         return(
@@ -173,7 +182,7 @@ class TarefasAndamento extends Component {
                           color: "#C2C3C6",
                           opacity: 0.7
                       }}>Não</Button>
-                      <Button autoFocus onClick={handleClickSim} variant="contained"
+                      <Button autoFocus onClick={() => {handleClickSim(t.id_task);}} variant="contained"
                       sx={{
                           color: "#FFF",
                           backgroundColor: "#F57D3D",
