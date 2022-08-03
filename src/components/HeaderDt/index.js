@@ -3,7 +3,6 @@ import {useState, useEffect} from 'react';
 
 function HeaderDt({pagina, titulo, status}) {
     const [statusBg, mudarStatus] = useState();
-    console.log(statusBg);
 
     function setTag(sts) {
         switch(sts) {
