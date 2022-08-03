@@ -21,12 +21,6 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
-import Select from '@mui/material/Select';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import api from '../../api';
 import { useEffect, useState } from 'react';
 
@@ -73,44 +67,6 @@ const style = {
   width: '40vw'
 };
 
-const CssSelect = styled(Select)({
-  '& .MuiSelect-outlined': {
-    color: "#F4F5FA",
-  }, '& fieldset': {
-    borderColor: '#F4F5FA',
-    borderRadius: 5,
-  },
-  '&:focus': {
-    backgroundColor: 'yellow'
-  },
-  '&:hover': {
-    borderColor: '#F46E27',
-    color: '#F46E27',
-  },
-})
-
-const DateTextField = styled(TextField)({
-  '& .MuiOutlinedInput-root': {
-    color: "#F4F5FA",
-    '& fieldset': {
-      borderColor: '#F4F5FA',
-      borderRadius: 5,
-    },
-    '&:hover fieldset': {
-      borderColor: '#C2C3C6',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: '#F46E27',
-      color: '#F46E27',
-    },
-    'input': {
-      '&::placeholder': {
-        color: '#C2C3C6',
-      }
-    }
-  },
-})
-
 
 export default function TarefasMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -145,28 +101,21 @@ export default function TarefasMenu(props) {
     setAnchorEl(null);
   };
 
-  const [prazo, setPrazo] = React.useState(new Date());
 
 
   const [nome, setNome] = useState("");
   const [pessoa, setPessoa] = useState([]);
   const [prazoEntrega, setPrazoEntrega] = useState();
+  
   const [prioridade, setPrioridade] = React.useState();
+  const handleChangePrior = (event) => {
+    setPrioridade(event.target.value);
+  };
 
   const [dadoEquipe, setDadoEquipe] = React.useState('');
   const handleChangeAge = (eventA) => {
     setDadoEquipe(eventA.target.value);
   };
-
-
-  const handleChangePrior = (event) => {
-    setPrioridade(event.target.value);
-  };
-
-  const handleChangePes = (evento) => {
-    setPessoa(evento.target.value);
-  };
-
 
   useEffect(() => {
     const fetchequipe = async () => {
@@ -181,11 +130,36 @@ export default function TarefasMenu(props) {
     fetchequipe();
   }, []);
 
+  useEffect(() => {
+
+    const fetchtask = async () => {
+      try {
+        const response2 = await api.get('/tasks/' + props.id_task);
+        const TAREFA = (response2.data)
+        /*TAREFA.map(p => (
+
+        ))*/
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchtask();
+  }, []);
+
 
 
   function DeletaTask() {
     api.delete('/tasks/' + props.id_task)
     this.handleCloseAlert()
+  }
+
+  function EditaTask() {
+    api.put('/tasks/' + props.id_task, {
+      descricao_task: nome,
+      pessoa_id: parseInt(dadoEquipe),
+      prazo_entrega: parseInt(prazoEntrega),
+      prioridade: prioridade,
+    })
   }
 
   return (
@@ -276,23 +250,17 @@ export default function TarefasMenu(props) {
               </Typography>
 
               <CssTextField
-                id="descricao"
-                name='descricao'
-                label="Descrição"
-                //onChange={(e) => setDescricao(e.target.value)}
-                multiline
-                minRows={1}
-                maxRows={2}
+                required
+                id="nome"
+                name='nome'
+                label="Nome"
+                onChange={(e) => setNome(e.target.value)}
+                variant="outlined"
                 margin="dense"
-                fullWidth className='textField'
-                sx={{
-                  "& label": {
-                    color: '#F4F5FA'
-                  },
-                  "& label.Mui-focused": {
-                    color: '#F46E27'
-                  },
-                }}
+                color='primary'
+                fullWidth
+                className='textField'
+                autoComplete='off'
               />
 
               <Box sx={{ minWidth: 120 }}>
@@ -348,20 +316,20 @@ export default function TarefasMenu(props) {
               </Box>
 
               <CssTextField
-                        type="number"
-                        id="prazo"
-                        name='prazo'
-                        label="Prazo"
-                        onChange={(a) => setPrazoEntrega(a.target.value)}
-                        margin="dense"
-                        fullWidth className='textField'
-                        InputProps={{
-                            endAdornment: <InputAdornment position="end">
-                            <span>dias</span>
-                            </InputAdornment>,
-                            inputProps: { min: 0 }
-                        }}
-                        />
+                type="number"
+                id="prazo"
+                name='prazo'
+                label="Prazo"
+                onChange={(a) => setPrazoEntrega(a.target.value)}
+                margin="dense"
+                fullWidth className='textField'
+                InputProps={{
+                  endAdornment: <InputAdornment position="end">
+                    <span>dias</span>
+                  </InputAdornment>,
+                  inputProps: { min: 0 }
+                }}
+              />
 
               <Divider light className='mt-3' />
               <div className='d-flex justify-content-end mt-5'>
@@ -377,7 +345,7 @@ export default function TarefasMenu(props) {
                   textTransform: 'capitalize',
                   boxShadow: 'none'
                 }}
-                  variant="contained" type="submit">Salvar</Button>
+                  variant="contained" type="submit" onClick={EditaTask}>Salvar</Button>
               </div>
             </form>
           </Box>

@@ -83,8 +83,7 @@ export default function BasicModalTarefa(props) {
     useEffect(() => {
         const fetchequipe = async () => {
             try {
-                const url = ("/equipes/" + props.equipe_id+"/pessoas")
-                const response = await api.get(url);
+                const response = await api.get("/equipes/" + props.equipe_id + "/pessoas");
                 setPessoa(response.data);
             } catch (error) {
                 console.log(error);
