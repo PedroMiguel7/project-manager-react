@@ -50,18 +50,24 @@ class equipeDT_index extends Component {
         var teste = props.PessoasEquipe;
         if( teste === null){
             return(
-                <tr>
-                    <th></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <>
+                    <div>
+                        <span>Ainda não foi adicionado nenhum membro nesta equipe.</span>
+                    </div>
+                </>
             );
         } else{
             return(
             props.PessoasEquipe.map(p => (
-                <tr key={teste.id_pessoa}>
+                <li className="MembroLi d-flex ">
+                    <Avatar sx={{ bgcolor: "#c4c" }}>N</Avatar>
+                    <div className="d-flex flex-column">
+                        <span>{p.nome_pessoa}</span>
+                        <span>{p.funcao_pessoa}</span>
+                    </div>
+                </li>
+                
+                /*<tr key={teste.id_pessoa}>
                     <th scope="row">{p.id_pessoa}</th>
                     <td className="">{p.nome_pessoa}</td>
                     <td>{p.funcao_pessoa}</td>
@@ -71,7 +77,7 @@ class equipeDT_index extends Component {
                         background: "#F46E27"
                     }}
                         variant="contained" >DETALHAR</Button></Link></td>
-                </tr>
+                </tr>*/
             ))
             );
         }
@@ -97,13 +103,7 @@ class equipeDT_index extends Component {
                             <div>
                                 <h3>Membros</h3>
                                 <ul className="ps-0">
-                                    <li className="MembroLi d-flex ">
-                                        <Avatar sx={{ bgcolor: "#c4c" }}>N</Avatar>
-                                        <div className="d-flex flex-column">
-                                            <span>Fulano de Tal</span>
-                                            <span>Front-End</span>
-                                        </div>
-                                    </li>
+                                    <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
                                 </ul>
                             </div>
                         </div>
