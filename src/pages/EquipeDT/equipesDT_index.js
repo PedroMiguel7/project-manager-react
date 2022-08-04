@@ -66,7 +66,7 @@ class equipeDT_index extends Component {
                             <span>{p.funcao_pessoa}</span>
                         </div>
                         <div className="d-flex">
-                            <a className="LinkProjeto" href={`/projetos/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>
+                            <a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>
                         </div>
                     </li>
                 ))
