@@ -183,6 +183,14 @@ class equipeDT_index extends Component {
         const { PessoasEquipe } = this.state;
         const { tarefas } = this.state;
 
+        const TarefasProjeto = [];
+        projetos.map(f=>(
+            TarefasProjeto.push(f.id_projeto)
+        ))
+
+        console.log(TarefasProjeto);
+
+
         return (
             <>
                 <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
@@ -210,7 +218,7 @@ class equipeDT_index extends Component {
                         <div className="TesteGrid EquipeTarefas col-lg-4 col-md-8">
                             <h3>Tarefas</h3>
                             <ul className="TarefasUl ps-0">
-                                <this.ImprimeTarefas tarefas = {tarefas}/>
+                                <this.ImprimeTarefas tarefas = {tarefas} projetos = {TarefasProjeto} />
                             </ul>
                         </div>
                         <div className="TesteGrid col-lg-4 col-md-4">

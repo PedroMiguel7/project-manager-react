@@ -598,8 +598,10 @@ input[type="number"]::-webkit-inner-spin-button {
 .LinkProjeto {
     text-decoration: none;
     color: var(--cinza);
+    transition: 0.4s;
 }
 
 .LinkProjeto:hover {
     color: var(--branco);
+    transition: 0.4s;
 }
