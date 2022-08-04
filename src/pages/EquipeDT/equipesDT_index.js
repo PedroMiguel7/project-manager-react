@@ -138,7 +138,6 @@ class equipeDT_index extends Component {
                 </>
             );
         } else{
-            var url = document.location.host;
             return (
                 props.projetos.map(p => (
                     <li className="ProjetosLi">
@@ -159,8 +158,8 @@ class equipeDT_index extends Component {
                                 </div>
                                 <span>12%</span>
                             </div>
-                            <div>
-                                <a href={`${url}/projetos/${p.id_projeto}`}>Ver Projeto</a>
+                            <div className="d-flex justify-content-end">
+                                <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
                             </div>
                             
                         </div>
