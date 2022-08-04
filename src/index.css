@@ -548,7 +548,19 @@ input[type="number"]::-webkit-inner-spin-button {
     border: 1px solid red;
 }
 
-.MembroLi {
+.MembroLi, .TarefasLi {
     background-color: var(--preto-medio);
     list-style: none;
+    /*padding: 8px;*/
+    border-radius: 10px;
+}
+
+.TaskIcon {
+    background-color: rgb(73, 74, 88, 0.15);
+    width: 60px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.TaskIcon > img {
+    width: 25px;
 }

@@ -4,6 +4,7 @@ import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
+import TaskIcon from '../../assets/icons/task.svg';
 
 class equipeDT_index extends Component {
     state = {
@@ -95,7 +96,7 @@ class equipeDT_index extends Component {
                         <div className="TesteGrid col-4">
                             <div>
                                 <h3>Membros</h3>
-                                <ul>
+                                <ul className="ps-0">
                                     <li className="MembroLi d-flex ">
                                         <Avatar sx={{ bgcolor: "#c4c" }}>N</Avatar>
                                         <div className="d-flex flex-column">
@@ -107,7 +108,28 @@ class equipeDT_index extends Component {
                             </div>
                         </div>
                         <div className="TesteGrid col-4">
-                            <h2>Tarefas</h2>
+                            <h3>Tarefas</h3>
+                                <ul className="ps-0">
+                                    <li className="TarefasLi d-flex ">
+                                        <div className="TaskIcon d-flex align-items-center justify-content-center">
+                                            <img src={TaskIcon} />
+                                        </div>
+                                        <div className="d-flex align-items-center justify-content-between">
+                                            <div className="d-flex flex-column">
+                                                <span>Em Andamento</span>
+                                                <span>Fazer algo</span>
+                                                <span>2 dias restantes</span>
+                                            </div>
+                                        
+                                            <div>
+                                                <Button variant="contained">Ver</Button>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        
+                                    </li>
+                                </ul>
                         </div>
                         <div className="TesteGrid col-4">
                             <h2>Estatísticas</h2>
