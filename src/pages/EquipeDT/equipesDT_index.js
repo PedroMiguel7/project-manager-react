@@ -3,6 +3,7 @@ import api from '../../api';
 import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
+import Avatar from '@mui/material/Avatar';
 
 class equipeDT_index extends Component {
     state = {
@@ -92,7 +93,18 @@ class equipeDT_index extends Component {
                     </div>
                     <div className="TesteGrid row">
                         <div className="TesteGrid col-4">
-                            <h2>Membros</h2>
+                            <div>
+                                <h3>Membros</h3>
+                                <ul>
+                                    <li className="MembroLi d-flex ">
+                                        <Avatar sx={{ bgcolor: "#c4c" }}>N</Avatar>
+                                        <div className="d-flex flex-column">
+                                            <span>Fulano de Tal</span>
+                                            <span>Front-End</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div className="TesteGrid col-4">
                             <h2>Tarefas</h2>

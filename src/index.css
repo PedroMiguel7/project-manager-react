@@ -547,3 +547,8 @@ input[type="number"]::-webkit-inner-spin-button {
 .TesteGrid {
     border: 1px solid red;
 }
+
+.MembroLi {
+    background-color: var(--preto-medio);
+    list-style: none;
+}
