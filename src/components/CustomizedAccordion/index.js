@@ -9,6 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import SwapHorizRoundedIcon from '@mui/icons-material/SwapHorizRounded';
 import ExternalLink from '../../assets/icons/external-link.svg';
 import Tooltip from '@mui/material/Tooltip';
+import { useEffect, useState } from 'react';
+import api from '../../api';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -47,12 +49,29 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
-export default function CustomizedAccordions() {
+export default function CustomizedAccordions(props) {
   const [expanded, setExpanded] = React.useState();
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
+
+  const pessoaPath = window.location.pathname;
+
+  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    const fetchtask = async () => {
+      try {
+        const response = await api.get(`${pessoaPath}/tasks`);
+        setTasks(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchtask();
+  }, []);
+
+  console.log(`${pessoaPath}/tasks`);
 
   return (
     <div className='w-100'>
@@ -62,38 +81,24 @@ export default function CustomizedAccordions() {
         </AccordionSummary>
         <AccordionDetails>
           <ul>
-          <li className='d-flex align-items-center justify-content-between mb-3'>
-              <p>Lorem lorem</p>
-              <Stack spacing={1} direction="row">
-                <Tooltip title="Trocar projeto">
-                  <IconButton>
-                    <SwapHorizRoundedIcon sx={{color: '#494A58'}} />
-                  </IconButton>
-                </Tooltip>
-                
-                <Tooltip title="Ir para página do projeto">
-                  <IconButton>
-                    <img src={ExternalLink} />
-                  </IconButton>
-                </Tooltip>
-              </Stack>
-            </li>
-            <li className='d-flex align-items-center justify-content-between mb-3'>
-              <p>Lorem lorem</p>
-              <Stack spacing={1} direction="row">
-                <Tooltip title="Trocar projeto">
-                  <IconButton>
-                    <SwapHorizRoundedIcon sx={{color: '#494A58'}} />
-                  </IconButton>
-                </Tooltip>
-                
-                <Tooltip title="Ir para página do projeto">
-                  <IconButton>
-                    <img src={ExternalLink} />
-                  </IconButton>
-                </Tooltip>
-              </Stack>
-            </li>
+            {tasks.map(t => {
+              <li className='d-flex align-items-center justify-content-between mb-3'>
+                <p>{t.projeto_id}</p>
+                <Stack spacing={1} direction="row">
+                  <Tooltip title="Trocar projeto">
+                    <IconButton>
+                      <SwapHorizRoundedIcon sx={{color: '#494A58'}} />
+                    </IconButton>
+                  </Tooltip>
+                  
+                  <Tooltip title="Ir para página do projeto">
+                    <IconButton>
+                      <img src={ExternalLink} />
+                    </IconButton>
+                  </Tooltip>
+                </Stack>
+              </li>
+            })}
           </ul>
         </AccordionDetails>
       </Accordion>

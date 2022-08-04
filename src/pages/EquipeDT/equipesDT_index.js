@@ -84,90 +84,27 @@ class equipeDT_index extends Component {
         const { equipe } = this.state;
         const { PessoasEquipe } = this.state;
 
-        var totalMembros = 0;
-        if(PessoasEquipe !== null){
-            totalMembros =  PessoasEquipe.length;
-        }
-
-        var totalDetasks = 0;
-        if(totalDetasks === null){
-            totalDetasks = 0;
-        }
-        var TotalTaksConcluidas = 0;
-        if(TotalTaksConcluidas === null){
-            TotalTaksConcluidas = 0;
-        }
-        var TotalTasksAndamento = 0;
-        if(TotalTasksAndamento === null){
-            TotalTasksAndamento = 0;
-        }
-
-
         return (
-            <>v
+            <>
                 <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
-                    <div>
-                        <HeaderDt pagina="EQUIPE" titulo={equipe.nome_equipe} Status='' />
+                    <div className="TesteGrid row">
+                        <HeaderDt pagina="Equipe" titulo={equipe.nome_equipe} Status='' />
                     </div>
-                <div className="d-flex" style={{height: "650px"}}>
-                    <div className="col-8" style = {{backgroundColor: "#21222D"}}>
-                        <div className="LeftOptions col-lg-2 mt-sm-2">
-                            <span className="me-2 ms-4 mt-3">Membros</span>
+                    <div className="TesteGrid row">
+                        <div className="TesteGrid col-4">
+                            <h2>Membros</h2>
                         </div>
-                        <table class="table" style={{ color: 'white' }}>
-                            <thead>
-                                <tr className="LeftOptions">
-                                    <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
-                                    <th scope="col" style={{ width: '20%' }}>Nome</th>
-                                    <th scope="col" style={{ width: '35%' }}>função</th>
-                                    <th scope="col" style={{ width: '40%' }}>ID - Tarefas</th>
-                                    <th scope="col" style={{ width: '5%' }}></th>
-                                </tr>
-                            </thead>
-                            <tbody className="">
-                                <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
-                            </tbody>
-                        </table>
+                        <div className="TesteGrid col-4">
+                            <h2>Tarefas</h2>
+                        </div>
+                        <div className="TesteGrid col-4">
+                            <h2>Estatísticas</h2>
+                        </div>
                     </div>
-                    <div className="col-4 ms-4" style={{background: "#21222D", }}>
-                        <div className="Resumo col-md-12 col-lg-9 align-items-center justify-content-center">
-                                            <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
-                                                <h6>{totalMembros}</h6>
-                                                <strong>
-                                                <p className="ms-4 ">Total de <br/>Colaboradores</p>    
-                                                </strong>
-                                            </div>
-                                            <div className="row col-12">
-                                                <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
-                                                    <h6 className="col">{totalDetasks}</h6> 
-                                                    <strong>
-                                                    <p className="text-center col">Total de <br/> Tarefas</p>
-                                                    </strong>
-                                                </div>
-                                                <div className="col-6 d-flex flex-column align-items-center justify-content-center">
-                                                    <div className="TarefasAnd d-flex align-items-center justify-content-center">
-                                                        <h6 className="col-4 md-5" style={{fontFamily: "'Roboto Mono', monospace"}}>{TotalTasksAndamento}</h6>
-                                                        <strong>
-                                                        <p className="ms-2">Tarefas em Andamento</p>
-                                                        </strong>
-                                                    </div>
-                                                    <div className="TarefasConc d-flex align-items-center justify-content-center">
-                                                        <h6 className="col-4 md-5" style={{fontFamily: "'Roboto Mono', monospace"}}>{TotalTaksConcluidas}</h6>
-                                                        <strong>
-                                                        <p className=" ms-2">Tarefas Concluídas</p>
-                                                        </strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="mt-3 "><Link to={'/equipes/'}><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaEquipe(equipe.id_equipe)}>EXCLUIR</Button></Link></div>
-                    </div>
-                </div>
                 </main>
             </>
         )
     }
 }
-
 
 export default equipeDT_index;
