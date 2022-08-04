@@ -144,14 +144,14 @@ class equipeDT_index extends Component {
                         <div className="TesteGrid col-4">
                             <div>
                                 <h3>Membros</h3>
-                                <ul className="ps-0">
+                                <ul className="MembrosUl ps-0">
                                     <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
                                 </ul>
                             </div>
                         </div>
                         <div className="TesteGrid col-4">
                             <h3>Tarefas</h3>
-                                <ul className="ps-0">
+                                <ul className="TarefasUl ps-0">
                                     <this.ImprimeTarefas tarefas = {tarefas}/>
                                 </ul>
                         </div>
