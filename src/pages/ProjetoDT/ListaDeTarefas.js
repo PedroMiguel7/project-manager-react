@@ -26,7 +26,7 @@ export default function MostrarLIstaTarefas(props) {
             <h4 className="text-center mt-2">{props.status}</h4>
             <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
                 {
-                    props.tarefas(p =>(
+                    props.tarefas.map(p =>(
                         <MostrarTarefasCard  status={props.status} key={p.id_task} equipe_id={props.equipe_id} prioridade={p.prioridade} id_task={p.id_task} descricao_task={p.descricao_task} nome_pessoa={p.nome_pessoa}/>
                     ))
                 }
