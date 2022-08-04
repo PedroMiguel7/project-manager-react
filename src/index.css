@@ -599,3 +599,7 @@ input[type="number"]::-webkit-inner-spin-button {
     text-decoration: none;
     color: var(--cinza);
 }
+
+.LinkProjeto:hover {
+    color: var(--branco);
+}

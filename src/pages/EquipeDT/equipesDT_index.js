@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import { useValueFormatter } from "@nivo/core";
 
 class equipeDT_index extends Component {
     state = {
@@ -57,14 +58,18 @@ class equipeDT_index extends Component {
                 </>
             );
         } else{
+            var colors = ["#FFC16A", "#A9DFD8", "#F2C8ED", "#A7CAFF", "#E7DF9B", "#F2A7A7"];
             return(
                 props.PessoasEquipe.map(p => (
-                    <li className="MembroLi d-flex ">
-                        <Avatar sx={{ bgcolor: "#c4c" }}>N</Avatar>
-                        <div className="d-flex flex-column">
-                            <span>{p.nome_pessoa}</span>
-                            <span>{p.funcao_pessoa}</span>
+                    <li className="MembroLi d-flex justify-content-between align-items-center">
+                        <div className="d-flex align-items-center">
+                            <Avatar sx={{ bgcolor: colors[Math.floor(Math.random() * 5)], color: "#171821" }}>{p.nome_pessoa.charAt(0)}</Avatar>
+                            <div className="d-flex flex-column">
+                                <span>{p.nome_pessoa}</span>
+                                <span>{p.funcao_pessoa}</span>
+                            </div>    
                         </div>
+                        
                         <div className="d-flex">
                             <a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>
                         </div>
@@ -145,13 +150,13 @@ class equipeDT_index extends Component {
                 props.projetos.map(p => (
                     <li className="ProjetosLi">
                         <div>
-                            <span>Status</span>
+                            <span>{p.status}</span>
                             <h5>{p.nome_projeto}</h5>
                         </div>
                         <div>
                             <span>
                                 <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                2 dias
+                                2 dias restantes
                             </span>
                             <div className="d-flex align-items-center">
                                 <div className="progress ProgressProjeto" >
