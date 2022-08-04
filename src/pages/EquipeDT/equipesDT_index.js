@@ -138,7 +138,7 @@ class equipeDT_index extends Component {
                 </>
             );
         } else{
-
+            var url = document.location.host;
             return (
                 props.projetos.map(p => (
                     <li className="ProjetosLi">
@@ -158,6 +158,9 @@ class equipeDT_index extends Component {
                                     role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <span>12%</span>
+                            </div>
+                            <div>
+                                <a href={`${url}/projetos/${p.id_projeto}`}>Ver Projeto</a>
                             </div>
                             
                         </div>
