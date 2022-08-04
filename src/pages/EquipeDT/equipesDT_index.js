@@ -180,7 +180,7 @@ class equipeDT_index extends Component {
                         <HeaderDt pagina="Equipe" titulo={equipe.nome_equipe} Status='' />
                     </div>
                     <div className="TesteGrid row">
-                        <div className="TesteGrid col-4">
+                        <div className="TesteGrid col-lg-4 col-md-8">
                             <div>
                                 <h3>Membros</h3>
                                 <ul className="MembrosUl ps-0">
@@ -197,13 +197,13 @@ class equipeDT_index extends Component {
                                 </ul>
                             </div>
                         </div>
-                        <div className="TesteGrid col-4">
+                        <div className="TesteGrid EquipeTarefas col-lg-4 col-md-8">
                             <h3>Tarefas</h3>
-                                <ul className="TarefasUl ps-0">
-                                    <this.ImprimeTarefas tarefas = {tarefas}/>
-                                </ul>
+                            <ul className="TarefasUl ps-0">
+                                <this.ImprimeTarefas tarefas = {tarefas}/>
+                            </ul>
                         </div>
-                        <div className="TesteGrid col-4">
+                        <div className="TesteGrid col-lg-4 col-md-4">
                             <h2>Estatísticas</h2>
                         </div>
                     </div>
