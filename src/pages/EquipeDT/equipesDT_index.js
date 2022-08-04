@@ -138,7 +138,6 @@ class equipeDT_index extends Component {
                 </>
             );
         } else{
-            var url = document.location.host;
             return (
                 props.projetos.map(p => (
                     <li className="ProjetosLi">
