@@ -1,14 +1,9 @@
 import HeaderDt from "../../components/HeaderDt"
 import CircularProgressWithLabel from '../../components/CircularProgressWithLabel'
-import Table from "../../components/Table";
 import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
-import Button from '@mui/material/Button';
-import { Link } from "react-router-dom";
 import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
-import { breakpoints } from "@mui/system";
-import TarefasMenu from "../../components/TarefasMenu";
-import { useDrag, useDrop } from 'react-dnd'
+import MostrarLIstaTarefas from "./ListaDeTarefas";
 
 
 const projetoPath = window.location.pathname;
@@ -25,7 +20,7 @@ class ProjetoDT extends Component {
         const response3 = await api.get(projetoPath + "/tasks");
 
         this.setState({ projetos: response.data });
-        this.setState({ tarefasPJ: response3.data })
+        this.setState({ tarefasPJ: response3.data });
     }
 
 
@@ -80,38 +75,6 @@ class ProjetoDT extends Component {
         }
     }
 
-    MostraTarefasCard = (props) => {
-        if (props.tarefasPJ !== null) {
-            /*const [{ isDragging }, dragRef] = useDrag({
-                type: 'CARD',
-                item: { 'id': props.id_tasks, "status": props.status },
-                collect: monitor => ({
-                    isDragging: monitor.isDragging(),
-                }),
-            })*/
-            var tarefas = props.tarefasPJ
-            if (tarefas.filter(tarefas => tarefas.status === `${props.status}`) === null) {
-                return (
-                    <div></div>
-                    )
-            } else {
-                return (
-                    tarefas.filter(tarefas => tarefas.status === `${props.status}`).map(f => (
-                        <div className="card mt-3" key={f.id_task} style={{ cursor: "grab", width: "14rem", backgroundColor: "var(--preto-medio)", borderTop: "13px solid", borderColor: f.prioridade === 0 ? "#49b675" : f.prioridade === 1 ? "#ffbf40" : f.prioridade === 2 ? "#ed5269" : "gray" }}>
-                            <div className="card-body" style={{}}>
-                                <div className="d-flex justify-content-between" style={{}}>
-                                    <h5 className="card-title" style={{ color: "" }}>{f.descricao_task}</h5>
-                                    <TarefasMenu id_task={f.id_task} equipe_id={props.equipe_id} />
-                                </div>
-                                <p className="card-text" style={{ color: "" }}>{f.nome_pessoa}</p>
-                            </div>
-                        </div>
-                    ))
-                )
-            }
-        }
-    }
-
 
 
     render() {
@@ -132,22 +95,6 @@ class ProjetoDT extends Component {
             }
         }
 
-        /*const [, dropRef] = useDrop({
-            accept: 'CARD',
-            hover(item) {
-                if (item.status !== props.status) {
-                    item.status = props.status
-    
-                    const updateStatus = async () => {
-                        const response = await api.put(`/tasks/`+props.id_task)
-                        console.log(response.data)
-                        props.func()
-                    }
-                    updateStatus()
-                }
-            }
-        })
-    */
         return (
             <>
                 {projetos.map(p => (
@@ -155,32 +102,8 @@ class ProjetoDT extends Component {
                         <HeaderDt pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
 
                         <div className="d-flex row">
-                            <div className="col-9 d-flex justify-content-between">
-                                <div className="col-2 TPtrello">
-                                    <h4 className="text-center mt-2">A fazer</h4>
-                                    <div  className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'A Fazer'} equipe_id={p.equipe_id} />
-                                    </div>
-                                </div>
-                                <div className="col-2 TPtrello">
-                                    <h4 className="text-center mt-2">Em Andamento</h4>
-                                    <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Andamento'} equipe_id={p.equipe_id} />
-                                    </div>
-                                </div>
-                                <div className="col-2 TPtrello">
-                                    <h4 className="text-center mt-2">Em Teste</h4>
-                                    <div  className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Teste'} equipe_id={p.equipe_id} />
-                                    </div>
-                                </div>
-                                <div className="col-2 TPtrello">
-                                    <h4 className="text-center mt-2">Concluida</h4>
-                                    <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Concluida'} equipe_id={p.equipe_id} />
-                                    </div>
-                                </div>
-                            </div>
+                            <MostrarLIstaTarefas tarefasPJ={tarefasPJ} equipe_id={p.equipe_id} />
+
 
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <div className="row align-items-start mt-3">
