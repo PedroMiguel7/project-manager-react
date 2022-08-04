@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
 import { breakpoints } from "@mui/system";
 import TarefasMenu from "../../components/TarefasMenu";
-import { useDrag } from 'react-dnd'
+import { useDrag, useDrop } from 'react-dnd'
 
 
 const projetoPath = window.location.pathname;
@@ -27,6 +27,7 @@ class ProjetoDT extends Component {
         this.setState({ projetos: response.data });
         this.setState({ tarefasPJ: response3.data })
     }
+
 
     BuscarMembrosFunc = (props) => {
         const [pessoas, setPessoas] = useState([]);
@@ -81,26 +82,26 @@ class ProjetoDT extends Component {
 
     MostraTarefasCard = (props) => {
         if (props.tarefasPJ !== null) {
-            const [{isDragging}, dragRef] = useDrag({
+            /*const [{ isDragging }, dragRef] = useDrag({
                 type: 'CARD',
-                item: {'id': props.id_tasks, "status": props.status},
+                item: { 'id': props.id_tasks, "status": props.status },
                 collect: monitor => ({
-                  isDragging: monitor.isDragging(),
+                    isDragging: monitor.isDragging(),
                 }),
-              })
+            })*/
             var tarefas = props.tarefasPJ
             if (tarefas.filter(tarefas => tarefas.status === `${props.status}`) === null) {
                 return (
                     <div></div>
-                )
+                    )
             } else {
                 return (
                     tarefas.filter(tarefas => tarefas.status === `${props.status}`).map(f => (
-                        <div className="card mt-3" ref={dragRef} isDragging={isDragging} key={f.id_task} style={{ width: "14rem", backgroundColor: "var(--preto-medio)", borderTop: "13px solid", borderColor: f.prioridade === 0 ? "#49b675" : f.prioridade === 1 ? "#ffbf40" : f.prioridade === 2 ? "#ed5269" : "gray" }}>
+                        <div className="card mt-3" key={f.id_task} style={{ cursor: "grab", width: "14rem", backgroundColor: "var(--preto-medio)", borderTop: "13px solid", borderColor: f.prioridade === 0 ? "#49b675" : f.prioridade === 1 ? "#ffbf40" : f.prioridade === 2 ? "#ed5269" : "gray" }}>
                             <div className="card-body" style={{}}>
                                 <div className="d-flex justify-content-between" style={{}}>
                                     <h5 className="card-title" style={{ color: "" }}>{f.descricao_task}</h5>
-                                    <TarefasMenu id_task={f.id_task} equipe_id={props.equipe_id}/>
+                                    <TarefasMenu id_task={f.id_task} equipe_id={props.equipe_id} />
                                 </div>
                                 <p className="card-text" style={{ color: "" }}>{f.nome_pessoa}</p>
                             </div>
@@ -110,6 +111,7 @@ class ProjetoDT extends Component {
             }
         }
     }
+
 
 
     render() {
@@ -130,6 +132,22 @@ class ProjetoDT extends Component {
             }
         }
 
+        /*const [, dropRef] = useDrop({
+            accept: 'CARD',
+            hover(item) {
+                if (item.status !== props.status) {
+                    item.status = props.status
+    
+                    const updateStatus = async () => {
+                        const response = await api.put(`/tasks/`+props.id_task)
+                        console.log(response.data)
+                        props.func()
+                    }
+                    updateStatus()
+                }
+            }
+        })
+    */
         return (
             <>
                 {projetos.map(p => (
@@ -140,26 +158,26 @@ class ProjetoDT extends Component {
                             <div className="col-9 d-flex justify-content-between">
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">A fazer</h4>
-                                    <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'A Fazer'} equipe_id={p.equipe_id}/>
+                                    <div  className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
+                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'A Fazer'} equipe_id={p.equipe_id} />
                                     </div>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Em Andamento</h4>
                                     <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Andamento'} equipe_id={p.equipe_id}/>
+                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Andamento'} equipe_id={p.equipe_id} />
                                     </div>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Em Teste</h4>
-                                    <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Teste'} equipe_id={p.equipe_id}/>
+                                    <div  className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
+                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Em Teste'} equipe_id={p.equipe_id} />
                                     </div>
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <h4 className="text-center mt-2">Concluida</h4>
                                     <div className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Concluida'} equipe_id={p.equipe_id}/>
+                                        <this.MostraTarefasCard tarefasPJ={tarefasPJ} status={'Concluida'} equipe_id={p.equipe_id} />
                                     </div>
                                 </div>
                             </div>
