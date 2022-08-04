@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
 import { breakpoints } from "@mui/system";
 import TarefasMenu from "../../components/TarefasMenu";
+import { useDrag } from 'react-dnd'
 
 
 const projetoPath = window.location.pathname;
@@ -80,6 +81,13 @@ class ProjetoDT extends Component {
 
     MostraTarefasCard = (props) => {
         if (props.tarefasPJ !== null) {
+            const [{isDragging}, dragRef] = useDrag({
+                type: 'CARD',
+                item: {'id': props.id_tasks, "status": props.status},
+                collect: monitor => ({
+                  isDragging: monitor.isDragging(),
+                }),
+              })
             var tarefas = props.tarefasPJ
             if (tarefas.filter(tarefas => tarefas.status === `${props.status}`) === null) {
                 return (
@@ -88,7 +96,7 @@ class ProjetoDT extends Component {
             } else {
                 return (
                     tarefas.filter(tarefas => tarefas.status === `${props.status}`).map(f => (
-                        <div className="card mt-3" key={f.id_task} style={{ width: "14rem", backgroundColor: "var(--preto-medio)", borderTop: "13px solid", borderColor: f.prioridade === 0 ? "#49b675" : f.prioridade === 1 ? "#ffbf40" : f.prioridade === 2 ? "#ed5269" : "gray" }}>
+                        <div className="card mt-3" ref={dragRef} isDragging={isDragging} key={f.id_task} style={{ width: "14rem", backgroundColor: "var(--preto-medio)", borderTop: "13px solid", borderColor: f.prioridade === 0 ? "#49b675" : f.prioridade === 1 ? "#ffbf40" : f.prioridade === 2 ? "#ed5269" : "gray" }}>
                             <div className="card-body" style={{}}>
                                 <div className="d-flex justify-content-between" style={{}}>
                                     <h5 className="card-title" style={{ color: "" }}>{f.descricao_task}</h5>
