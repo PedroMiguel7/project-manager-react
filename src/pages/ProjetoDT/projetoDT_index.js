@@ -88,12 +88,28 @@ class ProjetoDT extends Component {
             totalDetasks = tarefasPJ.length;
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido") !== null) {
                 TotalTaksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido").length
+                var TasksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido");
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento") !== null) {
                 TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento").length;
+                var TasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento");
             }
+
+            if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste") !== null) {
+                TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste").length;
+                var TasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste");
+            }
+
+            if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer") !== null) {
+                TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
+                var TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
+            }
+
+
         }
+
+
 
         return (
             <>
@@ -102,8 +118,21 @@ class ProjetoDT extends Component {
                         <HeaderDt pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
 
                         <div className="d-flex row">
-                            <MostrarLIstaTarefas tarefasPJ={tarefasPJ} equipe_id={p.equipe_id} />
+                            <div className="col-9 d-flex justify-content-between">
+                                <div className="col-2 TPtrello">
+                                    <MostrarLIstaTarefas status="A Fazer" tarefas = {TasksFazer} equipe_id = {p.equipe_id}/>
+                                </div>
+                                <div className="col-2 TPtrello">
+                                    <MostrarLIstaTarefas status="Em Andamento" tarefas = {TasksAndamento} equipe_id = {p.equipe_id}/>
+                                </div>
+                                <div className="col-2 TPtrello">
+                                    <MostrarLIstaTarefas status="Em Teste" tarefas = {TasksTeste} equipe_id = {p.equipe_id}/>
+                                </div>
+                                <div className="col-2 TPtrello">
+                                    <MostrarLIstaTarefas status="Concluido" tarefas = {TasksConcluidas} equipe_id = {p.equipe_id}/>
+                                </div>
 
+                            </div>
 
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <div className="row align-items-start mt-3">

@@ -2,7 +2,7 @@ import { useDrop } from 'react-dnd';
 import api from '../../api';
 import MostrarTarefasCard from './cardTarefas';
 
-export default function MostrarLIstaTarefas(props){
+export default function MostrarLIstaTarefas(props) {
     const [, dropRef] = useDrop({
         accept: 'CARD',
         hover(item) {
@@ -21,31 +21,16 @@ export default function MostrarLIstaTarefas(props){
         }
     })
     return (
-        <div className="col-9 d-flex justify-content-between">
-            <div className="col-2 TPtrello">
-                <h4 className="text-center mt-2">A fazer</h4>
-                <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                    <MostrarTarefasCard tarefasPJ={props.tarefasPJ} status={'A Fazer'} equipe_id={props.equipe_id} />
-                </div>
+        <>
+
+            <h4 className="text-center mt-2">{props.status}</h4>
+            <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
+                {
+                    props.tarefas(p =>(
+                        <MostrarTarefasCard  status={props.status} key={p.id_task} equipe_id={props.equipe_id} prioridade={p.prioridade} id_task={p.id_task} descricao_task={p.descricao_task} nome_pessoa={p.nome_pessoa}/>
+                    ))
+                }
             </div>
-            <div className="col-2 TPtrello">
-                <h4 className="text-center mt-2">Em Andamento</h4>
-                <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                    <MostrarTarefasCard tarefasPJ={props.tarefasPJ} status={'Em Andamento'} equipe_id={props.equipe_id} />
-                </div>
-            </div>
-            <div className="col-2 TPtrello">
-                <h4 className="text-center mt-2">Em Teste</h4>
-                <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                    <MostrarTarefasCard tarefasPJ={props.tarefasPJ} status={'Em Teste'} equipe_id={props.equipe_id} />
-                </div>
-            </div>
-            <div className="col-2 TPtrello">
-                <h4 className="text-center mt-2">Concluida</h4>
-                <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                    <MostrarTarefasCard tarefasPJ={props.tarefasPJ} status={'Concluido'} equipe_id={props.equipe_id} />
-                </div>
-            </div>
-        </div>
+        </>
     )
 }
