@@ -17,7 +17,7 @@ class equipeDT_index extends Component {
     async componentDidMount() {
         var equipePath = window.location.pathname;
         
-        const response = await api.get('/projetos/');
+        const response = await api.get(equipePath+'/projetos');
         const response2 = await api.get(equipePath+'/pessoas');
         const response3 = await api.get(equipePath);
         const response4 = await api.get('/tasks/');
@@ -128,6 +128,45 @@ class equipeDT_index extends Component {
         }
     }   
 
+    ImprimeProjetos = (props) => {
+        if( props.projetos === null){
+            return(
+                <>
+                    <div>
+                        <span>Ainda não foi atribuido nenhum projeto para esta equipe.</span>
+                    </div>
+                </>
+            );
+        } else{
+
+            return (
+                props.projetos.map(p => (
+                    <li className="ProjetosLi">
+                        <div>
+                            <span>Status</span>
+                            <h5>{p.nome_projeto}</h5>
+                        </div>
+                        <div>
+                            <span>
+                                <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                2 dias
+                            </span>
+                            <div className="d-flex align-items-center">
+                                <div className="progress ProgressProjeto" >
+                                    <div className="ProgressBarProjeto progress-bar" 
+                                    style={{width: `12%`}}
+                                    role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span>12%</span>
+                            </div>
+                            
+                        </div>
+                    </li>
+                ))
+            );
+        }
+    } 
+
     render() {
         const { projetos } = this.state;
         const { equipe } = this.state;
@@ -146,6 +185,15 @@ class equipeDT_index extends Component {
                                 <h3>Membros</h3>
                                 <ul className="MembrosUl ps-0">
                                     <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
+                                </ul>
+                            </div>
+                            <div>
+                                <div className="d-flex justify-content-between">
+                                    <h3>Projetos</h3>
+                                    <span>Todos</span>
+                                </div>
+                                <ul className="MembrosUl ps-0">
+                                    <this.ImprimeProjetos projetos = {projetos}/>
                                 </ul>
                             </div>
                         </div>
