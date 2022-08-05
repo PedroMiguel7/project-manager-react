@@ -196,9 +196,7 @@ class equipeDT_index extends Component {
     ImprimeProjetosStats = (props) => {
         if(props.projetos === null){
             return (
-                <>
-                    <h6>Sem projetos</h6>
-                </>    
+                <ProgressoCircular Total={0} StatsTitle="Projetos" ValueAndamento={0} ValueConcluido={0} />    
             )
             
         } else {
@@ -221,7 +219,6 @@ class equipeDT_index extends Component {
 
             return (
                 <ProgressoCircular Total={TotalProjetos} StatsTitle="Projetos" ValueAndamento={PorcAndamento} ValueConcluido={PorcConcluidos} />
-                
             )
 
         }
