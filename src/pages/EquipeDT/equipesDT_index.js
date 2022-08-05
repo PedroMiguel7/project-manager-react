@@ -213,7 +213,22 @@ class equipeDT_index extends Component {
             let PorcConcluidos = (QtdConcluidos/TotalTarefas) * 100;
 
             return (
-                <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} />
+                <>
+                    <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} />
+                    <div>
+                        <div>
+                            <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
+                        </div>
+                        <div>
+                            <span className="ProgressLegends ConcluidaLegend">Concluídas</span>
+                        </div>
+                        <div>
+                            
+                            <span className="ProgressLegends PendenteLegend">Pendentes</span>
+                        </div>
+                    </div>
+                </>
+                
             )
         }
     }
@@ -238,7 +253,21 @@ class equipeDT_index extends Component {
             let PorcConcluidos = (QtdConcluidos/TotalProjetos) * 100;
 
             return (
-                <ProgressoCircular Total={TotalProjetos} StatsTitle="Projetos" ValueAndamento={PorcAndamento} ValueConcluido={PorcConcluidos} />
+                <>
+                    <div>
+                        <div>
+                            <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
+                        </div>
+                        <div>
+                            <span className="ProgressLegends ConcluidaLegend">Concluídas</span>
+                        </div>
+                        <div>
+                            <span className="ProgressLegends PendenteLegend">Pendentes</span>
+                        </div>
+                    </div>
+                    <ProgressoCircular Total={TotalProjetos} StatsTitle="Projetos" ValueAndamento={PorcAndamento} ValueConcluido={PorcConcluidos} />
+                </>
+                
             )
         }
     }
@@ -298,34 +327,9 @@ class equipeDT_index extends Component {
                                 </div>
                                 <div className="TasksCircularProgress col-12">
                                     <this.ImprimeTarefasStats tarefas={tarefas} />
-                                    <div>
-                                        <div>
-                                            <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
-                                        </div>
-                                        <div>
-                                            <span className="ProgressLegends ConcluidaLegend">Concluídas</span>
-                                        </div>
-                                        <div>
-                                            
-                                            <span className="ProgressLegends PendenteLegend">Pendentes</span>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div className="TasksCircularProgress col-12">
-                                <div>
-                                        <div>
-                                            <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
-                                        </div>
-                                        <div>
-                                            <span className="ProgressLegends ConcluidaLegend">Concluídas</span>
-                                        </div>
-                                        <div>
-                                            
-                                            <span className="ProgressLegends PendenteLegend">Pendentes</span>
-                                        </div>
-                                    </div>
-
                                     <this.ImprimeProjetosStats projetos={projetos} />
                                     
                                 </div>
