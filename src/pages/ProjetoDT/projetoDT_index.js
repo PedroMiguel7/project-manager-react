@@ -9,12 +9,16 @@ import MostrarLIstaTarefas from "./ListaDeTarefas";
 const projetoPath = window.location.pathname;
 
 class ProjetoDT extends Component {
-    state = {
-        projetos: [],
-        PessoasEquipe: [],
-        tarefasPJ: [],
+    constructor(props) {
+        super(props);
+        this.state = {
+            projetos: [],
+            PessoasEquipe: [],
+            tarefasPJ: [],
 
+        }
     }
+
     async componentDidMount() {
         const response = await api.get(projetoPath);
         const response3 = await api.get(projetoPath + "/tasks");
@@ -23,6 +27,19 @@ class ProjetoDT extends Component {
         this.setState({ tarefasPJ: response3.data });
     }
 
+    updateStateByProps = (prevProps) => {
+        try {
+            const atualiza = async () =>{
+                const response3 = await api.get(projetoPath + "/tasks");
+                this.setState({
+                    tarefasPJ:response3.data   
+                });
+            }
+            atualiza()
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
     BuscarMembrosFunc = (props) => {
         const [pessoas, setPessoas] = useState([]);
@@ -97,16 +114,14 @@ class ProjetoDT extends Component {
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste") !== null) {
-                TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste").length;
+                //TotalTasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste").length;
                 var TasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste");
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer") !== null) {
-                TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
+                //TotalTasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
                 var TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
             }
-
-
         }
 
 
@@ -115,21 +130,22 @@ class ProjetoDT extends Component {
             <>
                 {projetos.map(p => (
                     <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5' key={p.id_projeto}>
+                        
                         <HeaderDt pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
-
+                        <BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza ={this.updateStateByProps}/>
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
                                 <div className="col-2 TPtrello">
-                                    <MostrarLIstaTarefas status="A Fazer" tarefas = {TasksFazer} equipe_id = {p.equipe_id}/>
+                                    <MostrarLIstaTarefas status="A Fazer" tarefas={TasksFazer} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
                                 <div className="col-2 TPtrello">
-                                    <MostrarLIstaTarefas status="Em Andamento" tarefas = {TasksAndamento} equipe_id = {p.equipe_id}/>
+                                    <MostrarLIstaTarefas status="Em Andamento" tarefas={TasksAndamento} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
                                 <div className="col-2 TPtrello">
-                                    <MostrarLIstaTarefas status="Em Teste" tarefas = {TasksTeste} equipe_id = {p.equipe_id}/>
+                                    <MostrarLIstaTarefas status="Em Teste" tarefas={TasksTeste} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
                                 <div className="col-2 TPtrello">
-                                    <MostrarLIstaTarefas status="Concluido" tarefas = {TasksConcluidas} equipe_id = {p.equipe_id}/>
+                                    <MostrarLIstaTarefas status="Concluido" tarefas={TasksConcluidas} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
 
                             </div>

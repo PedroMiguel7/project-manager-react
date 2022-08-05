@@ -6,7 +6,7 @@ import TarefasMenu from "../../components/TarefasMenu";
 export default function MostrarTarefasCard(props) {
     const [{ isDragging }, dragRef] = useDrag({
         type: 'CARD',
-        item: { 'id': props.id_tasks, "status": props.p.status },
+        item: { 'id': props.id_task, "status": props.status },
         collect: monitor => ({
             isDragging: monitor.isDragging(),
         }),

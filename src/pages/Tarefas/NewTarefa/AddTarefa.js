@@ -97,6 +97,7 @@ export default function BasicModalTarefa(props) {
                 prazo_entrega: parseInt(prazoEntrega),
                 prioridade: prioridade,
             })
+            props.atualiza();
     }
 
     function FechaModal() {
@@ -126,7 +127,7 @@ export default function BasicModalTarefa(props) {
                         <div className='OcuparEspaco'></div>
                         <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleClose} />
                         <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
-                        Atribuir<span style={{ color: '#F46E27' }}> Tarefa</span>
+                        Adicionar<span style={{ color: '#F46E27' }}> Tarefa</span>
                         </Typography>
                     </div>
                     <form onSubmit={FechaModal}>
