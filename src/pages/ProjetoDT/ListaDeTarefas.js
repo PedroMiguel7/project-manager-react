@@ -8,12 +8,11 @@ export default function MostrarLIstaTarefas(props) {
         hover(item) {
             if (item.status !== props.status) {
                 item.status = props.status
-
                 const updateStatus = async () => {
-                    const response = await api.put(`/tasks/` + props.id_task, {
-                        status: item.status,
+                    const response = await api.put(`/tasks/` + item.id + '/status', {
+                        status: props.status,
                     })
-                    console.log(response.data)
+                    console.log(props.status)
                     //props.func()
                 }
                 updateStatus()

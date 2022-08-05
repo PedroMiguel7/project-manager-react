@@ -24,6 +24,9 @@ class ProjetoDT extends Component {
     }
 
 
+
+
+
     BuscarMembrosFunc = (props) => {
         const [pessoas, setPessoas] = useState([]);
         useEffect(() => {
@@ -105,8 +108,6 @@ class ProjetoDT extends Component {
                 TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
                 var TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
             }
-
-
         }
 
 
