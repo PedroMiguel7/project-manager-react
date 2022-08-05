@@ -4,6 +4,7 @@ import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
 import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
 import MostrarLIstaTarefas from "./ListaDeTarefas";
+import Grafico from "./GraficoProgresso";
 
 
 const projetoPath = window.location.pathname;
@@ -13,16 +14,13 @@ class ProjetoDT extends Component {
         super(props);
         this.state = {
             projetos: [],
-            PessoasEquipe: [],
             tarefasPJ: [],
-
         }
     }
 
     async componentDidMount() {
         const response = await api.get(projetoPath);
         const response3 = await api.get(projetoPath + "/tasks");
-
         this.setState({ projetos: response.data });
         this.setState({ tarefasPJ: response3.data });
     }
@@ -30,12 +28,12 @@ class ProjetoDT extends Component {
     updateStateByProps = (prevProps) => {
         try {
             const atualiza = async () => {
+                const response = await api.get(projetoPath);
                 const response3 = await api.get(projetoPath + "/tasks");
-                this.setState({
-                    tarefasPJ: response3.data
-                });
+                this.setState({ projetos: response.data });
+                this.setState({ tarefasPJ: response3.data });
             }
-            atualiza()
+            atualiza();
         } catch (error) {
             console.error(error.message);
         }
@@ -93,7 +91,6 @@ class ProjetoDT extends Component {
     }
 
 
-
     render() {
         const { projetos } = this.state;
         const { tarefasPJ } = this.state;
@@ -102,16 +99,20 @@ class ProjetoDT extends Component {
         var TotalTaksConcluidas = 0;
         var TotalTasksAndamento = 0;
 
-        var TasksFazer = []
-        var TasksAndamento = []
-        var TasksTeste = []
-        var TasksConcluidas = []
+        var TasksFazer = [];
+        var TasksAndamento = [];
+        var TasksTeste = [];
+        var TasksConcluidas = [];
+
+        var BarrinhaProgresso = 0;
 
         if (tarefasPJ !== null) {
             totalDetasks = tarefasPJ.length;
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido") !== null) {
                 TotalTaksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido").length
                 TasksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido");
+
+                BarrinhaProgresso = (TotalTaksConcluidas * 100) / totalDetasks
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento") !== null) {
@@ -128,6 +129,7 @@ class ProjetoDT extends Component {
                 //TotalTasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
                 TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
             }
+
         }
 
         return (
@@ -157,14 +159,17 @@ class ProjetoDT extends Component {
                             </div>
 
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
-                                <div className="row align-items-start mt-3">
-                                    <div>
+                                <div className="row mt-3">
+                                    <div className="align-items-start">
                                         <h4>Descrição</h4>
                                         <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
                                     </div>
-                                    <div className="col-md-12 text-center">
-                                        <h6>Progresso</h6>
-                                        <CircularProgressWithLabel value="20" id_projeto={p.id_projeto} />
+                                    <div className="col-md-12">
+                                        <h5>Progresso</h5>
+                                        {/*<CircularProgressWithLabel value="20" id_projeto={p.id_projeto} />*/}
+                                        <div className=" md-3">
+                                            <Grafico calculo={BarrinhaProgresso}/>
+                                        </div>
                                     </div>
                                 </div>
 
