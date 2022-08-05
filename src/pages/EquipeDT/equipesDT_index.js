@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import { useValueFormatter } from "@nivo/core";
-import Box from '@mui/material/Box';
-import CircularProgress, {circularProgressClasses,} from '@mui/material/CircularProgress';
+import ProgressoCircular from './CircularProgress/index.js';
 
 class equipeDT_index extends Component {
     state = {
@@ -246,7 +244,7 @@ class equipeDT_index extends Component {
                                     <p>Por tarefas concluídas</p>
                                 </div>
                                 <div className="TasksCircularProgress col-12">
-                                
+                                    <ProgressoCircular />
                                 </div>
                             </div>
                         </div>
