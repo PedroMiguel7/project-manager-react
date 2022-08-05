@@ -29,10 +29,10 @@ class ProjetoDT extends Component {
 
     updateStateByProps = (prevProps) => {
         try {
-            const atualiza = async () =>{
+            const atualiza = async () => {
                 const response3 = await api.get(projetoPath + "/tasks");
                 this.setState({
-                    tarefasPJ:response3.data   
+                    tarefasPJ: response3.data
                 });
             }
             atualiza()
@@ -101,38 +101,44 @@ class ProjetoDT extends Component {
         var totalDetasks = 0;
         var TotalTaksConcluidas = 0;
         var TotalTasksAndamento = 0;
+
+        var TasksFazer = []
+        var TasksAndamento = []
+        var TasksTeste = []
+        var TasksConcluidas = []
+
         if (tarefasPJ !== null) {
             totalDetasks = tarefasPJ.length;
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido") !== null) {
                 TotalTaksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido").length
-                var TasksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido");
+                TasksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido");
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento") !== null) {
                 TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento").length;
-                var TasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento");
+                TasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento");
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste") !== null) {
                 //TotalTasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste").length;
-                var TasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste");
+                TasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste");
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer") !== null) {
                 //TotalTasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
-                var TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
+                TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
             }
         }
-
-
 
         return (
             <>
                 {projetos.map(p => (
                     <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5' key={p.id_projeto}>
-                        
-                        <HeaderDt pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
-                        <BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza ={this.updateStateByProps}/>
+                        <div className="LeftOptions col mt-sm-2">
+                            <HeaderDt pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
+                            <BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
+                        </div>
+
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
                                 <div className="col-2 TPtrello">
@@ -185,7 +191,7 @@ class ProjetoDT extends Component {
                                     </div>
                                 </div>
                                 <div className="row align-items-end">
-                                    <h4 className="container text-center">Funções</h4>
+                                    <h4 className="container text-center">Equipe</h4>
                                     <div className="container ">
                                         <div className="d-flex text-center justify-content-between">
                                             <div className="">

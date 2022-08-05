@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import aim from "../../../assets/icons/aim.svg";
-import profile from "../../../assets/icons/Profile.svg";
+//import profile from "../../../assets/icons/Profile.svg";
 import api from "../../../api";
-import CardDelete from "../../CardDelete";
+//import CardDelete from "../../CardDelete";
 
 class Cards extends Component {
   state = {
@@ -33,10 +33,9 @@ class Cards extends Component {
             </div>
             <div className="card-part2 d-flex justify-content-between">
               <div className="card-members">
-                <h6>Membros</h6>
+                <h6>Progresso</h6>
                 <div className="d-flex gap-1">
-                  <img src={profile} alt="" />
-                  <img src={profile} alt="" />
+                  
                 </div>
               </div>
               <div className="card-progress">
@@ -73,10 +72,9 @@ class Cards extends Component {
             </div>
             <div className="card-part2 d-flex justify-content-between">
               <div className="card-members">
-                <h6>Membros</h6>
+                <h6>Progresso</h6>
                 <div className="d-flex gap-1">
-                  <img src={profile} alt="" />
-                  <img src={profile} alt="" />
+                  
                 </div>
               </div>
               <div className="card-progress">
