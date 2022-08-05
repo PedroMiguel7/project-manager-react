@@ -244,7 +244,7 @@ class equipeDT_index extends Component {
                                     <p>Por tarefas concluídas</p>
                                 </div>
                                 <div className="TasksCircularProgress col-12">
-                                    <ProgressoCircular />
+                                    <ProgressoCircular Total={53} StatsTitle="Tarefas" />
                                     <div>
                                         <div>
                                             <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
@@ -273,7 +273,7 @@ class equipeDT_index extends Component {
                                         </div>
                                     </div>
 
-                                    <ProgressoCircular />
+                                    <ProgressoCircular Total={12} StatsTitle="Projetos" />
                                     
                                 </div>
                             </div>

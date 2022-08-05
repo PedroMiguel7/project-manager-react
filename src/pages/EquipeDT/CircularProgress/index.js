@@ -37,8 +37,8 @@ export default function ProgressoCircular(props) {
                             
 
                             <div className="CircularProgress TotalStats">
-                                <h6>53</h6>
-                                <span>Tarefas</span>
+                                <h6>{props.Total}</h6>
+                                <span>{props.StatsTitle}</span>
                             </div>
                         </Box>
                 </Box>
