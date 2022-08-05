@@ -193,6 +193,31 @@ class equipeDT_index extends Component {
         }
     } 
 
+    ImprimeTarefasStats = (props) => {
+        if(props.tarefas === null){
+            return (
+                <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} />    
+            )
+            
+        } else {
+            var TotalTarefas = props.tarefas.length;
+
+            const TarefasAndamento = props.tarefas.filter((tarefas) => tarefas.status === "Em Andamento");
+            let QtdAndamento = TarefasAndamento.length;
+
+            const TarefasConcluidos = props.tarefas.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
+            let QtdConcluidos = TarefasConcluidos.length;
+
+            let PorcAndamento = (QtdAndamento/TotalTarefas) * 100;
+
+            let PorcConcluidos = (QtdConcluidos/TotalTarefas) * 100;
+
+            return (
+                <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} />
+            )
+        }
+    }
+
     ImprimeProjetosStats = (props) => {
         if(props.projetos === null){
             return (
@@ -272,7 +297,7 @@ class equipeDT_index extends Component {
                                     <p>Por tarefas concluídas</p>
                                 </div>
                                 <div className="TasksCircularProgress col-12">
-                                    <ProgressoCircular Total={53} StatsTitle="Tarefas" />
+                                    <this.ImprimeTarefasStats tarefas={tarefas} />
                                     <div>
                                         <div>
                                             <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
