@@ -12,7 +12,6 @@ export default function MostrarLIstaTarefas(props) {
                     const response = await api.put(`/tasks/` + item.id + '/status', {
                         status: props.status,
                     })
-                    console.log(props.status)
                     props.atualiza()
                 }
                 updateStatus()
