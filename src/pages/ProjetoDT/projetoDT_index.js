@@ -90,6 +90,21 @@ class ProjetoDT extends Component {
         }
     }
 
+    Progresso = (TasksConcluidAs, totalTasks) =>{
+        var resultado;
+        if(TasksConcluidAs !== 0){
+            resultado = (TasksConcluidAs * 100) / totalTasks 
+            return(
+                resultado
+            )
+        } else{
+            resultado = 0
+            return(
+                resultado
+            )
+        }
+    } 
+
 
     render() {
         const { projetos } = this.state;
@@ -104,15 +119,12 @@ class ProjetoDT extends Component {
         var TasksTeste = [];
         var TasksConcluidas = [];
 
-        var BarrinhaProgresso = 0;
 
         if (tarefasPJ !== null) {
             totalDetasks = tarefasPJ.length;
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido") !== null) {
-                TotalTaksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido").length
+                TotalTaksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido").length;
                 TasksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido");
-
-                BarrinhaProgresso = (TotalTaksConcluidas * 100) / totalDetasks
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento") !== null) {
@@ -128,9 +140,9 @@ class ProjetoDT extends Component {
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer") !== null) {
                 //TotalTasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
                 TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
-            }
-
+            }            
         }
+
 
         return (
             <>
@@ -168,7 +180,7 @@ class ProjetoDT extends Component {
                                         <h5>Progresso</h5>
                                         {/*<CircularProgressWithLabel value="20" id_projeto={p.id_projeto} />*/}
                                         <div className=" md-3">
-                                            <Grafico calculo={BarrinhaProgresso}/>
+                                            <Grafico calculo={this.Progresso(TotalTaksConcluidas, totalDetasks)}/>
                                         </div>
                                     </div>
                                 </div>

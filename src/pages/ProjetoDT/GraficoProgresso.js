@@ -2,6 +2,7 @@ import { Progress, Col, Row } from 'rsuite';
 import { useState } from 'react';
 
 export default function Grafico(props) {
+
     const value = Math.round(props.calculo)
     const [percent, setPercent] = useState(value);
 
