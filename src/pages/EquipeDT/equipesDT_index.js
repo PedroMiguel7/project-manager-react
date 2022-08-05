@@ -125,9 +125,9 @@ class equipeDT_index extends Component {
                                 </span>
                             </div>
                         
-                            <div>
+                            {/*<div>
                                 <Button variant="contained">Ver</Button>
-                            </div>
+                            </div>*/}
                             
                         </div>
                     </li>  
