@@ -7,6 +7,8 @@ import Avatar from '@mui/material/Avatar';
 import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { useValueFormatter } from "@nivo/core";
+import Box from '@mui/material/Box';
+import CircularProgress, {circularProgressClasses,} from '@mui/material/CircularProgress';
 
 class equipeDT_index extends Component {
     state = {
@@ -146,6 +148,21 @@ class equipeDT_index extends Component {
                 </>
             );
         } else{
+            function TempoRestante(prazo) {
+                const dataHojeFormatada = new Date();
+      
+                const dataPrazoFormatada = new Date(prazo);
+                
+                if ((dataPrazoFormatada - dataHojeFormatada) <= 86400000 && (dataPrazoFormatada - dataHojeFormatada) > 0) {
+                  return '1 dia restante';
+                } else if (dataPrazoFormatada < dataHojeFormatada) {
+                  return 'Atrasado'
+                } else {
+                  const tempo = (dataPrazoFormatada - dataHojeFormatada) / 86400000;
+                  return `${tempo.toFixed()} dias restantes`;
+                }
+            }
+
             return (
                 props.projetos.map(p => (
                     <li className="ProjetosLi">
@@ -156,7 +173,7 @@ class equipeDT_index extends Component {
                         <div>
                             <span>
                                 <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                2 dias restantes
+                                {TempoRestante(p.prazo_entrega)}
                             </span>
                             <div className="d-flex align-items-center">
                                 <div className="progress ProgressProjeto" >
@@ -223,6 +240,35 @@ class equipeDT_index extends Component {
                         </div>
                         <div className="TesteGrid col-lg-4 col-md-4">
                             <h2>Estatísticas</h2>
+                            <div className="row">
+                                <div className="Top3 col-12">
+                                    <h6>Membros mais produtivos</h6>
+                                    <p>Por tarefas concluídas</p>
+                                </div>
+                                <div className="TasksCircularProgress col-12">
+                                <Box className="d-flex align-items-center justify-content-center" sx={{ position: 'relative' }}>
+                                    <CircularProgress variant="determinate" value={100} size={150} sx={{color: "#ccc", }} ></CircularProgress>
+
+                                    <CircularProgress variant="determinate" value={75} size={150} 
+                                    sx={{color: "#c4c", [`& .${circularProgressClasses.circle}`]: {strokeLinecap: 'round', },backgroundColor: "", position: 'absolute',
+                                    left: 0,}} ></CircularProgress>
+
+                                    <Box sx={{ position: 'absolute',  }}>
+                                        <CircularProgress variant="determinate" value={100} size={110} sx={{color: "#ccc", }} ></CircularProgress>
+
+                                        <CircularProgress variant="determinate" value={75} size={110} 
+                                        sx={{color: "#c4c", [`& .${circularProgressClasses.circle}`]: {strokeLinecap: 'round', },backgroundColor: "", position: 'absolute',
+                                        left: 0,}} ></CircularProgress>
+                                    </Box>
+                                </Box>
+                                    
+
+                                    <div className="CircularProgress TotalStats">
+                                        <h6>53</h6>
+                                        <span>Tarefas</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </main>

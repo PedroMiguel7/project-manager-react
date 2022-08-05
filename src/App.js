@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Rout from "./routes";
-//import api from './api';
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 class App extends Component {
     render() {

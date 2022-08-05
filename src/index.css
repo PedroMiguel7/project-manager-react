@@ -564,7 +564,7 @@ input[type="number"]::-webkit-inner-spin-button {
     border: 1px solid #2B2B36;
 }
 
-.MembroLi, .TarefasLi, .ProjetosLi {
+.MembroLi, .TarefasLi, .ProjetosLi, .Top3 {
     background-color: var(--preto-medio);
     list-style: none;
     /*padding: 8px;*/
@@ -604,4 +604,52 @@ input[type="number"]::-webkit-inner-spin-button {
 .LinkProjeto:hover {
     color: var(--branco);
     transition: 0.4s;
+}
+
+.TasksCircularProgress {
+    display: flex;
+}
+
+.CircularProgress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ConcluidasProgress {
+    position: relative;
+    top: 0;
+    left: 50%;
+    border: 1px solid red;
+
+    transform: translate(-50%, 0%);
+}
+
+#AndamentoProgress {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px solid red;
+}
+
+#PendenteProgress {
+    position: relative;
+    top: 0;
+    left: -135px;
+    border: 1px solid red;
+}
+
+.TotalStats {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px solid red;
+
+    display: flex;
+    flex-direction: column;
+    background-color: var(--preto-medio);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    padding: 5px;
 }
