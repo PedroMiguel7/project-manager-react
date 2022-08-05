@@ -215,7 +215,7 @@ class equipeDT_index extends Component {
             return (
                 <>
                     <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} />
-                    <div>
+                    <div className="d-flex flex-column ">
                         <div>
                             <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
                         </div>
@@ -325,11 +325,11 @@ class equipeDT_index extends Component {
                                     <h6>Membros mais produtivos</h6>
                                     <p>Por tarefas concluídas</p>
                                 </div>
-                                <div className="TasksCircularProgress col-12">
+                                <div className="TasksCircularProgress col-12 flex-wrap">
                                     <this.ImprimeTarefasStats tarefas={tarefas} />
                                 </div>
 
-                                <div className="TasksCircularProgress col-12">
+                                <div className="TasksCircularProgress col-12 flex-wrap-reverse">
                                     <this.ImprimeProjetosStats projetos={projetos} />
                                     
                                 </div>
