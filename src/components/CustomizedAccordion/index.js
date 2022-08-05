@@ -58,12 +58,12 @@ export default function CustomizedAccordions(props) {
 
   const pessoaPath = window.location.pathname;
 
-  const [tasks, setTasks] = useState([]);
+  const [pessoa, setPessoa] = useState([]);
   useEffect(() => {
     const fetchtask = async () => {
       try {
-        const response = await api.get(`${pessoaPath}/tasks`);
-        setTasks(response.data);
+        const response = await api.get(pessoaPath);
+        setPessoa(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -71,7 +71,7 @@ export default function CustomizedAccordions(props) {
     fetchtask();
   }, []);
 
-  console.log(`${pessoaPath}/tasks`);
+
 
   return (
     <div className='w-100'>
@@ -81,9 +81,9 @@ export default function CustomizedAccordions(props) {
         </AccordionSummary>
         <AccordionDetails>
           <ul>
-            {tasks.map(t => {
+            {pessoa.map(p => {
               <li className='d-flex align-items-center justify-content-between mb-3'>
-                <p>{t.projeto_id}</p>
+                <p>{p.projeto_id}</p>
                 <Stack spacing={1} direction="row">
                   <Tooltip title="Trocar projeto">
                     <IconButton>

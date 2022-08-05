@@ -36,7 +36,7 @@ export default function ProgressoCircular(props) {
                             </Tooltip>
                             
 
-                            <div className="CircularProgress TotalStats">
+                            <div className="CircularProgress TotalStats d-flex flex-column">
                                 <h6>{props.Total}</h6>
                                 <span>{props.StatsTitle}</span>
                             </div>

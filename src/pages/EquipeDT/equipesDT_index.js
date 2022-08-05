@@ -65,13 +65,13 @@ class equipeDT_index extends Component {
                     <li className="MembroLi d-flex justify-content-between align-items-center">
                         <div className="d-flex align-items-center">
                             <Avatar sx={{ bgcolor: colors[Math.floor(Math.random() * 5)], color: "#171821" }}>{p.nome_pessoa.charAt(0)}</Avatar>
-                            <div className="d-flex flex-column">
+                            <div className="d-flex flex-column ms-2">
                                 <span>{p.nome_pessoa}</span>
                                 <span>{p.funcao_pessoa}</span>
                             </div>    
                         </div>
                         
-                        <div className="d-flex">
+                        <div className="d-flex me-2">
                             <a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>
                         </div>
                     </li>
@@ -115,8 +115,8 @@ class equipeDT_index extends Component {
                         <div className="TaskIcon d-flex align-items-center justify-content-center">
                             <img src={TaskIcon} />
                         </div>
-                        <div className="d-flex align-items-center justify-content-between">
-                            <div className="d-flex flex-column">
+                        <div className="d-flex align-items-center justify-content-between ms-2">
+                            <div className="d-flex flex-column ms-2">
                                 <span>{t.status}</span>
                                 <span>{t.nome_projeto}</span>
                                 <span>

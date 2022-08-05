@@ -618,11 +618,26 @@ input[type="number"]::-webkit-inner-spin-button {
     align-items: center;
 }
 
+.TotalStats h6 {
+    font-weight: 500;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.TotalStats span {
+    font-size: 0.85rem;
+    padding: 0;
+    margin: 0;
+    color: var(--branco);
+}
+
 .TotalStats {
     position: absolute;
     left: 20px;
 
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     background-color: var(--preto-medio);
     border-radius: 50%;
