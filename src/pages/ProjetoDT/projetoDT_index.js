@@ -27,8 +27,6 @@ class ProjetoDT extends Component {
         this.setState({ tarefasPJ: response3.data });
     }
 
-
-
     updateStateByProps = (prevProps) => {
         try {
             const atualiza = async () =>{
@@ -42,7 +40,6 @@ class ProjetoDT extends Component {
             console.error(error.message);
         }
     }
-
 
     BuscarMembrosFunc = (props) => {
         const [pessoas, setPessoas] = useState([]);
@@ -117,12 +114,12 @@ class ProjetoDT extends Component {
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste") !== null) {
-                TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste").length;
+                //TotalTasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste").length;
                 var TasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste");
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer") !== null) {
-                TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
+                //TotalTasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
                 var TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
             }
         }
@@ -133,8 +130,9 @@ class ProjetoDT extends Component {
             <>
                 {projetos.map(p => (
                     <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5' key={p.id_projeto}>
+                        
                         <HeaderDt pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
-
+                        <BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza ={this.updateStateByProps}/>
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
                                 <div className="col-2 TPtrello">
