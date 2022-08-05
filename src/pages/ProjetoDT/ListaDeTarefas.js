@@ -22,7 +22,6 @@ export default function MostrarLIstaTarefas(props) {
     })
     return (
         <>
-
             <h4 className="text-center mt-2">{props.status}</h4>
             <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
                 {
