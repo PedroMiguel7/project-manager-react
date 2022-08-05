@@ -89,15 +89,20 @@ export default function BasicModalTarefa(props) {
     }, []);
 
     function PostaTarefa() {
-        api.post("/tasks/",
-            {
-                descricao_task: nome,
-                pessoa_id: parseInt(dadoEquipe),
-                projeto_id: props.id_projeto,
-                prazo_entrega: parseInt(prazoEntrega),
-                prioridade: prioridade,
-            })
-            props.atualiza();
+        try{
+            api.post("/tasks/",
+                {
+                    descricao_task: nome,
+                    pessoa_id: parseInt(dadoEquipe),
+                    projeto_id: props.id_projeto,
+                    prazo_entrega: parseInt(prazoEntrega),
+                    prioridade: prioridade,
+                })
+                props.atualiza();
+        } catch (error){
+            console.error(error.message);
+        }
+
     }
 
     function FechaModal() {

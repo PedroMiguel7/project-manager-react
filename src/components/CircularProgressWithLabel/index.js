@@ -59,8 +59,6 @@ export default function CircularStatic(props) {
       QtdTasksConcluidas = tasksConcluidas.length
     }
     BarrinhaProgresso = (QtdTasksConcluidas * 100) / QtdTasks
-  } else {
-    BarrinhaProgresso = 0;
   }
 
   return <CircularProgressWithLabel value={BarrinhaProgresso} />;
