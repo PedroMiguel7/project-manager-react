@@ -201,26 +201,20 @@ class equipeDT_index extends Component {
             
         } else {
             var TotalProjetos = props.projetos.length;
-            console.log(TotalProjetos);
 
             const ProjetosAndamento = props.projetos.filter((projetos) => projetos.status === "Em Andamento");
-            console.log(ProjetosAndamento.length);
             let QtdAndamento = ProjetosAndamento.length;
 
             const ProjetosConcluidos = props.projetos.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
             let QtdConcluidos = ProjetosConcluidos.length;
-            console.log(ProjetosConcluidos.length);
 
             let PorcAndamento = (QtdAndamento/TotalProjetos) * 100;
-            console.log(PorcAndamento);
 
             let PorcConcluidos = (QtdConcluidos/TotalProjetos) * 100;
-            console.log(PorcConcluidos);
 
             return (
                 <ProgressoCircular Total={TotalProjetos} StatsTitle="Projetos" ValueAndamento={PorcAndamento} ValueConcluido={PorcConcluidos} />
             )
-
         }
     }
 
