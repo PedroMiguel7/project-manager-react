@@ -259,7 +259,7 @@ class equipeDT_index extends Component {
                             <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
                         </div>
                         <div>
-                            <span className="ProgressLegends ConcluidaLegend">Concluídas</span>
+                            <span className="ProgressLegends ConcluidaLegend">Concluídos</span>
                         </div>
                         <div>
                             <span className="ProgressLegends PendenteLegend">Pendentes</span>
