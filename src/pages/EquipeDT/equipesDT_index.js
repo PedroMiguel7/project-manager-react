@@ -245,6 +245,36 @@ class equipeDT_index extends Component {
                                 </div>
                                 <div className="TasksCircularProgress col-12">
                                     <ProgressoCircular />
+                                    <div>
+                                        <div>
+                                            <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
+                                        </div>
+                                        <div>
+                                            <span className="ProgressLegends ConcluidaLegend">Concluídas</span>
+                                        </div>
+                                        <div>
+                                            
+                                            <span className="ProgressLegends PendenteLegend">Pendentes</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="TasksCircularProgress col-12">
+                                <div>
+                                        <div>
+                                            <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
+                                        </div>
+                                        <div>
+                                            <span className="ProgressLegends ConcluidaLegend">Concluídas</span>
+                                        </div>
+                                        <div>
+                                            
+                                            <span className="ProgressLegends PendenteLegend">Pendentes</span>
+                                        </div>
+                                    </div>
+
+                                    <ProgressoCircular />
+                                    
                                 </div>
                             </div>
                         </div>
