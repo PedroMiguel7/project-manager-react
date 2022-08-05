@@ -632,6 +632,7 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 5px;
 }
 
+/*
 .ConcluidasProgress {
     transform: rotate(180deg);
 }
@@ -651,6 +652,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .PendenteProgress > * {
     transform: rotate(90deg);
 }
+*/
 
 .ProgressLegends {
     border-left: 3px solid white;

@@ -7,6 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ProgressoCircular from './CircularProgress/index.js';
+import { ThirtyFpsSelect } from "@mui/icons-material";
 
 class equipeDT_index extends Component {
     state = {
@@ -192,18 +193,54 @@ class equipeDT_index extends Component {
         }
     } 
 
+    ImprimeProjetosStats = (props) => {
+        if(props.projetos === null){
+            return (
+                <>
+                    <h6>Sem projetos</h6>
+                </>    
+            )
+            
+        } else {
+            var TotalProjetos = props.projetos.length;
+            console.log(TotalProjetos);
+
+            const ProjetosAndamento = props.projetos.filter((projetos) => projetos.status === "Em Andamento");
+            console.log(ProjetosAndamento.length);
+            let QtdAndamento = ProjetosAndamento.length;
+
+            const ProjetosConcluidos = props.projetos.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
+            let QtdConcluidos = ProjetosConcluidos.length;
+            console.log(ProjetosConcluidos.length);
+
+            let PorcAndamento = (QtdAndamento/TotalProjetos) * 100;
+            console.log(PorcAndamento);
+
+            let PorcConcluidos = (QtdConcluidos/TotalProjetos) * 100;
+            console.log(PorcConcluidos);
+
+            return (
+                <ProgressoCircular Total={TotalProjetos} StatsTitle="Projetos" ValueAndamento={PorcAndamento} ValueConcluido={PorcConcluidos} />
+                
+            )
+
+        }
+    }
+
     render() {
         const { projetos } = this.state;
         const { equipe } = this.state;
         const { PessoasEquipe } = this.state;
         const { tarefas } = this.state;
 
+        var TotalProjetos = projetos.length;
+
         const TarefasProjeto = [];
         projetos.map(f=>(
             TarefasProjeto.push(f.id_projeto)
         ))
 
-        console.log(TarefasProjeto);
+        //console.log(TarefasProjeto);
 
 
         return (
@@ -273,7 +310,7 @@ class equipeDT_index extends Component {
                                         </div>
                                     </div>
 
-                                    <ProgressoCircular Total={12} StatsTitle="Projetos" />
+                                    <this.ImprimeProjetosStats projetos={projetos} />
                                     
                                 </div>
                             </div>
