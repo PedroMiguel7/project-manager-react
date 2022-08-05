@@ -9,12 +9,16 @@ import MostrarLIstaTarefas from "./ListaDeTarefas";
 const projetoPath = window.location.pathname;
 
 class ProjetoDT extends Component {
-    state = {
-        projetos: [],
-        PessoasEquipe: [],
-        tarefasPJ: [],
+    constructor(props) {
+        super(props);
+        this.state = {
+            projetos: [],
+            PessoasEquipe: [],
+            tarefasPJ: [],
 
+        }
     }
+
     async componentDidMount() {
         const response = await api.get(projetoPath);
         const response3 = await api.get(projetoPath + "/tasks");
@@ -25,6 +29,19 @@ class ProjetoDT extends Component {
 
 
 
+    updateStateByProps = (prevProps) => {
+        try {
+            const atualiza = async () =>{
+                const response3 = await api.get(projetoPath + "/tasks");
+                this.setState({
+                    tarefasPJ:response3.data   
+                });
+            }
+            atualiza()
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
 
     BuscarMembrosFunc = (props) => {
@@ -121,16 +138,16 @@ class ProjetoDT extends Component {
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
                                 <div className="col-2 TPtrello">
-                                    <MostrarLIstaTarefas status="A Fazer" tarefas = {TasksFazer} equipe_id = {p.equipe_id}/>
+                                    <MostrarLIstaTarefas status="A Fazer" tarefas={TasksFazer} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
                                 <div className="col-2 TPtrello">
-                                    <MostrarLIstaTarefas status="Em Andamento" tarefas = {TasksAndamento} equipe_id = {p.equipe_id}/>
+                                    <MostrarLIstaTarefas status="Em Andamento" tarefas={TasksAndamento} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
                                 <div className="col-2 TPtrello">
-                                    <MostrarLIstaTarefas status="Em Teste" tarefas = {TasksTeste} equipe_id = {p.equipe_id}/>
+                                    <MostrarLIstaTarefas status="Em Teste" tarefas={TasksTeste} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
                                 <div className="col-2 TPtrello">
-                                    <MostrarLIstaTarefas status="Concluido" tarefas = {TasksConcluidas} equipe_id = {p.equipe_id}/>
+                                    <MostrarLIstaTarefas status="Concluido" tarefas={TasksConcluidas} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
 
                             </div>

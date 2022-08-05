@@ -13,7 +13,7 @@ export default function MostrarLIstaTarefas(props) {
                         status: props.status,
                     })
                     console.log(props.status)
-                    //props.func()
+                    props.atualiza()
                 }
                 updateStatus()
             }
