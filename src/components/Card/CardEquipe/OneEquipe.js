@@ -1,9 +1,8 @@
 import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 //import Rout from "./routes";
-import api from '../../api';
+import api from '../../../api';
 //import PessoasEquipe from "./PeopleEquipe";
-import BuscarMembros from "./PeopleEquipe";
 
 
 

@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 //import aim from '../../assets/icons/aim.svg'
 //import profile from '../../assets/icons/Profile.svg'
-import api from '../../api';
+import api from '../../../api';
 //import OneEquipes from "./OneEquipe";
 
 class CardEquipes extends Component {

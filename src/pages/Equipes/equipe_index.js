@@ -1,7 +1,7 @@
 import Header from "../../components/Header"
 import filter from '../../assets/icons/filter.svg'
 //import BasicModal from '../../components/NewProject'
-import ExibirEquipes from "../../components/CardEquipe/OneEquipe"
+import ExibirEquipes from "../../components/Card/CardEquipe/OneEquipe"
 import BasicModalEquipe from "./NewEquipe"
 
 function Equipes() {
