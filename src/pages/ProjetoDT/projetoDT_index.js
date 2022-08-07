@@ -6,7 +6,6 @@ import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
 import MostrarLIstaTarefas from "./ListaDeTarefas";
 import Grafico from "./GraficoProgresso";
 
-
 const projetoPath = window.location.pathname;
 
 class ProjetoDT extends Component {
@@ -141,7 +140,6 @@ class ProjetoDT extends Component {
                 TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
             }            
         }
-
 
         return (
             <>

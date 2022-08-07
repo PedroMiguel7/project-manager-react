@@ -4,6 +4,7 @@ import aim from "../../../assets/icons/aim.svg";
 //import profile from "../../../assets/icons/Profile.svg";
 import api from "../../../api";
 //import CardDelete from "../../CardDelete";
+import Progresso from "../../../pages/ProjetoDT/projetoDT_index"
 
 class Cards extends Component {
   state = {
@@ -74,7 +75,7 @@ class Cards extends Component {
               <div className="card-members">
                 <h6>Progresso</h6>
                 <div className="d-flex gap-1">
-                  
+                  %<Progresso/>
                 </div>
               </div>
               <div className="card-progress">
