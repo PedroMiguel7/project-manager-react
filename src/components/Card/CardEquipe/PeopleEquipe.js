@@ -1,7 +1,7 @@
 //import { PropaneSharp } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 //import Rout from "./routes";
-import api from '../../api';
+import api from '../../../api';
 //import ExibirEquipes from "./OneEquipe";
 
 

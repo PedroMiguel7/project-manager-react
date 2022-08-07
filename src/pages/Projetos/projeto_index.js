@@ -1,5 +1,5 @@
 import Header from "../../components/Header"
-import Card from "../../components/Card"
+//import Card from "../../components/Card"
 //import NewProject from '../../assets/icons/new.svg'
 
 import BasicModal from '../../components/NewProject'

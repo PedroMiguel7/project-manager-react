@@ -11,7 +11,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import WarningIcon from '@mui/icons-material/Warning';
-import DeletaProjeto from '../DELETES/DeletaProjeto';
+import DeletaProjeto from '../../../DELETES/DeletaProjeto';
 
 export default function CardDelete(props) {
   fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/"+props.id_projeto, {method: "DELETE"})
@@ -110,7 +110,7 @@ export default function CardDelete(props) {
                 '&:hover': {
                     backgroundColor: "#ED5F5F",
                 }
-            }}  onClick={DeletaProjeto(props.id_projeto)}>
+            }}  onClick={DeletaProjeto}>
                 Deletar
             </Button>
             </DialogActions>
