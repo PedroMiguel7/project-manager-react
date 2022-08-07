@@ -48,7 +48,7 @@ class ProjetoDT extends Component {
             }
             fetchEquipe()
         }, []);
-        let totalMembros = 0;
+        //let totalMembros = 0;
         if (pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`) === null) {
             return (
                 <li>sem pessoa</li>
@@ -118,7 +118,6 @@ class ProjetoDT extends Component {
         var TasksAndamento = [];
         var TasksTeste = [];
         var TasksConcluidas = [];
-
 
         if (tarefasPJ !== null) {
             totalDetasks = tarefasPJ.length;
