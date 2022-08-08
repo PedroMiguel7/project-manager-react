@@ -204,7 +204,7 @@ class equipeDT_index extends Component {
                 }
                 
             } else if (props.status === 3) {
-                const Done = props.projetos.filter((projetos) => projetos.status === "Concluido" /*|| projetos.status === "Concluído"*/);
+                const Done = props.projetos.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
 
                 if (Done.length === 0) {
                     return (
