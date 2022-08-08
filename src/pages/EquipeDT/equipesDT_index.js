@@ -2,16 +2,10 @@ import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
 import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
-import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ProgressoCircular from './CircularProgress/index.js';
-import { ThirtyFpsSelect } from "@mui/icons-material";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import ProjetosSelect from "./ProjetosSelect";
 
 class equipeDT_index extends Component {
