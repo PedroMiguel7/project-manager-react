@@ -7,6 +7,7 @@ import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ProgressoCircular from './CircularProgress/index.js';
 import ProjetosSelect from "./ProjetosSelect";
+import ProgressoProjetos from "./ProgressoProjetos";
 
 class equipeDT_index extends Component {
     state = {
@@ -135,7 +136,7 @@ class equipeDT_index extends Component {
                 ))
             );
         }
-    }   
+    }
 
     ImprimeProjetos = (props) => {
         if( props.projetos === null){
@@ -187,12 +188,7 @@ class equipeDT_index extends Component {
                                     {TempoRestante(p.prazo_entrega)}
                                 </span>
                                 <div className="d-flex align-items-center">
-                                    <div className="progress ProgressProjeto" >
-                                        <div className="ProgressBarProjeto progress-bar" 
-                                        style={{width: `12%`}}
-                                        role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <span>12%</span>
+                                    <ProgressoProjetos key={2} id_projeto={p.id_projeto} />
                                 </div>
                                 <div className="d-flex justify-content-end">
                                     <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
@@ -228,12 +224,7 @@ class equipeDT_index extends Component {
                                     {TempoRestante(p.prazo_entrega)}
                                 </span>
                                 <div className="d-flex align-items-center">
-                                    <div className="progress ProgressProjeto" >
-                                        <div className="ProgressBarProjeto progress-bar" 
-                                        style={{width: `12%`}}
-                                        role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <span>12%</span>
+                                    <ProgressoProjetos key={3} id_projeto={p.id_projeto} />
                                 </div>
                                 <div className="d-flex justify-content-end">
                                     <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
@@ -259,12 +250,7 @@ class equipeDT_index extends Component {
                                     {TempoRestante(p.prazo_entrega)}
                                 </span>
                                 <div className="d-flex align-items-center">
-                                    <div className="progress ProgressProjeto" >
-                                        <div className="ProgressBarProjeto progress-bar" 
-                                        style={{width: `12%`}}
-                                        role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <span>12%</span>
+                                    <ProgressoProjetos key={1} id_projeto={p.id_projeto} />
                                 </div>
                                 <div className="d-flex justify-content-end">
                                     <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
