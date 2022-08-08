@@ -17,7 +17,6 @@ export default function Grafico(props) {
                     </div>
                 </Col>
         </Row>
-            
         </>
     );
 
