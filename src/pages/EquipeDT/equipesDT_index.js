@@ -153,6 +153,9 @@ class equipeDT_index extends Component {
                 </>
             );
         } else{
+            /*let getStatus = props.status;
+            console.log(getStatus);*/
+
             function TempoRestante(prazo) {
                 const dataHojeFormatada = new Date();
       
@@ -203,28 +206,17 @@ class equipeDT_index extends Component {
         this.setState({status: childData})
     }
 
-    ProjetosSelect = (props) => {
-        const [status, setStatus] = React.useState(1);
+    SelectStatus = (props) => {
+        /*const [status, setStatus] = React.useState(1);
 
         const handleChange = (event) => {
             setStatus(event.target.value);
-        };
+        };*/
 
         return (
             <>
                 <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                    <Select
-                        labelId="demo-simple-select-standard-label"
-                        id="demo-simple-select-standard"
-                        displayEmpty
-                        value={status}
-                        onChange={handleChange}
-                        defaultValue={1}
-                    >
-                        <MenuItem value={1}>Todos</MenuItem>
-                        <MenuItem value={2}>Em Andamento</MenuItem>
-                        <MenuItem value={3}>Concluidos</MenuItem>
-                    </Select>
+                    <ProjetosSelect parentCallback = {this.handleCallback} /*getStatus={props.status}*/ />
                 </FormControl>
             </>
         )
@@ -345,12 +337,10 @@ class equipeDT_index extends Component {
                             <div>
                                 <div className="d-flex justify-content-between">
                                     <h3>Projetos</h3>
-                                    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                                        <ProjetosSelect parentCallback = {this.handleCallback} getStatus={status} />
-                                    </FormControl>
+                                    <this.SelectStatus status={status} />
                                 </div>
                                 <ul className="MembrosUl ps-0">
-                                    <this.ImprimeProjetos projetos = {projetos}/>
+                                    <this.ImprimeProjetos projetos = {projetos} status = {status} />
                                 </ul>
                             </div>
                         </div>
