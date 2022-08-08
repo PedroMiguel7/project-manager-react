@@ -115,11 +115,7 @@ class ProjetosSelect extends React.Component {
                           }
                         }
                       }}
-                    inputProps={{
-                        style: {
-                            color: "#c4c"
-                        }
-                    }}
+                    InputProps={{ disableUnderline: true }}
                 >
                     <MenuItem onClick={this.Status1} value={1}>Todos</MenuItem>
                     <MenuItem onClick={this.Status2} value={2}>Em Andamento</MenuItem>
