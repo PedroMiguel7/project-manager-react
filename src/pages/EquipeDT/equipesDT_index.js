@@ -165,64 +165,86 @@ class equipeDT_index extends Component {
             if (props.status === 2) {
                 const OnGoing = props.projetos.filter((projetos) => projetos.status === "Em Andamento");
 
-                return (
-                    OnGoing.map(p => (
+                if (OnGoing.length === 0) {
+                    return (
                         <li className="ProjetosLi">
-                        <div>
-                            <span>{p.status}</span>
-                            <h5>{p.nome_projeto}</h5>
-                        </div>
-                        <div>
                             <span>
-                                <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                {TempoRestante(p.prazo_entrega)}
+                                Sem Projetos Em Andamento
                             </span>
-                            <div className="d-flex align-items-center">
-                                <div className="progress ProgressProjeto" >
-                                    <div className="ProgressBarProjeto progress-bar" 
-                                    style={{width: `12%`}}
-                                    role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                        </li>
+                    )
+                } else {
+                    return (
+                        OnGoing.map(p => (
+                            <li className="ProjetosLi">
+                            <div>
+                                <span>{p.status}</span>
+                                <h5>{p.nome_projeto}</h5>
+                            </div>
+                            <div>
+                                <span>
+                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                    {TempoRestante(p.prazo_entrega)}
+                                </span>
+                                <div className="d-flex align-items-center">
+                                    <div className="progress ProgressProjeto" >
+                                        <div className="ProgressBarProjeto progress-bar" 
+                                        style={{width: `12%`}}
+                                        role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <span>12%</span>
                                 </div>
-                                <span>12%</span>
+                                <div className="d-flex justify-content-end">
+                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
+                                </div>
                             </div>
-                            <div className="d-flex justify-content-end">
-                                <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
-                            </div>
-                            
-                        </div>
-                    </li>
-                    ))
-                )
+                        </li>
+                        ))
+                    )
+                }
+                
             } else if (props.status === 3) {
-                const Done = props.projetos.filter((projetos) => projetos.status === "Concluido");
-                return (
-                    Done.map(p => (
+                const Done = props.projetos.filter((projetos) => projetos.status === "Concluido" /*|| projetos.status === "Concluído"*/);
+
+                if (Done.length === 0) {
+                    return (
                         <li className="ProjetosLi">
-                        <div>
-                            <span>{p.status}</span>
-                            <h5>{p.nome_projeto}</h5>
-                        </div>
-                        <div>
                             <span>
-                                <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                {TempoRestante(p.prazo_entrega)}
+                                Sem Projetos Concluidos :(
                             </span>
-                            <div className="d-flex align-items-center">
-                                <div className="progress ProgressProjeto" >
-                                    <div className="ProgressBarProjeto progress-bar" 
-                                    style={{width: `12%`}}
-                                    role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                        </li>
+                    )
+                } else {
+                    return (
+                        Done.map(p => (
+                            <li className="ProjetosLi">
+                            <div>
+                                <span>{p.status}</span>
+                                <h5>{p.nome_projeto}</h5>
+                            </div>
+                            <div>
+                                <span>
+                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                    {TempoRestante(p.prazo_entrega)}
+                                </span>
+                                <div className="d-flex align-items-center">
+                                    <div className="progress ProgressProjeto" >
+                                        <div className="ProgressBarProjeto progress-bar" 
+                                        style={{width: `12%`}}
+                                        role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <span>12%</span>
                                 </div>
-                                <span>12%</span>
+                                <div className="d-flex justify-content-end">
+                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
+                                </div>
                             </div>
-                            <div className="d-flex justify-content-end">
-                                <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
-                            </div>
-                            
-                        </div>
-                    </li>
-                    ))
-                )
+                        </li>
+                        ))
+                    )
+                }
+
+                
             } else {
                 return (
                     props.projetos.map(p => (
@@ -247,7 +269,6 @@ class equipeDT_index extends Component {
                                 <div className="d-flex justify-content-end">
                                     <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
                                 </div>
-                                
                             </div>
                         </li>
                     ))
