@@ -8,6 +8,11 @@ import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ProgressoCircular from './CircularProgress/index.js';
 import { ThirtyFpsSelect } from "@mui/icons-material";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import ProjetosSelect from "./ProjetosSelect";
 
 class equipeDT_index extends Component {
     state = {
@@ -305,7 +310,9 @@ class equipeDT_index extends Component {
                             <div>
                                 <div className="d-flex justify-content-between">
                                     <h3>Projetos</h3>
-                                    <span>Todos</span>
+                                    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                                        <ProjetosSelect />
+                                    </FormControl>
                                 </div>
                                 <ul className="MembrosUl ps-0">
                                     <this.ImprimeProjetos projetos = {projetos}/>
