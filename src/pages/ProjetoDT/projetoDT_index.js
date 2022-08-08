@@ -89,21 +89,6 @@ class ProjetoDT extends Component {
         }
     }
 
-    Progresso = (TasksConcluidAs, totalTasks) =>{
-        var resultado;
-        if(TasksConcluidAs !== 0){
-            resultado = (TasksConcluidAs * 100) / totalTasks 
-            return(
-                resultado
-            )
-        } else{
-            resultado = 0
-            return(
-                resultado
-            )
-        }
-    } 
-
 
     render() {
         const { projetos } = this.state;
@@ -177,7 +162,7 @@ class ProjetoDT extends Component {
                                         <h5>Progresso</h5>
                                         {/*<CircularProgressWithLabel value="20" id_projeto={p.id_projeto} />*/}
                                         <div className=" md-3">
-                                            <Grafico calculo={this.Progresso(TotalTaksConcluidas, totalDetasks)}/>
+                                            <Grafico TasksConcluidAs = {TotalTaksConcluidas} totalTasks={totalDetasks}/>
                                         </div>
                                     </div>
                                 </div>
