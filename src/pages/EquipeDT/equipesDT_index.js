@@ -213,11 +213,11 @@ class equipeDT_index extends Component {
             setStatus(event.target.value);
         };*/
 
+        console.log(props.status);
+
         return (
             <>
-                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                    <ProjetosSelect parentCallback = {this.handleCallback} /*getStatus={props.status}*/ />
-                </FormControl>
+                <ProjetosSelect parentCallback = {this.handleCallback} /*getStatus={props.status}*/ />
             </>
         )
 
