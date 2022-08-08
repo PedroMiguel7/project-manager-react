@@ -139,8 +139,9 @@ export default function TarefasMenu(props) {
           setNome(m.descricao_task),
           setDadoEquipe(m.pessoa_id),
           setPrioridade(m.prioridade),
+          
           setPrazoEntrega(m.prazo_entrega)
-        ))
+          ))
       } catch (error) {
         console.log(error);
       }

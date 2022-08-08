@@ -6,12 +6,18 @@ import BasicModal from '../../components/NewProject'
 //import FilterMenu from "../../components/FilterMenu"
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos"
 import FilterPopper from "../../components/FilterPopper"
+import Search from '../../components/Search';
+import Divider from '@mui/material/Divider';
 
 function ProjetoIndex() {
     return (
         <>
             <main className='col-11 offset-1 px-5'>
-                <Header titulo="Projetos" />
+                <div className='row mt-5 pb-3 main-header'>
+                    <h1 className="Titulo col-lg-3 fs-2">projetos</h1>
+                    <Search />
+                </div>
+                <Divider />
 
                 <div className="Options row d-flex flex-wrap my-lg-3 my-3">
                     <div className="LeftOptions col mt-sm-2">
@@ -30,7 +36,7 @@ function ProjetoIndex() {
                 </div>
 
                 <div className="row CardsContainer my-4">
-                    <Cards/>
+                    <Cards />
                 </div>
 
             </main>

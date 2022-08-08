@@ -11,7 +11,7 @@ export default function Grafico(props) {
     }
     const value = Math.round(calculo)
     const [percent, setPercent] = useState(value);
-    
+
     const status = percent === 100 ? 'success' : null;
     const color = percent === 100 ? '#52c41a' : '#3385ff';
     return (
@@ -25,5 +25,4 @@ export default function Grafico(props) {
             </Row>
         </>
     );
-
 }
