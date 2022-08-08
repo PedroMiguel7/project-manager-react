@@ -20,6 +20,7 @@ class equipeDT_index extends Component {
         equipe: [],
         PessoasEquipe: [],
         tarefas: [],
+        status: 1,
     }
     async componentDidMount() {
         var equipePath = window.location.pathname;
@@ -198,6 +199,38 @@ class equipeDT_index extends Component {
         }
     } 
 
+    handleCallback = (childData) => {
+        this.setState({status: childData})
+    }
+
+    ProjetosSelect = (props) => {
+        const [status, setStatus] = React.useState(1);
+
+        const handleChange = (event) => {
+            setStatus(event.target.value);
+        };
+
+        return (
+            <>
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                    <Select
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        displayEmpty
+                        value={status}
+                        onChange={handleChange}
+                        defaultValue={1}
+                    >
+                        <MenuItem value={1}>Todos</MenuItem>
+                        <MenuItem value={2}>Em Andamento</MenuItem>
+                        <MenuItem value={3}>Concluidos</MenuItem>
+                    </Select>
+                </FormControl>
+            </>
+        )
+
+    }
+ 
     ImprimeTarefasStats = (props) => {
         if(props.tarefas === null){
             return (
@@ -283,6 +316,8 @@ class equipeDT_index extends Component {
         const { PessoasEquipe } = this.state;
         const { tarefas } = this.state;
 
+        const {status} = this.state;
+
         var TotalProjetos = projetos.length;
 
         const TarefasProjeto = [];
@@ -311,7 +346,7 @@ class equipeDT_index extends Component {
                                 <div className="d-flex justify-content-between">
                                     <h3>Projetos</h3>
                                     <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                                        <ProjetosSelect />
+                                        <ProjetosSelect parentCallback = {this.handleCallback} getStatus={status} />
                                     </FormControl>
                                 </div>
                                 <ul className="MembrosUl ps-0">
