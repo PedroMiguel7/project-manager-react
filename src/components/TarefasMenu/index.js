@@ -120,8 +120,7 @@ export default function TarefasMenu(props) {
   useEffect(() => {
     const fetchequipe = async () => {
       try {
-        const url = ("/equipes/" + props.equipe_id + "/pessoas")
-        const response = await api.get(url);
+        const response = await api.get("/equipes/" + props.equipe_id + "/pessoas");
         setPessoa(response.data);
       } catch (error) {
         console.log(error);
@@ -135,10 +134,14 @@ export default function TarefasMenu(props) {
     const fetchtask = async () => {
       try {
         const response2 = await api.get('/tasks/' + props.id_task);
-        const TAREFA = (response2.data)
-        /*TAREFA.map(p => (
-
-        ))*/
+        const TAREFA = (response2.data);
+        TAREFA.map(m =>(
+          setNome(m.descricao_task),
+          setDadoEquipe(m.pessoa_id),
+          setPrioridade(m.prioridade),
+          setPrazoEntrega(m.prazo_entrega)
+        ))
+        console.log(TAREFA);
       } catch (error) {
         console.log(error);
       }
@@ -158,7 +161,7 @@ export default function TarefasMenu(props) {
       descricao_task: nome,
       pessoa_id: parseInt(dadoEquipe),
       prazo_entrega: parseInt(prazoEntrega),
-      prioridade: prioridade,
+      prioridade: parseInt(prioridade),
     })
   }
 
@@ -254,6 +257,7 @@ export default function TarefasMenu(props) {
                 id="nome"
                 name='nome'
                 label="Nome"
+                value={nome}
                 onChange={(e) => setNome(e.target.value)}
                 variant="outlined"
                 margin="dense"
