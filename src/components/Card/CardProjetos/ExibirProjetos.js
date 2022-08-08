@@ -53,7 +53,7 @@ class Cards extends Component {
         <Link key={p.id_projeto}
           reloadDocument
           to={"/projetos/" + p.id_projeto}
-          className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4"
+          className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-3"
         >
           <div >
             <div className="card-part1 mb-3">
