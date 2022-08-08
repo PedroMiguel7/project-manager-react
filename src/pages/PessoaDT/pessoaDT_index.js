@@ -81,7 +81,7 @@ class PessoasDT extends Component {
                                 <p>Tarefas Concluídas</p>
                             </div>
                         </div>
-                        <CustomizedAccordion />
+                        {/*<CustomizedAccordion />*/}
 
                     </div>
                     <div className="col-lg-8">
