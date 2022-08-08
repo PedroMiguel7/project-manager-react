@@ -11,7 +11,7 @@ const [tasks, setTasks] = useState([]);
             setTasks(response.data) 
         }
         fetchTask()
-    });
+    }, []);
 
     var QtdTasksConcluidas = 0
     var BarrinhaProgresso = 0

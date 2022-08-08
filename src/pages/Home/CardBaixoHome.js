@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 //import PropTypes from 'prop-types';
 import api from '../../api';
 import Button from '@mui/material/Button';
-//import BarraProgresso from "../../components/Card/CardProjetos/BarraDeProgresso";
+import BarraProgresso from "../../components/Card/CardProjetos/BarraDeProgresso";
 //import { ThirtyFpsSelect } from "@mui/icons-material";
 
 class CardBaixoHome extends Component {
@@ -38,7 +38,7 @@ class CardBaixoHome extends Component {
                     <th scope="row">{p.id_projeto}</th>
                     <td className="">{p.nome_projeto}</td>
                     <td>
-                        {/*<BarraProgresso id_projeto={p.id_projeto}/>*/}
+                        <BarraProgresso id_projeto={p.id_projeto}/>
                     </td>
                     <td>{p.status}</td>
                     <td className="d-flex"><Link to={'/projetos/' + p.id_projeto} className="text-reset text-decoration-none"><Button className=" md-4" style={{
