@@ -22,12 +22,6 @@ function ProgressoProjetos (props) {
         }
         BarrinhaProgresso = (QtdTasksConcluidas*100)/QtdTasks
     }
-   
-    if(props.op === 1){
-        return(
-            Math.round(BarrinhaProgresso)
-        )
-    }
 
     return (
         <>
