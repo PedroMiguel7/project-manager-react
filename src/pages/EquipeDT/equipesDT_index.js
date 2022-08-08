@@ -20,7 +20,7 @@ class equipeDT_index extends Component {
         equipe: [],
         PessoasEquipe: [],
         tarefas: [],
-        status: 3,
+        status: 1,
     }
     async componentDidMount() {
         var equipePath = window.location.pathname;

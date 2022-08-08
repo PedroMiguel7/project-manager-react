@@ -51,7 +51,7 @@ class ProjetosSelect extends React.Component {
                         displayEmpty
                         value={statusValue}
                         onChange={this.handleChange}
-                        defaultValue={3}
+                        defaultValue={1}
                     >
                         <MenuItem onClick={this.Status1} value={1}>Todos</MenuItem>
                         <MenuItem onClick={this.Status2} value={2}>Em Andamento</MenuItem>
