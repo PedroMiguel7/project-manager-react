@@ -98,7 +98,6 @@ class ProjetosSelect extends React.Component {
                 
                 <CustomSelect
                     select
-                    //color="warning"
                     variant="standard"
                     displayEmpty
                     value={statusValue}
