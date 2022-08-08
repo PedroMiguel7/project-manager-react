@@ -20,7 +20,7 @@ class equipeDT_index extends Component {
         equipe: [],
         PessoasEquipe: [],
         tarefas: [],
-        status: 1,
+        status: 3,
     }
     async componentDidMount() {
         var equipePath = window.location.pathname;
@@ -153,9 +153,6 @@ class equipeDT_index extends Component {
                 </>
             );
         } else{
-            /*let getStatus = props.status;
-            console.log(getStatus);*/
-
             function TempoRestante(prazo) {
                 const dataHojeFormatada = new Date();
       
@@ -171,9 +168,12 @@ class equipeDT_index extends Component {
                 }
             }
 
-            return (
-                props.projetos.map(p => (
-                    <li className="ProjetosLi">
+            if (props.status === 2) {
+                const OnGoing = props.projetos.filter((projetos) => projetos.status === "Em Andamento");
+
+                return (
+                    OnGoing.map(p => (
+                        <li className="ProjetosLi">
                         <div>
                             <span>{p.status}</span>
                             <h5>{p.nome_projeto}</h5>
@@ -197,8 +197,68 @@ class equipeDT_index extends Component {
                             
                         </div>
                     </li>
-                ))
-            );
+                    ))
+                )
+            } else if (props.status === 3) {
+                const Done = props.projetos.filter((projetos) => projetos.status === "Concluido");
+                return (
+                    Done.map(p => (
+                        <li className="ProjetosLi">
+                        <div>
+                            <span>{p.status}</span>
+                            <h5>{p.nome_projeto}</h5>
+                        </div>
+                        <div>
+                            <span>
+                                <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                {TempoRestante(p.prazo_entrega)}
+                            </span>
+                            <div className="d-flex align-items-center">
+                                <div className="progress ProgressProjeto" >
+                                    <div className="ProgressBarProjeto progress-bar" 
+                                    style={{width: `12%`}}
+                                    role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span>12%</span>
+                            </div>
+                            <div className="d-flex justify-content-end">
+                                <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
+                            </div>
+                            
+                        </div>
+                    </li>
+                    ))
+                )
+            } else {
+                return (
+                    props.projetos.map(p => (
+                        <li className="ProjetosLi">
+                            <div>
+                                <span>{p.status}</span>
+                                <h5>{p.nome_projeto}</h5>
+                            </div>
+                            <div>
+                                <span>
+                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                    {TempoRestante(p.prazo_entrega)}
+                                </span>
+                                <div className="d-flex align-items-center">
+                                    <div className="progress ProgressProjeto" >
+                                        <div className="ProgressBarProjeto progress-bar" 
+                                        style={{width: `12%`}}
+                                        role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <span>12%</span>
+                                </div>
+                                <div className="d-flex justify-content-end">
+                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
+                                </div>
+                                
+                            </div>
+                        </li>
+                    ))
+                );
+            }
         }
     } 
 

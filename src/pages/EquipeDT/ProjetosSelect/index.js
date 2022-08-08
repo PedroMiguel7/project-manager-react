@@ -5,7 +5,7 @@ import Select from '@mui/material/Select';
 
 class ProjetosSelect extends React.Component {
     state = {
-        selectValue: 2,
+        selectValue: 1,
     };
 
     /*handleChange = (event) => {
@@ -51,7 +51,7 @@ class ProjetosSelect extends React.Component {
                         displayEmpty
                         value={statusValue}
                         onChange={this.handleChange}
-                        defaultValue={1}
+                        defaultValue={3}
                     >
                         <MenuItem onClick={this.Status1} value={1}>Todos</MenuItem>
                         <MenuItem onClick={this.Status2} value={2}>Em Andamento</MenuItem>
