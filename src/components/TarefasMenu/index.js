@@ -106,7 +106,7 @@ export default function TarefasMenu(props) {
   const [nome, setNome] = useState("");
   const [pessoa, setPessoa] = useState([]);
   const [prazoEntrega, setPrazoEntrega] = useState();
-  
+
   const [prioridade, setPrioridade] = React.useState();
   const handleChangePrior = (event) => {
     setPrioridade(event.target.value);
@@ -135,13 +135,12 @@ export default function TarefasMenu(props) {
       try {
         const response2 = await api.get('/tasks/' + props.id_task);
         const TAREFA = (response2.data);
-        TAREFA.map(m =>(
+        TAREFA.map(m => (
           setNome(m.descricao_task),
           setDadoEquipe(m.pessoa_id),
           setPrioridade(m.prioridade),
           setPrazoEntrega(m.prazo_entrega)
         ))
-        console.log(TAREFA);
       } catch (error) {
         console.log(error);
       }
@@ -157,12 +156,15 @@ export default function TarefasMenu(props) {
   }
 
   function EditaTask() {
-    api.put('/tasks/' + props.id_task, {
-      descricao_task: nome,
-      pessoa_id: parseInt(dadoEquipe),
-      prazo_entrega: parseInt(prazoEntrega),
-      prioridade: parseInt(prioridade),
-    })
+    const updateStatus = async () => {
+      const response = await api.put('/tasks/' + props.id_task, {
+        descricao_task: nome,
+        pessoa_id: parseInt(dadoEquipe),
+        prazo_entrega: parseInt(prazoEntrega),
+        prioridade: parseInt(prioridade),
+      },[])
+    }
+    updateStatus()
   }
 
   return (
@@ -247,7 +249,7 @@ export default function TarefasMenu(props) {
         >
           <Box sx={style}>
             <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
-            <form /*onSubmit={cadastrarTarefa}*/>
+            <form onSubmit={EditaTask}>
               <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
                 Editar<span style={{ color: '#F46E27' }}> Tarefa</span>
               </Typography>
