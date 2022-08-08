@@ -6,10 +6,8 @@ class Search extends React.Component {
     }
 
     handleChange(event) {
-        //console.log(event.target.value);
         this.props.inputText(event.target.value);
     }
-
     render() {
         return (
             <>

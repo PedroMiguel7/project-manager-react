@@ -20,7 +20,6 @@ function ProjetoIndex() {
                     </div>
                     <div className="RightOptions d-flex justify-content-end align-items-center flex-wrap gap-3 col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
                         <BasicModal />
-
                         <select className="ps-1" name="order-select" id="order-select">
                             <option value="crescente">A - Z</option>
                             <option value="decrescente">Z - A</option>

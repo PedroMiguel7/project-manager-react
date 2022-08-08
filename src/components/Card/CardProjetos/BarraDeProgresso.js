@@ -24,6 +24,11 @@ const [tasks, setTasks] = useState([]);
         BarrinhaProgresso = (QtdTasksConcluidas*100)/QtdTasks
     }
    
+    if(props.op === 1){
+        return(
+            Math.round(BarrinhaProgresso)
+        )
+    }
 
     return (
         <>
