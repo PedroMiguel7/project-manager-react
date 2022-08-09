@@ -3,9 +3,26 @@ import Sidebar from "../../components/SideBar/SideBar";
 import AdicionarProjeto from '../../components/NewProject/index'
 import CardBaixoHome from "./CardBaixoHome";
 import CardLateralDireitoHome from "./CardLateralDireitoHome";
-import CardLateralEsquerdoHome from "./CardLateralEsquerdaHome";
+import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
+import { useState, useEffect } from "react";
+import api from "../../api"
 
 function Menu_index() {
+  const [projetos, setProjetos] = useState();
+
+  useEffect(() => {
+    const fetchProjetos = async () => {
+      try {
+        const response = await api.get('/projetos/');
+        setProjetos(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProjetos();
+  }, []);
+
+
   return (
     <div>
       <Sidebar />
@@ -34,7 +51,9 @@ function Menu_index() {
           className="row d-flex justify-content-between flex-wrap"
         >
           <div className="CardlateralesquerdoHome col-lg-8 col-md-12 mt-2 ms-3 ">
-            <CardLateralEsquerdoHome/>
+            <div className="row CardsContainer my-4 mt-4 d-flex">
+              <Cards />
+            </div>
           </div>
           <div className="col-lg-3 col-md-12 col-sm-12 mt-2 me-2">
             <CardLateralDireitoHome />

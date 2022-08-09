@@ -6,6 +6,9 @@ import api from "../../../api";
 //import CardDelete from "../../CardDelete";
 import BarraProgresso from "../CardProjetos/BarraDeProgresso"
 
+
+
+
 class Cards extends Component {
   state = {
     projetos: [],
@@ -14,8 +17,6 @@ class Cards extends Component {
     const response = await api.get("/projetos/");
     this.setState({ projetos: response.data });
   }
-
-  
 
   exibeprojeto = (props) => {
     if (props.Projetos === null) {
