@@ -1,24 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import aim from "../../../assets/icons/aim.svg";
 //import profile from "../../../assets/icons/Profile.svg";
-import api from "../../../api";
 //import CardDelete from "../../CardDelete";
 import BarraProgresso from "../CardProjetos/BarraDeProgresso"
 
-
-
-
-class Cards extends Component {
-  state = {
-    projetos: [],
-  };
-  async componentDidMount() {
-    const response = await api.get("/projetos/");
-    this.setState({ projetos: response.data });
-  }
-
-  exibeprojeto = (props) => {
+export default function Cards (props) {
     if (props.Projetos === null) {
       return (
         <div className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
@@ -39,7 +26,7 @@ class Cards extends Component {
               <div className="card-members">
                 <h6>Progresso</h6>
                 <div className="d-flex gap-1">
-                  
+
                 </div>
               </div>
               <div className="card-progress">
@@ -54,54 +41,42 @@ class Cards extends Component {
       props.Projetos.reverse();
       return (
         props.Projetos.map(p => (
-        <Link key={p.id_projeto}
-          reloadDocument
-          to={"/projetos/" + p.id_projeto}
-          className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-3"
-        >
-          <div >
-            <div className="card-part1 mb-3">
-              <div className="d-flex justify-content-between">
-                <h2 className="fs-4">{p.nome_projeto}</h2>
-                <Link to="/projetos">
-                  
-                </Link>
-              </div>
-              <p className="description overflow-hidden">
-                {p.descricao_projeto}
-              </p>
-              <div className="mb-3">
-                <img src={aim} alt="" />
-                <span>{p.nome_equipe}</span>
-              </div>
-            </div>
-            <div className="card-part2 d-flex justify-content-between">
-              <div className="card-members">
-                <h6>Progresso</h6>
-                <div className="d-flex gap-1">
-                  {<BarraProgresso id_projeto={p.id_projeto} op ={1}/>}%
+          <Link key={p.id_projeto}
+            reloadDocument
+            to={"/projetos/" + p.id_projeto}
+            className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-3"
+          >
+            <div >
+              <div className="card-part1 mb-3">
+                <div className="d-flex justify-content-between">
+                  <h2 className="fs-4">{p.nome_projeto}</h2>
+                  <Link to="/projetos">
+
+                  </Link>
+                </div>
+                <p className="description overflow-hidden">
+                  {p.descricao_projeto}
+                </p>
+                <div className="mb-3">
+                  <img src={aim} alt="" />
+                  <span>{p.nome_equipe}</span>
                 </div>
               </div>
-              <div className="card-progress">
-                <h6>Status</h6>
-                {p.status}
+              <div className="card-part2 d-flex justify-content-between">
+                <div className="card-members">
+                  <h6>Progresso</h6>
+                  <div className="d-flex gap-1">
+                    {<BarraProgresso id_projeto={p.id_projeto} op={1} />}%
+                  </div>
+                </div>
+                <div className="card-progress">
+                  <h6>Status</h6>
+                  {p.status}
+                </div>
               </div>
             </div>
-          </div>
-        </Link>
-      ))
+          </Link>
+        ))
       )
     }
   };
-
-  render() {
-    const { projetos } = this.state;
-    return (
-      <>
-        <this.exibeprojeto Projetos={projetos} />
-      </>
-    );
-  }
-}
-
-export default Cards;

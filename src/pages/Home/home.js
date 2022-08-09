@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import api from "../../api"
 
 function Menu_index() {
-  const [projetos, setProjetos] = useState();
+  const [projetos, setProjetos] = useState([]);
 
   useEffect(() => {
     const fetchProjetos = async () => {
@@ -21,7 +21,6 @@ function Menu_index() {
     };
     fetchProjetos();
   }, []);
-
 
   return (
     <div>
@@ -52,7 +51,7 @@ function Menu_index() {
         >
           <div className="CardlateralesquerdoHome col-lg-8 col-md-12 mt-2 ms-3 ">
             <div className="row CardsContainer my-4 mt-4 d-flex">
-              <Cards />
+              <Cards Projetos={projetos}/>
             </div>
           </div>
           <div className="col-lg-3 col-md-12 col-sm-12 mt-2 me-2">
@@ -61,7 +60,7 @@ function Menu_index() {
         </div>
 
         <div className="row mt-3">
-          <CardBaixoHome />
+          <CardBaixoHome Projetos={projetos}/>
         </div>
       </main>
     </div>
