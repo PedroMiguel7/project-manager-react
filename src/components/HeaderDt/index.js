@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import {useState, useEffect} from 'react';
+import BackIcon from '../../assets/icons/back.svg';
+import { Link } from "react-router-dom";
 
-function HeaderDt({pagina, titulo, status}) {
+function HeaderDt({link, pagina, titulo, status}) {
     const [statusBg, mudarStatus] = useState();
 
     function setTag(sts) {
@@ -34,6 +36,9 @@ function HeaderDt({pagina, titulo, status}) {
         <>
             <div className='row mt-5 pb-3 main-header'>
                 <div className="d-flex align-items-center col-lg-4">
+                    <Link to={link} className="mb-2 me-1">
+                        <img src={BackIcon} style={{width: 28}} />
+                    </Link>
                     <h1 className="TituloDt fs-2">{pagina} <span className="nomeProjeto">{titulo}</span></h1>
                     <div className="Status ms-4 mb-2 px-2" style={{backgroundColor:setTag(status)}}>{status}</div>
                 </div>

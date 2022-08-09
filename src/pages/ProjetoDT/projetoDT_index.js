@@ -129,7 +129,7 @@ class ProjetoDT extends Component {
                 {projetos.map(p => (
                     <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5' key={p.id_projeto}>
                         <div className="LeftOptions col mt-sm-2">
-                            <HeaderDt pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
+                            <HeaderDt link="/projetos" pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
                             <BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                         </div>
 

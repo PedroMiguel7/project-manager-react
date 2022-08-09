@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
 import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
+import BackIcon from '../../assets/icons/back.svg'
 import Avatar from '@mui/material/Avatar';
 import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -535,7 +536,7 @@ class equipeDT_index extends Component {
             <>
                 <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
                     <div className="TesteGrid row">
-                        <HeaderDt pagina="Equipe" titulo={equipe.nome_equipe} Status='' />
+                        <HeaderDt link="/equipes" pagina="Equipe" titulo={equipe.nome_equipe} Status='' />
                     </div>
                     <div className="TesteGrid row">
                         <div className="TesteGrid col-lg-4 col-md-8">
