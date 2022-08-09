@@ -92,7 +92,7 @@ class equipeDT_index extends Component {
     }
 
     ImprimeTarefas = (props) => {
-        if( props.tarefa === null){
+        if( props.tarefas === null){
             return(
                 <>
                     <div>
@@ -116,31 +116,158 @@ class equipeDT_index extends Component {
                 }
             }
 
-            return(
-                props.tarefas.map(t => (
-                      <li className="TarefasLi d-flex ">
-                        <div className="TaskIcon d-flex align-items-center justify-content-center">
-                            <img src={TaskIcon} />
-                        </div>
-                        <div className="d-flex align-items-center justify-content-between ms-2">
-                            <div className="d-flex flex-column ms-2">
-                                <span>{t.status}</span>
-                                <span>{t.nome_projeto}</span>
-                                <span>
-                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                    {TempoRestante(t.prazo_entrega)}
-                                </span>
+            if (props.status === 1) {
+                const ToDo = props.tarefas.filter((tarefas) => tarefas.status === "A Fazer");
+
+                if (ToDo.length === 0) {
+                    return (
+                        <li className="TarefasLi">
+                            <span>
+                                Sem Tarefas A Fazer
+                            </span>
+                        </li>
+                    )
+                } else {
+                    return (
+                        ToDo.map(t => (
+                        <li className="TarefasLi d-flex ">
+                            <div className="TaskIcon d-flex align-items-center justify-content-center">
+                                <img src={TaskIcon} />
                             </div>
+                            <div className="d-flex align-items-center justify-content-between ms-2">
+                                <div className="d-flex flex-column ms-2">
+                                    <span>{t.status}</span>
+                                    <span>{t.nome_projeto}</span>
+                                    <span>
+                                        <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                        {TempoRestante(t.prazo_entrega)}
+                                    </span>
+                                </div>
+                            </div>
+                        </li>  
+                        ))
+                    )
+                }
+            } else if (props.status === 2) {
+                const OnGoing = props.tarefas.filter((tarefas) => tarefas.status === "Em Andamento");
+
+                if (OnGoing.length === 0) {
+                    return (
+                        <li className="TarefasLi">
+                            <span>
+                                Sem Tarefas Em Andamento
+                            </span>
+                        </li>
+                    )
+                } else {
+                    return (
+                        OnGoing.map(t => (
+                        <li className="TarefasLi d-flex ">
+                            <div className="TaskIcon d-flex align-items-center justify-content-center">
+                                <img src={TaskIcon} />
+                            </div>
+                            <div className="d-flex align-items-center justify-content-between ms-2">
+                                <div className="d-flex flex-column ms-2">
+                                    <span>{t.status}</span>
+                                    <span>{t.nome_projeto}</span>
+                                    <span>
+                                        <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                        {TempoRestante(t.prazo_entrega)}
+                                    </span>
+                                </div>
+                            </div>
+                        </li>  
+                        ))
+                    )
+                }
+            } else if (props.status === 3) {
+                const Testing = props.tarefas.filter((tarefas) => tarefas.status === "Em Teste");
+
+                if (Testing.length === 0) {
+                    return (
+                        <li className="TarefasLi">
+                            <span>
+                                Sem Tarefas Em Teste
+                            </span>
+                        </li>
+                    )
+                } else {
+                    return (
+                        Testing.map(t => (
+                        <li className="TarefasLi d-flex ">
+                            <div className="TaskIcon d-flex align-items-center justify-content-center">
+                                <img src={TaskIcon} />
+                            </div>
+                            <div className="d-flex align-items-center justify-content-between ms-2">
+                                <div className="d-flex flex-column ms-2">
+                                    <span>{t.status}</span>
+                                    <span>{t.nome_projeto}</span>
+                                    <span>
+                                        <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                        {TempoRestante(t.prazo_entrega)}
+                                    </span>
+                                </div>
+                            </div>
+                        </li>  
+                        ))
+                    )
+                }
+            } else if (props.status === 4) {
+                const Done = props.tarefas.filter((tarefas) => tarefas.status === "Concluido");
+
+                if (Done.length === 0) {
+                    return (
+                        <li className="TarefasLi">
+                            <span>
+                                Sem Tarefas Concluidas
+                            </span>
+                        </li>
+                    )
+                } else {
+                    return (
+                        Done.map(t => (
+                        <li className="TarefasLi d-flex ">
+                            <div className="TaskIcon d-flex align-items-center justify-content-center">
+                                <img src={TaskIcon} />
+                            </div>
+                            <div className="d-flex align-items-center justify-content-between ms-2">
+                                <div className="d-flex flex-column ms-2">
+                                    <span>{t.status}</span>
+                                    <span>{t.nome_projeto}</span>
+                                    <span>
+                                        <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                        {TempoRestante(t.prazo_entrega)}
+                                    </span>
+                                </div>
+                            </div>
+                        </li>  
+                        ))
+                    )
+                }
+            } else {
+                return(
+                    props.tarefas.map(t => (
+                        <li className="TarefasLi d-flex ">
+                            <div className="TaskIcon d-flex align-items-center justify-content-center">
+                                <img src={TaskIcon} />
+                            </div>
+                            <div className="d-flex align-items-center justify-content-between ms-2">
+                                <div className="d-flex flex-column ms-2">
+                                    <span>{t.status}</span>
+                                    <span>{t.nome_projeto}</span>
+                                    <span>
+                                        <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                        {TempoRestante(t.prazo_entrega)}
+                                    </span>
+                                </div>
+                            </div>
+                        </li>  
                         
-                            {/*<div>
-                                <Button variant="contained">Ver</Button>
-                            </div>*/}
-                            
-                        </div>
-                    </li>  
-                    
-                ))
-            );
+                    ))
+                );    
+            }
+
+            
         }
     }
 
@@ -216,7 +343,6 @@ class equipeDT_index extends Component {
                         ))
                     )
                 }
-                
             } else if (props.status === 3) {
                 const Done = props.projetos.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
 
@@ -421,7 +547,7 @@ class equipeDT_index extends Component {
                                 <this.SelectStatusTarefa status={statusTarefa} />
                             </div>
                             <ul className="TarefasUl ps-0">
-                                <this.ImprimeTarefas tarefas = {tarefas} projetos = {TarefasProjeto} />
+                                <this.ImprimeTarefas tarefas = {tarefas} projetos = {TarefasProjeto} status = {statusTarefa} />
                             </ul>
                         </div>
                         <div className="TesteGrid col-lg-4 col-md-4">
