@@ -9,7 +9,6 @@ import ProgressoCircular from './CircularProgress/index.js';
 import ProjetosSelect from "./ProjetosSelect";
 import TarefasSelect from "./TarefasSelect";
 import ProgressoProjetos from "./ProgressoProjetos";
-import ResponsiveBarChart from "./BarChart";
 import BarChart from "./BarChart";
 
 class equipeDT_index extends Component {
@@ -94,6 +93,10 @@ class equipeDT_index extends Component {
     }
 
     ImprimeTarefas = (props) => {
+        console.log(props.equipe.tasks);
+        let TarefasEquipe = props.equipe.tasks;
+        console.log(TarefasEquipe);
+        console.log(props.tarefas);
         if( props.tarefas === null){
             return(
                 <>
@@ -511,6 +514,10 @@ class equipeDT_index extends Component {
         const { equipe } = this.state;
         const { PessoasEquipe } = this.state;
         const { tarefas } = this.state;
+        
+        const tarefas2 = equipe.tasks;
+        console.log(tarefas2);
+        console.log(PessoasEquipe);
 
         const {statusProjeto} = this.state;
         const {statusTarefa} = this.state;
@@ -552,7 +559,7 @@ class equipeDT_index extends Component {
                                 <this.SelectStatusTarefa status={statusTarefa} />
                             </div>
                             <ul className="TarefasUl ps-0">
-                                <this.ImprimeTarefas tarefas = {tarefas} projetos = {TarefasProjeto} status = {statusTarefa} />
+                                <this.ImprimeTarefas equipe={equipe} tarefas = {tarefas} projetos = {TarefasProjeto} status = {statusTarefa} />
                             </ul>
                         </div>
                         <div className="TesteGrid col-lg-4 col-md-4">
