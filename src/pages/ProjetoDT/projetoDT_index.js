@@ -16,14 +16,12 @@ class ProjetoDT extends Component {
             tarefasPJ: [],
         }
     }
-
     async componentDidMount() {
         const response = await api.get(projetoPath);
         const response3 = await api.get(projetoPath + "/tasks");
         this.setState({ projetos: response.data });
         this.setState({ tarefasPJ: response3.data });
     }
-
     updateStateByProps = (prevProps) => {
         try {
             const atualiza = async () => {

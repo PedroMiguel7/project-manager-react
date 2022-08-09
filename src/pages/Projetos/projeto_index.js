@@ -1,15 +1,29 @@
 import Header from "../../components/Header"
 //import Card from "../../components/Card"
 //import NewProject from '../../assets/icons/new.svg'
-
 import BasicModal from '../../components/NewProject'
 //import FilterMenu from "../../components/FilterMenu"
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos"
 import FilterPopper from "../../components/FilterPopper"
 import Search from '../../components/Search';
 import Divider from '@mui/material/Divider';
+import {useState, useEffect} from "react";
+import api from "../../api";
+
 
 function ProjetoIndex() {
+    const [projetos, setProjetos] = useState([]);
+    useEffect(() => {
+        const fetchProjetos = async () => {
+            try {
+                const response = await api.get('/projetos/');
+                setProjetos(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchProjetos();
+    }, []);
     return (
         <>
             <main className='col-11 offset-1 px-5'>
@@ -36,7 +50,7 @@ function ProjetoIndex() {
                 </div>
 
                 <div className="row CardsContainer my-4">
-                    <Cards />
+                    <Cards Projetos={projetos} />
                 </div>
 
             </main>
