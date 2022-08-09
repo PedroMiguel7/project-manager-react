@@ -278,7 +278,7 @@ class equipeDT_index extends Component {
     SelectStatusTarefa = (props) => {
         return (
             <>
-                <TarefasSelect parentCallback = {this.handleCallbackTarefa} />
+                <TarefasSelect key={props.statusTarefa} parentCallback = {this.handleCallbackTarefa} />
             </>
         )
     }
@@ -544,7 +544,7 @@ class equipeDT_index extends Component {
                         <div className="TesteGrid EquipeTarefas col-lg-4 col-md-8">
                             <div className="d-flex justify-content-between">
                                 <h3>Tarefas</h3>
-                                <this.SelectStatusTarefa status={statusTarefa} />
+                                <this.SelectStatusTarefa key={statusTarefa} status={statusTarefa} />
                             </div>
                             <ul className="TarefasUl ps-0">
                                 <this.ImprimeTarefas tarefas = {tarefas} projetos = {TarefasProjeto} status = {statusTarefa} />
