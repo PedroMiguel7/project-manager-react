@@ -2,14 +2,13 @@ import Sidebar from "../../components/SideBar/SideBar";
 //import Card from "../../components/Card";
 import AdicionarProjeto from '../../components/NewProject/index'
 import CardBaixoHome from "./CardBaixoHome";
-import CardLateralDireitoHome from "./CardLateralDireitoHome";
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
 import api from "../../api";
 
 export default function Menu_index() {
-  const [projetos, setProjetos] = useState([]);
 
+  const [projetos, setProjetos] = useState([]);
   useEffect(() => {
     const fetchProjetos = async () => {
       try {
@@ -22,7 +21,22 @@ export default function Menu_index() {
     fetchProjetos();
   }, []);
 
-  function Atualizar(){
+  const [equipes, setEquipes] = useState([]);
+  useEffect(() => {
+    const fetchequipe = async () => {
+      try {
+        const response = await api.get('/equipes/');
+        setEquipes(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchequipe();
+  }, []);
+
+
+
+  function Atualizar() {
     useEffect(() => {
       const fetchProjetos = async () => {
         try {
@@ -35,6 +49,17 @@ export default function Menu_index() {
       fetchProjetos();
     }, []);
   }
+
+
+  var QtdTotalEquipes = 0;
+  if (equipes !== null) {
+    QtdTotalEquipes = equipes.length;
+  }
+
+  var QtdProjetos = 0;
+  var QtdAndamento = 0;
+  var QtdConcluidos = 0;
+
 
   return (
     <div>
@@ -56,7 +81,7 @@ export default function Menu_index() {
             <span className="me-2 fs-4">Projetos recentes</span>
           </div>
           <div className="RightOptions d-flex col-lg-2 offset-lg-8 mt-sm-2">
-            <AdicionarProjeto atualiza ={Atualizar}/>
+            <AdicionarProjeto atualiza={Atualizar} />
           </div>
         </div>
 
@@ -65,16 +90,48 @@ export default function Menu_index() {
         >
           <div className="CardlateralesquerdoHome col-lg-8 col-md-12 mt-2 ms-3 ">
             <div className="row CardsContainer my-4 mt-4 d-flex">
-              <Cards Projetos={projetos}/>
+              <Cards Projetos={projetos} />
             </div>
           </div>
           <div className="col-lg-3 col-md-12 col-sm-12 mt-2 me-2">
-            <CardLateralDireitoHome />
+            <div className="col-4 cardLateralHome d-flex justify-content-center col-lg-12 col-md-12 p-4 mt-4 ">
+              <div className="d-flex align-items-center justify-content-center">
+                <div className="Resumo col-md-12 col-lg-12 justify-content-center ">
+                  <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
+                    <h6 >{QtdTotalEquipes}</h6>
+                    <strong>
+                      <p className="ms-4 ">Total de <br /> Equipes</p>
+                    </strong>
+                  </div>
+                  <div className="row col-12">
+                    <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
+                      <h6 className="col">{QtdProjetos}</h6>
+                      <strong>
+                        <p className="text-center col">Total de <br /> Projetos</p>
+                      </strong>
+                    </div>
+                    <div className="col-6 d-flex flex-column align-items-center justify-content-center">
+                      <div className="TarefasAnd d-flex align-items-center justify-content-center">
+                        <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{QtdAndamento}</h6>
+                        <strong>
+                          <p className="ms-2">Projetos em Andamento</p>
+                        </strong>
+                      </div>
+                      <div className="TarefasConc d-flex align-items-center justify-content-center">
+                        <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{QtdConcluidos}</h6>
+                        <strong>
+                          <p className=" ms-2">Projetos Concluídos</p>
+                        </strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
         <div className="row mt-3">
-          <CardBaixoHome Projetos={projetos}/>
+          <CardBaixoHome Projetos={projetos} />
         </div>
       </main>
     </div>

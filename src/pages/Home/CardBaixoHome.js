@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import api from '../../api';
 import Button from '@mui/material/Button';
 import BarraProgresso from "../../components/Card/CardProjetos/BarraDeProgresso";
-
 
 export default function CardBaixoHome(props) {
 
