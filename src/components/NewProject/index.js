@@ -118,9 +118,9 @@ export default function BasicModal(props) {
           </div>
           
           <form onSubmit={FechaModal}>
-            
             <CssTextField
               required
+              size="small"
               id="nome"
               name='nome'
               label="Nome"
@@ -132,6 +132,7 @@ export default function BasicModal(props) {
             />
             
             <CssTextField
+              size="small"
               id="descricao"
               name='descricao'
               label="Descrição"

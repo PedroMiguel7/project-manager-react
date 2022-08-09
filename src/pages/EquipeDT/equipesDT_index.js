@@ -96,7 +96,7 @@ class equipeDT_index extends Component {
         console.log(props.equipe.tasks);
         let TarefasEquipe = props.equipe.tasks;
         console.log(TarefasEquipe);
-        console.log(props.tarefas);
+        //console.log(props.tarefas);
         if( props.tarefas === null){
             return(
                 <>
@@ -451,17 +451,19 @@ class equipeDT_index extends Component {
 
             return (
                 <>
-                    <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} />
+                    <ProgressoCircular op="tarefas" Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} />
                     <div className="d-flex flex-column ">
+                        <div>
+                            <span className="ProgressLegends AndamentoLegend">A Fazer</span>
+                        </div>
                         <div>
                             <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
                         </div>
                         <div>
-                            <span className="ProgressLegends ConcluidaLegend">Concluídas</span>
+                            <span className="ProgressLegends PendenteLegend">Em Teste</span>
                         </div>
                         <div>
-                            
-                            <span className="ProgressLegends PendenteLegend">Pendentes</span>
+                            <span className="ProgressLegends ConcluidaLegend">Concluídas</span>
                         </div>
                     </div>
                 </>
