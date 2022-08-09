@@ -34,7 +34,18 @@ export default function Menu_index() {
     fetchequipe();
   }, []);
 
-
+  const [pessoas, setPessoas] = useState([]);
+  useEffect(() => {
+    const fetchpessoas = async () => {
+      try {
+        const response = await api.get('/pessoas/');
+        setPessoas(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchpessoas();
+  }, []);
 
   function Atualizar() {
     useEffect(() => {
@@ -56,9 +67,28 @@ export default function Menu_index() {
     QtdTotalEquipes = equipes.length;
   }
 
+  var QtdTotalPessoas = 0;
+  if (pessoas !== null) {
+    QtdTotalPessoas = pessoas.length;
+  }
+
+
   var QtdProjetos = 0;
   var QtdAndamento = 0;
   var QtdConcluidos = 0;
+  var QtdPFazer = 0;
+  if (projetos !== null) {
+    QtdProjetos = projetos.length;
+    if (projetos.filter(projetos => projetos.status === "Em Andamento") !== null) {
+      QtdAndamento = projetos.filter(projetos => projetos.status === "Em Andamento").length
+    }
+    if (projetos.filter(projetos => projetos.status === "Concluido") !== null) {
+      QtdConcluidos = projetos.filter(projetos => projetos.status === ("Concluido")).length
+    }
+    if (projetos.filter(projetos => projetos.status === "A Fazer") !== null) {
+      QtdPFazer = projetos.filter(projetos => projetos.status === "A Fazer").length
+    }
+  }
 
 
   return (
@@ -88,46 +118,47 @@ export default function Menu_index() {
         <div
           className="row d-flex justify-content-between flex-wrap"
         >
-          <div className="CardlateralesquerdoHome col-lg-8 col-md-12 mt-2 ms-3 ">
+          <div className="CardlateralesquerdoHome col-lg-7 col-md-12 mt-2 ms-3">
             <div className="row CardsContainer my-4 mt-4 d-flex">
               <Cards Projetos={projetos} />
             </div>
           </div>
-          <div className="col-lg-3 col-md-12 col-sm-12 mt-2 me-2">
-            <div className="col-4 cardLateralHome d-flex justify-content-center col-lg-12 col-md-12 p-4 mt-4 ">
-              <div className="d-flex align-items-center justify-content-center">
-                <div className="Resumo col-md-12 col-lg-12 justify-content-center ">
-                  <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
-                    <h6 >{QtdTotalEquipes}</h6>
+          <div className="cardLateralHome d-flex justify-content-center col-lg-4 col-md-12 col-sm-12 mt-2 p-4 mt-4">
+            <div className="Resumo col-md-12 col-lg-12 justify-content-center ">
+              <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
+                <h6 >{QtdTotalEquipes}</h6>
+                <strong>
+                  <p className="ms-4 ">Total de <br /> Equipes</p>
+                </strong>
+                <h6 className="ms-5" style={{color: "var(--azul-claro)"}}>{QtdTotalPessoas}</h6>
+                <strong>
+                  <p className="ms-4 ">Total de <br /> pessoas</p>
+                </strong>
+              </div>
+              <div className="row col-12">
+                <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
+                  <h6 className="col">{QtdProjetos}</h6>
+                  <strong>
+                    <p className="text-center col">Total de <br /> Projetos</p>
+                  </strong>
+                </div>
+                <div className="col-6 d-flex flex-column align-items-center justify-content-center">
+                  <div className="TarefasAnd d-flex align-items-center justify-content-center">
+                    <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{QtdAndamento}</h6>
                     <strong>
-                      <p className="ms-4 ">Total de <br /> Equipes</p>
+                      <p className="ms-2">Projetos em Andamento</p>
                     </strong>
                   </div>
-                  <div className="row col-12">
-                    <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
-                      <h6 className="col">{QtdProjetos}</h6>
-                      <strong>
-                        <p className="text-center col">Total de <br /> Projetos</p>
-                      </strong>
-                    </div>
-                    <div className="col-6 d-flex flex-column align-items-center justify-content-center">
-                      <div className="TarefasAnd d-flex align-items-center justify-content-center">
-                        <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{QtdAndamento}</h6>
-                        <strong>
-                          <p className="ms-2">Projetos em Andamento</p>
-                        </strong>
-                      </div>
-                      <div className="TarefasConc d-flex align-items-center justify-content-center">
-                        <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{QtdConcluidos}</h6>
-                        <strong>
-                          <p className=" ms-2">Projetos Concluídos</p>
-                        </strong>
-                      </div>
-                    </div>
+                  <div className="TarefasConc d-flex align-items-center justify-content-center">
+                    <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{QtdConcluidos}</h6>
+                    <strong>
+                      <p className=" ms-2">Projetos Concluídos</p>
+                    </strong>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
         <div className="row mt-3">
