@@ -7,6 +7,7 @@ import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ProgressoCircular from './CircularProgress/index.js';
 import ProjetosSelect from "./ProjetosSelect";
+import TarefasSelect from "./TarefasSelect";
 import ProgressoProjetos from "./ProgressoProjetos";
 
 class equipeDT_index extends Component {
@@ -15,7 +16,8 @@ class equipeDT_index extends Component {
         equipe: [],
         PessoasEquipe: [],
         tarefas: [],
-        status: 1,
+        statusProjeto: 1,
+        statusTarefa: 0,
     }
     async componentDidMount() {
         var equipePath = window.location.pathname;
@@ -85,6 +87,10 @@ class equipeDT_index extends Component {
         api.delete("/equipes/"+id_equipe)
     }
 
+    handleCallbackTarefa = (childData) => {
+        this.setState({statusTarefa: childData})
+    }
+
     ImprimeTarefas = (props) => {
         if( props.tarefa === null){
             return(
@@ -136,6 +142,18 @@ class equipeDT_index extends Component {
                 ))
             );
         }
+    }
+
+    handleCallbackTarefa = (childData) => {
+        this.setState({statusTarefa: childData})
+    }
+
+    SelectStatusTarefa = (props) => {
+        return (
+            <>
+                <TarefasSelect parentCallback = {this.handleCallbackTarefa} />
+            </>
+        )
     }
 
     ImprimeProjetos = (props) => {
@@ -263,25 +281,16 @@ class equipeDT_index extends Component {
         }
     } 
 
-    handleCallback = (childData) => {
-        this.setState({status: childData})
+    handleCallbackProjeto = (childData) => {
+        this.setState({statusProjeto: childData})
     }
 
-    SelectStatus = (props) => {
-        /*const [status, setStatus] = React.useState(1);
-
-        const handleChange = (event) => {
-            setStatus(event.target.value);
-        };*/
-
-        console.log(props.status);
-
+    SelectStatusProjeto = (props) => {
         return (
             <>
-                <ProjetosSelect parentCallback = {this.handleCallback} /*getStatus={props.status}*/ />
+                <ProjetosSelect parentCallback = {this.handleCallbackProjeto} />
             </>
         )
-
     }
  
     ImprimeTarefasStats = (props) => {
@@ -369,7 +378,8 @@ class equipeDT_index extends Component {
         const { PessoasEquipe } = this.state;
         const { tarefas } = this.state;
 
-        const {status} = this.state;
+        const {statusProjeto} = this.state;
+        const {statusTarefa} = this.state;
 
         var TotalProjetos = projetos.length;
 
@@ -398,15 +408,18 @@ class equipeDT_index extends Component {
                             <div>
                                 <div className="d-flex justify-content-between">
                                     <h3>Projetos</h3>
-                                    <this.SelectStatus status={status} />
+                                    <this.SelectStatusProjeto status={statusProjeto} />
                                 </div>
                                 <ul className="MembrosUl ps-0">
-                                    <this.ImprimeProjetos projetos = {projetos} status = {status} />
+                                    <this.ImprimeProjetos projetos = {projetos} status = {statusProjeto} />
                                 </ul>
                             </div>
                         </div>
                         <div className="TesteGrid EquipeTarefas col-lg-4 col-md-8">
-                            <h3>Tarefas</h3>
+                            <div className="d-flex justify-content-between">
+                                <h3>Tarefas</h3>
+                                <this.SelectStatusTarefa status={statusTarefa} />
+                            </div>
                             <ul className="TarefasUl ps-0">
                                 <this.ImprimeTarefas tarefas = {tarefas} projetos = {TarefasProjeto} />
                             </ul>
