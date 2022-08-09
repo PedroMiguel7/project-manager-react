@@ -15,6 +15,8 @@ class Cards extends Component {
     this.setState({ projetos: response.data });
   }
 
+  
+
   exibeprojeto = (props) => {
     if (props.Projetos === null) {
       return (
@@ -48,6 +50,7 @@ class Cards extends Component {
         </div>
       );
     } else {
+      props.Projetos.reverse();
       return (
         props.Projetos.map(p => (
         <Link key={p.id_projeto}
