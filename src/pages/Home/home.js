@@ -5,7 +5,7 @@ import CardBaixoHome from "./CardBaixoHome";
 import CardLateralDireitoHome from "./CardLateralDireitoHome";
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
-import api from "../../api"
+import api from "../../api";
 
 function Menu_index() {
   const [projetos, setProjetos] = useState([]);
