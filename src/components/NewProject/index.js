@@ -53,7 +53,7 @@ const style = {
   width: '40vw'
 };
 
-export default function BasicModal() {
+export default function BasicModal(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {setOpen(false); setDadoEquipe()};
@@ -74,6 +74,7 @@ export default function BasicModal() {
         descricao_projeto: descricao,
         equipe_id: parseInt(dadoEquipe),
       })
+      props.atualiza()
   }
 
   function FechaModal() {
