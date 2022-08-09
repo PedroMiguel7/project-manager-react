@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import aim from "../../../assets/icons/aim.svg";
 //import profile from "../../../assets/icons/Profile.svg";
-//import CardDelete from "../../CardDelete";
-import BarraProgresso from "../CardProjetos/BarraDeProgresso"
+import CardDelete from "../CardProjetos/CardDelete";
+import BarraProgresso from "../CardProjetos/BarraDeProgresso";
 
 export default function Cards (props) {
     if (props.Projetos === null) {
@@ -51,7 +51,7 @@ export default function Cards (props) {
                 <div className="d-flex justify-content-between">
                   <h2 className="fs-4">{p.nome_projeto}</h2>
                   <Link to="/projetos">
-
+                   
                   </Link>
                 </div>
                 <p className="description overflow-hidden">

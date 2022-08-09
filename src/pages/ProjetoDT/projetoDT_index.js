@@ -6,7 +6,6 @@ import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
 import MostrarLIstaTarefas from "./ListaDeTarefas";
 import Grafico from "./GraficoProgresso";
 
-const projetoPath = window.location.pathname;
 
 class ProjetoDT extends Component {
     constructor(props) {
@@ -17,14 +16,19 @@ class ProjetoDT extends Component {
         }
     }
     async componentDidMount() {
+        const projetoPath = window.location.pathname;
+
         const response = await api.get(projetoPath);
         const response3 = await api.get(projetoPath + "/tasks");
         this.setState({ projetos: response.data });
         this.setState({ tarefasPJ: response3.data });
     }
-    updateStateByProps = (prevProps) => {
+
+
+    updateStateByProps = () => {
         try {
             const atualiza = async () => {
+                const projetoPath = window.location.pathname;
                 const response = await api.get(projetoPath);
                 const response3 = await api.get(projetoPath + "/tasks");
                 this.setState({ projetos: response.data });
