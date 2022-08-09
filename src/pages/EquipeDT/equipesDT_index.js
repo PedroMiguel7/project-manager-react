@@ -96,7 +96,7 @@ class equipeDT_index extends Component {
         console.log(props.equipe.tasks);
         let TarefasEquipe = props.equipe.tasks;
         console.log(TarefasEquipe);
-        console.log(props.tarefas);
+        //console.log(props.tarefas);
         if( props.tarefas === null){
             return(
                 <>
