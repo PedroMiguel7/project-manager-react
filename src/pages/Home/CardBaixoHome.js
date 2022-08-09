@@ -60,11 +60,11 @@ export default function CardBaixoHome(props) {
 
     } else {
         return (
-            <div className="CardBaixoHome pt-1 ps-2 pe-2 scrollar">
+            <div className="CardBaixoHome pt-1 ps-2 pe-2 scrollar fixTableHead">
                 <div className="LeftOptions col-lg-2 mt-sm-2">
                     <h5 className="me-2 ms-4 mt-3">Projetos</h5>
                 </div>
-                <table className="table" style={{ color: 'white' }}>
+                <table className="table " style={{ color: 'white' }}>
                     <thead style={{ position: "sticky" }}>
                         <tr className="LeftOptions">
                             <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
