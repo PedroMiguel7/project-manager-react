@@ -584,7 +584,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .ProgressProjeto {
     width: 70%;
-    height: 0.35rem;
+    height: 0.25rem;
     border-radius: 100px;
     background-color: #2B2B36;
 }
@@ -684,4 +684,46 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .PendenteLegend {
     border-color: #E7DF9B;
+}
+
+.VerticalProgress {
+    width: 10px;
+    min-height: 200px;
+    margin: 0;
+    background: #2B2B36;
+    display: -webkit-box;  
+    display: -ms-flexbox;  
+    display: -webkit-flex; 
+    display: flex;        
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+    border-radius: 30px;
+}
+
+.VerticalProgress, .VerticalProgressBar {
+    width: 100%;
+    height: 0;
+    -webkit-transition: height 0.6s ease;
+    -o-transition: height 0.6s ease;
+    transition: height 0.6s ease;
+    border-radius: 30px;
+}
+
+.VerticalProgressBar {
+    background-color: plum;
+}
+
+
+.BarContainer {
+    height: 200px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.VerticalBar {
+    height: 100%;
+    width: 40px;
+    background-color: #093D93;
+    border-radius: 15px;
 }

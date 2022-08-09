@@ -9,6 +9,8 @@ import ProgressoCircular from './CircularProgress/index.js';
 import ProjetosSelect from "./ProjetosSelect";
 import TarefasSelect from "./TarefasSelect";
 import ProgressoProjetos from "./ProgressoProjetos";
+import ResponsiveBarChart from "./BarChart";
+import BarChart from "./BarChart";
 
 class equipeDT_index extends Component {
     state = {
@@ -278,7 +280,7 @@ class equipeDT_index extends Component {
     SelectStatusTarefa = (props) => {
         return (
             <>
-                <TarefasSelect key={props.statusTarefa} parentCallback = {this.handleCallbackTarefa} />
+                <TarefasSelect parentCallback = {this.handleCallbackTarefa} />
             </>
         )
     }
@@ -418,6 +420,12 @@ class equipeDT_index extends Component {
             </>
         )
     }
+
+    ImprimeMembrosStats = (props) => {
+        return (
+            <BarChart />
+        )
+    }
  
     ImprimeTarefasStats = (props) => {
         if(props.tarefas === null){
@@ -514,9 +522,6 @@ class equipeDT_index extends Component {
             TarefasProjeto.push(f.id_projeto)
         ))
 
-        //console.log(TarefasProjeto);
-
-
         return (
             <>
                 <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
@@ -544,7 +549,7 @@ class equipeDT_index extends Component {
                         <div className="TesteGrid EquipeTarefas col-lg-4 col-md-8">
                             <div className="d-flex justify-content-between">
                                 <h3>Tarefas</h3>
-                                <this.SelectStatusTarefa key={statusTarefa} status={statusTarefa} />
+                                <this.SelectStatusTarefa status={statusTarefa} />
                             </div>
                             <ul className="TarefasUl ps-0">
                                 <this.ImprimeTarefas tarefas = {tarefas} projetos = {TarefasProjeto} status = {statusTarefa} />
@@ -556,6 +561,7 @@ class equipeDT_index extends Component {
                                 <div className="Top3 col-12">
                                     <h6>Membros mais produtivos</h6>
                                     <p>Por tarefas concluídas</p>
+                                    <this.ImprimeMembrosStats />
                                 </div>
                                 <div className="TasksCircularProgress col-12 flex-wrap">
                                     <this.ImprimeTarefasStats tarefas={tarefas} />

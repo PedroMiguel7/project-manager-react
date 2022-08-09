@@ -145,6 +145,7 @@ export default function BasicModal(props) {
 
             <Box sx={{ minWidth: 120 }}>
                   <CssTextField 
+                  size="small"
                   select
                   label="Equipe"
                   fullWidth
