@@ -24,7 +24,6 @@ function ProjetoIndex() {
         };
         fetchProjetos();
     }, []);
-    
     return (
         <>
             <main className='col-11 offset-1 px-5'>

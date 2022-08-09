@@ -7,7 +7,7 @@ import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
 import api from "../../api";
 
-function Menu_index() {
+export default function Menu_index() {
   const [projetos, setProjetos] = useState([]);
 
   useEffect(() => {
@@ -21,6 +21,20 @@ function Menu_index() {
     };
     fetchProjetos();
   }, []);
+
+  function Atualizar(){
+    useEffect(() => {
+      const fetchProjetos = async () => {
+        try {
+          const response = await api.get('/projetos/');
+          setProjetos(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchProjetos();
+    }, []);
+  }
 
   return (
     <div>
@@ -42,7 +56,7 @@ function Menu_index() {
             <span className="me-2 fs-4">Projetos recentes</span>
           </div>
           <div className="RightOptions d-flex col-lg-2 offset-lg-8 mt-sm-2">
-            <AdicionarProjeto />
+            <AdicionarProjeto atualiza ={Atualizar}/>
           </div>
         </div>
 
@@ -66,5 +80,3 @@ function Menu_index() {
     </div>
   );
 }
-
-export default Menu_index;
