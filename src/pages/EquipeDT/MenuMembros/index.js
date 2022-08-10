@@ -56,8 +56,8 @@ const style = {
     borderRadius: 2,
     boxShadow: 24,
     p: 5,
-    minWidth: '400px',
-    width: '40vw'
+    minWidth: '300px',
+    width: '20vw'
 };
 
 export default function MenuMembros(props) {
@@ -94,7 +94,7 @@ export default function MenuMembros(props) {
     };
 
     function RemoveMembro() {
-        console.log(`${props.path}/pessoas/${props.id}`);
+        console.log(`${props.path}/pess${props.id}`);
         //api.delete('/tasks/' + props.id_task)
         //this.handleCloseAlert()
     }

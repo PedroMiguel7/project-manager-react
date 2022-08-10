@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');*/
 
 :root {
     --laranja: #F46E27;
@@ -687,19 +687,36 @@ input[type="number"]::-webkit-inner-spin-button {
     background-color: plum;
 }
 
+.Container {
+    height: 200px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.6rem;
+}
+
 
 .BarContainer {
     height: 200px;
     display: flex;
-    justify-content: space-evenly;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
 }
 
 .VerticalBar {
     height: 100%;
-    width: 40px;
-    background-color: #093D93;
-    border-radius: 15px;
+    min-width: 40px;
+    max-width: 80px;
+    background-color: #A9DFD8;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.VerticalBar > span {
+    color: var(--preto);
 }
 
 .Link, .Link:hover {
