@@ -10,7 +10,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
-import CssDatePicker from '../DatePicker/disableFuture';
+import CssDatePicker from '../DatePicker/DisableFuture/disableFuture';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 
@@ -50,7 +50,7 @@ function FilterPopper(){
                         backgroundColor: "#494A58",
                         color: "#C2C3C6",
                         minWidth: "200px",
-                        maxWidth: "80vw"                        
+                        maxWidth: "490px",                 
                     }}>
                     <Box
                     sx={{
@@ -65,30 +65,33 @@ function FilterPopper(){
                         height: 12,
                         top: -6,
                         transform: "rotate(45deg)",
-                        left: "calc(94% - 6px)"
+                        left: "calc(94% - 13px)"
                         }
                     }}
                     />
                         <div className='Popper p-3'>
-                            <div className='d-flex align-items-center mb-3'>
-                                <span className='me-5' style={{fontWeight: 500}}>Status</span>
-                                <FormGroup className='d-flex flex-row gap-3'>
-                                    <FormControlLabel control={<CheckboxStyle defaultChecked />} label="A fazer" />
-                                    <FormControlLabel control={<CheckboxStyle defaultChecked />} label="Em Andamento"  />
-                                    <FormControlLabel control={<CheckboxStyle defaultChecked />} label="Concluído" />
+                            <div className='d-flex align-items-center mb-2'>
+                                <span className='me-5 PopperTitle'>Status</span>
+                                <FormGroup className='PopperOptions d-flex flex-row gap-2'>
+                                    <FormControlLabel control={<CheckboxStyle defaultChecked size="small" />} label="A fazer" />
+                                    <FormControlLabel control={<CheckboxStyle defaultChecked size="small" />} label="Em Andamento"  />
+                                    <FormControlLabel control={<CheckboxStyle defaultChecked size="small" />} label="Concluído" />
                                 </FormGroup>
                             </div>
                             <Divider  />
                             
-                            <div className="d-flex align-items-center justify-content-center gap-2 my-4">
-                                <span style={{color: "#C2C3C6", fontWeight: 500}}>Data</span>
-                                <CssDatePicker />
-                                <span>-</span>
-                                <CssDatePicker />
+                            <div className="d-flex align-items-center justify-content-between gap-3 my-3">
+                                <span className="PopperTitle">Data</span>
+                                <div className="d-flex align-items-center justify-content-center gap-2">
+                                    <CssDatePicker label="Início" />
+                                    <span>-</span>
+                                    <CssDatePicker label="Fim" />    
+                                </div>
+                                
                             </div>
 
                             <Divider  />
-                            <div className='d-flex align-items-center justify-content-between mt-3'>
+                            <div className='d-flex align-items-center justify-content-between mt-4'>
                                 <Button style={{
                                 color: "#F66E6E",
                                 opacity: 0.7,
@@ -115,7 +118,7 @@ function FilterPopper(){
                 )}
             </Popper>
             <button onClick={handleClick('bottom-end')} className="filter px-2 py-1">
-                 <span>Filter</span> <img src={filter} alt="" />
+                 <span>Filtro</span> <img src={filter} alt="" />
             </button>
         </>
         

@@ -181,6 +181,14 @@ main h1 {
     box-shadow: 0 7px 15px 4px #1718218c;
 }
 
+.PopperTitle {
+    font-size: 0.95rem;
+}
+
+.PopperOptions span {
+    font-size: 0.9rem;
+}
+
 .OcuparEspaco {
     width: 24px;
     height: 24px;

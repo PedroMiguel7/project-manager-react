@@ -3,7 +3,6 @@ import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import FilterPopper from '../FilterPopper';
 import { alpha, styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 
@@ -39,9 +38,9 @@ export default function CssDatePicker(props) {
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DatePicker
-          disableFuture
+          disableFuture={true}
           inputFormat="dd/MM/yyyy"
-          label="Início"
+          label={props.label}
           openTo="year"
           views={['year', 'month', 'day']}
           value={value}
@@ -49,6 +48,7 @@ export default function CssDatePicker(props) {
               setValue(newValue);
           }}
           renderInput={(params) => <DateTextField {...params} sx={{
+            maxWidth: "10.5rem",
             "& label": {
               color: '#F4F5FA'
             },
