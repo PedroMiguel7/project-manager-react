@@ -643,28 +643,6 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 5px;
 }
 
-/*
-.ConcluidasProgress {
-    transform: rotate(180deg);
-}
-
-.ConcluidasProgress > * {
-    transform: rotate(180deg);
-}
-
-.AndamentoProgress > * {
-    transform: rotate(180deg);
-}
-
-.PendenteProgress {
-    transform: rotate(270deg);
-}
-
-.PendenteProgress > * {
-    transform: rotate(90deg);
-}
-*/
-
 .ProgressLegends {
     border-left: 3px solid white;
     padding: 0px 5px;
@@ -727,4 +705,10 @@ input[type="number"]::-webkit-inner-spin-button {
 .Link, .Link:hover {
     color: #C2C3C6;
     text-decoration: none;
+}
+
+.AddMembro {
+    cursor: pointer;
+    border: 2px solid var(--preto-medio);
+    border-radius: 10px;
 }

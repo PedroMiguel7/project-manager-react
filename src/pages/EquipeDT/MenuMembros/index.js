@@ -93,6 +93,13 @@ export default function MenuMembros(props) {
         setAnchorEl(null);
     };
 
+    function RemoveMembro() {
+        console.log(`${props.path}/pessoas/${props.id}`);
+        //api.delete('/tasks/' + props.id_task)
+        //this.handleCloseAlert()
+    }
+
+    RemoveMembro();
 
     return (
         <div>

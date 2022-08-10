@@ -2,7 +2,6 @@ import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
 import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
-import BackIcon from '../../assets/icons/back.svg'
 import Avatar from '@mui/material/Avatar';
 import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -12,6 +11,57 @@ import TarefasSelect from "./TarefasSelect";
 import ProgressoProjetos from "./ProgressoProjetos";
 import BarChart from "./BarChart";
 import MenuMembros from "./MenuMembros";
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import Modal from '@mui/material/Modal';
+import Divider from '@mui/material/Divider';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import { styled } from '@mui/material/styles';
+import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+
+const CssTextField = styled(TextField)({
+    '& .MuiOutlinedInput-root': {
+      color: '#F4F5FA',
+      svg: { color: '#F4F5FA' },
+      '&.Mui-focused': {
+        borderColor: '#F4F5FA',
+        svg: { color: '#F57D3D' }
+      },
+      '& fieldset': {
+        borderColor: '#F4F5FA',
+        borderRadius: 5
+      },
+      '&:hover fieldset': {
+        borderColor: '#C2C3C6',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#F46E27',
+      },
+      '& .MuiInputAdornment-root': {
+        color: '#87888C',
+      }
+    },
+    '.MuiInputLabel-outlined': {
+      color: '#F4F5FA',
+      '&.Mui-focused': {
+        color: '#F46E27',
+      },
+    },
+  })
+  
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: '#21222D',
+    borderRadius: 2,
+    boxShadow: 24,
+    p: 5,
+    minWidth: '400px',
+    width: '40vw'
+  };
 
 class equipeDT_index extends Component {
     state = {
@@ -65,6 +115,7 @@ class equipeDT_index extends Component {
                 </>
             );
         } else{
+            let path = window.location.pathname;
             var colors = ["#FFC16A", "#A9DFD8", "#F2C8ED", "#A7CAFF", "#E7DF9B", "#F2A7A7"];
             return(
                 props.PessoasEquipe.map(p => (
@@ -78,7 +129,7 @@ class equipeDT_index extends Component {
                         </div>
                         
                         <div className="d-flex me-2">
-                            <MenuMembros id={p.id_pessoa} />
+                            <MenuMembros id={p.id_pessoa} path={path} />
 
                             {/*<a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>*/}
                         </div>
@@ -86,6 +137,89 @@ class equipeDT_index extends Component {
                 ))
             );
         }
+    }
+
+    AddMembro = () => {
+        const [openAdd, setOpenAdd] = React.useState(false);
+
+        const handleClickAdd = () => {
+            setOpenAdd(true);
+          };
+
+        const handleCloseAdd = () => {
+            setOpenAdd(false);
+            //setOpenAlert(false);
+            //setAnchorEl(null);
+        };
+
+        return(
+            <>
+                <li className="AddMembro d-flex justify-content-between align-items-center" onClick={handleClickAdd}>
+                        <div className="d-flex align-items-center">
+                            
+                            <div className="d-flex ms-2">
+                                <AddCircleOutlineRoundedIcon sx={{color: '#87888C'}} />
+                                <span style={{color: '#87888C'}}>Adicionar um novo membro</span>
+                            </div>    
+                        </div>
+                        
+                        <div className="d-flex me-2">
+
+                            {/*<a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>*/}
+                        </div>
+                </li>
+                <Modal
+                open={openAdd}
+                onClose={handleCloseAdd}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                >
+                <Box sx={style}>
+                    <div className='d-flex align-items-center justify-content-between mb-4'>
+                        <div className='OcuparEspaco'></div>
+                        <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleCloseAdd} />
+                        <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
+                        Adicionar<span style={{ color: '#F46E27' }}> Membro</span>
+                        </Typography>
+                    </div>
+
+                    <form /*onSubmit={EditaTask}*/>
+                    <CssTextField
+                        required
+                        id="nome"
+                        name='nome'
+                        label="Nome"
+                        //value={nome}
+                        //onChange={(e) => setNome(e.target.value)}
+                        variant="outlined"
+                        margin="dense"
+                        color='primary'
+                        fullWidth
+                        className='textField'
+                        autoComplete='off'
+                    />
+
+                    <Divider light className='mt-3' />
+                    <div className='d-flex justify-content-end mt-5'>
+                        <Button style={{
+                        color: "#F4F5FA",
+                        opacity: 0.5,
+                        textTransform: 'capitalize'
+                        }}
+                        variant="text" className='' onClick={handleCloseAdd}>Cancelar</Button>
+                        <Button style={{
+                        color: "#F4F5FA",
+                        background: "#F46E27",
+                        textTransform: 'capitalize',
+                        boxShadow: 'none'
+                        }}
+                        variant="contained" type="submit" /*onClick={EditaTask}*/>Salvar</Button>
+                    </div>
+                    </form>
+                </Box>
+                </Modal>
+            </>
+        )
     }
 
     DeletaEquipe(id_equipe) {
@@ -547,6 +681,7 @@ class equipeDT_index extends Component {
                                 <h3>Membros</h3>
                                 <ul className="MembrosUl ps-0">
                                     <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
+                                    <this.AddMembro />
                                 </ul>
                             </div>
                             <div>
