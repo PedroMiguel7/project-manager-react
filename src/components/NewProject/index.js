@@ -70,7 +70,7 @@ export default function BasicModal(props) {
   function PostaProjeto() {
     api.post("/projetos/",
       {
-        nome_projeto: nome,
+        nome_projeto: nome[0].toUpperCase() + nome.slice(1),
         descricao_projeto: descricao,
         equipe_id: parseInt(dadoEquipe),
       })

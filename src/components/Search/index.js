@@ -1,10 +1,6 @@
 import React from 'react';
 
 class Search extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     handleChange(event) {
         this.props.inputText(event.target.value);
     }
