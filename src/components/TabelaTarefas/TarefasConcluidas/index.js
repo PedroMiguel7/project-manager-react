@@ -26,11 +26,15 @@ class TarefasConcluidas extends Component {
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
 
+    if (qtdTarefas !== null) {
+      var qtdConcluidas = qtdTarefas.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
+    }
+    
     const [changeIcon, setIcon] = React.useState(true);
 
     const icon = (changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
 
-    if( qtdTarefas === null){
+    if( qtdTarefas === null || qtdConcluidas.length === 0){
         return(
           <tr>
             Sem tarefas concluídas

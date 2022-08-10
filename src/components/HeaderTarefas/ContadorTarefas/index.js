@@ -29,7 +29,7 @@ class TarefasConcluidas extends Component {
         
         let Concluidas = 0;
         for (var prop in tarefas) {
-            if (tarefas[prop].status === "Concluido") {
+            if (tarefas[prop].status === "Concluido" || tarefas[prop].status === "Concluído") {
                 Concluidas++;
             }
         }
