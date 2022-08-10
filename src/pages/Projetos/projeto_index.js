@@ -46,7 +46,7 @@ export default function ProjetoIndex() {
 
     
     const [order, setOrder] = useState(1)
-    const [columnorder, setColumnorder] = useState('nome_projeto')
+    const [columnorder, setColumnorder] = useState('nome')
     const handleOrder = (fieldName, Ordem) => {
         projetos = projetos.sort((a, b) => {
             return a[columnorder].toUpperCase() > b[columnorder].toUpperCase() ? -order : order;
@@ -70,7 +70,7 @@ export default function ProjetoIndex() {
                     </div>
                     <div className="RightOptions d-flex justify-content-end align-items-center flex-wrap gap-3 col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
                         <BasicModal />
-                        <button onClick={e => handleOrder('nome_projeto')} className="ps-1" name="order-select" id="order-select" >
+                        <button onClick={e => handleOrder('nome')} className="ps-1" name="order-select" id="order-select" >
                             A - Z
                         </button>
 
