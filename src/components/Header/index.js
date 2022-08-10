@@ -1,5 +1,5 @@
 import Divider from '@mui/material/Divider';
-import {useState} from 'react';
+import useState from 'react';
 
 function Header({titulo}) {
     const [filter, setFilter] = useState('')
