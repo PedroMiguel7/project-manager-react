@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import aim from "../../../assets/icons/aim.svg";
 //import profile from "../../../assets/icons/Profile.svg";
@@ -6,7 +6,7 @@ import CardDelete from "../CardProjetos/CardDelete";
 import BarraProgresso from "../CardProjetos/BarraDeProgresso";
 
 export default function Cards (props) {
-    if (props.Projetos === null) {
+  if (props.Projetos === null) {
       return (
         <div className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
           <div>
@@ -39,6 +39,7 @@ export default function Cards (props) {
       );
     } else {
       props.Projetos.reverse();
+      
       return (
         props.Projetos.map(p => (
           <Link key={p.id_projeto}
