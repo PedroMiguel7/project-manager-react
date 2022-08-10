@@ -22,7 +22,6 @@ class LinearChart extends Component {
         const { tarefas} = this.state;
 
         var datas = new Date();
-        console.log(datas);
 
         const UltimosDias = [new Date(),];
 
@@ -30,54 +29,52 @@ class LinearChart extends Component {
           UltimosDias.push(new Date(datas.setDate(datas.getDate() - 1)));
         }
 
-        console.log(UltimosDias);
-
         let Concluidas = 0;
         const UltimasConcluidas = [];
-        tarefas.map( t => {
-          if (t.status === "Concluido") {
-            Concluidas++;
-            UltimasConcluidas.push(new Date(t.data_conclusao));
-          }
-        })
-        console.log(Concluidas);
-        console.log(UltimasConcluidas);
-    
+        if(tarefas !== null){
+          tarefas.map( t => {
+            if (t.status === "Concluido") {
+              Concluidas++;
+              UltimasConcluidas.push(new Date(t.data_conclusao));
+            }
+          })
+        }
+
         var TarefasAndamento = [0, 0, 0, 0, 0, 0, 0];
         var TarefasConcluidas = [0, 0, 0, 0, 0, 0, 0];
         UltimosDias.reverse();
 
-        tarefas.map ( t => {
-          if (t.status === "Em Andamento") {
-            let i = -1;
-            UltimosDias.map( u => {
-              i++;
-              if (new Date(t.data_criacao).toISOString().split('T')[0] == u.toISOString().split('T')[0]) {
-                TarefasAndamento[i]++;
-                let tData = new Date(t.data_criacao);
-                let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
-                let uData = new Date(u);
-                let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
-                console.log(`t: ${tFormatada}, u: ${uFormatada}`)
-              }
-            })
-          } else if (t.status === "Concluido") {
-            let i = -1;
-            UltimosDias.map( u => {
-              i++;
-              if (new Date(t.data_conclusao).toISOString().split('T')[0] == u.toISOString().split('T')[0]) {
-                TarefasConcluidas[i]++;
-                let tData = new Date(t.data_criacao);
-                let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
-                let uData = new Date(u);
-                let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
-                console.log(`t: ${tFormatada}, u: ${uFormatada}`)
-              }
-            })
-          }
-        })
-
-        console.log(TarefasAndamento);
+        if(tarefas !== null){
+          tarefas.map ( t => {
+            if (t.status === "Em Andamento") {
+              let i = -1;
+              UltimosDias.map( u => {
+                i++;
+                if (new Date(t.data_criacao).toISOString().split('T')[0] == u.toISOString().split('T')[0]) {
+                  TarefasAndamento[i]++;
+                  let tData = new Date(t.data_criacao);
+                  let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
+                  let uData = new Date(u);
+                  let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
+                  console.log(`t: ${tFormatada}, u: ${uFormatada}`)
+                }
+              })
+            } else if (t.status === "Concluido") {
+              let i = -1;
+              UltimosDias.map( u => {
+                i++;
+                if (new Date(t.data_conclusao).toISOString().split('T')[0] == u.toISOString().split('T')[0]) {
+                  TarefasConcluidas[i]++;
+                  let tData = new Date(t.data_criacao);
+                  let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
+                  let uData = new Date(u);
+                  let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
+                  console.log(`t: ${tFormatada}, u: ${uFormatada}`)
+                }
+              })
+            }
+          })
+        }
 
         const data = [
           {
@@ -121,10 +118,6 @@ class LinearChart extends Component {
           data[0].data.push(obj1);
           data[1].data.push(obj2);
         }
-            
-        console.log(data);
-        console.log(data[0].data);
-        console.log(data[1].data);
         
         return (
           <ResponsiveLine
