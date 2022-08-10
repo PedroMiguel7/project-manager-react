@@ -69,9 +69,7 @@ export default function BasicModalPessoa() {
 
   function FechaModal() {
     setOpen(false);
-    window.location.reload();
   }
-
 
   const handleChangeFun = (evento) => {
     setFuncao(evento.target.value);
@@ -85,6 +83,7 @@ export default function BasicModalPessoa() {
         equipe_Id: parseInt(dadoEquipe),
       })
   }
+  
   useEffect(() => {
     const fetchequipe = async () => {
       try {
@@ -164,7 +163,7 @@ export default function BasicModalPessoa() {
             </Box>
 
             <Box sx={{ minWidth: 120 }}>
-              <CssTextField 
+              <CssTextField
               select
               label="Equipe"
               fullWidth

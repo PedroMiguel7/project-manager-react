@@ -5,7 +5,6 @@ import BasicModal from '../../components/NewProject'
 //import FilterMenu from "../../components/FilterMenu"
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos"
 import FilterPopper from "../../components/FilterPopper"
-import Search from '../../components/Search';
 import Divider from '@mui/material/Divider';
 import { useState, useEffect } from "react";
 import api from "../../api";
