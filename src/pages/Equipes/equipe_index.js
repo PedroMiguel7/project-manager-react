@@ -32,10 +32,19 @@ export default function Equipes() {
     const handleChange = (event) => {
         setFiltro(event.target.value);
     }
-
     if(filtro){
         const exp = eval(`/${filtro.replace(/[^\d\w]+/,'.*')}/i`)
         Equipes = Equipes.filter(Equipes => exp.test(Equipes.nome_equipe.toUpperCase()))
+    }
+
+    const [order, setOrder] = useState(1)
+    const [columnorder, setColumnorder] = useState('nome')
+    const handleOrder = (fieldName, Ordem) => {
+        Equipes = Equipes.sort((a, b) => {
+            return a[columnorder].toUpperCase() > b[columnorder].toUpperCase() ? -order : order;
+        })
+        setOrder(-order)
+        setColumnorder(fieldName)
     }
 
     return (
@@ -54,10 +63,14 @@ export default function Equipes() {
                     <div className="RightOptions d-flex justify-content-end align-items-center flex-wrap gap-3 col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
                         <BasicModalEquipe />
 
-                        <select className="ps-1" name="order-select" id="order-select">
+                        <button onClick={e => handleOrder('nome')} className="ps-1" name="order-select" id="order-select" >
+                            A - Z
+                        </button>
+
+                        {/*<select className="ps-1" name="order-select" id="order-select">
                             <option value="crescente">A - Z</option>
                             <option value="decrescente">Z - A</option>
-                        </select>
+                        </select>*/}
 
                         <button className="filter px-2 py-1">
                             <span>Filter</span> <img src={filter} alt="" />
