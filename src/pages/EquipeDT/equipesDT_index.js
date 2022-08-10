@@ -19,6 +19,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import MenuItem from '@mui/material/MenuItem';
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -59,8 +60,8 @@ const CssTextField = styled(TextField)({
     borderRadius: 2,
     boxShadow: 24,
     p: 5,
-    minWidth: '400px',
-    width: '40vw'
+    minWidth: '300px',
+    width: '20vw'
   };
 
 class equipeDT_index extends Component {
@@ -184,20 +185,31 @@ class equipeDT_index extends Component {
                     </div>
 
                     <form /*onSubmit={EditaTask}*/>
-                    <CssTextField
-                        required
-                        id="nome"
-                        name='nome'
-                        label="Nome"
-                        //value={nome}
-                        //onChange={(e) => setNome(e.target.value)}
-                        variant="outlined"
-                        margin="dense"
-                        color='primary'
+                    <Box sx={{ minWidth: 120 }}>
+                        <CssTextField
+                        select
+                        label="Pessoa"
                         fullWidth
-                        className='textField'
-                        autoComplete='off'
-                    />
+                        margin="dense"
+                        //value={dadoEquipe}
+                        //={handleChangeAge}
+                        SelectProps={{
+                            MenuProps: {
+                            PaperProps: {
+                                style: {
+                                maxHeight: '23vh',
+                                backgroundColor: '#494A58',
+                                color: '#fff',
+                                }
+                            }
+                            }
+                        }}
+                        >
+                            <MenuItem value={1} key={1}>Fulano</MenuItem>
+                            <MenuItem value={2} key={2}>Fulana</MenuItem>
+                            <MenuItem value={3} key={3}>Fulanin</MenuItem>
+                        </CssTextField>
+                    </Box>
 
                     <Divider light className='mt-3' />
                     <div className='d-flex justify-content-end mt-5'>

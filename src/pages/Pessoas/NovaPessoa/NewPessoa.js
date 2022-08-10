@@ -49,8 +49,8 @@ const style = {
   borderRadius: 2,
   boxShadow: 24,
   p: 5,
-  minWidth: '400px',
-  width: '40vw'
+  minWidth: '300px',
+  width: '20vw'
 };
 
 export default function BasicModalPessoa() {
