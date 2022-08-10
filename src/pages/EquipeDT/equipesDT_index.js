@@ -11,6 +11,7 @@ import ProjetosSelect from "./ProjetosSelect";
 import TarefasSelect from "./TarefasSelect";
 import ProgressoProjetos from "./ProgressoProjetos";
 import BarChart from "./BarChart";
+import MenuMembros from "./MenuMembros";
 
 class equipeDT_index extends Component {
     state = {
@@ -77,7 +78,9 @@ class equipeDT_index extends Component {
                         </div>
                         
                         <div className="d-flex me-2">
-                            <a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>
+                            <MenuMembros id={p.id_pessoa} />
+
+                            {/*<a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>*/}
                         </div>
                     </li>
                 ))
