@@ -32,7 +32,10 @@ class TarefasAndamento extends Component {
 
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
-    const TarefasAndamento = qtdTarefas.filter((tarefas) => tarefas.status === "Em Andamento");
+
+    if (qtdTarefas !== null) {
+      var qtdAndamento = qtdTarefas.filter((tarefas) => tarefas.status === "Em Andamento");  
+    }
 
     const [openAlert, setOpenAlert] = React.useState(false);
 
@@ -40,12 +43,9 @@ class TarefasAndamento extends Component {
       if (reason === 'clickaway') {
         return;
       }
-  
       setOpenSnackbar(false);
     };
-
-
-
+    
     const handleCheck = (id) => {
       // usar o id pro post
       console.log(id);
@@ -80,7 +80,7 @@ class TarefasAndamento extends Component {
       console.log('/tasks/' + id);
     }
 
-    if( qtdTarefas === null || TarefasAndamento.length === 0){
+    if( qtdTarefas === null || qtdAndamento.length === 0){
         return(
           <tr>
             Sem tarefas em andamento
