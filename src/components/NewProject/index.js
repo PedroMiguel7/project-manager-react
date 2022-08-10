@@ -49,7 +49,7 @@ const style = {
   borderRadius: 2,
   boxShadow: 24,
   p: 5,
-  minWidth: '300px',
+  minWidth: '400px',
   width: '25vw'
 };
 
