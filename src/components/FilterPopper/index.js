@@ -73,9 +73,9 @@ function FilterPopper(){
                             <div className='d-flex align-items-center mb-3'>
                                 <span className='me-5' style={{fontWeight: 500}}>Status</span>
                                 <FormGroup className='d-flex flex-row gap-3'>
+                                    <FormControlLabel control={<CheckboxStyle defaultChecked />} label="A fazer" />
                                     <FormControlLabel control={<CheckboxStyle defaultChecked />} label="Em Andamento"  />
                                     <FormControlLabel control={<CheckboxStyle defaultChecked />} label="Concluído" />
-                                    <FormControlLabel control={<CheckboxStyle />} label="Cancelado" />
                                 </FormGroup>
                             </div>
                             <Divider  />
