@@ -1,5 +1,4 @@
 import Sidebar from "../../components/SideBar/SideBar";
-//import Card from "../../components/Card";
 import AdicionarProjeto from '../../components/NewProject/index'
 import CardBaixoHome from "./CardBaixoHome";
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
