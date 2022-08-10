@@ -12,7 +12,7 @@ import api from "../../api";
 
 
 export default function ProjetoIndex() {
-    const [projetos, setProjetos] = useState([]);
+    var [projetos, setProjetos] = useState([]);
     useEffect(() => {
         const fetchProjetos = async () => {
             try {
@@ -25,7 +25,6 @@ export default function ProjetoIndex() {
         fetchProjetos();
     }, []);
 
-
     const Atualiza = async () => {
         try {
             const response = await api.get('/projetos/');
@@ -34,6 +33,17 @@ export default function ProjetoIndex() {
             console.log(error);
         }
     };
+
+    const [order, setOrder] = useState(1)
+    const [columnorder, setColumnorder] = useState('nome_projeto')
+
+    const handleOrder = fieldName => {
+        projetos = projetos.sort((a, b) => {
+            return a[columnorder].toUpperCase() < b[columnorder].toUpperCase() ? -order : order;
+        })
+        setOrder(-order)
+        setColumnorder(fieldName)
+    }
 
 
     return (
@@ -53,8 +63,8 @@ export default function ProjetoIndex() {
                     <div className="RightOptions d-flex justify-content-end align-items-center flex-wrap gap-3 col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
                         <BasicModal />
                         <select className="ps-1" name="order-select" id="order-select">
-                            <option value="crescente">A - Z</option>
-                            <option value="decrescente">Z - A</option>
+                            <option  onClick={e => handleOrder('nome_projeto')} value="crescente">A - Z</option>
+                            <option  onClick={e => handleOrder('nome_projeto')} value="decrescente">Z - A</option>
                         </select>
 
                         <FilterPopper />
