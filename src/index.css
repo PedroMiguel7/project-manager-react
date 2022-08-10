@@ -211,7 +211,7 @@ main h1 {
 .Card {
     background-color: var(--preto-medio);
     /*width: 380px;*/
-    min-width: 395px;
+    min-width: 250px;
     height: 315px;
     border-radius: 10px;
     box-shadow: 0px 2px 12px 5px rgb(0, 0, 0, 0.08);
@@ -221,7 +221,7 @@ main h1 {
 .Cards {
     background-color: var(--preto-medio);
     max-width: 350px;
-    min-width: 300px;
+    min-width: 250px;
     height: 300px;
     border-radius: 10px;
     gap: 2rem;
