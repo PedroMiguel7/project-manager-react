@@ -59,7 +59,7 @@ class LinearChart extends Component {
                   console.log(`t: ${tFormatada}, u: ${uFormatada}`)
                 }
               })
-            } else if (t.status === "Concluido") {
+            } else if (t.status === "Concluido" || t.status === "Concluído") {
               let i = -1;
               UltimosDias.map( u => {
                 i++;

@@ -32,6 +32,7 @@ class TarefasAndamento extends Component {
 
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
+    const TarefasAndamento = qtdTarefas.filter((tarefas) => tarefas.status === "Em Andamento");
 
     const [openAlert, setOpenAlert] = React.useState(false);
 
@@ -79,7 +80,7 @@ class TarefasAndamento extends Component {
       console.log('/tasks/' + id);
     }
 
-    if( qtdTarefas === null){
+    if( qtdTarefas === null || TarefasAndamento.length === 0){
         return(
           <tr>
             Sem tarefas em andamento
