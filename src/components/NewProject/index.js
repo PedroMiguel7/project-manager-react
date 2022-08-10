@@ -49,8 +49,8 @@ const style = {
   borderRadius: 2,
   boxShadow: 24,
   p: 5,
-  minWidth: '350px',
-  width: '20vw'
+  minWidth: '300px',
+  width: '25vw'
 };
 
 export default function BasicModal(props) {
