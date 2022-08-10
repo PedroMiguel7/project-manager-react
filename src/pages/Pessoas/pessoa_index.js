@@ -23,7 +23,7 @@ function Pessoas() {
                         </select>
 
                         <button className="filter px-2 py-1">
-                            <span>Filter</span> <img src={filter} alt="" />
+                            <span>Filtro</span> <img src={filter} alt="" />
                         </button>
                     </div>
                 </div>
