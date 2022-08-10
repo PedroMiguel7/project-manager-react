@@ -26,7 +26,7 @@ export default function Cards (props) {
               <div className="card-members">
                 <h6>Progresso</h6>
                 <div className="d-flex gap-1">
-
+                  irreal
                 </div>
               </div>
               <div className="card-progress">
@@ -51,7 +51,7 @@ export default function Cards (props) {
                 <div className="d-flex justify-content-between">
                   <h2 className="fs-4">{p.nome_projeto}</h2>
                   <Link to="/projetos">
-                   
+                   <CardDelete id_projeto={p.id_projeto} atualiza={props.atualiza}/>
                   </Link>
                 </div>
                 <p className="description overflow-hidden">

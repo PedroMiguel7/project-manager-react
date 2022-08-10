@@ -11,20 +11,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import WarningIcon from '@mui/icons-material/Warning';
-import DeletaProjeto from '../../../DELETES/DeletaProjeto';
+import api from "../../../../api";
+
 
 export default function CardDelete(props) {
-  fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/"+props.id_projeto, {method: "DELETE"})
-    .then(resposta => {
-        if(resposta.ok){
-            fetch("https://golang-posgre-brisanet.herokuapp.com/projetos/")
-            .then(novareposta => novareposta.json())
-            .then(dados =>{
-                this.setState({projetos: dados})
-            })
-        }
-    })
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -44,6 +34,13 @@ export default function CardDelete(props) {
     setOpenAlert(false);
     setAnchorEl(null);
   };
+
+  function DeletaProjeto(){
+    console.log(props)
+    api.delete('/projetos/'+ props.id_projeto);
+    handleCloseAlert();
+    props.atualiza();
+  }
 
   return (
     <div>

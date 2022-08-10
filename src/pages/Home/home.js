@@ -120,7 +120,7 @@ export default function Menu_index() {
         >
           <div className="CardlateralesquerdoHome col-lg-7 col-md-12 mt-2 ms-3">
             <div className="row CardsContainer my-4 mt-4 d-flex">
-              <Cards Projetos={projetos} />
+              <Cards Projetos={projetos} atualiza={Atualizar}/>
             </div>
           </div>
           <div className="cardLateralHome d-flex justify-content-center col-lg-4 col-md-12 col-sm-12 mt-2 p-4 mt-4">
