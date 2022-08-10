@@ -718,7 +718,7 @@ class equipeDT_index extends Component {
                         <div className="TesteGrid col-lg-4 col-md-4">
                             <h2>Estatísticas</h2>
                             <div className="row">
-                                <div className="Top3 col-12">
+                                <div className="Top3 d-flex flex-column align-items-center col-12">
                                     <h6>Membros mais produtivos</h6>
                                     <p>Por tarefas concluídas</p>
                                     <this.ImprimeMembrosStats />
