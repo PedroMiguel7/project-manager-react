@@ -69,7 +69,7 @@ export default function ProjetoIndex() {
                         <input type="" name="txt-show" id="txt-show" size="1" />*/}
                     </div>
                     <div className="RightOptions d-flex justify-content-end align-items-center flex-wrap gap-3 col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
-                        <BasicModal />
+                        <BasicModal atualiza={Atualiza}/>
                         <button onClick={e => handleOrder('nome')} className="ps-1" name="order-select" id="order-select" >
                             A - Z
                         </button>
