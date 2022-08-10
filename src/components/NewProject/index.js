@@ -49,7 +49,7 @@ const style = {
   borderRadius: 2,
   boxShadow: 24,
   p: 5,
-  minWidth: '300px',
+  minWidth: '350px',
   width: '20vw'
 };
 
@@ -120,7 +120,7 @@ export default function BasicModal(props) {
           <form onSubmit={FechaModal}>
             <CssTextField
               required
-              size="small"
+              //size="small"
               id="nome"
               name='nome'
               label="Nome"
@@ -132,7 +132,7 @@ export default function BasicModal(props) {
             />
             
             <CssTextField
-              size="small"
+              //size="small"
               id="descricao"
               name='descricao'
               label="Descrição"
@@ -146,7 +146,7 @@ export default function BasicModal(props) {
 
             <Box sx={{ minWidth: 120 }}>
                   <CssTextField 
-                  size="small"
+                  //size="small"
                   select
                   label="Equipe"
                   fullWidth
