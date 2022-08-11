@@ -72,8 +72,8 @@ class PessoasDT extends Component {
                         <Divider light orientation="vertical" variant="middle" flexItem />
                         <div className="ResumoPessoa d-flex align-items-center justify-content-center flex-wrap gap-5">
                             <div className="d-flex flex-column text-center">
-                                <h5>14</h5>
-                                <p>Projetos Concluídos</p>
+                                <h5>{TotalTarefas}</h5>
+                                <p>Total de Tarefas</p>
                             </div>
                             <div className="d-flex flex-column text-center">
                                 <h5>{Concluidas}</h5>

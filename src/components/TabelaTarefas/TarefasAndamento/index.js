@@ -16,6 +16,7 @@ import PrioridadeAlta from '../../../assets/icons/prioridade-alta.svg';
 import PrioridadeMedia from '../../../assets/icons/prioridade-media.svg';
 import PrioridadeBaixa from '../../../assets/icons/prioridade-baixa.svg';
 import Tooltip from '@mui/material/Tooltip';
+import TasksNotFound from "../../../assets/empty-states/tasks-not-found.svg";
 
 
 class TarefasAndamento extends Component {
@@ -45,14 +46,14 @@ class TarefasAndamento extends Component {
     } else {
       return (
         <>
-          <tr>
-              <th scope="col"></th>
-              <th scope="col">Nome</th>
-              <th scope="col">Prioridade</th>
-              <th scope="col">Tempo Restante</th>
-              <th scope="col">Início</th>
-              <th scope="col"></th>
-            </tr>
+          <tr className="TabelaTarefasHead">
+            <th scope="col"></th>
+            <th scope="col">Nome</th>
+            <th scope="col">Prioridade</th>
+            <th scope="col">Tempo Restante</th>
+            <th scope="col">Início</th>
+            <th scope="col"></th>
+          </tr>
         </>
       )
     }
@@ -113,8 +114,9 @@ class TarefasAndamento extends Component {
         return(
           <>
             <tr className='NoBorder'>
-              <h5>
-                Sem tarefas em andamento
+              <img src={TasksNotFound} />
+              <h5 style={{color: "#454756", textAlign: "center"}}>
+                Sem tarefas em andamento.
               </h5>
             </tr>
           </>

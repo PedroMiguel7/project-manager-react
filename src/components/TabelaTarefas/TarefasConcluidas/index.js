@@ -9,6 +9,7 @@ import PrioridadeAlta from '../../../assets/icons/prioridade-alta.svg';
 import PrioridadeMedia from '../../../assets/icons/prioridade-media.svg';
 import PrioridadeBaixa from '../../../assets/icons/prioridade-baixa.svg';
 import Tooltip from '@mui/material/Tooltip';
+import TasksNotFound from "../../../assets/empty-states/tasks-not-found.svg";
 
 
 class TarefasConcluidas extends Component {
@@ -66,8 +67,9 @@ class TarefasConcluidas extends Component {
     if( qtdTarefas === null || qtdConcluidas.length === 0){
         return(
           <tr className='NoBorder'>
-              <h5>
-                Sem tarefas concluídas
+              <img src={TasksNotFound} />
+              <h5 style={{color: "#454756", textAlign: "center"}}>
+                Sem tarefas concluídas.
               </h5>
           </tr>
         );
