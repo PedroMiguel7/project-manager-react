@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import aim from '../../../assets/icons/aim.svg';
+import api from "../../../api"
 
 export default function CardPessoas(props) {
+
+    function MostraTarefas(id_pessoa){
+    var [tarefas, setTarefas] = useState([]);
+    useEffect(() => {
+        const fetchTarefas = async () => {
+            try {
+                const response = await api.get('/pessoas/'+id_pessoa+'/tasks');
+                setTarefas(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchTarefas();
+    }, []);
+
+    if(tarefas !== null){
+        var qtd = tarefas.length
+        return(
+            qtd
+        )
+    } else{
+        return(
+            0
+        )
+    }
+
+    }
 
     function MudarBackground(funcao) {
         if (funcao === "Front-End") {
@@ -50,7 +78,7 @@ export default function CardPessoas(props) {
                                         <div>Projetos</div>
                                     </div>
                                     <div>
-                                        <div>8</div>
+                                        <div>{MostraTarefas(p.id_pessoa)}</div>
                                         <div>Tarefas</div>
                                     </div>
                                 </div>

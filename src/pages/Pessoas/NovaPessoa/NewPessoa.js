@@ -53,7 +53,7 @@ const style = {
   width: '25vw'
 };
 
-export default function BasicModalPessoa() {
+export default function BasicModalPessoa(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => { setOpen(false); setDadoEquipe(); setFuncao(); }
@@ -82,6 +82,7 @@ export default function BasicModalPessoa() {
         funcao_pessoa: funcao,
         equipe_Id: parseInt(dadoEquipe),
       })
+      props.atualiza()
   }
   
   useEffect(() => {
@@ -95,9 +96,6 @@ export default function BasicModalPessoa() {
     };
     fetchequipe();
   }, []);
-
-  
-
 
   return (
     <div>
