@@ -220,7 +220,17 @@ main h1 {
     background-color: var(--preto-medio);
     /*width: 380px;*/
     min-width: 250px;
-    height: 315px;
+    height: 335px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 12px 5px rgb(0, 0, 0, 0.08);
+    transition: 0.5s;
+}
+
+.Cardh {
+    background-color: var(--preto-medio);
+    /*width: 380px;*/
+    min-width: 350px;
+    height: 335px;
     border-radius: 10px;
     box-shadow: 0px 2px 12px 5px rgb(0, 0, 0, 0.08);
     transition: 0.5s;
