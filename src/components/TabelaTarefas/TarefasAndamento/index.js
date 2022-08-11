@@ -30,6 +30,35 @@ class TarefasAndamento extends Component {
       this.setState({ tarefas: response.data });
   }
 
+  Header = (props) => {
+    const qtdTarefas = props.tarefas;
+    
+    if (qtdTarefas !== null) {
+      var qtdAndamento = qtdTarefas.filter((tarefas) => tarefas.status === "Em Andamento");  
+    }
+
+    if( qtdTarefas === null || qtdAndamento.length === 0){
+      return (
+        <>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <tr>
+              <th scope="col"></th>
+              <th scope="col">Nome</th>
+              <th scope="col">Prioridade</th>
+              <th scope="col">Tempo Restante</th>
+              <th scope="col">Início</th>
+              <th scope="col"></th>
+            </tr>
+        </>
+      )
+    }
+    
+  }
+
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
 
@@ -82,11 +111,16 @@ class TarefasAndamento extends Component {
 
     if( qtdTarefas === null || qtdAndamento.length === 0){
         return(
-          <tr>
-            Sem tarefas em andamento
-          </tr>
+          <>
+            <tr className='NoBorder'>
+              <h5>
+                Sem tarefas em andamento
+              </h5>
+            </tr>
+          </>
+          
         );
-    } else{
+    } else {
         function Prioridade(prioridade) {
           if (prioridade === 0) {
             return (
@@ -213,17 +247,9 @@ class TarefasAndamento extends Component {
     return (
       <>
         <div className='TabelaTarefas table-responsive'>
-          <table id='table' className="table align-middle text-center table-hover">
+          <table id='table' className="table align-middle text-center">
             <tbody>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Nome</th>
-                <th scope="col">Prioridade</th>
-                <th scope="col">Tempo Restante</th>
-                <th scope="col">Início</th>
-                <th scope="col"></th>
-              </tr>
-
+              <this.Header tarefas={tarefas} />
               <this.ImprimeTarefas tarefas={tarefas} />
             </tbody>
           </table>

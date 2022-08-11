@@ -454,10 +454,10 @@ main h1 {
     border-bottom: 1px solid var(--preto-claro) !important;
 }
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+/*.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     color: #fff;
     background-color: #21222D;
-  }
+}*/
 
 .TabelaTarefas {
     max-height: 30vh;
@@ -484,6 +484,10 @@ main h1 {
     top: 0;
     background-color: var(--preto-medio);
     z-index: 1;
+}
+
+.NoBorder{
+    border-bottom: 1px solid var(--preto-medio) !important;
 }
 
 .ContadorTarefas {

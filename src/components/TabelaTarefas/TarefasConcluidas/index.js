@@ -23,6 +23,35 @@ class TarefasConcluidas extends Component {
       this.setState({ tarefas: response.data });
   }
 
+  Header = (props) => {
+    const qtdTarefas = props.tarefas;
+    
+    if (qtdTarefas !== null) {
+      var qtdAndamento = qtdTarefas.filter((tarefas) => tarefas.status === "Em Andamento");  
+    }
+
+    if( qtdTarefas === null || qtdAndamento.length === 0){
+      return (
+        <>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <tr>
+                <th scope="col"></th>
+                <th scope="col">Nome</th>
+                <th scope="col">Prioridade</th>
+                <th scope="col">Início</th>
+                <th scope="col">Conclusão</th>
+                <th scope="col"></th>
+              </tr>
+        </>
+      )
+    }
+    
+  }
+
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
 
@@ -36,8 +65,10 @@ class TarefasConcluidas extends Component {
 
     if( qtdTarefas === null || qtdConcluidas.length === 0){
         return(
-          <tr>
-            Sem tarefas concluídas
+          <tr className='NoBorder'>
+              <h5>
+                Sem tarefas concluídas
+              </h5>
           </tr>
         );
     } else {
@@ -115,17 +146,9 @@ class TarefasConcluidas extends Component {
     return (
       <>
         <div className='TabelaTarefas table-responsive'>
-          <table className="table align-middle text-center table-hover">
+          <table className="table align-middle text-center">
             <tbody>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Nome</th>
-                <th scope="col">Prioridade</th>
-                <th scope="col">Início</th>
-                <th scope="col">Conclusão</th>
-                <th scope="col"></th>
-              </tr>
-
+              <this.Header tarefas={tarefas} />
               <this.ImprimeTarefas tarefas={tarefas} />
             </tbody>
           </table>
