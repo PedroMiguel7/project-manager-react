@@ -20,6 +20,7 @@ import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import MenuItem from '@mui/material/MenuItem';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -491,7 +492,7 @@ class equipeDT_index extends Component {
                                     <ProgressoProjetos key={2} id_projeto={p.id_projeto} />
                                 </div>
                                 <div className="d-flex justify-content-end">
-                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
+                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
                                 </div>
                             </div>
                         </li>
@@ -526,7 +527,7 @@ class equipeDT_index extends Component {
                                     <ProgressoProjetos key={3} id_projeto={p.id_projeto} />
                                 </div>
                                 <div className="d-flex justify-content-end">
-                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
+                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
                                 </div>
                             </div>
                         </li>
@@ -552,7 +553,7 @@ class equipeDT_index extends Component {
                                     <ProgressoProjetos key={1} id_projeto={p.id_projeto} />
                                 </div>
                                 <div className="d-flex justify-content-end">
-                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank">Ver Projeto</a>
+                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
                                 </div>
                             </div>
                         </li>
