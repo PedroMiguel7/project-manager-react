@@ -171,9 +171,9 @@ class TarefasAndamento extends Component {
             {if (t.status === "Em Andamento")
             return (
               <>
-                <tr id={t.id_task}>
-                  <td>
-                    <IconButton onClick={() => {handleCheck(t.id_task);}}>
+                <tr id={t.id_task} key={t.id_task}>
+                  <td key={t.id_task}>
+                    <IconButton onClick={() => {handleCheck(t.id_task);}} key={t.id_task}>
                       {icon}
                     </IconButton>
                   </td>
