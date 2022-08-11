@@ -4,6 +4,7 @@ import ExibirEquipes from "../../components/Card/CardEquipe/OneEquipe"
 import BasicModalEquipe from "./NewEquipe";
 import { useEffect, useState } from "react";
 import api from "../../api";
+import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
 
 export default function Equipes() {
     var [Equipes, setEquipes] = useState([]);
@@ -32,9 +33,15 @@ export default function Equipes() {
     const handleChange = (event) => {
         setFiltro(event.target.value);
     }
+
+    var emptyState = false;
+
     if(filtro){
         const exp = eval(`/${filtro.replace(/[^\d\w]+/,'.*')}/i`)
         Equipes = Equipes.filter(Equipes => exp.test(Equipes.nome_equipe.toUpperCase()))
+        if (Equipes.length === 0) {
+            emptyState = true;
+        }
     }
 
     const [order, setOrder] = useState(1)
@@ -46,6 +53,18 @@ export default function Equipes() {
         setOrder(-order)
         setColumnorder(fieldName)
     }
+
+    function NotFound() {
+        return (
+            <>
+                <div className="d-flex flex-column align-items-center mt-5">
+                    <img className="mb-3" src={SearchNotFound} />
+                    <h3 style={{color: "#454756", textAlign: "center"}}>Nenhum resultado encontrado.</h3>
+                </div>
+            </>
+        )
+    }
+
     return (
         <>
             <main className='col-11 offset-1 px-5'>
@@ -77,7 +96,7 @@ export default function Equipes() {
                     </div>
                 </div>
                 <div className="row CardsContainer my-4">
-                    <ExibirEquipes equipes={Equipes} />
+                    {emptyState === true ? NotFound() : <ExibirEquipes equipes={Equipes} /> }
                 </div>
             </main>
         </>

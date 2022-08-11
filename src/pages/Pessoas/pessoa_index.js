@@ -1,8 +1,9 @@
-import filter from '../../assets/icons/filter.svg'
-import BasicModalPessoa from '../Pessoas/NovaPessoa/NewPessoa'
-import CardPessoas from "../../components/Card/CardPessoas"
-import { useState, useEffect} from "react"
-import api from "../../api"
+import filter from '../../assets/icons/filter.svg';
+import BasicModalPessoa from '../Pessoas/NovaPessoa/NewPessoa';
+import CardPessoas from "../../components/Card/CardPessoas";
+import { useState, useEffect} from "react";
+import api from "../../api";
+import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
 
 export default function Pessoas() {
     var [pessoas, setPessoas] = useState([]);
@@ -32,9 +33,14 @@ export default function Pessoas() {
         setFiltro(event.target.value);
     }
 
+    var emptyState = false;
+
     if(filtro){
         const exp = eval(`/${filtro.replace(/[^\d\w]+/,'.*')}/i`)
         pessoas = pessoas.filter(pessoas => exp.test(pessoas.nome_pessoa.toUpperCase()))
+        if (pessoas.length === 0) {
+            emptyState = true;
+        }
     }
 
     const [order, setOrder] = useState(1)
@@ -45,6 +51,17 @@ export default function Pessoas() {
         })
         setOrder(-order)
         setColumnorder(fieldName)
+    }
+
+    function NotFound() {
+        return (
+            <>
+                <div className="d-flex flex-column align-items-center mt-5">
+                    <img className="mb-3" src={SearchNotFound} />
+                    <h3 style={{color: "#454756", textAlign: "center"}}>Nenhum resultado encontrado.</h3>
+                </div>
+            </>
+        )
     }
 
     return (
@@ -73,7 +90,7 @@ export default function Pessoas() {
                 </div>
 
                 <div className="row CardsContainer my-4">
-                    <CardPessoas Pessoas={pessoas} atualiza={Atualiza}/>
+                    {emptyState === true ? NotFound() : <CardPessoas Pessoas={pessoas} atualiza={Atualiza}/> }
                 </div>
             </main>
         </>

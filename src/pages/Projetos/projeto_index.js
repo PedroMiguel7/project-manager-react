@@ -8,7 +8,7 @@ import FilterPopper from "../../components/FilterPopper"
 import Divider from '@mui/material/Divider';
 import { useState, useEffect } from "react";
 import api from "../../api";
-import SearchNotFound from "../../assets/empty-states/search-not-found.svg"
+import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
 
 
 export default function ProjetoIndex() {
@@ -101,9 +101,7 @@ export default function ProjetoIndex() {
 
                 <div className="row CardsContainer my-4">
                     {emptyState === true ? NotFound() : <Cards Projetos={projetos} atualiza={Atualiza} /> }
-                    
                 </div>
-
             </main>
         </>
     )
