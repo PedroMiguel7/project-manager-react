@@ -6,7 +6,6 @@ import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
 import MostrarLIstaTarefas from "./ListaDeTarefas";
 import Grafico from "./GraficoProgresso";
 
-
 class ProjetoDT extends Component {
     constructor(props) {
         super(props);
@@ -91,7 +90,6 @@ class ProjetoDT extends Component {
         }
     }
 
-
     render() {
         const { projetos } = this.state;
         const { tarefasPJ } = this.state;
@@ -136,7 +134,6 @@ class ProjetoDT extends Component {
                             <HeaderDt link="/projetos" pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
                             <BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                         </div>
-
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
                                 <div className="col-2 TPtrello">
@@ -151,9 +148,7 @@ class ProjetoDT extends Component {
                                 <div className="col-2 TPtrello">
                                     <MostrarLIstaTarefas status="Concluido" tarefas={TasksConcluidas} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
-
                             </div>
-
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <div className="row mt-3">
                                     <div className="align-items-start">
@@ -168,7 +163,6 @@ class ProjetoDT extends Component {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="row col-12 align-items-center">
                                     <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
                                         <h6 className="col">{totalDetasks}</h6>
@@ -202,7 +196,6 @@ class ProjetoDT extends Component {
                                                         <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Gerente de Projeto' />
                                                     </ul>
                                                 </div>
-
                                                 <div className="">
                                                     <h6 style={{ color: "#F46E27" }}>Dev. BackEnd</h6>
                                                     <ul style={{ fontWeight: 300 }}>
@@ -211,14 +204,12 @@ class ProjetoDT extends Component {
                                                 </div>
                                             </div>
                                             <div>
-
                                                 <div>
                                                     <h6 style={{ color: "#F46E27" }}>Dev. FrontEnd</h6>
                                                     <ul style={{ fontWeight: 300 }}>
                                                         <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Front-End' />
                                                     </ul>
                                                 </div>
-
                                                 <div>
                                                     <h6 style={{ color: "#F46E27" }}>Tester</h6>
                                                     <ul style={{ fontWeight: 300 }}>
@@ -226,16 +217,11 @@ class ProjetoDT extends Component {
                                                     </ul>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
-
                         </div>
-
 
                         {/*<div className="row gap-3 mt-10">
                             <div className="CardDT InfoProjeto row py-4 mt-4">
