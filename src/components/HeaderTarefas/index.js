@@ -105,6 +105,7 @@ export default function BasicTabs() {
         <TarefasConcluidas index={1} />
       </TabPanel>
       <TabPanel value={value} index={2}>
+        
         <div className='TabelaTarefas table-responsive'>
           <table className="table align-middle text-center ">
             <tbody>

@@ -91,7 +91,7 @@ class PessoasDT extends Component {
                             </div>
                             
                         </div>
-                        <div className="Teste row  h-lg-50 p-3">
+                        <div className="Teste row  h-lg-50 p-3 mt-3">
                             
                             <HeaderTarefas />
                             

@@ -3,7 +3,7 @@ import AdicionarProjeto from '../../components/NewProject/index'
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
 import api from "../../api";
-import CardBaixoHome from "../Home/CardBaixoHome";
+import CardBaixoHome from "../Home/TabelaProjetosHome";
 
 export default function Menu_index() {
   const [projetos, setProjetos] = useState([]);
@@ -154,7 +154,7 @@ export default function Menu_index() {
 
           </div>
         </div>
-        <div className="row mt-3">
+        <div className="Teste row  h-lg-50 p-3 mt-2">
           <CardBaixoHome Projetos={projetos} />
         </div>
       </main>

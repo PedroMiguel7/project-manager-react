@@ -22,7 +22,7 @@ export default function CardBaixoHome(props) {
     const [order, setOrder] = useState(1)
     const [columnorder, setColumnorder] = useState('nome_projeto')
 
-    
+
     if (PROJETOS !== null) {
         const handleOrder = (fieldName) => {
             setOrder(-order)
@@ -33,73 +33,87 @@ export default function CardBaixoHome(props) {
         })
 
         return (
-            <div className="CardBaixoHome pt-1 ps-2 pe-2 scrollar">
-                <div className="LeftOptions col-lg-2 mt-sm-2">
-                    <h5 className="me-2 ms-4 mt-3">Projetos</h5>
+            <>
+                <div className="d-flex justify-content-between align-items-center">
+                    <div className='d-flex align-items-center gap-5'>
+                        <h5 className='m-0'>Projetos</h5>
+                        {/*<StyledTabs className="mx-4" value={value} onChange={handleChange} aria-label="basic tabs" centered>
+                                <StyledTab className="StyledTab" label="Em Andamento" {...a11yProps(0)} />
+                                <StyledTab className="StyledTab" label="Concluídas" {...a11yProps(1)} />
+                            </StyledTabs>
+                        */}
+                    </div>
+
+                    {/*<ContadorTarefas />*/}
                 </div>
-                <table className="table" style={{ color: 'white' }}>
-                    <thead style={{ position: "sticky" }}>
-                        <tr className="LeftOptions">
-                            <th scope="col" onClick={e => handleOrder('id_projeto')} style={{ width: '10%', marginBottom: '40px' }}>#</th>
-                            <th scope="col" onClick={e => handleOrder('nome_projeto')} style={{ width: '20%' }}>Titulo</th>
-                            <th scope="col" style={{ width: '40%' }}>Progresso</th>
-                            <th scope="col" style={{ width: '20%' }}>Status</th>
-                            <th scope="col" style={{ width: '5%' }}></th>
-                            {/*<th scope="col" style={{ width: '5%' }}></th>*/}
-                        </tr>
-                    </thead>
-                    <tbody className="">
-                        {PROJETOS.map(p => (
-                            <tr key={p.id_projeto}>
-                                <th scope="row">{p.id_projeto}</th>
-                                <td className="">{p.nome_projeto}</td>
-                                <td>
-                                    <BarraProgresso id_projeto={p.id_projeto} />
-                                </td>
-                                <td>{p.status}</td>
-                                <td className="d-flex"><Link to={'/projetos/' + p.id_projeto} className="text-reset text-decoration-none"><Button className=" md-4" style={{
-                                    color: "#F4F5FA",
-                                    background: "#F46E27"
-                                }}
-                                    variant="contained" >DETALHAR</Button></Link>
-                                </td>
-                                {/*<td><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaProjeto(p.id_projeto)}>EXCLUIR</Button></td>*/}
+
+                <div className="TabelaTarefas table-responsive">
+                    <table className="table align-middle text-center " style={{ color: 'white' }}>
+                        <thead style={{ position: "sticky" }}>
+                            <tr>
+                                <th scope="col" onClick={e => handleOrder('id_projeto')} style={{ width: '10%', marginBottom: '40px' }}>#</th>
+                                <th scope="col" onClick={e => handleOrder('nome_projeto')} style={{ width: '20%' }}>Titulo</th>
+                                <th scope="col" style={{ width: '40%' }}>Progresso</th>
+                                <th scope="col" style={{ width: '20%' }}>Status</th>
+                                <th scope="col" style={{ width: '5%' }}></th>
+                                {/*<th scope="col" style={{ width: '5%' }}></th>*/}
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody className="">
+                            {PROJETOS.map(p => (
+                                <tr key={p.id_projeto}>
+                                    <th scope="row">{p.id_projeto}</th>
+                                    <td className="">{p.nome_projeto}</td>
+                                    <td>
+                                        <BarraProgresso id_projeto={p.id_projeto} />
+                                    </td>
+                                    <td>{p.status}</td>
+                                    <td className="d-flex"><Link to={'/projetos/' + p.id_projeto} className="text-reset text-decoration-none"><Button className=" md-4" style={{
+                                        color: "#F4F5FA",
+                                        background: "#F46E27"
+                                    }}
+                                        variant="contained" >DETALHAR</Button></Link>
+                                    </td>
+                                    {/*<td><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaProjeto(p.id_projeto)}>EXCLUIR</Button></td>*/}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </>
         )
 
     } else {
         return (
-            <div className="CardBaixoHome pt-1 ps-2 pe-2 scrollar fixTableHead">
-                <div className="LeftOptions col-lg-2 mt-sm-2">
-                    <h5 className="me-2 ms-4 mt-3">Projetos</h5>
+            <>
+                <div className="CardBaixoHome pt-1 ps-2 pe-2 scrollar fixTableHead">
+                    <div className="LeftOptions col-lg-2 mt-sm-2">
+                        <h5 className="me-2 ms-4 mt-3">Projetos</h5>
+                    </div>
+                    <table className="table " style={{ color: 'white' }}>
+                        <thead style={{ position: "sticky" }}>
+                            <tr className="LeftOptions">
+                                <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
+                                <th scope="col" style={{ width: '20%' }}>Titulo</th>
+                                <th scope="col" style={{ width: '40%' }}>Progresso</th>
+                                <th scope="col" style={{ width: '20%' }}>Status</th>
+                                <th scope="col" style={{ width: '5%' }}></th>
+                                {/*<th scope="col" style={{ width: '5%' }}></th>*/}
+                            </tr>
+                        </thead>
+                        <tbody className="">
+                            <tr>
+                                <th scope="row"></th>
+                                <td className=""></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <table className="table " style={{ color: 'white' }}>
-                    <thead style={{ position: "sticky" }}>
-                        <tr className="LeftOptions">
-                            <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
-                            <th scope="col" style={{ width: '20%' }}>Titulo</th>
-                            <th scope="col" style={{ width: '40%' }}>Progresso</th>
-                            <th scope="col" style={{ width: '20%' }}>Status</th>
-                            <th scope="col" style={{ width: '5%' }}></th>
-                            {/*<th scope="col" style={{ width: '5%' }}></th>*/}
-                        </tr>
-                    </thead>
-                    <tbody className="">
-                        <tr>
-                            <th scope="row"></th>
-                            <td className=""></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            </>
         )
     }
 }
