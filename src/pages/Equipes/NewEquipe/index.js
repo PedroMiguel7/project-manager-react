@@ -63,7 +63,7 @@ export default function BasicModalEquipe() {
   function PostaEquipe(equipe) {
     api.post("/equipes/",
     {
-      nome_equipe : nome,
+      nome_equipe : nome[0].toUpperCase() + nome.slice(1),
   })
   .then(resposta => {
     if(resposta.ok){

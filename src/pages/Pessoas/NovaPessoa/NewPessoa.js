@@ -69,7 +69,6 @@ export default function BasicModalPessoa() {
 
   function FechaModal() {
     setOpen(false);
-    window.location.reload();
   }
 
   const handleChangeFun = (evento) => {
@@ -79,7 +78,7 @@ export default function BasicModalPessoa() {
   function PostaPessoa() {
     api.post("/pessoas/",
       {
-        nome_pessoa: nome,
+        nome_pessoa: nome[0].toUpperCase() + nome.slice(1),
         funcao_pessoa: funcao,
         equipe_Id: parseInt(dadoEquipe),
       })

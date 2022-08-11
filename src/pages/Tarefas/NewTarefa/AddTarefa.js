@@ -92,7 +92,7 @@ export default function BasicModalTarefa(props) {
         try{
             api.post("/tasks/",
                 {
-                    descricao_task: nome,
+                    descricao_task: nome[0].toUpperCase() + nome.slice(1),
                     pessoa_id: parseInt(dadoEquipe),
                     projeto_id: props.id_projeto,
                     prazo_entrega: parseInt(prazoEntrega),
