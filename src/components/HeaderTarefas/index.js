@@ -90,35 +90,35 @@ export default function BasicTabs() {
         <div className='d-flex align-items-center gap-5'>
           <h5 className='m-0'>Tarefas</h5>
           <StyledTabs className="mx-4" value={value} onChange={handleChange} aria-label="basic tabs" centered>
-              <StyledTab className="StyledTab" label="Em Andamento" {...a11yProps(0)} />
-              <StyledTab className="StyledTab" label="Concluídas" {...a11yProps(1)} />
+            <StyledTab className="StyledTab" label="Em Andamento" {...a11yProps(0)} />
+            <StyledTab className="StyledTab" label="Concluídas" {...a11yProps(1)} />
           </StyledTabs>
         </div>
-        
+
         <ContadorTarefas />
-    </div>
-        
+      </div>
+
       <TabPanel value={value} index={0}>
         <TarefasAndamento index={0} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TarefasConcluidas index={1}/>
+        <TarefasConcluidas index={1} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <div className='TabelaTarefas table-responsive'>
-            <table className="table align-middle text-center ">
-              <tbody>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Início</th>
-                  <th scope="col"></th>
-                </tr>
-              </tbody>
-            </table>
+          <table className="table align-middle text-center ">
+            <tbody>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Nome</th>
+                <th scope="col">Início</th>
+                <th scope="col"></th>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </TabPanel>
     </>
-    
+
   );
 }
