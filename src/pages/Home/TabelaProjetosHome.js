@@ -2,9 +2,82 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import BarraProgresso from "../../components/Card/CardProjetos/BarraDeProgresso";
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+
+
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box >
+            {children}
+          </Box>
+        )}
+      </div>
+    );
+  }
+  TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+  };
+  
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
+  
+  const StyledTabs = styled((props) => (
+    <Tabs
+      {...props}
+      TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
+    />
+  ))({
+    '& .MuiTabs-indicator': {
+      display: 'flex',
+      justifyContent: 'center',
+      backgroundColor: 'transparent',
+    },
+    '& .MuiTabs-indicatorSpan': {
+      maxWidth: '70%',
+      width: '100%',
+      backgroundColor: '#F46E27',
+    },
+  });
+  
+  const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
+    ({ theme }) => ({
+      fontFamily: 'Inter, sans-serif',
+      textTransform: 'none',
+      fontWeight: 400,
+      fontSize: 14,
+      marginRight: theme.spacing(1),
+      color: '#87888C',
+      '&.Mui-selected': {
+        color: '#C2C3C6',
+        fontWeight: 500,
+      },
+      '&.Mui-focusVisible': {
+        backgroundColor: 'rgba(100, 95, 228, 0.32)',
+      },
+    }),
+  );
 
 export default function CardBaixoHome(props) {
-
     /*function DeletaProjeto(id_projeto) {
         api.delete("/projetos/" + id_projeto, { method: "DELETE" })
             .then(resposta => {

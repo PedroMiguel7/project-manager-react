@@ -56,7 +56,7 @@ const style = {
 export default function BasicModalPessoa() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => { setOpen(false); setEquipe(); setFuncao(); }
+  const handleClose = () => { setOpen(false); setDadoEquipe(); setFuncao(); }
 
   const [nome, setNome] = useState("");
   const [funcao, setFuncao] = React.useState();
@@ -165,7 +165,7 @@ export default function BasicModalPessoa() {
             <Box sx={{ minWidth: 120 }}>
               <CssTextField
               select
-              label="Equipe"
+              label="equipe"
               fullWidth
               margin="dense"
               value={dadoEquipe}
