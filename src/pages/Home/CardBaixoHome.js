@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import BarraProgresso from "../../components/Card/CardProjetos/BarraDeProgresso";
@@ -17,8 +17,21 @@ export default function CardBaixoHome(props) {
                 }
             })
     }*/
+    var PROJETOS = props.Projetos
+
+    const [order, setOrder] = useState(1)
+    const [columnorder, setColumnorder] = useState('nome_projeto')
+
     
-    if (props.Projetos !== null) {
+    if (PROJETOS !== null) {
+        const handleOrder = (fieldName) => {
+            setOrder(-order)
+            setColumnorder(fieldName)
+        }
+        PROJETOS = PROJETOS.sort((a, b) => {
+            return a[columnorder] > b[columnorder] ? -order : order;
+        })
+
         return (
             <div className="CardBaixoHome pt-1 ps-2 pe-2 scrollar">
                 <div className="LeftOptions col-lg-2 mt-sm-2">
@@ -27,8 +40,8 @@ export default function CardBaixoHome(props) {
                 <table className="table" style={{ color: 'white' }}>
                     <thead style={{ position: "sticky" }}>
                         <tr className="LeftOptions">
-                            <th scope="col" style={{ width: '10%', marginBottom: '40px' }}>#</th>
-                            <th scope="col" style={{ width: '20%' }}>Titulo</th>
+                            <th scope="col" onClick={e => handleOrder('id_projeto')} style={{ width: '10%', marginBottom: '40px' }}>#</th>
+                            <th scope="col" onClick={e => handleOrder('nome_projeto')} style={{ width: '20%' }}>Titulo</th>
                             <th scope="col" style={{ width: '40%' }}>Progresso</th>
                             <th scope="col" style={{ width: '20%' }}>Status</th>
                             <th scope="col" style={{ width: '5%' }}></th>
@@ -36,7 +49,7 @@ export default function CardBaixoHome(props) {
                         </tr>
                     </thead>
                     <tbody className="">
-                        {props.Projetos.map(p => (
+                        {PROJETOS.map(p => (
                             <tr key={p.id_projeto}>
                                 <th scope="row">{p.id_projeto}</th>
                                 <td className="">{p.nome_projeto}</td>

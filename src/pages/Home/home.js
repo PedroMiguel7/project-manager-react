@@ -1,12 +1,11 @@
 import Sidebar from "../../components/SideBar/SideBar";
 import AdicionarProjeto from '../../components/NewProject/index'
-import CardBaixoHome from "./CardBaixoHome";
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
 import api from "../../api";
+import CardBaixoHome from "../Home/CardBaixoHome";
 
 export default function Menu_index() {
-
   const [projetos, setProjetos] = useState([]);
   useEffect(() => {
     const fetchProjetos = async () => {
@@ -48,13 +47,13 @@ export default function Menu_index() {
 
   const Atualizar = async () => {
     try {
-        const response = await api.get('/projetos/');
-        setProjetos(response.data);
+      const response = await api.get('/projetos/');
+      setProjetos(response.data);
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-};
-
+  };
+  
 
   var QtdTotalEquipes = 0;
   if (equipes !== null) {
@@ -114,7 +113,7 @@ export default function Menu_index() {
         >
           <div className="CardlateralesquerdoHome col-lg-7 col-md-12 mt-2 ms-3">
             <div className="row CardsContainer my-4 mt-4 d-flex">
-              <Cards Projetos={projetos} atualiza={Atualizar} home="home"/>
+              <Cards Projetos={projetos} atualiza={Atualizar} home="home" />
             </div>
           </div>
           <div className="cardLateralHome d-flex justify-content-center col-lg-4 col-md-12 col-sm-12 mt-2 p-4 mt-4">
@@ -124,7 +123,7 @@ export default function Menu_index() {
                 <strong>
                   <p className="ms-4 ">Total de <br /> Equipes</p>
                 </strong>
-                <h6 className="ms-5" style={{color: "var(--azul-claro)"}}>{QtdTotalPessoas}</h6>
+                <h6 className="ms-5" style={{ color: "var(--azul-claro)" }}>{QtdTotalPessoas}</h6>
                 <strong>
                   <p className="ms-4 ">Total de <br /> pessoas</p>
                 </strong>
