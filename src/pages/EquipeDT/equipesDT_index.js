@@ -21,6 +21,7 @@ import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import MenuItem from '@mui/material/MenuItem';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import ProjectNotFound from '../../assets/empty-states/project-not-found.svg';
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -443,8 +444,11 @@ class equipeDT_index extends Component {
         if( props.projetos === null){
             return(
                 <>
-                    <div>
-                        <span>Ainda não foi atribuido nenhum projeto para esta equipe.</span>
+                    <div className="EmptyStateContainer">
+                        <img src={ProjectNotFound} />
+                        <h5>
+                            Essa equipe ainda não possui projetos.
+                        </h5>    
                     </div>
                 </>
             );
@@ -470,9 +474,12 @@ class equipeDT_index extends Component {
                 if (OnGoing.length === 0) {
                     return (
                         <li className="ProjetosLi">
-                            <span>
-                                Sem Projetos Em Andamento
-                            </span>
+                            <div className="EmptyStateContainer">
+                                <img src={ProjectNotFound} />
+                                <h5>
+                                    Sem Projetos Em Andamento.
+                                </h5>    
+                            </div>
                         </li>
                     )
                 } else {
@@ -505,9 +512,12 @@ class equipeDT_index extends Component {
                 if (Done.length === 0) {
                     return (
                         <li className="ProjetosLi">
-                            <span>
-                                Sem Projetos Concluidos :(
-                            </span>
+                            <div className="EmptyStateContainer">
+                                <img src={ProjectNotFound} />
+                                <h5>
+                                    Sem Projetos Concluidos.
+                                </h5>    
+                            </div>
                         </li>
                     )
                 } else {
