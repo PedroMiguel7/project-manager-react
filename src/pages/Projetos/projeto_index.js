@@ -8,6 +8,7 @@ import FilterPopper from "../../components/FilterPopper"
 import Divider from '@mui/material/Divider';
 import { useState, useEffect } from "react";
 import api from "../../api";
+import SearchNotFound from "../../assets/empty-states/search-not-found.svg"
 
 
 export default function ProjetoIndex() {
@@ -38,9 +39,14 @@ export default function ProjetoIndex() {
         setFilter(event.target.value);
     }
 
+    var emptyState = false;
+
     if(filter){
         const exp = eval(`/${filter.replace(/[^\d\w]+/,'.*')}/i`)
         projetos = projetos.filter(projetos => exp.test(projetos.nome_projeto.toUpperCase()))
+        if (projetos.length === 0) {
+            emptyState = true;
+        }
     }
 
     
@@ -52,6 +58,17 @@ export default function ProjetoIndex() {
         })
         setOrder(-order)
         setColumnorder(fieldName)
+    }
+
+    function NotFound() {
+        return (
+            <>
+                <div className="d-flex flex-column align-items-center mt-5">
+                    <img className="mb-3" src={SearchNotFound} />
+                    <h3 style={{color: "#454756", textAlign: "center"}}>Nenhum resultado encontrado.</h3>
+                </div>
+            </>
+        )
     }
 
     return (
@@ -83,7 +100,8 @@ export default function ProjetoIndex() {
                 </div>
 
                 <div className="row CardsContainer my-4">
-                    <Cards Projetos={projetos} atualiza={Atualiza} />
+                    {emptyState === true ? NotFound() : <Cards Projetos={projetos} atualiza={Atualiza} /> }
+                    
                 </div>
 
             </main>
