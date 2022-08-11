@@ -69,7 +69,7 @@ export default function Pessoas() {
             <main className='col-11 offset-1 px-5'>
             <div className='row mt-5 pb-3 main-header'>
                     <h1 className="Titulo col-lg-3 fs-2">Pessoas</h1>
-                    <input onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Search here..."/>
+                    <input onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Pesquise aqui..."/>
                 </div>
                 <div className="Options row d-flex flex-wrap mt-lg-3 mt-3 mb-5">
                     <div className="LeftOptions col mt-sm-2">

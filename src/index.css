@@ -156,6 +156,17 @@ main h1 {
     transition: 0.2s;
 }
 
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    margin-right: -10px;
+    height: 15px;
+    width: 15px;
+    background-image: url('./assets/icons/clear.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.2s ease;
+}
+
 /*.main-header {
     border-bottom: 0.15px solid #2C2E3B;
 }*/

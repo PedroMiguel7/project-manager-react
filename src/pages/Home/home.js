@@ -95,7 +95,7 @@ export default function Menu_index() {
             type="search"
             name="main-search"
             id="main-search"
-            placeholder="Search here..."
+            placeholder="Pesquise aqui..."
           />
         </div>
 

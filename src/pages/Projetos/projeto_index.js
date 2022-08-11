@@ -9,6 +9,7 @@ import Divider from '@mui/material/Divider';
 import { useState, useEffect } from "react";
 import api from "../../api";
 import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
+import ClearIcon from "../../assets/icons/clear.svg"
 
 
 export default function ProjetoIndex() {
@@ -76,7 +77,7 @@ export default function ProjetoIndex() {
             <main className='col-11 offset-1 px-5'>
                 <div className='row mt-5 pb-3 main-header'>
                     <h1 className="Titulo col-lg-3 fs-2">Projetos</h1>
-                    <input onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Search here..."/>
+                    <input onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Pesquise aqui..."/>
                 </div>
                 <Divider />
                 <div className="Options row d-flex flex-wrap my-lg-3 my-3">
