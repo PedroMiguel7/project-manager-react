@@ -46,19 +46,14 @@ export default function Menu_index() {
     fetchpessoas();
   }, []);
 
-  function Atualizar() {
-    useEffect(() => {
-      const fetchProjetos = async () => {
-        try {
-          const response = await api.get('/projetos/');
-          setProjetos(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      fetchProjetos();
-    }, []);
-  }
+  const Atualizar = async () => {
+    try {
+        const response = await api.get('/projetos/');
+        setProjetos(response.data);
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 
   var QtdTotalEquipes = 0;
