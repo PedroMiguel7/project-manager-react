@@ -237,7 +237,7 @@ class ProjetoDT extends Component {
                         </div>
 
 
-                        <div className="row gap-3 mt-10">
+                        {/*<div className="row gap-3 mt-10">
                             <div className="CardDT InfoProjeto row py-4 mt-4">
                                 <div className="col-12 col-lg-5 me-4">
                                     <h4>Descrição</h4>
@@ -286,7 +286,7 @@ class ProjetoDT extends Component {
                                             </div>
                                             <div className="Resumo col-md-12 col-lg-9 offset-lg-4 justify-content-center ">
                                                 <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
-                                                    {/*<h6><this.BuscarMembros equipe_id = {p.equipe_id}/></h6>*/}
+                                                    <h6><this.BuscarMembros equipe_id = {p.equipe_id}/></h6>
                                                     <strong>
                                                         <p className="ms-4 ">Total de <br />Colaboradores</p>
                                                     </strong>
@@ -335,7 +335,7 @@ class ProjetoDT extends Component {
                                             </tr>
                                         </thead>
                                         <tbody className="">
-                                            {/*<this.MostrarEquipe equipe_id = {p.equipe_id}/>*/}
+                                            <this.MostrarEquipe equipe_id = {p.equipe_id}/>
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -371,7 +371,7 @@ class ProjetoDT extends Component {
                                 </div>
                             </div>
 
-                        </div>
+                        </div>*/}
                     </main>
                 ))}
             </>
