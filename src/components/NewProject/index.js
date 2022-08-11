@@ -123,7 +123,7 @@ export default function BasicModal(props) {
               //size="small"
               id="nome"
               name='nome'
-              label="Nome"
+              label="Título"
               onChange={(e) => setNome(e.target.value)}
               variant="outlined"
               margin="dense"

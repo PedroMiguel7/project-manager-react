@@ -96,6 +96,8 @@ export default function BasicModalPessoa() {
     fetchequipe();
   }, []);
 
+  
+
 
   return (
     <div>
@@ -165,7 +167,7 @@ export default function BasicModalPessoa() {
             <Box sx={{ minWidth: 120 }}>
               <CssTextField
               select
-              label="equipe"
+              label="Equipe"
               fullWidth
               margin="dense"
               value={dadoEquipe}
