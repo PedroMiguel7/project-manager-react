@@ -46,7 +46,6 @@ export default function Equipes() {
         setOrder(-order)
         setColumnorder(fieldName)
     }
-
     return (
         <>
             <main className='col-11 offset-1 px-5'>

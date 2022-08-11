@@ -8,9 +8,9 @@ import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import NewProject from '../../../assets/icons/new.svg';
-import { useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import MenuItem from '@mui/material/MenuItem';
-import api from "../../../api"
+import api from "../../../api";
 
 
 const CssTextField = styled(TextField)({
@@ -69,6 +69,7 @@ export default function BasicModalPessoa() {
 
   function FechaModal() {
     setOpen(false);
+    window.location.reload();
   }
 
   const handleChangeFun = (evento) => {

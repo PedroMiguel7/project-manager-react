@@ -2,9 +2,8 @@ import Divider from '@mui/material/Divider';
 import useState from 'react';
 
 function Header({titulo}) {
-    const [filter, setFilter] = useState('')
-    const handleChange = (event) =>{
-        setFilter(event.target.value);
+    function handleChange(event){
+        this.props.inputText(event.target.value);
     }
     return (
         <>
