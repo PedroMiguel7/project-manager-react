@@ -1,26 +1,70 @@
-import Header from "../../components/Header"
 import filter from '../../assets/icons/filter.svg'
 import BasicModalPessoa from '../Pessoas/NovaPessoa/NewPessoa'
-import Card from "../../components/Card"
 import CardPessoas from "../../components/Card/CardPessoas"
+import { useState, useEffect} from "react"
+import api from "../../api"
 
-function Pessoas() {
+export default function Pessoas() {
+    var [pessoas, setPessoas] = useState([]);
+    useEffect(() => {
+        const fetchProjetos = async () => {
+            try {
+                const response = await api.get('/pessoas/');
+                setPessoas(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchProjetos();
+    }, []);
+
+    const Atualiza = async () => {
+        try {
+            const response = await api.get('/pessoas/');
+            setPessoas(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const [filtro, setFiltro] = useState('')
+    const handleChange = (event) =>{
+        setFiltro(event.target.value);
+    }
+
+    if(filtro){
+        const exp = eval(`/${filtro.replace(/[^\d\w]+/,'.*')}/i`)
+        pessoas = pessoas.filter(pessoas => exp.test(pessoas.nome_pessoa.toUpperCase()))
+    }
+
+    const [order, setOrder] = useState(1)
+    const [columnorder, setColumnorder] = useState('nome_pessoa')
+    const handleOrder = (fieldName) => {
+        pessoas = pessoas.sort((a, b) => {
+            return a[columnorder].toUpperCase() > b[columnorder].toUpperCase() ? -order : order;
+        })
+        setOrder(-order)
+        setColumnorder(fieldName)
+    }
+
     return (
         <>
             <main className='col-11 offset-1 px-5'>
-                <Header titulo="Pessoas"/>
+            <div className='row mt-5 pb-3 main-header'>
+                    <h1 className="Titulo col-lg-3 fs-2">Pessoas</h1>
+                    <input onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Search here..."/>
+                </div>
                 <div className="Options row d-flex flex-wrap mt-lg-3 mt-3 mb-5">
                     <div className="LeftOptions col mt-sm-2">
-                        <span className="me-2">Show:</span>
-                        <input type="" name="txt-show" id="txt-show" size="1" />
+                        {/*<span className="me-2">Show:</span>
+                        <input type="" name="txt-show" id="txt-show" size="1" />*/}
                     </div>
                     <div className="RightOptions d-flex justify-content-end align-items-center flex-wrap gap-3 col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
-                        <BasicModalPessoa />
+                        <BasicModalPessoa atualiza={Atualiza}/>
 
-                        <select className="ps-1" name="order-select" id="order-select">
-                            <option value="crescente">A - Z</option>
-                            <option value="decrescente">Z - A</option>
-                        </select>
+                        <button onClick={e => handleOrder('nome_pessoa')} className="ps-1" name="order-select" id="order-select" >
+                            A - Z
+                        </button>
 
                         <button className="filter px-2 py-1">
                             <span>Filtro</span> <img src={filter} alt="" />
@@ -29,11 +73,9 @@ function Pessoas() {
                 </div>
 
                 <div className="row CardsContainer my-4">
-                    <CardPessoas />
+                    <CardPessoas Pessoas={pessoas} atualiza={Atualiza}/>
                 </div>
             </main>
         </>
     )
 }
-
-export default Pessoas
