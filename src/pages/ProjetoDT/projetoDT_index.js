@@ -48,16 +48,41 @@ class ProjetoDT extends Component {
             fetchEquipe()
         }, []);
         //let totalMembros = 0;
-        if (pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`) === null) {
-            return (
-                <li>sem pessoa</li>
-            );
-        } else {
-            return (
-                pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`).map(f => (
-                    <li>{f.nome_pessoa}</li>
-                ))
-            );
+        if(props.QualFoi === "Funções"){
+            if(pessoas !== null){
+                if (pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`) === null) {
+                    return (
+                        <li>sem pessoa</li>
+                    );
+                } else {
+                    return (
+                        pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`).map(f => (
+                            <li>{f.nome_pessoa}</li>
+                        ))
+                    );
+                }
+            } else{
+                return(
+                    <li>sem pessoa</li>
+                )
+            }
+        } else{
+            if(pessoas !== null){
+                return(
+                    pessoas.map(f=>(
+                        <li className="d-flex">
+                            {f.nome_pessoa}
+                            <div className="ms-4">
+                                {f.funcao_pessoa}
+                            </div>
+                        </li>
+                    ))
+                )
+            }else{
+                return(
+                    <li>sem pessoa</li>
+                )
+            }
         }
     }
 
@@ -132,7 +157,7 @@ class ProjetoDT extends Component {
                         <div className="LeftOptions col mt-sm-2">
                             <HeaderDt link="/projetos" pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
                             <div className="col-lg-3 offset-lg-6">
-                            {/*<BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />*/}
+                                {/*<BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />*/}
                             </div>
                         </div>
                         <div className="d-flex row">
@@ -152,7 +177,7 @@ class ProjetoDT extends Component {
                             </div>
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <h2>Estatísticas</h2>
-                                <div className="row col-12 align-items-center" style={{backgroundColor: "var(--preto-medio)", borderRadius:"5%", marginTop:"-20px"}}>
+                                <div className="row col-12 align-items-center" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-20px" }}>
                                     <div className="col-md-12">
                                         {/*<CircularProgressWithLabel value="20" id_projeto={p.id_projeto} />*/}
                                         <div className=" md-3">
@@ -180,19 +205,23 @@ class ProjetoDT extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <h3 className="mt-4">Info Gerais</h3>
-                                <div className="row" style={{backgroundColor: "var(--preto-medio)", borderRadius:"5%", marginTop:"-20px"}}>
+                                <h3 className="mt-4">Info-Gerais</h3>
+                                <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-20px" }}>
                                     <div className="align-items-start mt-2">
                                         <h5>Descrição</h5>
                                         <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
                                     </div>
                                 </div>
-                                <div className="row align-items-end mt-2" style={{backgroundColor: "var(--preto-medio)", borderRadius:"5%", }}>
+                                <div className="row align-items-end mt-2" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", }}>
                                     <h5 className="container">Equipe
-                                    <Link to={'/equipes/' + p.equipe_id} target="_blank" className="ms-2 Link text-reset text-decoration-none">{p.nome_equipe}</Link>
+                                        <Link to={'/equipes/' + p.equipe_id} target="_blank" className="ms-2 Link text-reset text-decoration-none">{p.nome_equipe}</Link>
                                     </h5>
-                                    <div className="container ">
-                                        <div className="d-flex text-center justify-content-between">
+                                    <div className="container " style={{height:'145px',}}>
+                                        <div style={{scroll:"auto"}}>
+                                            <this.BuscarMembrosFunc equipe_id={p.equipe_id} />
+                                        </div>
+
+                                        {/*<div className="d-flex text-center justify-content-between">
                                             <div className="">
                                                 <div className="">
                                                     <h6 style={{ color: "#F46E27" }}>Gerente de Projeto</h6>
@@ -221,7 +250,7 @@ class ProjetoDT extends Component {
                                                     </ul>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>*/}
                                     </div>
                                 </div>
                             </div>
