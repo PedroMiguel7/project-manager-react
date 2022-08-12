@@ -5,6 +5,33 @@ import api from "../../../api"
 
 export default function CardPessoas(props) {
 
+    function MostraProjetos(equipe_id){
+        var [projetos, setProjetos] = useState([]);
+        useEffect(() => {
+            const fetchProjetos = async () => {
+                try {
+                    const response = await api.get('/equipes/'+equipe_id+'/projetos');
+                    setProjetos(response.data);
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+            fetchProjetos();
+        }, []);
+
+        if(projetos !== null){
+            var qtdP = projetos.length
+            return(
+                qtdP
+            )
+        } else{
+            return(
+                0
+            )
+        }
+
+    }
+
     function MostraTarefas(id_pessoa){
     var [tarefas, setTarefas] = useState([]);
     useEffect(() => {
@@ -74,7 +101,7 @@ export default function CardPessoas(props) {
                                 </div>
                                 <div className="CardPessoas2">
                                     <div>
-                                        <div>15</div>
+                                        <div>{MostraProjetos(p.equipe_id)}</div>
                                         <div>Projetos</div>
                                     </div>
                                     <div>
