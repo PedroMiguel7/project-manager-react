@@ -10,12 +10,13 @@ import CustomizedAccordion from "../../components/CustomizedAccordion";
 import NovaTarefa from '../../components/NovaTarefa';
 import HeaderTarefas from '../../components/HeaderTarefas';
 import LinearChart from "../../components/LinearChart";
+import RendimentoSelect from "./RendimentoSelect"
 
 class PessoasDT extends Component {
     state = {
         pessoa: [],
         tarefas: [],
-        //projetos: [],
+        rendimentoFilter: 1,
     }
     async componentDidMount() {
         const pessoaPath = window.location.pathname;
@@ -27,9 +28,23 @@ class PessoasDT extends Component {
         this.setState({ pessoa: response.data, tarefas: response2.data });
     }
 
+    handleCallbackRendimento = (childData) => {
+        this.setState({rendimentoFilter: childData})
+    }
+
+    SelectRendimento = (props) => {
+        return (
+            <>
+                <RendimentoSelect parentCallback = {this.handleCallbackRendimento} />
+            </>
+        )
+    }
+
     render() {
         const { pessoa } = this.state;
         const { tarefas} = this.state;
+        const { rendimentoFilter} = this.state;
+        console.log(rendimentoFilter);
 
         let TotalTarefas;
         if (tarefas === null) {
@@ -85,9 +100,13 @@ class PessoasDT extends Component {
                     </div>
                     <div className="col-lg-8">
                         <div className="row Teste h-lg-50 p-3">
-                            <h5 className='m-0'>Rendimento Semanal</h5>
+                            <div>
+                                <h5 className='m-0'>Rendimento</h5>
+                                <this.SelectRendimento />    
+                            </div>
+                            
                             <div className="ChartContainer" >
-                              <LinearChart />  
+                              <LinearChart selectValue={rendimentoFilter} />  
                             </div>
                             
                         </div>
