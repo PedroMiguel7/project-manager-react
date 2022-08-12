@@ -123,7 +123,7 @@ class ProjetoDT extends Component {
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer") !== null) {
                 //TotalTasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
                 TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
-            }            
+            }
         }
 
         return (
@@ -132,12 +132,14 @@ class ProjetoDT extends Component {
                     <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5' key={p.id_projeto}>
                         <div className="LeftOptions col mt-sm-2">
                             <HeaderDt link="/projetos" pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
-                            <BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
+                            <div className="col-lg-3 offset-lg-6">
+                            {/*<BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />*/}
+                            </div>
                         </div>
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
                                 <div className="col-2 TPtrello">
-                                    <MostrarLIstaTarefas status="A Fazer" tarefas={TasksFazer} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
+                                    <MostrarLIstaTarefas status="A Fazer" id_projeto={p.id_projeto} tarefas={TasksFazer} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <MostrarLIstaTarefas status="Em Andamento" tarefas={TasksAndamento} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
@@ -159,7 +161,7 @@ class ProjetoDT extends Component {
                                         <h5>Progresso</h5>
                                         {/*<CircularProgressWithLabel value="20" id_projeto={p.id_projeto} />*/}
                                         <div className=" md-3">
-                                            <Grafico TasksConcluidAs = {TotalTaksConcluidas} totalTasks={totalDetasks}/>
+                                            <Grafico TasksConcluidAs={TotalTaksConcluidas} totalTasks={totalDetasks} />
                                         </div>
                                     </div>
                                 </div>

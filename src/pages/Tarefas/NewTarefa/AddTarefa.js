@@ -112,14 +112,19 @@ export default function BasicModalTarefa(props) {
 
     return (
         <div>
-            <Button onClick={handleOpen} variant="contained" sx={{width: 'fit-content', color: "#F4F5FA",
+            <Button onClick={handleOpen} variant="contained"
+            style={{width:"30px"}}
+            sx={{
+            minWidth: 'none',
+            color: "#F4F5FA",
             background: "#F46E27",
             textTransform: 'capitalize',
             boxShadow: 'none',
+            borderRadius: '100%',
             ':hover': {
                 background: "#F57D3D",
             }}}>
-                Atribuir Tarefa
+                +
             </Button>
             <Modal
                 open={open}

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import aim from '../../../assets/icons/aim.svg';
-import api from "../../../api";
 import MostraProjetosOuTarefas from "./MostraPrETa";
 
 export default function CardPessoas(props) {

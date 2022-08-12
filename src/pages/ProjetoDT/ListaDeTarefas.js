@@ -1,6 +1,7 @@
 import { useDrop } from 'react-dnd';
 import api from '../../api';
 import MostrarTarefasCard from './cardTarefas';
+import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
 
 export default function MostrarLIstaTarefas(props) {
     const [, dropRef] = useDrop({
@@ -13,22 +14,43 @@ export default function MostrarLIstaTarefas(props) {
                         status: props.status,
                     })
                     props.atualiza()
-                    props.atualiza2()
                 }
                 updateStatus()
             }
         }
     })
-    return (
-        <>
-            <h4 className="text-center mt-2">{props.status}</h4>
-            <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                {
-                    props.tarefas.map(p =>(
-                        <MostrarTarefasCard  status={props.status} key={p.id_task} equipe_id={props.equipe_id} prioridade={p.prioridade} id_task={p.id_task} descricao_task={p.descricao_task} nome_pessoa={p.nome_pessoa}/>
-                    ))
-                }
-            </div>
-        </>
-    )
+
+    if (props.status === "A Fazer") {
+        return (
+            <>
+                <div className='d-flex text-center mt-2 justify-content-center'>
+                    <h4 className="text-center">{props.status}</h4>
+                    <div className='ms-2'>
+                        <BasicModalTarefa id_projeto={props.id_projeto} equipe_id={props.equipe_id} atualiza={props.atualiza} />
+                    </div>
+                </div>
+                <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
+                    {
+                        props.tarefas.map(p => (
+                            <MostrarTarefasCard status={props.status} key={p.id_task} equipe_id={props.equipe_id} prioridade={p.prioridade} id_task={p.id_task} descricao_task={p.descricao_task} nome_pessoa={p.nome_pessoa} />
+                        ))
+                    }
+                </div>
+            </>
+        )
+    } else{
+        return (
+            <>
+                <h4 className="text-center mt-2">{props.status}</h4>
+                <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
+                    {
+                        props.tarefas.map(p => (
+                            <MostrarTarefasCard status={props.status} key={p.id_task} equipe_id={props.equipe_id} prioridade={p.prioridade} id_task={p.id_task} descricao_task={p.descricao_task} nome_pessoa={p.nome_pessoa} />
+                        ))
+                    }
+                </div>
+            </>
+        )
+    }
+
 }
