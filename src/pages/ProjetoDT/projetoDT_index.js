@@ -1,10 +1,9 @@
 import HeaderDt from "../../components/HeaderDt"
-import CircularProgressWithLabel from '../../components/CircularProgressWithLabel'
 import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
-import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
 import MostrarLIstaTarefas from "./ListaDeTarefas";
 import Grafico from "./GraficoProgresso";
+import { Link } from "react-router-dom";
 
 class ProjetoDT extends Component {
     constructor(props) {
@@ -152,20 +151,14 @@ class ProjetoDT extends Component {
                                 </div>
                             </div>
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
-                                <div className="row mt-3">
-                                    <div className="align-items-start">
-                                        <h4>Descrição</h4>
-                                        <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
-                                    </div>
+                                <h2>Estatísticas</h2>
+                                <div className="row col-12 align-items-center" style={{backgroundColor: "var(--preto-medio)", borderRadius:"5%", marginTop:"-20px"}}>
                                     <div className="col-md-12">
-                                        <h5>Progresso</h5>
                                         {/*<CircularProgressWithLabel value="20" id_projeto={p.id_projeto} />*/}
                                         <div className=" md-3">
                                             <Grafico TasksConcluidAs={TotalTaksConcluidas} totalTasks={totalDetasks} />
                                         </div>
                                     </div>
-                                </div>
-                                <div className="row col-12 align-items-center">
                                     <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
                                         <h6 className="col">{totalDetasks}</h6>
                                         <strong>
@@ -187,8 +180,17 @@ class ProjetoDT extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="row align-items-end">
-                                    <h4 className="container text-center">Equipe</h4>
+                                <h3 className="mt-4">Info Gerais</h3>
+                                <div className="row" style={{backgroundColor: "var(--preto-medio)", borderRadius:"5%", marginTop:"-20px"}}>
+                                    <div className="align-items-start mt-2">
+                                        <h5>Descrição</h5>
+                                        <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
+                                    </div>
+                                </div>
+                                <div className="row align-items-end mt-2" style={{backgroundColor: "var(--preto-medio)", borderRadius:"5%", }}>
+                                    <h5 className="container">Equipe
+                                    <Link to={'/equipes/' + p.equipe_id} target="_blank" className="ms-2 Link text-reset text-decoration-none">{p.nome_equipe}</Link>
+                                    </h5>
                                     <div className="container ">
                                         <div className="d-flex text-center justify-content-between">
                                             <div className="">
