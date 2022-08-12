@@ -101,11 +101,11 @@ export default function CardPessoas(props) {
                                 </div>
                                 <div className="CardPessoas2">
                                     <div>
-                                        <div>{MostraProjetos(p.equipe_id)}</div>
+                                        <div>{/*MostraProjetos(p.equipe_id)*/}</div>
                                         <div>Projetos</div>
                                     </div>
                                     <div>
-                                        <div>{MostraTarefas(p.id_pessoa)}</div>
+                                        <div>{/*MostraTarefas(p.id_pessoa)*/}</div>
                                         <div>Tarefas</div>
                                     </div>
                                 </div>
