@@ -22,6 +22,7 @@ import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import MenuItem from '@mui/material/MenuItem';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import ProjectNotFound from '../../assets/empty-states/project-not-found.svg';
+import PeopleNotFound from '../../assets/empty-states/people-not-found.svg';
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -112,8 +113,11 @@ class equipeDT_index extends Component {
         if( props.PessoasEquipe === null){
             return(
                 <>
-                    <div>
-                        <span>Ainda não foi adicionado nenhum membro nesta equipe.</span>
+                    <div className="EmptyStateContainer">
+                        <img src={PeopleNotFound} />
+                        <h5>
+                            Essa equipe ainda não possui membros.
+                        </h5>    
                     </div>
                 </>
             );

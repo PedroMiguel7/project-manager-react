@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import aim from '../../../assets/icons/aim.svg';
-import api from "../../../api"
+import api from "../../../api";
+import PeopleNotFound from '../../../assets/empty-states/people-not-found.svg';
 
 export default function CardPessoas(props) {
 
@@ -117,29 +118,11 @@ export default function CardPessoas(props) {
         } else {
             return (
                 <>
-                    <div className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
-                        <div className="CardPessoaTag">
-                            sem função
-                        </div>
-                        <div className=" ">
-                            <div className="CardPessoas1 mb-3">
-                                <h2 classNamw="NomePessoa">sem nome</h2>
-
-                                <div className="mb-3">
-                                    <img src={aim} alt="" /> <span>sem equipe</span>
-                                </div>
-                            </div>
-                            <div className="CardPessoas2">
-                                <div>
-                                    <div>15</div>
-                                    <div>Projetos</div>
-                                </div>
-                                <div>
-                                    <div>8</div>
-                                    <div>Tarefas</div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="EmptyStateContainer">
+                        <img src={PeopleNotFound} />
+                        <h5>
+                            Ainda não foram adicionadas pessoas.
+                        </h5>    
                     </div>
                 </>
             )

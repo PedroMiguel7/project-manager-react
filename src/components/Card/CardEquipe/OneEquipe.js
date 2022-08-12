@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import TeamNotFound from "../../../assets/empty-states/team-not-found.svg";
 
 export default function ExibirEquipes(props) {
     if (props.equipes !== null) {
@@ -45,32 +46,11 @@ export default function ExibirEquipes(props) {
     } else {
         return (
             <>
-                <div className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
-                    <div className="card-part1 mb-3">
-                        <h2 class="fs-4">
-                            sem nome
-                        </h2>
-                    </div>
-                    <div className="card-part2 d-flex justify-content-between">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">NOME</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        x
-                                    </th>
-                                    <td style={{ color: "#fff" }}>
-                                        sem membros
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div className="EmptyStateContainer">
+                    <img src={TeamNotFound} />
+                    <h5>
+                        Ainda não foi criada nenhuma equipe.
+                    </h5>    
                 </div>
             </>
         )

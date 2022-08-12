@@ -46,7 +46,7 @@ class TarefasAndamento extends Component {
     } else {
       return (
         <>
-          <tr className="TabelaTarefasHead">
+          <tr className="TabelaTarefasHead AddShadow">
             <th scope="col"></th>
             <th scope="col">Nome</th>
             <th scope="col">Prioridade</th>
@@ -57,8 +57,9 @@ class TarefasAndamento extends Component {
         </>
       )
     }
-    
   }
+
+      
 
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
@@ -246,9 +247,23 @@ class TarefasAndamento extends Component {
   render() {
     const { tarefas } = this.state;
 
+    //var TableHeader = document.getElementsByClassName('TabelaTarefasHead');
+    
+    const scrollHandler = (event) => {
+      //var TableHeader = document.getElementsByClassName('TabelaTarefasHead');
+      //console.log(TableHeader);
+
+      let ScrollValue = event.currentTarget.scrollTop;
+      console.log(ScrollValue);
+
+      if (ScrollValue < 4) {
+        console.log(document.getElementsByClassName(".TabelaTarefasHead").classList)
+      }
+    }
+
     return (
       <>
-        <div className='TabelaTarefas table-responsive'>
+        <div className='TabelaTarefas table-responsive' onScroll={scrollHandler}>
           <table id='table' className="table align-middle text-center">
             <tbody>
               <this.Header tarefas={tarefas} />
