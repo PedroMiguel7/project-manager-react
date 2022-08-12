@@ -90,7 +90,7 @@ export default function Pessoas() {
                 </div>
 
                 <div className="row CardsContainer my-4">
-                    {emptyState === true ? NotFound() : <CardPessoas Pessoas={pessoas} atualiza={Atualiza}/> }
+                    {emptyState === true ? NotFound() : <CardPessoas Pessoas={pessoas}/> }
                 </div>
             </main>
         </>
