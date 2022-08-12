@@ -66,7 +66,7 @@ class PessoasDT extends Component {
                                 <img src={aim} /> <span>{pessoa.nome_equipe}</span>
                             </div>
                             <div>
-                                <span>Projeto</span>
+                                {/*<span>Projeto</span>*/}
                             </div>
                         </div>
                         <Divider light orientation="vertical" variant="middle" flexItem />
