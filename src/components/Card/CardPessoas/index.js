@@ -1,64 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import aim from '../../../assets/icons/aim.svg';
 import api from "../../../api";
 import PeopleNotFound from '../../../assets/empty-states/people-not-found.svg';
+import MostraProjetosOuTarefas from "./MostraPrETa";
 
 export default function CardPessoas(props) {
-
-    function MostraProjetos(equipe_id){
-        var [projetos, setProjetos] = useState([]);
-        useEffect(() => {
-            const fetchProjetos = async () => {
-                try {
-                    const response = await api.get('/equipes/'+equipe_id+'/projetos');
-                    setProjetos(response.data);
-                } catch (error) {
-                    console.log(error);
-                }
-            };
-            fetchProjetos();
-        }, []);
-
-        if(projetos !== null){
-            var qtdP = projetos.length
-            return(
-                qtdP
-            )
-        } else{
-            return(
-                0
-            )
-        }
-
-    }
-
-    function MostraTarefas(id_pessoa){
-    var [tarefas, setTarefas] = useState([]);
-    useEffect(() => {
-        const fetchTarefas = async () => {
-            try {
-                const response = await api.get('/pessoas/'+id_pessoa+'/tasks');
-                setTarefas(response.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchTarefas();
-    }, []);
-
-    if(tarefas !== null){
-        var qtd = tarefas.length
-        return(
-            qtd
-        )
-    } else{
-        return(
-            0
-        )
-    }
-
-    }
 
     function MudarBackground(funcao) {
         if (funcao === "Front-End") {
@@ -102,11 +49,11 @@ export default function CardPessoas(props) {
                                 </div>
                                 <div className="CardPessoas2">
                                     <div>
-                                        <div>{/*MostraProjetos(p.equipe_id)*/}</div>
+                                        <div><MostraProjetosOuTarefas PRouTA={1} equipe_id={p.equipe_id}/></div>
                                         <div>Projetos</div>
                                     </div>
                                     <div>
-                                        <div>{/*MostraTarefas(p.id_pessoa)*/}</div>
+                                        <div><MostraProjetosOuTarefas PRouTA={2} id_pessoa={p.id_pessoa}/></div>
                                         <div>Tarefas</div>
                                     </div>
                                 </div>

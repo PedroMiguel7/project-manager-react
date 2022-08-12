@@ -111,12 +111,12 @@ export default function Menu_index() {
         <div
           className="row d-flex justify-content-between flex-wrap"
         >
-          <div className="CardlateralesquerdoHome col-lg-7 col-md-12 mt-2 ms-3">
+          <div className="CardlateralesquerdoHome col-lg-6 col-md-12 mt-2 ms-3">
             <div className="row CardsContainer my-4 mt-4 d-flex">
               <Cards Projetos={projetos} atualiza={Atualizar} home={"home"} />
             </div>
           </div>
-          <div className="cardLateralHome d-flex justify-content-center col-lg-4 col-md-12 col-sm-12 mt-2 p-4 mt-4">
+          <div className="cardLateralHome d-flex justify-content-center col-lg-6 col-md-12 col-sm-12 mt-2 p-4 mt-4">
             <div className="Resumo col-md-12 col-lg-12 justify-content-center ">
               <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
                 <h6 >{QtdTotalEquipes}</h6>

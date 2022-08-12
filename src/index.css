@@ -56,7 +56,6 @@ header {
 }
 
 .TPtrello2{
-    background-color: var(--preto-medio);
     height: 800px;
     border-radius: 5%;
 }
@@ -88,7 +87,7 @@ body {
 .cardLateralHome{
     background-color: var(--preto-medio);
     height: 350px;
-    width: 600px;
+    width: 700px;
     align-items: center;
     border-radius: 10px;
 }
