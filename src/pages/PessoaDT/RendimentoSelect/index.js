@@ -66,7 +66,6 @@ class RendimentoSelect extends React.Component {
                         MenuProps: {
                           PaperProps: {
                             style: {
-                              maxHeight: '23vh',
                               backgroundColor: '#494A58',
                               color: '#fff',
                             }
