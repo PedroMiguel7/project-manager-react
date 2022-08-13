@@ -67,7 +67,7 @@ const style = {
 };
 
 
-export default function EditaEquipe(props) {
+export default function EditaPessoa(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -101,27 +101,36 @@ export default function EditaEquipe(props) {
   };
 
   const [nome, setNome] = useState("");
+  const [funcao, setFuncao] = React.useState();
+
+  const handleChangeFun = (evento) => {
+    setFuncao(evento.target.value);
+  };
 
   useEffect(() => {
     const fetch = async () => {
-        const response2 = await api.get('/equipes/' + props.id_equipe);
+        const response2 = await api.get('/pessoas/' + props.id_equipe);
         const Dados = (response2.data);
-        setNome(Dados.nome_equipe);
+        setNome(Dados.nome_pessoa);
+        setFuncao(Dados.funcao_pessoa);
     };
     fetch();
   }, []);
 
 
   function Deleta(){
-    api.delete('/equipes/'+ props.id_equipe);
+    api.delete('/pessoas/'+ props.id_pessoa);
     handleCloseAlert();
     props.atualiza();
   }
 
   function Edita() {
     const updateStatus = async () => {
-      const response = await api.put('/equipes/' + props.id_equipe, {
-        nome_equipe: nome
+      const response = await api.put('/pessoas/' + props.id_pessoa, {
+        equipe_id: props.equipe_id,
+        funcao_pessoa: funcao,
+        id_pessoa: props.id_pessoa,
+        nome_pessoa: nome
       },[])
       props.atualiza();
       handleCloseEdit();
@@ -230,6 +239,33 @@ export default function EditaEquipe(props) {
                 className='textField'
                 autoComplete='off'
               />
+
+            <Box sx={{ minWidth: 120 }}>
+              <CssTextField 
+              select
+              label="Função"
+              fullWidth
+              margin="dense"
+              value={funcao}
+              onChange={handleChangeFun}
+              SelectProps={{
+                MenuProps: {
+                  PaperProps: {
+                    style: {
+                      maxHeight: '23vh',
+                      backgroundColor: '#494A58',
+                      color: '#fff',
+                    }
+                  }
+                }
+              }}
+              >
+                <MenuItem value={"Back-End"}>Back-End</MenuItem>
+                <MenuItem value={"Front-End"}>Front-End</MenuItem>
+                <MenuItem value={"Tester"}>Tester</MenuItem>
+                <MenuItem value={"Gerente de Projeto"}>Gerente de Projeto</MenuItem>
+              </CssTextField>
+            </Box>
 
               <Divider light className='mt-3' />
               <div className='d-flex justify-content-end mt-5'>

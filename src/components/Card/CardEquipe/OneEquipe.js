@@ -14,7 +14,7 @@ export default function ExibirEquipes(props) {
                                 <div className="d-flex justify-content-between">
                                     <h2 className="fs-4">{p.nome_equipe}</h2>
                                     <Link to="/equipes">
-                                        <EditaEquipe id_equipe={p.id_equipe} />
+                                            <EditaEquipe id_equipe={p.id_equipe} atualiza={props.atualiza} />
                                     </Link>
                                 </div>
                             </div>
