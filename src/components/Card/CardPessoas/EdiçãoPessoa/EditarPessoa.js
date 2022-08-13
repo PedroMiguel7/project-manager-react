@@ -109,7 +109,7 @@ export default function EditaPessoa(props) {
 
   useEffect(() => {
     const fetch = async () => {
-        const response2 = await api.get('/pessoas/' + props.id_equipe);
+        const response2 = await api.get('/pessoas/' + props.id_pessoa);
         const Dados = (response2.data);
         setNome(Dados.nome_pessoa);
         setFuncao(Dados.funcao_pessoa);
