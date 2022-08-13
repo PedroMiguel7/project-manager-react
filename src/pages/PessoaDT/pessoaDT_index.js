@@ -63,10 +63,10 @@ class PessoasDT extends Component {
 
         return (
             <>
-                <div className="row">
-                <div className='col-11 offset-1 col-lg-11 offset-lg-1 px-5 d-flex flex-wrap mt-5 gap-5'>
+                <div className="row gap-5">
+                <div className='col-11 offset-1 col-lg-11 offset-lg-1 col-sm-12 offset-sm-1 px-5 d-flex flex-wrap mt-5 gap-5'>
                     
-                    <div className="col-lg-3 col-md-12 ProfilePessoa d-flex flex-column align-items-center p-4">
+                    <div className="col-lg-3 col-md-12 col-sm-12 ProfilePessoa d-flex flex-column align-items-center p-4">
                         <div className="d-flex flex-column align-items-center">
                             <div className="AvatarBorder d-flex align-items-center justify-content-center">
                                 <Avatar className="Avatar"sx={{width: 150, height: 150}} />
@@ -98,7 +98,8 @@ class PessoasDT extends Component {
                         {/*<CustomizedAccordion />*/}
 
                     </div>
-                    <div className="col-lg-8">
+                    
+                    <div className="col-lg-8 col-md-12 col-sm-12">
                         <div className="row Teste h-lg-50 p-3">
                             <div className="d-flex align-items-center justify-content-between">
                                 <h5 className='m-0'>Rendimento</h5>

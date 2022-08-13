@@ -496,7 +496,20 @@ input[type=search]::-webkit-search-cancel-button {
     z-index: 1;
 }
 
-.AddShadow {
+.notShadow {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: var(--preto-medio);
+    z-index: 1;
+}
+
+.withShadow {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: var(--preto-medio);
+    z-index: 1;
     box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
 }
 
