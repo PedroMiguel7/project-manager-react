@@ -288,17 +288,17 @@ class TarefasAndamento extends Component {
   render() {
     const { tarefas } = this.state;
 
-    //var TableHeader = document.getElementsByClassName('TabelaTarefasHead');
+    var TableHeader = document.getElementsByClassName('TabelaTarefasHead');
     
     const scrollHandler = (event) => {
       //var TableHeader = document.getElementsByClassName('TabelaTarefasHead');
       //console.log(TableHeader);
 
       let ScrollValue = event.currentTarget.scrollTop;
-      console.log(ScrollValue);
+      //console.log(ScrollValue);
 
       if (ScrollValue < 4) {
-        console.log(document.getElementsByClassName(".TabelaTarefasHead").classList)
+        //console.log(document.getElementsByClassName(".TabelaTarefasHead").remove("AddShadow"))
       }
     }
 
