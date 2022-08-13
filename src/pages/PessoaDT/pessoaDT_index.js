@@ -63,9 +63,7 @@ class PessoasDT extends Component {
 
         return (
             <>
-                <div className="row gap-5">
-                <div className='col-11 offset-1 col-lg-11 offset-lg-1 col-sm-12 offset-sm-1 px-5 d-flex flex-wrap mt-5 gap-5'>
-                    
+                <div className='col-11 offset-1 col-lg-11 offset-lg-1 col-sm-12 offset-sm-1 ps-5 d-flex flex-wrap mt-5 gap-5'>
                     <div className="col-lg-3 col-md-12 col-sm-12 ProfilePessoa d-flex flex-column align-items-center p-4">
                         <div className="d-flex flex-column align-items-center">
                             <div className="AvatarBorder d-flex align-items-center justify-content-center">
@@ -101,7 +99,7 @@ class PessoasDT extends Component {
                     
                     <div className="col-lg-8 col-md-12 col-sm-12">
                         <div className="row Teste h-lg-50 p-3">
-                            <div className="d-flex align-items-center justify-content-between">
+                            <div className="col-12 d-flex align-items-center justify-content-between">
                                 <h5 className='m-0'>Rendimento</h5>
                                 <this.SelectRendimento />    
                             </div>
@@ -111,22 +109,16 @@ class PessoasDT extends Component {
                             </div>
                             
                         </div>
-                        <div className="Teste row  h-lg-50 p-3 mt-3">
+                        <div className="Teste row col-12 h-lg-50 p-3 mt-3">
                             
                             <HeaderTarefas />
                             
                             <div className="d-flex justify-content-end">
                                 {/*<NovaTarefa />*/}
                             </div>
-                            
-                            
                         </div>
                     </div>
-                
-                
                  </div>
-                </div>
-                
             </>
         )
     }
