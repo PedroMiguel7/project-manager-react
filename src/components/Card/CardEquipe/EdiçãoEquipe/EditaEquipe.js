@@ -20,7 +20,6 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import InputAdornment from '@mui/material/InputAdornment';
 import api from '../../../../api';
 import { useEffect, useState } from 'react';
 
@@ -68,7 +67,7 @@ const style = {
 };
 
 
-export default function CardDelete(props) {
+export default function EditaEquipe(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -101,40 +100,28 @@ export default function CardDelete(props) {
     setAnchorEl(null);
   };
 
-
   const [nome, setNome] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [equipe, setEquipe] = useState();
 
   useEffect(() => {
     const fetchtask = async () => {
-      try {
-        const response2 = await api.get('/projetos/' + props.id_projeto);
+        const response2 = await api.get('/equipes/' + props.id_equipe);
         const TAREFA = (response2.data);
-        TAREFA.map(m => (
-          setNome(m.nome_projeto),
-          setDescricao(m.descricao_projeto)
-          ))
-      } catch (error) {
-        console.log(error);
-      }
+        setNome(TAREFA.nome_equipe);
     };
     fetchtask();
   }, []);
 
 
   function DeletaProjeto(){
-    api.delete('/projetos/'+ props.id_projeto);
+    api.delete('/equipes/'+ props.id_equipe);
     handleCloseAlert();
     props.atualiza();
   }
 
   function EditaProjeto() {
     const updateStatus = async () => {
-      const response = await api.put('/projetos/' + props.id_projeto, {
-        descricao_projeto: descricao,
-        equipe_id: parseInt(props.equipe_id),
-        nome_projeto: nome
+      const response = await api.put('/equipes/' + props.id_equipe, {
+        nome_equipe: nome
       },[])
       props.atualiza();
       handleCloseEdit();
@@ -226,31 +213,16 @@ export default function CardDelete(props) {
             <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
             <form onSubmit={EditaProjeto}>
               <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-                Editar<span style={{ color: '#F46E27' }}> Projeto</span>
+                Editar<span style={{ color: '#F46E27' }}> Equipe</span>
               </Typography>
 
               <CssTextField
                 required
                 id="nome"
                 name='nome'
-                label="Ttulo"
+                label="Nome"
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
-                variant="outlined"
-                margin="dense"
-                color='primary'
-                fullWidth
-                className='textField'
-                autoComplete='off'
-              />
-
-              <CssTextField
-                required
-                id="descricao"
-                name='descricao'
-                label="Ttulo"
-                value={descricao}
-                onChange={(e) => setDescricao(e.target.value)}
                 variant="outlined"
                 margin="dense"
                 color='primary'

@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import TeamNotFound from "../../../assets/empty-states/team-not-found.svg";
+import EditaEquipe from "../CardEquipe/EdiçãoEquipe/EditaEquipe";
 
 export default function ExibirEquipes(props) {
     if (props.equipes !== null) {
@@ -8,11 +9,14 @@ export default function ExibirEquipes(props) {
             <>
                 {props.equipes.map(p => (
                     <Link to={'/equipes/' + p.id_equipe} className="Link text-reset text-decoration-none col-lg-3 col-md-12 Card p-4">
-                        <div key={props.equipes.id_equipe}>
+                        <div key={p.id_equipe}>
                             <div className="card-part1 mb-3">
-                                <h2 class="fs-4">
-                                    {p.nome_equipe}
-                                </h2>
+                                <div className="d-flex justify-content-between">
+                                    <h2 className="fs-4">{p.nome_equipe}</h2>
+                                    <Link to="/equipes">
+                                        <EditaEquipe id_equipe={p.id_equipe} />
+                                    </Link>
+                                </div>
                             </div>
                             <div className="card-part2 d-flex justify-content-between">
                                 <table class="table">
