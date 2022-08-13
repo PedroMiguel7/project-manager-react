@@ -22,6 +22,10 @@ import TasksNotFound from "../../../assets/empty-states/tasks-not-found.svg";
 class TarefasAndamento extends Component {
   state = {
     tarefas: [],
+    tarefasId: 0,
+    openAlert: false,
+    openSnackbar: false,
+    changeIcon: false,
   }
   async componentDidMount() {
       const pessoaPath = window.location.pathname;
@@ -78,10 +82,9 @@ class TarefasAndamento extends Component {
     };
     
     const handleCheck = (id) => {
-      // usar o id pro post
       console.log(id);
-
-      setOpenAlert(true);
+      this.setState({tarefasId: id})
+      this.setState({openAlert: true})
     }
 
     const handleCloseAlert = () => {
@@ -90,18 +93,14 @@ class TarefasAndamento extends Component {
 
     const [openSnackbar, setOpenSnackbar] = React.useState(false);
 
-    const [changeIcon, setIcon] = React.useState(false);
-
     const handleClickSim = (id) => {
-      //Post de status para Concluido
-      //pegar o id da linha
       EditaTask(id);
       setOpenSnackbar(true);
       setOpenAlert(false);
-      setIcon(true);
+      this.setState({changeIcon: true});
     };
 
-    const icon = (changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
+    const icon = (this.state.changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
 
     function EditaTask(id) {
       api.put('/tasks/' + id, {
@@ -174,9 +173,9 @@ class TarefasAndamento extends Component {
             {if (t.status === "Em Andamento")
             return (
               <>
-                <tr id={t.id_task} key={t.id_task}>
-                  <td key={t.id_task}>
-                    <IconButton onClick={() => {handleCheck(t.id_task);}} key={t.id_task}>
+                <tr id={t.id_task}>
+                  <td>
+                    <IconButton onClick={() => {handleCheck(t.id_task);}}>
                       {icon}
                     </IconButton>
                   </td>
@@ -197,51 +196,93 @@ class TarefasAndamento extends Component {
                     <TarefasMenu equipe_id={t.id_equipe} id_task={t.id_task} />
                   </td>
                 </tr>
-
-                <Dialog
-                  open={openAlert}
-                  onClose={handleCloseAlert}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
-                  PaperProps={{
-                      style: {
-                        backgroundColor: '#494A58',
-                        color: '#fff'
-                      },
-                    }}
-                  >
-                      <DialogTitle id="alert-dialog-title">
-                      {"Marcar tarefa como concluída?"}
-                      </DialogTitle>
-                      
-                      <DialogActions>
-                      <Button onClick={handleCloseAlert}
-                      sx={{
-                          color: "#C2C3C6",
-                          opacity: 0.7
-                      }}>Não</Button>
-                      <Button autoFocus onClick={() => {handleClickSim(t.id_task);}} variant="contained"
-                      sx={{
-                          color: "#FFF",
-                          backgroundColor: "#F57D3D",
-                          '&:hover': {
-                              backgroundColor: "#F46E27",
-                          }
-                      }}>
-                          Sim
-                      </Button>
-                      </DialogActions>
-                  </Dialog>
-                  <Snackbar open={openSnackbar} autoHideDuration={2500} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
-                    <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
-                      Tarefa concluída!
-                    </MuiAlert>
-                </Snackbar>
               </>
             )
           }
         ));
     }
+  }
+
+  Alerta = () => {
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpenSnackbar(false);
+    };
+
+    const handleCheck = (id) => {
+      console.log(id);
+
+      this.setState({tarefasId: id})
+      this.setState({openAlert: true});
+    }
+
+    const handleCloseAlert = () => {
+      this.setState({openAlert: false});
+    }
+
+    const [openSnackbar, setOpenSnackbar] = React.useState(false);
+
+    const handleClickSim = (id) => {
+      //EditaTask(id);
+      setOpenSnackbar(true);
+      this.setState({openAlert: false});
+      console.log(this.state.tarefasId);
+    };
+
+    function EditaTask(id) {
+      api.put('/tasks/' + id, {
+        status: "Concluido",
+        data_conclusao: new Date(),
+      })
+      console.log('/tasks/' + id);
+    }
+
+    return(
+      <>
+        <Dialog
+          open={this.state.openAlert}
+          //key={t.id_task}
+          onClose={handleCloseAlert}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          PaperProps={{
+              style: {
+                backgroundColor: '#494A58',
+                color: '#fff'
+              },
+            }}
+          >
+              <DialogTitle id="alert-dialog-title">
+              {"Marcar tarefa como concluída?"}
+              </DialogTitle>
+              
+              <DialogActions>
+              <Button onClick={handleCloseAlert}
+              sx={{
+                  color: "#C2C3C6",
+                  opacity: 0.7
+              }}>Não</Button>
+              <Button autoFocus onClick={() => {handleClickSim(this.state.tarefasId);}} variant="contained"
+              sx={{
+                  color: "#FFF",
+                  backgroundColor: "#F57D3D",
+                  '&:hover': {
+                      backgroundColor: "#F46E27",
+                  }
+              }}>
+                  Sim
+              </Button>
+              </DialogActions>
+          </Dialog>
+          <Snackbar open={openSnackbar} autoHideDuration={2500} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
+            <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
+              Tarefa concluída!
+            </MuiAlert>
+        </Snackbar>
+      </>
+    )
   }
 
   render() {
@@ -268,6 +309,7 @@ class TarefasAndamento extends Component {
             <tbody>
               <this.Header tarefas={tarefas} />
               <this.ImprimeTarefas tarefas={tarefas} />
+              <this.Alerta />
             </tbody>
           </table>
         </div>

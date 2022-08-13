@@ -10,7 +10,6 @@ class LinearChart extends Component {
     }
     async componentDidMount() {
         const pessoaPath = window.location.pathname;
-        //console.log(pessoaPath);
         
         const response = await api.get(pessoaPath);
         const response2 = await api.get(pessoaPath+'/tasks');
@@ -20,7 +19,6 @@ class LinearChart extends Component {
 
     Rendimento = (props) => {
       if (this.props.selectValue === 1){
-        //console.log('Semanal');
         var datas = new Date();
        
         const UltimosDias = [new Date(),];
@@ -194,11 +192,8 @@ class LinearChart extends Component {
         )        
         
       } else if (this.props.selectValue === 2){
-        //console.log('Mensal');
         var datas = new Date();
         var Today = datas.getDate();
-        var LastDate = new Date(datas.getFullYear(), datas.getMonth() + 1, 0);
-        var LastDayOfMonth = LastDate.getDate();
         const UltimosDias = [new Date(),];
 
         var TarefasAndamento = [0,];
@@ -267,7 +262,7 @@ class LinearChart extends Component {
             ],
           },
           {  
-            "id": "Concluidas",
+            "id": "Concluídas",
             "color": "hsl(100, 70%, 50%)",
             "data": [
                   
