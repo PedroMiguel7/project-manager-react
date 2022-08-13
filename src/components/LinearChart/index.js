@@ -25,7 +25,6 @@ class LinearChart extends Component {
        
         const UltimosDias = [new Date(),];
 
-
         for (let i = 0; i < 6; i++) {
           UltimosDias.push(new Date(datas.setDate(datas.getDate() - 1)));
         }
@@ -81,16 +80,12 @@ class LinearChart extends Component {
           {
             "id": "Em Andamento",
             "color": "hsl(200, 70%, 50%)",
-            "data": [
-                
-            ],
+            "data": [],
           },
           {  
-            "id": "Concluidas",
+            "id": "Concluídas",
             "color": "hsl(100, 70%, 50%)",
-            "data": [
-                  
-            ],
+            "data": [],
           }
         ];
         
@@ -281,25 +276,8 @@ class LinearChart extends Component {
         ];
         
         for (let i = 0; i < Today; i++) {
-          const DiasSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
-          let DiaNum = UltimosDias[i].getDay();
-          let DiaSemana;
-          if (DiaNum === 0) {
-            DiaSemana = DiasSemana[0];
-          } else if (DiaNum === 1) {
-            DiaSemana = DiasSemana[1];
-          } else if (DiaNum === 2) {
-            DiaSemana = DiasSemana[2];
-          } else if (DiaNum === 3) {
-            DiaSemana = DiasSemana[3];
-          } else if (DiaNum === 4) {
-            DiaSemana = DiasSemana[4];
-          } else if (DiaNum === 5) {
-            DiaSemana = DiasSemana[5];
-          } else if (DiaNum === 6) {
-            DiaSemana = DiasSemana[6];
-          }
-          let uFormatada = `${DiaSemana} ${UltimosDias[i].getDate()}`;
+          
+          let uFormatada = `${UltimosDias[i].getDate()}/${UltimosDias[i].getMonth() + 1}`;
           const obj1 = {"x": uFormatada, "y": TarefasAndamento[i]};
           const obj2 = {"x": uFormatada, "y": TarefasConcluidas[i]};
           data[0].data.push(obj1);
