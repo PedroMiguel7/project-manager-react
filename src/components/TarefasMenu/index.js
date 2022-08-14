@@ -106,6 +106,7 @@ export default function TarefasMenu(props) {
   const [nome, setNome] = useState("");
   const [pessoa, setPessoa] = useState([]);
   const [prazoEntrega, setPrazoEntrega] = useState();
+  const [projetoID, setProjetoID ] = useState();
 
   const [prioridade, setPrioridade] = React.useState();
   const handleChangePrior = (event) => {
@@ -139,7 +140,7 @@ export default function TarefasMenu(props) {
           setNome(m.descricao_task),
           setDadoEquipe(m.pessoa_id),
           setPrioridade(m.prioridade),
-          
+          setProjetoID(m.projeto_id),
           setPrazoEntrega(m.prazo_entrega)
           ))
       } catch (error) {
@@ -161,8 +162,8 @@ export default function TarefasMenu(props) {
       const response = await api.put('/tasks/' + props.id_task, {
         descricao_task: nome,
         pessoa_id: parseInt(dadoEquipe),
-        prazo_entrega: parseInt(prazoEntrega),
         prioridade: parseInt(prioridade),
+        projeto_id: parseInt(projetoID),
       },[])
     }
     updateStatus()

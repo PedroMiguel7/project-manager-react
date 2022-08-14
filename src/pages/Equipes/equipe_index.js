@@ -96,7 +96,7 @@ export default function Equipes() {
                     </div>
                 </div>
                 <div className="row CardsContainer my-4">
-                    {emptyState === true ? NotFound() : <ExibirEquipes equipes={Equipes} /> }
+                    {emptyState === true ? NotFound() : <ExibirEquipes equipes={Equipes} atualiza={Atualiza}/> }
                 </div>
             </main>
         </>
