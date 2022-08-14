@@ -28,7 +28,7 @@ class TarefasConcluidas extends Component {
     const qtdTarefas = props.tarefas;
     
     if (qtdTarefas !== null) {
-      var qtdAndamento = qtdTarefas.filter((tarefas) => tarefas.status === "Em Andamento");  
+      var qtdAndamento = qtdTarefas.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");  
     }
 
     if( qtdTarefas === null || qtdAndamento.length === 0){
@@ -39,7 +39,7 @@ class TarefasConcluidas extends Component {
     } else {
       return (
         <>
-          <tr>
+          <tr className="TabelaTarefasHead AddShadow">
                 <th scope="col"></th>
                 <th scope="col">Nome</th>
                 <th scope="col">Prioridade</th>
@@ -98,15 +98,14 @@ class TarefasConcluidas extends Component {
 
         function Inicio(inicio) {
           const dataInicio = new Date(inicio);
-          const dataInicioArray = [dataInicio.getDate(), dataInicio.getMonth() + 1, dataInicio.getFullYear()]
-          const dataInicioFormatada = `${dataInicioArray[0]}/${dataInicioArray[1]}/${dataInicioArray[2]}`;
+          dataInicio.setDate(dataInicio.getDate() + 1);
+          const dataInicioFormatada = dataInicio.toLocaleDateString("pt-BR");
           return dataInicioFormatada;
         }
 
         function Conclusao(conclusao) {
           const dataConclusao = new Date(conclusao);
-          const dataConclusaoArray = [dataConclusao.getDate(), dataConclusao.getMonth() + 1, dataConclusao.getFullYear()]
-          const dataConclusaoFormatada = `${dataConclusaoArray[0]}/${dataConclusaoArray[1]}/${dataConclusaoArray[2]}`;
+          const dataConclusaoFormatada = dataConclusao.toLocaleDateString("pt-BR");
           return dataConclusaoFormatada;
         }
 
