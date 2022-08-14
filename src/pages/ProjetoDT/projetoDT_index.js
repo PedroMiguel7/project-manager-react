@@ -70,12 +70,10 @@ class ProjetoDT extends Component {
             if(pessoas !== null){
                 return(
                     pessoas.map(f=>(
-                        <li className="d-flex">
-                            {f.nome_pessoa}
-                            <div className="ms-4">
-                                {f.funcao_pessoa}
-                            </div>
-                        </li>
+                        <tr>
+                            <td scope="row">{f.nome_pessoa}</td>
+                            <td className="ms-4 ">{f.funcao_pessoa}</td>
+                        </tr>
                     ))
                 )
             }else{
@@ -217,8 +215,18 @@ class ProjetoDT extends Component {
                                         <Link to={'/equipes/' + p.equipe_id} target="_blank" className="ms-2 Link text-reset text-decoration-none">{p.nome_equipe}</Link>
                                     </h5>
                                     <div className="container " style={{height:'145px',}}>
-                                        <div style={{scroll:"auto"}}>
-                                            <this.BuscarMembrosFunc equipe_id={p.equipe_id} />
+                                        <div className="TabelaTarefas table-responsive" style={{ maxHeight:'140px', scroll:"auto"}}>
+                                            <table className="table align-middle text-center " >
+                                                <thead style={{ position: "sticky" }}>
+                                                    <tr>
+                                                        <th scope="col"></th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <this.BuscarMembrosFunc equipe_id={p.equipe_id} />
+                                                </tbody>
+                                            </table>
                                         </div>
 
                                         {/*<div className="d-flex text-center justify-content-between">
