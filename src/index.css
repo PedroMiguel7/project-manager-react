@@ -43,9 +43,13 @@ header {
     padding-bottom: 4rem;
 }
 
+.nav-item {
+    transition: 0.3s;
+}
+
 .nav-item:hover {
     opacity: 0.85;
-    transition: 0.3s;
+    transition: all 0.3s ease-in-out;
 }
 
 .TPtrello{
