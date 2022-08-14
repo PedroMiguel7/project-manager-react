@@ -211,9 +211,14 @@ class ProjetoDT extends Component {
                                     </div>
                                 </div>
                                 <div className="row align-items-end mt-2" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", }}>
-                                    <h5 className="container">Equipe
-                                        <Link to={'/equipes/' + p.equipe_id} target="_blank" className="ms-2 Link text-reset text-decoration-none">{p.nome_equipe}</Link>
-                                    </h5>
+                                    <div className="container ">
+                                        Equipe:
+                                        <Link to={'/equipes/' + p.equipe_id} target="_blank" className="ms-2 Link text-reset text-decoration-none">
+                                            <h5 style={{color:'var(--laranja)'}}>
+                                                {p.nome_equipe}
+                                            </h5>
+                                        </Link>
+                                    </div>
                                     <div className="container " style={{height:'145px',}}>
                                         <div className="TabelaTarefas table-responsive" style={{ maxHeight:'140px', scroll:"auto"}}>
                                             <table className="table align-middle text-center " >
