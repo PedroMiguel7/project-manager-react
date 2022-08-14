@@ -160,7 +160,7 @@ class ProjetoDT extends Component {
                         </div>
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
-                                <div className="col-2 TPtrello">
+                                {/*<div className="col-2 TPtrello">
                                     <MostrarLIstaTarefas status="A Fazer" id_projeto={p.id_projeto} tarefas={TasksFazer} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
                                 <div className="col-2 TPtrello">
@@ -171,13 +171,16 @@ class ProjetoDT extends Component {
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <MostrarLIstaTarefas status="Concluido" tarefas={TasksConcluidas} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
-                                </div>
+                                </div>*/}
                             </div>
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <h2>Estatísticas</h2>
-                                <div className="row col-12 align-items-center" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-20px" }}>
-                                    <div className="col-md-12">
-                                        {/*<CircularProgressWithLabel value="20" id_projeto={p.id_projeto} />*/}
+                                <div className="row col-12 align-items-center" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-15px" , minHeight:'349px'}}>
+                                    
+                                    
+                                    
+                                    
+                                    {/*<div className="col-md-12">
                                         <div className=" md-3">
                                             <Grafico TasksConcluidAs={TotalTaksConcluidas} totalTasks={totalDetasks} />
                                         </div>
@@ -201,16 +204,16 @@ class ProjetoDT extends Component {
                                                 <p className=" ms-2">Tarefas Concluídas</p>
                                             </strong>
                                         </div>
-                                    </div>
+                                    </div>*/}
                                 </div>
-                                <h3 className="mt-4">Info-Gerais</h3>
-                                <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-20px" }}>
+                                <h3 className="mt-3">Info-Gerais</h3>
+                                <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-15px" , minHeight:'118px'}}>
                                     <div className="align-items-start mt-2">
                                         <h5>Descrição</h5>
                                         <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
                                     </div>
                                 </div>
-                                <div className="row align-items-end mt-2" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", }}>
+                                <div className="row align-items-end mt-2" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", minHeight:'211px' }}>
                                     <div className="container ">
                                         Equipe:
                                         <Link to={'/equipes/' + p.equipe_id} target="_blank" className="ms-2 Link text-reset text-decoration-none">
