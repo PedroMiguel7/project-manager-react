@@ -432,6 +432,14 @@ input[type=search]::-webkit-search-cancel-button {
     transition: 0.5s;
 }
 
+.NomePessoa {
+    margin-right: -38px;
+}
+
+.NomePessoa h1 {
+    font-size: 2.3rem;
+}
+
 .ResumoPessoa p {
     max-width: 7rem;
 }

@@ -107,7 +107,7 @@ class LinearChart extends Component {
           <>
             <ResponsiveLine
                   data={data}
-                  margin={{ top: 10, right: 50, bottom: 50, left: 60 }}
+                  margin={{ top: 20, right: 25, bottom: 50, left: 35 }}
                   theme={{
                     textColor: "#C2C3C6",
                     axis: {
@@ -177,6 +177,32 @@ class LinearChart extends Component {
                   areaBaselineValue={0}
                   enableSlices="x"
                   useMesh={true}
+                  legends={[
+                    {
+                        anchor: 'top-right',
+                        direction: 'row',
+                        justify: false,
+                        translateX: -30,
+                        translateY: -20,
+                        itemsSpacing: 20,
+                        itemDirection: 'left-to-right',
+                        itemWidth: 60,
+                        itemHeight: 10,
+                        itemOpacity: 0.75,
+                        symbolSize: 8,
+                        symbolShape: 'circle',
+                        symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                        effects: [
+                            {
+                                on: 'hover',
+                                style: {
+                                    itemBackground: 'rgba(0, 0, 0, .03)',
+                                    itemOpacity: 1
+                                }
+                            }
+                        ]
+                    }
+                ]}
               />
           </>
         )        
@@ -260,7 +286,7 @@ class LinearChart extends Component {
           <>
             <ResponsiveLine
                   data={data}
-                  margin={{ top: 10, right: 50, bottom: 50, left: 60 }}
+                  margin={{ top: 20, right: 25, bottom: 50, left: 35 }}
                   theme={{
                     textColor: "#C2C3C6",
                     axis: {
@@ -307,9 +333,6 @@ class LinearChart extends Component {
                       tickSize: 0,
                       tickPadding: 15,
                       tickRotation: 0,
-                      /*legend: 'dias',
-                      legendOffset: 37,
-                      legendPosition: 'middle'*/
                   }}
                   axisLeft={{
                       orient: 'left',
@@ -317,9 +340,6 @@ class LinearChart extends Component {
                       tickSize: 0,
                       tickPadding: 15,
                       tickRotation: 0,
-                      /*legend: 'tarefas',
-                      legendOffset: -40,
-                      legendPosition: 'middle'*/
                   }}
                   enableGridX={false}
                   colors={['#C2C3C6', '#F46E27']}
@@ -336,6 +356,32 @@ class LinearChart extends Component {
                   areaBaselineValue={0}
                   enableSlices="x"
                   useMesh={true}
+                  legends={[
+                    {
+                        anchor: 'top-right',
+                        direction: 'row',
+                        justify: false,
+                        translateX: -30,
+                        translateY: -20,
+                        itemsSpacing: 20,
+                        itemDirection: 'left-to-right',
+                        itemWidth: 60,
+                        itemHeight: 10,
+                        itemOpacity: 0.75,
+                        symbolSize: 8,
+                        symbolShape: 'circle',
+                        symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                        effects: [
+                            {
+                                on: 'hover',
+                                style: {
+                                    itemBackground: 'rgba(0, 0, 0, .03)',
+                                    itemOpacity: 1
+                                }
+                            }
+                        ]
+                    }
+                ]}
               />
           </>
         )
