@@ -5,6 +5,7 @@ import MostrarLIstaTarefas from "./ListaDeTarefas";
 import Grafico from "./GraficoProgresso";
 import { Link } from "react-router-dom";
 import { Chart } from 'react-google-charts';
+import { ResponsivePie } from '@nivo/pie';
 
 class ProjetoDT extends Component {
     constructor(props) {
@@ -133,9 +134,131 @@ class ProjetoDT extends Component {
                     data={data}
                     width={'100%'}
                     options={options}
-                    height={'400px'}
-                    style={{color:'white'}}
-                    />
+                    height={'380px'}
+                    style={{ color: 'white' }}
+                />
+            </>
+        )
+    }
+
+    GraficoPizza = (props) => {
+
+        const data =
+            [
+                {
+                    "id": "A Fazer",
+                    "label": "A Fazer",
+                    "value": props.AFAZER,
+                    "color": "hsl(248, 70%, 50%)"
+                    //#FFF2F1
+                },
+                {
+                    "id": "Concluida",
+                    "label": "Concluida",
+                    "value": props.CONCLUIDAS,
+                    "color": "hsl(63, 70%, 50%)"
+                    //#04395E
+                },
+                {
+                    "id": "Em Teste",
+                    "label": "Em Teste",
+                    "value": props.EMTESTE,
+                    "color": "hsl(147, 70%, 50%)"
+                    //#4F9D69
+                },
+                {
+                    "id": "Em Desenvolvimento",
+                    "label": "Em Desenvolvimento",
+                    "value": props.EMANDAMENTO,
+                    "color": "hsl(162, 70%, 50%)"
+                    
+                    //#92D5E6
+                },
+            ]
+            
+
+        const MyResponsivePie = () => (
+
+            <ResponsivePie
+            data={data}
+            margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
+            innerRadius={0.5}
+            padAngle={0.7}
+            cornerRadius={3}
+            activeOuterRadiusOffset={8}
+            borderWidth={1}
+            borderColor={{ theme: 'background' }}
+            arcLinkLabelsSkipAngle={10}
+            arcLinkLabelsTextColor={{ from: 'color', modifiers: [] }}
+            arcLinkLabelsThickness={2}
+            arcLinkLabelsColor={{ from: 'color', modifiers: [] }}
+            arcLabelsSkipAngle={10}
+            arcLabelsTextColor={{ theme: 'background' }}
+            defs={[
+                {
+                    id: 'dots',
+                    type: 'patternDots',
+                    background: 'inherit',
+                    color: 'rgba(255, 255, 255, 0.3)',
+                    size: 4,
+                    padding: 1,
+                    stagger: true
+                },
+                {
+                    id: 'lines',
+                    type: 'patternLines',
+                    background: 'inherit',
+                    color: 'rgba(255, 255, 255, 0.3)',
+                    rotation: -45,
+                    lineWidth: 6,
+                    spacing: 10
+                }
+            ]}
+            fill={[
+                {
+                    match: {
+                        id: 'python'
+                    },
+                    id: 'dots'
+                },
+                {
+                    match: {
+                        id: 'scala'
+                    },
+                    id: 'lines'
+                },
+            ]}
+            legends={[
+                {
+                    anchor: 'bottom',
+                    direction: 'row',
+                    justify: false,
+                    translateX: 0,
+                    translateY: 56,
+                    itemsSpacing: 0,
+                    itemWidth: 100,
+                    itemHeight: 18,
+                    itemTextColor: '#999',
+                    itemDirection: 'left-to-right',
+                    itemOpacity: 1,
+                    symbolSize: 18,
+                    symbolShape: 'circle',
+                    effects: [
+                        {
+                            on: 'hover',
+                            style: {
+                                itemTextColor: '#000'
+                            }
+                        }
+                    ]
+                }
+            ]}
+        />
+        )
+
+        return (
+            <>
+                <MyResponsivePie/>
             </>
         )
     }
@@ -180,7 +303,7 @@ class ProjetoDT extends Component {
             }
         }
 
-        
+
 
         return (
             <>
@@ -209,37 +332,11 @@ class ProjetoDT extends Component {
                             </div>
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <h2>Estatísticas</h2>
-                                <div className="row col-12 align-items-center" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-15px", minHeight: '349px' }}>
-                                    <this.GraficoNovo/>
-                                    
-                                    {/*<div className="col-md-12">
-                                        <div className=" md-3">
-                                            <Grafico TasksConcluidAs={TotalTaksConcluidas} totalTasks={totalDetasks} />
-                                        </div>
-                                    </div>
-                                    <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
-                                        <h6 className="col">{totalDetasks}</h6>
-                                        <strong>
-                                            <p className="text-center col">Total de <br /> Tarefas</p>
-                                        </strong>
-                                    </div>
-                                    <div className="col-6 d-flex flex-column align-items-center justify-content-center">
-                                        <div className="TarefasAnd d-flex align-items-center justify-content-center">
-                                            <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{TotalTasksAndamento}</h6>
-                                            <strong>
-                                                <p className="ms-2">Tarefas em Andamento</p>
-                                            </strong>
-                                        </div>
-                                        <div className="TarefasConc d-flex align-items-center justify-content-center">
-                                            <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{TotalTaksConcluidas}</h6>
-                                            <strong>
-                                                <p className=" ms-2">Tarefas Concluídas</p>
-                                            </strong>
-                                        </div>
-                                    </div>*/}
+                                <div className="row col-12 align-items-center" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-px", minHeight: '349px' }}>
+                                    <this.GraficoPizza AFAZER={TotalTasksFazer} EMANDAMENTO={TotalTasksAndamento} EMTESTE={TotalTasksTeste} CONCLUIDAS={TotalTaksConcluidas}/>
                                 </div>
                                 <h3 className="mt-3">Info-Gerais</h3>
-                                <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-15px", minHeight: '118px' }}>
+                                <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-px", minHeight: '118px' }}>
                                     <div className="align-items-start mt-2">
                                         <h5>Descrição</h5>
                                         <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
