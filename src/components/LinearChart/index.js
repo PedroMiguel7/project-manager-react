@@ -50,11 +50,6 @@ class LinearChart extends Component {
                 i++;
                 if (new Date(t.data_criacao).toISOString().split('T')[0] === u.toISOString().split('T')[0]) {
                   TarefasAndamento[i]++;
-                  let tData = new Date(t.data_criacao);
-                  let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
-                  let uData = new Date(u);
-                  let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
-                  console.log(`t: ${tFormatada}, u: ${uFormatada}`)
                 }
               })
             } else if (t.status === "Concluido" || t.status === "Concluído") {
@@ -63,11 +58,6 @@ class LinearChart extends Component {
                 i++;
                 if (new Date(t.data_conclusao).toISOString().split('T')[0] === u.toISOString().split('T')[0]) {
                   TarefasConcluidas[i]++;
-                  let tData = new Date(t.data_criacao);
-                  let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
-                  let uData = new Date(u);
-                  let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
-                  console.log(`t: ${tFormatada}, u: ${uFormatada}`)
                 }
               })
             }
@@ -205,8 +195,6 @@ class LinearChart extends Component {
           TarefasConcluidas.push(0);
         }
 
-        console.log(UltimosDias);
-
         let Concluidas = 0;
         const UltimasConcluidas = [];
         if(props.tarefas !== null){
@@ -229,11 +217,6 @@ class LinearChart extends Component {
                 i++;
                 if (new Date(t.data_criacao).toISOString().split('T')[0] === u.toISOString().split('T')[0]) {
                   TarefasAndamento[i]++;
-                  let tData = new Date(t.data_criacao);
-                  let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
-                  let uData = new Date(u);
-                  let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
-                  console.log(`t: ${tFormatada}, u: ${uFormatada}`)
                 }
               })
             } else if (t.status === "Concluido" || t.status === "Concluído") {
@@ -242,11 +225,6 @@ class LinearChart extends Component {
                 i++;
                 if (new Date(t.data_conclusao).toISOString().split('T')[0] === u.toISOString().split('T')[0]) {
                   TarefasConcluidas[i]++;
-                  let tData = new Date(t.data_criacao);
-                  let tFormatada = `${tData.getDate() + 1}/${tData.getMonth() + 1}`;
-                  let uData = new Date(u);
-                  let uFormatada = `${uData.getDate()}/${uData.getMonth() + 1}`;
-                  console.log(`t: ${tFormatada}, u: ${uFormatada}`)
                 }
               })
             }
@@ -271,17 +249,12 @@ class LinearChart extends Component {
         ];
         
         for (let i = 0; i < Today; i++) {
-          
           let uFormatada = `${UltimosDias[i].getDate()}/${UltimosDias[i].getMonth() + 1}`;
           const obj1 = {"x": uFormatada, "y": TarefasAndamento[i]};
           const obj2 = {"x": uFormatada, "y": TarefasConcluidas[i]};
           data[0].data.push(obj1);
           data[1].data.push(obj2);
         }
-
-        console.log(TarefasAndamento);
-        console.log(TarefasConcluidas);
-        console.log(data);
 
         return(
           <>
@@ -311,7 +284,11 @@ class LinearChart extends Component {
                       },
                     }
                   }}
-                  xScale={{ type: 'point' }}
+                  xScale={{ 
+                    type: 'linear',
+                    min: 1,
+                    max: 'auto', 
+                  }}
                   yScale={{
                       type: 'linear',
                       min: 0,
@@ -325,6 +302,8 @@ class LinearChart extends Component {
                   axisRight={null}
                   axisBottom={{
                       orient: 'bottom',
+                      format: e => {return TarefasAndamento.length > 20 ? `${("0" + e).slice(-2)}/${("0" + (datas.getMonth() + 1)).slice(-2)}` : (Math.floor(e) === e && e) === false ? '' : `${("0" + e).slice(-2)}/${("0" + (datas.getMonth() + 1)).slice(-2)}`},
+                      tickValues: TarefasAndamento.length > 20 ? 14 : 30,
                       tickSize: 0,
                       tickPadding: 15,
                       tickRotation: 0,
