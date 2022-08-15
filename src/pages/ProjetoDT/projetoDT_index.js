@@ -4,6 +4,15 @@ import api from '../../api';
 import MostrarLIstaTarefas from "./ListaDeTarefas";
 import Grafico from "./GraficoProgresso";
 import { Link } from "react-router-dom";
+import { chart } from 'react-google-charts';
+
+export const data = [
+    ['Tasks', 'Hours per Day'],
+    ['A Fazer', 2],
+    ['Em Andamento', 7],
+    ['Em Teste', 3],
+    ['Concluidas', 8],
+];
 
 class ProjetoDT extends Component {
     constructor(props) {
