@@ -105,7 +105,6 @@ export default function TarefasMenu(props) {
 
   const [nome, setNome] = useState("");
   const [pessoa, setPessoa] = useState([]);
-  const [prazoEntrega, setPrazoEntrega] = useState();
   const [projetoID, setProjetoID ] = useState();
 
   const [prioridade, setPrioridade] = React.useState();
@@ -140,8 +139,7 @@ export default function TarefasMenu(props) {
           setNome(m.descricao_task),
           setDadoEquipe(m.pessoa_id),
           setPrioridade(m.prioridade),
-          setProjetoID(m.projeto_id),
-          setPrazoEntrega(m.prazo_entrega)
+          setProjetoID(parseInt(m.projeto_id))
           ))
       } catch (error) {
         console.log(error);
@@ -151,10 +149,10 @@ export default function TarefasMenu(props) {
   }, []);
 
 
-
   function DeletaTask() {
     api.delete('/tasks/' + props.id_task)
-    this.handleCloseAlert()
+    handleCloseAlert()
+    props.atualiza();
   }
 
   function EditaTask() {
@@ -163,8 +161,10 @@ export default function TarefasMenu(props) {
         descricao_task: nome,
         pessoa_id: parseInt(dadoEquipe),
         prioridade: parseInt(prioridade),
-        projeto_id: parseInt(projetoID),
+        projeto_id: projetoID
       },[])
+      props.atualiza();
+      handleCloseEdit();
     }
     updateStatus()
   }
@@ -322,22 +322,6 @@ export default function TarefasMenu(props) {
                   <MenuItem value={2}>Alta</MenuItem>
                 </CssTextField>
               </Box>
-
-              <CssTextField
-                type="number"
-                id="prazo"
-                name='prazo'
-                label="Prazo"
-                onChange={(a) => setPrazoEntrega(a.target.value)}
-                margin="dense"
-                fullWidth className='textField'
-                InputProps={{
-                  endAdornment: <InputAdornment position="end">
-                    <span>dias</span>
-                  </InputAdornment>,
-                  inputProps: { min: 0 }
-                }}
-              />
 
               <Divider light className='mt-3' />
               <div className='d-flex justify-content-end mt-5'>

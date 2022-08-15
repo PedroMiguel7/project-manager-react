@@ -25,7 +25,7 @@ export default function MostrarTarefasCard(props) {
             <div className="card-body" style={{}}>
                 <div className="d-flex justify-content-between" style={{}}>
                     <h5 className="card-title" style={{ color: "" }}>{props.descricao_task}</h5>
-                    <TarefasMenu id_task={props.id_task} equipe_id={props.equipe_id} />
+                    <TarefasMenu atualiza={props.atualiza} id_task={props.id_task} equipe_id={props.equipe_id} />
                 </div>
                 <p className="card-text" style={{ color: "" }}>{props.nome_pessoa}</p>
             </div>
