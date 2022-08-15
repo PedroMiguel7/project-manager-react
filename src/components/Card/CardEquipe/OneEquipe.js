@@ -18,23 +18,23 @@ export default function ExibirEquipes(props) {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="card-part2 d-flex justify-content-between">
-                                <table class="table">
+                            <div className="card-part2 d-flex justify-content-between" style={{maxHeight:'100px', scroll:'auto'}}>
+                                <table class="table" >
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
                                             <th scope="col">NOME</th>
+                                            <th scope="col">FUNÇÃO</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody >
                                         {p.pessoas &&
                                             p.pessoas.map((r) => (
                                                 <tr key={r.id_pessoa}>
-                                                    <th scope="row">
-                                                        {r.id_pessoa}
-                                                    </th>
-                                                    <td style={{ color: "#fff" }}>
+                                                    <td scope="row">
                                                         {r.nome_pessoa}
+                                                    </td>
+                                                    <td style={{ color: "#fff" }}>
+                                                        {r.funcao_pessoa}
                                                     </td>
                                                 </tr>
                                             ))}
