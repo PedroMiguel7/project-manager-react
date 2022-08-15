@@ -4,15 +4,7 @@ import api from '../../api';
 import MostrarLIstaTarefas from "./ListaDeTarefas";
 import Grafico from "./GraficoProgresso";
 import { Link } from "react-router-dom";
-import { chart } from 'react-google-charts';
-
-export const data = [
-    ['Tasks', 'Hours per Day'],
-    ['A Fazer', 2],
-    ['Em Andamento', 7],
-    ['Em Teste', 3],
-    ['Concluidas', 8],
-];
+import { Chart } from 'react-google-charts';
 
 class ProjetoDT extends Component {
     constructor(props) {
@@ -57,8 +49,8 @@ class ProjetoDT extends Component {
             fetchEquipe()
         }, []);
         //let totalMembros = 0;
-        if(props.QualFoi === "Funções"){
-            if(pessoas !== null){
+        if (props.QualFoi === "Funções") {
+            if (pessoas !== null) {
                 if (pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`) === null) {
                     return (
                         <li>sem pessoa</li>
@@ -70,23 +62,23 @@ class ProjetoDT extends Component {
                         ))
                     );
                 }
-            } else{
-                return(
+            } else {
+                return (
                     <li>sem pessoa</li>
                 )
             }
-        } else{
-            if(pessoas !== null){
-                return(
-                    pessoas.map(f=>(
+        } else {
+            if (pessoas !== null) {
+                return (
+                    pessoas.map(f => (
                         <tr>
                             <td scope="row">{f.nome_pessoa}</td>
                             <td className="ms-4 ">{f.funcao_pessoa}</td>
                         </tr>
                     ))
                 )
-            }else{
-                return(
+            } else {
+                return (
                     <li>sem pessoa</li>
                 )
             }
@@ -121,6 +113,35 @@ class ProjetoDT extends Component {
         }
     }
 
+    GraficoNovo = (props) => {
+        const data = [
+            ['Tasks', 'Quantidade'],
+            ['A Fazer', 11],
+            ['Em Andamento', 2],
+            ['Em Teste', 2],
+            ['Concluidas', 1],
+        ];
+
+        const options = {
+            backgroundColor: 'none',
+            color: 'white'
+        }
+        return (
+            <>
+                <Chart
+                    chartType='PieChart'
+                    data={data}
+                    width={'100%'}
+                    options={options}
+                    height={'400px'}
+                    style={{color:'white'}}
+                    />
+            </>
+        )
+    }
+
+
+
     render() {
         const { projetos } = this.state;
         const { tarefasPJ } = this.state;
@@ -128,6 +149,8 @@ class ProjetoDT extends Component {
         var totalDetasks = 0;
         var TotalTaksConcluidas = 0;
         var TotalTasksAndamento = 0;
+        var TotalTasksFazer = 0;
+        var TotalTasksTeste = 0;
 
         var TasksFazer = [];
         var TasksAndamento = [];
@@ -147,15 +170,17 @@ class ProjetoDT extends Component {
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste") !== null) {
-                //TotalTasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste").length;
+                TotalTasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste").length;
                 TasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste");
             }
 
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer") !== null) {
-                //TotalTasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
+                TotalTasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
                 TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
             }
         }
+
+        
 
         return (
             <>
@@ -184,9 +209,9 @@ class ProjetoDT extends Component {
                             </div>
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <h2>Estatísticas</h2>
-                                <div className="row col-12 align-items-center" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-15px" , minHeight:'349px'}}>
+                                <div className="row col-12 align-items-center" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-15px", minHeight: '349px' }}>
+                                    <this.GraficoNovo/>
                                     
-                                    algo novo ae
                                     {/*<div className="col-md-12">
                                         <div className=" md-3">
                                             <Grafico TasksConcluidAs={TotalTaksConcluidas} totalTasks={totalDetasks} />
@@ -214,23 +239,23 @@ class ProjetoDT extends Component {
                                     </div>*/}
                                 </div>
                                 <h3 className="mt-3">Info-Gerais</h3>
-                                <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-15px" , minHeight:'118px'}}>
+                                <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-15px", minHeight: '118px' }}>
                                     <div className="align-items-start mt-2">
                                         <h5>Descrição</h5>
                                         <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
                                     </div>
                                 </div>
-                                <div className="row align-items-end mt-2" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", minHeight:'211px' }}>
+                                <div className="row align-items-end mt-2" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", minHeight: '211px' }}>
                                     <div className="container ">
                                         Equipe:
                                         <Link to={'/equipes/' + p.equipe_id} target="_blank" className="ms-2 Link text-reset text-decoration-none">
-                                            <h5 style={{color:'var(--laranja)'}}>
+                                            <h5 style={{ color: 'var(--laranja)' }}>
                                                 {p.nome_equipe}
                                             </h5>
                                         </Link>
                                     </div>
-                                    <div className="container " style={{height:'145px',}}>
-                                        <div className="TabelaTarefas table-responsive" style={{ maxHeight:'140px', scroll:"auto"}}>
+                                    <div className="container " style={{ height: '145px', }}>
+                                        <div className="TabelaTarefas table-responsive" style={{ maxHeight: '140px', scroll: "auto" }}>
                                             <table className="table align-middle text-center " >
                                                 <thead style={{ position: "sticky" }}>
                                                     <tr>
