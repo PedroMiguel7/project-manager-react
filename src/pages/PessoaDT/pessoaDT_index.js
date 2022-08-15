@@ -127,20 +127,32 @@ class PessoasDT extends Component {
         const [openSnackbar, setOpenSnackbar] = React.useState(false);
     
         const handleClickSim = (id) => {
-          //EditaTask(id);
+          Deleta(id);
           setOpenSnackbar(true);
           this.setState({openAlert: false});
           //console.log(this.state.tarefasId);
         };
     
-        function EditaTask(id) {
-          api.put('/tasks/' + id, {
-            status: "Concluido",
-            data_conclusao: new Date(),
-          })
-          console.log('/tasks/' + id);
+        function Edita(props) {
+          const updateStatus = async () => {
+            const response = await api.put('/pessoas/' + props.id_pessoa, {
+              equipe_id: props.equipe_id,
+              funcao_pessoa: props.funcao,
+              id_pessoa: props.id_pessoa,
+              nome_pessoa: props.nome
+            },[])
+            props.atualiza();
+            //handleCloseEdit();
+          }
+          updateStatus()
         }
-    
+        
+        function Deleta(props){
+          api.delete('/pessoas/'+ props.id_pessoa);
+          handleCloseAlert();
+          props.atualiza();
+        }
+
         return(
           <>
             <Dialog
@@ -180,7 +192,7 @@ class PessoasDT extends Component {
                         backgroundColor: "#ED5F5F",
                         }
                     }}>
-                    Deletar
+                      Deletar
                     </Button>
                 </DialogActions>
                   
