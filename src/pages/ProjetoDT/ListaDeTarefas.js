@@ -20,13 +20,13 @@ export default function MostrarLIstaTarefas(props) {
         }
     })
 
-    if (props.status === "A Fazer") {
+    if ((props.status === "A Fazer") && (props.statusṔrojeto !== 'Concluido')) {
         return (
             <>
                 <div className='d-flex text-center mt-2 justify-content-center'>
                     <h4 className="text-center">{props.status}</h4>
                     <div className='ms-2'>
-                        <BasicModalTarefa id_projeto={props.id_projeto} equipe_id={props.equipe_id} atualiza={props.atualiza} />
+                        <BasicModalTarefa ProjetoStatus={props.statusṔrojeto} id_projeto={props.id_projeto} equipe_id={props.equipe_id} atualiza={props.atualiza} />
                     </div>
                 </div>
                 <div ref={dropRef} className="scrollar d-flex flex-column align-items-center" style={{ height: "745px" }}>
@@ -38,7 +38,8 @@ export default function MostrarLIstaTarefas(props) {
                 </div>
             </>
         )
-    } else{
+    }
+    else{
         return (
             <>
                 <h4 className="text-center mt-2">{props.status}</h4>

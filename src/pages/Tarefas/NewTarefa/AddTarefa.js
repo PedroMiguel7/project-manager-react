@@ -98,6 +98,11 @@ export default function BasicModalTarefa(props) {
                     prazo_entrega: parseInt(prazoEntrega),
                     prioridade: prioridade,
                 })
+                if(props.ProjetoStatus === 'A Fazer'){
+                    api.put('/projetos/'+props.id_projeto+'/status',{
+                        status:'Em Andamento'
+                    })
+                }
                 props.atualiza();
         } catch (error){
             console.error(error.message);

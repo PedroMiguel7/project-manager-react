@@ -161,7 +161,7 @@ class ProjetoDT extends Component {
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
                                 <div className="col-2 TPtrello">
-                                    <MostrarLIstaTarefas status="A Fazer" id_projeto={p.id_projeto} tarefas={TasksFazer} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
+                                    <MostrarLIstaTarefas status="A Fazer" statusṔrojeto={p.status} id_projeto={p.id_projeto} tarefas={TasksFazer} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
                                 </div>
                                 <div className="col-2 TPtrello">
                                     <MostrarLIstaTarefas status="Em Andamento" tarefas={TasksAndamento} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />
