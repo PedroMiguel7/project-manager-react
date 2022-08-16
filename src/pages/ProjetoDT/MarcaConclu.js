@@ -2,6 +2,12 @@
     {icon}
 </IconButton>
 
+const handleCheck = (id) => {
+    console.log(id);
+    this.setState({tarefasId: id})
+    this.setState({openAlert: true})
+  }
+
 Alerta = () => {
     const handleClose = (event, reason) => {
       if (reason === 'clickaway') {
@@ -10,12 +16,12 @@ Alerta = () => {
       setOpenSnackbar(false);
     };
 
-    const handleCheck = (id) => {
+    /*const handleCheck = (id) => {
       console.log(id);
 
       this.setState({tarefasId: id})
       this.setState({openAlert: true});
-    }
+    }*/
 
     const handleCloseAlert = () => {
       this.setState({openAlert: false});
