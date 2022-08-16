@@ -2,9 +2,7 @@ import HeaderDt from "../../components/HeaderDt"
 import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
 import MostrarLIstaTarefas from "./ListaDeTarefas";
-import Grafico from "./GraficoProgresso";
 import { Link } from "react-router-dom";
-import { Chart } from 'react-google-charts';
 import { ResponsivePie } from '@nivo/pie';
 
 class ProjetoDT extends Component {
@@ -114,71 +112,42 @@ class ProjetoDT extends Component {
         }
     }
 
-    GraficoNovo = (props) => {
-        const data = [
-            ['Tasks', 'Quantidade'],
-            ['A Fazer', 11],
-            ['Em Andamento', 2],
-            ['Em Teste', 2],
-            ['Concluidas', 1],
-        ];
-
-        const options = {
-            backgroundColor: 'none',
-            color: 'white'
-        }
-        return (
-            <>
-                <Chart
-                    chartType='PieChart'
-                    data={data}
-                    width={'100%'}
-                    options={options}
-                    height={'380px'}
-                    style={{ color: 'white' }}
-                />
-            </>
-        )
-    }
-
     GraficoPizza = (props) => {
 
         const data =
             [
                 {
-                    "id": "A Fazer",
-                    "label": "A Fazer",
-                    "value": props.AFAZER,
+                    "id": "Em Desenvolvimento",
+                    "label": "Desen.",
+                    "value": props.EMANDAMENTO,
                     "color": "hsl(248, 70%, 50%)"
                     //#FFF2F1
+                },
+                {
+                    "id": "Em Teste",
+                    "label": "Teste",
+                    "value": props.EMTESTE,
+                    "color": "hsl(63, 70%, 50%)"
+                    //#04395E
                 },
                 {
                     "id": "Concluida",
                     "label": "Concluida",
                     "value": props.CONCLUIDAS,
-                    "color": "hsl(63, 70%, 50%)"
-                    //#04395E
-                },
-                {
-                    "id": "Em Teste",
-                    "label": "Em Teste",
-                    "value": props.EMTESTE,
                     "color": "hsl(147, 70%, 50%)"
                     //#4F9D69
                 },
                 {
-                    "id": "Em Desenvolvimento",
-                    "label": "Em Desenvolvimento",
-                    "value": props.EMANDAMENTO,
+                    "id": "A Fazer",
+                    "label": "A-Fazer",
+                    "value": props.AFAZER,
                     "color": "hsl(162, 70%, 50%)"
-                    
                     //#92D5E6
                 },
             ]
             
 
         const MyResponsivePie = () => (
-
             <ResponsivePie
             data={data}
             margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
@@ -190,6 +159,7 @@ class ProjetoDT extends Component {
             borderColor={{ theme: 'background' }}
             arcLinkLabelsSkipAngle={10}
             arcLinkLabelsTextColor={{ from: 'color', modifiers: [] }}
+            colors={{ scheme: 'category10' }}
             arcLinkLabelsThickness={2}
             arcLinkLabelsColor={{ from: 'color', modifiers: [] }}
             arcLabelsSkipAngle={10}
@@ -236,7 +206,7 @@ class ProjetoDT extends Component {
                     translateX: 0,
                     translateY: 56,
                     itemsSpacing: 0,
-                    itemWidth: 100,
+                    itemWidth: 83.5,
                     itemHeight: 18,
                     itemTextColor: '#999',
                     itemDirection: 'left-to-right',
