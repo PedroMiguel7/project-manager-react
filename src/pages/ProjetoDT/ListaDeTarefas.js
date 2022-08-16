@@ -7,7 +7,7 @@ export default function MostrarLIstaTarefas(props) {
     const [, dropRef] = useDrop({
         accept: 'CARD',
         hover(item) {
-            if (item.status !== props.status) {
+            if ((item.status !== props.status) && (props.statusPROJETO !== 'Concluido')) {
                 item.status = props.status
                 const updateStatus = async () => {
                     const response = await api.put(`/tasks/` + item.id + '/status', {
