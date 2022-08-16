@@ -84,10 +84,12 @@ class equipeDT_index extends Component {
         const response3 = await api.get(equipePath);
         const response4 = await api.get('/tasks/');
 
-        this.setState({ projetos: response.data });
-        this.setState({ PessoasEquipe: response2.data });
-        this.setState({ equipe: response3.data });
-        this.setState({ tarefas: response4.data });
+        this.setState({ 
+            projetos: response.data,
+            PessoasEquipe: response2.data,
+            equipe: response3.data,
+            tarefas: response4.data,
+        });
     }
 
     BuscarMembros = (props) => {
@@ -423,12 +425,9 @@ class equipeDT_index extends Component {
                                 </div>
                             </div>
                         </li>  
-                        
                     ))
                 );    
             }
-
-            
         }
     }
 
@@ -491,16 +490,15 @@ class equipeDT_index extends Component {
                         OnGoing.map(p => (
                             <li className="ProjetosLi">
                             <div>
-                                <span>{p.status}</span>
                                 <h5>{p.nome_projeto}</h5>
-                            </div>
-                            <div>
                                 <span>
                                     <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
                                     {TempoRestante(p.prazo_entrega)}
                                 </span>
+                            </div>
+                            <div className="d-flex align-items-center   ">
                                 <div className="d-flex align-items-center">
-                                    <ProgressoProjetos key={2} id_projeto={p.id_projeto} />
+                                    <ProgressoProjetos key={1} id_projeto={p.id_projeto} status={p.status} />
                                 </div>
                                 <div className="d-flex justify-content-end">
                                     <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
@@ -529,16 +527,15 @@ class equipeDT_index extends Component {
                         Done.map(p => (
                             <li className="ProjetosLi">
                             <div>
-                                <span>{p.status}</span>
                                 <h5>{p.nome_projeto}</h5>
-                            </div>
-                            <div>
                                 <span>
                                     <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
                                     {TempoRestante(p.prazo_entrega)}
                                 </span>
+                            </div>
+                            <div className="d-flex align-items-center   ">
                                 <div className="d-flex align-items-center">
-                                    <ProgressoProjetos key={3} id_projeto={p.id_projeto} />
+                                    <ProgressoProjetos key={1} id_projeto={p.id_projeto} status={p.status} />
                                 </div>
                                 <div className="d-flex justify-content-end">
                                     <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
@@ -555,16 +552,15 @@ class equipeDT_index extends Component {
                     props.projetos.map(p => (
                         <li className="ProjetosLi">
                             <div>
-                                <span>{p.status}</span>
                                 <h5>{p.nome_projeto}</h5>
-                            </div>
-                            <div>
                                 <span>
                                     <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
                                     {TempoRestante(p.prazo_entrega)}
                                 </span>
+                            </div>
+                            <div className="d-flex align-items-center   ">
                                 <div className="d-flex align-items-center">
-                                    <ProgressoProjetos key={1} id_projeto={p.id_projeto} />
+                                    <ProgressoProjetos key={1} id_projeto={p.id_projeto} status={p.status} />
                                 </div>
                                 <div className="d-flex justify-content-end">
                                     <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
@@ -711,12 +707,12 @@ class equipeDT_index extends Component {
                                     <this.AddMembro />
                                 </ul>
                             </div>
-                            <div>
+                            <div className="ProjetosContainer">
                                 <div className="d-flex justify-content-between">
                                     <h3>Projetos</h3>
                                     <this.SelectStatusProjeto status={statusProjeto} />
                                 </div>
-                                <ul className="MembrosUl ps-0">
+                                <ul className="ProjetosUl ps-0">
                                     <this.ImprimeProjetos projetos = {projetos} status = {statusProjeto} />
                                 </ul>
                             </div>
@@ -744,7 +740,6 @@ class equipeDT_index extends Component {
 
                                 <div className="TasksCircularProgress col-12 flex-wrap-reverse">
                                     <this.ImprimeProjetosStats projetos={projetos} />
-                                    
                                 </div>
                             </div>
                         </div>

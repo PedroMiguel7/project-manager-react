@@ -23,32 +23,22 @@ function ProgressoProjetos (props) {
         BarrinhaProgresso = (QtdTasksConcluidas*100)/QtdTasks
     }
 
-    if (Math.round(BarrinhaProgresso) === 100) {
-        return (
-            <>
-                <div className="progress ProgressProjeto" >
-                    <div className="ProgressBarProjeto progress-bar" 
-                    style={{ backgroundColor: "#66F540" ,width:`${BarrinhaProgresso}%`}}
-                    role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+    return (
+        <>
+            <div className="ProgressoProjetoContainer">
+                <div className="d-flex justify-content-between">
+                    <span>{props.status}</span>
+                    <span>{Math.round(BarrinhaProgresso)}%</span>    
                 </div>
-                <span>{Math.round(BarrinhaProgresso)}%</span>
-            </>
-        )
-    } else {
-        return (
-            <>
+                
                 <div className="progress ProgressProjeto" >
                     <div className="ProgressBarProjeto progress-bar" 
                     style={{width:`${BarrinhaProgresso}%`}}
                     role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <span>{Math.round(BarrinhaProgresso)}%</span>
-            </>
-        )    
-    }
-
-    
-
+            </div>
+        </>
+    )  
 }
 
 export default ProgressoProjetos;
