@@ -282,8 +282,9 @@ class ProjetoDT extends Component {
               api.put('/projetos/' + id + '/status', {
                 status: "Concluido",
               })
+              this.updateStateByProps();
             }
-            
+
             return (
                 <IconButton onClick={() => { handleCheck(props.id_projeto); }}>
                     {icon}
@@ -333,6 +334,7 @@ class ProjetoDT extends Component {
           api.put('/projetos/' + ID + '/status', {
             status: "Concluido",
           })
+          this.updateStateByProps();
         }
     
         return(
