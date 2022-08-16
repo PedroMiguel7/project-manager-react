@@ -1,3 +1,10 @@
+state = {
+    tarefasId: 0,
+    openAlert: false,
+    openSnackbar: false,
+    changeIcon: false,
+}
+
 <IconButton onClick={() => {handleCheck(t.id_task);}}>
     {icon}
 </IconButton>
