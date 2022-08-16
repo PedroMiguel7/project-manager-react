@@ -77,6 +77,7 @@ class PessoasDT extends Component {
     state = {
         pessoa: [],
         tarefas: [],
+        equipes: [],
         rendimentoFilter: 1,
         openEdit: false,
         openAlert: false,
@@ -88,8 +89,13 @@ class PessoasDT extends Component {
         
         const response = await api.get(pessoaPath);
         const response2 = await api.get(pessoaPath+'/tasks');
+        const response3 = await api.get('/equipes/');
         
-        this.setState({ pessoa: response.data, tarefas: response2.data });
+        this.setState({ 
+          pessoa: response.data, 
+          tarefas: response2.data, 
+          equipes: response3.data 
+        });
     }
 
     handleCallbackRendimento = (childData) => {
@@ -110,7 +116,7 @@ class PessoasDT extends Component {
             return;
           }
           setOpenSnackbar(false);
-          //setTimeout pra voltar para pagina de pessoas
+          setTimeout(() => {window.location.pathname = "/pessoas"}, 500)
         };
     
         const handleCheck = (id) => {
@@ -127,10 +133,9 @@ class PessoasDT extends Component {
         const [openSnackbar, setOpenSnackbar] = React.useState(false);
     
         const handleClickSim = (id) => {
-          Deleta(id);
+          //Deleta(id);
           setOpenSnackbar(true);
           this.setState({openAlert: false});
-          //console.log(this.state.tarefasId);
         };
     
         function Edita(props) {
@@ -197,7 +202,7 @@ class PessoasDT extends Component {
                 </DialogActions>
                   
               </Dialog>
-              <Snackbar open={openSnackbar} autoHideDuration={2500} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
+              <Snackbar open={openSnackbar} autoHideDuration={2000} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
                 <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
                   Pessoa deletada com sucesso!
                 </MuiAlert>
@@ -209,8 +214,11 @@ class PessoasDT extends Component {
     render() {
         const { pessoa } = this.state;
         const { tarefas} = this.state;
+        const { equipes} = this.state;
         const { rendimentoFilter} = this.state;
         const { openEdit } = this.state;
+
+        console.table(pessoa);
 
         let TotalTarefas;
         if (tarefas === null) {
@@ -233,6 +241,10 @@ class PessoasDT extends Component {
 
         const handleCloseEdit = () => {
             this.setState({openEdit: false});
+        };
+
+        const handleChangeEquipe = () => {
+
         };
 
         const handleDelete = (id) => {
@@ -330,7 +342,7 @@ class PessoasDT extends Component {
                     </div>
                  </div>
 
-                 <Modal
+                <Modal
                 open={openEdit}
                 onClose={handleCloseEdit}
                 aria-labelledby="modal-modal-title"
@@ -349,7 +361,7 @@ class PessoasDT extends Component {
                         id="nome"
                         name='nome'
                         label="Nome"
-                        //value={nome}
+                        value={pessoa.nome_pessoa}
                         //onChange={(e) => setNome(e.target.value)}
                         variant="outlined"
                         margin="dense"
@@ -363,6 +375,32 @@ class PessoasDT extends Component {
                         <CssTextField
                         select
                         label="Equipe"
+                        fullWidth
+                        margin="dense"
+                        value={pessoa.equipe_id}
+                        //onChange={handleChangeEquipe}
+                        SelectProps={{
+                            MenuProps: {
+                            PaperProps: {
+                                style: {
+                                maxHeight: '23vh',
+                                backgroundColor: '#494A58',
+                                color: '#fff',
+                                }
+                            }
+                            }
+                        }}
+                        >
+                          {equipes.map(e => (
+                            <MenuItem value={e.id_equipe} key={e.id_equipe}>{e.nome_equipe}</MenuItem>
+                          ))}
+                        </CssTextField>
+                    </Box>
+
+                    <Box sx={{ minWidth: 120 }}>
+                        <CssTextField
+                        select
+                        label="Função"
                         fullWidth
                         margin="dense"
                         //value={prioridade}
@@ -416,7 +454,6 @@ class PessoasDT extends Component {
                                 Salvar
                             </Button>    
                         </div>
-                        
                     </div>
                     </form>
                 </Box>
