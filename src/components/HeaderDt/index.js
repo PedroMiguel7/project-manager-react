@@ -3,15 +3,15 @@ import {useState, useEffect} from 'react';
 import BackIcon from '../../assets/icons/back.svg';
 import { Link } from "react-router-dom";
 
-function HeaderDt({link, pagina, titulo, status}) {
+function HeaderDt({link, pagina, titulo, status, FUNC1, FUNC2}) {
+    
     const [statusBg, mudarStatus] = useState();
-
     function setTag(sts) {
         switch(sts) {
-            case "Em andamento" || "Em Andamento":
+            case "Em Andamento":
                 return '#28aef3b3';
                 break;
-            case "Concluído" || "Concluido":
+            case "Concluido":
                 return '#28f33cb3';
                 break;
             case "Cancelado":
@@ -35,13 +35,20 @@ function HeaderDt({link, pagina, titulo, status}) {
     return (
         <>
             <div className='row mt-5 pb-3 main-header'>
-                <div className="d-flex align-items-center col-lg-4">
-                    <Link to={link} className="mb-2 me-1">
-                        <img src={BackIcon} style={{width: 28}} />
-                    </Link>
-                    <h1 className="TituloDt fs-2">{pagina} <span className="nomeProjeto">{titulo}</span></h1>
-                    <div className="Status ms-4 mb-2 px-2" style={{backgroundColor:setTag(status)}}>{status}</div>
+                <div className="d-flex justify-content-between">
+                    <div className="d-flex align-items-center col-lg-4">
+                        <Link to={link} className="mb-2 me-1">
+                            <img src={BackIcon} style={{width: 28}} />
+                        </Link>
+                        <h1 className="TituloDt fs-2">{pagina} <span className="nomeProjeto">{titulo}</span></h1>
+                        <div className="Status ms-4 mb-2 px-2" style={{backgroundColor:setTag(status)}}>{status}</div>
+                    </div>
+                    <div>
+                        {FUNC1}
+                        {FUNC2}
+                    </div>         
                 </div>
+                
                 
             </div>
         </>

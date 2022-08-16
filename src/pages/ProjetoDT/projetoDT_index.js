@@ -5,12 +5,25 @@ import MostrarLIstaTarefas from "./ListaDeTarefas";
 import { Link } from "react-router-dom";
 import { ResponsivePie } from '@nivo/pie';
 
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import TaskAltRoundedIcon from '@mui/icons-material/TaskAltRounded';
+
 class ProjetoDT extends Component {
     constructor(props) {
         super(props);
         this.state = {
             projetos: [],
             tarefasPJ: [],
+            openAlert: false,
+            openSnackbar: false,
+            changeIcon: false,
         }
     }
     async componentDidMount() {
@@ -145,93 +158,228 @@ class ProjetoDT extends Component {
                     //#92D5E6
                 },
             ]
-            
+
 
         const MyResponsivePie = () => (
             <ResponsivePie
-            data={data}
-            margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
-            innerRadius={0.5}
-            padAngle={0.7}
-            cornerRadius={3}
-            activeOuterRadiusOffset={8}
-            borderWidth={1}
-            borderColor={{ theme: 'background' }}
-            arcLinkLabelsSkipAngle={10}
-            arcLinkLabelsTextColor={{ from: 'color', modifiers: [] }}
-            colors={{ scheme: 'category10' }}
-            arcLinkLabelsThickness={2}
-            arcLinkLabelsColor={{ from: 'color', modifiers: [] }}
-            arcLabelsSkipAngle={10}
-            arcLabelsTextColor={{ theme: 'background' }}
-            defs={[
-                {
-                    id: 'dots',
-                    type: 'patternDots',
-                    background: 'inherit',
-                    color: 'rgba(255, 255, 255, 0.3)',
-                    size: 4,
-                    padding: 1,
-                    stagger: true
-                },
-                {
-                    id: 'lines',
-                    type: 'patternLines',
-                    background: 'inherit',
-                    color: 'rgba(255, 255, 255, 0.3)',
-                    rotation: -45,
-                    lineWidth: 6,
-                    spacing: 10
-                }
-            ]}
-            fill={[
-                {
-                    match: {
-                        id: 'python'
+                data={data}
+                margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
+                innerRadius={0.5}
+                padAngle={0.7}
+                cornerRadius={3}
+                activeOuterRadiusOffset={8}
+                borderWidth={1}
+                borderColor={{ theme: 'background' }}
+                arcLinkLabelsSkipAngle={10}
+                arcLinkLabelsTextColor={{ from: 'color', modifiers: [] }}
+                colors={{ scheme: 'category10' }}
+                arcLinkLabelsThickness={2}
+                arcLinkLabelsColor={{ from: 'color', modifiers: [] }}
+                arcLabelsSkipAngle={10}
+                arcLabelsTextColor={{ theme: 'background' }}
+                defs={[
+                    {
+                        id: 'dots',
+                        type: 'patternDots',
+                        background: 'inherit',
+                        color: 'rgba(255, 255, 255, 0.3)',
+                        size: 4,
+                        padding: 1,
+                        stagger: true
                     },
-                    id: 'dots'
-                },
-                {
-                    match: {
-                        id: 'scala'
+                    {
+                        id: 'lines',
+                        type: 'patternLines',
+                        background: 'inherit',
+                        color: 'rgba(255, 255, 255, 0.3)',
+                        rotation: -45,
+                        lineWidth: 6,
+                        spacing: 10
+                    }
+                ]}
+                fill={[
+                    {
+                        match: {
+                            id: 'python'
+                        },
+                        id: 'dots'
                     },
-                    id: 'lines'
-                },
-            ]}
-            legends={[
-                {
-                    anchor: 'bottom',
-                    direction: 'row',
-                    justify: false,
-                    translateX: 0,
-                    translateY: 56,
-                    itemsSpacing: 0,
-                    itemWidth: 83.5,
-                    itemHeight: 18,
-                    itemTextColor: '#999',
-                    itemDirection: 'left-to-right',
-                    itemOpacity: 1,
-                    symbolSize: 18,
-                    symbolShape: 'circle',
-                    effects: [
-                        {
-                            on: 'hover',
-                            style: {
-                                itemTextColor: '#000'
+                    {
+                        match: {
+                            id: 'scala'
+                        },
+                        id: 'lines'
+                    },
+                ]}
+                legends={[
+                    {
+                        anchor: 'bottom',
+                        direction: 'row',
+                        justify: false,
+                        translateX: 0,
+                        translateY: 56,
+                        itemsSpacing: 0,
+                        itemWidth: 83.5,
+                        itemHeight: 18,
+                        itemTextColor: '#999',
+                        itemDirection: 'left-to-right',
+                        itemOpacity: 1,
+                        symbolSize: 18,
+                        symbolShape: 'circle',
+                        effects: [
+                            {
+                                on: 'hover',
+                                style: {
+                                    itemTextColor: '#000'
+                                }
                             }
-                        }
-                    ]
-                }
-            ]}
-        />
+                        ]
+                    }
+                ]}
+            />
         )
 
         return (
             <>
-                <MyResponsivePie/>
+                <MyResponsivePie />
             </>
         )
     }
+
+    MarcarConcluido = (props) => {
+        if ((props.QTDTAREFAS === props.QTDCONCLUIDAS) && (props.status === "Em Andamento")) {
+            const [openAlert, setOpenAlert] = React.useState(false);
+
+            const handleClose = (event, reason) => {
+              if (reason === 'clickaway') {
+                return;
+              }
+              setOpenSnackbar(false);
+            };
+            
+            const handleCheck = (id) => {
+              console.log(id);
+              this.setState({tarefasId: id})
+              this.setState({openAlert: true})
+            }
+        
+            const handleCloseAlert = () => {
+              setOpenAlert(false);
+            }
+        
+            const [openSnackbar, setOpenSnackbar] = React.useState(false);
+        
+            const handleClickSim = (id) => {
+              EditaTask(id);
+              setOpenSnackbar(true);
+              setOpenAlert(false);
+              this.setState({changeIcon: true});
+            };
+        
+            const icon = (this.state.changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
+        
+            function EditaTask(id) {
+              api.put('/projetos/' + id + '/status', {
+                status: "Concluido",
+              })
+            }
+            
+            return (
+                <IconButton onClick={() => { handleCheck(props.id_projeto); }}>
+                    {icon}
+                    <h5 style={{ color: 'white', marginTop: '9px' }}>
+                        Concluir Projeto
+                    </h5>
+                </IconButton>
+            )
+        }
+        else {
+            return (
+                <>
+                </>
+            )
+        }
+    }
+
+    Alerta = (props) => {
+        const handleClose = (event, reason) => {
+          if (reason === 'clickaway') {
+            return;
+          }
+          setOpenSnackbar(false);
+        };
+        var id = props.id
+    
+        const handleCheck = () => {
+    
+          this.setState({tarefasId: id})
+          this.setState({openAlert: true});
+        }
+    
+        const handleCloseAlert = () => {
+          this.setState({openAlert: false});
+        }
+    
+        const [openSnackbar, setOpenSnackbar] = React.useState(false);
+    
+        const handleClickSim = () => {
+          EditaTask(id);
+          setOpenSnackbar(true);
+          this.setState({openAlert: false});
+          console.log(this.state.tarefasId);
+        };
+    
+        function EditaTask(ID) {
+          api.put('/projetos/' + ID + '/status', {
+            status: "Concluido",
+          })
+        }
+    
+        return(
+          <>
+            <Dialog
+              open={this.state.openAlert}
+              //key={t.id_task}
+              onClose={handleCloseAlert}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+              PaperProps={{
+                  style: {
+                    backgroundColor: '#494A58',
+                    color: '#fff'
+                  },
+                }}
+              >
+                  <DialogTitle id="alert-dialog-title">
+                  {"Marcar Projeto como concluído?"}
+                  </DialogTitle>
+                  
+                  <DialogActions>
+                  <Button onClick={handleCloseAlert}
+                  sx={{
+                      color: "#C2C3C6",
+                      opacity: 0.7
+                  }}>Não</Button>
+                  <Button autoFocus onClick={() => {handleClickSim(this.state.tarefasId);}} variant="contained"
+                  sx={{
+                      color: "#FFF",
+                      backgroundColor: "#F57D3D",
+                      '&:hover': {
+                          backgroundColor: "#F46E27",
+                      }
+                  }}>
+                      Sim
+                  </Button>
+                  </DialogActions>
+              </Dialog>
+              <Snackbar open={openSnackbar} autoHideDuration={2500} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
+                <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
+                  Projeto concluído!
+                </MuiAlert>
+            </Snackbar>
+          </>
+        )
+      }
 
 
 
@@ -273,17 +421,12 @@ class ProjetoDT extends Component {
             }
         }
 
-
-
         return (
             <>
                 {projetos.map(p => (
                     <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5' key={p.id_projeto}>
                         <div className="LeftOptions col mt-sm-2">
-                            <HeaderDt link="/projetos" pagina="Projeto" titulo={p.nome_projeto} status={p.status} />
-                            <div className="col-lg-3 offset-lg-6">
-                                {/*<BasicModalTarefa id_projeto={p.id_projeto} equipe_id={p.equipe_id} atualiza={this.updateStateByProps} />*/}
-                            </div>
+                            <HeaderDt link="/projetos" pagina="Projeto" titulo={p.nome_projeto} status={p.status} FUNC1={<this.MarcarConcluido QTDTAREFAS={totalDetasks} QTDCONCLUIDAS={TotalTaksConcluidas} status={p.status} id_projeto={p.id_projeto}/>} FUNC2={<this.Alerta id={p.id_projeto} />}/>
                         </div>
                         <div className="d-flex row">
                             <div className="col-9 d-flex justify-content-between">
@@ -303,7 +446,7 @@ class ProjetoDT extends Component {
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <h2>Estatísticas</h2>
                                 <div className="row col-12 align-items-center" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-px", minHeight: '349px' }}>
-                                    <this.GraficoPizza AFAZER={TotalTasksFazer} EMANDAMENTO={TotalTasksAndamento} EMTESTE={TotalTasksTeste} CONCLUIDAS={TotalTaksConcluidas}/>
+                                    <this.GraficoPizza AFAZER={TotalTasksFazer} EMANDAMENTO={TotalTasksAndamento} EMTESTE={TotalTasksTeste} CONCLUIDAS={TotalTaksConcluidas} />
                                 </div>
                                 <h3 className="mt-3">Info-Gerais</h3>
                                 <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-px", minHeight: '118px' }}>
