@@ -41,7 +41,7 @@ export default function CardPessoas(props) {
                             </div>
                             <div key={p.id_pessoa} className=" ">
                                 <div className="CardPessoas1 mb-3">
-                                    <h2 className="NomePessoa">{p.nome_pessoa}</h2>
+                                    <h2 className="NomePessoaCard">{p.nome_pessoa}</h2>
 
                                     <div className="mb-3">
                                         <img src={aim} alt="" /> <span>{p.nome_equipe}</span>
