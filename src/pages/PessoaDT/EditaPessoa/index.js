@@ -76,8 +76,6 @@ export default function EditaPessoa(props) {
     const [openAlert, setOpenAlert] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState(false);
 
-    console.log(props.idPessoa);
-
     useEffect(() => {
         const fetchPessoa = async () => {
           try {
@@ -119,8 +117,9 @@ export default function EditaPessoa(props) {
         setDadoEquipe(e.target.value);
     };
 
-    const handleDelete = (id) => {
-        console.log(id);
+    const handleDelete = (props) => {
+        api.delete('/pessoas/'+ props.idPessoa);
+        //handleCloseAlert();
         //this.setState({tarefasId: id})
         setOpenAlert(true);
         setOpenEdit(false);
@@ -249,7 +248,7 @@ export default function EditaPessoa(props) {
                         opacity: 0.5,
                         textTransform: 'capitalize'
                         }}
-                        variant="text" className='' onClick={() => {handleDelete();}}>
+                        variant="text" className='' onClick={handleDelete}>
                             <DeleteIcon sx={{fontSize: 18}} />Deletar
                         </Button>
                     </div>
