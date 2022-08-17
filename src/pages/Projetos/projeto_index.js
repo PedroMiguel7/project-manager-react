@@ -9,7 +9,6 @@ import Divider from '@mui/material/Divider';
 import { useState, useEffect } from "react";
 import api from "../../api";
 import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
-import ClearIcon from "../../assets/icons/clear.svg"
 
 
 export default function ProjetoIndex() {
