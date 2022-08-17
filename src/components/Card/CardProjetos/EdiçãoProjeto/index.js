@@ -98,8 +98,14 @@ export default function EditaProjeto(props) {
     setOpenEdit(false);
     setOpenAlert(false);
     setAnchorEl(null);
-    setOpenSnackbar(true);
   };
+
+  const handleEdit = () => {
+    setOpenEdit(false);
+    setOpenAlert(false);
+    setAnchorEl(null);
+    setOpenSnackbar(true);
+  }
 
   const handleCloseAlert = () => {
     setOpenAlert(false);
@@ -142,7 +148,7 @@ export default function EditaProjeto(props) {
         nome_projeto: nome
       },[])
       props.atualiza();
-      handleCloseEdit();
+      handleEdit();
     }
     updateStatus()
   }
