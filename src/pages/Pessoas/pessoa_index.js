@@ -83,9 +83,13 @@ export default function Pessoas() {
                             A - Z
                         </button>
 
+                        {/*<select className="ps-1" name="order-select" id="order-select">
+                            <option value="crescente">A - Z</option>
+                            <option value="decrescente">Z - A</option>
+                        </select>
                         <button className="filter px-2 py-1">
                             <span>Filtro</span> <img src={filter} alt="" />
-                        </button>
+                        </button>*/}
                     </div>
                 </div>
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import aim from '../../../assets/icons/aim.svg';
-import api from "../../../api";
 import PeopleNotFound from '../../../assets/empty-states/people-not-found.svg';
 import MostraProjetosOuTarefas from "./MostraPrETa";
 
@@ -10,23 +9,33 @@ export default function CardPessoas(props) {
     function MudarBackground(funcao) {
         if (funcao === "Front-End") {
             return (
-                <span className="">Front-End</span>
+                <div className="CardPessoaTag" style={{backgroundColor:'#B9B8D3', color:''}}>
+                    <span className="">Front-End</span>
+                </div>
             )
         } else if (funcao === "Back-End") {
             return (
-                <span className="">Back-End</span>
+                <div className="CardPessoaTag" style={{backgroundColor:'#E56B70', color:'white'}}>
+                    <span className="">Back-End</span>
+                </div>
             )
         } else if (funcao === "Gerente de Projeto") {
             return (
-                <span className="">Gerente de Projeto</span>
+                <div className="CardPessoaTag" style={{backgroundColor:'#F4FDD9', color:''}}>
+                    <span className="">Gerente de Projeto</span>
+                </div>
             )
         }else if (funcao === "Tester") {
             return (
-                <span className="">Tester</span>
+                <div className="CardPessoaTag" style={{backgroundColor:'#A9DFD8', color:''}}>
+                    <span className="">Tester</span>
+                </div>
             )
         } else {
             return (
-                <span className="">Sem funcao</span>
+                <div className="CardPessoaTag" style={{backgroundColor:'#8D99AE', color:'white'}}>
+                    <span className="">Sem funcao</span>
+                </div>
             )
         }
     }
@@ -36,9 +45,9 @@ export default function CardPessoas(props) {
                 <>
                     {props.Pessoas.map(p => (
                         <Link reloadDocument to={'/pessoas/' + p.id_pessoa} className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
-                            <div className="CardPessoaTag">
+                            
                                 {MudarBackground(p.funcao_pessoa)}
-                            </div>
+
                             <div key={p.id_pessoa} className=" ">
                                 <div className="CardPessoas1 mb-3">
                                     <h2 className="NomePessoaCard">{p.nome_pessoa}</h2>

@@ -347,7 +347,6 @@ input[type=search]::-webkit-search-cancel-button {
 
 .CardPessoaTag {
     margin: auto;
-    background-color: #A9DFD8;
     color: var(--preto);
     /*font-weight: 500;*/
     border-radius: 5px;
