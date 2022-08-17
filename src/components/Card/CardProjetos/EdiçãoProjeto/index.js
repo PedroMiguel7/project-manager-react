@@ -251,6 +251,9 @@ export default function EditaProjeto(props) {
                 label="Descrição"
                 value={descricao}
                 onChange={(e) => setDescricao(e.target.value)}
+                multiline
+                minRows={4}
+                maxRows={8}
                 variant="outlined"
                 margin="dense"
                 color='primary'

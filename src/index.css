@@ -275,10 +275,24 @@ input[type=search]::-webkit-search-cancel-button {
     border-bottom: 0.15px solid #2C2E3B;
 }
 
-.description {
-    /*border: 1px solid black;*/
+.card-part1 h2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp : 1;
+    -webkit-box-orient: vertical;
+}
+
+.DescricaoCardProjeto {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
     height: 120px;
     font-size: 0.85rem;
+}
+
+.card-part2 {
+
 }
 
 .Status {
@@ -592,20 +606,53 @@ input[type="number"]::-webkit-inner-spin-button {
     border: 1px solid var(--cinza);
 }*/
 
-.MembrosUl, .TarefasUl, .ProjetosUl {
+.MembrosUl, .ProjetosUl {
     max-height: 350px;
+    overflow: auto;
+}
+
+.TarefasUl {
+    max-height: 73vh;
     overflow: auto;
 }
 
 .ProjetosContainer {
     background-color: var(--preto-medio);
+    border-radius: 10px;
+}
+
+.TarefasContainer {
+    background-color: var(--preto-medio);
+    border-radius: 10px;
+    max-height: 80vh;
+}
+
+.HeaderProjetos, .HeaderTarefas {
+    background-color: #1E1F29;
+    border-radius: 10px 10px 0 0;
+    padding: 0.5rem 0.7rem;
+}
+
+.MembroLi {
+    padding: 0.3rem 0rem 0.3rem 0.5rem;
+}
+
+.AddMembro {
+    cursor: pointer;
+    border: 2px solid var(--preto-medio);
+    border-radius: 10px;
+    padding: 0.4rem 0rem;
 }
 
 .ProjetosLi {
     border-bottom: 0.15px solid #2C2E3B;
     display: flex;
     justify-content: space-between;
-    padding: 1.2rem 0.8rem;
+    padding: 1.2rem 0.7rem;
+}
+
+.ProjetosLi:nth-last-child(1), .TarefasLi:nth-last-child(1) {
+    border-bottom: none;
 }
 
 .ProgressoProjetoContainer {
@@ -623,12 +670,18 @@ input[type="number"]::-webkit-inner-spin-button {
     border: 1px solid #2B2B36;
 }
 
-.MembroLi, .TarefasLi, .Top3, .TasksCircularProgress {
+.MembroLi, .Top3, .TasksCircularProgress {
     background-color: var(--preto-medio);
     list-style: none;
     /*padding: 8px;*/
     border-radius: 10px;
     margin-bottom: 0.5rem;
+}
+
+.TarefasLi {
+    border-bottom: 0.15px solid #2C2E3B;
+    padding: 1.2rem 0rem;
+    list-style: none;
 }
 
 .TaskIcon {
@@ -656,7 +709,6 @@ input[type="number"]::-webkit-inner-spin-button {
     border-radius: 100px;
     background-color: #2B2B36;
 }
-
 
 .ProgressBarProjeto {
     border-radius: 100px;
@@ -797,10 +849,4 @@ input[type="number"]::-webkit-inner-spin-button {
 .Link, .Link:hover {
     color: #C2C3C6;
     text-decoration: none;
-}
-
-.AddMembro {
-    cursor: pointer;
-    border: 2px solid var(--preto-medio);
-    border-radius: 10px;
 }

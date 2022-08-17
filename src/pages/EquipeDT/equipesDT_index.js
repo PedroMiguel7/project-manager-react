@@ -163,20 +163,11 @@ class equipeDT_index extends Component {
 
         return(
             <>
-                <li className="AddMembro d-flex justify-content-between align-items-center" onClick={handleClickAdd}>
-                        <div className="d-flex align-items-center">
-                            
-                            <div className="d-flex ms-2">
-                                <AddCircleOutlineRoundedIcon sx={{color: '#87888C'}} />
-                                <span style={{color: '#87888C'}}>Adicionar um novo membro</span>
-                            </div>    
-                        </div>
-                        
-                        <div className="d-flex me-2">
-
-                            {/*<a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>*/}
-                        </div>
+                <li className="AddMembro d-flex align-items-center justify-content-center" onClick={handleClickAdd}>
+                    <AddCircleOutlineRoundedIcon sx={{color: '#87888C'}} />
+                    <span style={{color: '#87888C'}}>Adicionar um novo membro</span>
                 </li>
+
                 <Modal
                 open={openAdd}
                 onClose={handleCloseAdd}
@@ -251,9 +242,9 @@ class equipeDT_index extends Component {
     }
 
     ImprimeTarefas = (props) => {
-        console.log(props.equipe.tasks);
+        //console.log(props.equipe.tasks);
         let TarefasEquipe = props.equipe.tasks;
-        console.log(TarefasEquipe);
+        //console.log(TarefasEquipe);
         //console.log(props.tarefas);
         if( props.tarefas === null){
             return(
@@ -411,11 +402,8 @@ class equipeDT_index extends Component {
                 return(
                     props.tarefas.map(t => (
                         <li className="TarefasLi d-flex ">
-                            <div className="TaskIcon d-flex align-items-center justify-content-center">
-                                <img src={TaskIcon} />
-                            </div>
-                            <div className="d-flex align-items-center justify-content-between ms-2">
-                                <div className="d-flex flex-column ms-2">
+                            <div className="d-flex align-items-center">
+                                <div className="d-flex flex-column ">
                                     <span>{t.status}</span>
                                     <span>{t.nome_projeto}</span>
                                     <span>
@@ -498,7 +486,7 @@ class equipeDT_index extends Component {
                             </div>
                             <div className="d-flex align-items-center   ">
                                 <div className="d-flex align-items-center">
-                                    <ProgressoProjetos key={1} id_projeto={p.id_projeto} status={p.status} />
+                                    <ProgressoProjetos key={2} id_projeto={p.id_projeto} status={p.status} />
                                 </div>
                                 <div className="d-flex justify-content-end">
                                     <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
@@ -535,7 +523,7 @@ class equipeDT_index extends Component {
                             </div>
                             <div className="d-flex align-items-center   ">
                                 <div className="d-flex align-items-center">
-                                    <ProgressoProjetos key={1} id_projeto={p.id_projeto} status={p.status} />
+                                    <ProgressoProjetos key={3} id_projeto={p.id_projeto} status={p.status} />
                                 </div>
                                 <div className="d-flex justify-content-end">
                                     <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
@@ -694,12 +682,12 @@ class equipeDT_index extends Component {
 
         return (
             <>
-                <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5'>
-                    <div className="TesteGrid row">
+                <main className='col-11 offset-1 col-lg-11 offset-lg-1 ps-5'>
+                    <div className="row">
                         <HeaderDt link="/equipes" pagina="Equipe" titulo={equipe.nome_equipe} Status='' />
                     </div>
-                    <div className="TesteGrid row">
-                        <div className="TesteGrid col-lg-4 col-md-8">
+                    <div className="row">
+                        <div className="col-lg-4 col-md-8">
                             <div>
                                 <h3>Membros</h3>
                                 <ul className="MembrosUl ps-0">
@@ -708,7 +696,7 @@ class equipeDT_index extends Component {
                                 </ul>
                             </div>
                             <div className="ProjetosContainer">
-                                <div className="d-flex justify-content-between">
+                                <div className="HeaderProjetos d-flex justify-content-between">
                                     <h3>Projetos</h3>
                                     <this.SelectStatusProjeto status={statusProjeto} />
                                 </div>
@@ -717,8 +705,8 @@ class equipeDT_index extends Component {
                                 </ul>
                             </div>
                         </div>
-                        <div className="TesteGrid EquipeTarefas col-lg-4 col-md-8">
-                            <div className="d-flex justify-content-between">
+                        <div className="TarefasContainer col-lg-4 col-md-8">
+                            <div className="HeaderTarefas d-flex justify-content-between">
                                 <h3>Tarefas</h3>
                                 <this.SelectStatusTarefa status={statusTarefa} />
                             </div>
@@ -726,8 +714,7 @@ class equipeDT_index extends Component {
                                 <this.ImprimeTarefas equipe={equipe} tarefas = {tarefas} projetos = {TarefasProjeto} status = {statusTarefa} />
                             </ul>
                         </div>
-                        <div className="TesteGrid col-lg-4 col-md-4">
-                            <h2>Estatísticas</h2>
+                        <div className="col-lg-3 col-md-4">
                             <div className="row">
                                 <div className="Top3 d-flex flex-column align-items-center col-12">
                                     <h6>Membros mais produtivos</h6>
