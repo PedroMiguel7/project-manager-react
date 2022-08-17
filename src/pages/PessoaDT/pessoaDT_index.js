@@ -56,6 +56,7 @@ const CssTextField = styled(TextField)({
   };
 
 class PessoasDT extends Component {
+  
     state = {
         pessoa: [],
         tarefas: [],
@@ -67,7 +68,6 @@ class PessoasDT extends Component {
     }
     async componentDidMount() {
         const pessoaPath = window.location.pathname;
-        console.log(pessoaPath);
         
         const response = await api.get(pessoaPath);
         const response2 = await api.get(pessoaPath+'/tasks');
@@ -79,6 +79,8 @@ class PessoasDT extends Component {
           equipes: response3.data 
         });
     }
+
+
 
     handleCallbackRendimento = (childData) => {
         this.setState({rendimentoFilter: childData})
@@ -99,8 +101,6 @@ class PessoasDT extends Component {
         const { rendimentoFilter} = this.state;
         const { openEdit } = this.state;
 
-        console.table(pessoa);
-
         let TotalTarefas;
         if (tarefas === null) {
             TotalTarefas = 0;
@@ -117,7 +117,6 @@ class PessoasDT extends Component {
 
         const handleClickEdit = () => {
             this.setState({openEdit: true});
-
         };
 
         const handleCloseEdit = () => {
@@ -129,7 +128,6 @@ class PessoasDT extends Component {
         };
 
         const handleDelete = (id) => {
-            console.log(id);
             //this.setState({tarefasId: id})
             this.setState({openAlert: true});
             this.setState({openEdit: false});
@@ -165,7 +163,7 @@ class PessoasDT extends Component {
                             
                             <div className="NomePessoa d-flex flex-wrap align-items-center justify-content-center">
                                 <h1 className="text-center">{pessoa.nome_pessoa}</h1>
-                                <EditaPessoa idPessoa={pessoa.id_pessoa} />
+                                <EditaPessoa idPessoa={pessoa.id_pessoa} equipe_id={pessoa.equipe_id}/>
                             </div>
                             
                             <div>

@@ -70,39 +70,22 @@ const style = {
 
 export default function EditaPessoa(props) {
     const [nome, setNome] = useState('');
-    const [equipe, setEquipe] = useState([]);
-    const [dadoEquipe, setDadoEquipe] = useState('');
+    //const [equipe, setEquipe] = useState([]);
+    //const [dadoEquipe, setDadoEquipe] = useState('');
+    const [funcao, setFuncao] = React.useState();
     const [openEdit, setOpenEdit] = useState(false);
     const [openAlert, setOpenAlert] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState(false);
 
     useEffect(() => {
         const fetchPessoa = async () => {
-            try {
-                const response2 = await api.get('/pessoas/' + props.idPessoa);
-                const pessoa = (response2.data);
-                console.table(pessoa);
-                pessoa.map(m => (
-                    setNome(m.nome_pessoa),
-                    setDadoEquipe(m.equipe_id)
-                ))
-            } catch (error) {
-                console.log(error);
-            }
+            const response2 = await api.get('/pessoas/' + props.idPessoa);
+            const pessoa = (response2.data);
+            setNome(pessoa.nome_pessoa);
+            setFuncao(pessoa.funcao_pessoa);
+            //setDadoEquipe(pessoa.equipe_id);
         };
         fetchPessoa();
-    }, []);
-
-    useEffect(() => {
-        const fetchEquipe = async () => {
-            try {
-                const response = await api.get("/equipes/");
-                setEquipe(response.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchEquipe();
     }, []);
 
     const handleClickEdit = () => {
@@ -113,8 +96,8 @@ export default function EditaPessoa(props) {
         setOpenEdit(false);
     };
 
-    const handleChangeEquipe = (e) => {
-        setDadoEquipe(e.target.value);
+    const handleChangeFun = (evento) => {
+        setFuncao(evento.target.value);
     };
 
     const handleDelete = () => {
@@ -138,11 +121,24 @@ export default function EditaPessoa(props) {
         setOpenAlert(false);
     }
 
-    const handleConfirmDelete = (props) => {
+    const handleConfirmDelete = () => {
         api.delete('/pessoas/' + props.idPessoa);
         setOpenSnackbar(true);
         setOpenAlert(false);
     };
+
+    function Edita() {
+        const updateStatus = async () => {
+            const response = await api.put('/pessoas/' + props.idPessoa, {
+                equipe_id: props.equipe_id,
+                funcao_pessoa: funcao,
+                nome_pessoa: nome
+            }, [])
+            props.atualiza();
+            handleCloseEdit();
+        }
+        updateStatus()
+    }
 
     return (
         <>
@@ -169,6 +165,7 @@ export default function EditaPessoa(props) {
                     </div>
                     <form /*onSubmit={EditaPessoa}*/>
                         <CssTextField
+                            required
                             id="nome"
                             name='nome'
                             label="Nome"
@@ -185,37 +182,11 @@ export default function EditaPessoa(props) {
                         <Box sx={{ minWidth: 120 }}>
                             <CssTextField
                                 select
-                                label="Equipe"
-                                fullWidth
-                                margin="dense"
-                                value={dadoEquipe}
-                                onChange={handleChangeEquipe}
-                                SelectProps={{
-                                    MenuProps: {
-                                        PaperProps: {
-                                            style: {
-                                                maxHeight: '23vh',
-                                                backgroundColor: '#494A58',
-                                                color: '#fff',
-                                            }
-                                        }
-                                    }
-                                }}
-                            >
-                                {equipe.map(e => (
-                                    <MenuItem value={e.id_equipe} key={e.id_equipe}>{e.nome_equipe}</MenuItem>
-                                ))}
-                            </CssTextField>
-                        </Box>
-
-                        <Box sx={{ minWidth: 120 }}>
-                            <CssTextField
-                                select
                                 label="Função"
                                 fullWidth
                                 margin="dense"
-                                //value={prioridade}
-                                //onChange={handleChangePrior}
+                                value={funcao}
+                                onChange={handleChangeFun}
                                 SelectProps={{
                                     MenuProps: {
                                         PaperProps: {
@@ -228,9 +199,10 @@ export default function EditaPessoa(props) {
                                     }
                                 }}
                             >
-                                <MenuItem value={0}>A</MenuItem>
-                                <MenuItem value={1}>B</MenuItem>
-                                <MenuItem value={2}>C</MenuItem>
+                                <MenuItem value={"Back-End"}>Back-End</MenuItem>
+                                <MenuItem value={"Front-End"}>Front-End</MenuItem>
+                                <MenuItem value={"Tester"}>Tester</MenuItem>
+                                <MenuItem value={"Gerente de Projeto"}>Gerente de Projeto</MenuItem>
                             </CssTextField>
                         </Box>
 
@@ -261,7 +233,7 @@ export default function EditaPessoa(props) {
                                     textTransform: 'capitalize',
                                     boxShadow: 'none'
                                 }}
-                                    variant="contained" type="submit" /*onClick={EditaTask}*/>
+                                    variant="contained" type="submit" onClick={Edita}>
                                     Salvar
                                 </Button>
                             </div>
