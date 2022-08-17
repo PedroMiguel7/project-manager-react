@@ -20,9 +20,10 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import InputAdornment from '@mui/material/InputAdornment';
 import api from '../../../../api';
 import { useEffect, useState } from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
@@ -76,11 +77,14 @@ export default function EditaProjeto(props) {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setOpenSnackbar(false);
   };
 
   const [openEdit, setOpenEdit] = React.useState(false);
 
   const [openAlert, setOpenAlert] = React.useState(false);
+
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
 
   const handleClickEdit = () => {
     setOpenEdit(true);
@@ -94,6 +98,7 @@ export default function EditaProjeto(props) {
     setOpenEdit(false);
     setOpenAlert(false);
     setAnchorEl(null);
+    setOpenSnackbar(true);
   };
 
   const handleCloseAlert = () => {
@@ -143,145 +148,154 @@ export default function EditaProjeto(props) {
   }
 
   return (
-    <div>
-      <Tooltip title="Opções" placement="right">
-        <IconButton
-          aria-label="more"
-          id="long-button"
-          aria-controls={open ? 'long-menu' : undefined}
-          aria-expanded={open ? 'true' : undefined}
-          aria-haspopup="true"
-          onClick={handleClick}
-          sx={{ color: '#C2C3C6' }}
-        >
-          <MoreVertIcon />
-        </IconButton>
-      </Tooltip>
-      <Menu
-        id="long-menu"
-        MenuListProps={{
-          'aria-labelledby': 'long-button',
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          style: {
-            backgroundColor: '#494A58'
-          },
-        }}
-      >
-        <MenuItem onClick={handleClickEdit} sx={{ color: '#C2C3C6' }} className="gap-1">
-          <EditIcon sx={{ color: '#C2C3C6' }} /> <span>Editar</span>
-        </MenuItem>
-        <MenuItem onClick={handleClickDelete} sx={{ color: '#C2C3C6' }} className="gap-1">
-          <DeleteIcon sx={{ color: '#C2C3C6' }} /> <span>Deletar</span>
-        </MenuItem>
-        <Dialog
-          open={openAlert}
+    <>
+      <div>
+        <Tooltip title="Opções" placement="right">
+          <IconButton
+            aria-label="more"
+            id="long-button"
+            aria-controls={open ? 'long-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
+            aria-haspopup="true"
+            onClick={handleClick}
+            sx={{ color: '#C2C3C6' }}
+          >
+            <MoreVertIcon />
+          </IconButton>
+        </Tooltip>
+        <Menu
+          id="long-menu"
+          MenuListProps={{
+            'aria-labelledby': 'long-button',
+          }}
+          anchorEl={anchorEl}
+          open={open}
           onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
           PaperProps={{
             style: {
-              backgroundColor: '#494A58',
-              color: '#fff'
+              backgroundColor: '#494A58'
             },
           }}
         >
-          <DialogTitle id="alert-dialog-title">
-            <WarningIcon />
-            {"Tem certeza que deseja excluir esta tarefa?"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description" sx={{ color: '#C2C3C6' }}>
-              Essa ação é permanente.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleCloseAlert}
-              sx={{
-                color: "#C2C3C6",
-                opacity: 0.7
-              }}>Cancelar</Button>
-            <Button autoFocus variant="contained"
-              sx={{
-                color: "#FFF",
-                backgroundColor: "#F66E6E",
-                '&:hover': {
-                  backgroundColor: "#ED5F5F",
-                }
-              }} onClick={DeletaProjeto}>
-              Deletar
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Modal
-          open={openEdit}
-          onClose={handleCloseEdit}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
-            <form onSubmit={EditaProjeto}>
-              <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-                Editar<span style={{ color: '#F46E27' }}> Projeto</span>
-              </Typography>
+          <MenuItem onClick={handleClickEdit} sx={{ color: '#C2C3C6' }} className="gap-1">
+            <EditIcon sx={{ color: '#C2C3C6' }} /> <span>Editar</span>
+          </MenuItem>
+          <MenuItem onClick={handleClickDelete} sx={{ color: '#C2C3C6' }} className="gap-1">
+            <DeleteIcon sx={{ color: '#C2C3C6' }} /> <span>Deletar</span>
+          </MenuItem>
+          <Dialog
+            open={openAlert}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+            PaperProps={{
+              style: {
+                backgroundColor: '#494A58',
+                color: '#fff'
+              },
+            }}
+          >
+            <DialogTitle id="alert-dialog-title">
+              <WarningIcon />
+              {"Tem certeza que deseja excluir esta tarefa?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description" sx={{ color: '#C2C3C6' }}>
+                Essa ação é permanente.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleCloseAlert}
+                sx={{
+                  color: "#C2C3C6",
+                  opacity: 0.7
+                }}>Cancelar</Button>
+              <Button autoFocus variant="contained"
+                sx={{
+                  color: "#FFF",
+                  backgroundColor: "#F66E6E",
+                  '&:hover': {
+                    backgroundColor: "#ED5F5F",
+                  }
+                }} onClick={DeletaProjeto}>
+                Deletar
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <Modal
+            open={openEdit}
+            onClose={handleCloseEdit}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
+              <form onSubmit={EditaProjeto}>
+                <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
+                  Editar<span style={{ color: '#F46E27' }}> Projeto</span>
+                </Typography>
 
-              <CssTextField
-                required
-                id="nome"
-                name='nome'
-                label="Título"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                variant="outlined"
-                margin="dense"
-                color='primary'
-                fullWidth
-                className='textField'
-                autoComplete='off'
-              />
+                <CssTextField
+                  required
+                  id="nome"
+                  name='nome'
+                  label="Título"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  variant="outlined"
+                  margin="dense"
+                  color='primary'
+                  fullWidth
+                  className='textField'
+                  autoComplete='off'
+                />
 
-              <CssTextField
-                required
-                id="descricao"
-                name='descricao'
-                label="Descrição"
-                value={descricao}
-                onChange={(e) => setDescricao(e.target.value)}
-                multiline
-                minRows={4}
-                maxRows={8}
-                variant="outlined"
-                margin="dense"
-                color='primary'
-                fullWidth
-                className='textField'
-                autoComplete='off'
-              />
+                <CssTextField
+                  required
+                  id="descricao"
+                  name='descricao'
+                  label="Descrição"
+                  value={descricao}
+                  onChange={(e) => setDescricao(e.target.value)}
+                  multiline
+                  minRows={4}
+                  maxRows={8}
+                  variant="outlined"
+                  margin="dense"
+                  color='primary'
+                  fullWidth
+                  className='textField'
+                  autoComplete='off'
+                />
 
-              <Divider light className='mt-3' />
-              <div className='d-flex justify-content-end mt-5'>
-                <Button style={{
-                  color: "#F4F5FA",
-                  opacity: 0.5,
-                  textTransform: 'capitalize'
-                }}
-                  variant="text" className='' onClick={handleCloseEdit}>Cancelar</Button>
-                <Button style={{
-                  color: "#F4F5FA",
-                  background: "#F46E27",
-                  textTransform: 'capitalize',
-                  boxShadow: 'none'
-                }}
-                  variant="contained" type="submit" onClick={EditaProjeto}>Salvar</Button>
-              </div>
-            </form>
-          </Box>
-        </Modal>
-      </Menu>
-    </div>
+                <Divider light className='mt-3' />
+                <div className='d-flex justify-content-end mt-5'>
+                  <Button style={{
+                    color: "#F4F5FA",
+                    opacity: 0.5,
+                    textTransform: 'capitalize'
+                  }}
+                    variant="text" className='' onClick={handleCloseEdit}>Cancelar</Button>
+                  <Button style={{
+                    color: "#F4F5FA",
+                    background: "#F46E27",
+                    textTransform: 'capitalize',
+                    boxShadow: 'none'
+                  }}
+                    variant="contained" type="submit" onClick={EditaProjeto}>Salvar</Button>
+                </div>
+              </form>
+            </Box>
+          </Modal>
+
+        </Menu>
+      </div>
+
+      <Snackbar open={openSnackbar} autoHideDuration={2500} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
+          <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
+            Projeto modificado com sucesso!
+          </MuiAlert>
+      </Snackbar>
+    </>
   );
 }
