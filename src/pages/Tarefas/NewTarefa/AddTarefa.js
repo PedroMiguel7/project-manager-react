@@ -125,7 +125,7 @@ export default function BasicModalTarefa(props) {
             background: "#F46E27",
             textTransform: 'capitalize',
             boxShadow: 'none',
-            borderRadius: '100%',
+            borderRadius: '25%',
             ':hover': {
                 background: "#F57D3D",
             }}}>

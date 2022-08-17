@@ -126,128 +126,249 @@ class ProjetoDT extends Component {
     }
 
     GraficoPizza = (props) => {
-
-        const data =
-            [
-                {
-                    "id": "Em Desenvolvimento",
-                    "label": "Desen.",
-                    "value": props.EMANDAMENTO,
-                    "color": "hsl(248, 70%, 50%)"
-                    //#FFF2F1
-                },
-                {
-                    "id": "Em Teste",
-                    "label": "Teste",
-                    "value": props.EMTESTE,
-                    "color": "hsl(63, 70%, 50%)"
-                    //#04395E
-                },
-                {
-                    "id": "Concluida",
-                    "label": "Concluida",
-                    "value": props.CONCLUIDAS,
-                    "color": "hsl(147, 70%, 50%)"
-                    //#4F9D69
-                },
-                {
-                    "id": "A Fazer",
-                    "label": "A-Fazer",
-                    "value": props.AFAZER,
-                    "color": "hsl(162, 70%, 50%)"
-                    //#92D5E6
-                },
-            ]
-
-
-        const MyResponsivePie = () => (
-            <ResponsivePie
-                data={data}
-                margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
-                innerRadius={0.5}
-                padAngle={0.7}
-                cornerRadius={3}
-                activeOuterRadiusOffset={8}
-                borderWidth={1}
-                borderColor={{ theme: 'background' }}
-                arcLinkLabelsSkipAngle={10}
-                arcLinkLabelsTextColor={{ from: 'color', modifiers: [] }}
-                colors={{ scheme: 'category10' }}
-                arcLinkLabelsThickness={2}
-                arcLinkLabelsColor={{ from: 'color', modifiers: [] }}
-                arcLabelsSkipAngle={10}
-                arcLabelsTextColor={{ theme: 'background' }}
-                defs={[
+        if(props.TotalDetasks !== 0){
+            const data =
+                [
                     {
-                        id: 'dots',
-                        type: 'patternDots',
-                        background: 'inherit',
-                        color: 'rgba(255, 255, 255, 0.3)',
-                        size: 4,
-                        padding: 1,
-                        stagger: true
+                        "id": "Em Desenvolvimento",
+                        "label": "Desen.",
+                        "value": props.EMANDAMENTO,
+                        "color": "hsl(248, 70%, 50%)"
+                        //#FFF2F1
                     },
                     {
-                        id: 'lines',
-                        type: 'patternLines',
-                        background: 'inherit',
-                        color: 'rgba(255, 255, 255, 0.3)',
-                        rotation: -45,
-                        lineWidth: 6,
-                        spacing: 10
-                    }
-                ]}
-                fill={[
+                        "id": "Em Teste",
+                        "label": "Teste",
+                        "value": props.EMTESTE,
+                        "color": "hsl(63, 70%, 50%)"
+                        //#04395E
+                    },
                     {
-                        match: {
-                            id: 'python'
+                        "id": "Concluida",
+                        "label": "Concluida",
+                        "value": props.CONCLUIDAS,
+                        "color": "hsl(147, 70%, 50%)"
+                        //#4F9D69
+                    },
+                    {
+                        "id": "A Fazer",
+                        "label": "A-Fazer",
+                        "value": props.AFAZER,
+                        "color": "hsl(162, 70%, 50%)"
+                        //#92D5E6
+                    },
+                ]
+    
+    
+            const MyResponsivePie = () => (
+                <ResponsivePie
+                    data={data}
+                    margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
+                    innerRadius={0.5}
+                    padAngle={0.7}
+                    cornerRadius={3}
+                    activeOuterRadiusOffset={8}
+                    borderWidth={1}
+                    borderColor={{ theme: 'background' }}
+                    arcLinkLabelsSkipAngle={10}
+                    arcLinkLabelsTextColor={{ from: 'color', modifiers: [] }}
+                    colors={{ scheme: 'category10' }}
+                    arcLinkLabelsThickness={2}
+                    arcLinkLabelsColor={{ from: 'color', modifiers: [] }}
+                    arcLabelsSkipAngle={10}
+                    arcLabelsTextColor="black"
+                    gentle='black'
+                    defs={[
+                        {
+                            id: 'dots',
+                            type: 'patternDots',
+                            background: 'inherit',
+                            color: 'rgba(255, 255, 255, 0.3)',
+                            size: 4,
+                            padding: 1,
+                            stagger: true
                         },
-                        id: 'dots'
-                    },
-                    {
-                        match: {
-                            id: 'scala'
+                        {
+                            id: 'lines',
+                            type: 'patternLines',
+                            background: 'inherit',
+                            color: 'rgba(255, 255, 255, 0.3)',
+                            rotation: -45,
+                            lineWidth: 6,
+                            spacing: 10
+                        }
+                    ]}
+                    fill={[
+                        {
+                            match: {
+                                id: 'python'
+                            },
+                            id: 'dots'
                         },
-                        id: 'lines'
-                    },
-                ]}
-                legends={[
-                    {
-                        anchor: 'bottom',
-                        direction: 'row',
-                        justify: false,
-                        translateX: 0,
-                        translateY: 56,
-                        itemsSpacing: 0,
-                        itemWidth: 83.5,
-                        itemHeight: 18,
-                        itemTextColor: '#999',
-                        itemDirection: 'left-to-right',
-                        itemOpacity: 1,
-                        symbolSize: 18,
-                        symbolShape: 'circle',
-                        effects: [
-                            {
-                                on: 'hover',
-                                style: {
-                                    itemTextColor: '#000'
+                        {
+                            match: {
+                                id: 'scala'
+                            },
+                            id: 'lines'
+                        },
+                    ]}
+                    legends={[
+                        {
+                            anchor: 'bottom',
+                            direction: 'row',
+                            justify: false,
+                            translateX: 0,
+                            translateY: 56,
+                            itemsSpacing: 0,
+                            itemWidth: 83.5,
+                            itemHeight: 18,
+                            itemTextColor: '#999',
+                            itemDirection: 'left-to-right',
+                            itemOpacity: 1,
+                            symbolSize: 18,
+                            symbolShape: 'circle',
+                            effects: [
+                                {
+                                    on: 'hover',
+                                    style: {
+                                        itemTextColor: '#fffff'
+                                    }
                                 }
-                            }
-                        ]
-                    }
-                ]}
-            />
-        )
+                            ]
+                        }
+                    ]}
+                />
+            )
+            return (
+                <>
+                    <MyResponsivePie />
+                </>
+            )
+        } else {
+            const data =
+                [
+                    {
+                        "id": "Em Desenvolvimento",
+                        "label": "Desen.",
+                        "value": 0,
+                        "color": "hsl(248, 70%, 50%)"
+                        //#FFF2F1
+                    },
+                    {
+                        "id": "Em Teste",
+                        "label": "Teste",
+                        "value": 0,
+                        "color": "hsl(63, 70%, 50%)"
+                        //#04395E
+                    },
+                    {
+                        "id": "Concluida",
+                        "label": "Concluida",
+                        "value": 0,
+                        "color": "hsl(147, 70%, 50%)"
+                        //#4F9D69
+                    },
+                    {
+                        "id": "A Fazer",
+                        "label": "A-Fazer",
+                        "value": 0,
+                        "color": "hsl(162, 70%, 50%)"
+                        //#92D5E6
+                    },
+                ]
+    
+    
+            const MyResponsivePie = () => (
+                <ResponsivePie
+                    data={data}
+                    margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
+                    innerRadius={0.5}
+                    padAngle={0.7}
+                    cornerRadius={3}
+                    activeOuterRadiusOffset={8}
+                    borderWidth={1}
+                    borderColor={{ theme: 'background' }}
+                    arcLinkLabelsSkipAngle={10}
+                    arcLinkLabelsTextColor={{ from: 'color', modifiers: [] }}
+                    colors={{ scheme: 'category10' }}
+                    arcLinkLabelsThickness={2}
+                    arcLinkLabelsColor={{ from: 'color', modifiers: [] }}
+                    arcLabelsSkipAngle={10}
+                    arcLabelsTextColor="black"
+                    gentle='black'
+                    defs={[
+                        {
+                            id: 'dots',
+                            type: 'patternDots',
+                            background: 'inherit',
+                            color: 'rgba(255, 255, 255, 0.3)',
+                            size: 4,
+                            padding: 1,
+                            stagger: true
+                        },
+                        {
+                            id: 'lines',
+                            type: 'patternLines',
+                            background: 'inherit',
+                            color: 'rgba(255, 255, 255, 0.3)',
+                            rotation: -45,
+                            lineWidth: 6,
+                            spacing: 10
+                        }
+                    ]}
+                    fill={[
+                        {
+                            match: {
+                                id: 'python'
+                            },
+                            id: 'dots'
+                        },
+                        {
+                            match: {
+                                id: 'scala'
+                            },
+                            id: 'lines'
+                        },
+                    ]}
+                    legends={[
+                        {
+                            anchor: 'bottom',
+                            direction: 'row',
+                            justify: false,
+                            translateX: 0,
+                            translateY: 56,
+                            itemsSpacing: 0,
+                            itemWidth: 83.5,
+                            itemHeight: 18,
+                            itemTextColor: '#999',
+                            itemDirection: 'left-to-right',
+                            itemOpacity: 1,
+                            symbolSize: 18,
+                            symbolShape: 'circle',
+                            effects: [
+                                {
+                                    on: 'hover',
+                                    style: {
+                                        itemTextColor: '#fffff'
+                                    }
+                                }
+                            ]
+                        }
+                    ]}
+                />
+            )
+            return (
+                <>
+                    <MyResponsivePie />
+                </>
+            )
+        }
 
-        return (
-            <>
-                <MyResponsivePie />
-            </>
-        )
+
     }
 
     MarcarConcluido = (props) => {
-        if ((props.QTDTAREFAS === props.QTDCONCLUIDAS) && (props.status === "Em Andamento")) {
+        if ((props.QTDTAREFAS !== 0) && (props.QTDTAREFAS === props.QTDCONCLUIDAS) && (props.status === "Em Andamento")) {
             const [openAlert, setOpenAlert] = React.useState(false);
 
             const handleClose = (event, reason) => {
@@ -448,7 +569,7 @@ class ProjetoDT extends Component {
                             <div className="row col-3 TPtrello2 justify-content-between ms-1">
                                 <h2>Estatísticas</h2>
                                 <div className="row col-12 align-items-center" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-px", minHeight: '349px' }}>
-                                    <this.GraficoPizza AFAZER={TotalTasksFazer} EMANDAMENTO={TotalTasksAndamento} EMTESTE={TotalTasksTeste} CONCLUIDAS={TotalTaksConcluidas} />
+                                    <this.GraficoPizza TotalDetasks={totalDetasks} AFAZER={TotalTasksFazer} EMANDAMENTO={TotalTasksAndamento} EMTESTE={TotalTasksTeste} CONCLUIDAS={TotalTaksConcluidas} />
                                 </div>
                                 <h3 className="mt-3">Info-Gerais</h3>
                                 <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-px", minHeight: '118px' }}>

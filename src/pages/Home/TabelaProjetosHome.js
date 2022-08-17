@@ -124,7 +124,7 @@ export default function CardBaixoHome(props) {
                     <table className="table align-middle text-center " style={{ color: 'white' }}>
                         <thead style={{ position: "sticky" }}>
                             <tr>
-                                <th scope="col" onClick={e => handleOrder('id_projeto')} style={{ width: '10%', marginBottom: '40px' }}>#</th>
+                                {/*<th scope="col" onClick={e => handleOrder('id_projeto')} style={{ width: '10%', marginBottom: '40px' }}>#</th>*/}
                                 <th scope="col" onClick={e => handleOrder('nome_projeto')} style={{ width: '20%' }}>Titulo</th>
                                 <th scope="col" style={{ width: '40%' }}>Progresso</th>
                                 <th scope="col" style={{ width: '20%' }}>Status</th>
@@ -135,7 +135,7 @@ export default function CardBaixoHome(props) {
                         <tbody className="">
                             {PROJETOS.map(p => (
                                 <tr key={p.id_projeto}>
-                                    <th scope="row">{p.id_projeto}</th>
+                                    {/*<th scope="row">{p.id_projeto}</th>*/}
                                     <td className="">{p.nome_projeto}</td>
                                     <td>
                                         <BarraProgresso id_projeto={p.id_projeto} />
