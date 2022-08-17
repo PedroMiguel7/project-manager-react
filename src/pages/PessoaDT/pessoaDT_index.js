@@ -14,21 +14,8 @@ import HeaderTarefas from '../../components/HeaderTarefas';
 import LinearChart from "../../components/LinearChart";
 import RendimentoSelect from "./RendimentoSelect";
 import BackIcon from '../../assets/icons/back.svg';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
-import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import MenuItem from '@mui/material/MenuItem';
-import WarningIcon from '@mui/icons-material/Warning';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import EditaPessoa from "./EditaPessoa";
 
 const CssTextField = styled(TextField)({
@@ -86,7 +73,6 @@ class PessoasDT extends Component {
     }
     async componentDidMount() {
         const pessoaPath = window.location.pathname;
-        console.log(pessoaPath);
         
         const response = await api.get(pessoaPath);
         const response2 = await api.get(pessoaPath+'/tasks');
@@ -219,8 +205,6 @@ class PessoasDT extends Component {
         const { rendimentoFilter} = this.state;
         const { openEdit } = this.state;
 
-        console.table(pessoa);
-
         let TotalTarefas;
         if (tarefas === null) {
             TotalTarefas = 0;
@@ -237,7 +221,6 @@ class PessoasDT extends Component {
 
         const handleClickEdit = () => {
             this.setState({openEdit: true});
-
         };
 
         const handleCloseEdit = () => {

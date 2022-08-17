@@ -72,23 +72,19 @@ export default function EditaPessoa(props) {
     const [nome, setNome] = useState('');
     const [equipe, setEquipe] = useState([]);
     const [dadoEquipe, setDadoEquipe] = useState('');
+    const [funcao, setFuncao] = React.useState();
     const [openEdit, setOpenEdit] = useState(false);
     const [openAlert, setOpenAlert] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState(false);
 
     useEffect(() => {
         const fetchPessoa = async () => {
-            try {
+           
                 const response2 = await api.get('/pessoas/' + props.idPessoa);
                 const pessoa = (response2.data);
-                console.table(pessoa);
-                pessoa.map(m => (
-                    setNome(m.nome_pessoa),
-                    setDadoEquipe(m.equipe_id)
-                ))
-            } catch (error) {
-                console.log(error);
-            }
+                setNome(pessoa.nome_pessoa);
+                setFuncao(pessoa.funcao_pessoa);
+                setDadoEquipe(pessoa.equipe_id);
         };
         fetchPessoa();
     }, []);
@@ -117,6 +113,10 @@ export default function EditaPessoa(props) {
         setDadoEquipe(e.target.value);
     };
 
+    const handleChangeFun = (evento) => {
+        setFuncao(evento.target.value);
+      };
+
     const handleDelete = () => {
         //api.delete('/pessoas/'+ props.idPessoa);
         //Deleta(props.idPessoa)
@@ -138,11 +138,25 @@ export default function EditaPessoa(props) {
         setOpenAlert(false);
     }
 
-    const handleConfirmDelete = (props) => {
+    const handleConfirmDelete = () => {
         api.delete('/pessoas/' + props.idPessoa);
         setOpenSnackbar(true);
         setOpenAlert(false);
     };
+    
+      function Edita() {
+        const updateStatus = async () => {
+          const response = await api.put('/pessoas/' + props.id_pessoa, {
+            equipe_id: props.equipe_id,
+            funcao_pessoa: funcao,
+            id_pessoa: props.id_pessoa,
+            nome_pessoa: nome
+          },[])
+          props.atualiza();
+          handleCloseEdit();
+        }
+        updateStatus()
+      }
 
     return (
         <>
@@ -214,8 +228,8 @@ export default function EditaPessoa(props) {
                                 label="Função"
                                 fullWidth
                                 margin="dense"
-                                //value={prioridade}
-                                //onChange={handleChangePrior}
+                                value={funcao}
+                                onChange={handleChangeFun}
                                 SelectProps={{
                                     MenuProps: {
                                         PaperProps: {
@@ -228,9 +242,10 @@ export default function EditaPessoa(props) {
                                     }
                                 }}
                             >
-                                <MenuItem value={0}>A</MenuItem>
-                                <MenuItem value={1}>B</MenuItem>
-                                <MenuItem value={2}>C</MenuItem>
+                                <MenuItem value={"Back-End"}>Back-End</MenuItem>
+                                <MenuItem value={"Front-End"}>Front-End</MenuItem>
+                                <MenuItem value={"Tester"}>Tester</MenuItem>
+                                <MenuItem value={"Gerente de Projeto"}>Gerente de Projeto</MenuItem>
                             </CssTextField>
                         </Box>
 
@@ -261,7 +276,7 @@ export default function EditaPessoa(props) {
                                     textTransform: 'capitalize',
                                     boxShadow: 'none'
                                 }}
-                                    variant="contained" type="submit" /*onClick={EditaTask}*/>
+                                    variant="contained" type="submit" onClick={Edita}>
                                     Salvar
                                 </Button>
                             </div>
