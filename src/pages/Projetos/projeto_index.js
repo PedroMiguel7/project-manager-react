@@ -48,7 +48,6 @@ export default function ProjetoIndex() {
             emptyState = true;
         }
     }
-
     
     const [order, setOrder] = useState(1)
     const [columnorder, setColumnorder] = useState('nome_projeto')
