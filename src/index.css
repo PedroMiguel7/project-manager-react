@@ -116,17 +116,19 @@ body {
     color: var(--laranja);
 }
 
-.scrollar{
+.scroll{
     overflow-y:scroll;
     box-shadow: 0 0 5px solid rgba(0, 0, 0, 0.3);
 }
 
-.scrollar ::-webkit-scrollbar{
-    width: 15px;
-    border: 1px solid rgba(200, 200, 200);
+::-webkit-scrollbar{
+    width: 5px;
+    background-color: #171821;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
-.scrollar ::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb{
     background-color: #21222D;
     border-radius: 6px;
 }
