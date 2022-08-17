@@ -2,34 +2,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import api from '../../api';
 import aim from '../../assets/icons/aim.svg';
-import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogTitle from '@mui/material/DialogTitle';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
-import NovaTarefa from '../../components/NovaTarefa';
 import HeaderTarefas from '../../components/HeaderTarefas';
 import LinearChart from "../../components/LinearChart";
 import RendimentoSelect from "./RendimentoSelect";
 import BackIcon from '../../assets/icons/back.svg';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
-import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import MenuItem from '@mui/material/MenuItem';
-import WarningIcon from '@mui/icons-material/Warning';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import EditaPessoa from "./EditaPessoa";
+import AvatarTag from "./AvatarTag";
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -106,111 +87,10 @@ class PessoasDT extends Component {
     SelectRendimento = (props) => {
         return (
             <>
-                <RendimentoSelect parentCallback = {this.handleCallbackRendimento} />
+              <RendimentoSelect parentCallback = {this.handleCallbackRendimento} />
             </>
         )
     }
-
-    /*Alerta = () => {
-        const handleClose = (event, reason) => {
-          if (reason === 'clickaway') {
-            return;
-          }
-          setOpenSnackbar(false);
-          setTimeout(() => {window.location.pathname = "/pessoas"}, 500)
-        };
-    
-        const handleCheck = (id) => {
-          console.log(id);
-    
-          this.setState({tarefasId: id})
-          this.setState({openAlert: true});
-        }
-    
-        const handleCloseAlert = () => {
-          this.setState({openAlert: false});
-        }
-    
-        const [openSnackbar, setOpenSnackbar] = React.useState(false);
-    
-        const handleClickSim = (id) => {
-          //Deleta(id);
-          setOpenSnackbar(true);
-          this.setState({openAlert: false});
-        };
-    
-        function Edita(props) {
-          const updateStatus = async () => {
-            const response = await api.put('/pessoas/' + props.id_pessoa, {
-              equipe_id: props.equipe_id,
-              funcao_pessoa: props.funcao,
-              id_pessoa: props.id_pessoa,
-              nome_pessoa: props.nome
-            },[])
-            props.atualiza();
-            //handleCloseEdit();
-          }
-          updateStatus()
-        }
-        
-        function Deleta(props){
-          api.delete('/pessoas/'+ props.id_pessoa);
-          handleCloseAlert();
-          props.atualiza();
-        }
-
-        return(
-          <>
-            <Dialog
-              open={this.state.openAlert}
-              //key={t.id_task}
-              onClose={handleCloseAlert}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-              PaperProps={{
-                  style: {
-                    backgroundColor: '#494A58',
-                    color: '#fff'
-                  },
-                }}
-              >
-                <DialogTitle id="alert-dialog-title">
-                    <WarningIcon />
-                    {"Tem certeza que deseja excluir essa pessoa?"}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description" sx={{ color: '#C2C3C6' }}>
-                    Essa ação é permanente.
-                    </DialogContentText>
-                </DialogContent>
-                  
-                <DialogActions>
-                    <Button onClick={handleCloseAlert}
-                    sx={{
-                        color: "#C2C3C6",
-                        opacity: 0.7
-                    }}>Cancelar</Button>
-                    <Button autoFocus onClick={() => {handleClickSim();}} variant="contained"
-                    sx={{
-                        color: "#FFF",
-                        backgroundColor: "#F66E6E",
-                        '&:hover': {
-                        backgroundColor: "#ED5F5F",
-                        }
-                    }}>
-                      Deletar
-                    </Button>
-                </DialogActions>
-                  
-              </Dialog>
-              <Snackbar open={openSnackbar} autoHideDuration={2000} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
-                <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
-                  Pessoa deletada com sucesso!
-                </MuiAlert>
-            </Snackbar>
-          </>
-        )
-      }*/
 
     render() {
         const { pessoa } = this.state;
@@ -281,13 +161,7 @@ class PessoasDT extends Component {
                         </div>
                         
                         <div className="d-flex flex-column align-items-center">
-                            <div className="AvatarBorder d-flex align-items-center justify-content-center">
-                                <Avatar className="Avatar"sx={{width: 150, height: 150}} />
-                                
-                            </div>
-                            <div className="AvatarTag">
-                                {pessoa.funcao_pessoa}
-                            </div>
+                            <AvatarTag funcao={pessoa.funcao_pessoa} />
                             
                             <div className="NomePessoa d-flex flex-wrap align-items-center justify-content-center">
                                 <h1 className="text-center">{pessoa.nome_pessoa}</h1>
