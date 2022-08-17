@@ -248,30 +248,9 @@ class ProjetoDT extends Component {
             const data =
                 [
                     {
-                        "id": "Em Desenvolvimento",
-                        "label": "Desen.",
-                        "value": 0,
-                        "color": "hsl(248, 70%, 50%)"
-                        //#FFF2F1
-                    },
-                    {
-                        "id": "Em Teste",
-                        "label": "Teste",
-                        "value": 0,
-                        "color": "hsl(63, 70%, 50%)"
-                        //#04395E
-                    },
-                    {
-                        "id": "Concluida",
-                        "label": "Concluida",
-                        "value": 0,
-                        "color": "hsl(147, 70%, 50%)"
-                        //#4F9D69
-                    },
-                    {
-                        "id": "A Fazer",
-                        "label": "A-Fazer",
-                        "value": 0,
+                        "id": "SEM TAREFAS",
+                        "label": " SEM TAREFAS NO MOMENTO",
+                        "value": 1,
                         "color": "hsl(162, 70%, 50%)"
                         //#92D5E6
                     },
@@ -294,7 +273,7 @@ class ProjetoDT extends Component {
                     arcLinkLabelsThickness={2}
                     arcLinkLabelsColor={{ from: 'color', modifiers: [] }}
                     arcLabelsSkipAngle={10}
-                    arcLabelsTextColor="black"
+                    arcLabelsTextColor={{ from: 'color', modifiers: [] }}
                     gentle='black'
                     defs={[
                         {
