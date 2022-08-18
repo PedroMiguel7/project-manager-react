@@ -567,7 +567,7 @@ class ProjetoDT extends Component {
                                         </Link>
                                     </div>
                                     <div className="container " style={{ height: '145px', }}>
-                                        <div className="TabelaTarefas table-responsive" style={{ maxHeight: '140px', scroll: "auto" }}>
+                                        <div className="scroll TabelaTarefas table-responsive" style={{ maxHeight: '140px', scroll: "auto" }}>
                                             <table className="table align-middle text-center " >
                                                 <thead style={{ position: "sticky" }}>
                                                     <tr>

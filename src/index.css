@@ -126,6 +126,9 @@ body {
     background-color: #171821;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
+} 
+::-webkit-scrollbar-hover{
+    background-color: var(--laranja);
 }
 
 ::-webkit-scrollbar-thumb{

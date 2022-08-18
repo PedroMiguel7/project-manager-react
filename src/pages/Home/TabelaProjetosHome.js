@@ -159,7 +159,7 @@ export default function CardBaixoHome(props) {
     } else {
         return (
             <>
-                <div className="CardBaixoHome pt-1 ps-2 pe-2 scrollar fixTableHead">
+                <div className="CardBaixoHome pt-1 ps-2 pe-2 scroll fixTableHead" style={{overflowY:'auto'}}>
                     <div className="LeftOptions col-lg-2 mt-sm-2">
                         <h5 className="me-2 ms-4 mt-3">Projetos</h5>
                     </div>
