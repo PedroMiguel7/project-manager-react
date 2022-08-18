@@ -178,7 +178,7 @@ export default function EditaEquipe(props) {
         >
           <DialogTitle id="alert-dialog-title">
             <WarningIcon />
-            {"Tem certeza que deseja excluir esta tarefa?"}
+            {"Tem certeza que deseja deletar essa equipe?"}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description" sx={{ color: '#C2C3C6' }}>
