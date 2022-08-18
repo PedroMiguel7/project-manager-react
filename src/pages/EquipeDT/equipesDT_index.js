@@ -125,12 +125,44 @@ class equipeDT_index extends Component {
             );
         } else{
             let path = window.location.pathname;
-            var colors = ["#FFC16A", "#A9DFD8", "#F2C8ED", "#A7CAFF", "#E7DF9B", "#F2A7A7"];
+
+            function stringToColor(nome) {
+                let hash = 0;
+                let i;
+    
+                for (i = 0; i < nome.length; i += 1) {
+                  hash = nome.charCodeAt(i) + ((hash << 5) - hash);
+                }
+              
+                let color = '#';
+              
+                for (i = 0; i < 3; i += 1) {
+                  const value = (hash >> (i * 8)) & 0xff;
+                  color += `00${value.toString(16)}`.slice(-2);
+                }
+              
+                return color;
+            }
+    
+            function stringAvatar(nome) {
+                if (nome.indexOf(' ') >= 0) {
+                    return (
+                        `${nome.split(' ')[0][0]}${nome.split(' ')[1][0]}`
+                    )
+                } else {
+                    return (
+                        `${nome.split(' ')[0][0]}`
+                    )
+                }
+            }
+
             return(
                 props.PessoasEquipe.map(p => (
                     <li className="MembroLi d-flex justify-content-between align-items-center">
                         <div className="d-flex align-items-center">
-                            <Avatar sx={{ bgcolor: colors[Math.floor(Math.random() * 5)], color: "#171821" }}>{p.nome_pessoa.charAt(0)}</Avatar>
+                            <Avatar sx={{bgcolor: `${stringToColor(p.nome_pessoa)}`, color: "#1E1F28"}}>
+                                {stringAvatar(p.nome_pessoa)}
+                            </Avatar>
                             <div className="d-flex flex-column ms-2">
                                 <span>{p.nome_pessoa}</span>
                                 <span>{p.funcao_pessoa}</span>
