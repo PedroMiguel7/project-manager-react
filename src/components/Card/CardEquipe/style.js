@@ -5,6 +5,7 @@ export const CardContainer = styled.div`
     border-radius: 10px;
     padding: 8px 12px;
     transition: all 0.3s ease-in-out;
+    max-width: 30%;
 
     &:hover {
         transition: all 0.3s ease-in-out;

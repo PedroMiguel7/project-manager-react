@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api from "../../../api";
 import TeamNotFound from "../../../assets/empty-states/team-not-found.svg";
 import EditaEquipe from "../CardEquipe/EdiçãoEquipe/EditaEquipe";
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import { CardContainer, Header, NomeEquipe, Resumo, EmptyStateContainer } from "./style";
 
-export default function CardEquipe(props) {
+export default function CardEquipe(props) {    
     if (props.equipes !== null) {
         function stringAvatar(nome) {
             if (nome.indexOf(' ') >= 0) {
@@ -20,6 +22,7 @@ export default function CardEquipe(props) {
             }
         }
 
+        console.table(props.equipes);
         return (
             <>
                 {props.equipes.map(p => (
@@ -32,7 +35,7 @@ export default function CardEquipe(props) {
                                 </Link>
                             </Header>
                             <Resumo>
-                                5 membros, 2 projetos ativos
+                                {p.pessoas.length} membros, 1 projetos ativos
                             </Resumo>
                             <AvatarGroup max={4}>
                                 {p.pessoas.map(pe => (
