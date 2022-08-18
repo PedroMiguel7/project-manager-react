@@ -114,8 +114,8 @@ export default function EditaEquipe(props) {
 
   function Deleta(){
     api.delete('/equipes/'+ props.id_equipe);
-    handleCloseAlert();
     props.atualiza();
+    handleCloseAlert();
   }
 
   function Edita() {

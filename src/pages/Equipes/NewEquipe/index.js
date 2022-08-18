@@ -16,10 +16,10 @@ import api from "../../../api";
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
-    svg: {color: '#F4F5FA'},
+    svg: { color: '#F4F5FA' },
     '&.Mui-focused': {
       borderColor: '#F4F5FA',
-      svg: {color: '#F57D3D'}
+      svg: { color: '#F57D3D' }
     },
     '& fieldset': {
       borderColor: '#F4F5FA',
@@ -35,7 +35,7 @@ const CssTextField = styled(TextField)({
   '.MuiInputLabel-outlined': {
     color: '#F4F5FA',
     '&.Mui-focused': {
-      color:'#F46E27',
+      color: '#F46E27',
     },
   },
 })
@@ -53,30 +53,24 @@ const style = {
   width: '25vw'
 };
 
-export default function BasicModalEquipe() {
+export default function BasicModalEquipe(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => {setOpen(false); setNome()}
+  const handleClose = () => { setOpen(false); setNome() }
 
   const [nome, setNome] = useState("")
 
   function PostaEquipe(equipe) {
     api.post("/equipes/",
-    {
-      nome_equipe : nome[0].toUpperCase() + nome.slice(1),
-  })
-  .then(resposta => {
-    if(resposta.ok){
-      
-    }else{
-        alert('Não foi possivel cadastrar equipe')
-    }
-  })
+      {
+        nome_equipe: nome[0].toUpperCase() + nome.slice(1),
+      })
+      props.atualiza()
   }
 
   function FechaModal() {
+    props.atualiza()
     setOpen(false);
-    window.location.reload();
   }
 
   return (
@@ -98,32 +92,32 @@ export default function BasicModalEquipe() {
           </div>
 
           <form onSubmit={FechaModal}>
-            <CssTextField 
-              required 
-              id="nome" 
-              name='nome' 
+            <CssTextField
+              required
+              id="nome"
+              name='nome'
               value={nome}
               label="Nome"
-              onChange={(e) => setNome(e.target.value)} 
-              variant="outlined" 
+              onChange={(e) => setNome(e.target.value)}
+              variant="outlined"
               margin="dense"
-              fullWidth 
-              className='textField'/>
-            <Divider light className='mt-3'/>
+              fullWidth
+              className='textField' />
+            <Divider light className='mt-3' />
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{
                 color: "#F4F5FA",
                 opacity: 0.5,
                 textTransform: 'capitalize'
-              }} 
-              variant="text" className='' onClick={handleClose}>Cancelar</Button>
+              }}
+                variant="text" className='' onClick={handleClose}>Cancelar</Button>
               <Button style={{
                 color: "#F4F5FA",
                 background: "#F46E27",
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-              variant="contained" type="submit" onClick={PostaEquipe}>Salvar</Button>
+                variant="contained" type="submit" onClick={PostaEquipe}>Salvar</Button>
             </div>
           </form>
         </Box>

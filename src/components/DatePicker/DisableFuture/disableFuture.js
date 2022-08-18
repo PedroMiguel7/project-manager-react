@@ -6,7 +6,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { alpha, styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 
-export default function CssDatePicker(props) {
+export default function CssDateFut(props) {
   const [value, setValue] = React.useState(new Date());
 
   const limparFiltro = () => setValue(null);

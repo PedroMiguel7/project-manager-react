@@ -63,7 +63,7 @@ export default function ProjetoIndex() {
         return (
             <>
                 <div className="d-flex flex-column align-items-center mt-5">
-                    <img className="mb-3" src={SearchNotFound} />
+                    <img className="mb-3" src={SearchNotFound} alt="not found"/>
                     <h3 style={{color: "#454756", textAlign: "center"}}>Nenhum resultado encontrado.</h3>
                 </div>
             </>
@@ -94,7 +94,7 @@ export default function ProjetoIndex() {
                             <option onClick={e => handleOrder('nome_projeto')} value="decrescente">Z - A</option>
                         </select>*/}
 
-                        <FilterPopper />
+                        <FilterPopper PROJETOS={projetos} SET={setProjetos} atualiza={Atualiza}/>
                     </div>
                 </div>
 

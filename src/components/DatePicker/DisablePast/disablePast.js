@@ -7,7 +7,7 @@ import FilterPopper from '../../FilterPopper';
 import { alpha, styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 
-export default function CssDatePicker(props) {
+export default function CssDatePickerPas(props) {
   const [value, setValue] = React.useState(new Date());
 
   const limparFiltro = () => setValue(null);
