@@ -551,10 +551,10 @@ class ProjetoDT extends Component {
                                     <this.GraficoPizza TotalDetasks={totalDetasks} AFAZER={TotalTasksFazer} EMANDAMENTO={TotalTasksAndamento} EMTESTE={TotalTasksTeste} CONCLUIDAS={TotalTaksConcluidas} />
                                 </div>
                                 <h3 className="mt-3">Info-Gerais</h3>
-                                <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-px", minHeight: '118px' }}>
-                                    <div className="align-items-start mt-2">
+                                <div className="row" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", marginTop: "-px", minHeight: '118px', maxHeight:'125px', overflowY: 'auto' }}>
+                                    <div className="align-items-start mt-2 scroll">
                                         <h5>Descrição</h5>
-                                        <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em' }}>{p.descricao_projeto}</p>
+                                        <p style={{ textAlign: 'justify', fontWeight: 300, lineHeight: '1.6em', scroll:'auto', }}>{p.descricao_projeto}</p>
                                     </div>
                                 </div>
                                 <div className="row align-items-end mt-2" style={{ backgroundColor: "var(--preto-medio)", borderRadius: "5%", minHeight: '211px' }}>
@@ -580,37 +580,6 @@ class ProjetoDT extends Component {
                                                 </tbody>
                                             </table>
                                         </div>
-
-                                        {/*<div className="d-flex text-center justify-content-between">
-                                            <div className="">
-                                                <div className="">
-                                                    <h6 style={{ color: "#F46E27" }}>Gerente de Projeto</h6>
-                                                    <ul style={{ fontWeight: 300 }}>
-                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Gerente de Projeto' />
-                                                    </ul>
-                                                </div>
-                                                <div className="">
-                                                    <h6 style={{ color: "#F46E27" }}>Dev. BackEnd</h6>
-                                                    <ul style={{ fontWeight: 300 }}>
-                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Back-End' />
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div>
-                                                    <h6 style={{ color: "#F46E27" }}>Dev. FrontEnd</h6>
-                                                    <ul style={{ fontWeight: 300 }}>
-                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Front-End' />
-                                                    </ul>
-                                                </div>
-                                                <div>
-                                                    <h6 style={{ color: "#F46E27" }}>Tester</h6>
-                                                    <ul style={{ fontWeight: 300 }}>
-                                                        <this.BuscarMembrosFunc equipe_id={p.equipe_id} funcao_pessoa='Tester' />
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>*/}
                                     </div>
                                 </div>
                             </div>
