@@ -55,8 +55,10 @@ function FilterPopper(props) {
     };
     
     
+    var projetos = props.PROJETOS
+    
     function Filtrar( ) {
-        var projetos = props.PROJETOS
+        projetos = props.PROJETOS
         var elementos = []
         if (checkedAN === true) {
             elementos.push('Em Andamento')
