@@ -292,8 +292,5 @@ export default function EditaPessoa(props) {
                 </MuiAlert>
             </Snackbar>
         </>
-
-
-
     )
 }
