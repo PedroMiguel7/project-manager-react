@@ -26,7 +26,7 @@ export default function CardEquipe(props) {
         return (
             <>
                 {props.equipes.map(p => (
-                    <Link to={'/equipes/' + p.id_equipe} className="Link">
+                    <Link to={'/equipes/' + p.id_equipe} className="Link text-reset col-lg-6 col-md-12">
                         <CardContainer key={p.id_equipe}>
                             <Header>
                                 <NomeEquipe>{p.nome_equipe}</NomeEquipe>
@@ -37,7 +37,13 @@ export default function CardEquipe(props) {
                             <Resumo>
                                 {p.pessoas.length} membros, 1 projetos ativos
                             </Resumo>
-                            <AvatarGroup max={4}>
+                            <AvatarGroup max={4} 
+                            sx={{
+                                '& .MuiAvatar-root': { width: 30, height: 30, fontSize: 15 },
+                                '& .MuiAvatarGroup-avatar': {
+                                    border: "1px solid #1E1F28",
+                                }
+                            }}>
                                 {p.pessoas.map(pe => (
                                     <Avatar>{stringAvatar(pe.nome_pessoa)}</Avatar>
                                 ))}

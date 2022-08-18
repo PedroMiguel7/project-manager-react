@@ -5,7 +5,7 @@ export const CardContainer = styled.div`
     border-radius: 10px;
     padding: 8px 12px;
     transition: all 0.3s ease-in-out;
-    max-width: 30%;
+    max-width: 100%;
 
     &:hover {
         transition: all 0.3s ease-in-out;
@@ -24,7 +24,7 @@ export const NomeEquipe = styled.span`
 `;
 
 export const Resumo = styled.span`
-
+    color: #C2C3C6;
 `;
 
 export const EmptyStateContainer = styled.div`
