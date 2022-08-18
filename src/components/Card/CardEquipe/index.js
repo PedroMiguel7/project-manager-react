@@ -2,10 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TeamNotFound from "../../../assets/empty-states/team-not-found.svg";
 import EditaEquipe from "../CardEquipe/EdiçãoEquipe/EditaEquipe";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
-import { CardContainer, Header, NomeEquipe, Resumo, EmptyStateContainer, EmptyStateTitle } from "./style";
+import { CardContainer, Header, NomeEquipe, Resumo, EmptyStateContainer } from "./style";
 
 export default function CardEquipe(props) {
     if (props.equipes !== null) {
