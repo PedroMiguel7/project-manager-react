@@ -23,7 +23,6 @@ class CardPessoas extends Component {
     
     useEffect(() => {
         const funcaoBackground = window.document.getElementsByClassName('CardPessoaTag');
-        console.log(funcaoBackground);
         
         let i = 0;
 
@@ -53,13 +52,11 @@ class CardPessoas extends Component {
         const { pessoas } = this.state;
 
         const funcaoBackground = window.document.getElementsByClassName('CardPessoaTag');
-        console.log(funcaoBackground);
 
         function mudarBackground() {
             const funcaoBackground = window.document.getElementsByClassName('CardPessoaTag');
 
             for (let i = 0; i < funcaoBackground.length; i++) {
-                //console.log(funcaoBackground[i])
                 //funcaoBackground[i].style.background = 'red';
                 if (funcaoBackground[i].textContent === "Front-End" || "Front End") {
                     return funcaoBackground[i].style.backgroundColor = 'green';
@@ -67,7 +64,6 @@ class CardPessoas extends Component {
                 else if (funcaoBackground[i].textContent === "Back-End" || "Back End") {
                     return funcaoBackground[i].style.backgroundColor = 'blue';
                 }
-                console.log(funcaoBackground[i]);
             }
         }
 

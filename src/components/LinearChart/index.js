@@ -231,7 +231,6 @@ class LinearChart extends Component {
             }
           })
         }
-        console.log(UltimasConcluidas);
 
         UltimosDias.reverse();
 
