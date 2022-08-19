@@ -76,18 +76,8 @@ export default function EditaPessoa(props) {
     const [openEdit, setOpenEdit] = useState(false);
     const [openAlert, setOpenAlert] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState(false);
-
-    useEffect(() => {
-        const fetchPessoa = async () => {
-            const response2 = await api.get('/pessoas/' + props.idPessoa);
-            const pessoa = (response2.data);
-            setNome(pessoa.nome_pessoa);
-            setFuncao(pessoa.funcao_pessoa);
-            //setDadoEquipe(pessoa.equipe_id);
-        };
-        fetchPessoa();
-    }, []);
-
+    
+       
     const handleClickEdit = () => {
         setOpenEdit(true);
     };

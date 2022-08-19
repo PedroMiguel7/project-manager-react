@@ -66,7 +66,7 @@ class PessoasDT extends Component {
         openSnackbar: false,
     }
     async componentDidMount() {
-        const pessoaPath = window.location.pathname;
+        var pessoaPath = window.location.pathname;
         
         const response = await api.get(pessoaPath);
         const response2 = await api.get(pessoaPath+'/tasks');
@@ -97,6 +97,7 @@ class PessoasDT extends Component {
         const { equipes} = this.state;
         const { rendimentoFilter} = this.state;
         const { openEdit } = this.state;
+        
 
         let TotalTarefas;
         if (tarefas === null) {
@@ -157,12 +158,10 @@ class PessoasDT extends Component {
                         
                         <ProfileHeader>
                             <AvatarTag funcao={pessoa.funcao_pessoa} />
-                            
                             <NomePessoa>
                                 <h1>{pessoa.nome_pessoa}</h1>
-                                <EditaPessoa idPessoa={pessoa.id_pessoa} equipe_id={pessoa.equipe_id}/>
+                                <EditaPessoa idPessoa={pessoa.id_pessoa} nome_pessoa={pessoa.nome_pessoa} funcao_pessoa={pessoa.funcao_pessoa} equipe_id={pessoa.equipe_id}/>
                             </NomePessoa>
-                            
                             <NomeEquipe>
                                 <img src={aim} />
                                 <span>{pessoa.nome_equipe}</span>
