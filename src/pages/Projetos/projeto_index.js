@@ -1,6 +1,6 @@
-import BasicModal from './NewProjeto/index'
+import BasicModal from './components/NewProjeto/index'
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos"
-import FilterPopper from "../../components/FilterPopper"
+import FilterPopper from "./components/FilterPopper"
 import Divider from '@mui/material/Divider';
 import { useState, useEffect } from "react";
 import api from "../../api";

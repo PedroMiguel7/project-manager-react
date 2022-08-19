@@ -1,5 +1,5 @@
 import Sidebar from "../../components/SideBar/SideBar";
-import AdicionarProjeto from '../Projetos/NewProjeto/index'
+import AdicionarProjeto from '../Projetos/components/NewProjeto/index'
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
 import api from "../../api";
