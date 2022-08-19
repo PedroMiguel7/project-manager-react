@@ -103,16 +103,16 @@ export default function TarefasMenu(props) {
 
 
 
-  const [nome, setNome] = useState("");
+  var [nome, setNome] = useState("");
   const [pessoa, setPessoa] = useState([]);
-  const [projetoID, setProjetoID ] = useState();
+  var [projetoID, setProjetoID ] = useState();
 
-  const [prioridade, setPrioridade] = React.useState();
+  var [prioridade, setPrioridade] = React.useState();
   const handleChangePrior = (event) => {
     setPrioridade(event.target.value);
   };
 
-  const [dadoEquipe, setDadoEquipe] = React.useState('');
+  var [dadoEquipe, setDadoEquipe] = React.useState('');
   const handleChangeAge = (eventA) => {
     setDadoEquipe(eventA.target.value);
   };
@@ -130,7 +130,6 @@ export default function TarefasMenu(props) {
   }, []);
 
   useEffect(() => {
-
     const fetchtask = async () => {
       try {
         const response2 = await api.get('/tasks/' + props.id_task);

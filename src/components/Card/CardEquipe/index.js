@@ -47,7 +47,7 @@ export default function CardEquipe(props) {
                             <Header>
                                 <NomeEquipe>{p.nome_equipe}</NomeEquipe>
                                 <Link to="/equipes">
-                                    <EditaEquipe id_equipe={p.id_equipe} atualiza={props.atualiza} />
+                                    <EditaEquipe id_equipe={p.id_equipe} equipinha={p} atualiza={props.atualiza} />
                                 </Link>
                             </Header>
                             <Resumo>

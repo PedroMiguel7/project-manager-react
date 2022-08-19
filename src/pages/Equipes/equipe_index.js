@@ -1,4 +1,3 @@
-import filter from '../../assets/icons/filter.svg'
 import Divider from '@mui/material/Divider';
 import ExibirEquipes from "../../components/Card/CardEquipe/index.js";
 import BasicModalEquipe from "./NewEquipe";

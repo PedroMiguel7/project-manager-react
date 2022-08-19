@@ -100,17 +100,9 @@ export default function EditaEquipe(props) {
     setAnchorEl(null);
   };
 
-  const [nome, setNome] = useState("");
+  var [nome, setNome] = useState("");
 
-  useEffect(() => {
-    const fetch = async () => {
-        const response2 = await api.get('/equipes/' + props.id_equipe);
-        const Dados = (response2.data);
-        setNome(Dados.nome_equipe);
-    };
-    fetch();
-  }, []);
-
+  nome = (props.equipinha.nome_equipe);
 
   function Deleta(){
     api.delete('/equipes/'+ props.id_equipe);

@@ -28,13 +28,13 @@ class ProjetoDT extends Component {
     }
     async componentDidMount() {
         const projetoPath = window.location.pathname;
-
+        
         const response = await api.get(projetoPath);
         const response3 = await api.get(projetoPath + "/tasks");
         this.setState({ projetos: response.data });
         this.setState({ tarefasPJ: response3.data });
     }
-
+    
 
     updateStateByProps = () => {
         try {
@@ -71,16 +71,20 @@ class ProjetoDT extends Component {
                     return (
                         pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`).map(f => (
                             <li>{f.nome_pessoa}</li>
-                        ))
-                    );
-                }
-            } else {
+                            ))
+                            );
+                        }
+                    } else {
                 return (
                     <li>sem pessoa</li>
                 )
             }
-        } else {
-            if (pessoas !== null) {
+        } else if(props.QualFoi === 'ARRAY'){
+            return(
+                pessoas
+                )
+            } else {
+                if (pessoas !== null) {
                 return (
                     pessoas.map(f => (
                         <tr>
@@ -124,11 +128,11 @@ class ProjetoDT extends Component {
             )
         }
     }
-
+    
     GraficoPizza = (props) => {
         if(props.TotalDetasks !== 0){
             const data =
-                [
+            [
                     {
                         "id": "Em Desenvolvimento",
                         "label": "Desen.",
@@ -158,7 +162,7 @@ class ProjetoDT extends Component {
                         //#92D5E6
                     },
                 ]
-    
+                
     
             const MyResponsivePie = () => (
                 <ResponsivePie
@@ -237,7 +241,7 @@ class ProjetoDT extends Component {
                             ]
                         }
                     ]}
-                />
+                    />
             )
             return (
                 <>
@@ -257,7 +261,7 @@ class ProjetoDT extends Component {
                 ]
     
     
-            const MyResponsivePie = () => (
+                const MyResponsivePie = () => (
                 <ResponsivePie
                     data={data}
                     margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
@@ -349,22 +353,21 @@ class ProjetoDT extends Component {
     MarcarConcluido = (props) => {
         if ((props.QTDTAREFAS !== 0) && (props.QTDTAREFAS === props.QTDCONCLUIDAS) && (props.status === "Em Andamento")) {
             const [openAlert, setOpenAlert] = React.useState(false);
-
+            
             const handleClose = (event, reason) => {
-              if (reason === 'clickaway') {
+                if (reason === 'clickaway') {
                 return;
-              }
+            }
               setOpenSnackbar(false);
             };
             
             const handleCheck = (id) => {
-              console.log(id);
-              this.setState({tarefasId: id})
+                this.setState({tarefasId: id})
               this.setState({openAlert: true})
             }
-        
+            
             const handleCloseAlert = () => {
-              setOpenAlert(false);
+                setOpenAlert(false);
             }
         
             const [openSnackbar, setOpenSnackbar] = React.useState(false);
@@ -375,7 +378,7 @@ class ProjetoDT extends Component {
               setOpenAlert(false);
               this.setState({changeIcon: true});
             };
-        
+            
             const icon = (this.state.changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
         
             function EditaTask(id) {
@@ -418,7 +421,7 @@ class ProjetoDT extends Component {
         }
     
         const handleCloseAlert = () => {
-          this.setState({openAlert: false});
+            this.setState({openAlert: false});
         }
     
         const [openSnackbar, setOpenSnackbar] = React.useState(false);
@@ -427,7 +430,6 @@ class ProjetoDT extends Component {
           EditaTask(id);
           setOpenSnackbar(true);
           this.setState({openAlert: false});
-          console.log(this.state.tarefasId);
         };
     
         function EditaTask(ID) {
@@ -481,25 +483,32 @@ class ProjetoDT extends Component {
             </Snackbar>
           </>
         )
-      }
+    }
 
 
-
+      
+    
     render() {
         const { projetos } = this.state;
         const { tarefasPJ } = this.state;
-
+        
         var totalDetasks = 0;
         var TotalTaksConcluidas = 0;
         var TotalTasksAndamento = 0;
         var TotalTasksFazer = 0;
         var TotalTasksTeste = 0;
-
+        
         var TasksFazer = [];
         var TasksAndamento = [];
         var TasksTeste = [];
         var TasksConcluidas = [];
 
+        
+        //var equipe_id = projetos.map(p =>(p.equipe_id))
+        //var pessoas = []
+        //pessoas = <this.BuscarMembrosFunc equipe_id={equipe_id[0]} QualFoi={'ARRAY'}/>
+
+        
         if (tarefasPJ !== null) {
             totalDetasks = tarefasPJ.length;
             if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido") !== null) {
