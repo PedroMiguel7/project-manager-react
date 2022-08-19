@@ -12,6 +12,7 @@ export const MembrosUl = styled.div`
     max-height: 350px;
     overflow: auto;
     padding-left: 0;
+    margin-bottom: 5%;
 `;
 
 export const ProjetosContainer = styled.div`
@@ -22,6 +23,7 @@ export const ProjetosContainer = styled.div`
 export const HeaderProjetos = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #1E1F29;
     border-radius: 10px 10px 0 0;
     padding: 0.5rem 0.7rem;
@@ -48,7 +50,7 @@ export const HeaderTarefas = styled.div`
 `;
 
 export const TarefasUl = styled.div`
-    max-height: 73vh;
+    max-height: 60vh;
     overflow: auto;
     padding-left: 0;
 `;

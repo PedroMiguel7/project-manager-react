@@ -317,21 +317,18 @@ class equipeDT_index extends Component {
                 } else {
                     return (
                         ToDo.map(t => (
-                        <li className="TarefasLi d-flex ">
-                            <div className="TaskIcon d-flex align-items-center justify-content-center">
-                                <img src={TaskIcon} />
-                            </div>
-                            <div className="d-flex align-items-center justify-content-between ms-2">
-                                <div className="d-flex flex-column ms-2">
-                                    <span>{t.status}</span>
-                                    <span>{t.nome_projeto}</span>
-                                    <span>
-                                        <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                        {TempoRestante(t.prazo_entrega)}
-                                    </span>
+                            <li className="TarefasLi d-flex ">
+                                <div className="d-flex align-items-center">
+                                    <div className="d-flex flex-column ">
+                                        <span>{t.status}</span>
+                                        <span>{t.nome_projeto}</span>
+                                        <span>
+                                            <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                            {TempoRestante(t.prazo_entrega)}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>  
+                            </li>  
                         ))
                     )
                 }
@@ -349,21 +346,18 @@ class equipeDT_index extends Component {
                 } else {
                     return (
                         OnGoing.map(t => (
-                        <li className="TarefasLi d-flex ">
-                            <div className="TaskIcon d-flex align-items-center justify-content-center">
-                                <img src={TaskIcon} />
-                            </div>
-                            <div className="d-flex align-items-center justify-content-between ms-2">
-                                <div className="d-flex flex-column ms-2">
-                                    <span>{t.status}</span>
-                                    <span>{t.nome_projeto}</span>
-                                    <span>
-                                        <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                        {TempoRestante(t.prazo_entrega)}
-                                    </span>
+                            <li className="TarefasLi d-flex ">
+                                <div className="d-flex align-items-center">
+                                    <div className="d-flex flex-column ">
+                                        <span>{t.status}</span>
+                                        <span>{t.nome_projeto}</span>
+                                        <span>
+                                            <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                            {TempoRestante(t.prazo_entrega)}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>  
+                            </li>   
                         ))
                     )
                 }
@@ -381,21 +375,18 @@ class equipeDT_index extends Component {
                 } else {
                     return (
                         Testing.map(t => (
-                        <li className="TarefasLi d-flex ">
-                            <div className="TaskIcon d-flex align-items-center justify-content-center">
-                                <img src={TaskIcon} />
-                            </div>
-                            <div className="d-flex align-items-center justify-content-between ms-2">
-                                <div className="d-flex flex-column ms-2">
-                                    <span>{t.status}</span>
-                                    <span>{t.nome_projeto}</span>
-                                    <span>
-                                        <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                        {TempoRestante(t.prazo_entrega)}
-                                    </span>
+                            <li className="TarefasLi d-flex ">
+                                <div className="d-flex align-items-center">
+                                    <div className="d-flex flex-column ">
+                                        <span>{t.status}</span>
+                                        <span>{t.nome_projeto}</span>
+                                        <span>
+                                            <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                            {TempoRestante(t.prazo_entrega)}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>  
+                            </li>  
                         ))
                     )
                 }
@@ -413,21 +404,18 @@ class equipeDT_index extends Component {
                 } else {
                     return (
                         Done.map(t => (
-                        <li className="TarefasLi d-flex ">
-                            <div className="TaskIcon d-flex align-items-center justify-content-center">
-                                <img src={TaskIcon} />
-                            </div>
-                            <div className="d-flex align-items-center justify-content-between ms-2">
-                                <div className="d-flex flex-column ms-2">
-                                    <span>{t.status}</span>
-                                    <span>{t.nome_projeto}</span>
-                                    <span>
-                                        <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                        {TempoRestante(t.prazo_entrega)}
-                                    </span>
+                            <li className="TarefasLi d-flex ">
+                                <div className="d-flex align-items-center">
+                                    <div className="d-flex flex-column ">
+                                        <span>{t.status}</span>
+                                        <span>{t.nome_projeto}</span>
+                                        <span>
+                                            <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                            {TempoRestante(t.prazo_entrega)}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>  
+                            </li>  
                         ))
                     )
                 }
@@ -719,35 +707,37 @@ class equipeDT_index extends Component {
                     <div className="row">
                         <HeaderDt link="/equipes" pagina="Equipe" titulo={equipe.nome_equipe} Status='' />
                     </div>
-                    <div className="row">
-                        <div className="col-lg-4 col-md-8">
-                            <MembrosContainer>
-                                <h3>Membros</h3>
-                                <MembrosUl>
-                                    <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
-                                    <this.AddMembro />
-                                </MembrosUl>
-                            </MembrosContainer>
-                            <ProjetosContainer>
-                                <HeaderProjetos>
-                                    <h3>Projetos</h3>
-                                    <this.SelectStatusProjeto status={statusProjeto} />
-                                </HeaderProjetos>
-                                <ProjetosUl>
-                                    <this.ImprimeProjetos projetos = {projetos} status = {statusProjeto} />
-                                </ProjetosUl>
-                            </ProjetosContainer>
-                        </div>
-                        <TarefasContainer className="col-lg-4 col-md-8">
-                            <HeaderTarefas>
-                                <h3>Tarefas</h3>
-                                <this.SelectStatusTarefa status={statusTarefa} />
-                            </HeaderTarefas>
-                            <TarefasUl>
-                                <this.ImprimeTarefas equipe={equipe} tarefas = {tarefas} projetos = {TarefasProjeto} status = {statusTarefa} />
-                            </TarefasUl>
-                        </TarefasContainer>
-                        <div className="col-lg-3 col-md-4">
+                    <div className="row gap-4">
+                        <div className="col-lg-8 col-md-7">
+                            <div className="col-lg-6 col-md-12">
+                                <MembrosContainer className="row">
+                                    <h3>Membros</h3>
+                                    <MembrosUl>
+                                        <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
+                                        <this.AddMembro />
+                                    </MembrosUl>
+                                </MembrosContainer>
+                                <ProjetosContainer className="row">
+                                    <HeaderProjetos>
+                                        <h3>Projetos</h3>
+                                        <this.SelectStatusProjeto status={statusProjeto} />
+                                    </HeaderProjetos>
+                                    <ProjetosUl>
+                                        <this.ImprimeProjetos projetos = {projetos} status = {statusProjeto} />
+                                    </ProjetosUl>
+                                </ProjetosContainer>
+                            </div>
+                            <TarefasContainer className="col-lg-6 col-md-12">
+                                <HeaderTarefas>
+                                    <h3>Tarefas</h3>
+                                    <this.SelectStatusTarefa status={statusTarefa} />
+                                </HeaderTarefas>
+                                <TarefasUl>
+                                    <this.ImprimeTarefas equipe={equipe} tarefas = {tarefas} projetos = {TarefasProjeto} status = {statusTarefa} />
+                                </TarefasUl>
+                            </TarefasContainer>
+                        </div> 
+                        <div className="col-lg-2 col-md-4">
                             <div className="row">
                                 <Top3 className="col-12">
                                     <h6>Membros mais produtivos</h6>
