@@ -162,7 +162,7 @@ export default function Menu_index() {
               </div>*/}
           </div>
         </div>
-        <div className="Teste row  h-lg-50 p-3 mt-2">
+        <div className="Teste row  h-lg-50 p-3 mt-2" style={{backgroundColor:'var(--preto-medio)', borderRadius:'1%'}}>
           <CardBaixoHome Projetos={projetos} />
         </div>
       </main>
