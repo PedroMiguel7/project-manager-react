@@ -132,7 +132,7 @@ export default function EditaProjeto(props) {
 
   function EditaProjeto() {
     const updateStatus = async () => {
-      const response = await api.put('/projetos/' + props.id_projeto, {
+      const response = await api.put('/projetos/' +   props.id_projeto, {
         descricao_projeto: descricao,
         equipe_id: parseInt(props.equipe_id),
         nome_projeto: nome
