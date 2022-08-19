@@ -124,7 +124,6 @@ export default function BasicModal() {
 
   function FechaModal() {
     setOpen(false);
-    window.location.reload();
   }
 
   return (

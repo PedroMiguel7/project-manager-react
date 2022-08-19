@@ -1,5 +1,5 @@
 import filter from '../../assets/icons/filter.svg';
-import BasicModalPessoa from '../Pessoas/NovaPessoa/NewPessoa';
+import BasicModalPessoa from '../Pessoas/NewPessoa/NewPessoa';
 import CardPessoas from "../../components/Card/CardPessoas";
 import { useState, useEffect} from "react";
 import api from "../../api";
