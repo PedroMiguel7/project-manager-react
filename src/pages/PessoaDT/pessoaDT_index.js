@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import api from '../../api';
 import aim from '../../assets/icons/aim.svg';
-import Divider from '@mui/material/Divider';
-import HeaderTarefas from '../../components/HeaderTarefas';
+import HeaderTarefas from './Components/HeaderTarefas';
 import LinearChart from "../../components/LinearChart";
-import RendimentoSelect from "./RendimentoSelect";
+import RendimentoSelect from "./Components/RendimentoSelect";
 import BackIcon from '../../assets/icons/back.svg';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
-import EditaPessoa from "./EditaPessoa";
-import AvatarTag from "./AvatarTag";
+import EditaPessoa from "./Components/EditaPessoa";
+import AvatarTag from "./Components/AvatarTag";
+import { PageContainer, ProfileContainer, Back, ProfileHeader, NomePessoa, NomeEquipe, ResumoPessoa, PessoaDashboard, Rendimento, RendimentoHeader, ChartContainer, TarefasPessoa } from "./style";
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -56,7 +56,6 @@ const CssTextField = styled(TextField)({
   };
 
 class PessoasDT extends Component {
-  
     state = {
         pessoa: [],
         tarefas: [],
@@ -79,8 +78,6 @@ class PessoasDT extends Component {
           equipes: response3.data 
         });
     }
-
-
 
     handleCallbackRendimento = (childData) => {
         this.setState({rendimentoFilter: childData})
@@ -150,66 +147,60 @@ class PessoasDT extends Component {
 
         return (
             <>
-                <div className='col-11 offset-1 col-lg-11 offset-lg-1 col-sm-12 offset-sm-1 ps-5 d-flex flex-wrap mt-5 gap-5'>
-                    <div className="col-lg-3 col-md-12 col-sm-12 ProfilePessoa d-flex flex-column align-items-center p-4">
-                        <div className="align-self-start">
+                <PageContainer className='col-11 offset-1 col-lg-11 offset-lg-1 col-sm-12 offset-sm-1'>
+                    <ProfileContainer className="col-lg-3 col-md-12 col-sm-12">
+                        <Back>
                            <Link to={"/pessoas"} className="mb-2 me-1">
                                 <img src={BackIcon} style={{width: 28}} />
                             </Link> 
-                        </div>
+                        </Back>
                         
-                        <div className="d-flex flex-column align-items-center">
+                        <ProfileHeader>
                             <AvatarTag funcao={pessoa.funcao_pessoa} />
                             
-                            <div className="NomePessoa d-flex flex-wrap align-items-center justify-content-center">
-                                <h1 className="text-center">{pessoa.nome_pessoa}</h1>
+                            <NomePessoa>
+                                <h1>{pessoa.nome_pessoa}</h1>
                                 <EditaPessoa idPessoa={pessoa.id_pessoa} equipe_id={pessoa.equipe_id}/>
-                            </div>
+                            </NomePessoa>
                             
+                            <NomeEquipe>
+                                <img src={aim} />
+                                <span>{pessoa.nome_equipe}</span>
+                            </NomeEquipe>
+                        </ProfileHeader>
+
+                        <ResumoPessoa>
                             <div>
-                                <img src={aim} /> <span>{pessoa.nome_equipe}</span>
-                            </div>
-                            <div>
-                                {/*<span>Projeto</span>*/}
-                            </div>
-                        </div>
-                        <Divider light orientation="vertical" variant="middle" flexItem />
-                        <div className="ResumoPessoa d-flex align-items-center justify-content-center flex-wrap gap-5">
-                            <div className="d-flex flex-column text-center">
                                 <h5>{TotalTarefas}</h5>
                                 <p>Total de Tarefas</p>
                             </div>
-                            <div className="d-flex flex-column text-center">
+                            <div>
                                 <h5>{Concluidas}</h5>
                                 <p>Tarefas Concluídas</p>
                             </div>
-                        </div>
+                        </ResumoPessoa>
                         {/*<CustomizedAccordion />*/}
-
-                    </div>
+                    </ProfileContainer>
                     
-                    <div className="col-lg-8 col-md-12 col-sm-12">
-                        <div className="row Teste h-lg-50 p-3">
-                            <div className="col-12 d-flex align-items-center justify-content-between">
-                                <h5 className='m-0'>Rendimento</h5>
+                    <PessoaDashboard className="col-lg-8 col-md-12 col-sm-12">
+                        <Rendimento className="row">
+                            <RendimentoHeader className="col-12">
+                                <h5>Rendimento</h5>
                                 <this.SelectRendimento />    
-                            </div>
+                            </RendimentoHeader>
                             
-                            <div className="ChartContainer" >
+                            <ChartContainer>
                               <LinearChart selectValue={rendimentoFilter} />  
-                            </div>
-                            
-                        </div>
-                        <div className="Teste row col-12 h-lg-50 p-3 mt-3">
-                            
+                            </ChartContainer>
+                        </Rendimento>
+                        <TarefasPessoa className="row col-12 p-3 mt-3">
                             <HeaderTarefas />
-                            
-                            <div className="d-flex justify-content-end">
+                            <div>
                                 {/*<NovaTarefa />*/}
                             </div>
-                        </div>
-                    </div>
-                 </div>
+                        </TarefasPessoa>
+                    </PessoaDashboard>
+                 </PageContainer>
             </>
         )
     }

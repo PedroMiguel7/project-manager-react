@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Component } from "react";
-import api from '../../../api';
+import api from '../../../../../api';
 import TarefasMenu from '../../TarefasMenu';
 import IconButton from '@mui/material/IconButton';
 import TaskAltRoundedIcon from '@mui/icons-material/TaskAltRounded';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import PrioridadeAlta from '../../../assets/icons/prioridade-alta.svg';
-import PrioridadeMedia from '../../../assets/icons/prioridade-media.svg';
-import PrioridadeBaixa from '../../../assets/icons/prioridade-baixa.svg';
+import PrioridadeAlta from '../../../../../assets/icons/prioridade-alta.svg';
+import PrioridadeMedia from '../../../../../assets/icons/prioridade-media.svg';
+import PrioridadeBaixa from '../../../../../assets/icons/prioridade-baixa.svg';
 import Tooltip from '@mui/material/Tooltip';
-import TasksNotFound from "../../../assets/empty-states/tasks-not-found.svg";
+import TasksNotFound from "../../../../../assets/empty-states/tasks-not-found.svg";
 
 
 class TarefasConcluidas extends Component {

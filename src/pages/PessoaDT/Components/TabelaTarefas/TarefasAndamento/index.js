@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from "react";
-import api from '../../../api';
+import api from '../../../../../api';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import TarefasMenu from '../../TarefasMenu';
 import IconButton from '@mui/material/IconButton';
@@ -12,11 +12,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import PrioridadeAlta from '../../../assets/icons/prioridade-alta.svg';
-import PrioridadeMedia from '../../../assets/icons/prioridade-media.svg';
-import PrioridadeBaixa from '../../../assets/icons/prioridade-baixa.svg';
+import PrioridadeAlta from '../../../../../assets/icons/prioridade-alta.svg';
+import PrioridadeMedia from '../../../../../assets/icons/prioridade-media.svg';
+import PrioridadeBaixa from '../../../../../assets/icons/prioridade-baixa.svg';
 import Tooltip from '@mui/material/Tooltip';
-import TasksNotFound from "../../../assets/empty-states/tasks-not-found.svg";
+import TasksNotFound from "../../../../../assets/empty-states/tasks-not-found.svg";
 
 
 class TarefasAndamento extends Component {

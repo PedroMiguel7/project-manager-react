@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from "react";
-import api from '../../../api';
+import api from '../../../../api';
 import Tooltip from '@mui/material/Tooltip';
 
 class TarefasConcluidas extends Component {

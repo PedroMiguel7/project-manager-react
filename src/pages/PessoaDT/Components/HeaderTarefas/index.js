@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import TarefasAndamento from '../TabelaTarefas/TarefasAndamento';
 import TarefasConcluidas from '../TabelaTarefas/TarefasConcluidas';
-import ContadorTarefas from './ContadorTarefas'
+import ContadorTarefas from '../ContadorTarefas';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
