@@ -1,4 +1,4 @@
-import BasicModal from './NewProject/index'
+import BasicModal from './NewProjeto/index'
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos"
 import FilterPopper from "../../components/FilterPopper"
 import Divider from '@mui/material/Divider';

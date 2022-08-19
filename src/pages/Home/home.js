@@ -1,5 +1,5 @@
 import Sidebar from "../../components/SideBar/SideBar";
-import AdicionarProjeto from '../Projetos/NewProject/index'
+import AdicionarProjeto from '../Projetos/NewProjeto/index'
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
 import api from "../../api";
@@ -113,7 +113,7 @@ export default function Menu_index() {
           <div className="LeftOptions col-lg-2 mt-sm-2">
             <span className="me-2 fs-4">Projetos recentes</span>
           </div>
-          <div className="RightOptions d-flex col-lg-2 offset-lg-8 mt-sm-2">
+          <div className=" col-lg-2 offset-lg-8 mt-sm-2">
             <AdicionarProjeto atualiza={Atualizar} />
           </div>
         </div>

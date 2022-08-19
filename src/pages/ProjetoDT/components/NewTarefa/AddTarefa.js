@@ -58,7 +58,7 @@ const style = {
 export default function BasicModalTarefa(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => {setOpen(false); setDadoEquipe(); setPrioridade()};
+    const handleClose = () => {setOpen(false); setNome(); setPrazoEntrega(); setDadoEquipe(); setPrioridade()};
 
     const [nome, setNome] = useState("");
     const [pessoa, setPessoa] = useState([]);
