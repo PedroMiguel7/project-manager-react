@@ -649,17 +649,6 @@ class equipeDT_index extends Component {
 
             return (
                 <>
-                    <div>
-                        <div>
-                            <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
-                        </div>
-                        <div>
-                            <span className="ProgressLegends ConcluidaLegend">Concluídos</span>
-                        </div>
-                        <div>
-                            <span className="ProgressLegends PendenteLegend">Pendentes</span>
-                        </div>
-                    </div>
                     <ProgressoCircular Total={TotalProjetos} StatsTitle="Projetos" ValueAndamento={PorcAndamento} ValueConcluido={PorcConcluidos} />
                 </>
                 
@@ -723,7 +712,7 @@ class equipeDT_index extends Component {
                                 </TarefasUl>
                             </TarefasContainer>
                         </div>
-                    <div className="col-lg-12 col-md-3">
+                    <div className="col-lg-2 col-md-3">
                         <div className="row">
                             <Top3 className="col-12">
                                 <h6>Membros mais produtivos</h6>

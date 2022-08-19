@@ -73,8 +73,8 @@ export const TarefasCircularProgress = styled.div`
     flex-wrap: wrap;
     background-color: var(--preto-medio);
     list-style: none;
-    height: 400px;
-    width: 500px;
+    height: 280px;
+    width: 100%;
     /*padding: 8px;*/
     border-radius: 10px;
     margin-bottom: 0.5rem;
@@ -87,6 +87,8 @@ export const ProjetosCircularProgress = styled.div`
     flex-wrap: wrap-reverse;
     background-color: var(--preto-medio);
     list-style: none;
+    height: 280px;
+    width: 100%;
     /*padding: 8px;*/
     border-radius: 10px;
     margin-bottom: 0.5rem;
