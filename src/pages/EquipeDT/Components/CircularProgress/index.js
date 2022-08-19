@@ -1,107 +1,88 @@
-import Box from '@mui/material/Box';
-import CircularProgress, {circularProgressClasses,} from '@mui/material/CircularProgress';
-import Tooltip from '@mui/material/Tooltip';
+import { ResponsiveRadialBar } from '@nivo/radial-bar'
 
-export default function ProgressoCircular(props) {
+export default function RadialBarChart(props) {
     if (props.op === "tarefas") {
+        const data = [
+            {
+                "id": "A Fazer",
+                "data": [
+                {
+                    "x": "A Fazer",
+                    "y": 80
+                },
+                ]
+            },
+            {
+                "id": "Em Andamento",
+                "data": [
+                {
+                    "x": "Em Andamento",
+                    "y": 21
+                },
+                ]
+            },
+            {
+                "id": "Em Teste",
+                "data": [
+                {
+                    "x": "Em Teste",
+                    "y": 10
+                },
+                ]
+            },
+            {
+                "id": "Concluídas",
+                "data": [
+                {
+                    "x": "Concluídas",
+                    "y": 89
+                },
+                ]
+            },
+        ]
+
         return (
-            <>
-            <Box className="ConcluidasProgress d-flex align-items-center justify-content-center" sx={{ position: 'relative' }}>
-                    <CircularProgress variant="determinate" value={100} size={210} thickness={1} sx={{color: "#2B2B36", }} ></CircularProgress>
-
-                    <Tooltip title={`${props.ValueConcluido}%`} followCursor={true}>
-                        <CircularProgress variant="determinate" value={props.ValueConcluido} size={210} thickness={1}
-                        sx={{color: "#A9DFD8", [`& .${circularProgressClasses.circle}`]: {strokeLinecap: 'round', },backgroundColor: "", position: 'absolute',
-                        left: 0,}} ></CircularProgress>
-                    </Tooltip>
-
-                <Box className="ConcluidasProgress d-flex align-items-center justify-content-center" sx={{ position: 'absolute', left: 15 }}>
-                        <CircularProgress variant="determinate" value={100} size={180} thickness={1.25} sx={{color: "#2B2B36", }} ></CircularProgress>
-
-                        <Tooltip title={`${props.ValueConcluido}%`} followCursor={true}>
-                            <CircularProgress variant="determinate" value={props.ValueConcluido} size={180} thickness={1.25}
-                            sx={{color: "#A9DFD8", [`& .${circularProgressClasses.circle}`]: {strokeLinecap: 'round', },backgroundColor: "", position: 'absolute',
-                            left: 0,}} ></CircularProgress>
-                        </Tooltip>
-                        
-
-                        <Box className="AndamentoProgress d-flex align-items-center justify-content-center" sx={{ position: 'absolute', left: 15 }}>
-                                <CircularProgress variant="determinate" value={100} size={150} thickness={1.5} sx={{color: "#2B2B36", }} ></CircularProgress>
-
-                                <Tooltip title={`${props.ValueAndamento}%`} followCursor={true} placement="right">
-                                    <CircularProgress variant="determinate" value={props.ValueAndamento} size={150} thickness={1.5}
-                                    sx={{color: "#F2C8ED", [`& .${circularProgressClasses.circle}`]: {strokeLinecap: 'round', },backgroundColor: "", position: 'absolute',
-                                    left: 0,}} ></CircularProgress>
-                                </Tooltip>
-                                
-
-                                <Box className="PendenteProgress d-flex align-items-center justify-content-center" sx={{ position: 'absolute', left: 15 }}>
-                                    <CircularProgress variant="determinate" value={100} size={120} thickness={1.75} sx={{color: "#2B2B36", }} ></CircularProgress>
-
-                                    <Tooltip title="0%" followCursor={true} placement="top">
-                                        <CircularProgress variant="determinate" value={0} size={120} thickness={1.75}
-                                        sx={{color: "#E7DF9B", [`& .${circularProgressClasses.circle}`]: {strokeLinecap: 'round', },backgroundColor: "", position: 'absolute',
-                                        left: 0,}} ></CircularProgress>
-                                    </Tooltip>
-                                    
-
-                                    <div className="CircularProgress TotalStats d-flex flex-column">
-                                        <h6>{props.Total}</h6>
-                                        <span>{props.StatsTitle}</span>
-                                    </div>
-                                </Box>
-                        </Box>
-                    </Box>
-            </Box>
-
-                
-                
-            </>
-        )    
-
-    } else {
-        return (
-            <>
-                <Box className="ConcluidasProgress d-flex align-items-center justify-content-center" sx={{ position: 'relative' }}>
-                    <CircularProgress variant="determinate" value={100} size={180} thickness={1.25} sx={{color: "#2B2B36", }} ></CircularProgress>
-
-                    <Tooltip title={`${props.ValueConcluido}%`} followCursor={true}>
-                        <CircularProgress variant="determinate" value={props.ValueConcluido} size={180} thickness={1.25}
-                        sx={{color: "#A9DFD8", [`& .${circularProgressClasses.circle}`]: {strokeLinecap: 'round', },backgroundColor: "", position: 'absolute',
-                        left: 0,}} ></CircularProgress>
-                    </Tooltip>
-                    
-
-                    <Box className="AndamentoProgress d-flex align-items-center justify-content-center" sx={{ position: 'absolute', left: 15 }}>
-                            <CircularProgress variant="determinate" value={100} size={150} thickness={1.5} sx={{color: "#2B2B36", }} ></CircularProgress>
-
-                            <Tooltip title={`${props.ValueAndamento}%`} followCursor={true} placement="right">
-                                <CircularProgress variant="determinate" value={props.ValueAndamento} size={150} thickness={1.5}
-                                sx={{color: "#F2C8ED", [`& .${circularProgressClasses.circle}`]: {strokeLinecap: 'round', },backgroundColor: "", position: 'absolute',
-                                left: 0,}} ></CircularProgress>
-                            </Tooltip>
-                            
-
-                            <Box className="PendenteProgress d-flex align-items-center justify-content-center" sx={{ position: 'absolute', left: 15 }}>
-                                <CircularProgress variant="determinate" value={100} size={120} thickness={1.75} sx={{color: "#2B2B36", }} ></CircularProgress>
-
-                                <Tooltip title="0%" followCursor={true} placement="top">
-                                    <CircularProgress variant="determinate" value={0} size={120} thickness={1.75}
-                                    sx={{color: "#E7DF9B", [`& .${circularProgressClasses.circle}`]: {strokeLinecap: 'round', },backgroundColor: "", position: 'absolute',
-                                    left: 0,}} ></CircularProgress>
-                                </Tooltip>
-                                
-
-                                <div className="CircularProgress TotalStats d-flex flex-column">
-                                    <h6>{props.Total}</h6>
-                                    <span>{props.StatsTitle}</span>
-                                </div>
-                            </Box>
-                    </Box>
-                </Box>
-                
-            </>
-        )    
+                <ResponsiveRadialBar
+                data={data}
+                valueFormat=" >-.2f"
+                startAngle={-90}
+                endAngle={90}
+                innerRadius={0.15}
+                padding={0.7}
+                cornerRadius={45}
+                margin={{ top: 40, right: 120, bottom: 40, left: 40 }}
+                colors={{ scheme: 'set3' }}
+                borderColor={{
+                    from: 'color',
+                    modifiers: [
+                        [
+                            'darker',
+                            '1'
+                        ]
+                    ]
+                }}
+                tracksColor="#2B2B36"
+                enableRadialGrid={false}
+                enableCircularGrid={false}
+                radialAxisStart={null}
+                circularAxisOuter={null}
+                label="category"
+                legends={[
+                    {
+                        dataFrom: 'keys',
+                        anchor: 'bottom',
+                        direction: 'row',
+                        justify: false,
+                        translateX: 23,
+                        translateY: -115,
+                        itemWidth: 96,
+                        itemHeight: 33,
+                        itemsSpacing: 5,
+                        symbolSize: 10,
+                        itemDirection: 'left-to-right'
+                    }
+                ]}
+            />
+        )
     }
-    
 }
