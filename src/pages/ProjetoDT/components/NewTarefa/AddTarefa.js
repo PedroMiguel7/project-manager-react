@@ -104,6 +104,7 @@ export default function BasicModalTarefa(props) {
                     })
                 }
                 props.atualiza();
+                handleClose();
         } catch (error){
             console.error(error.message);
         }
