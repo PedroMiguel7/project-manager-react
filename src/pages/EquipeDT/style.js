@@ -49,7 +49,7 @@ export const HeaderTarefas = styled.div`
 `;
 
 export const TarefasUl = styled.div` 
-max-height: 350px;
+    max-height: 73vh;
     overflow: auto;
     padding-left: 0;
     margin: 5px 10px;

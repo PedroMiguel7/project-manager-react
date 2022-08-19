@@ -708,26 +708,26 @@ class equipeDT_index extends Component {
                         <HeaderDt link="/equipes" pagina="Equipe" titulo={equipe.nome_equipe} Status='' />
                     </div>
                     <div className="row gap-4">
-                        <div className="col-lg-8 col-md-7">
-                            <div className="col-lg-6 col-md-12">
-                                <MembrosContainer className="row">
-                                    <h3>Membros</h3>
-                                    <MembrosUl>
-                                        <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
-                                        <this.AddMembro />
-                                    </MembrosUl>
-                                </MembrosContainer>
-                                <ProjetosContainer className="row">
-                                    <HeaderProjetos>
-                                        <h3>Projetos</h3>
-                                        <this.SelectStatusProjeto status={statusProjeto} />
-                                    </HeaderProjetos>
-                                    <ProjetosUl>
-                                        <this.ImprimeProjetos projetos = {projetos} status = {statusProjeto} />
-                                    </ProjetosUl>
-                                </ProjetosContainer>
-                            </div>
-                            <TarefasContainer className="col-lg-6 col-md-12">
+                        <div className="col-lg-4 col-md-8">
+                            <MembrosContainer className="row">
+                                <h3>Membros</h3>
+                                <MembrosUl>
+                                    <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
+                                    <this.AddMembro />
+                                </MembrosUl>
+                            </MembrosContainer>
+                            <ProjetosContainer className="row">
+                                <HeaderProjetos>
+                                    <h3>Projetos</h3>
+                                    <this.SelectStatusProjeto status={statusProjeto} />
+                                </HeaderProjetos>
+                                <ProjetosUl>
+                                    <this.ImprimeProjetos projetos = {projetos} status = {statusProjeto} />
+                                </ProjetosUl>
+                            </ProjetosContainer>
+                        </div>
+                        <div className="col-lg-4 col-md-8">
+                            <TarefasContainer >
                                 <HeaderTarefas>
                                     <h3>Tarefas</h3>
                                     <this.SelectStatusTarefa status={statusTarefa} />
@@ -736,24 +736,25 @@ class equipeDT_index extends Component {
                                     <this.ImprimeTarefas equipe={equipe} tarefas = {tarefas} projetos = {TarefasProjeto} status = {statusTarefa} />
                                 </TarefasUl>
                             </TarefasContainer>
-                        </div> 
-                        <div className="col-lg-2 col-md-4">
-                            <div className="row">
-                                <Top3 className="col-12">
-                                    <h6>Membros mais produtivos</h6>
-                                    <p>Por tarefas concluídas</p>
-                                    <this.ImprimeMembrosStats />
-                                </Top3>
-                                <TarefasCircularProgress className="col-12">
-                                    <this.ImprimeTarefasStats tarefas={tarefas} />
-                                </TarefasCircularProgress>
+                        </div>
+                    <div className="col-lg-2 col-md-3">
+                        <div className="row">
+                            <Top3 className="col-12">
+                                <h6>Membros mais produtivos</h6>
+                                <p>Por tarefas concluídas</p>
+                                <this.ImprimeMembrosStats />
+                            </Top3>
+                            <TarefasCircularProgress className="col-12">
+                                <this.ImprimeTarefasStats tarefas={tarefas} />
+                            </TarefasCircularProgress>
 
-                                <ProjetosCircularProgress className="col-12">
-                                    <this.ImprimeProjetosStats projetos={projetos} />
-                                </ProjetosCircularProgress>
-                            </div>
+                            <ProjetosCircularProgress className="col-12">
+                                <this.ImprimeProjetosStats projetos={projetos} />
+                            </ProjetosCircularProgress>
                         </div>
                     </div>
+                    </div> 
+                    
                 </PageContainer>
             </>
         )
