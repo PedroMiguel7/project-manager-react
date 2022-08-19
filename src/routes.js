@@ -9,8 +9,6 @@ import EquipeDT from ".//pages/EquipeDT/equipesDT_index"
 import Pessoas from ".//pages/Pessoas/pessoa_index"
 import PessoaDT from ".//pages/PessoaDT/pessoaDT_index"
 import Tarefas from ".//pages/Tarefas/tarefa_index"
-import TarefaDT from ".//pages/TarefaDT/tarefaDT_index"
-
 
 const Rout = () =>{
     return(
@@ -28,7 +26,6 @@ const Rout = () =>{
                 <Route exect path="/pessoas/:id" element={<PessoaDT />}/>
 
                 <Route exect path="/tarefas" element={<Tarefas />}/>
-                <Route exect path="/tarefas/:id" element={<TarefaDT />}/>
             </Routes>
         </BrowserRouter>
     );

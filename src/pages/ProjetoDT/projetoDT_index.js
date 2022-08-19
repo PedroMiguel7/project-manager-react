@@ -1,7 +1,7 @@
 import HeaderDt from "../../components/HeaderDt"
 import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
-import MostrarLIstaTarefas from "./ListaDeTarefas";
+import MostrarLIstaTarefas from "./components/ListaDeTarefas";
 import { Link } from "react-router-dom";
 import { ResponsivePie } from '@nivo/pie';
 

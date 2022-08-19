@@ -1,7 +1,7 @@
 import { useDrop } from 'react-dnd';
-import api from '../../api';
+import api from '../../../api';
 import MostrarTarefasCard from './cardTarefas';
-import BasicModalTarefa from "../Tarefas/NewTarefa/AddTarefa";
+import BasicModalTarefa from "../../Tarefas/NewTarefa/AddTarefa";
 
 export default function MostrarLIstaTarefas(props) {
     const [, dropRef] = useDrop({

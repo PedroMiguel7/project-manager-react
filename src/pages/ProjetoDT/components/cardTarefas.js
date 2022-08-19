@@ -1,5 +1,5 @@
 import { useDrag } from 'react-dnd';
-import TarefasMenu from "../../components/TarefasMenu";
+import TarefasMenu from "../../../components/TarefasMenu";
 
 export default function MostrarTarefasCard(props) {
     const [{ isDragging }, dragRef] = useDrag({
