@@ -5,12 +5,12 @@ import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import TaskIcon from '../../assets/icons/task.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import ProgressoCircular from './CircularProgress/index.js';
-import ProjetosSelect from "./ProjetosSelect";
-import TarefasSelect from "./TarefasSelect";
-import ProgressoProjetos from "./ProgressoProjetos";
-import BarChart from "./BarChart";
-import MenuMembros from "./MenuMembros";
+import ProgressoCircular from './Components/CircularProgress/index.js';
+import ProjetosSelect from "./Components/ProjetosSelect";
+import TarefasSelect from "./Components/TarefasSelect";
+import ProgressoProjetos from "./Components/ProgressoProjetos";
+import BarChart from "./Components/BarChart";
+import MenuMembros from "./Components/MenuMembros";
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
@@ -23,6 +23,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import ProjectNotFound from '../../assets/empty-states/project-not-found.svg';
 import PeopleNotFound from '../../assets/empty-states/people-not-found.svg';
+import { PageContainer, MembrosContainer, MembrosUl, ProjetosContainer, HeaderProjetos, ProjetosUl, TarefasContainer, HeaderTarefas, TarefasUl, Top3, TarefasCircularProgress, ProjetosCircularProgress } from "./style";
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -714,56 +715,56 @@ class equipeDT_index extends Component {
 
         return (
             <>
-                <main className='col-11 offset-1 col-lg-11 offset-lg-1 ps-5'>
+                <PageContainer className='col-11 offset-1 col-lg-11 offset-lg-1'>
                     <div className="row">
                         <HeaderDt link="/equipes" pagina="Equipe" titulo={equipe.nome_equipe} Status='' />
                     </div>
                     <div className="row">
                         <div className="col-lg-4 col-md-8">
-                            <div>
+                            <MembrosContainer>
                                 <h3>Membros</h3>
-                                <ul className="MembrosUl ps-0">
+                                <MembrosUl>
                                     <this.ImprimeMembros PessoasEquipe = {PessoasEquipe}/>
                                     <this.AddMembro />
-                                </ul>
-                            </div>
-                            <div className="ProjetosContainer">
-                                <div className="HeaderProjetos d-flex justify-content-between">
+                                </MembrosUl>
+                            </MembrosContainer>
+                            <ProjetosContainer>
+                                <HeaderProjetos>
                                     <h3>Projetos</h3>
                                     <this.SelectStatusProjeto status={statusProjeto} />
-                                </div>
-                                <ul className="ProjetosUl ps-0">
+                                </HeaderProjetos>
+                                <ProjetosUl>
                                     <this.ImprimeProjetos projetos = {projetos} status = {statusProjeto} />
-                                </ul>
-                            </div>
+                                </ProjetosUl>
+                            </ProjetosContainer>
                         </div>
-                        <div className="TarefasContainer col-lg-4 col-md-8">
-                            <div className="HeaderTarefas d-flex justify-content-between">
+                        <TarefasContainer className="col-lg-4 col-md-8">
+                            <HeaderTarefas>
                                 <h3>Tarefas</h3>
                                 <this.SelectStatusTarefa status={statusTarefa} />
-                            </div>
-                            <ul className="TarefasUl ps-0">
+                            </HeaderTarefas>
+                            <TarefasUl>
                                 <this.ImprimeTarefas equipe={equipe} tarefas = {tarefas} projetos = {TarefasProjeto} status = {statusTarefa} />
-                            </ul>
-                        </div>
+                            </TarefasUl>
+                        </TarefasContainer>
                         <div className="col-lg-3 col-md-4">
                             <div className="row">
-                                <div className="Top3 d-flex flex-column align-items-center col-12">
+                                <Top3 className="col-12">
                                     <h6>Membros mais produtivos</h6>
                                     <p>Por tarefas concluídas</p>
                                     <this.ImprimeMembrosStats />
-                                </div>
-                                <div className="TasksCircularProgress col-12 flex-wrap">
+                                </Top3>
+                                <TarefasCircularProgress className="col-12">
                                     <this.ImprimeTarefasStats tarefas={tarefas} />
-                                </div>
+                                </TarefasCircularProgress>
 
-                                <div className="TasksCircularProgress col-12 flex-wrap-reverse">
+                                <ProjetosCircularProgress className="col-12">
                                     <this.ImprimeProjetosStats projetos={projetos} />
-                                </div>
+                                </ProjetosCircularProgress>
                             </div>
                         </div>
                     </div>
-                </main>
+                </PageContainer>
             </>
         )
     }

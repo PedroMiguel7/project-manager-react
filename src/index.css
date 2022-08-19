@@ -591,15 +591,6 @@ input[type="number"]::-webkit-inner-spin-button {
     border: 1px solid var(--cinza);
 }*/
 
-.MembrosUl, .ProjetosUl {
-    max-height: 350px;
-    overflow: auto;
-}
-
-.TarefasUl {
-    max-height: 73vh;
-    overflow: auto;
-}
 
 .ProjetosContainer {
     background-color: var(--preto-medio);
@@ -612,7 +603,7 @@ input[type="number"]::-webkit-inner-spin-button {
     max-height: 80vh;
 }
 
-.HeaderProjetos, .HeaderTarefas {
+.HeaderProjetos {
     background-color: #1E1F29;
     border-radius: 10px 10px 0 0;
     padding: 0.5rem 0.7rem;
@@ -655,7 +646,7 @@ input[type="number"]::-webkit-inner-spin-button {
     border: 1px solid #2B2B36;
 }
 
-.MembroLi, .Top3, .TasksCircularProgress {
+.MembroLi {
     background-color: var(--preto-medio);
     list-style: none;
     /*padding: 8px;*/

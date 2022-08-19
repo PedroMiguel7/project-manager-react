@@ -5,6 +5,7 @@ export const PageContainer = styled.div`
     flex-wrap: wrap;
     gap: 2%;
     margin-top: 2%;
+    padding-left: 2%;
 `;
 
 export const ProfileContainer = styled.div`
