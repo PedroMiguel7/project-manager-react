@@ -3,14 +3,14 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
-import NewProject from '../../assets/icons/new.svg';
+import NewProject from '../../../assets/icons/new.svg';
 import { useState, useEffect } from 'react';
 import MenuItem from '@mui/material/MenuItem';
-import api from "../../api"
+import api from "../../../api"
 
 
 const CssTextField = styled(TextField)({
