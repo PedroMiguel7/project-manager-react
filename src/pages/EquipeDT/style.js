@@ -73,6 +73,8 @@ export const TarefasCircularProgress = styled.div`
     flex-wrap: wrap;
     background-color: var(--preto-medio);
     list-style: none;
+    height: 400px;
+    width: 500px;
     /*padding: 8px;*/
     border-radius: 10px;
     margin-bottom: 0.5rem;

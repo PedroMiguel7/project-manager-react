@@ -603,7 +603,7 @@ class equipeDT_index extends Component {
     ImprimeTarefasStats = (props) => {
         if(props.tarefas === null){
             return (
-                <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} />    
+                <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} op="tarefas" />    
             )
             
         } else {
@@ -622,20 +622,6 @@ class equipeDT_index extends Component {
             return (
                 <>
                     <ProgressoCircular op="tarefas" Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} />
-                    <div className="d-flex flex-column ">
-                        <div>
-                            <span className="ProgressLegends AndamentoLegend">A Fazer</span>
-                        </div>
-                        <div>
-                            <span className="ProgressLegends AndamentoLegend">Em Andamento</span>
-                        </div>
-                        <div>
-                            <span className="ProgressLegends PendenteLegend">Em Teste</span>
-                        </div>
-                        <div>
-                            <span className="ProgressLegends ConcluidaLegend">Concluídas</span>
-                        </div>
-                    </div>
                 </>
                 
             )
@@ -737,7 +723,7 @@ class equipeDT_index extends Component {
                                 </TarefasUl>
                             </TarefasContainer>
                         </div>
-                    <div className="col-lg-2 col-md-3">
+                    <div className="col-lg-12 col-md-3">
                         <div className="row">
                             <Top3 className="col-12">
                                 <h6>Membros mais produtivos</h6>
