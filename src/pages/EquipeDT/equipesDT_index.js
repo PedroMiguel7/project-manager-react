@@ -23,7 +23,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import ProjectNotFound from '../../assets/empty-states/project-not-found.svg';
 import PeopleNotFound from '../../assets/empty-states/people-not-found.svg';
-import { PageContainer, MembrosContainer, MembrosUl, ProjetosContainer, HeaderProjetos, ProjetosUl, TarefasContainer, HeaderTarefas, TarefasUl, Top3, TarefasCircularProgress, ProjetosCircularProgress } from "./style";
+import { PageContainer, MembrosContainer, MembrosUl, ProjetosContainer, HeaderProjetos, ProjetosUl, TarefasContainer, HeaderTarefas, TarefasUl, Top3, TarefasCircularProgress, ProjetosCircularProgress, TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa } from "./style";
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -317,18 +317,18 @@ class equipeDT_index extends Component {
                 } else {
                     return (
                         ToDo.map(t => (
-                            <li className="TarefasLi d-flex ">
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex flex-column ">
-                                        <span>{t.status}</span>
-                                        <span>{t.nome_projeto}</span>
-                                        <span>
-                                            <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                            {TempoRestante(t.prazo_entrega)}
-                                        </span>
-                                    </div>
-                                </div>
-                            </li>  
+                            <TarefasLi>
+                                <StatusTarefa>
+                                    {t.status}
+                                </StatusTarefa>
+                                <NomeTarefa>
+                                    {t.nome_projeto}
+                                </NomeTarefa>
+                                <PrazoTarefa>
+                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                    {TempoRestante(t.prazo_entrega)}
+                                </PrazoTarefa>
+                            </TarefasLi>  
                         ))
                     )
                 }
@@ -346,18 +346,18 @@ class equipeDT_index extends Component {
                 } else {
                     return (
                         OnGoing.map(t => (
-                            <li className="TarefasLi d-flex ">
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex flex-column ">
-                                        <span>{t.status}</span>
-                                        <span>{t.nome_projeto}</span>
-                                        <span>
-                                            <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                            {TempoRestante(t.prazo_entrega)}
-                                        </span>
-                                    </div>
-                                </div>
-                            </li>   
+                            <TarefasLi>
+                                <StatusTarefa>
+                                    {t.status}
+                                </StatusTarefa>
+                                <NomeTarefa>
+                                    {t.nome_projeto}
+                                </NomeTarefa>
+                                <PrazoTarefa>
+                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                    {TempoRestante(t.prazo_entrega)}
+                                </PrazoTarefa>
+                            </TarefasLi>  
                         ))
                     )
                 }
@@ -375,18 +375,18 @@ class equipeDT_index extends Component {
                 } else {
                     return (
                         Testing.map(t => (
-                            <li className="TarefasLi d-flex ">
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex flex-column ">
-                                        <span>{t.status}</span>
-                                        <span>{t.nome_projeto}</span>
-                                        <span>
-                                            <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                            {TempoRestante(t.prazo_entrega)}
-                                        </span>
-                                    </div>
-                                </div>
-                            </li>  
+                            <TarefasLi>
+                                <StatusTarefa>
+                                    {t.status}
+                                </StatusTarefa>
+                                <NomeTarefa>
+                                    {t.nome_projeto}
+                                </NomeTarefa>
+                                <PrazoTarefa>
+                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                    {TempoRestante(t.prazo_entrega)}
+                                </PrazoTarefa>
+                            </TarefasLi>    
                         ))
                     )
                 }
@@ -404,36 +404,36 @@ class equipeDT_index extends Component {
                 } else {
                     return (
                         Done.map(t => (
-                            <li className="TarefasLi d-flex ">
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex flex-column ">
-                                        <span>{t.status}</span>
-                                        <span>{t.nome_projeto}</span>
-                                        <span>
-                                            <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                            {TempoRestante(t.prazo_entrega)}
-                                        </span>
-                                    </div>
-                                </div>
-                            </li>  
+                            <TarefasLi>
+                                <StatusTarefa>
+                                    {t.status}
+                                </StatusTarefa>
+                                <NomeTarefa>
+                                    {t.nome_projeto}
+                                </NomeTarefa>
+                                <PrazoTarefa>
+                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                    {TempoRestante(t.prazo_entrega)}
+                                </PrazoTarefa>
+                            </TarefasLi>   
                         ))
                     )
                 }
             } else {
                 return(
                     props.tarefas.map(t => (
-                        <li className="TarefasLi d-flex ">
-                            <div className="d-flex align-items-center">
-                                <div className="d-flex flex-column ">
-                                    <span>{t.status}</span>
-                                    <span>{t.nome_projeto}</span>
-                                    <span>
-                                        <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                        {TempoRestante(t.prazo_entrega)}
-                                    </span>
-                                </div>
-                            </div>
-                        </li>  
+                        <TarefasLi>
+                            <StatusTarefa>
+                                {t.status}
+                            </StatusTarefa>
+                            <NomeTarefa>
+                                {t.nome_projeto}
+                            </NomeTarefa>
+                            <PrazoTarefa>
+                                <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                {TempoRestante(t.prazo_entrega)}
+                            </PrazoTarefa>
+                        </TarefasLi>  
                     ))
                 );    
             }

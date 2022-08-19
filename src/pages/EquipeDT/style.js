@@ -38,7 +38,6 @@ export const ProjetosUl = styled.div`
 export const TarefasContainer = styled.div`
     background-color: var(--preto-medio);
     border-radius: 10px;
-    max-height: 80vh;
 `;
 
 export const HeaderTarefas = styled.div`
@@ -49,10 +48,11 @@ export const HeaderTarefas = styled.div`
     padding: 0.5rem 0.7rem;
 `;
 
-export const TarefasUl = styled.div`
-    max-height: 60vh;
+export const TarefasUl = styled.div` 
+max-height: 350px;
     overflow: auto;
     padding-left: 0;
+    margin: 5px 10px;
 `;
 
 export const Top3 = styled.div`
@@ -88,4 +88,33 @@ export const ProjetosCircularProgress = styled.div`
     /*padding: 8px;*/
     border-radius: 10px;
     margin-bottom: 0.5rem;
+`;
+
+// Imprime Tarefas
+export const TarefasLi = styled.li`
+    display: flex;
+    flex-direction: column;
+    border-bottom: 0.15px solid #2C2E3B;
+    padding: 1.2rem 0.7rem;
+    list-style: none;
+
+    &:nth-last-child(1) {
+        border-bottom: none;
+    }
+`;
+
+export const StatusTarefa = styled.span`
+    color: #287CB8;
+    font-weight: 500;
+    font-size: 0.93rem;
+`;
+
+export const NomeTarefa = styled.h5`
+    font-weight: 400;
+    margin: 0;
+`;
+
+export const PrazoTarefa = styled.span`
+    color: #87888C;
+    font-size: 0.93rem;
 `;

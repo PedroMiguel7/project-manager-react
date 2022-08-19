@@ -27,8 +27,8 @@ function ProgressoProjetos (props) {
         <>
             <div className="ProgressoProjetoContainer">
                 <div className="d-flex justify-content-between">
-                    <span>{props.status}</span>
-                    <span>{Math.round(BarrinhaProgresso)}%</span>    
+                    <span style={{color: "#287CB8"}}>{props.status}</span>
+                    <span style={{color: "#494A58"}}>{Math.round(BarrinhaProgresso)}%</span>    
                 </div>
                 
                 <div className="progress ProgressProjeto" >

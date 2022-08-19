@@ -122,9 +122,9 @@ body {
 }
 
 ::-webkit-scrollbar{
-    width: 5px;
-    background-color: #171821;
-    border-top-left-radius: 5px;
+    width: 8px;
+    background-color: #2B2B36;
+    border-radius: 6px;
     border-bottom-right-radius: 5px;
 } 
 ::-webkit-scrollbar-hover{
@@ -132,8 +132,9 @@ body {
 }
 
 ::-webkit-scrollbar-thumb{
-    background-color: #21222D;
+    background-color: #40404F;
     border-radius: 6px;
+    border: 1px solid #2B2B36;
 }
 
 main h1 {
@@ -627,7 +628,7 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 1.2rem 0.7rem;
 }
 
-.ProjetosLi:nth-last-child(1), .TarefasLi:nth-last-child(1) {
+.ProjetosLi:nth-last-child(1){
     border-bottom: none;
 }
 
@@ -652,12 +653,6 @@ input[type="number"]::-webkit-inner-spin-button {
     /*padding: 8px;*/
     border-radius: 10px;
     margin-bottom: 0.5rem;
-}
-
-.TarefasLi {
-    border-bottom: 0.15px solid #2C2E3B;
-    padding: 1.2rem 0rem;
-    list-style: none;
 }
 
 .TaskIcon {
@@ -688,7 +683,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .ProgressBarProjeto {
     border-radius: 100px;
-    background-color: var(--azul-claro);
+    background-color: #3B97D9;
 }
 
 .LinkProjeto {
