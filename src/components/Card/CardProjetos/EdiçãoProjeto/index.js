@@ -113,29 +113,19 @@ export default function EditaProjeto(props) {
   };
 
 
-  const [nome, setNome] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [equipe, setEquipe] = useState();
-
-  useEffect(() => {
-    const fetchtask = async () => {
-      try {
-        const response2 = await api.get('/projetos/' + props.id_projeto);
-        const TAREFA = (response2.data);
-        TAREFA.map(m => (
-          setNome(m.nome_projeto),
-          setDescricao(m.descricao_projeto)
-          ))
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchtask();
-  }, []);
+  var [nome, setNome] = useState("");
+  var [descricao, setDescricao] = useState("");
+  var [equipe, setEquipe] = useState();
 
 
-  function DeletaProjeto(){
-    api.delete('/projetos/'+ props.id_projeto);
+
+  nome = (props.projetinho.nome_projeto)
+  descricao = (props.projetinho.descricao_projeto)
+
+
+
+  function DeletaProjeto() {
+    api.delete('/projetos/' + props.id_projeto);
     handleCloseAlert();
     props.atualiza();
   }
@@ -146,7 +136,7 @@ export default function EditaProjeto(props) {
         descricao_projeto: descricao,
         equipe_id: parseInt(props.equipe_id),
         nome_projeto: nome
-      },[])
+      }, [])
       props.atualiza();
       handleEdit();
     }
@@ -297,10 +287,10 @@ export default function EditaProjeto(props) {
         </Menu>
       </div>
 
-      <Snackbar open={openSnackbar} autoHideDuration={2500} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
-          <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
-            Projeto modificado com sucesso!
-          </MuiAlert>
+      <Snackbar open={openSnackbar} autoHideDuration={2500} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center', }}>
+        <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
+          Projeto modificado com sucesso!
+        </MuiAlert>
       </Snackbar>
     </>
   );

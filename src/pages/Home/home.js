@@ -4,7 +4,7 @@ import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
 import api from "../../api";
 import CardBaixoHome from "../Home/TabelaProjetosHome";
-import { ResponsiveMarimekko } from '@nivo/marimekko';
+//import { ResponsiveMarimekko } from '@nivo/marimekko';
 
 export default function Menu_index() {
   const [projetos, setProjetos] = useState([]);
@@ -84,170 +84,11 @@ export default function Menu_index() {
     }
   }
 
-  function Grafico () {
-    const data = [
-      {
-        "statement": "it's good",
-        "participation": 7,
-        "stronglyAgree": 13,
-        "agree": 29,
-        "disagree": 23,
-        "stronglyDisagree": 15
-      },
-      {
-        "statement": "it's sweet",
-        "participation": 12,
-        "stronglyAgree": 23,
-        "agree": 6,
-        "disagree": 27,
-        "stronglyDisagree": 16
-      },
-      {
-        "statement": "it's spicy",
-        "participation": 14,
-        "stronglyAgree": 24,
-        "agree": 24,
-        "disagree": 19,
-        "stronglyDisagree": 28
-      },
-      {
-        "statement": "worth eating",
-        "participation": 17,
-        "stronglyAgree": 10,
-        "agree": 0,
-        "disagree": 24,
-        "stronglyDisagree": 6
-      },
-      {
-        "statement": "worth buying",
-        "participation": 4,
-        "stronglyAgree": 24,
-        "agree": 19,
-        "disagree": 18,
-        "stronglyDisagree": 5
-      }
-    ]
-
-    const MyResponsivemike = () => (
-      <ResponsiveMarimekko
-      data={data}
-      id="statement"
-      value="participation"
-      dimensions={[
-          {
-              id: 'disagree strongly',
-              value: 'stronglyDisagree'
-          },
-          {
-              id: 'disagree',
-              value: 'disagree'
-          },
-          {
-              id: 'agree',
-              value: 'agree'
-          },
-          {
-              id: 'agree strongly',
-              value: 'stronglyAgree'
-          }
-      ]}
-      innerPadding={9}
-      axisTop={null}
-      axisRight={{
-          orient: 'right',
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: '',
-          legendOffset: 0
-      }}
-      axisBottom={{
-          orient: 'bottom',
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'participation',
-          legendOffset: 36,
-          legendPosition: 'middle'
-      }}
-      axisLeft={{
-          orient: 'left',
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'opinions',
-          legendOffset: -40,
-          legendPosition: 'middle'
-      }}
-      margin={{ top: 20, right: 40, bottom: 50, left: 40 }}
-      colors={{ scheme: 'spectral' }}
-      borderWidth={1}
-      borderColor={{
-          from: 'color',
-          modifiers: [
-              [
-                  'darker',
-                  0.2
-              ]
-          ]
-      }}
-      defs={[
-          {
-              id: 'lines',
-              type: 'patternLines',
-              background: 'rgba(0, 0, 0, 0)',
-              color: 'inherit',
-              rotation: -45,
-              lineWidth: 4,
-              spacing: 8
-          }
-      ]}
-      fill={[
-          {
-              match: {
-                  id: 'agree strongly'
-              },
-              id: 'lines'
-          },
-          {
-              match: {
-                  id: 'disagree strongly'
-              },
-              id: 'lines'
-          }
-      ]}
-      legends={[
-          {
-              anchor: 'bottom',
-              direction: 'row',
-              justify: false,
-              translateX: 0,
-              translateY: 80,
-              itemsSpacing: 0,
-              itemWidth: 140,
-              itemHeight: 18,
-              itemTextColor: '#999',
-              itemDirection: 'right-to-left',
-              itemOpacity: 1,
-              symbolSize: 18,
-              symbolShape: 'square',
-              effects: [
-                  {
-                      on: 'hover',
-                      style: {
-                          itemTextColor: '#000'
-                      }
-                  }
-              ]
-          }
-      ]}
-  />
-    )
-
+  function Grafico() {
 
     return (
       <>
-        <MyResponsivemike/>
+        aa
       </>
     )
   }
@@ -259,13 +100,13 @@ export default function Menu_index() {
       <main className="col-11 offset-1 col-lg-11 offset-lg-1 px-5">
         <div className="row mt-5 pb-3 main-header">
           <h1 className="col-lg-3 fs-2">Home - desafio 2.0</h1>
-          <input
+          {/*<input
             className="col-lg-3 offset-lg-6"
             type="search"
             name="main-search"
             id="main-search"
             placeholder="Pesquise aqui..."
-          />
+            />*/}
         </div>
 
         <div className="Options row align-items-center mt-lg-4">
@@ -285,9 +126,9 @@ export default function Menu_index() {
               <Cards Projetos={projetos} atualiza={Atualizar} home={"home"} />
             </div>
           </div>
-          <div className="cardLateralHome d-flex justify-content-center col-lg-6 col-md-12 col-sm-12 mt-2 p-4 mt-4">
-            <div className="Resumo col-md-12 col-lg-12 justify-content-center ">
-             <div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
+          <div className="cardLateralHome d-flex justify-content-center col-lg-6 col-md-12 col-sm-12 mt-2 p-4 mt-4" style={{ width: '795px', height: '345px' }}>
+            <Grafico/>
+            {/*<div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
                 <h6 >{QtdTotalEquipes}</h6>
                 <strong>
                   <p className="ms-4 ">Total de <br /> Equipes</p>
@@ -318,10 +159,7 @@ export default function Menu_index() {
                     </strong>
                   </div>
                 </div>
-              </div>
-               {/*<Grafico/>*/}
-            </div>
-
+              </div>*/}
           </div>
         </div>
         <div className="Teste row  h-lg-50 p-3 mt-2">
