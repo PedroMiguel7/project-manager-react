@@ -11,6 +11,7 @@ import { styled } from '@mui/material/styles';
 import EditaPessoa from "./Components/EditaPessoa";
 import AvatarTag from "./Components/AvatarTag";
 import { PageContainer, ProfileContainer, Back, ProfileHeader, NomePessoa, NomeEquipe, ResumoPessoa, PessoaDashboard, Rendimento, RendimentoHeader, ChartContainer, TarefasPessoa } from "./style";
+import ProfileSkeleton from "./Components/Skeleton";
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -83,7 +84,7 @@ class PessoasDT extends Component {
         this.setState({rendimentoFilter: childData})
     }
 
-    SelectRendimento = (props) => {
+    SelectRendimento = () => {
         return (
             <>
               <RendimentoSelect parentCallback = {this.handleCallbackRendimento} />
@@ -156,28 +157,35 @@ class PessoasDT extends Component {
                             </Link> 
                         </Back>
                         
-                        <ProfileHeader>
-                            <AvatarTag funcao={pessoa.funcao_pessoa} />
-                            <NomePessoa>
-                                <h1>{pessoa.nome_pessoa}</h1>
-                                <EditaPessoa idPessoa={pessoa.id_pessoa} nome_pessoa={pessoa.nome_pessoa} funcao_pessoa={pessoa.funcao_pessoa} equipe_id={pessoa.equipe_id}/>
-                            </NomePessoa>
-                            <NomeEquipe>
-                                <img src={aim} />
-                                <span>{pessoa.nome_equipe}</span>
-                            </NomeEquipe>
-                        </ProfileHeader>
-
-                        <ResumoPessoa>
-                            <div>
-                                <h5>{TotalTarefas}</h5>
-                                <p>Total de Tarefas</p>
-                            </div>
-                            <div>
-                                <h5>{Concluidas}</h5>
-                                <p>Tarefas Concluídas</p>
-                            </div>
-                        </ResumoPessoa>
+                        
+                        {pessoa.length === 0 || pessoa.length === null ?
+                        <ProfileSkeleton />
+                          : 
+                        <>
+                          <ProfileHeader>
+                              <AvatarTag funcao={pessoa.funcao_pessoa} />
+                              <NomePessoa>
+                                  <h1>{pessoa.nome_pessoa}</h1>
+                                  <EditaPessoa idPessoa={pessoa.id_pessoa} nome_pessoa={pessoa.nome_pessoa} funcao_pessoa={pessoa.funcao_pessoa} equipe_id={pessoa.equipe_id}/>
+                              </NomePessoa>
+                              <NomeEquipe>
+                                  <img src={aim} />
+                                  <span>{pessoa.nome_equipe}</span>
+                              </NomeEquipe>
+                          </ProfileHeader>
+  
+                          <ResumoPessoa>
+                              <div>
+                                  <h5>{TotalTarefas}</h5>
+                                  <p>Total de Tarefas</p>
+                              </div>
+                              <div>
+                                  <h5>{Concluidas}</h5>
+                                  <p>Tarefas Concluídas</p>
+                              </div>
+                          </ResumoPessoa>
+                        </>
+                        }
                         {/*<CustomizedAccordion />*/}
                     </ProfileContainer>
                     
