@@ -4,7 +4,34 @@ import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
 import api from "../../api";
 import CardBaixoHome from "../Home/TabelaProjetosHome";
-//import { ResponsiveMarimekko } from '@nivo/marimekko';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+  },
+};
 
 export default function Menu_index() {
   const [projetos, setProjetos] = useState([]);
@@ -84,11 +111,36 @@ export default function Menu_index() {
     }
   }
 
-  function Grafico() {
+  function Grafico(props) {
+
+    const labels = [ 'PROJETOS' ]
+    const equipes = [ 'EQUIPES' ]
+    const pessoas = [ 'PESSOAS' ]
+
+    const data = {
+      labels, equipes,
+      datasets: [
+        {
+          label: 'Não Iniciado',
+          data: labels.map(() => props.AFAZER, ({ min: 0, max: props.total })),
+          backgroundColor: '#684d77',
+        },
+        {
+          label: 'Em Desenvolvimento',
+          data: labels.map(() => props.EMANDA, ({ min: 0, max: props.total })),
+          backgroundColor: '#8bb9dd',
+        },
+        {
+          label: 'Concluído',
+          data: labels.map(() => props.CON, ({ min: 0, max: props.total })),
+          backgroundColor: '#49b675',
+        },
+      ],
+    };
 
     return (
       <>
-        aa
+        <Bar options={options} data={data} />
       </>
     )
   }
@@ -127,7 +179,9 @@ export default function Menu_index() {
             </div>
           </div>
           <div className="cardLateralHome d-flex justify-content-center col-lg-6 col-md-12 col-sm-12 mt-2 p-4 mt-4" style={{ width: '795px', height: '345px' }}>
-            <Grafico/>
+            <div className=" align-items-center justify-content-center col-12" >
+              <Grafico AFAZER={QtdPFazer} EMANDA={QtdAndamento} CON={QtdConcluidos} total={QtdProjetos} />
+            </div>
             {/*<div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
                 <h6 >{QtdTotalEquipes}</h6>
                 <strong>

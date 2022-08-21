@@ -51,9 +51,9 @@ export default function Cards(props) {
             <div className="card-part1 mb-3">
               <div className="d-flex justify-content-between">
                 <h2 className="fs-4">{p.nome_projeto}</h2>
-                <Link to="/projetos">
+              <Link to="/">
                   <EditaProjeto id_projeto={p.id_projeto} projetinho={p} equipe_id={p.equipe_id} atualiza={props.atualiza} />
-                </Link>
+              </Link>
               </div>
               <p className="description overflow-hidden">
                 {p.descricao_projeto}
