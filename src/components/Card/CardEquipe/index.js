@@ -51,7 +51,7 @@ export default function CardEquipe(props) {
                                 </Link>
                             </Header>
                             <Resumo>
-                                {p.pessoas.length} membros, 1 projetos ativos
+                                {p.pessoas !== null ? p.pessoas.length : 0} membros, 1 projetos ativos
                             </Resumo>
                             <AvatarGroup max={4} 
                             sx={{
@@ -62,9 +62,11 @@ export default function CardEquipe(props) {
                                     color: "#1E1F28"
                                 }
                             }}>
-                                {p.pessoas.map(pe => (
+                                {p.pessoas !== null ?
+                                p.pessoas.map(pe => (
                                     <Avatar sx={{bgcolor: `${stringToColor(pe.nome_pessoa)}`, color: "#1E1F28"}}>{stringAvatar(pe.nome_pessoa)}</Avatar>
-                                ))}
+                                ))
+                            : " "}
                             </AvatarGroup>
                         </CardContainer>
                     </Link>
