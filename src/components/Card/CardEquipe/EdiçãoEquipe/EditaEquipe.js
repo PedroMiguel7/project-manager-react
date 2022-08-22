@@ -100,9 +100,7 @@ export default function EditaEquipe(props) {
     setAnchorEl(null);
   };
 
-  var [nome, setNome] = useState("");
-
-  nome = (props.equipinha.nome_equipe);
+  var [nome, setNome] = useState(props.equipinha.nome_equipe);
 
   function Deleta(){
     api.delete('/equipes/'+ props.id_equipe);

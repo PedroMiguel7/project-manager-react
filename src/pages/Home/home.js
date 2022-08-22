@@ -122,24 +122,24 @@ export default function Menu_index() {
         {
           label: 'Não Iniciado',
           data: labels.map(() => props.AFAZER, ({ min: 0, max: props.total })),
-          backgroundColor: '#684d77',
+          backgroundColor: '#ffc65acc',
         },
         {
           label: 'Em Desenvolvimento',
           data: labels.map(() => props.EMANDA, ({ min: 0, max: props.total })),
-          backgroundColor: '#8bb9dd',
+          backgroundColor: '#e3622fcc',
         },
         {
           label: 'Concluído',
           data: labels.map(() => props.CON, ({ min: 0, max: props.total })),
-          backgroundColor: '#49b675',
+          backgroundColor: '#ff7b00cc',
         },
       ],
     };
 
     return (
       <>
-        <Bar options={options} data={data} />
+        <Bar options={options} data={data} style={{marginTop: "20px"}} width="70%" height="30%"/>
       </>
     )
   }
@@ -177,8 +177,8 @@ export default function Menu_index() {
               <Cards Projetos={projetos} atualiza={Atualizar} home={"home"} />
             </div>
           </div>
-          <div className="cardLateralHome d-flex justify-content-center col-lg-6 col-md-12 col-sm-12 mt-2 p-4 mt-4" >
-            <div className="mt-2" style={{ width: '795px', height: '345px' }}>
+          <div className="cardLateralHome d-flex justify-content-center col-lg-6 col-md-12 col-sm-12 mt-2 p-4 mt-4" style={{ width: '795px', height: '345px' }} >
+            <div className="mt-2" style={{ width: '775px', height: '365px' }}>
               <Grafico AFAZER={QtdPFazer} EMANDA={QtdAndamento} CON={QtdConcluidos} total={QtdProjetos} />
             </div>
             {/*<div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
