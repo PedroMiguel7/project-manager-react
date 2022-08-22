@@ -104,7 +104,7 @@ export default function TarefasMenu(props) {
 
   var [nome, setNome] = useState(props.tarefa.descricao_task);
   const [pessoa, setPessoa] = useState([]);
-  var [projetoID, setProjetoID ] = useState(props.tarefa.projeto_id);
+  var [projetoID, setProjetoID ] = useState(props.tarefa.id_projeto);
 
   var [prioridade, setPrioridade] = React.useState(props.tarefa.prioridade);
   const handleChangePrior = (event) => {
@@ -134,16 +134,20 @@ export default function TarefasMenu(props) {
     props.atualiza();
   }
 
-  function EditaTask() {
+  function EditaTask(e) {
+    e.preventDefault()
     const updateStatus = async () => {
-      const response = await api.put('/tasks/' + props.id_task, {
-        descricao_task: nome,
-        pessoa_id: parseInt(dadoEquipe),
-        prioridade: parseInt(prioridade),
-        projeto_id: projetoID
-      }, [])
-      props.atualiza();
-      handleCloseEdit();
+      api.put('/tasks/' + props.id_task, {
+          descricao_task: nome,
+          pessoa_id: parseInt(dadoEquipe),
+          prioridade: parseInt(prioridade),
+          projeto_id: parseInt(projetoID)
+      })
+      .then(res => {
+        props.atualiza();
+        handleCloseEdit();
+      })
+      .catch(err => alert(err))
     }
     updateStatus()
   }
@@ -316,7 +320,7 @@ export default function TarefasMenu(props) {
                   textTransform: 'capitalize',
                   boxShadow: 'none'
                 }}
-                  variant="contained" type="submit" onClick={EditaTask}>Salvar</Button>
+                  variant="contained" type="submit" onClick={(e) => EditaTask(e)}>Salvar</Button>
               </div>
             </form>
           </Box>
