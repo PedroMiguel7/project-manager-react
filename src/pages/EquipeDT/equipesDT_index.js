@@ -3,7 +3,7 @@ import api from '../../api';
 import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
-import TaskIcon from '../../assets/icons/task.svg';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ProgressoCircular from './Components/CircularProgress/index.js';
 import ProjetosSelect from "./Components/ProjetosSelect";
@@ -393,6 +393,11 @@ class equipeDT_index extends Component {
             } else if (props.status === 4) {
                 const Done = TarefasEquipe.filter((tarefas) => tarefas.status === "Concluido");
 
+                function FormatarData(data){
+                    let Data = new Date(data);
+                    return Data.toLocaleDateString("pt-BR");
+                }
+
                 if (Done.length === 0) {
                     return (
                         <li className="TarefasLi">
@@ -412,8 +417,8 @@ class equipeDT_index extends Component {
                                     {t.descricao_task}
                                 </NomeTarefa>
                                 <PrazoTarefa>
-                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                    {TempoRestante(t.prazo_entrega)}
+                                    <CheckCircleRoundedIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                    {FormatarData(t.data_conclusao)}
                                 </PrazoTarefa>
                             </TarefasLi>   
                         ))
