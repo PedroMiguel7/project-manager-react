@@ -155,7 +155,8 @@ export default function TarefasMenu(props) {
     props.atualiza();
   }
 
-  function EditaTask() {
+  function EditaTask(e) {
+    e.preventDefault()
     const updateStatus = async () => {
       const response = await api.put('/tasks/' + props.id_task, {
         descricao_task: nome,
@@ -337,7 +338,7 @@ export default function TarefasMenu(props) {
                   textTransform: 'capitalize',
                   boxShadow: 'none'
                 }}
-                  variant="contained" type="submit" onClick={EditaTask}>Salvar</Button>
+                  variant="contained" type="submit" onClick={(e) => EditaTask(e)}>Salvar</Button>
               </div>
             </form>
           </Box>

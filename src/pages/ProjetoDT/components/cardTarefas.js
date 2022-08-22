@@ -1,5 +1,5 @@
 import { useDrag } from 'react-dnd';
-import TarefasMenu from "../../../components/TarefasMenu";
+import TarefasMenu from "./TarefasMenu";
 
 export default function MostrarTarefasCard(props) {
     const [{ isDragging }, dragRef] = useDrag({
@@ -24,7 +24,7 @@ export default function MostrarTarefasCard(props) {
                 <div className="card-body" style={{}}>
                     <div className="d-flex justify-content-between" style={{}}>
                         <h5 className="card-title" style={{ color: "" }}>{props.descricao_task}</h5>
-                        <TarefasMenu atualiza={props.atualiza} id_task={props.id_task} equipe_id={props.equipe_id} />
+                        <TarefasMenu tarefa={props.tarefa} atualiza={props.atualiza} id_task={props.id_task} equipe_id={props.equipe_id} />
                     </div>
                     <p className="card-text" style={{ color: "" }}>{props.nome_pessoa}</p>
                 </div>

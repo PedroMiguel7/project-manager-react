@@ -32,7 +32,7 @@ export default function MostrarLIstaTarefas(props) {
                 <div ref={dropRef} className="scroll d-flex flex-column align-items-center" style={{overflowY:'auto', height: "745px" }}>
                     {
                         props.tarefas.map(p => (
-                            <MostrarTarefasCard statusPROJETO={props.statusPROJETO} atualiza={props.atualiza} status={props.status} key={p.id_task} equipe_id={props.equipe_id} prioridade={p.prioridade} id_task={p.id_task} descricao_task={p.descricao_task} nome_pessoa={p.nome_pessoa} />
+                            <MostrarTarefasCard tarefa={p} statusPROJETO={props.statusPROJETO} atualiza={props.atualiza} status={props.status} key={p.id_task} equipe_id={props.equipe_id} prioridade={p.prioridade} id_task={p.id_task} descricao_task={p.descricao_task} nome_pessoa={p.nome_pessoa} />
                         ))
                     }
                 </div>
@@ -46,7 +46,7 @@ export default function MostrarLIstaTarefas(props) {
                 <div ref={dropRef} className="scroll d-flex flex-column align-items-center" style={{ overflowY:'auto', height: "745px" }}>
                     {
                         props.tarefas.map(p => (
-                            <MostrarTarefasCard statusPROJETO={props.statusPROJETO} status={props.status} key={p.id_task} equipe_id={props.equipe_id} prioridade={p.prioridade} id_task={p.id_task} descricao_task={p.descricao_task} nome_pessoa={p.nome_pessoa} />
+                            <MostrarTarefasCard tarefa={p} statusPROJETO={props.statusPROJETO} atualiza={props.atualiza} status={props.status} key={p.id_task} equipe_id={props.equipe_id} prioridade={p.prioridade} id_task={p.id_task} descricao_task={p.descricao_task} nome_pessoa={p.nome_pessoa} />
                         ))
                     }
                 </div>

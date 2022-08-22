@@ -69,10 +69,10 @@ const style = {
 
 
 export default function EditaPessoa(props) {
-    const [nome, setNome] = useState('');
+    const [nome, setNome] = useState(props.PESSOA.nome_pessoa);
     //const [equipe, setEquipe] = useState([]);
     //const [dadoEquipe, setDadoEquipe] = useState('');
-    const [funcao, setFuncao] = React.useState();
+    const [funcao, setFuncao] = React.useState(props.PESSOA.funcao_pessoa);
     const [openEdit, setOpenEdit] = useState(false);
     const [openAlert, setOpenAlert] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -117,15 +117,19 @@ export default function EditaPessoa(props) {
         setOpenAlert(false);
     };
 
-    function Edita() {
+    function Edita(e) {
+        e.preventDefault()
         const updateStatus = async () => {
-            const response = await api.put('/pessoas/' + props.idPessoa, {
-                equipe_id: props.equipe_id,
-                funcao_pessoa: funcao,
-                nome_pessoa: nome
-            }, [])
-            props.atualiza();
-            handleCloseEdit();
+            api.put('/pessoas/' + props.idPessoa, {
+                    equipe_id: props.equipe_id,
+                    funcao_pessoa: funcao,
+                    nome_pessoa: nome
+                })
+                .then(res => {
+                    props.atualiza()
+                    handleCloseEdit();
+                })
+                .catch(err => alert(err))
         }
         updateStatus()
     }
@@ -160,7 +164,7 @@ export default function EditaPessoa(props) {
                             name='nome'
                             label="Nome"
                             value={nome}
-                            onChange={(e) => setNome(e.target.value)}
+                            onChange={(f) => setNome(f.target.value)}
                             variant="outlined"
                             margin="dense"
                             color='primary'
@@ -223,7 +227,7 @@ export default function EditaPessoa(props) {
                                     textTransform: 'capitalize',
                                     boxShadow: 'none'
                                 }}
-                                    variant="contained" type="submit" onClick={Edita}>
+                                    variant="contained" type="submit" onClick={(e) => Edita(e)}>
                                     Salvar
                                 </Button>
                             </div>

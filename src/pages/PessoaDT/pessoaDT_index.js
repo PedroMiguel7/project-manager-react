@@ -92,6 +92,20 @@ class PessoasDT extends Component {
         )
     }
 
+
+    updateStateByProps = () => {
+      try {
+          const atualiza = async () => {
+            var pessoaPath = window.location.pathname;
+            const response = await api.get(pessoaPath);
+            this.setState({ pessoa: response.data });
+          }
+          atualiza();
+      } catch (error) {
+          console.error(error.message);
+      }
+  }
+
     render() {
         const { pessoa } = this.state;
         const { tarefas} = this.state;
@@ -166,7 +180,7 @@ class PessoasDT extends Component {
                               <AvatarTag funcao={pessoa.funcao_pessoa} />
                               <NomePessoa>
                                   <h1>{pessoa.nome_pessoa}</h1>
-                                  <EditaPessoa idPessoa={pessoa.id_pessoa} nome_pessoa={pessoa.nome_pessoa} funcao_pessoa={pessoa.funcao_pessoa} equipe_id={pessoa.equipe_id}/>
+                                  <EditaPessoa idPessoa={pessoa.id_pessoa} PESSOA={pessoa} nome_pessoa={pessoa.nome_pessoa} funcao_pessoa={pessoa.funcao_pessoa} equipe_id={pessoa.equipe_id} atualiza={this.updateStateByProps}/>
                               </NomePessoa>
                               <NomeEquipe>
                                   <img src={aim} />
