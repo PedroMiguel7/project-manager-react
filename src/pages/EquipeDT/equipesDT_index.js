@@ -23,7 +23,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import ProjectNotFound from '../../assets/empty-states/project-not-found.svg';
 import PeopleNotFound from '../../assets/empty-states/people-not-found.svg';
-import { PageContainer, MembrosContainer, MembrosUl, ProjetosContainer, HeaderProjetos, ProjetosUl, TarefasContainer, HeaderTarefas, TarefasUl, Top3, TarefasCircularProgress, ProjetosCircularProgress, TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa } from "./style";
+import { PageContainer, MembrosContainer, MembrosUl, ProjetosContainer, HeaderProjetos, ProjetosUl, TarefasContainer, HeaderTarefas, TarefasUl, Top3, TarefasCircularProgress, ProjetosCircularProgress, TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa, EmptyStateContainer } from "./style";
 
 const CssTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
@@ -456,12 +456,12 @@ class equipeDT_index extends Component {
         if( props.projetos === null){
             return(
                 <>
-                    <div className="EmptyStateContainer">
+                    <EmptyStateContainer>
                         <img src={ProjectNotFound} />
                         <h5>
                             Essa equipe ainda não possui projetos.
                         </h5>    
-                    </div>
+                    </EmptyStateContainer>
                 </>
             );
         } else{
@@ -485,14 +485,12 @@ class equipeDT_index extends Component {
 
                 if (OnGoing.length === 0) {
                     return (
-                        <li className="ProjetosLi">
-                            <div className="EmptyStateContainer">
-                                <img src={ProjectNotFound} />
-                                <h5>
-                                    Sem Projetos Em Andamento.
-                                </h5>    
-                            </div>
-                        </li>
+                        <div className="EmptyStateContainer">
+                            <img src={ProjectNotFound} />
+                            <h5>
+                                Sem projetos em andamento.
+                            </h5>    
+                        </div>
                     )
                 } else {
                     return (
@@ -522,14 +520,12 @@ class equipeDT_index extends Component {
 
                 if (Done.length === 0) {
                     return (
-                        <li className="ProjetosLi">
-                            <div className="EmptyStateContainer">
-                                <img src={ProjectNotFound} />
-                                <h5>
-                                    Sem Projetos Concluidos.
-                                </h5>    
-                            </div>
-                        </li>
+                        <div className="EmptyStateContainer">
+                            <img src={ProjectNotFound} />
+                            <h5>
+                                Sem projetos concluidos.
+                            </h5>    
+                        </div>
                     )
                 } else {
                     return (
@@ -669,12 +665,19 @@ class equipeDT_index extends Component {
         const {statusProjeto} = this.state;
         const {statusTarefa} = this.state;
 
-        var TotalProjetos = projetos.length;
+        var TotalProjetos;
+        if (projetos === null) {
+            TotalProjetos = 0;
+        } else {
+            TotalProjetos = projetos.length;
+        }
 
         const TarefasProjeto = [];
-        projetos.map(f=>(
-            TarefasProjeto.push(f.id_projeto)
-        ))
+        if (projetos !== null) {
+            projetos.map(f=>(
+                TarefasProjeto.push(f.id_projeto)
+            ))
+        }
 
         return (
             <>

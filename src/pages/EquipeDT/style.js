@@ -122,3 +122,17 @@ export const PrazoTarefa = styled.span`
     color: #87888C;
     font-size: 0.93rem;
 `;
+
+// Empty State
+export const EmptyStateContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #454756;
+    background-color: var(--preto-medio);
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    padding: 0.9rem;
+`;
