@@ -113,12 +113,11 @@ export default function Menu_index() {
 
   function Grafico(props) {
 
-    const labels = [ 'PROJETOS' ]
-    const equipes = [ 'EQUIPES' ]
-    const pessoas = [ 'PESSOAS' ]
+    var labels = [ 'PROJETOS' ]
+
 
     const data = {
-      labels, equipes,
+      labels,
       datasets: [
         {
           label: 'Não Iniciado',
@@ -178,8 +177,8 @@ export default function Menu_index() {
               <Cards Projetos={projetos} atualiza={Atualizar} home={"home"} />
             </div>
           </div>
-          <div className="cardLateralHome d-flex justify-content-center col-lg-6 col-md-12 col-sm-12 mt-2 p-4 mt-4" style={{ width: '795px', height: '345px' }}>
-            <div className=" align-items-center justify-content-center col-12" >
+          <div className="cardLateralHome d-flex justify-content-center col-lg-6 col-md-12 col-sm-12 mt-2 p-4 mt-4" >
+            <div className="mt-2" style={{ width: '795px', height: '345px' }}>
               <Grafico AFAZER={QtdPFazer} EMANDA={QtdAndamento} CON={QtdConcluidos} total={QtdProjetos} />
             </div>
             {/*<div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
