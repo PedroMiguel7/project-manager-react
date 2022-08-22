@@ -64,6 +64,8 @@ export const Top3 = styled.div`
     /*padding: 8px;*/
     border-radius: 10px;
     margin-bottom: 0.5rem;
+    width: 100%;
+    height: 400px;
 `;
 
 export const TarefasCircularProgress = styled.div`
@@ -74,7 +76,7 @@ export const TarefasCircularProgress = styled.div`
     background-color: var(--preto-medio);
     list-style: none;
     height: 280px;
-    width: 100%;
+    width: 300px;
     /*padding: 8px;*/
     border-radius: 10px;
     margin-bottom: 0.5rem;

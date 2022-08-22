@@ -9,7 +9,7 @@ import ProgressoCircular from './Components/CircularProgress/index.js';
 import ProjetosSelect from "./Components/ProjetosSelect";
 import TarefasSelect from "./Components/TarefasSelect";
 import ProgressoProjetos from "./Components/ProgressoProjetos";
-import BarChart from "./Components/BarChart";
+import BarChart from "./Components/BarChart/index.js";
 import MenuMembros from "./Components/MenuMembros";
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import Modal from '@mui/material/Modal';
@@ -23,6 +23,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import ProjectNotFound from '../../assets/empty-states/project-not-found.svg';
 import PeopleNotFound from '../../assets/empty-states/people-not-found.svg';
+import TasksNotFound from '../../assets/empty-states/tasks-not-found.svg';
 import { PageContainer, MembrosContainer, MembrosUl, ProjetosContainer, HeaderProjetos, ProjetosUl, TarefasContainer, HeaderTarefas, TarefasUl, Top3, TarefasCircularProgress, ProjetosCircularProgress, TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa, EmptyStateContainer } from "./style";
 
 const CssTextField = styled(TextField)({
@@ -282,9 +283,12 @@ class equipeDT_index extends Component {
         if( TarefasEquipe === null){
             return(
                 <>
-                    <div>
-                        <span>Ainda não foi adicionada nenhuma tarefa.</span>
-                    </div>
+                    <EmptyStateContainer>
+                        <img src={TasksNotFound} />
+                        <h5>
+                            Essa equipe não possui tarefas.
+                        </h5>    
+                    </EmptyStateContainer>
                 </>
             );
         } else{
@@ -458,7 +462,7 @@ class equipeDT_index extends Component {
     }
 
     ImprimeProjetos = (props) => {
-        if( props.projetos.length === 0){
+        if( props.projetos === null){
             return(
                 <>
                     <EmptyStateContainer>
@@ -720,7 +724,7 @@ class equipeDT_index extends Component {
                                 </TarefasUl>
                             </TarefasContainer>
                         </div>
-                    <div className="col-lg-2 col-md-3">
+                    <div className="col-lg-3 col-md-3">
                         <div className="row">
                             <Top3 className="col-12">
                                 <h6>Membros mais produtivos</h6>
