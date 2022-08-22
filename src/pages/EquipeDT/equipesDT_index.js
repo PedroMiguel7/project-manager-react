@@ -601,7 +601,7 @@ class equipeDT_index extends Component {
 
     ImprimeMembrosStats = (props) => {
         return (
-            <BarChart />
+            <BarChart tarefas={props.equipe.tasks} />
         )
     }
  
@@ -729,7 +729,7 @@ class equipeDT_index extends Component {
                             <Top3 className="col-12">
                                 <h6>Membros mais produtivos</h6>
                                 <p>Por tarefas concluídas</p>
-                                <this.ImprimeMembrosStats />
+                                <this.ImprimeMembrosStats equipe={equipe} />
                             </Top3>
                             <TarefasCircularProgress className="col-12">
                                 <this.ImprimeTarefasStats tarefas={tarefas} />

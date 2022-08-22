@@ -1,6 +1,10 @@
 import { ResponsiveBar } from '@nivo/bar';
 
 export default function BarChart(props) {
+    let TarefasEquipe = props.tarefas;
+    //const Done = TarefasEquipe.filter((tarefas) => tarefas.status === "Concluido");
+
+
     const data = [
         {
             "Membro": "Bruno de Calcinha",
