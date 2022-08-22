@@ -83,13 +83,13 @@ class equipeDT_index extends Component {
         const response = await api.get(equipePath+'/projetos');
         const response2 = await api.get(equipePath+'/pessoas');
         const response3 = await api.get(equipePath);
-        const response4 = await api.get('/tasks/');
+        //const response4 = await api.get('/tasks/');
 
         this.setState({ 
             projetos: response.data,
             PessoasEquipe: response2.data,
             equipe: response3.data,
-            tarefas: response4.data,
+            //tarefas: response4.data,
         });
     }
 
@@ -275,11 +275,11 @@ class equipeDT_index extends Component {
     }
 
     ImprimeTarefas = (props) => {
-        //console.log(props.equipe.tasks);
+        console.log(props.equipe.tasks);
         let TarefasEquipe = props.equipe.tasks;
-        //console.log(TarefasEquipe);
+        console.log(TarefasEquipe);
         //console.log(props.tarefas);
-        if( props.tarefas === null){
+        if( TarefasEquipe === null){
             return(
                 <>
                     <div>
@@ -304,7 +304,7 @@ class equipeDT_index extends Component {
             }
 
             if (props.status === 1) {
-                const ToDo = props.tarefas.filter((tarefas) => tarefas.status === "A Fazer");
+                const ToDo = TarefasEquipe.filter((tarefas) => tarefas.status === "A Fazer");
 
                 if (ToDo.length === 0) {
                     return (
@@ -322,7 +322,7 @@ class equipeDT_index extends Component {
                                     {t.status}
                                 </StatusTarefa>
                                 <NomeTarefa>
-                                    {t.nome_projeto}
+                                    {t.descricao_task}
                                 </NomeTarefa>
                                 <PrazoTarefa>
                                     <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
@@ -333,7 +333,7 @@ class equipeDT_index extends Component {
                     )
                 }
             } else if (props.status === 2) {
-                const OnGoing = props.tarefas.filter((tarefas) => tarefas.status === "Em Andamento");
+                const OnGoing = TarefasEquipe.filter((tarefas) => tarefas.status === "Em Andamento");
 
                 if (OnGoing.length === 0) {
                     return (
@@ -351,7 +351,7 @@ class equipeDT_index extends Component {
                                     {t.status}
                                 </StatusTarefa>
                                 <NomeTarefa>
-                                    {t.nome_projeto}
+                                    {t.descricao_task}
                                 </NomeTarefa>
                                 <PrazoTarefa>
                                     <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
@@ -362,7 +362,7 @@ class equipeDT_index extends Component {
                     )
                 }
             } else if (props.status === 3) {
-                const Testing = props.tarefas.filter((tarefas) => tarefas.status === "Em Teste");
+                const Testing = TarefasEquipe.filter((tarefas) => tarefas.status === "Em Teste");
 
                 if (Testing.length === 0) {
                     return (
@@ -380,7 +380,7 @@ class equipeDT_index extends Component {
                                     {t.status}
                                 </StatusTarefa>
                                 <NomeTarefa>
-                                    {t.nome_projeto}
+                                    {t.descricao_task}
                                 </NomeTarefa>
                                 <PrazoTarefa>
                                     <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
@@ -391,7 +391,7 @@ class equipeDT_index extends Component {
                     )
                 }
             } else if (props.status === 4) {
-                const Done = props.tarefas.filter((tarefas) => tarefas.status === "Concluido");
+                const Done = TarefasEquipe.filter((tarefas) => tarefas.status === "Concluido");
 
                 if (Done.length === 0) {
                     return (
@@ -409,7 +409,7 @@ class equipeDT_index extends Component {
                                     {t.status}
                                 </StatusTarefa>
                                 <NomeTarefa>
-                                    {t.nome_projeto}
+                                    {t.descricao_task}
                                 </NomeTarefa>
                                 <PrazoTarefa>
                                     <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
@@ -427,7 +427,7 @@ class equipeDT_index extends Component {
                                 {t.status}
                             </StatusTarefa>
                             <NomeTarefa>
-                                {t.nome_projeto}
+                                {t.descricao_task}
                             </NomeTarefa>
                             <PrazoTarefa>
                                 <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
