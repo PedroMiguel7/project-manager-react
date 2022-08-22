@@ -20,7 +20,7 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import api from '../../api';
+import api from '../../../../api';
 import { useEffect, useState } from 'react';
 
 const CssTextField = styled(TextField)({
@@ -102,16 +102,16 @@ export default function TarefasMenu(props) {
 
 
 
-  var [nome, setNome] = useState("");
+  var [nome, setNome] = useState(props.tarefa.descricao_task);
   const [pessoa, setPessoa] = useState([]);
-  var [projetoID, setProjetoID ] = useState();
+  var [projetoID, setProjetoID ] = useState(props.tarefa.projeto_id);
 
-  var [prioridade, setPrioridade] = React.useState();
+  var [prioridade, setPrioridade] = React.useState(props.tarefa.prioridade);
   const handleChangePrior = (event) => {
     setPrioridade(event.target.value);
   };
 
-  var [dadoEquipe, setDadoEquipe] = React.useState('');
+  var [dadoEquipe, setDadoEquipe] = React.useState(props.tarefa.pessoa_id);
   const handleChangeAge = (eventA) => {
     setDadoEquipe(eventA.target.value);
   };
@@ -127,25 +127,6 @@ export default function TarefasMenu(props) {
     };
     fetchequipe();
   }, []);
-
-  useEffect(() => {
-    const fetchtask = async () => {
-      try {
-        const response2 = await api.get('/tasks/' + props.id_task);
-        const TAREFA = (response2.data);
-        TAREFA.map(m => (
-          setNome(m.descricao_task),
-          setDadoEquipe(m.pessoa_id),
-          setPrioridade(m.prioridade),
-          setProjetoID(parseInt(m.projeto_id))
-          ))
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchtask();
-  }, []);
-
 
   function DeletaTask() {
     api.delete('/tasks/' + props.id_task);
