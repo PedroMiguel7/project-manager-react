@@ -113,14 +113,9 @@ export default function EditaProjeto(props) {
   };
 
 
-  var [nome, setNome] = useState("");
-  var [descricao, setDescricao] = useState("");
+  var [nome, setNome] = useState(props.projetinho.nome_projeto);
+  var [descricao, setDescricao] = useState(props.projetinho.descricao_projeto);
   var [equipe, setEquipe] = useState();
-
-
-
-  nome = (props.projetinho.nome_projeto)
-  descricao = (props.projetinho.descricao_projeto)
 
 
 

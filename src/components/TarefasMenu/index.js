@@ -148,8 +148,8 @@ export default function TarefasMenu(props) {
 
 
   function DeletaTask() {
-    api.delete('/tasks/' + props.id_task)
-    handleCloseAlert()
+    api.delete('/tasks/' + props.id_task);
+    handleCloseAlert();
     props.atualiza();
   }
 
@@ -160,7 +160,7 @@ export default function TarefasMenu(props) {
         pessoa_id: parseInt(dadoEquipe),
         prioridade: parseInt(prioridade),
         projeto_id: projetoID
-      },[])
+      }, [])
       props.atualiza();
       handleCloseEdit();
     }

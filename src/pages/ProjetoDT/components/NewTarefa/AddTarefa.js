@@ -180,9 +180,11 @@ export default function BasicModalTarefa(props) {
                                 }
                             }}
                             >
-                                {pessoa.map(f => (
+                                { pessoa !== null ? pessoa.map(f => (
                                     <MenuItem value={f.id_pessoa} key={f.id_pessoa}>{f.nome_pessoa}</MenuItem>)
-                                )}
+                                ) :
+                                <MenuItem value={0}>sem membros na equipe</MenuItem>
+                                }
                             </CssTextField>
                         </Box>
 

@@ -55,7 +55,7 @@ export default function Cards(props) {
                   <EditaProjeto id_projeto={p.id_projeto} projetinho={p} equipe_id={p.equipe_id} atualiza={props.atualiza} />
               </Link>
               </div>
-              <p className="description overflow-hidden">
+              <p className="DescricaoCardProjeto overflow-hidden">
                 {p.descricao_projeto}
               </p>
               <div className="mb-3">
