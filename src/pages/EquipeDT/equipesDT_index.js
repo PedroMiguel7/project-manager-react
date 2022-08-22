@@ -458,7 +458,7 @@ class equipeDT_index extends Component {
     }
 
     ImprimeProjetos = (props) => {
-        if( props.projetos === null){
+        if( props.projetos.length === 0){
             return(
                 <>
                     <EmptyStateContainer>
