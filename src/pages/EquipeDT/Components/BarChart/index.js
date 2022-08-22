@@ -38,15 +38,7 @@ export default function BarChart(props) {
                     colorBy="indexValue"
                     theme={{
                         textColor: "#C2C3C6",
-                        axis: {
-                            fontSize: 20,
-                            legend: {
-                                width: "10px",
-                                text: {
-                                  fontSize: 13
-                                }
-                            }
-                        },
+                        fontSize: 13,
                         grid: {
                           line: {
                               stroke: "#87888C",
@@ -99,6 +91,16 @@ export default function BarChart(props) {
                         tickRotation: 0,
                     }}
                     axisLeft={{
+                        format: (v) => {
+                            return v.length > 7 ? (
+                                <tspan>
+                                {v.substring(0, 7) + "..."}
+                                <title>{v}</title>
+                                </tspan>
+                            ) : (
+                                v
+                            );
+                        },
                         tickSize: 0,
                         tickPadding: 9,
                         tickRotation: 0,
