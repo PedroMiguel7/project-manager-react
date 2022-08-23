@@ -32,7 +32,7 @@ function FilterPopper(props) {
     const [checkboxState, setUnchecked] = React.useState();
     const uncheck = () => setUnchecked(false);
     const limpar = () => {
-        setUnchecked(false);
+        setUnchecked(false); setValue(null); setValue2(null); 
     };
 
     const CheckboxStyle = styled(Checkbox)({
@@ -59,9 +59,8 @@ function FilterPopper(props) {
 
 
     const [value, setValue] = React.useState(new Date());
+    //const [value2, setValue2] = React.useState('1998-10-09');
     const [value2, setValue2] = React.useState(new Date());
-
-    const limparFiltro = () => setValue(null);
 
     const DateTextField = styled(TextField)({
         '& .MuiOutlinedInput-root': {
@@ -104,7 +103,7 @@ function FilterPopper(props) {
             var novadata1 = (value2.getFullYear() + '-' + '0' +(value2.getMonth()+1) + '-' + value2.getDate())
             var novadata = (value.getFullYear() + '-' + '0' + (value.getMonth()+1) + '-' + value.getDate())
     
-            props.SET(projetos.filter(Projetos => elementos.includes(Projetos.status) && Projetos.data_criacao.slice(0, 10) >= novadata1 &&  Projetos.data_criacao.slice(0, 10) <= novadata))
+            props.SET(projetos.filter(Projetos => elementos.includes(Projetos.status) && Projetos.data_criacao.slice(0, 10) >= novadata1 && Projetos.data_criacao.slice(0, 10) <= novadata))
             
             handleClose();
         } else {
