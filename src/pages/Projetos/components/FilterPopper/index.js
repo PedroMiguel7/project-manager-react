@@ -104,9 +104,7 @@ function FilterPopper(props) {
             var novadata1 = (value2.getFullYear() + '-' + '0' +(value2.getMonth()+1) + '-' + value2.getDate())
             var novadata = (value.getFullYear() + '-' + '0' + (value.getMonth()+1) + '-' + value.getDate())
     
-            props.SET(projetos.filter(Projetos => Projetos.data_criacao.slice(0, 10) >= novadata1 &&  Projetos.data_criacao.slice(0, 10) <= novadata))
-
-            //props.SET(projetos.filter(Projetos => elementos.includes(Projetos.status)))
+            props.SET(projetos.filter(Projetos => elementos.includes(Projetos.status) && Projetos.data_criacao.slice(0, 10) >= novadata1 &&  Projetos.data_criacao.slice(0, 10) <= novadata))
             
             handleClose();
         } else {
