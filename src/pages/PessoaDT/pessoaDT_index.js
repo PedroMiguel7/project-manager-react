@@ -177,7 +177,7 @@ class PessoasDT extends Component {
                           : 
                         <>
                           <ProfileHeader>
-                              <AvatarTag funcao={pessoa.funcao_pessoa} />
+                              <AvatarTag funcao={pessoa.funcao_pessoa} nome={pessoa.nome_pessoa} />
                               <NomePessoa>
                                   <h1>{pessoa.nome_pessoa}</h1>
                                   <EditaPessoa idPessoa={pessoa.id_pessoa} PESSOA={pessoa} nome_pessoa={pessoa.nome_pessoa} funcao_pessoa={pessoa.funcao_pessoa} equipe_id={pessoa.equipe_id} atualiza={this.updateStateByProps}/>
