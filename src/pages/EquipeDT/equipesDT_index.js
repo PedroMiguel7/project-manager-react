@@ -665,23 +665,24 @@ class equipeDT_index extends Component {
     }
  
     ImprimeTarefasStats = (props) => {
-        if(props.tarefas === null){
+        //let TarefasEquipe = props.equipe.tasks;
+        if(props.equipe.tasks === null){
             return (
-                <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} op="tarefas" />    
+                <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} op="tarefas" /> 
             )
             
         } else {
-            var TotalTarefas = props.tarefas.length;
+            //let TotalTarefas = TarefasEquipe[0].length;
 
-            const TarefasAndamento = props.tarefas.filter((tarefas) => tarefas.status === "Em Andamento");
-            let QtdAndamento = TarefasAndamento.length;
+            //const TarefasAndamento = TarefasEquipe.filter((tarefas) => tarefas.status === "Em Andamento");
+            //let QtdAndamento = TarefasAndamento.length;
 
-            const TarefasConcluidos = props.tarefas.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
-            let QtdConcluidos = TarefasConcluidos.length;
+            //const TarefasConcluidos = TarefasEquipe.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
+            //let QtdConcluidos = TarefasConcluidos.length;
 
-            let PorcAndamento = (QtdAndamento/TotalTarefas) * 100;
+            //let PorcAndamento = (QtdAndamento/TotalTarefas) * 100;
 
-            let PorcConcluidos = (QtdConcluidos/TotalTarefas) * 100;
+            //let PorcConcluidos = (QtdConcluidos/TotalTarefas) * 100;
 
             return (
                 <>
@@ -701,11 +702,16 @@ class equipeDT_index extends Component {
         } else {
             var TotalProjetos = props.projetos.length;
 
+            const ProjetosFazer = props.projetos.filter((projetos) => projetos.status === "A Fazer");
+            let QtdFazer = ProjetosFazer.length;
+
             const ProjetosAndamento = props.projetos.filter((projetos) => projetos.status === "Em Andamento");
             let QtdAndamento = ProjetosAndamento.length;
 
             const ProjetosConcluidos = props.projetos.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
             let QtdConcluidos = ProjetosConcluidos.length;
+
+            let PorcFazer = (QtdFazer/TotalProjetos) * 100;
 
             let PorcAndamento = (QtdAndamento/TotalProjetos) * 100;
 
@@ -713,7 +719,8 @@ class equipeDT_index extends Component {
 
             return (
                 <>
-                    <ProgressoCircular Total={TotalProjetos} StatsTitle="Projetos" ValueAndamento={PorcAndamento} ValueConcluido={PorcConcluidos} />
+                    <ProgressoCircular Total={TotalProjetos} StatsTitle="Projetos" ValueFazer={PorcFazer}
+                    ValueAndamento={PorcAndamento} ValueConcluido={PorcConcluidos} />
                 </>
                 
             )
@@ -725,6 +732,9 @@ class equipeDT_index extends Component {
         const { equipe } = this.state;
         const { PessoasEquipe } = this.state;
         const { tarefas } = this.state;
+
+        let TarefasEquipe = equipe.tasks;
+        console.log(TarefasEquipe);
 
         const {statusProjeto} = this.state;
         const {statusTarefa} = this.state;
@@ -787,10 +797,12 @@ class equipeDT_index extends Component {
                                 <this.ImprimeMembrosStats equipe={equipe} />
                             </Top3>
                             <TarefasCircularProgress className="col-12">
-                                <this.ImprimeTarefasStats tarefas={tarefas} />
+                                <h5>Tarefas</h5>
+                                <this.ImprimeTarefasStats equipe={equipe} />
                             </TarefasCircularProgress>
 
                             <ProjetosCircularProgress className="col-12">
+                                <h5>Projetos</h5>
                                 <this.ImprimeProjetosStats projetos={projetos} />
                             </ProjetosCircularProgress>
                         </div>

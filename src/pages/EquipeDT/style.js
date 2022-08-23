@@ -70,13 +70,13 @@ export const Top3 = styled.div`
 
 export const TarefasCircularProgress = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     background-color: var(--preto-medio);
     list-style: none;
     height: 280px;
-    width: 300px;
+    width: 100%;
     /*padding: 8px;*/
     border-radius: 10px;
     margin-bottom: 0.5rem;
@@ -84,9 +84,9 @@ export const TarefasCircularProgress = styled.div`
 
 export const ProjetosCircularProgress = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     background-color: var(--preto-medio);
     list-style: none;
     height: 280px;

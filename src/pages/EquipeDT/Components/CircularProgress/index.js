@@ -8,7 +8,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "A Fazer",
-                    "y": 80
+                    "y": 80/100
                 },
                 ]
             },
@@ -17,7 +17,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Em Andamento",
-                    "y": 21
+                    "y": 21/100
                 },
                 ]
             },
@@ -26,7 +26,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Em Teste",
-                    "y": 10
+                    "y": 10/100
                 },
                 ]
             },
@@ -35,7 +35,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Concluídas",
-                    "y": 89
+                    "y": 89/100
                 },
                 ]
             },
@@ -44,13 +44,14 @@ export default function RadialBarChart(props) {
         return (
                 <ResponsiveRadialBar
                 data={data}
-                valueFormat=" >-.2f"
+                maxValue={1}
+                valueFormat=" >-.2~%"
                 startAngle={-90}
                 endAngle={90}
                 innerRadius={0.15}
                 padding={0.6}
                 cornerRadius={45}
-                margin={{ top: 40, right: 0, bottom: 40, left: 0 }}
+                margin={{ top: 0, right: 0, bottom: 30, left: 0 }}
                 colors={{ scheme: 'set3' }}
                 theme={{
                     textColor: "#C2C3C6",
@@ -84,7 +85,7 @@ export default function RadialBarChart(props) {
                         direction: 'column',
                         justify: false,
                         translateX: 0,
-                        translateY: -20,
+                        translateY: -40,
                         itemWidth: 90,
                         itemHeight: 10,
                         itemsSpacing: 5,
@@ -101,7 +102,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "A Fazer",
-                    "y": 0
+                    "y": props.ValueFazer/100
                 },
                 ]
             },
@@ -130,13 +131,13 @@ export default function RadialBarChart(props) {
                 <ResponsiveRadialBar
                 data={data}
                 maxValue={1}
-                valueFormat=" >-.2~%"
+                valueFormat=">-.2~%"
                 startAngle={-90}
                 endAngle={90}
                 innerRadius={0.15}
                 padding={0.6}
                 cornerRadius={45}
-                margin={{ top: 40, right: 0, bottom: 40, left: 0 }}
+                margin={{ top: 0, right: 0, bottom: 30, left: 0 }}
                 colors={{ scheme: 'set3' }}
                 theme={{
                     textColor: "#C2C3C6",
@@ -170,7 +171,7 @@ export default function RadialBarChart(props) {
                         direction: 'column',
                         justify: false,
                         translateX: 0,
-                        translateY: -20,
+                        translateY: -50,
                         itemWidth: 90,
                         itemHeight: 10,
                         itemsSpacing: 5,
