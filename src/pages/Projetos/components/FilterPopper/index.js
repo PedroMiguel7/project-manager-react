@@ -88,7 +88,7 @@ function FilterPopper(props) {
 
     var projetos = props.PROJETOS
 
-    function Filtrar(PROPS) {
+    function Filtrar ( futuro, passado) {
         projetos = props.PROJETOS
         var elementos = []
         if (checkedAN === true) {
@@ -102,26 +102,21 @@ function FilterPopper(props) {
         }
         if (elementos !== null) {
             props.SET(projetos.filter(Projetos => elementos.includes(Projetos.status)))
+            var novadata = (value.getFullYear() + '-' + '0' + (value.getMonth()+1) + '-' + value.getDate())
+            var novadata1 = (value2.getFullYear() + '-' + '0' +(value2.getMonth()+1) + '-' + value2.getDate())
+    
+            props.SET(projetos.filter((Projetos => Projetos.data_criacao.slice(0, 10) >= novadata) &&  (Projetos => Projetos.data_criacao.slice(0, 10) <= novadata1)))
+            handleClose();
+            return(
+                <>
+                </>
+            )
         } else {
             props.SET('')
         }
-        //props.SET(projetos.filter((Projetos => Projetos.data_criacao >= PROPS.passado) &&  (Projetos => Projetos.data_criacao <= PROPS.futuro)))
-        handleClose();
     }
 
-    var novadata = (value2.getFullYear() + '-' + '0'+ (value2.getMonth()+1) + '-' + value2.getDate())
-    console.log('filtro passado novo: ' + novadata)
 
-
-    var novadata1 = (value.getFullYear() + '-' + '0'+ (value.getMonth()+1) + '-' + value.getDate())
-    console.log('filtro futuro novo: ' + novadata1)
-
-    var datinha
-    projetos.map(p =>(
-        datinha = p.data_criacao.slice(0, 10),
-        //datinha.atoi(datinha.slice(12,19)),
-        console.log(datinha)
-    ))
 
 
 
