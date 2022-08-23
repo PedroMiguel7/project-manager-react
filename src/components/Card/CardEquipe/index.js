@@ -8,22 +8,14 @@ import { CardContainer, Header, NomeEquipe, Resumo, EmptyStateContainer } from "
 
 export default function CardEquipe(props) {    
     if (props.equipes !== null) {
-        function stringToColor(nome) {
-            let hash = 0;
-            let i;
-
-            for (i = 0; i < nome.length; i += 1) {
-              hash = nome.charCodeAt(i) + ((hash << 5) - hash);
+        function stringToHslColor(str, s, l) {
+            var hash = 0;
+            for (var i = 0; i < str.length; i++) {
+              hash = str.charCodeAt(i) + ((hash << 5) - hash);
             }
           
-            let color = '#';
-          
-            for (i = 0; i < 3; i += 1) {
-              const value = (hash >> (i * 8)) & 0xff;
-              color += `00${value.toString(16)}`.slice(-2);
-            }
-          
-            return color;
+            var h = hash % 360;
+            return 'hsl('+h+', '+s+'%, '+l+'%)';
         }
 
         function stringAvatar(nome) {
@@ -64,7 +56,7 @@ export default function CardEquipe(props) {
                             }}>
                                 {p.pessoas !== null ?
                                 p.pessoas.map(pe => (
-                                    <Avatar sx={{bgcolor: `${stringToColor(pe.nome_pessoa)}`, color: "#1E1F28"}}>{stringAvatar(pe.nome_pessoa)}</Avatar>
+                                    <Avatar sx={{bgcolor: `${stringToHslColor(pe.nome_pessoa, 50, 70)}`, color: "#1E1F28"}}>{stringAvatar(pe.nome_pessoa)}</Avatar>
                                 ))
                             : " "}
                             </AvatarGroup>

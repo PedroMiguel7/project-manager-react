@@ -128,22 +128,14 @@ class equipeDT_index extends Component {
         } else{
             let path = window.location.pathname;
 
-            function stringToColor(nome) {
-                let hash = 0;
-                let i;
-    
-                for (i = 0; i < nome.length; i += 1) {
-                  hash = nome.charCodeAt(i) + ((hash << 5) - hash);
+            function stringToHslColor(str, s, l) {
+                var hash = 0;
+                for (var i = 0; i < str.length; i++) {
+                  hash = str.charCodeAt(i) + ((hash << 5) - hash);
                 }
               
-                let color = '#';
-              
-                for (i = 0; i < 3; i += 1) {
-                  const value = (hash >> (i * 8)) & 0xff;
-                  color += `00${value.toString(16)}`.slice(-2);
-                }
-              
-                return color;
+                var h = hash % 360;
+                return 'hsl('+h+', '+s+'%, '+l+'%)';
             }
     
             function stringAvatar(nome) {
@@ -162,7 +154,7 @@ class equipeDT_index extends Component {
                 props.PessoasEquipe.map(p => (
                     <li className="MembroLi d-flex justify-content-between align-items-center">
                         <div className="d-flex align-items-center">
-                            <Avatar sx={{bgcolor: `${stringToColor(p.nome_pessoa)}`, color: "#1E1F28"}}>
+                            <Avatar sx={{bgcolor: `${stringToHslColor(p.nome_pessoa, 50, 70)}`, color: "#1E1F28"}}>
                                 {stringAvatar(p.nome_pessoa)}
                             </Avatar>
                             <div className="d-flex flex-column ms-2">

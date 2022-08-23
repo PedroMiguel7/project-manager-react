@@ -1,22 +1,14 @@
 import Avatar from '@mui/material/Avatar';
 
 export default function AvatarTag(props) {
-    function stringToColor(nome) {
-        let hash = 0;
-        let i;
-
-        for (i = 0; i < nome.length; i += 1) {
-          hash = nome.charCodeAt(i) + ((hash << 5) - hash);
+    function stringToHslColor(str, s, l) {
+        var hash = 0;
+        for (var i = 0; i < str.length; i++) {
+          hash = str.charCodeAt(i) + ((hash << 5) - hash);
         }
       
-        let color = '#';
-      
-        for (i = 0; i < 3; i += 1) {
-          const value = (hash >> (i * 8)) & 0xff;
-          color += `00${value.toString(16)}`.slice(-2);
-        }
-      
-        return color;
+        var h = hash % 360;
+        return 'hsl('+h+', '+s+'%, '+l+'%)';
     }
 
     function stringAvatar(nome) {
@@ -35,7 +27,7 @@ export default function AvatarTag(props) {
         return (
             <>
                 <div className="AvatarBorder d-flex align-items-center justify-content-center" style={{border: "2px solid #B9B8D3"}}>
-                    <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToColor(props.nome)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
+                    <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToHslColor(props.nome, 50 ,70)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
                         {stringAvatar(props.nome)}
                     </Avatar>
                 </div>
@@ -48,7 +40,7 @@ export default function AvatarTag(props) {
         return (
             <>  
                 <div className="AvatarBorder d-flex align-items-center justify-content-center" style={{border: "2px solid #E56B70"}}>
-                    <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToColor(props.nome)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
+                    <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToHslColor(props.nome, 50 ,70)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
                         {stringAvatar(props.nome)}
                     </Avatar>
                 </div>
@@ -61,7 +53,7 @@ export default function AvatarTag(props) {
         return (
             <>
                 <div className="AvatarBorder d-flex align-items-center justify-content-center" style={{border: "2px solid #F4FDD9"}}>
-                    <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToColor(props.nome)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
+                    <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToHslColor(props.nome, 50 ,70)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
                         {stringAvatar(props.nome)}
                     </Avatar>
                 </div>
@@ -74,7 +66,7 @@ export default function AvatarTag(props) {
         return (
             <>
                 <div className="AvatarBorder d-flex align-items-center justify-content-center" style={{border: "2px solid #A9DFD8"}}>
-                    <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToColor(props.nome)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
+                    <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToHslColor(props.nome, 50 ,70)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
                         {stringAvatar(props.nome)}
                     </Avatar>
                 </div>
@@ -87,7 +79,7 @@ export default function AvatarTag(props) {
         return (
             <>
                 <div className="AvatarBorder d-flex align-items-center justify-content-center" style={{border: "2px solid #8D99AE"}}>
-                    <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToColor(props.nome)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
+                    <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToHslColor(props.nome, 50 ,70)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
                         {stringAvatar(props.nome)}
                     </Avatar>
                 </div>
