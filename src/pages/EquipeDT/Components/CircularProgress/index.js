@@ -110,7 +110,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Em Andamento",
-                    "y": props.ValueAndamento
+                    "y": props.ValueAndamento/100
                 },
                 ]
             },
@@ -119,7 +119,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Concluídas",
-                    "y": props.ValueConcluido
+                    "y": props.ValueConcluido/100
                 },
                 ]
             },
@@ -129,10 +129,8 @@ export default function RadialBarChart(props) {
         return (
                 <ResponsiveRadialBar
                 data={data}
-                maxValue={100}
-                valueFormat=" >-.2c"
-                labelFormat={format}
-                tooltipFormat={format}
+                maxValue={1}
+                valueFormat=" >-.2~%"
                 startAngle={-90}
                 endAngle={90}
                 innerRadius={0.15}

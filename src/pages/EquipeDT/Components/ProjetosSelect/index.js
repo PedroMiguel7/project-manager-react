@@ -35,8 +35,13 @@ const CustomSelect = styled(TextField)({
 
 class ProjetosSelect extends React.Component {
     state = {
-        selectValue: 1,
+        selectValue: 0,
     };
+
+    Status0 = () => {
+      this.props.parentCallback(0);
+      this.statusValue = 0;
+    }
 
     Status1 = () => {
         this.props.parentCallback(1);
@@ -66,7 +71,7 @@ class ProjetosSelect extends React.Component {
                     displayEmpty
                     value={statusValue}
                     //onChange={this.handleChange}
-                    defaultValue={1}
+                    defaultValue={0}
                     SelectProps={{
                         MenuProps: {
                           PaperProps: {
@@ -80,7 +85,8 @@ class ProjetosSelect extends React.Component {
                       }}
                     InputProps={{ disableUnderline: true }}
                 >
-                    <MenuItem onClick={this.Status1} value={1}>Todos</MenuItem>
+                    <MenuItem onClick={this.Status0} value={0}>Todos</MenuItem>
+                    <MenuItem onClick={this.Status1} value={1}>A Fazer</MenuItem>
                     <MenuItem onClick={this.Status2} value={2}>Em Andamento</MenuItem>
                     <MenuItem onClick={this.Status3} value={3}>Concluídos</MenuItem>
                 </CustomSelect>

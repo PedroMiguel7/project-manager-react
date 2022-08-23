@@ -75,7 +75,7 @@ class equipeDT_index extends Component {
         equipe: [],
         PessoasEquipe: [],
         tarefas: [],
-        statusProjeto: 1,
+        statusProjeto: 0,
         statusTarefa: 0,
     }
     async componentDidMount() {
@@ -278,7 +278,7 @@ class equipeDT_index extends Component {
     ImprimeTarefas = (props) => {
         console.log(props.equipe.tasks);
         let TarefasEquipe = props.equipe.tasks;
-        console.log(TarefasEquipe);
+        //console.log(TarefasEquipe);
         //console.log(props.tarefas);
         if( TarefasEquipe === null){
             return(
@@ -489,7 +489,43 @@ class equipeDT_index extends Component {
                 }
             }
 
-            if (props.status === 2) {
+            if (props.status === 1) {
+                const ToDo = props.projetos.filter((projetos) => projetos.status === "A Fazer");
+
+                if (ToDo.length === 0) {
+                    return (
+                        <div className="EmptyStateContainer">
+                            <img src={ProjectNotFound} />
+                            <h5>
+                                Sem projetos a fazer.
+                            </h5>    
+                        </div>
+                    )
+                } else {
+                    return (
+                        ToDo.map(p => (
+                            <li className="ProjetosLi">
+                            <div>
+                                <h5>{p.nome_projeto}</h5>
+                                <span>
+                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                    {TempoRestante(p.prazo_entrega)}
+                                </span>
+                            </div>
+                            <div className="d-flex align-items-center   ">
+                                <div className="d-flex align-items-center">
+                                    <ProgressoProjetos key={1} id_projeto={p.id_projeto} status={p.status} />
+                                </div>
+                                <div className="d-flex justify-content-end">
+                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
+                                </div>
+                            </div>
+                        </li>
+                        ))
+                    )
+                }
+
+            } else if (props.status === 2) {
                 const OnGoing = props.projetos.filter((projetos) => projetos.status === "Em Andamento");
 
                 if (OnGoing.length === 0) {
@@ -537,14 +573,19 @@ class equipeDT_index extends Component {
                         </div>
                     )
                 } else {
+                    function FormatarData(data){
+                        let Data = new Date(data);
+                        return Data.toLocaleDateString("pt-BR");
+                    }
+                    
                     return (
                         Done.map(p => (
                             <li className="ProjetosLi">
                             <div>
                                 <h5>{p.nome_projeto}</h5>
                                 <span>
-                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                    {TempoRestante(p.prazo_entrega)}
+                                    <CheckCircleRoundedIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                                    {FormatarData(p.data_conclusao)}
                                 </span>
                             </div>
                             <div className="d-flex align-items-center   ">
@@ -562,19 +603,37 @@ class equipeDT_index extends Component {
 
                 
             } else {
+                function DataConclusão(data) {
+                    let Data = new Date(data);
+                    return (
+                        <>
+                            <CheckCircleRoundedIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                            {Data.toLocaleDateString("pt-BR")}
+                        </>
+                    )
+                }
+
+                function NaoConcluidos(prazo) {
+                    return (
+                        <>
+                            <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
+                            {TempoRestante(prazo)}
+                        </>
+                    )
+                }
+
                 return (
                     props.projetos.map(p => (
                         <li className="ProjetosLi">
                             <div>
                                 <h5>{p.nome_projeto}</h5>
                                 <span>
-                                    <AccessTimeIcon sx={{fontSize: '1rem', marginRight: '0.2rem'}}/>
-                                    {TempoRestante(p.prazo_entrega)}
+                                    {p.status === "Concluido" ? DataConclusão(p.data_conclusao) : NaoConcluidos(p.prazo_entrega) }
                                 </span>
                             </div>
                             <div className="d-flex align-items-center   ">
                                 <div className="d-flex align-items-center">
-                                    <ProgressoProjetos key={1} id_projeto={p.id_projeto} status={p.status} />
+                                    <ProgressoProjetos key={0} id_projeto={p.id_projeto} status={p.status} />
                                 </div>
                                 <div className="d-flex justify-content-end">
                                     <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
@@ -666,10 +725,6 @@ class equipeDT_index extends Component {
         const { equipe } = this.state;
         const { PessoasEquipe } = this.state;
         const { tarefas } = this.state;
-        
-        const tarefas2 = equipe.tasks;
-        console.log(tarefas2);
-        console.log(PessoasEquipe);
 
         const {statusProjeto} = this.state;
         const {statusTarefa} = this.state;
