@@ -122,7 +122,7 @@ export default function Menu_index() {
         {
           label: 'Não Iniciado',
           data: labels.map(() => props.AFAZER, ({ min: 0, max: props.total })),
-          backgroundColor: '#ffc65acc',
+          backgroundColor: '#ffeb7acc',
         },
         {
           label: 'Em Desenvolvimento',
@@ -132,7 +132,7 @@ export default function Menu_index() {
         {
           label: 'Concluído',
           data: labels.map(() => props.CON, ({ min: 0, max: props.total })),
-          backgroundColor: '#ff7b00cc',
+          backgroundColor: '#87cefacc',
         },
       ],
     };

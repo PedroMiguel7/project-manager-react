@@ -1,4 +1,3 @@
-import React from 'react';
 import filter from '../../../../assets/icons/filter.svg';
 import { styled } from '@mui/material/styles';
 import Fade from '@mui/material/Fade';
@@ -12,6 +11,11 @@ import Divider from '@mui/material/Divider';
 import CssDatePickerFut from '../DatePicker/DisableFuture/disableFuture';
 import Button from '@mui/material/Button';
 import CssDatePickerPas from '../DatePicker/DisablePast/disablePast';
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 function FilterPopper(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -52,11 +56,39 @@ function FilterPopper(props) {
     const handleChangeCO = (evento) => {
         setCheckedCO(evento.target.checked);
     };
-    
-    
+
+
+    const [value, setValue] = React.useState(new Date());
+    const [value2, setValue2] = React.useState(new Date());
+
+    const limparFiltro = () => setValue(null);
+
+    const DateTextField = styled(TextField)({
+        '& .MuiOutlinedInput-root': {
+            color: "#F4F5FA",
+            '& fieldset': {
+                borderColor: '#F4F5FA',
+                borderRadius: 5,
+            },
+            '&:hover fieldset': {
+                borderColor: '#C2C3C6',
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: '#F46E27',
+                color: '#F46E27',
+            },
+            'input': {
+                '&::placeholder': {
+                    color: '#C2C3C6',
+                }
+            }
+        },
+    })
+
+
     var projetos = props.PROJETOS
-    
-    function Filtrar( ) {
+
+    function Filtrar ( ) {
         projetos = props.PROJETOS
         var elementos = []
         if (checkedAN === true) {
@@ -69,11 +101,20 @@ function FilterPopper(props) {
             elementos.push('Concluido')
         }
         if (elementos !== null) {
-            props.SET(projetos.filter(Projetos => elementos.includes(Projetos.status)))
+            var novadata1 = (value2.getFullYear() + '-' + '0' +(value2.getMonth()+1) + '-' + value2.getDate())
+            var novadata = (value.getFullYear() + '-' + '0' + (value.getMonth()+1) + '-' + value.getDate())
+    
+            props.SET(projetos.filter(Projetos => elementos.includes(Projetos.status) && Projetos.data_criacao.slice(0, 10) >= novadata1 &&  Projetos.data_criacao.slice(0, 10) <= novadata))
+            
+            handleClose();
         } else {
             props.SET('')
         }
     }
+
+
+
+
 
     return (
         <>
@@ -119,9 +160,52 @@ function FilterPopper(props) {
                                 <div className="d-flex align-items-center justify-content-between gap-3 my-3">
                                     <span className="PopperTitle">Data</span>
                                     <div className="d-flex align-items-center justify-content-center gap-2">
-                                        <CssDatePickerFut label="Início" />
+                                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                            <DatePicker
+                                                disableFuture={true}
+                                                inputFormat="dd/MM/yyyy"
+                                                label="Início"
+                                                openTo="year"
+                                                views={['year', 'month', 'day']}
+                                                value={value2}
+                                                onChange={(newValue) => {
+                                                    setValue2(newValue);
+                                                }}
+                                                renderInput={(params) => <DateTextField {...params} sx={{
+                                                    maxWidth: "10.5rem",
+                                                    "& label": {
+                                                        color: '#F4F5FA'
+                                                    },
+                                                    "& label.Mui-focused": {
+                                                        color: '#F46E27'
+                                                    },
+                                                    svg: { color: '#F4F5FA' }
+                                                }} />}
+                                            />
+                                        </LocalizationProvider>
                                         <span>-</span>
-                                        <CssDatePickerPas label="Fim" />
+                                        <LocalizationProvider dateAdapter={AdapterDateFns} fullWidth>
+                                            <DatePicker
+                                                disablePast
+                                                inputFormat="dd/MM/yyyy"
+                                                label="Prazo"
+                                                openTo="year"
+                                                views={['year', 'month', 'day']}
+                                                value={value}
+                                                onChange={(newValue) => {
+                                                    setValue(newValue);
+                                                }}
+                                                renderInput={(params) => <DateTextField {...params} sx={{
+                                                    "& label": {
+                                                        color: '#F4F5FA'
+                                                    },
+                                                    "& label.Mui-focused": {
+                                                        color: '#F46E27'
+                                                    },
+                                                    svg: { color: '#F4F5FA' }
+                                                }} />}
+                                            />
+                                        </LocalizationProvider>
                                     </div>
 
                                 </div>
