@@ -216,9 +216,6 @@ class PessoasDT extends Component {
                         </Rendimento>
                         <TarefasPessoa className="row col-12 p-3 mt-3">
                             <HeaderTarefas />
-                            <div>
-                                {/*<NovaTarefa />*/}
-                            </div>
                         </TarefasPessoa>
                     </PessoaDashboard>
                  </PageContainer>

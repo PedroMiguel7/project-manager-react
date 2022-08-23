@@ -433,41 +433,8 @@ input[type=search]::-webkit-search-cancel-button {
     min-height: 90vh;
 }
 
-.AvatarBorder {
-    /*border: 2px solid #A9DFD8;*/
-    width: 160px;
-    height: 160px;
-    border-radius: 100%;
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
-}
-
-.AvatarTag {
-    background-color: #A9DFD8;
-    color: var(--preto);
-    border-radius: 100px;
-    padding: 5px 9px;
-    width: fit-content;
-    position: relative;
-    top: -25px;
-    font-size: 0.8rem;
-    transition: 0.5s;
-}
-
 .ChartContainer {
     height: 350px;
-}
-
-.Progress {
-    width: 110px;
-    height: 0.24rem;
-    border-radius: 100px;
-    background-color: #2B2B36;
-}
-
-
-.ProgressBar {
-    border-radius: 100px;
-    background-color: var(--azul-claro);
 }
 
 .table {

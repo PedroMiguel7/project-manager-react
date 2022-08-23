@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import TarefasAndamento from '../TabelaTarefas/TarefasAndamento';
 import TarefasConcluidas from '../TabelaTarefas/TarefasConcluidas';
 import ContadorTarefas from '../ContadorTarefas';
+import { HeaderContainer, Header, Title, TableContainer, Table } from "./style";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -86,17 +87,16 @@ export default function BasicTabs() {
 
   return (
     <>
-      <div className="d-flex justify-content-between align-items-center">
-        <div className='d-flex align-items-center gap-5'>
-          <h5 className='m-0'>Tarefas</h5>
+      <HeaderContainer>
+        <Header>
+          <Title>Tarefas</Title>
           <StyledTabs className="mx-4" value={value} onChange={handleChange} aria-label="basic tabs" centered>
             <StyledTab className="StyledTab" label="Em Andamento" {...a11yProps(0)} />
             <StyledTab className="StyledTab" label="Concluídas" {...a11yProps(1)} />
           </StyledTabs>
-        </div>
-
+        </Header>
         <ContadorTarefas />
-      </div>
+      </HeaderContainer>
 
       <TabPanel value={value} index={0}>
         <TarefasAndamento index={0} />
@@ -106,8 +106,8 @@ export default function BasicTabs() {
       </TabPanel>
       <TabPanel value={value} index={2}>
         
-        <div className='TabelaTarefas table-responsive'>
-          <table className="table align-middle text-center ">
+        <TableContainer className='table-responsive'>
+          <Table className="align-middle text-center ">
             <tbody>
               <tr>
                 <th scope="col"></th>
@@ -116,10 +116,9 @@ export default function BasicTabs() {
                 <th scope="col"></th>
               </tr>
             </tbody>
-          </table>
-        </div>
+          </Table>
+        </TableContainer>
       </TabPanel>
     </>
-
   );
 }

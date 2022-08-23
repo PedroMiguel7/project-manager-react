@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Component } from "react";
 import api from '../../../../api';
 import Tooltip from '@mui/material/Tooltip';
+import { ContadorContainer, ContadorTarefas, Progress, ProgressBar } from './style';
 
 class TarefasConcluidas extends Component {
     state = {
@@ -36,16 +37,16 @@ class TarefasConcluidas extends Component {
         return(
             <>
                 <Tooltip title={(progressValue !== NaN) ? `${progressValue}%` : "0%" } arrow>
-                    <div className='d-flex flex-column align-items-center'>
-                        <span className='ContadorTarefas'>{Concluidas}/{TotalTarefas} Completas</span>
-                        
-                        <div className="progress Progress" >
-                            <div className="ProgressBar progress-bar" 
+                    <ContadorContainer>
+                        <ContadorTarefas>
+                            {Concluidas}/{TotalTarefas} Completas
+                        </ContadorTarefas>
+                        <Progress className="progress">
+                            <ProgressBar className="progress-bar" 
                             style={{width: `${progressValue}%`}}
-                            role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        
-                    </div>
+                            role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></ProgressBar>
+                        </Progress>
+                    </ContadorContainer>
                 </Tooltip>
             </>
         )

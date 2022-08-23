@@ -17,6 +17,7 @@ import PrioridadeMedia from '../../../../../assets/icons/prioridade-media.svg';
 import PrioridadeBaixa from '../../../../../assets/icons/prioridade-baixa.svg';
 import Tooltip from '@mui/material/Tooltip';
 import TasksNotFound from "../../../../../assets/empty-states/tasks-not-found.svg";
+import { NoBorder, Head, TableContainer, Table, Row, PriorityIcons } from './style';
 
 
 class TarefasAndamento extends Component {
@@ -50,20 +51,18 @@ class TarefasAndamento extends Component {
     } else {
       return (
         <>
-          <tr className="TabelaTarefasHead AddShadow">
+          <Head>
             <th scope="col"></th>
             <th scope="col">Nome</th>
             <th scope="col">Prioridade</th>
             <th scope="col">Tempo Restante</th>
             <th scope="col">Início</th>
             <th scope="col"></th>
-          </tr>
+          </Head>
         </>
       )
     }
   }
-
-      
 
   ImprimeTarefas = (props) => {
     const qtdTarefas = props.tarefas;
@@ -113,12 +112,12 @@ class TarefasAndamento extends Component {
     if( qtdTarefas === null || qtdAndamento.length === 0){
         return(
           <>
-            <tr className='NoBorder'>
+            <NoBorder>
               <img src={TasksNotFound} />
               <h5 style={{color: "#454756", textAlign: "center"}}>
                 Sem tarefas em andamento.
               </h5>
-            </tr>
+            </NoBorder>
           </>
           
         );
@@ -127,19 +126,19 @@ class TarefasAndamento extends Component {
           if (prioridade === 0) {
             return (
               <Tooltip title='Baixa' arrow>
-                <img className='IconesPrioridade' src={PrioridadeBaixa}/>
+                <PriorityIcons src={PrioridadeBaixa}/>
               </Tooltip>
             )
           } else if (prioridade == 1) {
             return (
               <Tooltip title='Média' arrow>
-                <img className='IconesPrioridade' src={PrioridadeMedia}/>
+                <PriorityIcons src={PrioridadeMedia}/>
               </Tooltip>
             )
           } else if (prioridade === 2) {
             return (
               <Tooltip title='Alta' arrow>
-                <img className='IconesPrioridade' src={PrioridadeAlta}/>
+                <PriorityIcons src={PrioridadeAlta}/>
               </Tooltip>
             )
           }
@@ -173,7 +172,7 @@ class TarefasAndamento extends Component {
             {if (t.status === "Em Andamento")
             return (
               <>
-                <tr id={t.id_task}>
+                <Row id={t.id_task}>
                   <td>
                     <IconButton onClick={() => {handleCheck(t.id_task);}}>
                       {icon}
@@ -195,7 +194,7 @@ class TarefasAndamento extends Component {
                   <td>
                     <TarefasMenu equipe_id={t.id_equipe} id_task={t.id_task} />
                   </td>
-                </tr>
+                </Row>
               </>
             )
           }
@@ -304,15 +303,15 @@ class TarefasAndamento extends Component {
 
     return (
       <>
-        <div className='TabelaTarefas table-responsive' onScroll={scrollHandler}>
-          <table id='table' className="table align-middle text-center">
+        <TableContainer className='table-responsive' /*onScroll={scrollHandler}*/>
+          <Table id='table' className="table align-middle text-center">
             <tbody>
               <this.Header tarefas={tarefas} />
               <this.ImprimeTarefas tarefas={tarefas} />
               <this.Alerta />
             </tbody>
-          </table>
-        </div>
+          </Table>
+        </TableContainer>
       </>
     )
   }
