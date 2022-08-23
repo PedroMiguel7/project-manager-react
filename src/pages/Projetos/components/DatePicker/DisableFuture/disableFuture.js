@@ -3,15 +3,14 @@ import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { alpha, styled } from '@mui/material/styles';
-import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
 
 export default function CssDateFut(props) {
   const [value, setValue] = React.useState(new Date());
 
   const limparFiltro = () => setValue(null);
 
-  const DateTextField = styled(TextField) ({
+  const DateTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
       color: "#F4F5FA",
       '& fieldset': {
@@ -32,12 +31,12 @@ export default function CssDateFut(props) {
       }
     },
   })
-  
+
 
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <DatePicker
+        <DatePicker
           disableFuture={true}
           inputFormat="dd/MM/yyyy"
           label={props.label}
@@ -45,7 +44,7 @@ export default function CssDateFut(props) {
           views={['year', 'month', 'day']}
           value={value}
           onChange={(newValue) => {
-              setValue(newValue);
+            setValue(newValue);
           }}
           renderInput={(params) => <DateTextField {...params} sx={{
             maxWidth: "10.5rem",
@@ -55,8 +54,9 @@ export default function CssDateFut(props) {
             "& label.Mui-focused": {
               color: '#F46E27'
             },
-            svg: { color: '#F4F5FA' }}} />}
-          />
+            svg: { color: '#F4F5FA' }
+          }} />}
+        />
       </LocalizationProvider>
     </>
   );

@@ -10,7 +10,7 @@ export default function CssDatePickerPas(props) {
 
   const limparFiltro = () => setValue(null);
 
-  const DateTextField = styled(TextField) ({
+  const DateTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
       color: "#F4F5FA",
       '& fieldset': {
@@ -31,31 +31,32 @@ export default function CssDatePickerPas(props) {
       }
     },
   })
-  
+
 
   return (
     <>
-        <LocalizationProvider dateAdapter={AdapterDateFns} fullWidth>
-            <DatePicker
-            disablePast
-            inputFormat="dd/MM/yyyy"
-            label="Prazo"
-            openTo="year"
-            views={['year', 'month', 'day']}
-            value={value}
-            onChange={(newValue) => {
-                setValue(newValue);
-            }}
-            renderInput={(params) => <DateTextField {...params} sx={{
-              "& label": {
-                color: '#F4F5FA'
-              },
-              "& label.Mui-focused": {
-                color: '#F46E27'
-              },
-              svg: { color: '#F4F5FA' }}} />}
-            />
-        </LocalizationProvider>
+      <LocalizationProvider dateAdapter={AdapterDateFns} fullWidth>
+        <DatePicker
+          disablePast
+          inputFormat="dd/MM/yyyy"
+          label="Prazo"
+          openTo="year"
+          views={['year', 'month', 'day']}
+          value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
+          }}
+          renderInput={(params) => <DateTextField {...params} sx={{
+            "& label": {
+              color: '#F4F5FA'
+            },
+            "& label.Mui-focused": {
+              color: '#F46E27'
+            },
+            svg: { color: '#F4F5FA' }
+          }} />}
+        />
+      </LocalizationProvider>
     </>
   );
 }
