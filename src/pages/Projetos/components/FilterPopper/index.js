@@ -88,7 +88,7 @@ function FilterPopper(props) {
 
     var projetos = props.PROJETOS
 
-    function Filtrar ( futuro, passado) {
+    function Filtrar ( ) {
         projetos = props.PROJETOS
         var elementos = []
         if (checkedAN === true) {
@@ -101,16 +101,14 @@ function FilterPopper(props) {
             elementos.push('Concluido')
         }
         if (elementos !== null) {
-            props.SET(projetos.filter(Projetos => elementos.includes(Projetos.status)))
-            var novadata = (value.getFullYear() + '-' + '0' + (value.getMonth()+1) + '-' + value.getDate())
             var novadata1 = (value2.getFullYear() + '-' + '0' +(value2.getMonth()+1) + '-' + value2.getDate())
+            var novadata = (value.getFullYear() + '-' + '0' + (value.getMonth()+1) + '-' + value.getDate())
     
-            props.SET(projetos.filter((Projetos => Projetos.data_criacao.slice(0, 10) >= novadata) &&  (Projetos => Projetos.data_criacao.slice(0, 10) <= novadata1)))
+            props.SET(projetos.filter(Projetos => Projetos.data_criacao.slice(0, 10) >= novadata1 &&  Projetos.data_criacao.slice(0, 10) <= novadata))
+
+            //props.SET(projetos.filter(Projetos => elementos.includes(Projetos.status)))
+            
             handleClose();
-            return(
-                <>
-                </>
-            )
         } else {
             props.SET('')
         }
