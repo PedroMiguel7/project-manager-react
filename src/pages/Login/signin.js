@@ -98,7 +98,7 @@ export default function Signin() {
     <Box sx={style}>
       <div className="d-flex align-items-center justify-content-between mb-4">
         <div className="OcuparEspaco"></div>
-        <ClearRoundedIcon
+        <div
           className="ClearRoundedIcon order-2"
         />
         <Typography
