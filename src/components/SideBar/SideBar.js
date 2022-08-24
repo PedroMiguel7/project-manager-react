@@ -8,11 +8,23 @@ import team from '../../assets/icons/team.svg';
 import teamActive from '../../assets/icons/team-active.svg';
 import person from '../../assets/icons/person.svg';
 import personActive from '../../assets/icons/person-active.svg';
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom"
 
 function SideBar() {
+    const navigate = useNavigate();
+    const signout = (e) =>{
+        e.preventDefault()
+        localStorage.removeItem("token");
+
+    }
+    
     let path = window.location.pathname;
     let pathId = path.substring(path.lastIndexOf('/') + 1);
     const location = useLocation();
+    if(path === '/' | localStorage.getItem("token") === null){
+        return;
+    }
     return(
         <div>
             <header className="col-1 col-lg-1 d-flex flex-column justify-content-center align-items-center">
@@ -50,6 +62,12 @@ function SideBar() {
                         }
                     </Link>  
                     </li>
+                    <li>
+                        <Button onClick={(e) => [signout(e), navigate('/')]}>
+                            logout
+                        </Button>
+                    </li>
+
                 </ul>
             </header>
         </div>

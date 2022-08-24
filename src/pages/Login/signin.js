@@ -79,6 +79,7 @@ export default function Signin() {
       })
       .then(res => {
         localStorage.setItem('token', JSON.stringify(res.data.token))
+        api.defaults.headers.Authorization = `Bearer ${res.data.token}`
         window.location.href = '/home'
     })
     .catch(err => alert(err))

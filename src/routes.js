@@ -8,7 +8,7 @@ import EquipeDT from ".//pages/EquipeDT/equipesDT_index"
 import Pessoas from ".//pages/Pessoas/pessoa_index"
 import PessoaDT from ".//pages/PessoaDT/pessoaDT_index"
 import Signin from ".//pages/Login/signin";
-import useAuth from "./pages/Login/hooks/useAuth"
+//import useAuth from "./pages/Login/hooks/useAuth"
 
 const Private = ({Item}) =>{
     const token  = localStorage.getItem('token');
