@@ -19,8 +19,8 @@ function SideBar() {
                 <img className="logo mb-5" src={logo} alt=""/>
                 <ul className="nav flex-column gap-5 align-items-center">
                     <li className="nav-item">
-                    <Link to="/" >
-                        {location.pathname === "/"
+                    <Link to="/home" >
+                        {location.pathname === "/home"
                         ? <img src={homeActive} alt=""/>
                         : <img src={home} alt=""/>
                         }
