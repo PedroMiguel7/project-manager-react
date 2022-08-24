@@ -4,6 +4,7 @@ import BasicModalEquipe from "./NewEquipe";
 import { useEffect, useState } from "react";
 import api from "../../api";
 import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
+import { NotFoundContainer, Main, Header, Title, Search, OptionsContainer, Options, OrderSelect, CardsContainer } from './style.js';
 
 export default function Equipes() {
     var [Equipes, setEquipes] = useState([]);
@@ -56,34 +57,32 @@ export default function Equipes() {
     function NotFound() {
         return (
             <>
-                <div className="d-flex flex-column align-items-center mt-5">
+                <NotFoundContainer>
                     <img className="mb-3" src={SearchNotFound} />
                     <h3 style={{color: "#454756", textAlign: "center"}}>Nenhum resultado encontrado.</h3>
-                </div>
+                </NotFoundContainer>
             </>
         )
     }
 
     return (
         <>
-            <main className='col-11 offset-1 px-5'>
-                <div className='row mt-5 pb-3 main-header'>
-                    <h1 className="Titulo col-lg-3 fs-2">Equipes</h1>
-                    <input onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Pesquise aqui..." />
-                </div>
+            <Main className='col-11 offset-1'>
+                <Header className='row'>
+                    <Title className="col-lg-3">Equipes</Title>
+                    <Search onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" placeholder="Pesquise aqui..." />
+                </Header>
                 <Divider />
-                <div className="Options row d-flex flex-wrap my-lg-3 my-3">
+                <OptionsContainer className="row">
                     <div className="LeftOptions col mt-sm-2">
                         {/*<span className="me-2">Show:</span>
                         <input type="" name="txt-show" id="txt-show" size="1" />*/}
                     </div>
-                    <div className="RightOptions d-flex justify-content-end align-items-center flex-wrap gap-3 col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
+                    <Options className="col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
                         <BasicModalEquipe atualiza={Atualiza} />
-
-                        <button onClick={e => handleOrder('nome_equipe')} className="ps-1" name="order-select" id="order-select" >
+                        <OrderSelect onClick={e => handleOrder('nome_equipe')} className="ps-1" name="order-select" >
                             A - Z
-                        </button>
-
+                        </OrderSelect>
                         {/*<select className="ps-1" name="order-select" id="order-select">
                             <option value="crescente">A - Z</option>
                             <option value="decrescente">Z - A</option>
@@ -91,13 +90,12 @@ export default function Equipes() {
                         <button className="filter px-2 py-1">
                             <span>Filtro</span> <img src={filter} alt="" />
                         </button>*/}
-
-                    </div>
-                </div>
-                <div className="row CardsContainer my-4">
+                    </Options>
+                </OptionsContainer>
+                <CardsContainer className="row">
                     {emptyState === true ? NotFound() : <ExibirEquipes equipes={Equipes} atualiza={Atualiza}/> }
-                </div>
-            </main>
+                </CardsContainer>
+            </Main>
         </>
     )
 }

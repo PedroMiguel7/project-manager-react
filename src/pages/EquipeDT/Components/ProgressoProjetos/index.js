@@ -1,5 +1,6 @@
 import React, {  useEffect, useState } from "react";
 import api from '../../../../api';
+import { ProgressoContainer, HeaderProgresso, Status, Percentual, Progresso, ProgressoBar } from "./style.js"
 
 function ProgressoProjetos (props) {
     const [tasks, setTasks] = useState([]);
@@ -25,18 +26,18 @@ function ProgressoProjetos (props) {
 
     return (
         <>
-            <div className="ProgressoProjetoContainer">
-                <div className="d-flex justify-content-between">
-                    <span style={{color: "#287CB8"}}>{props.status}</span>
-                    <span style={{color: "#494A58"}}>{Math.round(BarrinhaProgresso)}%</span>    
-                </div>
+            <ProgressoContainer>
+                <HeaderProgresso>
+                    <Status>{props.status}</Status>
+                    <Percentual>{Math.round(BarrinhaProgresso)}%</Percentual>    
+                </HeaderProgresso>
                 
-                <div className="progress ProgressProjeto" >
-                    <div className="ProgressBarProjeto progress-bar" 
+                <Progresso className="progress" >
+                    <ProgressoBar className="progress-bar" 
                     style={{width:`${BarrinhaProgresso}%`}}
-                    role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
+                    role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></ProgressoBar>
+                </Progresso>
+            </ProgressoContainer>
         </>
     )  
 }
