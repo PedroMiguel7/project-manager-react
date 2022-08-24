@@ -11,8 +11,9 @@ import Signin from ".//pages/Login/signin";
 import useAuth from "./pages/Login/hooks/useAuth"
 
 const Private = ({Item}) =>{
-    const { signed } = useAuth();
-    return signed > 0 ? <Item /> : <Signin/>;
+    const token  = localStorage.getItem('token');
+    console.log(token)
+    return token ? <Item /> : <Signin/>;
 }
 
 const Rout = () =>{

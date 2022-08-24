@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import {useNavigate} from "react-router-dom";
 import useAuth from "./hooks/useAuth"
+import api from "../../api";
 
 const CssTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
@@ -56,19 +57,32 @@ export default function Signin() {
   const [ Senha, setSenha ] = useState("");
   const [ error, setError ] = useState("");
 
-  const handleLogin = (e) =>{
-    e.preventDefault()
-    //if(!Email | !Senha){
-    //    setError('Preencha todos os campos')
-    //}
+  // const handleLogin = (e) =>{
+  //   e.preventDefault()
+  //   //if(!Email | !Senha){
+  //   //    setError('Preencha todos os campos')
+  //   //}
     
-    const res = signin(Email, Senha);
-    if(res){
-      setError(res);
-      return;
-    }
-    navigate("/home")
-  };
+  //   const res = signin(Email, Senha);
+  //   if(res){
+  //     setError(res);
+  //     return;
+  //   }
+  //   navigate("/home")
+  // };
+
+  const Logar = (e) => {
+    e.preventDefault()
+    api.post('/user/login', {
+        email: Email,
+        password: Senha
+      })
+      .then(res => {
+        localStorage.setItem('token', JSON.stringify(res.data.token))
+        window.location.href = '/home'
+    })
+    .catch(err => alert(err))
+  }
 
   return (
     <Box sx={style}>
@@ -87,7 +101,7 @@ export default function Signin() {
         </Typography>
       </div>
 
-      <form onSubmit={handleLogin}>
+      <form>
         <CssTextField
           required
           //size="small"
@@ -126,7 +140,7 @@ export default function Signin() {
           }}
           variant="contained"
           type="submit"
-          onClick={(e) => handleLogin(e)}
+          onClick={(e) => Logar(e)}
         >
           LOGIN
         </Button>

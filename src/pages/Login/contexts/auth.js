@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) =>{
             return "Usuário não cadastrado";
         }
     };
-
+    
     // não vou usar, fazendo por fins educacionais
     const signup = (email, password) =>{
         const usersStorage = JSON.parse(localStorage.getItem("users_db"));
