@@ -16,8 +16,7 @@ function SideBar() {
     const navigate = useNavigate();
     const signout = (e) =>{
         e.preventDefault()
-        localStorage.removeItem("token");
-
+        localStorage.setItem('token', null)
     }
     
     let path = window.location.pathname;
