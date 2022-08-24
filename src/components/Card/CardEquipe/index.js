@@ -7,7 +7,7 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 import { CardContainer, Header, NomeEquipe, Resumo, EmptyStateContainer } from "./style";
 
 export default function CardEquipe(props) {    
-    if (props.equipes !== null || props.equipes.length !== 0) {
+    if (props.equipes !== null) {
         function stringToHslColor(str, s, l) {
             var hash = 0;
             for (var i = 0; i < str.length; i++) {
@@ -65,7 +65,7 @@ export default function CardEquipe(props) {
                 ))}
             </>
         )
-    } else if (props.equipes.length === 0){
+    } else if (props.equipes === null){
         return (
             <>
                 <EmptyStateContainer>

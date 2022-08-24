@@ -8,6 +8,7 @@ import team from '../../assets/icons/team.svg';
 import teamActive from '../../assets/icons/team-active.svg';
 import person from '../../assets/icons/person.svg';
 import personActive from '../../assets/icons/person-active.svg';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom"
 
@@ -27,8 +28,8 @@ function SideBar() {
     }
     return(
         <div>
-            <header className="col-1 col-lg-1 d-flex flex-column justify-content-center align-items-center">
-                <img className="logo mb-5" src={logo} alt=""/>
+            <header className="col-1 col-lg-1 d-flex flex-column justify-content-around align-items-center">
+                <img className="logo" src={logo} alt=""/>
                 <ul className="nav flex-column gap-5 align-items-center">
                     <li className="nav-item">
                     <Link to="/home" >
@@ -62,12 +63,15 @@ function SideBar() {
                         }
                     </Link>  
                     </li>
-                    <li>
-                        <Button onClick={(e) => [signout(e), navigate('/')]}>
-                            logout
-                        </Button>
-                    </li>
+                    
 
+                </ul>
+                <ul className="nav flex-column gap-5 align-items-center">
+                    <li className="nav-item">
+                        <LogoutRoundedIcon sx={{color: "#87888C"}} onClick={(e) => [signout(e), navigate('/')]}>
+                            logout
+                        </LogoutRoundedIcon>
+                    </li>
                 </ul>
             </header>
         </div>

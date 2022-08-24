@@ -41,11 +41,13 @@ header {
 
 .logo {
     max-width: 2.2rem;
-    padding-bottom: 4rem;
+    margin-top: -4rem;
+    margin-bottom: 5rem;
 }
 
 .nav-item {
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .nav-item:hover {
