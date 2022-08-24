@@ -4,7 +4,8 @@ export const NotFoundContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 1%;
+    justify-content: center;
+    height: 60vh;
 
     img {
         margin-bottom: 1%;
@@ -13,17 +14,18 @@ export const NotFoundContainer = styled.div`
     h3 {
         color: #454756; 
         text-align: center;
+        font-size: 1.55rem;
     }
 `;
 
 export const Main = styled.main`
-    padding: 0 1%;
+    padding: 0 2%;
 `;
 
 export const Header = styled.div`
     border-bottom: 0.15px solid #2C2E3B;
-    margin-top: 1%;
-    padding-bottom: 0.5rem;
+    margin-top: 2%;
+    padding-bottom: 1%;
 `;
 
 export const Title = styled.h1`
@@ -71,11 +73,12 @@ export const Options = styled.div`
     flex-wrap: wrap;
     justify-content: end;
     align-items: center;
-    gap: 3;
+    gap: 3%;
 `;
 
 export const OrderSelect = styled.button`
     height: 32px;
+    border: 1px solid var(--cinza);
     border-radius: 10px;
     background-color: transparent;
     color: var(--cinza);
@@ -84,5 +87,5 @@ export const OrderSelect = styled.button`
 
 export const CardsContainer = styled.div`
     gap: 2rem;
-    margin: 1% 0;
+    margin: 2% 0;
 `;
