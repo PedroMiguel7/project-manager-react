@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import aim from "../../../assets/icons/aim.svg";
-//import profile from "../../../assets/icons/Profile.svg";
+import ProjectNotFound from "../../../assets/empty-states/project-not-found.svg";
 import EditaProjeto from "../CardProjetos/EdiçãoProjeto";
 import BarraProgresso from "../CardProjetos/BarraDeProgresso";
 import CardSkeleton from "./Skeleton";
@@ -81,10 +81,16 @@ export default function Cards(props) {
     )
   } else if (props.Projetos.length === 0)  {
     return (
-      props.Projetos.map(p => (
-      <CardSkeleton />
-      ))
+      <>
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <img src={ProjectNotFound} style={{width: '10vw'}} />
+          <h3 style={{color: "#454756", textAlign: "center"}}>Nenhum projeto encontrado.</h3>
+        </div>
+      </>
     )
+    /*return (
+      <CardSkeleton />
+    )*/
   } else {
     props.Projetos.reverse();
     

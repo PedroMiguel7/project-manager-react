@@ -5,6 +5,10 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from '@mui/material/Typography';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {useNavigate} from "react-router-dom";
 import useAuth from "./hooks/useAuth"
 import api from "../../api";
@@ -55,7 +59,12 @@ export default function Signin() {
 
   const [ Email, setEmail ] = useState("");
   const [ Senha, setSenha ] = useState("");
+  const [ showPassword, setShowPassword] = useState(false);
   const [ error, setError ] = useState("");
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   // const handleLogin = (e) =>{
   //   e.preventDefault()
@@ -105,10 +114,9 @@ export default function Signin() {
       <form>
         <CssTextField
           required
-          //size="small"
-          id="nome"
-          name="nome"
-          label="Email Andress"
+          id="email"
+          name="email"
+          label="Email"
           value={Email}
           onChange={(e) => [setEmail(e.target.value), setError("")]}
           variant="outlined"
@@ -119,17 +127,28 @@ export default function Signin() {
         />
         <CssTextField
           required
-          //size="small"
-          id="nome"
-          name="nome"
-          label="Password"
+          id="senha"
+          name="senha"
+          label="Senha"
           value={Senha}
           onChange={(e) => [setSenha(e.target.value), setError("")]}
           variant="outlined"
           margin="dense"
           fullWidth
           className="textField"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
+          InputProps={{
+            endAdornment: 
+            <InputAdornment position="start">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                edge="end"
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+          </InputAdornment>,
+          }}
         />
         <div className='d-flex justify-content-end mt-5'>
         <Button
