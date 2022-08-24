@@ -7,7 +7,7 @@ import AvatarGroup from '@mui/material/AvatarGroup';
 import { CardContainer, Header, NomeEquipe, Resumo, EmptyStateContainer } from "./style";
 
 export default function CardEquipe(props) {    
-    if (props.equipes !== null) {
+    if (props.equipes.lenght !== 0) {
         function stringToHslColor(str, s, l) {
             var hash = 0;
             for (var i = 0; i < str.length; i++) {
@@ -30,7 +30,7 @@ export default function CardEquipe(props) {
             }
         }
 
-        console.table(props.equipes);
+        //console.table(props.equipes);
         return (
             <>
                 {props.equipes.map(p => (
@@ -65,7 +65,8 @@ export default function CardEquipe(props) {
                 ))}
             </>
         )
-    } else if (props.equipes === null){
+    } else if (props.equipes.lenght === 0){
+        console.log(`Ta sem nada: ${props.equipes.lenght}`)
         return (
             <>
                 <EmptyStateContainer>
