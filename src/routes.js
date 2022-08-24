@@ -19,7 +19,8 @@ const Private = ({Item}) =>{
 const Rout = () =>{
     return(
         <BrowserRouter>
-            <SideBar />
+            {localStorage.getItem('token') ? <SideBar /> : ''}
+            
             <Routes>
                 <Route exect path="/" element={<Signin />}/>
                 <Route exect path="/home" element={<Private Item={Home} />}/>
