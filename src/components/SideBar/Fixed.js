@@ -11,7 +11,7 @@ import person from '../../assets/icons/person.svg';
 import personActive from '../../assets/icons/person-active.svg';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { useNavigate } from "react-router-dom";
-import { FixedNavContainer, TemporaryNavContainer, Logo, Nav, NavItem,NavLink } from './style';
+import { FixedNavContainer, TemporaryNavContainer, Logo, Nav, NavItem,NavLink, FixedNavLink, ItemName } from './style';
 
 const drawerWidth = 240;
 
@@ -37,36 +37,60 @@ function Fixed(props) {
         <Logo src={logo} alt="" />
         <Nav>
           <NavItem>
-            <Link to="/home" >
+            <FixedNavLink to="/home" >
               {location.pathname === "/home"
-                ? <img src={homeActive} alt="" />
-                : <img src={home} alt="" />
+                ? <>
+                    <img src={homeActive} alt="" />
+                    <ItemName style={{color: "#F46E27"}}>Home</ItemName>
+                  </>
+                : <>
+                    <img src={home} alt="" />
+                    <ItemName>Home</ItemName>
+                  </>
               }
-            </Link>
+            </FixedNavLink>
           </NavItem>
           <NavItem>
-            <Link to="/projetos" >
+            <FixedNavLink to="/projetos" >
               {location.pathname === "/projetos" || location.pathname === `/projetos/${pathId}`
-                ? <img src={projectActive} alt="" />
-                : <img src={project} alt="" />
+                ? <>
+                    <img src={projectActive} alt="" />
+                    <ItemName style={{color: "#F46E27"}}>Projetos</ItemName>
+                  </>
+                : <>
+                    <img src={project} alt="" />
+                    <ItemName>Projetos</ItemName>
+                  </>
               }
-            </Link>
+            </FixedNavLink>
           </NavItem>
           <NavItem>
-            <Link to="/equipes">
+            <FixedNavLink to="/equipes">
               {location.pathname === "/equipes" || location.pathname === `/equipes/${pathId}`
-                ? <img src={teamActive} alt="" />
-                : <img src={team} alt="" />
+                ? <>
+                    <img src={teamActive} alt="" />
+                    <ItemName style={{color: "#F46E27"}}>Equipes</ItemName>
+                  </>
+                : <>
+                    <img src={team} alt="" />
+                    <ItemName>Equipes</ItemName>
+                  </>
               }
-            </Link>
+            </FixedNavLink>
           </NavItem>
           <NavItem>
-            <Link to="/pessoas">
+            <FixedNavLink to="/pessoas">
               {location.pathname === "/pessoas" || location.pathname === `/pessoas/${pathId}`
-                ? <img src={personActive} alt="" />
-                : <img src={person} alt="" />
+                ? <>
+                    <img src={personActive} alt="" />
+                    <ItemName style={{color: "#F46E27"}}>Pessoas</ItemName>
+                  </>
+                : <>
+                    <img src={person} alt="" />
+                    <ItemName>Pessoas</ItemName>
+                  </>
               }
-            </Link>
+            </FixedNavLink>
           </NavItem>
   
   

@@ -29,15 +29,6 @@ function SideBar() {
         return;
     }
     
-    /*function myFunction(x) {
-        if (x.matches) { // If media query matches
-        //document.body.style.backgroundColor = "yellow";
-        } else {
-        //document.body.style.backgroundColor = "pink";
-        }
-    }
-    SidebarResponsivo(x)
-    x.addListener(SidebarResponsivo)*/
     return(
         <>
             <Fixed op="fixed" />

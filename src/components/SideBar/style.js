@@ -41,7 +41,7 @@ export const Nav = styled.ul`
 export const NavItem = styled.li`
     transition: 0.3s;
     cursor: pointer;
-    align-self: flex-start;
+    //align-self: flex-start;
 
     &:hover {
         opacity: 0.85;
@@ -61,6 +61,35 @@ export const NavLink = styled(Link)`
     &:hover {
         color: #87888C;
         text-decoration: none;
+    }
+`;
+
+export const FixedNavLink = styled(Link)`
+    color: #87888C;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 0.95rem;
+    gap: 0.8rem;
+    width: 25px;
+
+    &:hover {
+        color: #87888C;
+        text-decoration: none;
+        width: 80px;
+        transition: width 0.5s ease-in-out;
+    }
+`;
+
+export const ItemName = styled.span`
+    
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s linear;
+    ${FixedNavLink}:hover & {
+        visibility: visible;
+        opacity: 1;
     }
 `;
 
@@ -88,7 +117,6 @@ export const TemporaryNavContainer = styled.nav`
 // Drawer 
 
 export const Drawer = styled(SwipeableDrawer)`
-
     @media(min-width: 992px) {
         display: none;
     }
