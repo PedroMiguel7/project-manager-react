@@ -8,7 +8,9 @@ class App extends Component {
     render() {
         return (
             <DndProvider backend={HTML5Backend}>
-                <Rout />
+                <AuthProvider>
+                    <Rout />
+                </AuthProvider>
             </DndProvider>
         );
     }
