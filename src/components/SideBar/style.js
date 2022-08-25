@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import { Link } from "react-router-dom";
 
 // Fixed
 export const FixedNavContainer = styled.nav`
@@ -40,10 +41,26 @@ export const Nav = styled.ul`
 export const NavItem = styled.li`
     transition: 0.3s;
     cursor: pointer;
+    align-self: flex-start;
 
     &:hover {
         opacity: 0.85;
         transition: all 0.3s ease-in-out;
+    }
+`;
+
+export const NavLink = styled(Link)`
+    color: #87888C;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 0.95rem;
+    gap: 0.8rem;
+
+    &:hover {
+        color: #87888C;
+        text-decoration: none;
     }
 `;
 

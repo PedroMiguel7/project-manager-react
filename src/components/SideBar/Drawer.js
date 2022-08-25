@@ -35,8 +35,8 @@ export default function TemporaryDrawer() {
                 <Drawer
                     PaperProps={{
                         sx: {
-                            backgroundColor: "rgba(30, 139, 195, 0.8)",
-                            color: "rgba(225,249,27,1)",
+                            backgroundColor: "#191A23",
+                            color: "#87888C",
                         }
                     }}
                     anchor='left'

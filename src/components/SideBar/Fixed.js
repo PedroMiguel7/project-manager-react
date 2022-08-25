@@ -11,7 +11,7 @@ import person from '../../assets/icons/person.svg';
 import personActive from '../../assets/icons/person-active.svg';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { useNavigate } from "react-router-dom";
-import { FixedNavContainer, TemporaryNavContainer, Logo, Nav, NavItem } from './style';
+import { FixedNavContainer, TemporaryNavContainer, Logo, Nav, NavItem,NavLink } from './style';
 
 const drawerWidth = 240;
 
@@ -87,45 +87,67 @@ function Fixed(props) {
         <Logo src={logo} alt="" />
         <Nav className="nav flex-column gap-5 align-items-center">
           <NavItem>
-            <Link to="/home" >
+            <NavLink to="/home" >
               {location.pathname === "/home"
-                ? <img src={homeActive} alt="" />
-                : <img src={home} alt="" />
+                ? <>
+                    <img src={homeActive} alt="" />
+                    <span style={{color: "#F46E27"}}>Home</span>
+                  </>
+                : <>
+                    <img src={home} alt="" />
+                    <span>Home</span>
+                  </>
               }
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/projetos" >
+            <NavLink to="/projetos" >
               {location.pathname === "/projetos" || location.pathname === `/projetos/${pathId}`
-                ? <img src={projectActive} alt="" />
-                : <img src={project} alt="" />
+                ? <>
+                    <img src={projectActive} alt="" />
+                    <span style={{color: "#F46E27"}}>Projetos</span>
+                  </>
+                : <>
+                    <img src={project} alt="" />
+                    <span>Projetos</span>
+                  </>
               }
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/equipes">
+            <NavLink to="/equipes">
               {location.pathname === "/equipes" || location.pathname === `/equipes/${pathId}`
-                ? <img src={teamActive} alt="" />
-                : <img src={team} alt="" />
+                ? <>
+                    <img src={teamActive} alt="" />
+                    <span style={{color: "#F46E27"}}>Equipes</span>
+                  </>
+                : <>
+                    <img src={team} alt="" />
+                    <span>Equipes</span>
+                  </>
               }
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/pessoas">
+            <NavLink to="/pessoas">
               {location.pathname === "/pessoas" || location.pathname === `/pessoas/${pathId}`
-                ? <img src={personActive} alt="" />
-                : <img src={person} alt="" />
+                ? <>
+                    <img src={personActive} alt="" />
+                    <span style={{color: "#F46E27"}}>Pessoas</span>
+                  </>
+                : <>
+                    <img src={person} alt="" />
+                    <span>Pessoas</span>
+                  </>
               }
-            </Link>
+            </NavLink>
           </NavItem>
-  
-  
         </Nav>
         <Nav>
           <NavItem>
             <LogoutRoundedIcon sx={{ color: "#87888C" }} onClick={(e) => [signout(e), navigate('/')]}>
-              logout
             </LogoutRoundedIcon>
+            <span>Sair</span>
           </NavItem>
         </Nav>
       </TemporaryNavContainer>
