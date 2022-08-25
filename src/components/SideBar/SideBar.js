@@ -10,7 +10,10 @@ import person from '../../assets/icons/person.svg';
 import personActive from '../../assets/icons/person-active.svg';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 //import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom"
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import TemporaryDrawer from "./Drawer";
+import Fixed from "./Fixed";
 
 function SideBar() {
     const navigate = useNavigate();
@@ -25,55 +28,21 @@ function SideBar() {
     if(path === '/' | localStorage.getItem("token") === null){
         return;
     }
+    
+    /*function myFunction(x) {
+        if (x.matches) { // If media query matches
+        //document.body.style.backgroundColor = "yellow";
+        } else {
+        //document.body.style.backgroundColor = "pink";
+        }
+    }
+    SidebarResponsivo(x)
+    x.addListener(SidebarResponsivo)*/
     return(
-        <div>
-            <header className="col-1 col-lg-1 d-flex flex-column justify-content-around align-items-center">
-                <img className="logo" src={logo} alt=""/>
-                <ul className="nav flex-column gap-5 align-items-center">
-                    <li className="nav-item">
-                    <Link to="/home" >
-                        {location.pathname === "/home"
-                        ? <img src={homeActive} alt=""/>
-                        : <img src={home} alt=""/>
-                        }
-                    </Link>               
-                    </li>
-                    <li className="nav-item">
-                    <Link to="/projetos" >
-                        {location.pathname === "/projetos" || location.pathname === `/projetos/${pathId}`
-                        ? <img src={projectActive} alt=""/>
-                        : <img src={project} alt=""/>
-                        }
-                    </Link>  
-                    </li>
-                    <li className="nav-item">
-                    <Link to="/equipes">
-                        {location.pathname === "/equipes" || location.pathname === `/equipes/${pathId}`
-                        ? <img src={teamActive} alt=""/>
-                        : <img src={team} alt=""/>
-                        }
-                    </Link>  
-                    </li>
-                    <li className="nav-item">
-                    <Link to="/pessoas">
-                        {location.pathname === "/pessoas" || location.pathname === `/pessoas/${pathId}`
-                        ? <img src={personActive} alt=""/>
-                        : <img src={person} alt=""/>
-                        }
-                    </Link>  
-                    </li>
-                    
-
-                </ul>
-                <ul className="nav flex-column gap-5 align-items-center">
-                    <li className="nav-item">
-                        <LogoutRoundedIcon sx={{color: "#87888C"}} onClick={(e) => [signout(e), navigate('/')]}>
-                            logout
-                        </LogoutRoundedIcon>
-                    </li>
-                </ul>
-            </header>
-        </div>
+        <>
+            <Fixed op="fixed" />
+            <TemporaryDrawer />
+        </>
     );
 }
 

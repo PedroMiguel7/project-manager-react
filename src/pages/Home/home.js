@@ -148,8 +148,8 @@ export default function Menu_index() {
 
   return (
     <div>
-      <Sidebar />
-      <main className="col-11 offset-1 col-lg-11 offset-lg-1 px-5">
+      {/*<Sidebar />*/}
+      <main className="col-lg-11 col-sm-12 offset-lg-1 px-5">
         <div className="row mt-5 pb-3 main-header">
           <h1 className="col-lg-3 fs-2">Home - desafio 2.0</h1>
           {/*<input

@@ -67,7 +67,7 @@ export default function Equipes() {
 
     return (
         <>
-            <Main className='col-11 offset-1'>
+            <Main className='col-lg-11 col-sm-12 offset-lg-1 px-5'>
                 <Header className='row'>
                     <Title className="col-lg-3">Equipes</Title>
                     <Search onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" placeholder="Pesquise aqui..." />

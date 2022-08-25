@@ -19,13 +19,13 @@ export const NotFoundContainer = styled.div`
 `;
 
 export const Main = styled.main`
-    padding: 0 2%;
+    padding: 0 2.5%;
 `;
 
 export const Header = styled.div`
     border-bottom: 0.15px solid #2C2E3B;
     margin-top: 2%;
-    padding-bottom: 1%;
+    padding-bottom: 2%;
 `;
 
 export const Title = styled.h1`
@@ -44,6 +44,7 @@ export const Search = styled.input`
     background-repeat: no-repeat;
     background-position: 1rem center;
     background-size: 1rem;
+    max-width: 90vw;
 
     &:focus {
         background-color: #2b2c3b;

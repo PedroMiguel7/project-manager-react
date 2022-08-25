@@ -80,16 +80,16 @@ export default function Cards(props) {
       ))
     )
   } else if (props.Projetos.length === 0)  {
-      return (
+      /*return (
         <>
           <div className="d-flex flex-column justify-content-center align-items-center">
             <img src={ProjectNotFound} style={{width: '10vw'}} />
             <h3 style={{color: "#454756", textAlign: "center"}}>Nenhum projeto encontrado.</h3>
           </div>
         </>
-      )
+      )*/
     
-      /*return (
+      return (
         <>
           <CardSkeleton />
           <CardSkeleton />
@@ -99,8 +99,12 @@ export default function Cards(props) {
           <CardSkeleton />
           <CardSkeleton />
           <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
         </>
-      )*/
+      )
     
   } else {
     props.Projetos.reverse();
