@@ -13,13 +13,17 @@ import Signin from ".//pages/Login/signin";
 const Private = ({Item}) =>{
     const token  = localStorage.getItem('token');
     console.log(token)
-    return token ? <Item /> : <Signin/>;
+    if(token !== null){
+        return <Item />
+    } else {
+        return <Signin/>
+    }
 }
 
 const Rout = () =>{
     return(
         <BrowserRouter>
-            {localStorage.getItem('token') ? <SideBar /> : ''}
+            <SideBar />
             
             <Routes>
                 <Route exect path="/" element={<Signin />}/>

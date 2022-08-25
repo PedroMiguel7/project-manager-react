@@ -38,7 +38,8 @@ export default function Menu_index() {
   useEffect(() => {
     const fetchProjetos = async () => {
       try {
-        const response = await api.get('/projetos/');
+        const response = await api.get('/projetos/'
+        );
         setProjetos(response.data);
       } catch (error) {
         console.log(error);

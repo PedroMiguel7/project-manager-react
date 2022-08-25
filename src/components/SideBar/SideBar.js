@@ -9,14 +9,14 @@ import teamActive from '../../assets/icons/team-active.svg';
 import person from '../../assets/icons/person.svg';
 import personActive from '../../assets/icons/person-active.svg';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
-import { Button } from "@mui/material";
+//import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom"
 
 function SideBar() {
     const navigate = useNavigate();
     const signout = (e) =>{
         e.preventDefault()
-        localStorage.setItem('token', null)
+        localStorage.removeItem('token', null)
     }
     
     let path = window.location.pathname;

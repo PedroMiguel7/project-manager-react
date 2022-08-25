@@ -7,11 +7,11 @@ import { AuthProvider } from './pages/Login/contexts/auth';
 class App extends Component {
     render() {
         return (
-            <DndProvider backend={HTML5Backend}>
-                <AuthProvider>
+            <AuthProvider>
+                <DndProvider backend={HTML5Backend}>
                     <Rout />
-                </AuthProvider>
-            </DndProvider>
+                </DndProvider>
+            </AuthProvider>
         );
     }
 }
