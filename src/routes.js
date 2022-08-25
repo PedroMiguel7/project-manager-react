@@ -12,7 +12,6 @@ import Signin from ".//pages/Login/signin";
 
 const Private = ({Item}) =>{
     const token  = localStorage.getItem('token');
-    console.log(token)
     if(token !== null){
         return <Item />
     } else {
