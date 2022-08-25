@@ -53,12 +53,20 @@ class ProjetoDT extends Component {
 
     BuscarMembrosFunc = (props) => {
         const [pessoas, setPessoas] = useState([]);
+        const url = '/equipes/' + props.equipe_id + '/pessoas';
         useEffect(() => {
             const fetchEquipe = async () => {
-                const response2 = await api.get('/equipes/' + props.equipe_id + '/pessoas')
-                setPessoas(response2.data)
+                try{
+                    const response2 = await api.get(url)
+                    setPessoas(response2.data)
+                } catch (error) {
+                    console.log(error);
+                    if(error.response.status === 401){
+                      window.location.href = '/'
+                    }
             }
-            fetchEquipe()
+        }
+            fetchEquipe();
         }, []);
         //let totalMembros = 0;
         if (props.QualFoi === "Funções") {

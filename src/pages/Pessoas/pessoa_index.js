@@ -14,6 +14,9 @@ export default function Pessoas() {
                 setPessoas(response.data);
             } catch (error) {
                 console.log(error);
+                if(error.response.status === 401){
+                    window.location.href = '/'
+                  }
             }
         };
         fetchProjetos();

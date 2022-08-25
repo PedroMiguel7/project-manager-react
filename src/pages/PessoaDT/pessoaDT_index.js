@@ -78,6 +78,7 @@ class PessoasDT extends Component {
           tarefas: response2.data, 
           equipes: response3.data 
         });
+        
     }
 
     handleCallbackRendimento = (childData) => {
