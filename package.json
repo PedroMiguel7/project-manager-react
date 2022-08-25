@@ -1,7 +1,10 @@
 {
   "name": "front-end",
+  "proxy": "https://golang-posgre-brisanet.herokuapp.com/",
   "version": "0.1.0",
-  "private": true,
+  "resolutions": {
+    "autoprefixer": "10.4.5"
+  },
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
