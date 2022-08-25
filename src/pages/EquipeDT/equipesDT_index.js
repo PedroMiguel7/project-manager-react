@@ -99,11 +99,18 @@ class equipeDT_index extends Component {
         const url = '/equipes/' + props.equipe_id + '/pessoas';
         useEffect(() => {
             const fetchEquipe = async () => {
-                const response2 = await api.get(url)
-                setPessoas(response2.data)
+                try{
+                    const response2 = await api.get(url)
+                    setPessoas(response2.data)
+                } catch (error) {
+                    console.log(error);
+                    if(error.response.status === 401){
+                      window.location.href = '/'
+                    }
             }
-            fetchEquipe()
-        });
+        }
+            fetchEquipe();
+        }, []);
         let totalMembros = 0;
         if(pessoas === null){
             totalMembros = pessoas.length;
