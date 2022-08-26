@@ -5,6 +5,7 @@ import Divider from '@mui/material/Divider';
 import { useState, useEffect } from "react";
 import api from "../../api";
 import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
+import { NotFoundContainer, Main, Header, Title, Search, OptionsContainer, Options, OrderSelect, CardsContainer } from './style.js'; 
 
 export default function ProjetoIndex() {
     var [projetos, setProjetos] = useState([]);
@@ -60,32 +61,32 @@ export default function ProjetoIndex() {
     function NotFound() {
         return (
             <>
-                <div className="d-flex flex-column align-items-center mt-5">
+                <NotFoundContainer>
                     <img className="mb-3" src={SearchNotFound} alt="not found"/>
                     <h3 style={{color: "#454756", textAlign: "center"}}>Nenhum resultado encontrado.</h3>
-                </div>
+                </NotFoundContainer>
             </>
         )
     }
 
     return (
         <>
-            <main className='col-lg-11 col-sm-12 offset-lg-1 px-5'>
-                <div className='row mt-5 pb-3 main-header'>
-                    <h1 className="Titulo col-lg-3 fs-2">Projetos</h1>
-                    <input onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Pesquise aqui..."/>
-                </div>
+            <Main className='col-lg-11 col-sm-12 offset-lg-1'>
+                <Header className='row'>
+                    <Title className="col-lg-3">Projetos</Title>
+                    <Search onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" placeholder="Pesquise aqui..."/>
+                </Header>
                 <Divider />
-                <div className="Options row d-flex flex-wrap my-lg-3 my-3">
+                <OptionsContainer className="row">
                     <div className="LeftOptions col mt-sm-2">
                         {/*<span className="me-2">Show:</span>
                         <input type="" name="txt-show" id="txt-show" size="1" />*/}
                     </div>
-                    <div className="RightOptions d-flex justify-content-end align-items-center flex-wrap gap-3 col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
+                    <Options className="col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
                         <BasicModal atualiza={Atualiza}/>
-                        <button onClick={e => handleOrder('nome_projeto')} className="ps-1" name="order-select" id="order-select" >
+                        <OrderSelect onClick={e => handleOrder('nome_projeto')} name="order-select">
                             A - Z
-                        </button>
+                        </OrderSelect>
 
                         {/*<select className="ps-1" name="order-select" id="order-select">
                             <option onClick={e => handleOrder('nome_projeto')} value="crescente">A - Z</option>
@@ -93,13 +94,13 @@ export default function ProjetoIndex() {
                         </select>*/}
 
                         <FilterPopper PROJETOS={projetos} SET={setProjetos} atualiza={Atualiza}/>
-                    </div>
-                </div>
+                    </Options>
+                </OptionsContainer>
 
-                <div className="row CardsContainer my-4">
+                <CardsContainer className="row">
                     {emptyState === true ? NotFound() : <Cards Projetos={projetos} atualiza={Atualiza} /> }
-                </div>
-            </main>
+                </CardsContainer>
+            </Main>
         </>
     )
 }
