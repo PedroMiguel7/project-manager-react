@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import IconButton from '@mui/material/IconButton';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { Link } from "react-router-dom";
 
 // Fixed
@@ -114,9 +116,22 @@ export const TemporaryNavContainer = styled.nav`
     }
 `;
 
+export const TemporaryLogo = styled.img`
+    max-width: 1.7rem;
+    margin-top: -4rem;
+`;
+
 // Drawer 
 
 export const Drawer = styled(SwipeableDrawer)`
+    @media(min-width: 992px) {
+        display: none;
+    }
+`;
+
+export const MenuContainer = styled.div`
+    padding: 0 3.5%;
+    
     @media(min-width: 992px) {
         display: none;
     }
