@@ -34,5 +34,3 @@ da equipe podem se atribuir.
 | Criar tarefa no projeto | ✔️❤️ | 
 | Atribuir tarefa | ✔️❤️ |
 | Login e Logout | ✔️❤️ |
-
-Login e Logout
