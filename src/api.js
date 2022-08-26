@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://golang-posgre-brisanet.herokuapp.com/user/login',
+  baseURL: 'https://api-brisa-react.vercel.app/',
   mode: "no-cors"
 });
 
