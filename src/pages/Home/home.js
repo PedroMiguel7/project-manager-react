@@ -51,6 +51,8 @@ export default function Menu_index() {
     fetchProjetos();
   }, []);
 
+  /*
+
   const [equipes, setEquipes] = useState([]);
   useEffect(() => {
     const fetchequipe = async () => {
@@ -76,6 +78,7 @@ export default function Menu_index() {
     };
     fetchpessoas();
   }, []);
+  */
 
   const Atualizar = async () => {
     try {
@@ -86,7 +89,7 @@ export default function Menu_index() {
     }
   };
 
-
+/*
   var QtdTotalEquipes = 0;
   if (equipes !== null) {
     QtdTotalEquipes = equipes.length;
@@ -96,6 +99,7 @@ export default function Menu_index() {
   if (pessoas !== null) {
     QtdTotalPessoas = pessoas.length;
   }
+  */
 
 
   var QtdProjetos = 0;
