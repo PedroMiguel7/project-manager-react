@@ -6,8 +6,12 @@ const api = axios.create({
 });
 
 const token = localStorage.getItem('token')
+const URL = axios.create({
+  baseURL:'https://golang-posgre-brisanet.herokuapp.com'
+})
+
 if (token) {
-  api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+  URL.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
 }
 
 export default api;
