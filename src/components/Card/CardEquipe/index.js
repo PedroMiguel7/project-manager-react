@@ -4,18 +4,18 @@ import TeamNotFound from "../../../assets/empty-states/team-not-found.svg";
 import EditaEquipe from "../CardEquipe/EdiçãoEquipe/EditaEquipe";
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
-import { CardContainer, Header, NomeEquipe, Resumo, EmptyStateContainer } from "./style";
+import { CardContainer, Header, NomeEquipe, ResumoContainer, Resumo, EmptyStateContainer, StyledLink } from "./style";
 
-export default function CardEquipe(props) {    
+export default function CardEquipe(props) {
     if (props.equipes.lenght !== 0) {
         function stringToHslColor(str, s, l) {
             var hash = 0;
             for (var i = 0; i < str.length; i++) {
-              hash = str.charCodeAt(i) + ((hash << 5) - hash);
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
             }
-          
+
             var h = hash % 360;
-            return 'hsl('+h+', '+s+'%, '+l+'%)';
+            return 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
         }
 
         function stringAvatar(nome) {
@@ -34,7 +34,7 @@ export default function CardEquipe(props) {
         return (
             <>
                 {props.equipes?.map(p => (
-                    <Link to={'/equipes/' + p.id_equipe} className="Link text-reset col-lg-6 col-md-12">
+                    <StyledLink to={'/equipes/' + p.id_equipe} className="col-lg-5 col-md-12">
                         <CardContainer key={p.id_equipe}>
                             <Header>
                                 <NomeEquipe>{p.nome_equipe}</NomeEquipe>
@@ -42,30 +42,32 @@ export default function CardEquipe(props) {
                                     <EditaEquipe id_equipe={p.id_equipe} equipinha={p} atualiza={props.atualiza} />
                                 </Link>
                             </Header>
-                            <Resumo>
-                                {p.pessoas !== null ? p.pessoas.length : 0} membros, 1 projetos ativos
-                            </Resumo>
-                            <AvatarGroup max={4} 
-                            sx={{
-                                '& .MuiAvatar-root': { width: 30, height: 30, fontSize: 15 },
-                                
-                                '& .MuiAvatarGroup-avatar': {
-                                    border: "1px solid #1E1F28",
-                                    color: "#1E1F28"
-                                }
-                            }}>
-                                {p.pessoas !== null ?
-                                p.pessoas?.map(pe => (
-                                    <Avatar sx={{bgcolor: `${stringToHslColor(pe.nome_pessoa, 50, 70)}`, color: "#1E1F28"}}>{stringAvatar(pe.nome_pessoa)}</Avatar>
-                                ))
-                            : " "}
-                            </AvatarGroup>
+                            <ResumoContainer>
+                                <Resumo>
+                                    {p.pessoas !== null ? p.pessoas.length : 0} membros, 1 projetos ativos
+                                </Resumo>
+                                <AvatarGroup max={4}
+                                    sx={{
+                                        '& .MuiAvatar-root': { width: 30, height: 30, fontSize: 15 },
+
+                                        '& .MuiAvatarGroup-avatar': {
+                                            border: "1px solid #1E1F28",
+                                            color: "#1E1F28"
+                                        }
+                                    }}>
+                                    {p.pessoas !== null ?
+                                        p.pessoas.map(pe => (
+                                            <Avatar sx={{ bgcolor: `${stringToHslColor(pe.nome_pessoa, 50, 70)}`, color: "#1E1F28" }}>{stringAvatar(pe.nome_pessoa)}</Avatar>
+                                        ))
+                                        : " "}
+                                </AvatarGroup>
+                            </ResumoContainer>
                         </CardContainer>
-                    </Link>
+                    </StyledLink>
                 ))}
             </>
         )
-    } else if (props.equipes.lenght === 0){
+    } else if (props.equipes.lenght === 0) {
         console.log(`Ta sem nada: ${props.equipes.lenght}`)
         return (
             <>
@@ -73,7 +75,7 @@ export default function CardEquipe(props) {
                     <img src={TeamNotFound} />
                     <h5>
                         Ainda não foi criada nenhuma equipe.
-                    </h5>    
+                    </h5>
                 </EmptyStateContainer>
             </>
         )

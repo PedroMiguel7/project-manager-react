@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const CardContainer = styled.div`
     background-color: #21222D;
     border-radius: 10px;
-    padding: 8px 12px;
+    padding: 2.7%;
     transition: all 0.3s ease-in-out;
     max-width: 100%;
 
@@ -23,6 +24,12 @@ export const NomeEquipe = styled.span`
 
 `;
 
+export const ResumoContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`;
+
 export const Resumo = styled.span`
     color: #C2C3C6;
 `;
@@ -36,5 +43,15 @@ export const EmptyStateContainer = styled.div`
 
     h5 {
         color: #454756;
+    }
+`;
+
+export const StyledLink = styled(Link)`
+    color: #C2C3C6;
+    text-decoration: none;
+
+    &:hover {
+        color: #C2C3C6;
+        text-decoration: none;
     }
 `;
