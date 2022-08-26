@@ -29,9 +29,8 @@ da equipe podem se atribuir.
 | ------------- |:-------------:|
 | Mostrar equipe(s)      | ✔️❤️ |
 | Mostrar projeto(s)      | ✔️❤️ |
-| Cadastrar projeto   | x | 
+| Cadastrar projeto   | ✔️❤️ | 
 | Associar equipe a projeto | ✔️❤️ | 
-| Criar tarefa no projeto | x | 
-| Atribuir tarefa | x | 
-
-### APLICAÇÕES
+| Criar tarefa no projeto | ✔️❤️ | 
+| Atribuir tarefa | ✔️❤️ |
+| Login e Logout | ✔️❤️ |
