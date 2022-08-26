@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://api-brisa-react.vercel.app/',
+  baseURL: 'http://localhost:3000/',
   mode: "no-cors"
 });
 
