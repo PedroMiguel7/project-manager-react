@@ -96,7 +96,7 @@ class ProjetoDT extends Component {
                 return (
                     pessoas?.map(f => (
                         <tr>
-                            <td scope="row">{f.nome_pessoa}</td>
+                            <td>{f.nome_pessoa}</td>
                             <td className="ms-4 ">{f.funcao_pessoa}</td>
                         </tr>
                     ))
