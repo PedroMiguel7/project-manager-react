@@ -11,7 +11,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {useNavigate} from "react-router-dom";
 import useAuth from "./hooks/useAuth"
-import { axios, api} from "../../api";
+import axios from 'axios';
 
 const CssTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
