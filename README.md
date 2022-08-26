@@ -32,6 +32,7 @@ da equipe podem se atribuir.
 | Cadastrar projeto   | ✔️❤️ | 
 | Associar equipe a projeto | ✔️❤️ | 
 | Criar tarefa no projeto | ✔️❤️ | 
-| Atribuir tarefa | ✔️❤️ | 
+| Atribuir tarefa | ✔️❤️ |
+| Login e Logout | ✔️❤️ |
 
-### APLICAÇÕES
+Login e Logout
