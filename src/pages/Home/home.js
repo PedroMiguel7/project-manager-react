@@ -108,14 +108,14 @@ export default function Menu_index() {
   var QtdPFazer = 0;
   if (projetos !== null) {
     QtdProjetos = projetos.length;
-    if (projetos.filter(projetos => projetos.status === "Em Andamento") !== null) {
-      QtdAndamento = projetos.filter(projetos => projetos.status === "Em Andamento").length
+    if (projetos?.filter(projetos => projetos.status === "Em Andamento") !== null) {
+      QtdAndamento = projetos?.filter(projetos => projetos.status === "Em Andamento").length
     }
-    if (projetos.filter(projetos => projetos.status === "Concluido") !== null) {
-      QtdConcluidos = projetos.filter(projetos => projetos.status === ("Concluido")).length
+    if (projetos?.filter(projetos => projetos.status === "Concluido") !== null) {
+      QtdConcluidos = projetos?.filter(projetos => projetos.status === ("Concluido")).length
     }
-    if (projetos.filter(projetos => projetos.status === "A Fazer") !== null) {
-      QtdPFazer = projetos.filter(projetos => projetos.status === "A Fazer").length
+    if (projetos?.filter(projetos => projetos.status === "A Fazer") !== null) {
+      QtdPFazer = projetos?.filter(projetos => projetos.status === "A Fazer").length
     }
   }
 

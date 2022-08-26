@@ -40,7 +40,7 @@ class TarefasAndamento extends Component {
     const qtdTarefas = props.tarefas;
     
     if (qtdTarefas !== null) {
-      var qtdAndamento = qtdTarefas.filter((tarefas) => tarefas.status === "Em Andamento");  
+      var qtdAndamento = qtdTarefas?.filter((tarefas) => tarefas.status === "Em Andamento");  
     }
 
     if( qtdTarefas === null || qtdAndamento.length === 0){
@@ -68,7 +68,7 @@ class TarefasAndamento extends Component {
     const qtdTarefas = props.tarefas;
 
     if (qtdTarefas !== null) {
-      var qtdAndamento = qtdTarefas.filter((tarefas) => tarefas.status === "Em Andamento");  
+      var qtdAndamento = qtdTarefas?.filter((tarefas) => tarefas.status === "Em Andamento");  
     }
 
     const [openAlert, setOpenAlert] = React.useState(false);

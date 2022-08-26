@@ -41,7 +41,7 @@ export default function ProjetoIndex() {
 
     if(filter){
         const exp = eval(`/${filter.replace(/[^\d\w]+/,'.*')}/i`)
-        projetos = projetos.filter(projetos => exp.test(projetos.nome_projeto.toUpperCase()))
+        projetos = projetos?.filter(projetos => exp.test(projetos.nome_projeto.toUpperCase()))
         if (projetos.length === 0) {
             emptyState = true;
         }

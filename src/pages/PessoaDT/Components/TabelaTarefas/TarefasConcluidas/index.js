@@ -28,7 +28,7 @@ class TarefasConcluidas extends Component {
     const qtdTarefas = props.tarefas;
     
     if (qtdTarefas !== null) {
-      var qtdAndamento = qtdTarefas.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");  
+      var qtdAndamento = qtdTarefas?.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");  
     }
 
     if( qtdTarefas === null || qtdAndamento.length === 0){
@@ -57,7 +57,7 @@ class TarefasConcluidas extends Component {
     const qtdTarefas = props.tarefas;
 
     if (qtdTarefas !== null) {
-      var qtdConcluidas = qtdTarefas.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
+      var qtdConcluidas = qtdTarefas?.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
     }
     
     const [changeIcon, setIcon] = React.useState(true);
