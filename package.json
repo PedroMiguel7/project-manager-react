@@ -1,6 +1,6 @@
 {
   "name": "front-end",
-  "proxy": "http://localhost:5000/",
+  "proxy": "https://golang-posgre-brisanet.herokuapp.com",
   "version": "0.1.0",
   "homepage": ".",
   "resolutions": {
