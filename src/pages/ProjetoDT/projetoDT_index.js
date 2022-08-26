@@ -77,7 +77,7 @@ class ProjetoDT extends Component {
                     );
                 } else {
                     return (
-                        pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`).map(f => (
+                        pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`)?.map(f => (
                             <li>{f.nome_pessoa}</li>
                             ))
                             );
@@ -94,7 +94,7 @@ class ProjetoDT extends Component {
             } else {
                 if (pessoas !== null) {
                 return (
-                    pessoas.map(f => (
+                    pessoas?.map(f => (
                         <tr>
                             <td scope="row">{f.nome_pessoa}</td>
                             <td className="ms-4 ">{f.funcao_pessoa}</td>
@@ -112,7 +112,7 @@ class ProjetoDT extends Component {
     MostraTarefas = (props) => {
         if (props.tarefasPJ !== null) {
             return (
-                props.tarefasPJ.map(p => (
+                props.tarefasPJ?.map(p => (
                     <tr key={p.id_task}>
                         <th scope="row">{p.id_task}</th>
                         <td className="">{p.descricao_task}</td>
@@ -542,7 +542,7 @@ class ProjetoDT extends Component {
 
         return (
             <>
-                {projetos.map(p => (
+                {projetos?.map(p => (
                     <main className='col-11 offset-1 col-lg-11 offset-lg-1 px-5' key={p.id_projeto}>
                         <div className="LeftOptions col mt-sm-2">
                             <HeaderDt link="/projetos" pagina="Projeto" titulo={p.nome_projeto} status={p.status} FUNC1={<this.MarcarConcluido QTDTAREFAS={totalDetasks} QTDCONCLUIDAS={TotalTaksConcluidas} status={p.status} id_projeto={p.id_projeto}/>} FUNC2={<this.Alerta id={p.id_projeto} />}/>

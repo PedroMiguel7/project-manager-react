@@ -135,7 +135,7 @@ export default function TarefasMenu(props) {
       try {
         const response2 = await api.get('/tasks/' + props.id_task);
         const TAREFA = (response2.data);
-        TAREFA.map(m => (
+        TAREFA?.map(m => (
           setNome(m.descricao_task),
           setDadoEquipe(m.pessoa_id),
           setPrioridade(m.prioridade),

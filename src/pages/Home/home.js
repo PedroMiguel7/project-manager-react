@@ -125,17 +125,17 @@ export default function Menu_index() {
       datasets: [
         {
           label: 'Não Iniciado',
-          data: labels.map(() => props.AFAZER, ({ min: 0, max: props.total })),
+          data: labels?.map(() => props.AFAZER, ({ min: 0, max: props.total })),
           backgroundColor: '#ffeb7acc',
         },
         {
           label: 'Em Desenvolvimento',
-          data: labels.map(() => props.EMANDA, ({ min: 0, max: props.total })),
+          data: labels?.map(() => props.EMANDA, ({ min: 0, max: props.total })),
           backgroundColor: '#e3622fcc',
         },
         {
           label: 'Concluído',
-          data: labels.map(() => props.CON, ({ min: 0, max: props.total })),
+          data: labels?.map(() => props.CON, ({ min: 0, max: props.total })),
           backgroundColor: '#87cefacc',
         },
       ],

@@ -43,7 +43,7 @@ export default function CardPessoas(props) {
         if (props.Pessoas !== null) {
             return (
                 <>
-                    {props.Pessoas.map(p => (
+                    {props.Pessoas?.map(p => (
                         <Link reloadDocument to={'/pessoas/' + p.id_pessoa} className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
                             
                                 {MudarBackground(p.funcao_pessoa)}

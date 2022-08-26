@@ -274,7 +274,7 @@ export default function TarefasMenu(props) {
                     }
                   }}
                 >
-                  {pessoa.map(f => (
+                  {pessoa?.map(f => (
                     <MenuItem value={f.id_pessoa} key={f.id_pessoa}>{f.nome_pessoa}</MenuItem>)
                   )}
                 </CssTextField>

@@ -41,7 +41,7 @@ export default function Cards(props) {
   } else if (props.home === "home") {
     props.Projetos.reverse();
     return (
-      props.Projetos.map(p => (
+      props.Projetos?.map(p => (
         <Link key={p.id_projeto}
           reloadDocument
           to={"/projetos/" + p.id_projeto}
@@ -110,7 +110,7 @@ export default function Cards(props) {
     props.Projetos.reverse();
     
     return (
-        props.Projetos.map(p => (
+        props.Projetos?.map(p => (
           <Link key={p.id_projeto}
             reloadDocument
             to={"/projetos/" + p.id_projeto}

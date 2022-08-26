@@ -69,7 +69,7 @@ class CardPessoas extends Component {
 
         return (
             <>
-                {pessoas.map(p => (
+                {pessoas?.map(p => (
                     <Link reloadDocument to={'/pessoas/' + p.id_pessoa} className="Link CardPessoas text-reset text-decoration-none col-lg-6 col-md-12 p-4">
                         <div className="CardPessoaTag" onChange={() => mudarBackground(funcaoBackground)}>
                             {p.funcao_pessoa}

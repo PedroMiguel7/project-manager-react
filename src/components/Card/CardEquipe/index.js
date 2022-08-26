@@ -33,7 +33,7 @@ export default function CardEquipe(props) {
         //console.table(props.equipes);
         return (
             <>
-                {props.equipes.map(p => (
+                {props.equipes?.map(p => (
                     <Link to={'/equipes/' + p.id_equipe} className="Link text-reset col-lg-6 col-md-12">
                         <CardContainer key={p.id_equipe}>
                             <Header>
@@ -55,7 +55,7 @@ export default function CardEquipe(props) {
                                 }
                             }}>
                                 {p.pessoas !== null ?
-                                p.pessoas.map(pe => (
+                                p.pessoas?.map(pe => (
                                     <Avatar sx={{bgcolor: `${stringToHslColor(pe.nome_pessoa, 50, 70)}`, color: "#1E1F28"}}>{stringAvatar(pe.nome_pessoa)}</Avatar>
                                 ))
                             : " "}

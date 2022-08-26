@@ -58,7 +58,7 @@ class equipeDT_index extends Component {
             );
         } else{
             return(
-            props.PessoasEquipe.map(p => (
+            props.PessoasEquipe?.map(p => (
                 <tr key={teste.id_pessoa}>
                     <th scope="row">{p.id_pessoa}</th>
                     <td className="">{p.nome_pessoa}</td>

@@ -168,7 +168,7 @@ class TarefasAndamento extends Component {
 
         var getId;
         return (
-          props.tarefas.map(t => 
+          props.tarefas?.map(t => 
             {if (t.status === "Em Andamento")
             return (
               <>

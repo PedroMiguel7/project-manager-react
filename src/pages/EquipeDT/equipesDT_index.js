@@ -158,7 +158,7 @@ class equipeDT_index extends Component {
             }
 
             return(
-                props.PessoasEquipe.map(p => (
+                props.PessoasEquipe?.map(p => (
                     <li className="MembroLi d-flex justify-content-between align-items-center">
                         <div className="d-flex align-items-center">
                             <Avatar sx={{bgcolor: `${stringToHslColor(p.nome_pessoa, 50, 70)}`, color: "#1E1F28"}}>
@@ -348,7 +348,7 @@ class equipeDT_index extends Component {
                     )
                 } else {
                     return (
-                        OnGoing.map(t => (
+                        OnGoing?.map(t => (
                             <TarefasLi>
                                 <StatusTarefa>
                                     {t.status}
@@ -377,7 +377,7 @@ class equipeDT_index extends Component {
                     )
                 } else {
                     return (
-                        Testing.map(t => (
+                        Testing?.map(t => (
                             <TarefasLi>
                                 <StatusTarefa>
                                     {t.status}
@@ -411,7 +411,7 @@ class equipeDT_index extends Component {
                     )
                 } else {
                     return (
-                        Done.map(t => (
+                        Done?.map(t => (
                             <TarefasLi>
                                 <StatusTarefa>
                                     {t.status}
@@ -429,7 +429,7 @@ class equipeDT_index extends Component {
                 }
             } else {
                 return(
-                    props.tarefas.map(t => (
+                    props.tarefas?.map(t => (
                         <TarefasLi>
                             <StatusTarefa>
                                 {t.status}
@@ -502,7 +502,7 @@ class equipeDT_index extends Component {
                     )
                 } else {
                     return (
-                        ToDo.map(p => (
+                        ToDo?.map(p => (
                             <li className="ProjetosLi">
                             <div>
                                 <h5>{p.nome_projeto}</h5>
@@ -538,7 +538,7 @@ class equipeDT_index extends Component {
                     )
                 } else {
                     return (
-                        OnGoing.map(p => (
+                        OnGoing?.map(p => (
                             <li className="ProjetosLi">
                             <div>
                                 <h5>{p.nome_projeto}</h5>
@@ -578,7 +578,7 @@ class equipeDT_index extends Component {
                     }
                     
                     return (
-                        Done.map(p => (
+                        Done?.map(p => (
                             <li className="ProjetosLi">
                             <div>
                                 <h5>{p.nome_projeto}</h5>
@@ -622,7 +622,7 @@ class equipeDT_index extends Component {
                 }
 
                 return (
-                    props.projetos.map(p => (
+                    props.projetos?.map(p => (
                         <li className="ProjetosLi">
                             <div>
                                 <h5>{p.nome_projeto}</h5>
@@ -747,7 +747,7 @@ class equipeDT_index extends Component {
 
         const TarefasProjeto = [];
         if (projetos !== null) {
-            projetos.map(f=>(
+            projetos?.map(f=>(
                 TarefasProjeto.push(f.id_projeto)
             ))
         }

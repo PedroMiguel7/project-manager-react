@@ -81,7 +81,7 @@ export default function CustomizedAccordions(props) {
         </AccordionSummary>
         <AccordionDetails>
           <ul>
-            {pessoa.map(p => {
+            {pessoa?.map(p => {
               <li className='d-flex align-items-center justify-content-between mb-3'>
                 <p>{p.projeto_id}</p>
                 <Stack spacing={1} direction="row">

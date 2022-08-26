@@ -30,7 +30,7 @@ class LinearChart extends Component {
         let Concluidas = 0;
         const UltimasConcluidas = [];
         if(props.tarefas !== null){
-          props.tarefas.map( t => {
+          props.tarefas?.map( t => {
             if (t.status === "Concluido") {
               Concluidas++;
               UltimasConcluidas.push(new Date(t.data_conclusao));
@@ -43,10 +43,10 @@ class LinearChart extends Component {
         UltimosDias.reverse();
 
         if(props.tarefas !== null){
-          props.tarefas.map ( t => {
+          props.tarefas?.map ( t => {
             if (t.status === "Em Andamento") {
               let i = -1;
-              UltimosDias.map( u => {
+              UltimosDias?.map( u => {
                 i++;
                 if (new Date(t.data_criacao).toISOString().split('T')[0] === u.toISOString().split('T')[0]) {
                   TarefasAndamento[i]++;
@@ -54,7 +54,7 @@ class LinearChart extends Component {
               })
             } else if (t.status === "Concluido" || t.status === "Concluído") {
               let i = -1;
-              UltimosDias.map( u => {
+              UltimosDias?.map( u => {
                 i++;
                 if (new Date(t.data_conclusao).toISOString().split('T')[0] === u.toISOString().split('T')[0]) {
                   TarefasConcluidas[i]++;
@@ -224,7 +224,7 @@ class LinearChart extends Component {
         let Concluidas = 0;
         const UltimasConcluidas = [];
         if(props.tarefas !== null){
-          props.tarefas.map( t => {
+          props.tarefas?.map( t => {
             if (t.status === "Concluido" || t.status === "Concluído") {
               Concluidas++;
               UltimasConcluidas.push(new Date(t.data_conclusao));
@@ -235,10 +235,10 @@ class LinearChart extends Component {
         UltimosDias.reverse();
 
         if(props.tarefas !== null){
-          props.tarefas.map ( t => {
+          props.tarefas?.map ( t => {
             if (t.status === "Em Andamento") {
               let i = -1;
-              UltimosDias.map( u => {
+              UltimosDias?.map( u => {
                 i++;
                 if (new Date(t.data_criacao).toISOString().split('T')[0] === u.toISOString().split('T')[0]) {
                   TarefasAndamento[i]++;
@@ -246,7 +246,7 @@ class LinearChart extends Component {
               })
             } else if (t.status === "Concluido" || t.status === "Concluído") {
               let i = -1;
-              UltimosDias.map( u => {
+              UltimosDias?.map( u => {
                 i++;
                 if (new Date(t.data_conclusao).toISOString().split('T')[0] === u.toISOString().split('T')[0]) {
                   TarefasConcluidas[i]++;

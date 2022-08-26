@@ -110,7 +110,7 @@ class TarefasConcluidas extends Component {
         }
 
         return (
-          props.tarefas.map(t => 
+          props.tarefas?.map(t => 
             {if (t.status === "Concluido")
             return (
               <tr>

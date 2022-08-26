@@ -182,7 +182,7 @@ export default function BasicModalPessoa(props) {
                 }
               }}
               >
-                {equipe.map(p => (
+                {equipe?.map(p => (
                   <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
                 )}
               </CssTextField>

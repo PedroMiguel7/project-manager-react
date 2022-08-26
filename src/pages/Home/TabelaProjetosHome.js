@@ -133,7 +133,7 @@ export default function CardBaixoHome(props) {
                             </tr>
                         </thead>
                         <tbody className="">
-                            {PROJETOS.map(p => (
+                            {PROJETOS?.map(p => (
                                 <tr key={p.id_projeto}>
                                     {/*<th scope="row">{p.id_projeto}</th>*/}
                                     <td className="">{p.nome_projeto}</td>
