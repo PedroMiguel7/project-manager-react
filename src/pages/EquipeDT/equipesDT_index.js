@@ -307,7 +307,7 @@ class equipeDT_index extends Component {
             }
 
             if (props.status === 1) {
-                const ToDo = TarefasEquipe.filter((tarefas) => tarefas.status === "A Fazer");
+                const ToDo = TarefasEquipe?.filter((tarefas) => tarefas.status === "A Fazer");
 
                 if (ToDo.length === 0) {
                     return (
@@ -336,7 +336,7 @@ class equipeDT_index extends Component {
                     )
                 }
             } else if (props.status === 2) {
-                const OnGoing = TarefasEquipe.filter((tarefas) => tarefas.status === "Em Andamento");
+                const OnGoing = TarefasEquipe?.filter((tarefas) => tarefas.status === "Em Andamento");
 
                 if (OnGoing.length === 0) {
                     return (
@@ -365,7 +365,7 @@ class equipeDT_index extends Component {
                     )
                 }
             } else if (props.status === 3) {
-                const Testing = TarefasEquipe.filter((tarefas) => tarefas.status === "Em Teste");
+                const Testing = TarefasEquipe?.filter((tarefas) => tarefas.status === "Em Teste");
 
                 if (Testing.length === 0) {
                     return (
@@ -394,7 +394,7 @@ class equipeDT_index extends Component {
                     )
                 }
             } else if (props.status === 4) {
-                const Done = TarefasEquipe.filter((tarefas) => tarefas.status === "Concluido");
+                const Done = TarefasEquipe?.filter((tarefas) => tarefas.status === "Concluido");
 
                 function FormatarData(data){
                     let Data = new Date(data);
@@ -489,7 +489,7 @@ class equipeDT_index extends Component {
             }
 
             if (props.status === 1) {
-                const ToDo = props.projetos.filter((projetos) => projetos.status === "A Fazer");
+                const ToDo = props.projetos?.filter((projetos) => projetos.status === "A Fazer");
 
                 if (ToDo.length === 0) {
                     return (
@@ -525,7 +525,7 @@ class equipeDT_index extends Component {
                 }
 
             } else if (props.status === 2) {
-                const OnGoing = props.projetos.filter((projetos) => projetos.status === "Em Andamento");
+                const OnGoing = props.projetos?.filter((projetos) => projetos.status === "Em Andamento");
 
                 if (OnGoing.length === 0) {
                     return (
@@ -560,7 +560,7 @@ class equipeDT_index extends Component {
                     )
                 }
             } else if (props.status === 3) {
-                const Done = props.projetos.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
+                const Done = props.projetos?.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
 
                 if (Done.length === 0) {
                     return (
@@ -701,13 +701,13 @@ class equipeDT_index extends Component {
         } else {
             var TotalProjetos = props.projetos.length;
 
-            const ProjetosFazer = props.projetos.filter((projetos) => projetos.status === "A Fazer");
+            const ProjetosFazer = props.projetos?.filter((projetos) => projetos.status === "A Fazer");
             let QtdFazer = ProjetosFazer.length;
 
-            const ProjetosAndamento = props.projetos.filter((projetos) => projetos.status === "Em Andamento");
+            const ProjetosAndamento = props.projetos?.filter((projetos) => projetos.status === "Em Andamento");
             let QtdAndamento = ProjetosAndamento.length;
 
-            const ProjetosConcluidos = props.projetos.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
+            const ProjetosConcluidos = props.projetos?.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
             let QtdConcluidos = ProjetosConcluidos.length;
 
             let PorcFazer = (QtdFazer/TotalProjetos) * 100;

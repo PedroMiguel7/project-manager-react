@@ -54,7 +54,7 @@ export default function CircularStatic(props) {
   var BarrinhaProgresso = 0
   if ((tasks != null)) {
     let QtdTasks = tasks.length
-    const tasksConcluidas = tasks.filter((tasks) => tasks.status === "Concluido")
+    const tasksConcluidas = tasks?.filter((tasks) => tasks.status === "Concluido")
     if ((tasksConcluidas != null)) {
       QtdTasksConcluidas = tasksConcluidas.length
     }

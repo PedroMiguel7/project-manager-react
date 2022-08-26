@@ -71,13 +71,13 @@ class ProjetoDT extends Component {
         //let totalMembros = 0;
         if (props.QualFoi === "Funções") {
             if (pessoas !== null) {
-                if (pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`) === null) {
+                if (pessoas?.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`) === null) {
                     return (
                         <li>sem pessoa</li>
                     );
                 } else {
                     return (
-                        pessoas.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`)?.map(f => (
+                        pessoas?.filter(pessoas => pessoas.funcao_pessoa === `${props.funcao_pessoa}`)?.map(f => (
                             <li>{f.nome_pessoa}</li>
                             ))
                             );
@@ -519,24 +519,24 @@ class ProjetoDT extends Component {
         
         if (tarefasPJ !== null) {
             totalDetasks = tarefasPJ.length;
-            if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido") !== null) {
-                TotalTaksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido").length;
-                TasksConcluidas = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Concluido");
+            if (tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "Concluido") !== null) {
+                TotalTaksConcluidas = tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "Concluido").length;
+                TasksConcluidas = tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "Concluido");
             }
 
-            if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento") !== null) {
-                TotalTasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento").length;
-                TasksAndamento = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Andamento");
+            if (tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "Em Andamento") !== null) {
+                TotalTasksAndamento = tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "Em Andamento").length;
+                TasksAndamento = tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "Em Andamento");
             }
 
-            if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste") !== null) {
-                TotalTasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste").length;
-                TasksTeste = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "Em Teste");
+            if (tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "Em Teste") !== null) {
+                TotalTasksTeste = tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "Em Teste").length;
+                TasksTeste = tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "Em Teste");
             }
 
-            if (tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer") !== null) {
-                TotalTasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
-                TasksFazer = tarefasPJ.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
+            if (tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "A Fazer") !== null) {
+                TotalTasksFazer = tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "A Fazer").length;
+                TasksFazer = tarefasPJ?.filter(tarefasPJ => tarefasPJ.status === "A Fazer");
             }
         }
 

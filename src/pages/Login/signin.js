@@ -4,7 +4,6 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from '@mui/material/Typography';
-import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';

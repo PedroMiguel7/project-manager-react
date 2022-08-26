@@ -40,7 +40,7 @@ export default function Pessoas() {
 
     if(filtro){
         const exp = eval(`/${filtro.replace(/[^\d\w]+/,'.*')}/i`)
-        pessoas = pessoas.filter(pessoas => exp.test(pessoas.nome_pessoa.toUpperCase()))
+        pessoas = pessoas?.filter(pessoas => exp.test(pessoas.nome_pessoa.toUpperCase()))
         if (pessoas.length === 0) {
             emptyState = true;
         }

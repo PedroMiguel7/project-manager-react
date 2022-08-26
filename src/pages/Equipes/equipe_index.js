@@ -41,7 +41,7 @@ export default function Equipes() {
 
     if(filtro){
         const exp = eval(`/${filtro.replace(/[^\d\w]+/,'.*')}/i`)
-        Equipes = Equipes.filter(Equipes => exp.test(Equipes.nome_equipe.toUpperCase()))
+        Equipes = Equipes?.filter(Equipes => exp.test(Equipes.nome_equipe.toUpperCase()))
         if (Equipes.length === 0) {
             emptyState = true;
         }
