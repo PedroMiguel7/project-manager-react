@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/',
-  mode: "no-cors"
+  baseURL: 'https://api-brisa-react.vercel.app'
 });
 
 const token = localStorage.getItem('token')
