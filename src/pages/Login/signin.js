@@ -11,7 +11,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {useNavigate} from "react-router-dom";
 import useAuth from "./hooks/useAuth"
-import api from "../../api";
+import { axios, api} from "../../api";
 
 const CssTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
@@ -82,13 +82,12 @@ export default function Signin() {
 
   const Logar = (e) => {
     e.preventDefault()
-    api.post('/user/login', {
+    axios.post('https://golang-posgre-brisanet.herokuapp.com/user/login', {
         email: Email,
         password: Senha
       })
       .then(res => {
         localStorage.setItem('token', JSON.stringify(res.data.token))
-        api.defaults.headers.Authorization = `Bearer ${res.data.token}`
         window.location.href = '/home'
     })
     .catch(err => alert(err))
