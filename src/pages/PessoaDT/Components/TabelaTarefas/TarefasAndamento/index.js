@@ -102,11 +102,12 @@ class TarefasAndamento extends Component {
     const icon = (this.state.changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
 
     function EditaTask(id) {
-      api.put('/tasks/' + id, {
+      api.put('/tasks/' + id + '/status', {
         status: "Concluido",
-        data_conclusao: new Date(),
       })
-      console.log('/tasks/' + id);
+      .then(
+        props.atualiza()
+      )
     }
 
     if( qtdTarefas === null || qtdAndamento.length === 0){
@@ -224,18 +225,19 @@ class TarefasAndamento extends Component {
     const [openSnackbar, setOpenSnackbar] = React.useState(false);
 
     const handleClickSim = (id) => {
-      //EditaTask(id);
+      EditaTask(id);
       setOpenSnackbar(true);
       this.setState({openAlert: false});
       console.log(this.state.tarefasId);
     };
 
     function EditaTask(id) {
-      api.put('/tasks/' + id, {
+      api.put('/tasks/' + id + '/status', {
         status: "Concluido",
-        data_conclusao: new Date(),
       })
-      console.log('/tasks/' + id);
+      .then(
+        //props.atualiza()
+      )
     }
 
     return(
