@@ -135,12 +135,13 @@ export default function Menu_index() {
         {
           label: 'Em Desenvolvimento',
           data: labels?.map(() => props.EMANDA, ({ min: 0, max: props.total })),
-          backgroundColor: '#e3622fcc',
+          backgroundColor: '#87cefacc',
         },
         {
           label: 'Concluído',
           data: labels?.map(() => props.CON, ({ min: 0, max: props.total })),
-          backgroundColor: '#87cefacc',
+          backgroundColor: '#e3622fcc',
+          
         },
       ],
     };
