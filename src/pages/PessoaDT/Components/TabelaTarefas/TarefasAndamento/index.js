@@ -212,7 +212,6 @@ class TarefasAndamento extends Component {
     };
 
     const handleCheck = (id) => {
-      console.log(id);
 
       this.setState({tarefasId: id})
       this.setState({openAlert: true});

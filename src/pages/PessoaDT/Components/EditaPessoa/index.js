@@ -70,12 +70,16 @@ const style = {
 
 export default function EditaPessoa(props) {
     const [nome, setNome] = useState(props.PESSOA.nome_pessoa);
-    //const [equipe, setEquipe] = useState([]);
-    //const [dadoEquipe, setDadoEquipe] = useState('');
+    const [equipe, setEquipe] = useState(props.equipes);
+    const [dadoEquipe, setDadoEquipe] = useState(props.equipe_id);
     const [funcao, setFuncao] = React.useState(props.PESSOA.funcao_pessoa);
     const [openEdit, setOpenEdit] = useState(false);
     const [openAlert, setOpenAlert] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState(false);
+
+    const handleChangeAge = (eventA) => {
+        setDadoEquipe(eventA.target.value);
+      };
     
        
     const handleClickEdit = () => {
@@ -121,7 +125,7 @@ export default function EditaPessoa(props) {
         e.preventDefault()
         const updateStatus = async () => {
             api.put('/pessoas/' + props.idPessoa, {
-                    equipe_id: props.equipe_id,
+                    equipe_id: dadoEquipe,
                     funcao_pessoa: funcao,
                     nome_pessoa: nome
                 })
@@ -141,8 +145,6 @@ export default function EditaPessoa(props) {
                     <EditRoundedIcon sx={{ fontSize: 20, color: "#f4f4f4" }} />
                 </IconButton>
             </Tooltip>
-
-
             <Modal
                 open={openEdit}
                 onClose={handleCloseEdit}
@@ -199,6 +201,32 @@ export default function EditaPessoa(props) {
                                 <MenuItem value={"Gerente de Projeto"}>Gerente de Projeto</MenuItem>
                             </CssTextField>
                         </Box>
+
+                        <Box sx={{ minWidth: 120 }}>
+              <CssTextField
+              select
+              label="Equipe"
+              fullWidth
+              margin="dense"
+              value={dadoEquipe}
+              onChange={handleChangeAge}
+              SelectProps={{
+                MenuProps: {
+                  PaperProps: {
+                    style: {
+                      maxHeight: '23vh',
+                      backgroundColor: '#494A58',
+                      color: '#fff',
+                    }
+                  }
+                }
+              }}
+              >
+                {equipe?.map(p => (
+                  <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
+                )}
+              </CssTextField>
+            </Box>
 
                         <Divider light className='mt-3' />
                         <div className='d-flex justify-content-between mt-5'>
