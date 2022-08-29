@@ -65,7 +65,7 @@ export const Top3 = styled.div`
     border-radius: 10px;
     margin-bottom: 0.5rem;
     width: 100%;
-    height: 400px;
+    height: 320px;
 `;
 
 export const TarefasCircularProgress = styled.div`

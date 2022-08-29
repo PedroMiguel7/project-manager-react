@@ -14,7 +14,7 @@ export default function BarChart(props) {
     arrPessoas.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
 
     const orderedArr = Object.fromEntries(
-        Object.entries(counts).sort(([,a],[,b]) => b-a)
+        Object.entries(counts).sort(([, a], [, b]) => b - a)
     );
 
     const data = [
@@ -37,15 +37,14 @@ export default function BarChart(props) {
 
     return (
         <>
-            <div style={{width: "420px", height: "270px"}}>
-
-                    <ResponsiveBar
+            <div style={{ width: "100%", height: "220px" }}>
+                <ResponsiveBar
                     data={data}
                     keys={[
                         'qtd',
                     ]}
                     indexBy="Membro"
-                    margin={{ top: 0, right: 20, bottom: 18, left: 70 }}
+                    margin={{ top: 0, right: 20, bottom: 18, left: 85 }}
                     padding={0.2}
                     layout="horizontal"
                     valueScale={{ type: 'linear' }}
@@ -56,19 +55,19 @@ export default function BarChart(props) {
                         textColor: "#C2C3C6",
                         fontSize: 13,
                         grid: {
-                          line: {
-                              stroke: "#87888C",
-                              strokeWidth: 0.2
-                          }
+                            line: {
+                                stroke: "#87888C",
+                                strokeWidth: 0.2
+                            }
                         },
                         tooltip: {
-                          container: {
-                              background: "#87888c",
-                              color: "#fff",
-                              fontSize: 14
-                          },
+                            container: {
+                                background: "#87888c",
+                                color: "#fff",
+                                fontSize: 14
+                            },
                         }
-                      }}
+                    }}
                     defs={[
                         {
                             id: 'dots',
@@ -108,10 +107,10 @@ export default function BarChart(props) {
                     }}
                     axisLeft={{
                         format: (v) => {
-                            return v?.length > 7 ? (
+                            return v?.length > 9 ? (
                                 <tspan>
-                                {v.substring(0, 7) + "..."}
-                                <title>{v}</title>
+                                    {v.substring(0, 9) + "..."}
+                                    <title>{v}</title>
                                 </tspan>
                             ) : (
                                 v
@@ -133,10 +132,10 @@ export default function BarChart(props) {
                         ]
                     }}
                     legends={[]}
-                    tooltip={function(){}}
+                    tooltip={function () { }}
                     role="application"
                     ariaLabel="Nivo bar chart demo"
-                    barAriaLabel={function(e){return e.id+": "+e.formattedValue+" in country: "+e.indexValue}}
+                    barAriaLabel={function (e) { return e.id + ": " + e.formattedValue + " in country: " + e.indexValue }}
                 />
             </div>
         </>
