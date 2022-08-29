@@ -2,8 +2,24 @@ import { ResponsiveBar } from '@nivo/bar';
 
 export default function BarChart(props) {
     let TarefasEquipe = props.tarefas;
-    //const Done = TarefasEquipe.filter((tarefas) => tarefas.status === "Concluido");
+    const Done = TarefasEquipe?.filter((tarefas) => tarefas.status === "Concluido");
+    //console.log(Done);
+    const arrPessoas = [];
 
+    const Pessoas = Done?.map(p => {
+        arrPessoas.push(p.nome_pessoa);
+    })
+    //console.log(arrPessoas);
+
+    const counts = {};
+    arrPessoas.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+    //console.log(counts)
+
+    const OrderedPessoas = Object.fromEntries(
+        Object.entries(counts).sort(([,a],[,b]) => b-a)
+    );
+
+    console.log(OrderedPessoas);
 
     const data = [
         {

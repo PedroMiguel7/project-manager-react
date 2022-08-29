@@ -275,10 +275,7 @@ class equipeDT_index extends Component {
     }
 
     ImprimeTarefas = (props) => {
-        console.log(props.equipe.tasks);
         let TarefasEquipe = props.equipe.tasks;
-        //console.log(TarefasEquipe);
-        //console.log(props.tarefas);
         if( TarefasEquipe === null){
             return(
                 <>
@@ -429,7 +426,7 @@ class equipeDT_index extends Component {
                 }
             } else {
                 return(
-                    props.tarefas?.map(t => (
+                    TarefasEquipe?.map(t => (
                         <TarefasLi>
                             <StatusTarefa>
                                 {t.status}
@@ -664,28 +661,37 @@ class equipeDT_index extends Component {
     }
  
     ImprimeTarefasStats = (props) => {
-        //let TarefasEquipe = props.equipe.tasks;
+        let TarefasEquipe = props.equipe.tasks;
         if(props.equipe.tasks === null){
             return (
                 <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} op="tarefas" /> 
             )
             
         } else {
-            //let TotalTarefas = TarefasEquipe[0].length;
+            let TotalTarefas = TarefasEquipe?.length;
+            console.log(TotalTarefas);
 
-            //const TarefasAndamento = TarefasEquipe.filter((tarefas) => tarefas.status === "Em Andamento");
-            //let QtdAndamento = TarefasAndamento.length;
+            const TarefasFazer = TarefasEquipe?.filter((tarefas) => tarefas.status === "A Fazer");
+            let QtdFazer = TarefasFazer?.length;
 
-            //const TarefasConcluidos = TarefasEquipe.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
-            //let QtdConcluidos = TarefasConcluidos.length;
+            const TarefasAndamento = TarefasEquipe?.filter((tarefas) => tarefas.status === "Em Andamento");
+            let QtdAndamento = TarefasAndamento?.length;
 
-            //let PorcAndamento = (QtdAndamento/TotalTarefas) * 100;
+            const TarefasTeste = TarefasEquipe?.filter((tarefas) => tarefas.status === "Em Teste");
+            let QtdTeste = TarefasTeste?.length;
 
-            //let PorcConcluidos = (QtdConcluidos/TotalTarefas) * 100;
+            const TarefasConcluidos = TarefasEquipe?.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
+            let QtdConcluidos = TarefasConcluidos?.length;
+
+        
+            let PorcFazer = (QtdFazer/TotalTarefas) * 100;
+            let PorcAndamento = (QtdAndamento/TotalTarefas) * 100;
+            let PorcTeste = (QtdTeste/TotalTarefas) * 100;
+            let PorcConcluidos = (QtdConcluidos/TotalTarefas) * 100;
 
             return (
                 <>
-                    <ProgressoCircular op="tarefas" Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} />
+                    <ProgressoCircular op="tarefas" Total={0} StatsTitle="Tarefas" ValueFazer={PorcFazer} ValueAndamento={PorcAndamento} ValueTeste={PorcTeste} ValueConcluido={PorcConcluidos} />
                 </>
                 
             )

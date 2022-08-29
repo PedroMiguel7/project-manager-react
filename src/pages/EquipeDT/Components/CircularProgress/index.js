@@ -8,7 +8,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "A Fazer",
-                    "y": 80/100
+                    "y": props.ValueFazer/100
                 },
                 ]
             },
@@ -17,7 +17,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Em Andamento",
-                    "y": 21/100
+                    "y": props.ValueAndamento/100
                 },
                 ]
             },
@@ -26,7 +26,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Em Teste",
-                    "y": 10/100
+                    "y": props.ValueTeste/100
                 },
                 ]
             },
@@ -35,7 +35,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Concluídas",
-                    "y": 89/100
+                    "y": props.ValueConcluido/100
                 },
                 ]
             },
@@ -45,7 +45,7 @@ export default function RadialBarChart(props) {
                 <ResponsiveRadialBar
                 data={data}
                 maxValue={1}
-                valueFormat=" >-.2~%"
+                valueFormat=">-.2~%"
                 startAngle={-90}
                 endAngle={90}
                 innerRadius={0.15}
@@ -126,7 +126,6 @@ export default function RadialBarChart(props) {
             },
         ]
 
-        const format = v => `${v}%`
         return (
                 <ResponsiveRadialBar
                 data={data}
