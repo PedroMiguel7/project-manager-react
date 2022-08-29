@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 //import { BrowserRouter, Link } from "react-router-dom";
 import './index.css';
+import GlobalStyles from "./styles/global"
 //import App from './App'
 //import projeto_index from './pages/Projetos/projeto_index'
 //import Rout from './routes';
@@ -11,5 +12,8 @@ import App from  './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  <>
+    <App />
+    <GlobalStyles />
+  </>
 );
