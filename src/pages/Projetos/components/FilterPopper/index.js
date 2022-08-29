@@ -8,9 +8,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
-import CssDatePickerFut from '../DatePicker/DisableFuture/disableFuture';
 import Button from '@mui/material/Button';
-import CssDatePickerPas from '../DatePicker/DisablePast/disablePast';
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -31,8 +29,9 @@ function FilterPopper(props) {
 
     const [checkboxState, setUnchecked] = React.useState();
     const uncheck = () => setUnchecked(false);
+    
     const limpar = () => {
-        setUnchecked(false); setValue(null); setValue2(null); 
+        setUnchecked(false); setValue(new Date()); setValue2(new Date('1998-10-09')); setCheckedFA(true); setCheckedAN(true); setCheckedCO(true);
     };
 
     const CheckboxStyle = styled(Checkbox)({
@@ -60,7 +59,7 @@ function FilterPopper(props) {
 
     const [value, setValue] = React.useState(new Date());
     //const [value2, setValue2] = React.useState('1998-10-09');
-    const [value2, setValue2] = React.useState(new Date());
+    const [value2, setValue2] = React.useState(new Date('1998-10-09'));
 
     const DateTextField = styled(TextField)({
         '& .MuiOutlinedInput-root': {
@@ -216,7 +215,7 @@ function FilterPopper(props) {
                                         opacity: 0.7,
                                         textTransform: 'capitalize'
                                     }}
-                                        variant="text" className='' onClick={{ uncheck }}>Limpar Filtros</Button>
+                                        variant="text" className='' onClick={() => limpar() }>Limpar Filtros</Button>
                                     <div className='d-flex align-items-center'>
                                         <Button style={{
                                             color: "#C2C3C6",

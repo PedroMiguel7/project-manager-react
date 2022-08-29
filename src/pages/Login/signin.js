@@ -105,7 +105,7 @@ export default function Signin() {
           component="h2"
           className="text-center order-1"
         >
-          Loga ai<span style={{ color: "#F46E27" }}> bb</span>
+          LOG<span style={{ color: "#F46E27" }}>IN</span>
         </Typography>
       </div>
 
