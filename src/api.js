@@ -11,7 +11,7 @@ const URL = axios.create({
 })
 
 if (token) {
-  api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+  api.defaults.headers.Authorization = `${JSON.parse(token)}`
 }
 
 export default api;
