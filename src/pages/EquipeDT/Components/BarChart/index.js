@@ -3,40 +3,36 @@ import { ResponsiveBar } from '@nivo/bar';
 export default function BarChart(props) {
     let TarefasEquipe = props.tarefas;
     const Done = TarefasEquipe?.filter((tarefas) => tarefas.status === "Concluido");
-    //console.log(Done);
+
     const arrPessoas = [];
 
-    const Pessoas = Done?.map(p => {
+    Done?.map(p => {
         arrPessoas.push(p.nome_pessoa);
     })
-    //console.log(arrPessoas);
 
     const counts = {};
     arrPessoas.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
-    //console.log(counts)
 
-    const OrderedPessoas = Object.fromEntries(
+    const orderedArr = Object.fromEntries(
         Object.entries(counts).sort(([,a],[,b]) => b-a)
     );
 
-    console.log(OrderedPessoas);
-
     const data = [
         {
-            "Membro": "Bruno de Calcinha",
-            "qtd": 15,
-            "qtdColor": "hsl(43, 70%, 50%)",
+            "Membro": Object.keys(orderedArr)[2],
+            "qtd": Object.values(orderedArr)[2],
+            "qtdColor": "hsl(254, 70%, 50%)",
         },
         {
-            "Membro": "Fulana",
-            "qtd": 11,
+            "Membro": Object.keys(orderedArr)[1],
+            "qtd": Object.values(orderedArr)[1],
             "qtdColor": "hsl(186, 70%, 50%)",
         },
         {
-            "Membro": "Fulanin",
-            "qtd": 8,
-            "qtdColor": "hsl(254, 70%, 50%)",
-          },
+            "Membro": Object.keys(orderedArr)[0],
+            "qtd": Object.values(orderedArr)[0],
+            "qtdColor": "hsl(43, 70%, 50%)",
+        },
     ]
 
     return (
@@ -112,7 +108,7 @@ export default function BarChart(props) {
                     }}
                     axisLeft={{
                         format: (v) => {
-                            return v.length > 7 ? (
+                            return v?.length > 7 ? (
                                 <tspan>
                                 {v.substring(0, 7) + "..."}
                                 <title>{v}</title>
