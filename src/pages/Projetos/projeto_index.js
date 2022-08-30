@@ -8,6 +8,7 @@ import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
 import { NotFoundContainer, Main, Header, Title, Search, OptionsContainer, Options, OrderSelect, CardsContainer } from './style.js'; 
 
 export default function ProjetoIndex() {
+    document.title = "Projetos";
     var [projetos, setProjetos] = useState([]);
     useEffect(() => {
         const fetchProjetos = async () => {

@@ -7,6 +7,7 @@ import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
 import { NotFoundContainer, Main, Header, Title, Search, OptionsContainer, Options, OrderSelect, CardsContainer } from './style.js';
 
 export default function Equipes() {
+    document.title = "Equipes";
     var [Equipes, setEquipes] = useState([]);
     useEffect(() => {
         const fetchEquipes = async () => {

@@ -34,6 +34,7 @@ export const options = {
 };
 
 export default function Menu_index() {
+  document.title = "Gerenciador de Projetos";
   const [projetos, setProjetos] = useState([]);
   useEffect(() => {
     const fetchProjetos = async () => {
@@ -159,7 +160,7 @@ export default function Menu_index() {
       {/*<Sidebar />*/}
       <main className="col-lg-11 col-sm-12 offset-lg-1 px-5">
         <div className="row mt-5 pb-3 main-header">
-          <h1 className="col-lg-3 fs-2">Home - desafio 2.0</h1>
+          <h1 className="col-lg-3 fs-2">Home</h1>
           {/*<input
             className="col-lg-3 offset-lg-6"
             type="search"

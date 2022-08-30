@@ -738,6 +738,12 @@ class equipeDT_index extends Component {
         const { PessoasEquipe } = this.state;
         const { tarefas } = this.state;
 
+        if (!equipe.nome_equipe) {
+            document.title = "Equipe"
+        } else {
+            document.title = `Equipe ${equipe.nome_equipe}`
+        }
+
         let TarefasEquipe = equipe.tasks;
         console.log(TarefasEquipe);
 
