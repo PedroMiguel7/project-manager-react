@@ -71,18 +71,18 @@ export default function ProjetoIndex() {
 
     return (
         <>
-            <Main className='col-lg-11 col-sm-12 offset-lg-1'>
-                <Header className='row'>
-                    <Title className="col-lg-3">Projetos</Title>
-                    <Search onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" placeholder="Pesquise aqui..."/>
+            <Main>
+                <Header>
+                    <Title>Projetos</Title>
+                    <Search onChange={handleChange} type="search" name="main-search" placeholder="Pesquise aqui..."/>
                 </Header>
                 <Divider />
-                <OptionsContainer className="row">
-                    <div className="LeftOptions col mt-sm-2">
-                        {/*<span className="me-2">Show:</span>
-                        <input type="" name="txt-show" id="txt-show" size="1" />*/}
-                    </div>
-                    <Options className="col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
+                <OptionsContainer>
+                    {/* <div className="LeftOptions col mt-sm-2">
+                        <span className="me-2">Show:</span>
+                        <input type="" name="txt-show" id="txt-show" size="1" />
+                    </div> */}
+                    <Options>
                         <BasicModal atualiza={Atualiza}/>
                         <OrderSelect onClick={e => handleOrder('nome_projeto')} name="order-select">
                             A - Z
@@ -97,7 +97,7 @@ export default function ProjetoIndex() {
                     </Options>
                 </OptionsContainer>
 
-                <CardsContainer className="row">
+                <CardsContainer>
                     {emptyState === true ? NotFound() : <Cards Projetos={projetos} atualiza={Atualiza} /> }
                 </CardsContainer>
             </Main>
