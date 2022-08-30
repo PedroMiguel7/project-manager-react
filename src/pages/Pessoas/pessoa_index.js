@@ -70,23 +70,21 @@ export default function Pessoas() {
 
     return (
         <>
-            <Main className='col-lg-11 col-sm-12 offset-lg-1'>
-                <Header className='row'>
-                    <Title className="col-lg-3">Pessoas</Title>
-                    <Search onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Pesquise aqui..." />
+            <Main>
+                <Header>
+                    <Title>Pessoas</Title>
+                    <Search onChange={handleChange}type="search" name="main-search" placeholder="Pesquise aqui..." />
                 </Header>
-                <OptionsContainer className="row">
-                    <div className="LeftOptions col mt-sm-2">
+                <OptionsContainer>
+                    <div>
                         {/*<span className="me-2">Show:</span>
                         <input type="" name="txt-show" id="txt-show" size="1" />*/}
                     </div>
-                    <Options className="col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
+                    <Options>
                         <BasicModalPessoa atualiza={Atualiza} />
-
                         <OrderSelect onClick={e => handleOrder('nome_pessoa')} name="order-select">
                             A - Z
                         </OrderSelect>
-
                         {/*<select className="ps-1" name="order-select" id="order-select">
                             <option value="crescente">A - Z</option>
                             <option value="decrescente">Z - A</option>
@@ -96,10 +94,16 @@ export default function Pessoas() {
                         </button>*/}
                     </Options>
                 </OptionsContainer>
-
-                <CardsContainer className="row">
-                    {emptyState === true ? NotFound() : <CardPessoas Pessoas={pessoas} />}
-                </CardsContainer>
+                {
+                    emptyState === true ?
+                    <CardsContainer notFound>
+                        {NotFound()}
+                    </CardsContainer>
+                    :
+                    <CardsContainer>
+                        <CardPessoas Pessoas={pessoas} />
+                    </CardsContainer>
+                }
             </Main>
         </>
     )

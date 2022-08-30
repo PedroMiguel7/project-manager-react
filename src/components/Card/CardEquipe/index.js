@@ -34,7 +34,7 @@ export default function CardEquipe(props) {
         return (
             <>
                 {props.equipes?.map(p => (
-                    <StyledLink to={'/equipes/' + p.id_equipe} className="col-lg-5 col-md-12">
+                    <StyledLink to={'/equipes/' + p.id_equipe}>
                         <CardContainer key={p.id_equipe}>
                             <Header>
                                 <NomeEquipe>{p.nome_equipe}</NomeEquipe>

@@ -1,6 +1,16 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const StyledLink = styled(Link)`
+    color: #C2C3C6;
+    text-decoration: none;
+
+    &:hover {
+        color: #C2C3C6;
+        text-decoration: none;
+    }
+`;
+
 export const CardContainer = styled.div`
     background-color: #21222D;
     border-radius: 10px;
@@ -43,15 +53,5 @@ export const EmptyStateContainer = styled.div`
 
     h5 {
         color: #454756;
-    }
-`;
-
-export const StyledLink = styled(Link)`
-    color: #C2C3C6;
-    text-decoration: none;
-
-    &:hover {
-        color: #C2C3C6;
-        text-decoration: none;
     }
 `;
