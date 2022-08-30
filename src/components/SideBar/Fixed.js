@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { useLocation } from "react-router-dom";
 import logo from '../../assets/logo.svg';
 import home from '../../assets/icons/home.svg';
@@ -11,6 +11,7 @@ import person from '../../assets/icons/person.svg';
 import personActive from '../../assets/icons/person-active.svg';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { useNavigate } from "react-router-dom";
+import { Toggle } from 'rsuite';
 import { FixedNavContainer, TemporaryNavContainer, Logo, Nav, NavItem, NavLink, FixedNavLink, ItemName } from './style';
 
 export default function Fixed() {
@@ -19,6 +20,7 @@ export default function Fixed() {
     e.preventDefault()
     localStorage.setItem('token', null)
   }
+  const [cascade, setCascade] = useState(false);
 
   let path = window.location.pathname;
   let pathId = path.substring(path.lastIndexOf('/') + 1);
@@ -26,7 +28,8 @@ export default function Fixed() {
   if (path === '/' | localStorage.getItem("token") === null) {
     return;
   }
-  
+
+
   return (
     <FixedNavContainer className="col-1 col-lg-1"
     >
@@ -96,6 +99,17 @@ export default function Fixed() {
           <LogoutRoundedIcon sx={{ color: "#87888C" }} onClick={(e) => [signout(e), navigate('/')]}>
             logout
           </LogoutRoundedIcon>
+        </NavItem>
+        <NavItem>
+          <div>
+            Tema:{' '}
+            <Toggle
+              checked={cascade}
+              onChange={checked => {
+                setCascade(checked);
+              }}
+            />
+          </div>
         </NavItem>
       </Nav>
     </FixedNavContainer>
