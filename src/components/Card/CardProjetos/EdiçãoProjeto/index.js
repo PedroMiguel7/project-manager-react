@@ -120,7 +120,7 @@ export default function EditaProjeto(props) {
 
 
   function DeletaProjeto() {
-    api.delete('/projetos/' + props.id_projeto);
+    api.delete('/projetos/' + props.id_projeto)
     handleCloseAlert();
     props.atualiza();
   }

@@ -10,7 +10,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {useNavigate} from "react-router-dom";
 import useAuth from "./hooks/useAuth"
-import axios from 'axios';
+import api from 'axios';
+import { AirplanemodeActive } from "@mui/icons-material";
 
 const CssTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
@@ -81,7 +82,7 @@ export default function Signin() {
 
   const Logar = (e) => {
     e.preventDefault()
-    axios.post('https://golang-posgre-brisanet.herokuapp.com/user/login', {
+    api.post('/user/login', {
         email: Email,
         password: Senha
       })
