@@ -5,13 +5,17 @@ import './index.css';
 import GlobalStyles from "./styles/global"
 import App from  './App';
 import { ThemeProvider } from 'styled-components';
-import { darkTheme } from './styles/Theme';
-import { ligthTheme } from './styles/Theme';
+import { darkTheme, lightTheme } from './styles/Theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={
+      window.matchMedia && 
+      window.matchMedia('(prefers-color-scheme:light)').matches
+      ? lightTheme 
+      : darkTheme
+  }>
       <App/>
       <GlobalStyles/>
     </ThemeProvider>
