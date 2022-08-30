@@ -1,14 +1,10 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://golang-posgre-brisanet.herokuapp.com',
-  mode: "no-cors"
+  baseURL: 'http://localhost:3000/',
 });
 
 const token = localStorage.getItem('token')
-const URL = axios.create({
-  baseURL:'https://golang-posgre-brisanet.herokuapp.com'
-})
 
 if (token) {
   api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`

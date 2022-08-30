@@ -4,6 +4,7 @@ import CardPessoas from "../../components/Card/CardPessoas";
 import { useState, useEffect} from "react";
 import api from "../../api";
 import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
+import { NotFoundContainer, } from "./style.js"
 
 export default function Pessoas() {
     var [pessoas, setPessoas] = useState([]);
