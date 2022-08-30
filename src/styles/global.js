@@ -1,11 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+export default createGlobalStyle`
     :root {
         --laranja: #F46E27;
         --azul: #093D93;
         --branco: #F4F5FA;
-        --preto: #171821;
+        --preto: ${(props) => props.theme.corFundo.color};
         --preto-medio: #21222D;
         --preto-claro: #494A58;
         --cinza: #87888C;
@@ -57,5 +57,3 @@ const GlobalStyle = createGlobalStyle`
         color: var(--laranja);
     }
 `;
-
-export default GlobalStyle;
