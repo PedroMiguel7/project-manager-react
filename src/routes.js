@@ -22,21 +22,20 @@ const Private = ({Item}) =>{
 const Rout = () =>{
     return(
         <BrowserRouter>
-            <SideBar />
-            
-            <Routes>
-                <Route exect path="/" element={<Signin />}/>
-                <Route exect path="/home" element={<Private Item={Home} />}/>
-                <Route exect path="/projetos" element={<Private Item={ProjetoIndex} />}/>
-                <Route exect path="/projetos/:id" element={<Private Item={ProjetoDT} />}/>
-
-                <Route exect path="/equipes" element={<Private Item={Equipes} />}/>
-                <Route exect path="/equipes/:id" element={<Private Item={EquipeDT} />}/>
-
-                <Route exect path="/pessoas" element={<Private Item={Pessoas} />}/>
-                <Route exect path="/pessoas/:id" element={<Private Item={PessoaDT} />}/>
-
-            </Routes>
+            <div className='d-flex row'>
+                <SideBar />
+                
+                <Routes>
+                    <Route exect path="/" element={<Signin />}/>
+                    <Route exect path="/home" element={<Private Item={Home} />}/>
+                    <Route exect path="/projetos" element={<Private Item={ProjetoIndex} />}/>
+                    <Route exect path="/projetos/:id" element={<Private Item={ProjetoDT} />}/>
+                    <Route exect path="/equipes" element={<Private Item={Equipes} />}/>
+                    <Route exect path="/equipes/:id" element={<Private Item={EquipeDT} />}/>
+                    <Route exect path="/pessoas" element={<Private Item={Pessoas} />}/>
+                    <Route exect path="/pessoas/:id" element={<Private Item={PessoaDT} />}/>
+                </Routes>
+            </div>
         </BrowserRouter>
     );
 }

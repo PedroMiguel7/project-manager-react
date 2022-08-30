@@ -1,10 +1,10 @@
 import filter from '../../assets/icons/filter.svg';
 import BasicModalPessoa from '../Pessoas/NewPessoa/NewPessoa';
 import CardPessoas from "../../components/Card/CardPessoas";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import api from "../../api";
 import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
-import { NotFoundContainer, } from "./style.js"
+import { NotFoundContainer, Main, Header, Title, Search, OptionsContainer, Options, OrderSelect, CardsContainer } from "./style.js"
 
 export default function Pessoas() {
     var [pessoas, setPessoas] = useState([]);
@@ -15,9 +15,9 @@ export default function Pessoas() {
                 setPessoas(response.data);
             } catch (error) {
                 console.log(error);
-                if(error.response.status === 401){
+                if (error.response.status === 401) {
                     window.location.href = '/'
-                  }
+                }
             }
         };
         fetchProjetos();
@@ -33,14 +33,14 @@ export default function Pessoas() {
     };
 
     const [filtro, setFiltro] = useState('')
-    const handleChange = (event) =>{
+    const handleChange = (event) => {
         setFiltro(event.target.value);
     }
 
     var emptyState = false;
 
-    if(filtro){
-        const exp = eval(`/${filtro.replace(/[^\d\w]+/,'.*')}/i`)
+    if (filtro) {
+        const exp = eval(`/${filtro.replace(/[^\d\w]+/, '.*')}/i`)
         pessoas = pessoas?.filter(pessoas => exp.test(pessoas.nome_pessoa.toUpperCase()))
         if (pessoas.length === 0) {
             emptyState = true;
@@ -60,32 +60,32 @@ export default function Pessoas() {
     function NotFound() {
         return (
             <>
-                <div className="d-flex flex-column align-items-center mt-5">
+                <NotFoundContainer>
                     <img className="mb-3" src={SearchNotFound} />
-                    <h3 style={{color: "#454756", textAlign: "center"}}>Nenhum resultado encontrado.</h3>
-                </div>
+                    <h3 style={{ color: "#454756", textAlign: "center" }}>Nenhum resultado encontrado.</h3>
+                </NotFoundContainer>
             </>
         )
     }
 
     return (
         <>
-            <main className='col-lg-11 col-sm-12 offset-lg-1 px-5'>
-            <div className='row mt-5 pb-3 main-header'>
-                    <h1 className="Titulo col-lg-3 fs-2">Pessoas</h1>
-                    <input onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Pesquise aqui..."/>
-                </div>
-                <div className="Options row d-flex flex-wrap mt-lg-3 mt-3 mb-5">
+            <Main className='col-lg-11 col-sm-12 offset-lg-1'>
+                <Header className='row'>
+                    <Title className="col-lg-3">Pessoas</Title>
+                    <Search onChange={handleChange} className="col-lg-3 offset-lg-6" type="search" name="main-search" id="main-search" placeholder="Pesquise aqui..." />
+                </Header>
+                <OptionsContainer className="row">
                     <div className="LeftOptions col mt-sm-2">
                         {/*<span className="me-2">Show:</span>
                         <input type="" name="txt-show" id="txt-show" size="1" />*/}
                     </div>
-                    <div className="RightOptions d-flex justify-content-end align-items-center flex-wrap gap-3 col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
-                        <BasicModalPessoa atualiza={Atualiza}/>
+                    <Options className="col-lg-4 offset-lg-6 col-md-9 mt-sm-2 mt-2">
+                        <BasicModalPessoa atualiza={Atualiza} />
 
-                        <button onClick={e => handleOrder('nome_pessoa')} className="ps-1" name="order-select" id="order-select" >
+                        <OrderSelect onClick={e => handleOrder('nome_pessoa')} name="order-select">
                             A - Z
-                        </button>
+                        </OrderSelect>
 
                         {/*<select className="ps-1" name="order-select" id="order-select">
                             <option value="crescente">A - Z</option>
@@ -94,13 +94,13 @@ export default function Pessoas() {
                         <button className="filter px-2 py-1">
                             <span>Filtro</span> <img src={filter} alt="" />
                         </button>*/}
-                    </div>
-                </div>
+                    </Options>
+                </OptionsContainer>
 
-                <div className="row CardsContainer my-4">
-                    {emptyState === true ? NotFound() : <CardPessoas Pessoas={pessoas}/> }
-                </div>
-            </main>
+                <CardsContainer className="row">
+                    {emptyState === true ? NotFound() : <CardPessoas Pessoas={pessoas} />}
+                </CardsContainer>
+            </Main>
         </>
     )
 }
