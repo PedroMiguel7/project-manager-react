@@ -130,7 +130,7 @@ export const Drawer = styled(SwipeableDrawer)`
 `;
 
 export const MenuContainer = styled.div`
-    padding: 0 3.5%;
+    padding: 0 1.5%;
     
     @media(min-width: 992px) {
         display: none;
