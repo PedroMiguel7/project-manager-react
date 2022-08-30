@@ -22,7 +22,7 @@ const Private = ({Item}) =>{
 const Rout = () =>{
     return(
         <BrowserRouter>
-            <div className='d-flex row'>
+            <div className='GeneralContainer d-flex row'>
                 <SideBar />
                 
                 <Routes>

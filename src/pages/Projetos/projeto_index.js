@@ -96,10 +96,16 @@ export default function ProjetoIndex() {
                         <FilterPopper PROJETOS={projetos} SET={setProjetos} atualiza={Atualiza}/>
                     </Options>
                 </OptionsContainer>
-
-                <CardsContainer>
-                    {emptyState === true ? NotFound() : <Cards Projetos={projetos} atualiza={Atualiza} /> }
-                </CardsContainer>
+                {
+                    emptyState === true ?
+                    <CardsContainer notFound>
+                        {NotFound()}
+                    </CardsContainer>
+                    :
+                    <CardsContainer>
+                        <Cards Projetos={projetos} atualiza={Atualiza} />
+                    </CardsContainer>
+                }
             </Main>
         </>
     )

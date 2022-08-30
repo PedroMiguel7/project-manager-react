@@ -5,7 +5,7 @@ export const NotFoundContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60vh;
+    height: 65vh;
 
     img {
         margin-bottom: 1%;
@@ -147,22 +147,22 @@ export const CardsContainer = styled.div`
     margin: 2% 0;
     //border:  1px solid red;
     grid-area: cards;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas: "card card card card";
+    grid-template-columns: ${props => props.notFound ? "1fr" : "1fr 1fr 1fr 1fr"};
+    grid-template-areas: ${props => props.notFound ? "card" : "card card card card"} ;
 
     @media (max-width: 1200px) {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-areas: "card card card";
+        grid-template-columns: ${props => props.notFound ? "1fr" : "1fr 1fr 1fr"};
+        grid-template-areas: ${props => props.notFound ? "card" : "card card card"} ;
     }
 
     @media (max-width: 992px) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: "card card";
+        grid-template-columns: ${props => props.notFound ? "1fr" : "1fr 1fr"};
+        grid-template-areas: ${props => props.notFound ? "card" : "card card"} ;
     }
 
     @media (max-width: 768px) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: "card card";
+        grid-template-columns: ${props => props.notFound ? "1fr" : "1fr 1fr"};
+        grid-template-areas: ${props => props.notFound ? "card" : "card card"} ;
     }
 
     @media (max-width: 576px) {
