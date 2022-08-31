@@ -24,7 +24,7 @@ export default function Fixed() {
     localStorage.setItem('token', null)
   }
   
-  const [mode, setMode] = useState('dark');
+  const [mode, setMode] = useState(window.matchMedia && window.matchMedia('(prefers-color-scheme:light)').matches ? 'light' : 'dark');
 
   let path = window.location.pathname;
   let pathId = path.substring(path.lastIndexOf('/') + 1);
