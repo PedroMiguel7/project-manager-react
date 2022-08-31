@@ -14,7 +14,8 @@ export const Head = styled.tr`
 `;
 
 export const TableContainer = styled.div`
-    max-height: 30vh;
+    margin-top: 2.5%;
+    max-height: 32vh;
     width: 100%;
 
     &::-webkit-scrollbar {

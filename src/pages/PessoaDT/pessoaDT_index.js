@@ -178,10 +178,10 @@ class PessoasDT extends Component {
 
     return (
       <>
-        <PageContainer className="col-11 offset-1 col-lg-11 offset-lg-1 col-sm-12 offset-sm-1">
-          <ProfileContainer className="col-lg-3 col-md-12 col-sm-12">
+        <PageContainer /*className="col-11 offset-1 col-lg-11 offset-lg-1 col-sm-12 offset-sm-1"*/>
+          <ProfileContainer /*className="col-lg-3 col-md-12 col-sm-12"*/>
             <Back>
-              <Link to={"/pessoas"} className="mb-2 me-1">
+              <Link to={"/pessoas"} /*className="mb-2 me-1"*/>
                 <img src={BackIcon} style={{ width: 28 }} />
               </Link>
             </Back>
@@ -228,9 +228,9 @@ class PessoasDT extends Component {
             {/*<CustomizedAccordion />*/}
           </ProfileContainer>
 
-          <PessoaDashboard className="col-lg-8 col-md-12 col-sm-12">
-            <Rendimento className="row">
-              <RendimentoHeader className="col-12">
+          <PessoaDashboard /*className="col-lg-8 col-md-12 col-sm-12"*/>
+            <Rendimento /*className="row"*/>
+              <RendimentoHeader /*className="col-12"*/>
                 <h5>Rendimento</h5>
                 <this.SelectRendimento />
               </RendimentoHeader>
@@ -239,7 +239,7 @@ class PessoasDT extends Component {
                 <LinearChart selectValue={rendimentoFilter} />
               </ChartContainer>
             </Rendimento>
-            <TarefasPessoa className="row col-12 p-3 mt-3">
+            <TarefasPessoa /*className="row col-12 p-3 mt-3"*/>
               <HeaderTarefas />
             </TarefasPessoa>
           </PessoaDashboard>
