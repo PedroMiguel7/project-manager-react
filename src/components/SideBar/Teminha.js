@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 
 export default function useTema(key, initialState) {
   const [ state, setState ] = useState(() => {
-    const storage = localStorage(key);
+    const storage = localStorage.getItem(key);
 
     if(storage){
         return JSON.parse(storage)

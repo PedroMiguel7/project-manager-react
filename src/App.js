@@ -11,17 +11,17 @@ import useTema from "./components/SideBar/Teminha";
 import SideBar from './components/SideBar/SideBar';
 
 export default function App() {
-    const [ thema, setThema ] = useState(localStorage.getItem('corTema'))
+    const [ thema, setThema ] = useTema('theme', darkTheme)
+
+    const toogleTema = () =>{
+        setThema(thema === 'light' ? lightTheme : darkTheme)
+    }
 
     return (
         <AuthProvider>
-            <ThemeProvider theme={
-                thema === 'light'
-                    ? lightTheme
-                    : darkTheme
-            }>
+            <ThemeProvider theme={ thema }>
                 <DndProvider backend={HTML5Backend}>
-                    <Rout SideBar={<SideBar />}/>
+                    <Rout SideBar={<SideBar toogleTema={toogleTema} />}/>
                     <GlobalStyles />
                 </DndProvider>
             </ThemeProvider>
