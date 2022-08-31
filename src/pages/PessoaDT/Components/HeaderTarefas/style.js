@@ -4,12 +4,19 @@ export const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid red;
 `;
 
 export const Header = styled.div`
     display: flex;
     align-items: center;
-    gap: 5;
+    gap: 3%;
+    border: 1px solid red;
+    width: 100%;
+
+    @media (max-width: 992px) {
+        flex-wrap: wrap;
+    }
 `;
 
 export const Title = styled.h5`

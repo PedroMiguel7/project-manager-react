@@ -107,7 +107,7 @@ class LinearChart extends Component {
           <>
             <ResponsiveLine
                   data={data}
-                  margin={{ top: 20, right: 25, bottom: 50, left: 35 }}
+                  margin={{ top: 35, right: 25, bottom: 50, left: 35 }}
                   theme={{
                     textColor: "#C2C3C6",
                     axis: {

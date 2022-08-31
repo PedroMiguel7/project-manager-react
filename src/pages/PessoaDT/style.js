@@ -1,11 +1,26 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2%;
-    margin-top: 2%;
-    padding-left: 2%;
+    display: grid;
+    gap: 1.5%;
+    margin: 2% 0;
+
+    grid-template-columns: 1fr 3fr 7fr;
+    grid-template-rows: 92vh;
+    grid-template-areas: ". profile dashboard";
+
+    @media (max-width: 992px) {
+        padding: 0 2% 0 4%;
+        grid-template-columns: 11fr;
+        grid-template-areas: "profile dashboard";
+    }
+
+    @media (max-width: 768px) {
+        grid-template-rows: 70vh 90vh;
+        grid-template-columns: 1fr;
+        grid-template-areas: "profile"
+                            "dashboard";
+    }
 `;
 
 export const ProfileContainer = styled.div`
@@ -17,8 +32,12 @@ export const ProfileContainer = styled.div`
     gap: 2rem;
     box-shadow: 0px 2px 12px 5px rgb(0, 0, 0, 0.08);
     transition: 0.5s;
-    min-height: 90vh;
-    padding: 1%;
+    padding: 2%;
+    grid-area: profile;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 export const Back = styled.div`
@@ -67,16 +86,24 @@ export const ResumoPessoa = styled.div`
 `;
 
 export const PessoaDashboard = styled.div`
-
+    grid-area: dashboard;
+    display: grid;
+    row-gap: 2%;
+    grid-template-rows: 45vh 45vh;
+    grid-template-columns: 1fr;
+    grid-template-areas: "rendimento"
+                         "tarefas";
 `;
 
 export const Rendimento = styled.div`
+    width: 100%;
     background-color: var(--preto-medio);
     border-radius: 10px;
-    padding: 1%;
+    padding: 1% 1.5%;
     gap: 2rem;
     box-shadow: 0px 2px 12px 5px rgb(0, 0, 0, 0.08);
     transition: 0.5s;
+    grid-area: rendimento;
 `;
 
 export const RendimentoHeader = styled.div`
@@ -90,13 +117,16 @@ export const RendimentoHeader = styled.div`
 `;
 
 export const ChartContainer = styled.div`
-    height: 350px;
+    height: 85%;
+    max-width: 100%;
 `;
 
 export const TarefasPessoa = styled.div`
+    padding: 1% 1.5%;
     background-color: var(--preto-medio);
     border-radius: 10px;
     gap: 2rem;
     box-shadow: 0px 2px 12px 5px rgb(0, 0, 0, 0.08);
     transition: 0.5s;
+    grid-area: tarefas;
 `;

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -9,7 +10,9 @@ import TarefasAndamento from "../TabelaTarefas/TarefasAndamento";
 import TarefasTeste from "../TabelaTarefas/TarefasTeste";
 import TarefasConcluidas from "../TabelaTarefas/TarefasConcluidas";
 import ContadorTarefas from "../ContadorTarefas";
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { HeaderContainer, Header, Title, TableContainer, Table } from "./style";
+import { set } from "react-hook-form";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,6 +49,9 @@ const StyledTabs = styled((props) => (
     TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
   />
 ))({
+  "&":{
+    border: "1px solid red"
+  },
   "& .MuiTabs-indicator": {
     display: "flex",
     justifyContent: "center",
@@ -64,7 +70,6 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     textTransform: "none",
     fontWeight: 400,
     fontSize: 14,
-    marginRight: theme.spacing(1),
     color: "#87888C",
     "&.Mui-selected": {
       color: "#C2C3C6",
@@ -89,11 +94,14 @@ export default function BasicTabs() {
         <Header>
           <Title>Tarefas</Title>
           <StyledTabs
-            className="mx-4"
             value={value}
             onChange={handleChange}
             aria-label="basic tabs"
-            centered
+            //centered={matches}
+            //variant="scrollable"
+            //variant={scrollable}
+            scrollButtons
+            allowScrollButtonsMobile
           >
             <StyledTab
               className="StyledTab"

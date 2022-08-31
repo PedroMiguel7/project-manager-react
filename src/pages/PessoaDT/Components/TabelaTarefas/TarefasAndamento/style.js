@@ -14,7 +14,8 @@ export const Head = styled.tr`
 `;
 
 export const TableContainer = styled.div`
-    max-height: 30vh;
+    margin-top: 2.5%;
+    max-height: 32vh;
     width: 100%;
 
     &::-webkit-scrollbar {
@@ -30,6 +31,10 @@ export const TableContainer = styled.div`
         background-color: #40404F;
         border-radius: 20px;
         border: 1px solid #2B2B36;
+    }
+
+    @media (max-width: 768px) {
+        width: 90vw;
     }
 `;
 
