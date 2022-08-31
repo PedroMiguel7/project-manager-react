@@ -162,7 +162,6 @@ class TarefasTeste extends Component {
 
         function Inicio(inicio) {
           const dataInicio = new Date(inicio);
-          dataInicio.setDate(dataInicio.getDate() + 1);
           const dataInicioFormatada = dataInicio.toLocaleDateString("pt-BR");
           return dataInicioFormatada;
         }
