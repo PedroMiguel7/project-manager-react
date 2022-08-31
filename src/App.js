@@ -6,9 +6,12 @@ import { AuthProvider } from './pages/Login/contexts/auth';
 import GlobalStyles from "./styles/global"
 import { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from './styles/Theme';
+import useTema from "./components/SideBar/Teminha";
+
+import SideBar from './components/SideBar/SideBar';
 
 export default function App() {
-    const [ thema, setThema ] = useState(localStorage.getItem('CorTema'))
+    const [ thema, setThema ] = useState(localStorage.getItem('corTema'))
 
     return (
         <AuthProvider>
@@ -18,7 +21,7 @@ export default function App() {
                     : darkTheme
             }>
                 <DndProvider backend={HTML5Backend}>
-                    <Rout />
+                    <Rout SideBar={<SideBar />}/>
                     <GlobalStyles />
                 </DndProvider>
             </ThemeProvider>

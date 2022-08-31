@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes, } from 'react-router-dom';
-import SideBar from './components/SideBar/SideBar';
 import Home from "./pages/Home/home";
 import ProjetoIndex from ".//pages/Projetos/projeto_index";
 import ProjetoDT from ".//pages/ProjetoDT/projetoDT_index";
@@ -19,12 +18,11 @@ const Private = ({Item}) =>{
     }
 }
 
-const Rout = () =>{
+const Rout = (props) =>{
     return(
         <BrowserRouter>
             <div className='GeneralContainer d-flex row'>
-                <SideBar />
-                
+                {props.SideBar}
                 <Routes>
                     <Route exect path="/" element={<Signin />}/>
                     <Route exect path="/home" element={<Private Item={Home} />}/>

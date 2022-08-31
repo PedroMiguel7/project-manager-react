@@ -12,7 +12,7 @@ export const darkTheme = {
 
 export const lightTheme = {
     corFundo: {
-        color: '#F4F5FA',
+        color: '#fcfcfc',
     },
     corComponente:{
         color: '',
