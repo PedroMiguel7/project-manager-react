@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useLocation } from "react-router-dom";
 import logo from '../../assets/logo.svg';
 import home from '../../assets/icons/home.svg';
@@ -11,8 +11,11 @@ import person from '../../assets/icons/person.svg';
 import personActive from '../../assets/icons/person-active.svg';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { useNavigate } from "react-router-dom";
-import { Toggle } from 'rsuite';
+import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
 import { FixedNavContainer, TemporaryNavContainer, Logo, Nav, NavItem, NavLink, FixedNavLink, ItemName } from './style';
+
+
+localStorage.setItem('CorTema', window.matchMedia && window.matchMedia('(prefers-color-scheme:light)').matches ? 'light' : 'dark')
 
 export default function Fixed() {
   const navigate = useNavigate();
@@ -20,7 +23,8 @@ export default function Fixed() {
     e.preventDefault()
     localStorage.setItem('token', null)
   }
-  const [cascade, setCascade] = useState(false);
+  
+  const [mode, setMode] = useState('dark');
 
   let path = window.location.pathname;
   let pathId = path.substring(path.lastIndexOf('/') + 1);
@@ -102,11 +106,24 @@ export default function Fixed() {
         </NavItem>
         <NavItem>
           <div>
-            Tema:{' '}
-            <Toggle
-              checked={cascade}
-              onChange={checked => {
-                setCascade(checked);
+            <DarkModeToggle
+              style={{display:'flex'}}
+              mode={mode}
+              dark="Dark"
+              light="Light"
+              size="sm"
+              label='sm'
+              inactiveTrackColor="#e2e8f0"
+              inactiveTrackColorOnHover="#f8fafc"
+              inactiveTrackColorOnActive="#cbd5e1"
+              activeTrackColor="#334155"
+              activeTrackColorOnHover="#1e293b"
+              activeTrackColorOnActive="#0f172a"
+              inactiveThumbColor="#1e293b"
+              activeThumbColor="#e2e8f0"
+              onChange={(mode) => {
+                setMode(mode)
+                localStorage.setItem('CorTema', mode)
               }}
             />
           </div>

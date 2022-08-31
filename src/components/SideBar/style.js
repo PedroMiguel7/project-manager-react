@@ -12,7 +12,7 @@ export const FixedNavContainer = styled.nav`
     align-items: center;
     position: fixed;
     top: 0; 
-    background-color: #191A23;
+    background-color: var(--sideBar);
     height: 100vh;
     box-shadow: 0 30px 60px rgb(0, 0, 0, 0.3);
     min-width: 60px;

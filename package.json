@@ -10,6 +10,7 @@
   "preflightContinue": false,
   "optionsSuccessStatus": 204,
   "dependencies": {
+    "@anatoliygatt/dark-mode-toggle": "^1.0.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@emotion/unitless": "^0.8.0",

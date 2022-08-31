@@ -10,6 +10,11 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
+"@anatoliygatt/dark-mode-toggle@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@anatoliygatt/dark-mode-toggle/-/dark-mode-toggle-1.0.0.tgz#c8563ea02424b9e2f792384561866203ab94dc43"
+  integrity sha512-x8/mJLyCUfZLDNbNP1+Us3njXsvRWjp+6o7H1QoaQtvB1ExNV09B17JfJf7lZbHu+mb6xmjk2gqivCwpkRruwA==
+
 "@ant-design/colors@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@ant-design/colors/-/colors-6.0.0.tgz#9b9366257cffcc47db42b9d0203bb592c13c0298"

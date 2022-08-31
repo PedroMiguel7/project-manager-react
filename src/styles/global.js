@@ -11,6 +11,7 @@ export default createGlobalStyle`
         --cinza: #87888C;
         --azul-claro: #28AEF3;
         --divider: #2C2E3B;
+        --sideBar: ${(props) => props.theme.corSideBar.color};
 
         --inter: 'Inter', sans-serif;
     }
