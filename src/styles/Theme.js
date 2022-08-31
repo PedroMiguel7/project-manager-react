@@ -1,4 +1,5 @@
 export const darkTheme = {
+    title: 'dark',
     corFundo : {
         color: '#171821',
     },
@@ -11,6 +12,7 @@ export const darkTheme = {
 }
 
 export const lightTheme = {
+    title: 'light',
     corFundo: {
         color: '#fcfcfc',
     },

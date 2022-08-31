@@ -120,7 +120,8 @@ function SideBar(props) {
                                 inactiveThumbColor="#1e293b"
                                 activeThumbColor="#e2e8f0"
                                 onChange={(mode) => {
-                                    props.toogleTema(mode)
+                                    setMode(mode)
+                                    props.toogleTema()
                                 }}
                             />
                         </div>
