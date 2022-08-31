@@ -34,6 +34,10 @@ export const TableContainer = styled.div`
         border-radius: 20px;
         border: 1px solid #2B2B36;
     }
+
+    @media (max-width: 768px) {
+        width: 90vw;
+    }
 `;
 
 export const Table = styled.table`
