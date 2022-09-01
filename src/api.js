@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://golang-posgre-brisanet.herokuapp.com',
-  mode: 'no-cors'
+  baseURL: 'https://golang-posgre-brisanet.herokuapp.com/'
 });
 
 const token = localStorage.getItem('token')
