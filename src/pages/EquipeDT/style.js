@@ -32,7 +32,6 @@ export const HeaderContainer = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-    //height: 85vh;
     border: 1px solid red;
     grid-area: content;
     display: grid;
@@ -40,6 +39,13 @@ export const ContentContainer = styled.div`
     grid-template-rows: 85vh;
     grid-template-columns: 2fr 2fr 1fr;
     grid-template-areas: "firstCol secondCol statsCol";
+
+    @media (max-width: 992px) {
+        grid-template-rows: 130vh;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: "firstCol statsCol"
+                            "secondCol statsCol";
+    }
 `;
 
 export const FirstContentCol = styled.div`
@@ -48,9 +54,14 @@ export const FirstContentCol = styled.div`
     display: grid;
     gap: 1.5%;
     grid-template-columns: 1fr;
-    grid-template-rows: 44% 54%;
+    grid-template-rows: 44% 54.5%;
     grid-template-areas: "membros"
                         "projetos";
+
+    @media (max-width: 992px) {
+        height: 40vh;
+        grid-template-rows: 100%;
+    }
 `;
 
 export const SecondContentCol = styled.div`
@@ -95,6 +106,10 @@ export const ProjetosContainer = styled.div`
     grid-area: projetos;
     height: 100%;
     border: 1px solid red;
+
+    @media (max-width: 992px){
+        height: 70%;
+    }
 `;
 
 export const HeaderProjetos = styled.div`
@@ -119,8 +134,12 @@ export const TarefasContainer = styled.div`
     background-color: var(--preto-medio);
     border-radius: 10px;
     grid-area: tarefas;
-    height: 100%;
+    height: 98.5%;
     border: 1px solid red;
+
+    @media (max-width: 992px) {
+        height: 50%;
+    }
 `;
 
 export const HeaderTarefas = styled.div`
