@@ -1,15 +1,89 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.main`
-    padding-left: 2%;
+    //padding-left: 2%;
+    padding: 0 2.5%;
+    display: grid;
+    gap: 1%;
+    grid-template-rows: 10vh 85vh;
+    grid-template-columns: 1fr 11fr;
+    grid-template-areas: ". header"
+                        ". content";
+
+    /* @media (max-width: 992px) {
+        padding: 0 5%;
+        grid-template-columns: 11fr;
+        grid-template-areas: "header"
+                            "options"
+                            "cards";
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 11fr;
+        grid-template-areas: "header"
+                            "options"
+                            "cards";
+    }                     */
+`;
+
+export const HeaderContainer = styled.div`
+    grid-area: header;
+    border: 1px solid red;
+`;
+
+export const ContentContainer = styled.div`
+    //height: 85vh;
+    border: 1px solid red;
+    grid-area: content;
+    display: grid;
+    gap: 1%;
+    grid-template-rows: 85vh;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-areas: "firstCol secondCol statsCol";
+`;
+
+export const FirstContentCol = styled.div`
+    border: 1px solid red;
+    grid-area: firstCol;
+    display: grid;
+    gap: 1.5%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 44% 54%;
+    grid-template-areas: "membros"
+                        "projetos";
+`;
+
+export const SecondContentCol = styled.div`
+    border: 1px solid red;
+    grid-area: secondCol;
+    display: grid;
+    gap: 1.5%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40% 60%;
+    grid-template-areas: "tarefas"
+                        "tarefas";
+`;
+
+export const StatsCol = styled.div`
+    border: 1px solid red;
+    grid-area: statsCol;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40% 28% 28%;
+    grid-template-areas: "grafBar"
+                        "grafProjetos"
+                        "grafTarefas";
+    gap: 2%;
 `;
 
 export const MembrosContainer = styled.div`
-    
+    grid-area: membros;
+    border: 1px solid red;
+    height: 100%;
 `;
 
 export const MembrosUl = styled.div`
-    max-height: 350px;
+    height: 90%;
     overflow: auto;
     padding-left: 0;
     margin-bottom: 5%;
@@ -18,6 +92,9 @@ export const MembrosUl = styled.div`
 export const ProjetosContainer = styled.div`
     background-color: var(--preto-medio);
     border-radius: 10px;
+    grid-area: projetos;
+    height: 100%;
+    border: 1px solid red;
 `;
 
 export const HeaderProjetos = styled.div`
@@ -30,14 +107,20 @@ export const HeaderProjetos = styled.div`
 `;
 
 export const ProjetosUl = styled.div`
-    max-height: 350px;
+    //max-height: 350px;
     overflow: auto;
+    height: 87%;
     padding-left: 0;
+    border: 1px solid red;
+    margin: 0 1%;
 `;
 
 export const TarefasContainer = styled.div`
     background-color: var(--preto-medio);
     border-radius: 10px;
+    grid-area: tarefas;
+    height: 100%;
+    border: 1px solid red;
 `;
 
 export const HeaderTarefas = styled.div`
@@ -49,10 +132,11 @@ export const HeaderTarefas = styled.div`
 `;
 
 export const TarefasUl = styled.div` 
-    max-height: 73vh;
     overflow: auto;
     padding-left: 0;
-    margin: 5px 10px;
+    height: 92%;
+    border: 1px solid red;
+    margin: 0 1%;
 `;
 
 export const Top3 = styled.div`
@@ -61,11 +145,11 @@ export const Top3 = styled.div`
     align-items: center;
     background-color: var(--preto-medio);
     list-style: none;
-    /*padding: 8px;*/
+    padding: 2%;
     border-radius: 10px;
-    margin-bottom: 0.5rem;
     width: 100%;
-    height: 320px;
+    height: 100%;
+    grid-area: grafBar;
 `;
 
 export const TarefasCircularProgress = styled.div`
@@ -75,11 +159,11 @@ export const TarefasCircularProgress = styled.div`
     flex-wrap: wrap;
     background-color: var(--preto-medio);
     list-style: none;
-    height: 280px;
+    height: 100%;
     width: 100%;
-    /*padding: 8px;*/
+    padding: 2%;
     border-radius: 10px;
-    margin-bottom: 0.5rem;
+    grid-area: grafTarefas;
 `;
 
 export const ProjetosCircularProgress = styled.div`
@@ -88,12 +172,11 @@ export const ProjetosCircularProgress = styled.div`
     align-items: center;
     flex-wrap: wrap;
     background-color: var(--preto-medio);
-    list-style: none;
-    height: 280px;
+    height: 100%;
     width: 100%;
-    /*padding: 8px;*/
+    padding: 2%;
     border-radius: 10px;
-    margin-bottom: 0.5rem;
+    grid-area: grafProjetos;
 `;
 
 // Imprime Tarefas
