@@ -4,14 +4,14 @@ export const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid red;
+    //border: 1px solid red;
 `;
 
 export const Header = styled.div`
     display: flex;
     align-items: center;
     gap: 3%;
-    border: 1px solid red;
+    //border: 1px solid red;
     width: 100%;
 
     @media (max-width: 992px) {

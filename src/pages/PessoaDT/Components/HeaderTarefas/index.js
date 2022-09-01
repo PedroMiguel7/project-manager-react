@@ -50,7 +50,7 @@ const StyledTabs = styled((props) => (
   />
 ))({
   "&":{
-    border: "1px solid red"
+    //border: "1px solid red"
   },
   "& .MuiTabs-indicator": {
     display: "flex",
