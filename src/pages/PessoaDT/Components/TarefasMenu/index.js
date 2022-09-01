@@ -101,8 +101,6 @@ export default function TarefasMenu(props) {
     setAnchorEl(null);
   };
 
-
-
   const [nome, setNome] = useState("");
   const [pessoa, setPessoa] = useState([]);
   const [projetoID, setProjetoID ] = useState();

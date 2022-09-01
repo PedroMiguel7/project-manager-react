@@ -162,7 +162,7 @@ class PessoasDT extends Component {
               </ChartContainer>
             </Rendimento>
             <TarefasPessoa>
-              <HeaderTarefas />
+              <HeaderTarefas tarefas={tarefas} />
             </TarefasPessoa>
           </PessoaDashboard>
         </PageContainer>
