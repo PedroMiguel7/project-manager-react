@@ -20,7 +20,7 @@ export const NotFoundContainer = styled.div`
 
 export const Main = styled.main`
     //border:  1px solid red;
-    padding: 0 2.5%;
+    //padding: 0 2.5%;
     display: grid;
     grid-template-columns: 1fr 11fr;
     grid-template-areas: ". header"
