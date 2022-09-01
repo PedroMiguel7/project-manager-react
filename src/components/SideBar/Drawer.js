@@ -77,7 +77,7 @@ export default function TemporaryDrawer() {
                                     {location.pathname === "/home"
                                         ? <>
                                             <img src={homeActive} alt="" />
-                                            <span style={{ color: "#F46E27" }}>Home</span>
+                                            <span style={{ color: "var(--corBotao)" }}>Home</span>
                                         </>
                                         : <>
                                             <img src={home} alt="" />
@@ -91,7 +91,7 @@ export default function TemporaryDrawer() {
                                     {location.pathname === "/projetos" || location.pathname === `/projetos/${pathId}`
                                         ? <>
                                             <img src={projectActive} alt="" />
-                                            <span style={{ color: "#F46E27" }}>Projetos</span>
+                                            <span style={{ color: "var(--corBotao)" }}>Projetos</span>
                                         </>
                                         : <>
                                             <img src={project} alt="" />
@@ -105,7 +105,7 @@ export default function TemporaryDrawer() {
                                     {location.pathname === "/equipes" || location.pathname === `/equipes/${pathId}`
                                         ? <>
                                             <img src={teamActive} alt="" />
-                                            <span style={{ color: "#F46E27" }}>Equipes</span>
+                                            <span style={{ color: "var(--corBotao)" }}>Equipes</span>
                                         </>
                                         : <>
                                             <img src={team} alt="" />
@@ -119,7 +119,7 @@ export default function TemporaryDrawer() {
                                     {location.pathname === "/pessoas" || location.pathname === `/pessoas/${pathId}`
                                         ? <>
                                             <img src={personActive} alt="" />
-                                            <span style={{ color: "#F46E27" }}>Pessoas</span>
+                                            <span style={{ color: "var(--corBotao)" }}>Pessoas</span>
                                         </>
                                         : <>
                                             <img src={person} alt="" />

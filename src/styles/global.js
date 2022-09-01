@@ -2,16 +2,22 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     :root {
-        --laranja: #F46E27;
+        --laranja: ${(props) => props.theme.corBotao.color};
         --azul: #093D93;
         --branco: #F4F5FA;
         --preto: ${(props) => props.theme.corFundo.color};
-        --preto-medio: #21222D;
-        --preto-claro: #494A58;
+        --preto-medio: ${(props) => props.theme.corComponente.color};
+        --preto-claro: ${(props) => props.theme.corComponente.color};
         --cinza: #87888C;
         --azul-claro: #28AEF3;
         --divider: #2C2E3B;
         --sideBar: ${(props) => props.theme.corSideBar.color};
+
+
+        --corFundo:  ${(props) => props.theme.corFundo.color};
+        --componentes: ${(props) => props.theme.corComponente.color};
+        --textComponentes: ${(props) => props.theme.corComponente.textColor};
+        --corBotao: ${(props) => props.theme.corBotao.color};
 
         --inter: 'Inter', sans-serif;
     }

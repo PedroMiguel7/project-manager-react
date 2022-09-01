@@ -4,22 +4,30 @@ export const darkTheme = {
         color: '#171821',
     },
     corComponente:{
-        color: '#494A58',
+        color: '#21222D',
+        textColor: '#C2C3C6',
     },
     corSideBar:{
         color: '#191A23',
+    },
+    corBotao:{
+        color: '#F46E27',
     },
 }
 
 export const lightTheme = {
     title: 'light',
     corFundo: {
-        color: '#fcfcfc',
+        color: '#F9F8F9',
     },
     corComponente:{
-        color: '',
+        color: '#FFFFFF',
+        textColor: '#1E2233',
     },
     corSideBar:{
-        color: '#073176',
+        color: '#191A23',
+    },
+    corBotao:{
+        color: '#3B97D9',
     },
 }

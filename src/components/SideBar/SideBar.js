@@ -44,7 +44,7 @@ function SideBar(props) {
                             {location.pathname === "/home"
                                 ? <>
                                     <img src={homeActive} alt="" />
-                                    <ItemName style={{ color: "#F46E27" }}>Home</ItemName>
+                                    <ItemName style={{ color: "var(--corBotao)" }}>Home</ItemName>
                                 </>
                                 : <>
                                     <img src={home} alt="" />
@@ -58,7 +58,7 @@ function SideBar(props) {
                             {location.pathname === "/projetos" || location.pathname === `/projetos/${pathId}`
                                 ? <>
                                     <img src={projectActive} alt="" />
-                                    <ItemName style={{ color: "#F46E27" }}>Projetos</ItemName>
+                                    <ItemName style={{ color: "var(--corBotao)" }}>Projetos</ItemName>
                                 </>
                                 : <>
                                     <img src={project} alt="" />
@@ -72,7 +72,7 @@ function SideBar(props) {
                             {location.pathname === "/equipes" || location.pathname === `/equipes/${pathId}`
                                 ? <>
                                     <img src={teamActive} alt="" />
-                                    <ItemName style={{ color: "#F46E27" }}>Equipes</ItemName>
+                                    <ItemName style={{ color: "var(--corBotao)" }}>Equipes</ItemName>
                                 </>
                                 : <>
                                     <img src={team} alt="" />
@@ -86,7 +86,7 @@ function SideBar(props) {
                             {location.pathname === "/pessoas" || location.pathname === `/pessoas/${pathId}`
                                 ? <>
                                     <img src={personActive} alt="" />
-                                    <ItemName style={{ color: "#F46E27" }}>Pessoas</ItemName>
+                                    <ItemName style={{ color: "var(--corBotao)" }}>Pessoas</ItemName>
                                 </>
                                 : <>
                                     <img src={person} alt="" />
