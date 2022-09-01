@@ -15,6 +15,7 @@ export const ContadorTarefas = styled.span`
     font-size: 15px;
     color: var(--branco);
     text-align: center;
+    width: max-content;
 `;
 
 export const Progress = styled.div`

@@ -10,28 +10,28 @@ import PrioridadeMedia from '../../../../../assets/icons/prioridade-media.svg';
 import PrioridadeBaixa from '../../../../../assets/icons/prioridade-baixa.svg';
 import Tooltip from '@mui/material/Tooltip';
 import TasksNotFound from "../../../../../assets/empty-states/tasks-not-found.svg";
-
+import { EmptyState, EmptyStateImg, EmptyStateTitle, Head, HeadCol, TableContainer, Table, TableBody, Row, Col, PriorityIcons } from './style';
 
 class TarefasConcluidas extends Component {
   state = {
     tarefas: [],
   }
   async componentDidMount() {
-      const pessoaPath = window.location.pathname;
-      
-      const response = await api.get(pessoaPath+'/tasks');
+    const pessoaPath = window.location.pathname;
 
-      this.setState({ tarefas: response.data });
+    const response = await api.get(pessoaPath + '/tasks');
+
+    this.setState({ tarefas: response.data });
   }
 
   Header = (props) => {
     const qtdTarefas = props.tarefas;
-    
+
     if (qtdTarefas !== null) {
-      var qtdAndamento = qtdTarefas?.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");  
+      var qtdAndamento = qtdTarefas?.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
     }
 
-    if( qtdTarefas === null || qtdAndamento.length === 0){
+    if (qtdTarefas === null || qtdAndamento.length === 0) {
       return (
         <>
         </>
@@ -39,18 +39,18 @@ class TarefasConcluidas extends Component {
     } else {
       return (
         <>
-          <tr className="TabelaTarefasHead AddShadow">
-                <th scope="col"></th>
-                <th scope="col">Nome</th>
-                <th scope="col">Prioridade</th>
-                <th scope="col">Início</th>
-                <th scope="col">Conclusão</th>
-                <th scope="col"></th>
-              </tr>
+          <Head>
+            <HeadCol scope="col"></HeadCol>
+            <HeadCol scope="col">Descrição</HeadCol>
+            <HeadCol scope="col">Prioridade</HeadCol>
+            <HeadCol scope="col">Início</HeadCol>
+            <HeadCol scope="col">Conclusão</HeadCol>
+            <HeadCol scope="col"></HeadCol>
+          </Head>
         </>
       )
     }
-    
+
   }
 
   ImprimeTarefas = (props) => {
@@ -59,83 +59,85 @@ class TarefasConcluidas extends Component {
     if (qtdTarefas !== null) {
       var qtdConcluidas = qtdTarefas?.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
     }
-    
+
     const [changeIcon, setIcon] = React.useState(true);
 
-    const icon = (changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
+    const icon = (changeIcon === true) ? <TaskAltRoundedIcon sx={{ color: "#F46E27" }} /> : <RadioButtonUncheckedIcon sx={{ color: "#C2C3C6" }} />;
 
-    if( qtdTarefas === null || qtdConcluidas.length === 0){
-        return(
-          <tr className='NoBorder'>
-              <img src={TasksNotFound} />
-              <h5 style={{color: "#454756", textAlign: "center"}}>
-                Sem tarefas concluídas.
-              </h5>
-          </tr>
-        );
+    if (qtdTarefas === null || qtdConcluidas.length === 0) {
+      return (
+        <EmptyState>
+          <EmptyStateImg src={TasksNotFound} />
+          <EmptyStateTitle>
+            Sem tarefas concluídas.
+          </EmptyStateTitle>
+        </EmptyState>
+      );
     } else {
-        function Prioridade(prioridade) {
-          if (prioridade === 0) {
-            return (
-              <Tooltip title='Baixa' arrow>
-                <img className='IconesPrioridade' src={PrioridadeBaixa}/>
-              </Tooltip>
-            )
-          } else if (prioridade == 1) {
-            return (
-              <Tooltip title='Média' arrow>
-                <img className='IconesPrioridade' src={PrioridadeMedia}/>
-              </Tooltip>
-            )
-          } else if (prioridade === 2) {
-            return (
-              <Tooltip title='Alta' arrow>
-                <img className='IconesPrioridade' src={PrioridadeAlta}/>
-              </Tooltip>
-            )
-          }
+      function Prioridade(prioridade) {
+        if (prioridade === 0) {
+          return (
+            <Tooltip title='Baixa' arrow>
+              <PriorityIcons src={PrioridadeBaixa} />
+            </Tooltip>
+          )
+        } else if (prioridade == 1) {
+          return (
+            <Tooltip title='Média' arrow>
+              <PriorityIcons src={PrioridadeMedia} />
+            </Tooltip>
+          )
+        } else if (prioridade === 2) {
+          return (
+            <Tooltip title='Alta' arrow>
+              <PriorityIcons src={PrioridadeAlta} />
+            </Tooltip>
+          )
         }
+      }
 
-        function Inicio(inicio) {
-          const dataInicio = new Date(inicio);
-          const dataInicioFormatada = dataInicio.toLocaleDateString("pt-BR");
-          return dataInicioFormatada;
-        }
+      function Inicio(inicio) {
+        const dataInicio = new Date(inicio);
+        dataInicio.setDate(dataInicio.getDate() + 1);
+        const dataInicioFormatada = dataInicio.toLocaleDateString("pt-BR");
+        return dataInicioFormatada;
+      }
 
-        function Conclusao(conclusao) {
-          const dataConclusao = new Date(conclusao);
-          const dataConclusaoFormatada = dataConclusao.toLocaleDateString("pt-BR");
-          return dataConclusaoFormatada;
-        }
+      function Conclusao(conclusao) {
+        const dataConclusao = new Date(conclusao);
+        dataConclusao.setDate(dataConclusao.getDate() + 1);
+        const dataConclusaoFormatada = dataConclusao.toLocaleDateString("pt-BR");
+        return dataConclusaoFormatada;
+      }
 
-        return (
-          props.tarefas?.map(t => 
-            {if (t.status === "Concluido")
+      return (
+        props.tarefas?.map(t => {
+          if (t.status === "Concluido")
             return (
-              <tr>
-                <td>
+              <Row id={t.id_task} key={t.id_task}>
+                <Col>
                   <IconButton onLoad={setIcon}>
                     {icon}
                   </IconButton>
-                </td>
-                <td>
+                </Col>
+                <Col>
                   {t.descricao_task}
-                </td>
-                <td>
+                </Col>
+                <Col>
                   {Prioridade(t.prioridade)}
-                </td>
-                <td>
+                </Col>
+                <Col>
                   {Inicio(t.data_criacao)}
-                </td>
-                <td>
+                </Col>
+                <Col>
                   {Conclusao(t.data_conclusao)}
-                </td>
-                <td>
+                </Col>
+                <Col>
                   <TarefasMenu />
-                </td>
-              </tr>
+                </Col>
+              </Row>
             )
-          }
+        }
         ));
     }
   }
@@ -145,14 +147,14 @@ class TarefasConcluidas extends Component {
 
     return (
       <>
-        <div className='TabelaTarefas table-responsive'>
-          <table className="table align-middle text-center">
-            <tbody>
+        <TableContainer className='table-responsive'>
+          <Table className="table align-middle text-center">
+            <TableBody>
               <this.Header tarefas={tarefas} />
               <this.ImprimeTarefas tarefas={tarefas} />
-            </tbody>
-          </table>
-        </div>
+            </TableBody>
+          </Table>
+        </TableContainer>
       </>
     )
   }

@@ -19,14 +19,7 @@ import PrioridadeMedia from "../../../../../assets/icons/prioridade-media.svg";
 import PrioridadeBaixa from "../../../../../assets/icons/prioridade-baixa.svg";
 import Tooltip from "@mui/material/Tooltip";
 import TasksNotFound from "../../../../../assets/empty-states/tasks-not-found.svg";
-import {
-  NoBorder,
-  Head,
-  TableContainer,
-  Table,
-  Row,
-  PriorityIcons,
-} from "./style";
+import { EmptyState, EmptyStateImg, EmptyStateTitle, Head, HeadCol, TableContainer, Table, TableBody, Row, Col, PriorityIcons } from './style';
 
 class TarefasFazer extends Component {
   state = {
@@ -59,12 +52,12 @@ class TarefasFazer extends Component {
       return (
         <>
           <Head>
-            <th scope="col"></th>
-            <th scope="col">Nome</th>
-            <th scope="col">Prioridade</th>
-            <th scope="col">Prazo</th>
-            <th scope="col">Data de Criação</th>
-            <th scope="col"></th>
+            <HeadCol scope="col"></HeadCol>
+            <HeadCol scope="col">Descrição</HeadCol>
+            <HeadCol scope="col">Prioridade</HeadCol>
+            <HeadCol scope="col">Prazo</HeadCol>
+            <HeadCol scope="col">Início</HeadCol>
+            <HeadCol scope="col"></HeadCol>
           </Head>
         </>
       );
@@ -80,32 +73,10 @@ class TarefasFazer extends Component {
       );
     }
 
-    const [openAlert, setOpenAlert] = React.useState(false);
-
-    const handleClose = (event, reason) => {
-      if (reason === "clickaway") {
-        return;
-      }
-      setOpenSnackbar(false);
-    };
-
     const handleCheck = (id) => {
       console.log(id);
       this.setState({ tarefasId: id });
       this.setState({ openAlert: true });
-    };
-
-    const handleCloseAlert = () => {
-      setOpenAlert(false);
-    };
-
-    const [openSnackbar, setOpenSnackbar] = React.useState(false);
-
-    const handleClickSim = (id) => {
-      EditaTask(id);
-      setOpenSnackbar(true);
-      setOpenAlert(false);
-      this.setState({ changeIcon: true });
     };
 
     const icon =
@@ -115,27 +86,15 @@ class TarefasFazer extends Component {
         <RadioButtonUncheckedIcon sx={{ color: "#C2C3C6" }} />
       );
 
-    function EditaTask(id) {
-      api
-        .put("/tasks/" + id + "/status", {
-          status: "Em Andamento",
-          data_criacao: new Date()
-            .toISOString()
-            .replace("T", " ")
-            .replace("Z", ""),
-        })
-        .then(window.location.reload());
-    }
-    console.log(new Date().toISOString().replace("T", " ").replace("Z", ""));
     if (qtdTarefas === null || qtdFazer.length === 0) {
       return (
         <>
-          <NoBorder>
-            <img src={TasksNotFound} />
-            <h5 style={{ color: "#454756", textAlign: "center" }}>
+          <EmptyState>
+            <EmptyStateImg src={TasksNotFound} />
+            <EmptyStateTitle>
               Sem tarefas a fazer.
-            </h5>
-          </NoBorder>
+            </EmptyStateTitle>
+          </EmptyState>
         </>
       );
     } else {
@@ -191,8 +150,8 @@ class TarefasFazer extends Component {
         if (t.status === "A Fazer")
           return (
             <>
-              <Row id={t.id_task}>
-                <td>
+              <Row id={t.id_task} key={t.id_task}>
+                <Col>
                   <IconButton
                     onClick={() => {
                       handleCheck(t.id_task);
@@ -200,19 +159,19 @@ class TarefasFazer extends Component {
                   >
                     {icon}
                   </IconButton>
-                </td>
-                <td>{t.descricao_task}</td>
-                <td>{Prioridade(t.prioridade)}</td>
-                <td>
+                </Col>
+                <Col>{t.descricao_task}</Col>
+                <Col>{Prioridade(t.prioridade)}</Col>
+                <Col>
                   <AccessTimeIcon
                     sx={{ fontSize: "1.1rem", marginRight: "0.2rem" }}
                   />
                   {TempoRestante(t.prazo_entrega)}
-                </td>
-                <td>{Inicio(t.data_criacao)}</td>
-                <td>
+                </Col>
+                <Col>{Inicio(t.data_criacao)}</Col>
+                <Col>
                   <TarefasMenu equipe_id={t.id_equipe} id_task={t.id_task} />
-                </td>
+                </Col>
               </Row>
             </>
           );
@@ -220,19 +179,7 @@ class TarefasFazer extends Component {
     }
   };
 
-  Alerta = (props) => {
-    const handleClose = (event, reason) => {
-      if (reason === "clickaway") {
-        return;
-      }
-      setOpenSnackbar(false);
-    };
-
-    const handleCheck = (id) => {
-      this.setState({ tarefasId: id });
-      this.setState({ openAlert: true });
-    };
-
+  Alerta = () => {
     const handleCloseAlert = () => {
       this.setState({ openAlert: false });
     };
@@ -250,15 +197,11 @@ class TarefasFazer extends Component {
       api
         .put("/tasks/" + id + "/status", {
           status: "Em Andamento",
-          data_criacao: new Date()
-            .toISOString()
-            .replace("T", " ")
-            .replace("Z", ""),
         })
-        .then ( 
+        .then(
           setTimeout(() => {
             window.location.reload()
-          }, 2500) 
+          }, 2500)
         );
     }
 
@@ -309,22 +252,6 @@ class TarefasFazer extends Component {
           </DialogActions>
         </Dialog>
         {openSnackbar === true ? <Alerta tipoAlerta="em andamento" /> : <></>}
-        {/* <Snackbar
-          open={openSnackbar}
-          autoHideDuration={2500}
-          onClose={handleClose}
-          anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        >
-          <Alert
-            onClose={handleClose}
-            severity="success"
-            elevation={6}
-            variant="filled"
-            sx={{ minWidth: "20vw" }}
-          >
-            A tarefa foi iniciada!
-          </Alert>
-        </Snackbar> */}
       </>
     );
   };
@@ -332,29 +259,15 @@ class TarefasFazer extends Component {
   render() {
     const { tarefas } = this.state;
 
-    var TableHeader = document.getElementsByClassName("TabelaTarefasHead");
-
-    const scrollHandler = (event) => {
-      //var TableHeader = document.getElementsByClassName('TabelaTarefasHead');
-      //console.log(TableHeader);
-
-      let ScrollValue = event.currentTarget.scrollTop;
-      //console.log(ScrollValue);
-
-      if (ScrollValue < 4) {
-        //console.log(document.getElementsByClassName(".TabelaTarefasHead").remove("AddShadow"))
-      }
-    };
-
     return (
       <>
         <TableContainer className="table-responsive">
           <Table id="table" className="table align-middle text-center">
-            <tbody>
+            <TableBody>
               <this.Header tarefas={tarefas} />
               <this.ImprimeTarefas tarefas={tarefas} />
               <this.Alerta tarefas={tarefas} />
-            </tbody>
+            </TableBody>
           </Table>
         </TableContainer>
       </>

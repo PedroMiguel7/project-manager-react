@@ -11,14 +11,12 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import Alerta from '../../Alerta';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
 import PrioridadeAlta from '../../../../../assets/icons/prioridade-alta.svg';
 import PrioridadeMedia from '../../../../../assets/icons/prioridade-media.svg';
 import PrioridadeBaixa from '../../../../../assets/icons/prioridade-baixa.svg';
 import Tooltip from '@mui/material/Tooltip';
 import TasksNotFound from "../../../../../assets/empty-states/tasks-not-found.svg";
-import { NoBorder, Head, TableContainer, Table, Row, PriorityIcons } from './style';
+import { EmptyState, EmptyStateImg, EmptyStateTitle, Head, HeadCol, TableContainer, Table, TableBody, Row, Col, PriorityIcons } from './style';
 
 
 class TarefasTeste extends Component {
@@ -30,21 +28,21 @@ class TarefasTeste extends Component {
     changeIcon: false,
   }
   async componentDidMount() {
-      const pessoaPath = window.location.pathname;
-      
-      const response = await api.get(pessoaPath+'/tasks');
+    const pessoaPath = window.location.pathname;
 
-      this.setState({ tarefas: response.data });
+    const response = await api.get(pessoaPath + '/tasks');
+
+    this.setState({ tarefas: response.data });
   }
 
   Header = (props) => {
     const qtdTarefas = props.tarefas;
-    
+
     if (qtdTarefas !== null) {
-      var qtdTeste = qtdTarefas?.filter((tarefas) => tarefas.status === "Em Teste");  
+      var qtdTeste = qtdTarefas?.filter((tarefas) => tarefas.status === "Em Teste");
     }
 
-    if( qtdTarefas === null || qtdTeste.length === 0){
+    if (qtdTarefas === null || qtdTeste.length === 0) {
       return (
         <>
         </>
@@ -53,12 +51,12 @@ class TarefasTeste extends Component {
       return (
         <>
           <Head>
-            <th scope="col"></th>
-            <th scope="col">Nome</th>
-            <th scope="col">Prioridade</th>
-            <th scope="col">Tempo Restante</th>
-            <th scope="col">Início</th>
-            <th scope="col"></th>
+            <HeadCol scope="col"></HeadCol>
+            <HeadCol scope="col">Descrição</HeadCol>
+            <HeadCol scope="col">Prioridade</HeadCol>
+            <HeadCol scope="col">Prazo</HeadCol>
+            <HeadCol scope="col">Início</HeadCol>
+            <HeadCol scope="col"></HeadCol>
           </Head>
         </>
       )
@@ -69,158 +67,123 @@ class TarefasTeste extends Component {
     const qtdTarefas = props.tarefas;
 
     if (qtdTarefas !== null) {
-      var qtdTeste = qtdTarefas?.filter((tarefas) => tarefas.status === "Em Teste");  
+      var qtdTeste = qtdTarefas?.filter((tarefas) => tarefas.status === "Em Teste");
     }
 
-    const [openAlert, setOpenAlert] = React.useState(false);
-
-    const handleClose = (event, reason) => {
-      if (reason === 'clickaway') {
-        return;
-      }
-      setOpenSnackbar(false);
-    };
-    
     const handleCheck = (id) => {
-      console.log(id);
-      this.setState({tarefasId: id})
-      this.setState({openAlert: true})
+      //console.log(id);
+      this.setState({ tarefasId: id })
+      this.setState({ openAlert: true })
     }
 
-    const handleCloseAlert = () => {
-      setOpenAlert(false);
-    }
-
-    const [openSnackbar, setOpenSnackbar] = React.useState(false);
-
-    const handleClickSim = (id) => {
-      EditaTask(id);
-      setOpenSnackbar(true);
-      setOpenAlert(false);
-      this.setState({changeIcon: true});
-    };
-
-    const icon = (this.state.changeIcon === true) ? <TaskAltRoundedIcon sx={{color: "#F46E27"}} /> : <RadioButtonUncheckedIcon sx={{color: "#C2C3C6"}}/>;
+    const icon = (this.state.changeIcon === true) ? <TaskAltRoundedIcon sx={{ color: "#F46E27" }} /> : <RadioButtonUncheckedIcon sx={{ color: "#C2C3C6" }} />;
 
     function EditaTask(id) {
       api.put('/tasks/' + id + '/status', {
         status: "Concluido",
       })
-      .then(
-        setTimeout(() => {
-          window.location.reload()
-        }, 2500)
-      )
+        .then(
+          setTimeout(() => {
+            window.location.reload()
+          }, 2500)
+        )
     }
 
-    if( qtdTarefas === null || qtdTeste.length === 0){
-        return(
-          <>
-            <NoBorder>
-              <img src={TasksNotFound} />
-              <h5 style={{color: "#454756", textAlign: "center"}}>
-                Sem tarefas em teste.
-              </h5>
-            </NoBorder>
-          </>
-          
-        );
+    if (qtdTarefas === null || qtdTeste.length === 0) {
+      return (
+        <>
+          <EmptyState>
+            <EmptyStateImg src={TasksNotFound} />
+            <EmptyStateTitle>
+              Sem tarefas em teste.
+            </EmptyStateTitle>
+          </EmptyState>
+        </>
+
+      );
     } else {
-        function Prioridade(prioridade) {
-          if (prioridade === 0) {
-            return (
-              <Tooltip title='Baixa' arrow>
-                <PriorityIcons src={PrioridadeBaixa}/>
-              </Tooltip>
-            )
-          } else if (prioridade == 1) {
-            return (
-              <Tooltip title='Média' arrow>
-                <PriorityIcons src={PrioridadeMedia}/>
-              </Tooltip>
-            )
-          } else if (prioridade === 2) {
-            return (
-              <Tooltip title='Alta' arrow>
-                <PriorityIcons src={PrioridadeAlta}/>
-              </Tooltip>
-            )
-          }
+      function Prioridade(prioridade) {
+        if (prioridade === 0) {
+          return (
+            <Tooltip title='Baixa' arrow>
+              <PriorityIcons src={PrioridadeBaixa} />
+            </Tooltip>
+          )
+        } else if (prioridade == 1) {
+          return (
+            <Tooltip title='Média' arrow>
+              <PriorityIcons src={PrioridadeMedia} />
+            </Tooltip>
+          )
+        } else if (prioridade === 2) {
+          return (
+            <Tooltip title='Alta' arrow>
+              <PriorityIcons src={PrioridadeAlta} />
+            </Tooltip>
+          )
         }
+      }
 
-        function TempoRestante(prazo) {
-          const dataHojeFormatada = new Date();
+      function TempoRestante(prazo) {
+        const dataHojeFormatada = new Date();
 
-          const dataPrazoFormatada = new Date(prazo);
-          
-          if ((dataPrazoFormatada - dataHojeFormatada) <= 86400000 && (dataPrazoFormatada - dataHojeFormatada) > 0) {
-            return '1 dia';
-          } else if (dataPrazoFormatada < dataHojeFormatada) {
-            return 'Atraso'
-          } else {
-            const tempo = (dataPrazoFormatada - dataHojeFormatada) / 86400000;
-            return `${tempo.toFixed()} dias`;
-          }
+        const dataPrazoFormatada = new Date(prazo);
+
+        if ((dataPrazoFormatada - dataHojeFormatada) <= 86400000 && (dataPrazoFormatada - dataHojeFormatada) > 0) {
+          return '1 dia';
+        } else if (dataPrazoFormatada < dataHojeFormatada) {
+          return 'Atraso'
+        } else {
+          const tempo = (dataPrazoFormatada - dataHojeFormatada) / 86400000;
+          return `${tempo.toFixed()} dias`;
         }
+      }
 
-        function Inicio(inicio) {
-          const dataInicio = new Date(inicio);
-          const dataInicioFormatada = dataInicio.toLocaleDateString("pt-BR");
-          return dataInicioFormatada;
-        }
+      function Inicio(inicio) {
+        const dataInicio = new Date(inicio);
+        const dataInicioFormatada = dataInicio.toLocaleDateString("pt-BR");
+        return dataInicioFormatada;
+      }
 
-        var getId;
-        return (
-          props.tarefas?.map(t => 
-            {if (t.status === "Em Teste")
+      var getId;
+      return (
+        props.tarefas?.map(t => {
+          if (t.status === "Em Teste")
             return (
               <>
-                <Row id={t.id_task}>
-                  <td>
-                    <IconButton onClick={() => {handleCheck(t.id_task);}}>
+                <Row id={t.id_task} key={t.id_task}>
+                  <Col>
+                    <IconButton onClick={() => { handleCheck(t.id_task); }}>
                       {icon}
                     </IconButton>
-                  </td>
-                  <td>
+                  </Col>
+                  <Col>
                     {t.descricao_task}
-                  </td>
-                  <td>
+                  </Col>
+                  <Col>
                     {Prioridade(t.prioridade)}
-                  </td>
-                  <td>
-                    <AccessTimeIcon sx={{fontSize: '1.1rem', marginRight: '0.2rem'}} /> 
+                  </Col>
+                  <Col>
+                    <AccessTimeIcon sx={{ fontSize: '1.1rem', marginRight: '0.2rem' }} />
                     {TempoRestante(t.prazo_entrega)}
-                  </td>
-                  <td>
+                  </Col>
+                  <Col>
                     {Inicio(t.data_criacao)}
-                  </td>
-                  <td>
+                  </Col>
+                  <Col>
                     <TarefasMenu equipe_id={t.id_equipe} id_task={t.id_task} />
-                  </td>
+                  </Col>
                 </Row>
               </>
             )
-          }
+        }
         ));
     }
   }
 
   Alerta = () => {
-    const handleClose = (event, reason) => {
-      if (reason === 'clickaway') {
-        return;
-      }
-      setOpenSnackbar(false);
-    };
-
-    const handleCheck = (id) => {
-
-      this.setState({tarefasId: id})
-      this.setState({openAlert: true});
-    }
-
     const handleCloseAlert = () => {
-      this.setState({openAlert: false});
+      this.setState({ openAlert: false });
     }
 
     const [openSnackbar, setOpenSnackbar] = React.useState(false);
@@ -228,7 +191,7 @@ class TarefasTeste extends Component {
     const handleClickSim = (id) => {
       EditaTask(id);
       setOpenSnackbar(true);
-      this.setState({openAlert: false});
+      this.setState({ openAlert: false });
       console.log(this.state.tarefasId);
     };
 
@@ -236,51 +199,50 @@ class TarefasTeste extends Component {
       api.put('/tasks/' + id + '/status', {
         status: "Concluido",
       })
-      .then(
-        setTimeout(() => {
-          window.location.reload()
-        }, 2500)
-      )
+        .then(
+          setTimeout(() => {
+            window.location.reload()
+          }, 2500)
+        )
     }
 
-    return(
+    return (
       <>
         <Dialog
           open={this.state.openAlert}
-          //key={t.id_task}
           onClose={handleCloseAlert}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
           PaperProps={{
-              style: {
-                backgroundColor: '#494A58',
-                color: '#fff'
-              },
-            }}
-          >
-              <DialogTitle id="alert-dialog-title">
-              {"Marcar tarefa como concluída?"}
-              </DialogTitle>
-              
-              <DialogActions>
-              <Button onClick={handleCloseAlert}
+            style: {
+              backgroundColor: '#494A58',
+              color: '#fff'
+            },
+          }}
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Marcar tarefa como concluída?"}
+          </DialogTitle>
+
+          <DialogActions>
+            <Button onClick={handleCloseAlert}
               sx={{
-                  color: "#C2C3C6",
-                  opacity: 0.7
+                color: "#C2C3C6",
+                opacity: 0.7
               }}>Não</Button>
-              <Button autoFocus onClick={() => {handleClickSim(this.state.tarefasId);}} variant="contained"
+            <Button autoFocus onClick={() => { handleClickSim(this.state.tarefasId); }} variant="contained"
               sx={{
-                  color: "#FFF",
-                  backgroundColor: "#F57D3D",
-                  '&:hover': {
-                      backgroundColor: "#F46E27",
-                  }
+                color: "#FFF",
+                backgroundColor: "#F57D3D",
+                '&:hover': {
+                  backgroundColor: "#F46E27",
+                }
               }}>
-                  Sim
-              </Button>
-              </DialogActions>
-          </Dialog>
-          {openSnackbar === true ? <Alerta tipoAlerta="concluído" /> : <></>}
+              Sim
+            </Button>
+          </DialogActions>
+        </Dialog>
+        {openSnackbar === true ? <Alerta tipoAlerta="concluído" /> : <></>}
       </>
     )
   }
@@ -288,29 +250,15 @@ class TarefasTeste extends Component {
   render() {
     const { tarefas } = this.state;
 
-    var TableHeader = document.getElementsByClassName('TabelaTarefasHead');
-    
-    const scrollHandler = (event) => {
-      //var TableHeader = document.getElementsByClassName('TabelaTarefasHead');
-      //console.log(TableHeader);
-
-      let ScrollValue = event.currentTarget.scrollTop;
-      //console.log(ScrollValue);
-
-      if (ScrollValue < 4) {
-        //console.log(document.getElementsByClassName(".TabelaTarefasHead").remove("AddShadow"))
-      }
-    }
-
     return (
       <>
-        <TableContainer className='table-responsive' /*onScroll={scrollHandler}*/>
+        <TableContainer className='table-responsive'>
           <Table id='table' className="table align-middle text-center">
-            <tbody>
+            <TableBody>
               <this.Header tarefas={tarefas} />
               <this.ImprimeTarefas tarefas={tarefas} />
               <this.Alerta />
-            </tbody>
+            </TableBody>
           </Table>
         </TableContainer>
       </>

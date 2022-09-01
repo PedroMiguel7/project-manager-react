@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const NoBorder = styled.tr`
-    width: 100%;
-    height: 30vh;
-    border-bottom: 1px solid var(--preto-medio) !important;
-`;
-
 export const Head = styled.tr`
     position: -webkit-sticky;
     position: sticky;
@@ -13,6 +7,19 @@ export const Head = styled.tr`
     background-color: var(--preto-medio);
     z-index: 1;
     box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.25);
+    `;
+
+export const HeadCol = styled.th``;
+
+export const EmptyState = styled.tr`
+    border-bottom: 1px solid var(--preto-medio) !important;
+`;
+
+export const EmptyStateImg = styled.img``;
+
+export const EmptyStateTitle = styled.h5`
+    color: #454756;
+    text-align: center;
 `;
 
 export const TableContainer = styled.div`
@@ -44,11 +51,15 @@ export const Table = styled.table`
     width: 100%;
 `;
 
+export const TableBody = styled.tbody``;
+
 export const Row = styled.tr`
     color: white;
     height: 2rem;
     border-bottom: 1px solid var(--preto-claro) !important;
 `;
+
+export const Col = styled.td``;
 
 export const PriorityIcons = styled.img`
     width: 18px;

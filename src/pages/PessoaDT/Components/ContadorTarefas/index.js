@@ -39,7 +39,7 @@ class TarefasConcluidas extends Component {
                 <Tooltip title={(progressValue !== NaN) ? `${progressValue}%` : "0%" } arrow>
                     <ContadorContainer>
                         <ContadorTarefas>
-                            {Concluidas}/{TotalTarefas} Completas
+                            {Concluidas}/{TotalTarefas} completas
                         </ContadorTarefas>
                         <Progress className="progress">
                             <ProgressBar className="progress-bar" 
