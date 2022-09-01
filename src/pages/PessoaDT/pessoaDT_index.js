@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import api from "../../api";
 import aim from "../../assets/icons/aim.svg";
 import HeaderTarefas from "./Components/HeaderTarefas";
-import LinearChart from "../../components/LinearChart";
+import LinearChart from "./Components/LinearChart";
 import RendimentoSelect from "./Components/RendimentoSelect";
 import BackIcon from "../../assets/icons/back.svg";
-import TextField from "@mui/material/TextField";
-import { styled } from "@mui/material/styles";
 import EditaPessoa from "./Components/EditaPessoa";
 import AvatarTag from "./Components/AvatarTag";
 import {
@@ -25,49 +23,6 @@ import {
   TarefasPessoa,
 } from "./style";
 import ProfileSkeleton from "./Components/Skeleton";
-
-const CssTextField = styled(TextField)({
-  "& .MuiOutlinedInput-root": {
-    color: "#F4F5FA",
-    svg: { color: "#F4F5FA" },
-    "&.Mui-focused": {
-      borderColor: "#F4F5FA",
-      svg: { color: "#F57D3D" },
-    },
-    "& fieldset": {
-      borderColor: "#F4F5FA",
-      borderRadius: 5,
-    },
-    "&:hover fieldset": {
-      borderColor: "#C2C3C6",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#F46E27",
-    },
-    "& .MuiInputAdornment-root": {
-      color: "#87888C",
-    },
-  },
-  ".MuiInputLabel-outlined": {
-    color: "#F4F5FA",
-    "&.Mui-focused": {
-      color: "#F46E27",
-    },
-  },
-});
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "#21222D",
-  borderRadius: 2,
-  boxShadow: 24,
-  p: 5,
-  minWidth: "400px",
-  width: "25vw",
-};
 
 class PessoasDT extends Component {
   state = {
@@ -123,7 +78,6 @@ class PessoasDT extends Component {
     const { tarefas } = this.state;
     const { equipes } = this.state;
     const { rendimentoFilter } = this.state;
-    const { openEdit } = this.state;
 
     if (!pessoa.nome_pessoa) {
       document.title = "Pessoa";
@@ -145,43 +99,12 @@ class PessoasDT extends Component {
       }
     }
 
-    const handleClickEdit = () => {
-      this.setState({ openEdit: true });
-    };
-
-    const handleCloseEdit = () => {
-      this.setState({ openEdit: false });
-    };
-
-    const handleChangeEquipe = () => {};
-
-    const handleDelete = (id) => {
-      //this.setState({tarefasId: id})
-      this.setState({ openAlert: true });
-      this.setState({ openEdit: false });
-    };
-
-    var path = window.location.pathname;
-    /*function EditaPessoa() {
-            const updateStatus = async () => {
-              const response = await api.put(window.location.pathname, {
-                descricao_task: nome,
-                pessoa_id: parseInt(dadoEquipe),
-                prioridade: parseInt(prioridade),
-                projeto_id: projetoID
-              },[])
-              props.atualiza();
-              handleCloseEdit();
-            }
-            updateStatus()
-          }*/
-
     return (
       <>
-        <PageContainer /*className="col-11 offset-1 col-lg-11 offset-lg-1 col-sm-12 offset-sm-1"*/>
-          <ProfileContainer /*className="col-lg-3 col-md-12 col-sm-12"*/>
+        <PageContainer>
+          <ProfileContainer>
             <Back>
-              <Link to={"/pessoas"} /*className="mb-2 me-1"*/>
+              <Link to={"/pessoas"}>
                 <img src={BackIcon} style={{ width: 28 }} />
               </Link>
             </Back>
@@ -228,18 +151,17 @@ class PessoasDT extends Component {
             {/*<CustomizedAccordion />*/}
           </ProfileContainer>
 
-          <PessoaDashboard /*className="col-lg-8 col-md-12 col-sm-12"*/>
-            <Rendimento /*className="row"*/>
-              <RendimentoHeader /*className="col-12"*/>
+          <PessoaDashboard>
+            <Rendimento>
+              <RendimentoHeader>
                 <h5>Rendimento</h5>
                 <this.SelectRendimento />
               </RendimentoHeader>
-
               <ChartContainer>
-                <LinearChart selectValue={rendimentoFilter} />
+                <LinearChart selectValue={rendimentoFilter} tarefas={tarefas} />
               </ChartContainer>
             </Rendimento>
-            <TarefasPessoa /*className="row col-12 p-3 mt-3"*/>
+            <TarefasPessoa>
               <HeaderTarefas />
             </TarefasPessoa>
           </PessoaDashboard>
