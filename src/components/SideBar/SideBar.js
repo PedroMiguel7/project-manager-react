@@ -1,20 +1,31 @@
 import TemporaryDrawer from "./Drawer";
 import React, { useContext, useState } from 'react';
 import { useLocation } from "react-router-dom";
-import logo from '../../assets/logo.svg';
-import home from '../../assets/icons/home.svg';
-import homeActive from '../../assets/icons/home-active.svg';
-import project from '../../assets/icons/project.svg';
-import projectActive from '../../assets/icons/project-active.svg';
-import team from '../../assets/icons/team.svg';
-import teamActive from '../../assets/icons/team-active.svg';
-import person from '../../assets/icons/person.svg';
-import personActive from '../../assets/icons/person-active.svg';
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { useNavigate } from "react-router-dom";
 import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
 import { FixedNavContainer, Logo, Nav, NavItem, FixedNavLink, ItemName } from './style';
-import { ThemeContext } from 'styled-components';
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+
+// icons SVG
+import logo from '../../assets/logo.svg';
+import home from '../../assets/icons/home.svg';
+import project from '../../assets/icons/project.svg';
+import team from '../../assets/icons/team.svg';
+import person from '../../assets/icons/person.svg';
+
+//MODO DARK
+import homeActiveD from '../../assets/icons/home-active.svg';
+import projectActiveD from '../../assets/icons/project-active.svg';
+import teamActiveD from '../../assets/icons/team-active.svg';
+import personActiveD from '../../assets/icons/person-active.svg';
+
+//MODO LIGHT
+import homeActiveL from '../../assets/icons/ICONS lightThema/home-active.svg';
+import projectActiveL from '../../assets/icons/ICONS lightThema/project-active.svg';
+import teamActiveL from '../../assets/icons/ICONS lightThema/team-active.svg';
+import personActiveL from '../../assets/icons/ICONS lightThema/person-active.svg';
+
+
 
 function SideBar(props) {
     const navigate = useNavigate();
@@ -26,8 +37,29 @@ function SideBar(props) {
     let pathId = path.substring(path.lastIndexOf('/') + 1);
     const location = useLocation();
 
-
     const [mode, setMode] = useState('dark');
+
+    const [homeActive, setHomeActive] = useState(homeActiveD)
+    const [projectActive, setProjectActive] = useState(projectActiveD)
+    const [teamActive, setTeamActive] = useState(teamActiveD)
+    const [personActive, setPersonActive] = useState(personActiveD)
+
+    function MudaIcon() {
+        if (mode === 'light') {
+            setHomeActive(homeActiveD)
+            setProjectActive(projectActiveD)
+            setTeamActive(teamActiveD)
+            setPersonActive(personActiveD)
+        } else {
+            setHomeActive(homeActiveL)
+            setProjectActive(projectActiveL)
+            setTeamActive(teamActiveL)
+            setPersonActive(personActiveL)
+        }
+    }
+    console.log(mode)
+
+
 
     if (path === '/' | localStorage.getItem("token") === null) {
         return;
@@ -121,6 +153,7 @@ function SideBar(props) {
                                 activeThumbColor="#e2e8f0"
                                 onChange={(mode) => {
                                     setMode(mode)
+                                    MudaIcon(mode)
                                     props.toogleTema()
                                 }}
                             />

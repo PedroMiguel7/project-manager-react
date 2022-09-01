@@ -13,6 +13,9 @@ export const darkTheme = {
     corBotao:{
         color: '#F46E27',
     },
+    corPesquisa:{
+        color: '#21222D',
+    }
 }
 
 export const lightTheme = {
@@ -30,4 +33,7 @@ export const lightTheme = {
     corBotao:{
         color: '#3B97D9',
     },
+    corPesquisa:{
+        color: '#ABABAB',
+    }
 }
