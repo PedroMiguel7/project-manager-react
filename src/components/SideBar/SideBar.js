@@ -25,8 +25,6 @@ import projectActiveL from '../../assets/icons/ICONS lightThema/project-active.s
 import teamActiveL from '../../assets/icons/ICONS lightThema/team-active.svg';
 import personActiveL from '../../assets/icons/ICONS lightThema/person-active.svg';
 
-
-
 function SideBar(props) {
     const navigate = useNavigate();
     const signout = (e) => {
