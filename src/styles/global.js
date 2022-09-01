@@ -2,22 +2,22 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     :root {
-        --laranja: ${(props) => props.theme.corBotao.color};
+        --laranja: ${(props) => props.theme.Botao};
         --azul: #093D93;
         --branco: #F4F5FA;
-        --preto: ${(props) => props.theme.corFundo.color};
-        --preto-medio: ${(props) => props.theme.corComponente.color};
-        --preto-claro: ${(props) => props.theme.corComponente.color};
+        --preto: ${(props) => props.theme.Fundo};
+        --preto-medio: ${(props) => props.theme.Componente};
+        --preto-claro: ${(props) => props.theme.Componente};
         --cinza: #87888C;
         --azul-claro: #28AEF3;
         --divider: #2C2E3B;
-        --sideBar: ${(props) => props.theme.corSideBar.color};
+        --sideBar: ${(props) => props.theme.SideBar};
 
 
-        --corFundo:  ${(props) => props.theme.corFundo.color};
-        --componentes: ${(props) => props.theme.corComponente.color};
-        --textComponentes: ${(props) => props.theme.corComponente.textColor};
-        --corBotao: ${(props) => props.theme.corBotao.color};
+        --corFundo:  ${(props) => props.theme.Fundo};
+        --componentes: ${(props) => props.theme.Componente};
+        --textComponentes: {(props) => props.theme.Componente.textColor};
+        --corBotao: ${(props) => props.theme.Botao};
 
         --inter: 'Inter', sans-serif;
     }

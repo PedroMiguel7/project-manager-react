@@ -1,39 +1,17 @@
 export const darkTheme = {
     title: 'dark',
-    corFundo : {
-        color: '#171821',
-    },
-    corComponente:{
-        color: '#21222D',
-        textColor: '#C2C3C6',
-    },
-    corSideBar:{
-        color: '#191A23',
-    },
-    corBotao:{
-        color: '#F46E27',
-    },
-    corPesquisa:{
-        color: '#21222D',
-    }
+    Fundo :  '#171821',
+    Componente: '#21222D',
+    SideBar: '#191A23',
+    Botao: '#F46E27',
+    Pesquisa:'#21222D',
 }
 
 export const lightTheme = {
     title: 'light',
-    corFundo: {
-        color: '#F9F8F9',
-    },
-    corComponente:{
-        color: '#FFFFFF',
-        textColor: '#1E2233',
-    },
-    corSideBar:{
-        color: '#191A23',
-    },
-    corBotao:{
-        color: '#3B97D9',
-    },
-    corPesquisa:{
-        color: '#ABABAB',
-    }
+    Fundo: '#F9F8F9',
+    Componente: '#FFFFFF',
+    SideBar: '#191A23',
+    Botao: '#3B97D9',
+    Pesquisa: '#ABABAB',
 }

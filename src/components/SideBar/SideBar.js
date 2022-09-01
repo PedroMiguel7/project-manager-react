@@ -20,10 +20,10 @@ import teamActiveD from '../../assets/icons/team-active.svg';
 import personActiveD from '../../assets/icons/person-active.svg';
 
 //MODO LIGHT
-import homeActiveL from '../../assets/icons/ICONS lightThema/home-active.svg';
-import projectActiveL from '../../assets/icons/ICONS lightThema/project-active.svg';
-import teamActiveL from '../../assets/icons/ICONS lightThema/team-active.svg';
-import personActiveL from '../../assets/icons/ICONS lightThema/person-active.svg';
+import homeActiveL from '../../assets/icons/ICONS lightThema/home-activeL.svg';
+import projectActiveL from '../../assets/icons/ICONS lightThema/project-activeL.svg';
+import teamActiveL from '../../assets/icons/ICONS lightThema/team-activeL.svg';
+import personActiveL from '../../assets/icons/ICONS lightThema/person-activeL.svg';
 
 function SideBar(props) {
     const navigate = useNavigate();
