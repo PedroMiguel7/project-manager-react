@@ -14,7 +14,7 @@ export default function App() {
     const [ thema, setThema ] = useTema('theme', darkTheme)
 
     const toogleTema = () =>{
-        setThema(thema === 'light' ? lightTheme : darkTheme)
+        setThema(thema.title === 'light' ? darkTheme : lightTheme)
     }
 
     return (
