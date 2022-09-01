@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import Alerta from '../../Alerta';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import PrioridadeAlta from '../../../../../assets/icons/prioridade-alta.svg';
@@ -103,10 +104,12 @@ class TarefasAndamento extends Component {
 
     function EditaTask(id) {
       api.put('/tasks/' + id + '/status', {
-        status: "Concluido",
+        status: "Em Teste",
       })
       .then(
-        props.atualiza()
+        setTimeout(() => {
+          window.location.reload()
+        }, 2500) 
       )
     }
 
@@ -162,6 +165,7 @@ class TarefasAndamento extends Component {
 
         function Inicio(inicio) {
           const dataInicio = new Date(inicio);
+          dataInicio.setDate(dataInicio.getDate() + 1);
           const dataInicioFormatada = dataInicio.toLocaleDateString("pt-BR");
           return dataInicioFormatada;
         }
@@ -231,10 +235,12 @@ class TarefasAndamento extends Component {
 
     function EditaTask(id) {
       api.put('/tasks/' + id + '/status', {
-        status: "Concluido",
+        status: "Em Teste",
       })
       .then(
-        //props.atualiza()
+        setTimeout(() => {
+          window.location.reload()
+        }, 2500) 
       )
     }
 
@@ -254,7 +260,7 @@ class TarefasAndamento extends Component {
             }}
           >
               <DialogTitle id="alert-dialog-title">
-              {"Marcar tarefa como concluída?"}
+              {"Marcar tarefa como em teste?"}
               </DialogTitle>
               
               <DialogActions>
@@ -275,11 +281,7 @@ class TarefasAndamento extends Component {
               </Button>
               </DialogActions>
           </Dialog>
-          <Snackbar open={openSnackbar} autoHideDuration={2500} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
-            <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
-              Tarefa concluída!
-            </MuiAlert>
-        </Snackbar>
+          {openSnackbar === true ? <Alerta tipoAlerta="em teste" /> : <></>}
       </>
     )
   }

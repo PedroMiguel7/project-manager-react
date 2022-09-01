@@ -11,8 +11,9 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
+import Alerta from "../../Alerta";
 import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
+import Alert from '@mui/material/Alert';
 import PrioridadeAlta from "../../../../../assets/icons/prioridade-alta.svg";
 import PrioridadeMedia from "../../../../../assets/icons/prioridade-media.svg";
 import PrioridadeBaixa from "../../../../../assets/icons/prioridade-baixa.svg";
@@ -180,6 +181,7 @@ class TarefasFazer extends Component {
 
       function Inicio(inicio) {
         const dataInicio = new Date(inicio);
+        dataInicio.setDate(dataInicio.getDate() + 1);
         const dataInicioFormatada = dataInicio.toLocaleDateString("pt-BR");
         return dataInicioFormatada;
       }
@@ -253,15 +255,17 @@ class TarefasFazer extends Component {
             .replace("T", " ")
             .replace("Z", ""),
         })
-        .then
-        (window.location.reload());
+        .then ( 
+          setTimeout(() => {
+            window.location.reload()
+          }, 2500) 
+        );
     }
 
     return (
       <>
         <Dialog
           open={this.state.openAlert}
-          //key={t.id_task}
           onClose={handleCloseAlert}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
@@ -304,22 +308,23 @@ class TarefasFazer extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-        <Snackbar
+        {openSnackbar === true ? <Alerta tipoAlerta="em andamento" /> : <></>}
+        {/* <Snackbar
           open={openSnackbar}
           autoHideDuration={2500}
           onClose={handleClose}
           anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          <MuiAlert
+          <Alert
             onClose={handleClose}
             severity="success"
             elevation={6}
             variant="filled"
             sx={{ minWidth: "20vw" }}
           >
-            Tarefa concluída!
-          </MuiAlert>
-        </Snackbar>
+            A tarefa foi iniciada!
+          </Alert>
+        </Snackbar> */}
       </>
     );
   };

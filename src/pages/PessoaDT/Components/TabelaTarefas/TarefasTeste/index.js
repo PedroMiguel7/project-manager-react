@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import Alerta from '../../Alerta';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import PrioridadeAlta from '../../../../../assets/icons/prioridade-alta.svg';
@@ -106,7 +107,9 @@ class TarefasTeste extends Component {
         status: "Concluido",
       })
       .then(
-        props.atualiza()
+        setTimeout(() => {
+          window.location.reload()
+        }, 2500)
       )
     }
 
@@ -234,7 +237,9 @@ class TarefasTeste extends Component {
         status: "Concluido",
       })
       .then(
-        //props.atualiza()
+        setTimeout(() => {
+          window.location.reload()
+        }, 2500)
       )
     }
 
@@ -275,11 +280,7 @@ class TarefasTeste extends Component {
               </Button>
               </DialogActions>
           </Dialog>
-          <Snackbar open={openSnackbar} autoHideDuration={2500} onClose={handleClose} anchorOrigin={{vertical: 'top', horizontal: 'center',}}>
-            <MuiAlert onClose={handleClose} severity="success" elevation={6} variant="filled" sx={{ minWidth: '20vw' }}>
-              Tarefa concluída!
-            </MuiAlert>
-        </Snackbar>
+          {openSnackbar === true ? <Alerta tipoAlerta="concluído" /> : <></>}
       </>
     )
   }
