@@ -2,7 +2,6 @@ import React, { Component, useEffect, useState } from "react";
 import api from '../../api';
 import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ProgressoCircular from './Components/CircularProgress/index.js';
@@ -10,7 +9,6 @@ import ProjetosSelect from "./Components/ProjetosSelect";
 import TarefasSelect from "./Components/TarefasSelect";
 import ProgressoProjetos from "./Components/ProgressoProjetos";
 import BarChart from "./Components/BarChart/index.js";
-import MenuMembros from "./Components/MenuMembros";
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
@@ -26,53 +24,13 @@ import PeopleNotFound from '../../assets/empty-states/people-not-found.svg';
 import TasksNotFound from '../../assets/empty-states/tasks-not-found.svg';
 import { PageContainer, HeaderContainer, ContentContainer, FirstContentCol, SecondContentCol, MembrosContainer, MembrosUl, ProjetosContainer, HeaderProjetos, ProjetosUl, TarefasContainer, HeaderTarefas, TarefasUl, StatsCol, Top3, TarefasCircularProgress, ProjetosCircularProgress, TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa, EmptyStateContainer } from "./style";
 
-const CssTextField = styled(TextField)({
-    '& .MuiOutlinedInput-root': {
-        color: '#F4F5FA',
-        svg: { color: '#F4F5FA' },
-        '&.Mui-focused': {
-            borderColor: '#F4F5FA',
-            svg: { color: '#F57D3D' }
-        },
-        '& fieldset': {
-            borderColor: '#F4F5FA',
-            borderRadius: 5
-        },
-        '&:hover fieldset': {
-            borderColor: '#C2C3C6',
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: '#F46E27',
-        },
-        '& .MuiInputAdornment-root': {
-            color: '#87888C',
-        }
-    },
-    '.MuiInputLabel-outlined': {
-        color: '#F4F5FA',
-        '&.Mui-focused': {
-            color: '#F46E27',
-        },
-    },
-})
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: '#21222D',
-    borderRadius: 2,
-    boxShadow: 24,
-    p: 5,
-    minWidth: '400px',
-    width: '25vw'
-};
+import ImprimeMembros from "./Components/ImprimeMembros";
+import AddMembro from "./Components/AddMembros";
+import ImprimeTarefas from "./Components/ImprimeTarefas";
 
 class equipeDT_index extends Component {
     state = {
         equipe: [],
-        //PessoasEquipe: [],
         statusProjeto: 0,
         statusTarefa: 0,
     }
@@ -86,329 +44,12 @@ class equipeDT_index extends Component {
         });
     }
 
-    ImprimeMembros = (props) => {
-        if (props.PessoasEquipe === null) {
-            return (
-                <>
-                    <div className="EmptyStateContainer">
-                        <img src={PeopleNotFound} />
-                        <h5>
-                            Essa equipe ainda não possui membros.
-                        </h5>
-                    </div>
-                </>
-            );
-        } else {
-            let path = window.location.pathname;
-
-            function stringToHslColor(str, s, l) {
-                var hash = 0;
-                for (var i = 0; i < str.length; i++) {
-                    hash = str.charCodeAt(i) + ((hash << 5) - hash);
-                }
-
-                var h = hash % 360;
-                return 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
-            }
-
-            function stringAvatar(nome) {
-                if (nome.indexOf(' ') >= 0) {
-                    return (
-                        `${nome.split(' ')[0][0]}${nome.split(' ')[1][0]}`
-                    )
-                } else {
-                    return (
-                        `${nome.split(' ')[0][0]}`
-                    )
-                }
-            }
-
-            return (
-                props.PessoasEquipe?.map(p => (
-                    <li className="MembroLi d-flex justify-content-between align-items-center">
-                        <div className="d-flex align-items-center">
-                            <Avatar sx={{ bgcolor: `${stringToHslColor(p.nome_pessoa, 50, 70)}`, color: "#1E1F28" }}>
-                                {stringAvatar(p.nome_pessoa)}
-                            </Avatar>
-                            <div className="d-flex flex-column ms-2">
-                                <span>{p.nome_pessoa}</span>
-                                <span>{p.funcao_pessoa}</span>
-                            </div>
-                        </div>
-
-                        <div className="d-flex me-2">
-                            <MenuMembros id={p.id_pessoa} path={path} />
-
-                            {/*<a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>*/}
-                        </div>
-                    </li>
-                ))
-            );
-        }
-    }
-
-    AddMembro = () => {
-        const [openAdd, setOpenAdd] = React.useState(false);
-
-        const handleClickAdd = () => {
-            setOpenAdd(true);
-        };
-
-        const handleCloseAdd = () => {
-            setOpenAdd(false);
-            //setOpenAlert(false);
-            //setAnchorEl(null);
-        };
-
-        return (
-            <>
-                <li className="AddMembro d-flex align-items-center justify-content-center" onClick={handleClickAdd}>
-                    <AddCircleOutlineRoundedIcon sx={{ color: '#87888C' }} />
-                    <span style={{ color: '#87888C' }}>Adicionar um novo membro</span>
-                </li>
-
-                <Modal
-                    open={openAdd}
-                    onClose={handleCloseAdd}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Box sx={style}>
-                        <div className='d-flex align-items-center justify-content-between mb-4'>
-                            <div className='OcuparEspaco'></div>
-                            <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleCloseAdd} />
-                            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
-                                Adicionar<span style={{ color: '#F46E27' }}> Membro</span>
-                            </Typography>
-                        </div>
-
-                        <form /*onSubmit={EditaTask}*/>
-                            <Box sx={{ minWidth: 120 }}>
-                                <CssTextField
-                                    select
-                                    label="Pessoa"
-                                    fullWidth
-                                    margin="dense"
-                                    //value={dadoEquipe}
-                                    //={handleChangeAge}
-                                    SelectProps={{
-                                        MenuProps: {
-                                            PaperProps: {
-                                                style: {
-                                                    maxHeight: '23vh',
-                                                    backgroundColor: '#494A58',
-                                                    color: '#fff',
-                                                }
-                                            }
-                                        }
-                                    }}
-                                >
-                                    <MenuItem value={1} key={1}>Fulano</MenuItem>
-                                    <MenuItem value={2} key={2}>Fulana</MenuItem>
-                                    <MenuItem value={3} key={3}>Fulanin</MenuItem>
-                                </CssTextField>
-                            </Box>
-
-                            <Divider light className='mt-3' />
-                            <div className='d-flex justify-content-end mt-5'>
-                                <Button style={{
-                                    color: "#F4F5FA",
-                                    opacity: 0.5,
-                                    textTransform: 'capitalize'
-                                }}
-                                    variant="text" className='' onClick={handleCloseAdd}>Cancelar</Button>
-                                <Button style={{
-                                    color: "#F4F5FA",
-                                    background: "#F46E27",
-                                    textTransform: 'capitalize',
-                                    boxShadow: 'none'
-                                }}
-                                    variant="contained" type="submit" /*onClick={EditaTask}*/>Salvar</Button>
-                            </div>
-                        </form>
-                    </Box>
-                </Modal>
-            </>
-        )
-    }
-
     DeletaEquipe(id_equipe) {
         api.delete("/equipes/" + id_equipe)
     }
 
     handleCallbackTarefa = (childData) => {
         this.setState({ statusTarefa: childData })
-    }
-
-    ImprimeTarefas = (props) => {
-        let TarefasEquipe = props.equipe.tasks;
-        if (TarefasEquipe === null) {
-            return (
-                <>
-                    <EmptyStateContainer>
-                        <img src={TasksNotFound} />
-                        <h5>
-                            Essa equipe não possui tarefas.
-                        </h5>
-                    </EmptyStateContainer>
-                </>
-            );
-        } else {
-            function TempoRestante(prazo) {
-                const dataHojeFormatada = new Date();
-
-                const dataPrazoFormatada = new Date(prazo);
-
-                if ((dataPrazoFormatada - dataHojeFormatada) <= 86400000 && (dataPrazoFormatada - dataHojeFormatada) > 0) {
-                    return '1 dia';
-                } else if (dataPrazoFormatada < dataHojeFormatada) {
-                    return 'Atraso'
-                } else {
-                    const tempo = (dataPrazoFormatada - dataHojeFormatada) / 86400000;
-                    return `${tempo.toFixed()} dias`;
-                }
-            }
-
-            if (props.status === 1) {
-                const ToDo = TarefasEquipe?.filter((tarefas) => tarefas.status === "A Fazer");
-
-                if (ToDo.length === 0) {
-                    return (
-                        <li className="TarefasLi">
-                            <span>
-                                Sem Tarefas A Fazer
-                            </span>
-                        </li>
-                    )
-                } else {
-                    return (
-                        ToDo.map(t => (
-                            <TarefasLi>
-                                <StatusTarefa>
-                                    {t.status}
-                                </StatusTarefa>
-                                <NomeTarefa>
-                                    {t.descricao_task}
-                                </NomeTarefa>
-                                <PrazoTarefa>
-                                    <AccessTimeIcon sx={{ fontSize: '1rem', marginRight: '0.2rem' }} />
-                                    {TempoRestante(t.prazo_entrega)}
-                                </PrazoTarefa>
-                            </TarefasLi>
-                        ))
-                    )
-                }
-            } else if (props.status === 2) {
-                const OnGoing = TarefasEquipe?.filter((tarefas) => tarefas.status === "Em Andamento");
-
-                if (OnGoing.length === 0) {
-                    return (
-                        <li className="TarefasLi">
-                            <span>
-                                Sem Tarefas Em Andamento
-                            </span>
-                        </li>
-                    )
-                } else {
-                    return (
-                        OnGoing?.map(t => (
-                            <TarefasLi>
-                                <StatusTarefa>
-                                    {t.status}
-                                </StatusTarefa>
-                                <NomeTarefa>
-                                    {t.descricao_task}
-                                </NomeTarefa>
-                                <PrazoTarefa>
-                                    <AccessTimeIcon sx={{ fontSize: '1rem', marginRight: '0.2rem' }} />
-                                    {TempoRestante(t.prazo_entrega)}
-                                </PrazoTarefa>
-                            </TarefasLi>
-                        ))
-                    )
-                }
-            } else if (props.status === 3) {
-                const Testing = TarefasEquipe?.filter((tarefas) => tarefas.status === "Em Teste");
-
-                if (Testing.length === 0) {
-                    return (
-                        <li className="TarefasLi">
-                            <span>
-                                Sem Tarefas Em Teste
-                            </span>
-                        </li>
-                    )
-                } else {
-                    return (
-                        Testing?.map(t => (
-                            <TarefasLi>
-                                <StatusTarefa>
-                                    {t.status}
-                                </StatusTarefa>
-                                <NomeTarefa>
-                                    {t.descricao_task}
-                                </NomeTarefa>
-                                <PrazoTarefa>
-                                    <AccessTimeIcon sx={{ fontSize: '1rem', marginRight: '0.2rem' }} />
-                                    {TempoRestante(t.prazo_entrega)}
-                                </PrazoTarefa>
-                            </TarefasLi>
-                        ))
-                    )
-                }
-            } else if (props.status === 4) {
-                const Done = TarefasEquipe?.filter((tarefas) => tarefas.status === "Concluido");
-
-                function FormatarData(data) {
-                    let Data = new Date(data);
-                    return Data.toLocaleDateString("pt-BR");
-                }
-
-                if (Done.length === 0) {
-                    return (
-                        <li className="TarefasLi">
-                            <span>
-                                Sem Tarefas Concluidas
-                            </span>
-                        </li>
-                    )
-                } else {
-                    return (
-                        Done?.map(t => (
-                            <TarefasLi>
-                                <StatusTarefa>
-                                    {t.status}
-                                </StatusTarefa>
-                                <NomeTarefa>
-                                    {t.descricao_task}
-                                </NomeTarefa>
-                                <PrazoTarefa>
-                                    <CheckCircleRoundedIcon sx={{ fontSize: '1rem', marginRight: '0.2rem' }} />
-                                    {FormatarData(t.data_conclusao)}
-                                </PrazoTarefa>
-                            </TarefasLi>
-                        ))
-                    )
-                }
-            } else {
-                return (
-                    TarefasEquipe?.map(t => (
-                        <TarefasLi>
-                            <StatusTarefa>
-                                {t.status}
-                            </StatusTarefa>
-                            <NomeTarefa>
-                                {t.descricao_task}
-                            </NomeTarefa>
-                            <PrazoTarefa>
-                                <AccessTimeIcon sx={{ fontSize: '1rem', marginRight: '0.2rem' }} />
-                                {TempoRestante(t.prazo_entrega)}
-                            </PrazoTarefa>
-                        </TarefasLi>
-                    ))
-                );
-            }
-        }
     }
 
     handleCallbackTarefa = (childData) => {
@@ -707,10 +348,10 @@ class equipeDT_index extends Component {
         const tarefas = equipe?.tasks;
         const projetos = equipe?.projetos;
 
-        console.log(equipe); //pessoas
-        console.log(pessoas); //pessoas
-        console.log(tarefas); //tarefas
-        console.log(projetos); //projetos
+        // console.log(equipe);
+        // console.log(pessoas);
+        // console.log(tarefas);
+        // console.log(projetos);
 
         if (!equipe.nome_equipe) {
             document.title = "Equipe"
@@ -735,20 +376,20 @@ class equipeDT_index extends Component {
 
         return (
             <>
-                <PageContainer /*className='col-11 offset-1 col-lg-11 offset-lg-1'*/>
-                    <HeaderContainer /*className="row"*/>
+                <PageContainer>
+                    <HeaderContainer>
                         <HeaderDt link="/equipes" pagina="Equipe" titulo={equipe.nome_equipe} Status='' />
                     </HeaderContainer>
-                    <ContentContainer /*className="row gap-4"*/>
-                        <FirstContentCol /*className="col-lg-4 col-md-8"*/>
-                            <MembrosContainer /*className="row"*/>
+                    <ContentContainer>
+                        <FirstContentCol>
+                            <MembrosContainer>
                                 <h3>Membros</h3>
                                 <MembrosUl>
-                                    <this.ImprimeMembros PessoasEquipe={pessoas} />
-                                    <this.AddMembro />
+                                    <ImprimeMembros pessoas={pessoas} />
+                                    <AddMembro />
                                 </MembrosUl>
                             </MembrosContainer>
-                            <ProjetosContainer /*className="row"*/>
+                            <ProjetosContainer>
                                 <HeaderProjetos>
                                     <h3>Projetos</h3>
                                     <this.SelectStatusProjeto status={statusProjeto} />
@@ -758,29 +399,29 @@ class equipeDT_index extends Component {
                                 </ProjetosUl>
                             </ProjetosContainer>
                         </FirstContentCol>
-                        <SecondContentCol /*className="col-lg-4 col-md-8"*/>
+                        <SecondContentCol>
                             <TarefasContainer >
                                 <HeaderTarefas>
                                     <h3>Tarefas</h3>
                                     <this.SelectStatusTarefa status={statusTarefa} />
                                 </HeaderTarefas>
                                 <TarefasUl>
-                                    <this.ImprimeTarefas equipe={equipe} tarefas={tarefas} projetos={TarefasProjeto} status={statusTarefa} />
+                                    <ImprimeTarefas equipe={equipe} tarefas={tarefas} projetos={TarefasProjeto} status={statusTarefa} />
                                 </TarefasUl>
                             </TarefasContainer>
                         </SecondContentCol>
-                        <StatsCol /*className="col-lg-3 col-md-3"*/>
-                                <Top3 /*className="col-12"*/>
+                        <StatsCol>
+                                <Top3>
                                     <h6>Membros mais produtivos</h6>
                                     <p>Por tarefas concluídas</p>
                                     <this.ImprimeMembrosStats equipe={equipe} />
                                 </Top3>
-                                <TarefasCircularProgress /*className="col-12"*/>
+                                <TarefasCircularProgress>
                                     <h5>Tarefas</h5>
                                     <this.ImprimeTarefasStats equipe={equipe} />
                                 </TarefasCircularProgress>
 
-                                <ProjetosCircularProgress /*className="col-12"*/>
+                                <ProjetosCircularProgress>
                                     <h5>Projetos</h5>
                                     <this.ImprimeProjetosStats projetos={projetos} />
                                 </ProjetosCircularProgress>
