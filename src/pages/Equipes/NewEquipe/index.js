@@ -19,7 +19,7 @@ const CssTextField = styled(TextField)({
     svg: { color: '#F4F5FA' },
     '&.Mui-focused': {
       borderColor: '#F4F5FA',
-      svg: { color: '#F57D3D' }
+      svg: { color: 'var(--corBotao)' }
     },
     '& fieldset': {
       borderColor: '#F4F5FA',
@@ -29,13 +29,13 @@ const CssTextField = styled(TextField)({
       borderColor: '#C2C3C6',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#F46E27',
+      borderColor: 'var(--corBotao)',
     },
   },
   '.MuiInputLabel-outlined': {
     color: '#F4F5FA',
     '&.Mui-focused': {
-      color: '#F46E27',
+      color: 'var(--corBotao)',
     },
   },
 })
