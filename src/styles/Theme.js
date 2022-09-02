@@ -5,6 +5,7 @@ export const darkTheme = {
     TextComponente: '#c2c3c6',
     SideBar: '#191A23',
     Botao: '#F46E27',
+    BotaoInverso: '#3B97D9a9',
     Pesquisa:'#21222D',
     TextPesquisa: '#F4F5FA',
 }
@@ -16,6 +17,7 @@ export const lightTheme = {
     TextComponente: '#1E2233',
     SideBar: '#191A23',
     Botao: '#3B97D9',
+    BotaoInverso: '#F46E27',
     Pesquisa: '#E6E6E6',
     TextPesquisa: '#ABABAB',
 }

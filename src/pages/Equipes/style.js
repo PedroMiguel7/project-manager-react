@@ -134,10 +134,10 @@ export const Options = styled.div`
 
 export const OrderSelect = styled.button`
     height: 32px;
-    border: 1px solid var(--cinza);
+    border: 1px solid var(--corTextComponente);
     border-radius: 10px;
     background-color: transparent;
-    color: var(--cinza);
+    color: var(--corTextComponente);
     width: 5rem;
 `;
 
