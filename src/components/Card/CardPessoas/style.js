@@ -55,3 +55,20 @@ export const CardExtraInformations = styled.div`
     justify-content: space-evenly;
     font-size: 0.9rem;
 `;
+
+export const Tag = styled.div`
+    background-color: ${props => props.color || "#8D99AE"};
+    margin: auto;
+    border-radius: 5px;
+    padding: 5px 7px;
+    width: fit-content;
+    position: relative;
+    top: -25%;
+    font-size: 0.8rem;
+    opacity: 0.85;
+    transition: 0.5s;
+`;
+
+export const TagName = styled.span`
+    color: var(--preto);
+`;
