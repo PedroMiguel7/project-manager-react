@@ -109,7 +109,7 @@ export default function CardBaixoHome(props) {
             <>
                 <div className="d-flex justify-content-between align-items-center">
                     <div className='d-flex align-items-center gap-5'>
-                        <h5 className='m-0'>Projetos</h5>
+                        <h5 className='m-0' style={{ color: 'var(--corTextComponente)' }}>Projetos</h5>
                         {/*<StyledTabs className="mx-4" value={value} onChange={handleChange} aria-label="basic tabs" centered>
                                 <StyledTab className="StyledTab" label="Em Andamento" {...a11yProps(0)} />
                                 <StyledTab className="StyledTab" label="Concluídas" {...a11yProps(1)} />
@@ -121,7 +121,7 @@ export default function CardBaixoHome(props) {
                 </div>
 
                 <div className="TabelaTarefas table-responsive">
-                    <table className="table align-middle text-center " style={{ color: 'white' }}>
+                    <table className="table align-middle text-center " style={{ color: 'var(--corTextComponente)' }}>
                         <thead style={{ position: "sticky" }}>
                             <tr>
                                 {/*<th scope="col" onClick={e => handleOrder('id_projeto')} style={{ width: '10%', marginBottom: '40px' }}>#</th>*/}
@@ -143,7 +143,7 @@ export default function CardBaixoHome(props) {
                                     <td>{p.status}</td>
                                     <td className="d-flex"><Link to={'/projetos/' + p.id_projeto} className="text-reset text-decoration-none"><Button className=" md-4" style={{
                                         color: "#F4F5FA",
-                                        background: "#F46E27"
+                                        background: "var(--corBotao)"
                                     }}
                                         variant="contained" >DETALHAR</Button></Link>
                                     </td>

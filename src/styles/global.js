@@ -18,6 +18,7 @@ export default createGlobalStyle`
         --componentes: ${(props) => props.theme.Componente};
         --corTextComponente: ${(props) => props.theme.TextComponente};
         --corBotao: ${(props) => props.theme.Botao};
+        --corBotaoInverso: ${(props) => props.theme.BotaoInverso};
 
         --corPesquisa: ${(props) => props.theme.Pesquisa};
         --corTextPesquisa: ${(props) => props.theme.TextPesquisa};
