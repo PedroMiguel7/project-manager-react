@@ -3,40 +3,39 @@ import { Link } from "react-router-dom";
 import aim from '../../../assets/icons/aim.svg';
 import PeopleNotFound from '../../../assets/empty-states/people-not-found.svg';
 import MostraProjetosOuTarefas from "./MostraPrETa";
-import { CardContainer, CardInformations, CardTitle, TeamContainer, Aim, TeamName, CardExtraInformations } from "./style";
+import { CardContainer, CardInformations, CardTitle, TeamContainer, Aim, TeamName, CardExtraInformations, Tag, TagName } from "./style";
 
 export default function CardPessoas(props) {
-
     function MudarBackground(funcao) {
         if (funcao === "Front-End") {
             return (
-                <div className="CardPessoaTag" style={{ backgroundColor: '#B9B8D3', color: '' }}>
-                    <span className="">Front-End</span>
-                </div>
+                <Tag color="#A9DFD8">
+                    <TagName className="">Front-End</TagName>
+                </Tag>
             )
         } else if (funcao === "Back-End") {
             return (
-                <div className="CardPessoaTag" style={{ backgroundColor: '#E56B70', color: 'white' }}>
-                    <span className="">Back-End</span>
-                </div>
+                <Tag color="#F2C8ED">
+                    <TagName>Back-End</TagName>
+                </Tag>
             )
         } else if (funcao === "Gerente de Projeto") {
             return (
-                <div className="CardPessoaTag" style={{ backgroundColor: '#F4FDD9', color: '' }}>
-                    <span className="">Gerente de Projeto</span>
-                </div>
+                <Tag color="#A7CAFF">
+                    <TagName>Gerente de Projeto</TagName>
+                </Tag>
             )
         } else if (funcao === "Tester") {
             return (
-                <div className="CardPessoaTag" style={{ backgroundColor: '#A9DFD8', color: '' }}>
-                    <span className="">Tester</span>
-                </div>
+                <Tag color="#E7DF9B">
+                    <TagName>Tester</TagName>
+                </Tag>
             )
         } else {
             return (
-                <div className="CardPessoaTag" style={{ backgroundColor: '#8D99AE', color: 'white' }}>
-                    <span className="">Sem funcao</span>
-                </div>
+                <Tag>
+                    <TagName>Sem funcao</TagName>
+                </Tag>
             )
         }
     }
