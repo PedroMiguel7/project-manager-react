@@ -19,7 +19,7 @@ const CssTextField = styled(TextField)({
     svg: { color: "#F4F5FA" },
     "&.Mui-focused": {
       borderColor: "#F4F5FA",
-      svg: { color: "#F57D3D" },
+      svg: { color: "var(--corBotao)" },
     },
     "& fieldset": {
       borderColor: "#F4F5FA",
@@ -29,13 +29,13 @@ const CssTextField = styled(TextField)({
       borderColor: "#C2C3C6",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#F46E27",
+      borderColor: "var(--corBotao)",
     },
   },
   ".MuiInputLabel-outlined": {
     color: "#F4F5FA",
     "&.Mui-focused": {
-      color: "#F46E27",
+      color: "var(--corBotao)",
     },
   },
 });
@@ -106,7 +106,7 @@ export default function Signin() {
           component="h2"
           className="text-center order-1"
         >
-          LOG<span style={{ color: "#F46E27" }}>IN</span>
+          LOG<span style={{ color: "var(--corBotao)" }}>IN</span>
         </Typography>
       </div>
 
@@ -154,7 +154,7 @@ export default function Signin() {
           <Button
             style={{
               color: "#F4F5FA",
-              background: "#F46E27",
+              background: "var(--corBotao)",
               textTransform: "capitalize",
               boxShadow: "none",
             }}

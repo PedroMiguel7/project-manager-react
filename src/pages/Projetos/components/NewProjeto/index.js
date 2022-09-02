@@ -16,10 +16,10 @@ import { LogoNew } from '../../../../assets/icons/ICONS lightThema/icones';
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
-    svg: { color: '#F4F5FA' },
+    svg: { color: 'var(--corBotao)' },
     '&.Mui-focused': {
-      borderColor: '#F4F5FA',
-      svg: { color: '#F57D3D' }
+      borderColor: 'var(--corBotao)',
+      svg: { color: 'var(--corBotao)' }
     },
     '& fieldset': {
       borderColor: '#F4F5FA',
@@ -29,13 +29,13 @@ const CssTextField = styled(TextField)({
       borderColor: '#C2C3C6',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#F46E27',
+      borderColor: 'var(--corBotao)',
     },
   },
   '.MuiInputLabel-outlined': {
     color: '#F4F5FA',
     '&.Mui-focused': {
-      color: '#F46E27',
+      color: 'var(--corBotao)',
     },
   },
 })
