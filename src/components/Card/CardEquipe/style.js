@@ -2,17 +2,17 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const StyledLink = styled(Link)`
-    color: #C2C3C6;
+    color: var(--corTextComponente);
     text-decoration: none;
 
     &:hover {
-        color: #C2C3C6;
+        color: var(--corTextComponente);
         text-decoration: none;
     }
 `;
 
 export const CardContainer = styled.div`
-    background-color: #21222D;
+    background-color: var(--componentes);
     border-radius: 10px;
     padding: 2.7%;
     transition: all 0.3s ease-in-out;
@@ -41,7 +41,7 @@ export const ResumoContainer = styled.div`
 `;
 
 export const Resumo = styled.span`
-    color: #C2C3C6;
+    color: var(--corTextComponente);
 `;
 
 export const EmptyStateContainer = styled.div`
