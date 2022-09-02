@@ -1,13 +1,10 @@
 import PropTypes from 'prop-types';
-import {useState, useEffect} from 'react';
 import BackIcon from '../../assets/icons/back.svg';
-import { Link } from "react-router-dom";
+import { Container, PreviousPage, PreviousPageIcon, Title, Name, Status } from "./style";
 
-function HeaderDt({link, pagina, titulo, status, FUNC1, FUNC2}) {
-    
-    const [statusBg, mudarStatus] = useState();
+function HeaderDt({ link, pagina, titulo, status, FUNC1, FUNC2 }) {
     function setTag(sts) {
-        switch(sts) {
+        switch (sts) {
             case "Em Andamento":
                 return '#28aef3b3';
                 break;
@@ -20,39 +17,25 @@ function HeaderDt({link, pagina, titulo, status, FUNC1, FUNC2}) {
         }
     }
 
-    /*useEffect(() => {
-        const statusBg = window.document.getElementsByClassName('Status');
-
-        if (status === "Em andamento" || "Em Andamento") {
-            statusBg[0].style.background = '#28aef3b3';
-        } if (status === "Concluído" || "Concluido") {
-            statusBg[0].style.background = '#28f33cb3';
-        } if (status === "Cancelado") {
-            statusBg[0].style.background = '#898989b3'
-        }
-    })*/
-
     return (
         <>
-            <div className='row mt-5 pb-3 main-header'>
-                <div className="d-flex justify-content-between">
-                    <div className="d-flex align-items-center col-lg-4">
-                        <Link to={link} className="mb-2 me-1">
-                            <img src={BackIcon} style={{width: 28}} />
-                        </Link>
-                        <h1 className="TituloDt fs-2">{pagina} <span className="nomeProjeto">{titulo}</span></h1>
-                        <div className="Status ms-4 mb-2 px-2" style={{backgroundColor:setTag(status)}}>{status}</div>
-                    </div>
-                    <div>
-                        {FUNC1}
-                        {FUNC2}
-                    </div>         
-                </div>
-                
-                
-            </div>
+            <Container>
+                <PreviousPage to={link}>
+                    <PreviousPageIcon src={BackIcon} />
+                </PreviousPage>
+                <Title>{pagina}
+                    <Name> {titulo}</Name>
+                </Title>
+                <Status color={setTag(status)}>
+                    {status}
+                </Status>
+                {/* <div>
+                    {FUNC1}
+                    {FUNC2}
+                </div> */}
+            </Container>
         </>
-    
+
     )
 }
 
@@ -62,9 +45,9 @@ HeaderDt.protoTypes = {
     status: PropTypes.string,
 }
 
-HeaderDt.defaultProps = {
-    pagina: "Página",
-    titulo: "Título"
-}
+// HeaderDt.defaultProps = {
+//     pagina: "Página",
+//     titulo: "Título"
+// }
 
 export default HeaderDt

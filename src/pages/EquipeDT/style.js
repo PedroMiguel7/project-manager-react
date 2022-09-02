@@ -10,15 +10,15 @@ export const PageContainer = styled.main`
     grid-template-areas: ". header"
                         ". content";
 
-    /* @media (max-width: 992px) {
+    @media (max-width: 992px) {
         padding: 0 5%;
-        grid-template-columns: 11fr;
+        grid-template-rows: 10vh 165vh;
+        grid-template-columns: 1fr;
         grid-template-areas: "header"
-                            "options"
-                            "cards";
+                            "content";
     }
 
-    @media (max-width: 768px) {
+    /*@media (max-width: 768px) {
         grid-template-columns: 11fr;
         grid-template-areas: "header"
                             "options"
@@ -28,28 +28,36 @@ export const PageContainer = styled.main`
 
 export const HeaderContainer = styled.div`
     grid-area: header;
-    border: 1px solid red;
+    //border: 1px solid red;
 `;
 
 export const ContentContainer = styled.div`
-    border: 1px solid red;
+    //border: 1px solid red;
     grid-area: content;
     display: grid;
-    gap: 1%;
+    gap: 1.5%;
     grid-template-rows: 85vh;
-    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-columns: 3fr 3fr 2fr;
     grid-template-areas: "firstCol secondCol statsCol";
 
     @media (max-width: 992px) {
-        grid-template-rows: 130vh;
+        gap: 3%;
+        grid-template-rows: 100vh 60vh;
         grid-template-columns: 2fr 1fr;
         grid-template-areas: "firstCol statsCol"
                             "secondCol statsCol";
     }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-template-areas: "firstCol"
+                            "secondCol"
+                            "statsCol";
+    }
 `;
 
 export const FirstContentCol = styled.div`
-    border: 1px solid red;
+    //border: 1px solid red;
     grid-area: firstCol;
     display: grid;
     gap: 1.5%;
@@ -59,13 +67,14 @@ export const FirstContentCol = styled.div`
                         "projetos";
 
     @media (max-width: 992px) {
-        height: 40vh;
-        grid-template-rows: 100%;
+        gap: 5%;
+        //height: 40vh;
+        grid-template-rows: 39% 56%;
     }
 `;
 
 export const SecondContentCol = styled.div`
-    border: 1px solid red;
+    //border: 1px solid red;
     grid-area: secondCol;
     display: grid;
     gap: 1.5%;
@@ -73,10 +82,18 @@ export const SecondContentCol = styled.div`
     grid-template-rows: 40% 60%;
     grid-template-areas: "tarefas"
                         "tarefas";
+
+    @media (max-width: 992px) {
+        //margin-top: 3%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 100%;
+        grid-template-areas: "tarefas";
+    }
 `;
 
 export const StatsCol = styled.div`
-    border: 1px solid red;
+    //border: 1px solid red;
+    gap: 2%;
     grid-area: statsCol;
     display: grid;
     grid-template-columns: 1fr;
@@ -84,12 +101,15 @@ export const StatsCol = styled.div`
     grid-template-areas: "grafBar"
                         "grafProjetos"
                         "grafTarefas";
-    gap: 2%;
+
+    @media (max-width: 992px) {
+        grid-template-rows: 30% 33% 33%;
+    }
 `;
 
 export const MembrosContainer = styled.div`
     grid-area: membros;
-    border: 1px solid red;
+    //border: 1px solid red;
     height: 100%;
 `;
 
@@ -105,10 +125,10 @@ export const ProjetosContainer = styled.div`
     border-radius: 10px;
     grid-area: projetos;
     height: 100%;
-    border: 1px solid red;
+    //border: 1px solid red;
 
     @media (max-width: 992px){
-        height: 70%;
+        //height: 70%;
     }
 `;
 
@@ -124,9 +144,9 @@ export const HeaderProjetos = styled.div`
 export const ProjetosUl = styled.div`
     //max-height: 350px;
     overflow: auto;
-    height: 87%;
+    height: 85%;
     padding-left: 0;
-    border: 1px solid red;
+    //border: 1px solid red;
     margin: 0 1%;
 `;
 
@@ -135,10 +155,10 @@ export const TarefasContainer = styled.div`
     border-radius: 10px;
     grid-area: tarefas;
     height: 98.5%;
-    border: 1px solid red;
+    //border: 1px solid red;
 
     @media (max-width: 992px) {
-        height: 50%;
+        height: 100%;
     }
 `;
 
@@ -154,8 +174,12 @@ export const TarefasUl = styled.div`
     overflow: auto;
     padding-left: 0;
     height: 92%;
-    border: 1px solid red;
+    //border: 1px solid red;
     margin: 0 1%;
+
+    @media (max-width: 992px) {
+        height: 85%;
+    }
 `;
 
 export const Top3 = styled.div`
