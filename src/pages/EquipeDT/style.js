@@ -60,9 +60,9 @@ export const FirstContentCol = styled.div`
     //border: 1px solid red;
     grid-area: firstCol;
     display: grid;
-    gap: 1.5%;
+    gap: 3%;
     grid-template-columns: 1fr;
-    grid-template-rows: 44% 54.5%;
+    grid-template-rows: 44% 53%;
     grid-template-areas: "membros"
                         "projetos";
 
