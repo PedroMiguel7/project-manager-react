@@ -7,10 +7,15 @@ import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
-import NewProject from '../../../../assets/icons/new.svg';
 import { useState, useEffect } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../../../api"
+
+import useTema from '../../../../components/SideBar/Teminha';
+import { darkTheme, lightTheme } from '../../../../styles/Theme';
+import NewProjectD from '../../../../assets/icons/new.svg';
+import NewProjectL from '../../../../assets/icons/ICONS lightThema/newL.svg';
+
 
 
 const CssTextField = styled(TextField)({
@@ -53,7 +58,16 @@ const style = {
   width: '25vw'
 };
 
+
+
 export default function BasicModal(props) {
+  //const [ thema, setThema ] = useTema('theme', darkTheme)
+
+
+  const [ NewProject, setNewProject ] = useState(NewProjectD)
+
+
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {setOpen(false); setDadoEquipe()};

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const CardContainer = styled(Link)`
-    color: #C2C3C6;
+    color: var(--corTextComponente);
     text-decoration: none;
     background-color: var(--preto-medio);
     padding: 3%;
@@ -13,7 +13,7 @@ export const CardContainer = styled(Link)`
     transition: 0.5s;
 
     &:hover {
-        color: #C2C3C6;
+        color: var(--corTextComponente);
         text-decoration: none;
         transform: scale(1.015);
         transition: 0.3s;

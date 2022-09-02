@@ -78,7 +78,6 @@ export default function Cards(props) {
 
   } else {
     props.Projetos.reverse();
-
     return (
       props.Projetos?.map(p => (
         <CardContainer key={p.id_projeto}

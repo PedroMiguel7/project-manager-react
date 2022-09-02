@@ -16,9 +16,12 @@ export default createGlobalStyle`
 
         --corFundo:  ${(props) => props.theme.Fundo};
         --componentes: ${(props) => props.theme.Componente};
-        --textComponentes: {(props) => props.theme.Componente.textColor};
+        --corTextComponente: ${(props) => props.theme.TextComponente};
         --corBotao: ${(props) => props.theme.Botao};
 
+        --corPesquisa: ${(props) => props.theme.Pesquisa};
+        --corTextPesquisa: ${(props) => props.theme.TextPesquisa};
+        
         --inter: 'Inter', sans-serif;
     }
 

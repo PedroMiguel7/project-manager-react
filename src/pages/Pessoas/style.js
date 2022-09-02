@@ -74,8 +74,8 @@ export const Title = styled.h1`
 `;
 
 export const Search = styled.input`
-    background-color: var(--preto-medio);
-    color: var(--branco);
+    background-color: var(--corPesquisa);
+    color: var(--corTextPesquisa);
     border: none;
     //border:  1px solid red;
     height: 3rem;
