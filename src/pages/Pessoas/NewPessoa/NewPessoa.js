@@ -111,7 +111,7 @@ export default function BasicModalPessoa(props) {
             <div className='OcuparEspaco'></div>
             <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleClose} />
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
-              Adicionar<span style={{ color: '#F46E27' }}> Pessoa</span>
+              Adicionar<span style={{ color: 'var(--corBotao)' }}> Pessoa</span>
             </Typography>
           </div>
           <form onSubmit={FechaModal}>
@@ -198,7 +198,7 @@ export default function BasicModalPessoa(props) {
                 variant="text" className='' onClick={handleClose}>Cancelar</Button>
               <Button style={{
                 color: "#F4F5FA",
-                background: "#F46E27",
+                background: "var(--corBotao)",
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}

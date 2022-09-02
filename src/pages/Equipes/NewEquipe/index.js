@@ -87,7 +87,7 @@ export default function BasicModalEquipe(props) {
             <div className='OcuparEspaco'></div>
             <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleClose} />
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
-              Adicionar<span style={{ color: '#F46E27' }}> Equipe</span>
+              Adicionar<span style={{ color: 'var(--corBotao)' }}> Equipe</span>
             </Typography>
           </div>
 
@@ -113,7 +113,7 @@ export default function BasicModalEquipe(props) {
                 variant="text" className='' onClick={handleClose}>Cancelar</Button>
               <Button style={{
                 color: "#F4F5FA",
-                background: "#F46E27",
+                background: "var(--corBotao)",
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
