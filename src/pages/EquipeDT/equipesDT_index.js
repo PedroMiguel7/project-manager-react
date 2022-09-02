@@ -71,53 +71,19 @@ const style = {
 
 class equipeDT_index extends Component {
     state = {
-        projetos: [],
         equipe: [],
-        PessoasEquipe: [],
-        tarefas: [],
+        //PessoasEquipe: [],
         statusProjeto: 0,
         statusTarefa: 0,
     }
+
     async componentDidMount() {
         var equipePath = window.location.pathname;
-
-        const response = await api.get(equipePath + '/projetos');
-        const response2 = await api.get(equipePath + '/pessoas');
-        const response3 = await api.get(equipePath);
-        //const response4 = await api.get('/tasks/');
+        const response = await api.get(equipePath);
 
         this.setState({
-            projetos: response.data,
-            PessoasEquipe: response2.data,
-            equipe: response3.data,
-            //tarefas: response4.data,
+            equipe: response.data,
         });
-    }
-
-    BuscarMembros = (props) => {
-        const [pessoas, setPessoas] = useState([]);
-        const url = '/equipes/' + props.equipe_id + '/pessoas';
-        useEffect(() => {
-            const fetchEquipe = async () => {
-                try {
-                    const response2 = await api.get(url)
-                    setPessoas(response2.data)
-                } catch (error) {
-                    console.log(error);
-                    if (error.response.status === 401) {
-                        window.location.href = '/'
-                    }
-                }
-            }
-            fetchEquipe();
-        }, []);
-        let totalMembros = 0;
-        if (pessoas === null) {
-            totalMembros = pessoas.length;
-        }
-        return (
-            totalMembros
-        );
     }
 
     ImprimeMembros = (props) => {
@@ -705,16 +671,16 @@ class equipeDT_index extends Component {
             )
 
         } else {
-            var TotalProjetos = props.projetos.length;
+            var TotalProjetos = props.projetos?.length;
 
             const ProjetosFazer = props.projetos?.filter((projetos) => projetos.status === "A Fazer");
-            let QtdFazer = ProjetosFazer.length;
+            let QtdFazer = ProjetosFazer?.length;
 
             const ProjetosAndamento = props.projetos?.filter((projetos) => projetos.status === "Em Andamento");
-            let QtdAndamento = ProjetosAndamento.length;
+            let QtdAndamento = ProjetosAndamento?.length;
 
             const ProjetosConcluidos = props.projetos?.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
-            let QtdConcluidos = ProjetosConcluidos.length;
+            let QtdConcluidos = ProjetosConcluidos?.length;
 
             let PorcFazer = (QtdFazer / TotalProjetos) * 100;
 
@@ -733,10 +699,18 @@ class equipeDT_index extends Component {
     }
 
     render() {
-        const { projetos } = this.state;
         const { equipe } = this.state;
-        const { PessoasEquipe } = this.state;
-        const { tarefas } = this.state;
+        const { statusProjeto } = this.state;
+        const { statusTarefa } = this.state;
+        
+        const pessoas =  equipe?.pessoas;
+        const tarefas = equipe?.tasks;
+        const projetos = equipe?.projetos;
+
+        console.log(equipe); //pessoas
+        console.log(pessoas); //pessoas
+        console.log(tarefas); //tarefas
+        console.log(projetos); //projetos
 
         if (!equipe.nome_equipe) {
             document.title = "Equipe"
@@ -744,17 +718,11 @@ class equipeDT_index extends Component {
             document.title = `Equipe ${equipe.nome_equipe}`
         }
 
-        let TarefasEquipe = equipe.tasks;
-        console.log(TarefasEquipe);
-
-        const { statusProjeto } = this.state;
-        const { statusTarefa } = this.state;
-
         var TotalProjetos;
         if (projetos === null) {
             TotalProjetos = 0;
         } else {
-            TotalProjetos = projetos.length;
+            TotalProjetos = projetos?.length;
         }
 
         const TarefasProjeto = [];
@@ -763,6 +731,7 @@ class equipeDT_index extends Component {
                 TarefasProjeto.push(f.id_projeto)
             ))
         }
+        console.log(TarefasProjeto)
 
         return (
             <>
@@ -775,7 +744,7 @@ class equipeDT_index extends Component {
                             <MembrosContainer /*className="row"*/>
                                 <h3>Membros</h3>
                                 <MembrosUl>
-                                    <this.ImprimeMembros PessoasEquipe={PessoasEquipe} />
+                                    <this.ImprimeMembros PessoasEquipe={pessoas} />
                                     <this.AddMembro />
                                 </MembrosUl>
                             </MembrosContainer>
