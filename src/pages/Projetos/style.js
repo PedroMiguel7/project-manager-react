@@ -74,8 +74,8 @@ export const Title = styled.h1`
 `;
 
 export const Search = styled.input`
-    background-color: var(--preto-medio);
-    color: var(--branco);
+    background-color: var(--corPesquisa);
+    color: var(--corTextPesquisa);
     border: none;
     //border:  1px solid red;
     height: 3rem;
@@ -134,10 +134,10 @@ export const Options = styled.div`
 
 export const OrderSelect = styled.button`
     height: 32px;
-    border: 1px solid var(--cinza);
+    border: 1px solid var(--corTextComponente);
     border-radius: 10px;
     background-color: transparent;
-    color: var(--cinza);
+    color: var(--corTextComponente);
     width: 5rem;
 `;
 

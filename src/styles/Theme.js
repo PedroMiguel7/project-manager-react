@@ -2,16 +2,20 @@ export const darkTheme = {
     title: 'dark',
     Fundo :  '#171821',
     Componente: '#21222D',
+    TextComponente: '#c2c3c6',
     SideBar: '#191A23',
     Botao: '#F46E27',
     Pesquisa:'#21222D',
+    TextPesquisa: '#F4F5FA',
 }
 
 export const lightTheme = {
     title: 'light',
     Fundo: '#F9F8F9',
     Componente: '#FFFFFF',
+    TextComponente: '#1E2233',
     SideBar: '#191A23',
     Botao: '#3B97D9',
-    Pesquisa: '#ABABAB',
+    Pesquisa: '#E6E6E6',
+    TextPesquisa: '#ABABAB',
 }

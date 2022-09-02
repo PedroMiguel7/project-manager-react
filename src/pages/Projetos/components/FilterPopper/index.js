@@ -37,7 +37,7 @@ function FilterPopper(props) {
     const CheckboxStyle = styled(Checkbox)({
         color: "#C2C3C6",
         '&.Mui-checked': {
-            color: "#F46E27",
+            color: "var(--corBotao)",
         }
     })
 
@@ -106,7 +106,7 @@ function FilterPopper(props) {
             
             handleClose();
         } else {
-            props.SET('')
+            props.SET(projetos)
         }
     }
 
