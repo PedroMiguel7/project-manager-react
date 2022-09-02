@@ -10,21 +10,16 @@ import Divider from '@mui/material/Divider';
 import { useState, useEffect } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../../../api"
-
-import useTema from '../../../../components/SideBar/Teminha';
-import { darkTheme, lightTheme } from '../../../../styles/Theme';
-import NewProjectD from '../../../../assets/icons/new.svg';
-import NewProjectL from '../../../../assets/icons/ICONS lightThema/newL.svg';
-
+import { LogoNew } from '../../../../assets/icons/ICONS lightThema/icones';
 
 
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#F4F5FA',
-    svg: {color: '#F4F5FA'},
+    svg: { color: '#F4F5FA' },
     '&.Mui-focused': {
       borderColor: '#F4F5FA',
-      svg: {color: '#F57D3D'}
+      svg: { color: '#F57D3D' }
     },
     '& fieldset': {
       borderColor: '#F4F5FA',
@@ -40,7 +35,7 @@ const CssTextField = styled(TextField)({
   '.MuiInputLabel-outlined': {
     color: '#F4F5FA',
     '&.Mui-focused': {
-      color:'#F46E27',
+      color: '#F46E27',
     },
   },
 })
@@ -58,19 +53,14 @@ const style = {
   width: '25vw'
 };
 
-
-
 export default function BasicModal(props) {
   //const [ thema, setThema ] = useTema('theme', darkTheme)
-
-
-  const [ NewProject, setNewProject ] = useState(NewProjectD)
 
 
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => {setOpen(false); setDadoEquipe()};
+  const handleClose = () => { setOpen(false); setDadoEquipe() };
 
   /*function cadastrarProjeto(e) {
     e.preventDefault()
@@ -88,7 +78,7 @@ export default function BasicModal(props) {
         descricao_projeto: descricao,
         equipe_id: parseInt(dadoEquipe),
       })
-      props.atualiza()
+    props.atualiza()
   }
 
   function FechaModal() {
@@ -115,7 +105,7 @@ export default function BasicModal(props) {
 
   return (
     <div>
-      <button onClick={handleOpen} className="new-project "><img src={NewProject} alt="" /></button>
+      <button onClick={handleOpen} className="new-project "><LogoNew /></button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -130,7 +120,7 @@ export default function BasicModal(props) {
               Adicionar<span style={{ color: '#F46E27' }}> Projeto</span>
             </Typography>
           </div>
-          
+
           <form onSubmit={FechaModal}>
             <CssTextField
               required
@@ -144,7 +134,7 @@ export default function BasicModal(props) {
               fullWidth
               className='textField'
             />
-            
+
             <CssTextField
               //size="small"
               id="descricao"
@@ -159,33 +149,33 @@ export default function BasicModal(props) {
             />
 
             <Box sx={{ minWidth: 120 }}>
-                  <CssTextField 
-                  //size="small"
-                  select
-                  label="Equipe"
-                  fullWidth
-                  margin="dense"
-                  value={dadoEquipe}
-                  onChange={handleChangeAge}
-                  SelectProps={{
-                    MenuProps: {
-                      PaperProps: {
-                        style: {
-                          maxHeight: '23vh',
-                          backgroundColor: '#494A58',
-                          color: '#fff',
-                        }
+              <CssTextField
+                //size="small"
+                select
+                label="Equipe"
+                fullWidth
+                margin="dense"
+                value={dadoEquipe}
+                onChange={handleChangeAge}
+                SelectProps={{
+                  MenuProps: {
+                    PaperProps: {
+                      style: {
+                        maxHeight: '23vh',
+                        backgroundColor: '#494A58',
+                        color: '#fff',
                       }
                     }
-                  }}
-                  >
-                    
-                    {equipe?.map(p =>(
-                      <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
-                    )}
-                  </CssTextField>
+                  }
+                }}
+              >
+
+                {equipe?.map(p => (
+                  <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
+                )}
+              </CssTextField>
             </Box>
-            
+
             <Divider light className='mt-3' />
             <div className='d-flex justify-content-end mt-5'>
               <Button style={{

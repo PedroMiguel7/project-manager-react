@@ -29,6 +29,12 @@ export const Logo = styled.img`
     margin-bottom: 5rem;
 `;
 
+export const LogoL = styled.img`
+    max-width: 5rem;
+    margin-top: -3.8rem;
+    margin-bottom: 5rem;
+`;
+
 export const Nav = styled.ul`
     display: flex;
     flex-direction: column;

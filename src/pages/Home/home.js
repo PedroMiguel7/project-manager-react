@@ -1,4 +1,3 @@
-import Sidebar from "../../components/SideBar/SideBar";
 import AdicionarProjeto from '../Projetos/components/NewProjeto/index'
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
@@ -182,7 +181,7 @@ export default function Menu_index() {
         <div
           className="row d-flex justify-content-between flex-wrap"
         >
-          <div className="CardlateralesquerdoHome col-lg-6 col-md-12 mt-2 ms-3">
+          <div className="CardlateralesquerdoHome col-lg-5 col-md-12 mt-2 ms-3">
             <div className="row CardsContainer my-4 mt-4 d-flex">
               <Cards Projetos={projetos} atualiza={Atualizar} home={"home"} />
             </div>

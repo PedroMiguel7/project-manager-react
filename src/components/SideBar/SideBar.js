@@ -3,23 +3,24 @@ import React, { useContext, useState } from 'react';
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
-import { FixedNavContainer, Logo, Nav, NavItem, FixedNavLink, ItemName } from './style';
+import { FixedNavContainer, LogoL, Logo, Nav, NavItem, FixedNavLink, ItemName } from './style';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
 // icons SVG
-import logo from '../../assets/logo.svg';
 import home from '../../assets/icons/home.svg';
 import project from '../../assets/icons/project.svg';
 import team from '../../assets/icons/team.svg';
 import person from '../../assets/icons/person.svg';
 
 //MODO DARK
+import logoD from '../../assets/logo.svg';
 import homeActiveD from '../../assets/icons/home-active.svg';
 import projectActiveD from '../../assets/icons/project-active.svg';
 import teamActiveD from '../../assets/icons/team-active.svg';
 import personActiveD from '../../assets/icons/person-active.svg';
 
 //MODO LIGHT
+import logoL from '../../assets/icons/ICONS lightThema/logoLi.png';
 import homeActiveL from '../../assets/icons/ICONS lightThema/home-activeL.svg';
 import projectActiveL from '../../assets/icons/ICONS lightThema/project-activeL.svg';
 import teamActiveL from '../../assets/icons/ICONS lightThema/team-activeL.svg';
@@ -41,23 +42,26 @@ function SideBar(props) {
     const [projectActive, setProjectActive] = useState(projectActiveD)
     const [teamActive, setTeamActive] = useState(teamActiveD)
     const [personActive, setPersonActive] = useState(personActiveD)
+    const [logo, setLogo] = useState(logoD)
+    const [TipoLogo, setTipoLogo] = useState(Logo)
 
     function MudaIcon() {
         if (mode === 'light') {
+            setTipoLogo(Logo)
+            setLogo(logoD)
             setHomeActive(homeActiveD)
             setProjectActive(projectActiveD)
             setTeamActive(teamActiveD)
             setPersonActive(personActiveD)
         } else {
+            setTipoLogo(LogoL)
+            setLogo(logoL)
             setHomeActive(homeActiveL)
             setProjectActive(projectActiveL)
             setTeamActive(teamActiveL)
             setPersonActive(personActiveL)
         }
     }
-    console.log(mode)
-
-
 
     if (path === '/' | localStorage.getItem("token") === null) {
         return;
@@ -67,7 +71,7 @@ function SideBar(props) {
         <>
             <FixedNavContainer className="col-1 col-lg-1"
             >
-                <Logo src={logo} alt="" />
+                <TipoLogo src={logo} alt="" />
                 <Nav>
                     <NavItem>
                         <FixedNavLink to="/home" >

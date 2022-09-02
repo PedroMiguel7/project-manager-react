@@ -8,7 +8,7 @@ import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
-import NewProject from '../../../assets/icons/new.svg';
+import { LogoNew } from '../../../assets/icons/ICONS lightThema/icones';
 import { useState } from 'react';
 //import { PropaneSharp } from '@mui/icons-material';
 import api from "../../../api";
@@ -75,7 +75,7 @@ export default function BasicModalEquipe(props) {
 
   return (
     <div>
-      <button onClick={handleOpen} className="new-project "><img src={NewProject} alt="" /></button>
+      <button onClick={handleOpen} className="new-project "><LogoNew/></button>
       <Modal
         open={open}
         onClose={handleClose}
