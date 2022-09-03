@@ -38,11 +38,11 @@ function SideBar(props) {
 
     const [mode, setMode] = useState('dark');
 
-    const [homeActive, setHomeActive] = useState(homeActiveD)
-    const [projectActive, setProjectActive] = useState(projectActiveD)
-    const [teamActive, setTeamActive] = useState(teamActiveD)
-    const [personActive, setPersonActive] = useState(personActiveD)
-    const [logo, setLogo] = useState(logoD)
+    const [homeActive, setHomeActive] = useState(mode === 'dark' ? homeActiveD : homeActiveL)
+    const [projectActive, setProjectActive] = useState(mode === 'dark' ? projectActiveD : projectActiveL)
+    const [teamActive, setTeamActive] = useState(mode === 'dark' ? teamActiveD : teamActiveL)
+    const [personActive, setPersonActive] = useState(mode === 'dark' ? personActiveD : personActiveL)
+    const [logo, setLogo] = useState(mode === 'dark' ? logoD : logoL)
     const [TipoLogo, setTipoLogo] = useState(Logo)
 
     function MudaIcon() {

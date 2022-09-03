@@ -90,6 +90,7 @@ export default function Signin() {
       })
       .then((res) => {
         localStorage.setItem("token", JSON.stringify(res.data.token));
+        //localStorage.setItem('end', navigator.geolocation.getCurrentPosition(true))
         window.location.href = "/home";
       })
       .catch((err) => alert(err));
