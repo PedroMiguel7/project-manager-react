@@ -11,7 +11,7 @@ import useTema from "./components/SideBar/Teminha";
 import SideBar from './components/SideBar/SideBar';
 
 export default function App() {
-    const [ thema, setThema ] = useTema('theme', darkTheme)
+    const [ thema, setThema ] = useTema('theme', window.matchMedia && window.matchMedia('(prefers-color-scheme:light)').matches ? lightTheme : darkTheme)
 
     const toogleTema = () =>{
         setThema(thema.title === 'light' ? darkTheme : lightTheme)

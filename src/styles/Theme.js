@@ -1,5 +1,6 @@
 export const darkTheme = {
     title: 'dark',
+    Texto: '#F4F5FA',
     Fundo :  '#171821',
     Componente: '#21222D',
     TextComponente: '#c2c3c6',
@@ -12,6 +13,7 @@ export const darkTheme = {
 
 export const lightTheme = {
     title: 'light',
+    Texto: 'black',
     Fundo: '#F9F8F9',
     Componente: '#FFFFFF',
     TextComponente: '#1E2233',

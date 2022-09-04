@@ -22,6 +22,8 @@ export default createGlobalStyle`
 
         --corPesquisa: ${(props) => props.theme.Pesquisa};
         --corTextPesquisa: ${(props) => props.theme.TextPesquisa};
+
+        --corTexto: ${(props) => props.theme.Texto};
         
         --inter: 'Inter', sans-serif;
     }

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
 import { FixedNavContainer, LogoL, Logo, Nav, NavItem, FixedNavLink, ItemName } from './style';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import useTema from "./Teminha";
 
 // icons SVG
 import home from '../../assets/icons/home.svg';
@@ -36,7 +37,9 @@ function SideBar(props) {
     let pathId = path.substring(path.lastIndexOf('/') + 1);
     const location = useLocation();
 
-    const [mode, setMode] = useState('dark');
+    const [modeT] = localStorage.getItem('theme');
+    const [mode, setMode] = useState(modeT.title === 'light' ? 'light' : 'dark');
+    console.log(modeT)
 
     const [homeActive, setHomeActive] = useState(mode === 'dark' ? homeActiveD : homeActiveL)
     const [projectActive, setProjectActive] = useState(mode === 'dark' ? projectActiveD : projectActiveL)

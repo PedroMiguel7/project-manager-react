@@ -18,7 +18,7 @@ export const PreviousPageIcon = styled.img`
 
 export const Title = styled.h1`
     margin-top: 4px;
-    color: var(--branco);   
+    color: var(--corTexto);   
     font-size: 1.8rem;
 `;
 
