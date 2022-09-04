@@ -648,7 +648,7 @@ class ProjetoDT extends Component {
                 </div>
               </div>
               <div className="row col-3 TPtrello2 justify-content-between ms-1">
-                <h2>Estatísticas</h2>
+                <h2 style={{color:'var(--corTexto)'}}>Estatísticas</h2>
                 <div
                   className="row col-12 align-items-center"
                   style={{
@@ -670,7 +670,7 @@ class ProjetoDT extends Component {
                 <div
                   className="row"
                   style={{
-                    backgroundColor: "var(--preto-medio)",
+                    backgroundColor: "var(--componentes)",
                     borderRadius: "5%",
                     marginTop: "-px",
                     minHeight: "118px",
@@ -678,7 +678,7 @@ class ProjetoDT extends Component {
                     overflowY: "auto",
                   }}
                 >
-                  <div className="align-items-start mt-2 scroll">
+                  <div className="align-items-start mt-2 scroll" style={{color:'var(--corTexto)'}}>
                     <h5>Descrição</h5>
                     <p
                       style={{
@@ -695,13 +695,13 @@ class ProjetoDT extends Component {
                 <div
                   className="row align-items-end mt-2"
                   style={{
-                    backgroundColor: "var(--preto-medio)",
+                    backgroundColor: "var(--componentes)",
                     borderRadius: "5%",
                     minHeight: "211px",
                   }}
                 >
-                  <div className="container ">
-                    Equipe:
+                  <div className="container " style={{color:'var(--corTexto)'}}>
+                      Equipe:
                     <Link
                       to={"/equipes/" + p.equipe_id}
                       target="_blank"
@@ -724,7 +724,7 @@ class ProjetoDT extends Component {
                             <th scope="col"></th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody style={{color:'var(--corTexto)'}}>
                           <this.BuscarMembrosFunc equipe_id={p.equipe_id} />
                         </tbody>
                       </table>
