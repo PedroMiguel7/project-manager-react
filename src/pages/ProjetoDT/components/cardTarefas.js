@@ -16,17 +16,17 @@ export default function MostrarTarefasCard(props) {
                 style={{
                     cursor: "grab",
                     width: "14rem",
-                    backgroundColor: "var(--preto-medio)",
+                    backgroundColor: "var(--componentes)",
                     borderTop: "13px solid",
                     borderColor: props.prioridade === 0 ? "#49b675" : props.prioridade === 1 ? "#ffbf40" : props.prioridade === 2 ? "#ed5269" : "gray",
                     opacity: props.status === "Concluido" ? 0.6 : 1
                 }}>
                 <div className="card-body" style={{}}>
                     <div className="d-flex justify-content-between" style={{}}>
-                        <h5 className="card-title" style={{ color: "" }}>{props.descricao_task}</h5>
+                        <h5 className="card-title" style={{ color: "var(--corTexto)" }}>{props.descricao_task}</h5>
                         <TarefasMenu tarefa={props.tarefa} atualiza={props.atualiza} id_task={props.id_task} equipe_id={props.equipe_id} />
                     </div>
-                    <p className="card-text" style={{ color: "" }}>{props.nome_pessoa}</p>
+                    <p className="card-text" style={{ color: "var(--corTexto)" }}>{props.nome_pessoa}</p>
                 </div>
             </div>
         )
@@ -37,17 +37,17 @@ export default function MostrarTarefasCard(props) {
                 style={{
                     cursor: "grab",
                     width: "14rem",
-                    backgroundColor: "var(--preto-medio)",
+                    backgroundColor: "var(--componentes)",
                     borderTop: "13px solid",
                     borderColor: props.prioridade === 0 ? "#49b675" : props.prioridade === 1 ? "#ffbf40" : props.prioridade === 2 ? "#ed5269" : "gray",
                     opacity: props.status === "Concluido" ? 0.6 : 1
                 }}>
                 <div className="card-body" style={{}}>
                     <div className="d-flex justify-content-between" style={{}}>
-                        <h5 className="card-title" style={{ color: "" }}>{props.descricao_task}</h5>
+                        <h5 className="card-title" style={{ color: "var(--corTexto)" }}>{props.descricao_task}</h5>
                         <div></div>
                     </div>
-                    <p className="card-text" style={{ color: "" }}>{props.nome_pessoa}</p>
+                    <p className="card-text" style={{ color: "var(--corTexto)" }}>{props.nome_pessoa}</p>
                 </div>
             </div>
         )

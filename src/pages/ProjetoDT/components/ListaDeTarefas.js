@@ -24,7 +24,7 @@ export default function MostrarLIstaTarefas(props) {
         return (
             <>
                 <div className='d-flex text-center mt-2 justify-content-center'>
-                    <h4 className="text-center">{props.status}</h4>
+                    <h4 className="text-center" style={{color:'var(--corTexto)'}}>{props.status}</h4>
                     <div className='ms-2'>
                         <BasicModalTarefa ProjetoStatus={props.statusṔrojeto} id_projeto={props.id_projeto} equipe_id={props.equipe_id} atualiza={props.atualiza} />
                     </div>
@@ -42,7 +42,7 @@ export default function MostrarLIstaTarefas(props) {
     else{
         return (
             <>
-                <h4 className="text-center mt-2">{props.status}</h4>
+                <h4 className="text-center mt-2" style={{color:'var(--corTexto)'}}>{props.status}</h4>
                 <div ref={dropRef} className="scroll d-flex flex-column align-items-center" style={{ overflowY:'auto', height: "745px" }}>
                     {
                         props.tarefas?.map(p => (

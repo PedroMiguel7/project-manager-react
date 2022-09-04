@@ -18,7 +18,7 @@ const CssTextField = styled(TextField)({
       svg: {color: '#F4F5FA'},
       '&.Mui-focused': {
         borderColor: '#F4F5FA',
-        svg: {color: '#F57D3D'}
+        svg: {color: 'var(--corBotao)'}
       },
       '& fieldset': {
         borderColor: '#F4F5FA',
@@ -28,7 +28,7 @@ const CssTextField = styled(TextField)({
         borderColor: '#C2C3C6',
       },
       '&.Mui-focused fieldset': {
-        borderColor: '#F46E27',
+        borderColor: 'var(--corBotao)',
       },
       '& .MuiInputAdornment-root': {
       color: '#87888C',
@@ -37,7 +37,7 @@ const CssTextField = styled(TextField)({
     '.MuiInputLabel-outlined': {
       color: '#F4F5FA',
       '&.Mui-focused': {
-        color:'#F46E27',
+        color:'var(--corBotao)',
       },
     },
 })
@@ -123,12 +123,12 @@ export default function BasicModalTarefa(props) {
             sx={{
             minWidth: 'none',
             color: "#F4F5FA",
-            background: "#F46E27",
+            background: "var(--corBotao)",
             textTransform: 'capitalize',
             boxShadow: 'none',
             borderRadius: '25%',
             ':hover': {
-                background: "#F57D3D",
+                background: "var(--corBotao)",
             }}}>
                 +
             </Button>
@@ -143,7 +143,7 @@ export default function BasicModalTarefa(props) {
                         <div className='OcuparEspaco'></div>
                         <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleClose} />
                         <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
-                        Adicionar<span style={{ color: '#F46E27' }}> Tarefa</span>
+                        Adicionar<span style={{ color: 'var(--corBotao)' }}> Tarefa</span>
                         </Typography>
                     </div>
                     <form onSubmit={FechaModal}>
@@ -240,7 +240,7 @@ export default function BasicModalTarefa(props) {
                                 variant="text" className='' onClick={handleClose}>Cancelar</Button>
                             <Button style={{
                                 color: "#F4F5FA",
-                                background: "#F46E27",
+                                background: "var(--corBotao)",
                                 textTransform: 'capitalize',
                                 boxShadow: 'none'
                             }}
