@@ -47,20 +47,20 @@ export default function CardPessoas(props) {
                     <CardContainer to={'/pessoas/' + p.id_pessoa}>
                         {MudarBackground(p.funcao_pessoa)}
                         <CardInformations key={p.id_pessoa}>
-                            <CardTitle>{p.nome_pessoa}</CardTitle>
+                            <CardTitle style={{color:'var(--corTextComponente)'}}>{p.nome_pessoa}</CardTitle>
 
                             <TeamContainer>
-                                <Aim src={aim} alt="" /> <TeamName>{p.nome_equipe}</TeamName>
+                                <Aim src={aim} alt="" /> <TeamName style={{color:'var(--corTextComponente)'}}>{p.nome_equipe}</TeamName>
                             </TeamContainer>
                         </CardInformations>
                         <CardExtraInformations>
                             <div>
-                                <div><MostraProjetosOuTarefas PRouTA={1} equipe_id={p.equipe_id} /></div>
-                                <div>Projetos</div>
+                                <div style={{color:'var(--corTextComponente)'}}><MostraProjetosOuTarefas PRouTA={1} equipe_id={p.equipe_id} /></div>
+                                <div style={{color:'var(--corTextComponente)'}}>Projetos</div>
                             </div>
                             <div>
-                                <div><MostraProjetosOuTarefas PRouTA={2} id_pessoa={p.id_pessoa} /></div>
-                                <div>Tarefas</div>
+                                <div style={{color:'var(--corTextComponente)'}}><MostraProjetosOuTarefas PRouTA={2} id_pessoa={p.id_pessoa} /></div>
+                                <div style={{color:'var(--corTextComponente)'}}>Tarefas</div>
                             </div>
                         </CardExtraInformations>
                     </CardContainer>
