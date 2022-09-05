@@ -40,7 +40,7 @@ export const TeamContainer = styled.div`
     gap: 1%;
 
     span {
-        font-size: 0.85rem;
+        font-size: 0.93rem;
     }
 `;
 

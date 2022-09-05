@@ -5,9 +5,12 @@ import EditaEquipe from "../CardEquipe/EdiçãoEquipe/EditaEquipe";
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import { CardContainer, Header, NomeEquipe, ResumoContainer, Resumo, EmptyStateContainer, StyledLink } from "./style";
+import CardSkeleton from "./Skeleton";
 
 export default function CardEquipe(props) {
-    if (props.equipes.lenght !== 0) {
+    console.log(props.equipes);
+    console.log(props.equipes.length);
+    if (props.equipes.length !== 0) {
         function stringToHslColor(str, s, l) {
             var hash = 0;
             for (var i = 0; i < str.length; i++) {
@@ -31,6 +34,8 @@ export default function CardEquipe(props) {
         }
 
         //console.table(props.equipes);
+        const equipes = props.equipes;
+        console.log(equipes)
         return (
             <>
                 {props.equipes?.map(p => (
@@ -44,7 +49,7 @@ export default function CardEquipe(props) {
                             </Header>
                             <ResumoContainer>
                                 <Resumo>
-                                    {p.pessoas !== null ? p.pessoas.length : 0} membros, 1 projetos ativos
+                                    {p.pessoas !== null ? p.pessoas.length : 0} membros, {p.pessoas !== null ? p.projetos_ativos : 0} projetos ativos
                                 </Resumo>
                                 <AvatarGroup max={4}
                                     sx={{
@@ -67,16 +72,22 @@ export default function CardEquipe(props) {
                 ))}
             </>
         )
-    } else if (props.equipes.lenght === 0) {
+    } else if (props.equipes.length === 0) {
         console.log(`Ta sem nada: ${props.equipes.lenght}`)
         return (
             <>
-                <EmptyStateContainer>
-                    <img src={TeamNotFound} />
-                    <h5>
-                        Ainda não foi criada nenhuma equipe.
-                    </h5>
-                </EmptyStateContainer>
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
             </>
         )
     }

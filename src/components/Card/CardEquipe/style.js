@@ -24,14 +24,21 @@ export const CardContainer = styled.div`
     }
 `;
 
-export const Header = styled.h2`
+export const Header = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
 `;
 
 export const NomeEquipe = styled.span`
-
+    color: var(--corTextComponente);
+    font-size: 1.5rem;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 `;
 
 export const ResumoContainer = styled.div`
@@ -42,6 +49,7 @@ export const ResumoContainer = styled.div`
 
 export const Resumo = styled.span`
     color: var(--corTextComponente);
+    font-size: 0.93rem;
 `;
 
 export const EmptyStateContainer = styled.div`
