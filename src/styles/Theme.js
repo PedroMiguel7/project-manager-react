@@ -14,7 +14,7 @@ export const darkTheme = {
 export const lightTheme = {
     title: 'light',
     Texto: 'black',
-    Fundo: '#F9F8F9',
+    Fundo: '#e7eef5',
     Componente: '#FFFFFF',
     TextComponente: '#1E2233',
     SideBar: '#191A23',
