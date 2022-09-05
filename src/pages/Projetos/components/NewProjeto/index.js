@@ -105,7 +105,7 @@ export default function BasicModal(props) {
 
   return (
     <div>
-      <button onClick={handleOpen} className="new-project "><LogoNew /></button>
+      <button id='adiciona_projeto' onClick={handleOpen} className="new-project "><LogoNew /></button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -151,6 +151,7 @@ export default function BasicModal(props) {
             <Box sx={{ minWidth: 120 }}>
               <CssTextField
                 //size="small"
+                id='selecionaEquipe'
                 select
                 label="Equipe"
                 fullWidth
@@ -171,7 +172,7 @@ export default function BasicModal(props) {
               >
 
                 {equipe?.map(p => (
-                  <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
+                  <MenuItem id='escolheEquipe' value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
                 )}
               </CssTextField>
             </Box>
@@ -190,6 +191,7 @@ export default function BasicModal(props) {
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
+                id='postaProjeto'
                 variant="contained" type="submit" onClick={PostaProjeto}>Salvar</Button>
             </div>
           </form>
