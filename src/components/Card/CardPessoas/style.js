@@ -70,5 +70,5 @@ export const Tag = styled.div`
 `;
 
 export const TagName = styled.span`
-    color: var(--preto);
+    color: black;
 `;

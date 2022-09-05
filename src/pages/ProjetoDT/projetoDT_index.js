@@ -666,7 +666,7 @@ class ProjetoDT extends Component {
                     CONCLUIDAS={TotalTaksConcluidas}
                   />
                 </div>
-                <h3 className="mt-3">Info-Gerais</h3>
+                <h3 className="mt-3" style={{color: 'var(--corTexto)'}}>Info-Gerais</h3>
                 <div
                   className="row"
                   style={{
