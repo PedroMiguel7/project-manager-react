@@ -4,6 +4,7 @@ import PeopleNotFound from '../../../assets/empty-states/people-not-found.svg';
 import { Aaim } from "../../../assets/icons/ICONS lightThema/icones";
 import MostraProjetosOuTarefas from "./MostraPrETa";
 import { CardContainer, CardInformations, CardTitle, TeamContainer, TeamName, CardExtraInformations, Tag, TagName } from "./style";
+import CardSkeleton from "./Skeleton";
 
 export default function CardPessoas(props) {
     function MudarBackground(funcao) {
@@ -40,7 +41,8 @@ export default function CardPessoas(props) {
         }
     }
 
-    if (props.Pessoas !== null) {
+    console.log(props.Pessoas.length)
+    if (props.Pessoas.length !== 0) {
         return (
             <>
                 {props.Pessoas?.map(p => (
@@ -67,15 +69,21 @@ export default function CardPessoas(props) {
                 ))}
             </>
         )
-    } else {
+    } else if (props.Pessoas.length === 0){
         return (
             <>
-                <div className="EmptyStateContainer">
-                    <img src={PeopleNotFound} />
-                    <h5>
-                        Ainda não foram adicionadas pessoas.
-                    </h5>
-                </div>
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
             </>
         )
     }

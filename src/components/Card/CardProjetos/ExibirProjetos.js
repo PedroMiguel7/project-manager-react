@@ -8,6 +8,7 @@ import CardSkeleton from "./Skeleton";
 import { CardContainer, CardInformations, CardHeader, CardTitle, CardDescription, TeamContainer, Aim, TeamName, CardExtraInformations, ProgressContainer, ProgressPercentContainer, StatusContainer, Status } from "./style";
 
 export default function Cards(props) {
+  console.log(props.Projetos.length);
   if (props.Projetos === null) {
     return (
       <>

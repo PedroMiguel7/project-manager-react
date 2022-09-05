@@ -32,10 +32,16 @@ export const CardHeader = styled.div`
 
 export const CardTitle = styled.h2`
     font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 `;
 
 export const CardDescription = styled.p`
     overflow: hidden;
+    text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
