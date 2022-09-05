@@ -123,7 +123,7 @@ export const ChartContainer = styled.div`
 
 export const TarefasPessoa = styled.div`
     padding: 1% 1.5%;
-    background-color: var(--preto-medio);
+    background-color: var(--corFundo);
     border-radius: 10px;
     gap: 2rem;
     box-shadow: 0px 2px 12px 5px rgb(0, 0, 0, 0.08);

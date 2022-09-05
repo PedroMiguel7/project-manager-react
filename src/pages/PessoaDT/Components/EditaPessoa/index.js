@@ -30,7 +30,7 @@ const CssTextField = styled(TextField)({
         svg: { color: '#F4F5FA' },
         '&.Mui-focused': {
             borderColor: '#F4F5FA',
-            svg: { color: '#F57D3D' }
+            svg: { color: 'var(--corBotao)'}
         },
         '& fieldset': {
             borderColor: '#F4F5FA',
@@ -40,7 +40,7 @@ const CssTextField = styled(TextField)({
             borderColor: '#C2C3C6',
         },
         '&.Mui-focused fieldset': {
-            borderColor: '#F46E27',
+            borderColor: 'var(--corBotao)',
         },
         '& .MuiInputAdornment-root': {
             color: '#87888C',
@@ -49,7 +49,7 @@ const CssTextField = styled(TextField)({
     '.MuiInputLabel-outlined': {
         color: '#F4F5FA',
         '&.Mui-focused': {
-            color: '#F46E27',
+            color: 'var(--corBotao)',
         },
     },
 })
@@ -156,7 +156,7 @@ export default function EditaPessoa(props) {
                         <div className='OcuparEspaco'></div>
                         <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleCloseEdit} />
                         <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
-                            Editar<span style={{ color: '#F46E27' }}> Pessoa</span>
+                            Editar<span style={{ color: 'var(--corBotao)' }}> Pessoa</span>
                         </Typography>
                     </div>
                     <form /*onSubmit={EditaPessoa}*/>
@@ -251,7 +251,7 @@ export default function EditaPessoa(props) {
                                 </Button>
                                 <Button style={{
                                     color: "#F4F5FA",
-                                    background: "#F46E27",
+                                    background: "var(--corBotao)",
                                     textTransform: 'capitalize',
                                     boxShadow: 'none'
                                 }}
