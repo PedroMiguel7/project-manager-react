@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 export const Head = styled.tr`
     position: -webkit-sticky;
@@ -64,4 +66,25 @@ export const Col = styled.td``;
 export const PriorityIcons = styled.img`
     width: 18px;
     height: 18px;
+`;
+
+//Spinner
+export const SpinnerBox = styled(Box)`
+    height: 29vh;
+    background-color: hsla(234, 17%, 12%, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+`;
+
+export const Spinner = styled(CircularProgress)`
+    .MuiCircularProgress-circle {
+        color: #F46E27;
+    }
+`;
+
+export const LoadingMessage = styled.p`
+    color: #40404F;
 `;

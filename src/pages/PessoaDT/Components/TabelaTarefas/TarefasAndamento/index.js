@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Component } from "react";
 import api from '../../../../../api';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import TarefasMenu from '../../TarefasMenu';
 import IconButton from '@mui/material/IconButton';
@@ -16,7 +18,7 @@ import PrioridadeMedia from '../../../../../assets/icons/prioridade-media.svg';
 import PrioridadeBaixa from '../../../../../assets/icons/prioridade-baixa.svg';
 import Tooltip from '@mui/material/Tooltip';
 import TasksNotFound from "../../../../../assets/empty-states/tasks-not-found.svg";
-import { EmptyState, EmptyStateImg, EmptyStateTitle, Head, HeadCol, TableContainer, Table, TableBody, Row, Col, PriorityIcons } from './style';
+import { EmptyState, EmptyStateImg, EmptyStateTitle, Head, HeadCol, TableContainer, Table, TableBody, Row, Col, PriorityIcons, SpinnerBox, Spinner, LoadingMessage } from './style';
 
 
 class TarefasAndamento extends Component {
@@ -26,13 +28,19 @@ class TarefasAndamento extends Component {
     openAlert: false,
     openSnackbar: false,
     changeIcon: false,
+    loading: false,
   }
   async componentDidMount() {
     const pessoaPath = window.location.pathname;
 
-    const response = await api.get(pessoaPath + '/tasks');
-
-    this.setState({ tarefas: response.data });
+    this.setState({ loading: true })
+    try {
+      const response = await api.get(pessoaPath + '/tasks');
+      this.setState({ loading: false, tarefas: response.data });
+    } catch(err){
+      this.setState({ loading: false })
+      console.log(err);
+    }
   }
 
   Header = (props) => {
@@ -236,8 +244,18 @@ class TarefasAndamento extends Component {
     )
   }
 
+  LoadingSpinner = () => {
+    return (
+      <SpinnerBox>
+        <Spinner size={60} thickness={1} />
+        <LoadingMessage>Carregando os dados...</LoadingMessage>
+      </SpinnerBox>
+    )
+  }
+
   render() {
     const { tarefas } = this.state;
+    const { loading } = this.state;
 
     return (
       <>
@@ -245,7 +263,7 @@ class TarefasAndamento extends Component {
           <Table id='table' className="table align-middle text-center">
             <TableBody>
               <this.Header tarefas={tarefas} />
-              <this.ImprimeTarefas tarefas={tarefas} />
+              {loading ? <this.LoadingSpinner /> : <this.ImprimeTarefas tarefas={tarefas} />}
               <this.Alerta />
             </TableBody>
           </Table>

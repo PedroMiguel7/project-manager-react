@@ -27,12 +27,12 @@ export default function AvatarTag(props) {
     if (props.funcao === "Front-End") {
         return (
             <>
-                <AvatarBorder style={{border: "2px solid #B9B8D3"}}>
+                <AvatarBorder style={{border: "2px solid #A9DFD8"}}>
                     <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToHslColor(props.nome, 50 ,70)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
                         {stringAvatar(props.nome)}
                     </Avatar>
                 </AvatarBorder>
-                <AvatarLabel style={{backgroundColor:'#B9B8D3'}}>
+                <AvatarLabel style={{backgroundColor:'#A9DFD8'}}>
                     <span>Front-End</span>
                 </AvatarLabel>
             </>
@@ -40,12 +40,12 @@ export default function AvatarTag(props) {
     } else if (props.funcao === "Back-End") {
         return (
             <>  
-                <AvatarBorder style={{border: "2px solid #E56B70"}}>
+                <AvatarBorder style={{border: "2px solid #F2C8ED"}}>
                     <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToHslColor(props.nome, 50 ,70)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
                         {stringAvatar(props.nome)}
                     </Avatar>
                 </AvatarBorder>
-                <AvatarLabel style={{backgroundColor:'#E56B70'}}>
+                <AvatarLabel style={{backgroundColor:'#F2C8ED'}}>
                     <span>Back-End</span>
                 </AvatarLabel>              
             </>
@@ -53,12 +53,12 @@ export default function AvatarTag(props) {
     } else if (props.funcao === "Gerente de Projeto") {
         return (
             <>
-                <AvatarBorder style={{border: "2px solid #F4FDD9"}}>
+                <AvatarBorder style={{border: "2px solid #A7CAFF"}}>
                     <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToHslColor(props.nome, 50 ,70)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
                         {stringAvatar(props.nome)}
                     </Avatar>
                 </AvatarBorder>
-                <AvatarLabel style={{backgroundColor:'#F4FDD9'}}>
+                <AvatarLabel style={{backgroundColor:'#A7CAFF'}}>
                     <span>Gerente de Projeto</span>
                 </AvatarLabel>
             </>
@@ -66,12 +66,12 @@ export default function AvatarTag(props) {
     }else if (props.funcao === "Tester") {
         return (
             <>
-                <AvatarBorder style={{border: "2px solid #A9DFD8"}}>
+                <AvatarBorder style={{border: "2px solid #E7DF9B"}}>
                     <Avatar className="Avatar" sx={{width: 150, height: 150, bgcolor: `${stringToHslColor(props.nome, 50 ,70)}`, color: "#1E1F28", fontSize: "2.5rem"}}>
                         {stringAvatar(props.nome)}
                     </Avatar>
                 </AvatarBorder>
-                <AvatarLabel style={{backgroundColor:'#A9DFD8'}}>
+                <AvatarLabel style={{backgroundColor:'#E7DF9B'}}>
                     <span>Tester</span>
                 </AvatarLabel>
             </>
