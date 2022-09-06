@@ -13,6 +13,7 @@ import ContadorTarefas from "../ContadorTarefas";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { HeaderContainer, Header, Title, TableContainer, Table } from "./style";
 import { set } from "react-hook-form";
+import api from "../../../../api";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -82,6 +83,26 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
 );
 
 export default function BasicTabs(props) {
+  const pessoaPath = window.location.pathname;
+  const [tarefas, setTarefas] = useState([]);
+
+  useEffect(() => {
+    const fetchProjetos = async () => {
+      try {
+        const response = await api.get(pessoaPath + '/tasks');
+        setTarefas(response.data);
+      } catch (error) {
+        console.log(error);
+        if(error.response.status === 401){
+          window.location.href = '/'
+        }
+      } 
+    };
+    fetchProjetos();
+  }, []);
+
+  //console.log(props.tarefas);
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -129,16 +150,16 @@ export default function BasicTabs(props) {
       </HeaderContainer>
 
       <TabPanel value={value} index={0}>
-        <TarefasFazer index={0} />
+        <TarefasFazer index={0} tarefas={props.tarefas} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TarefasAndamento index={1} />
+        <TarefasAndamento index={1} tarefas={props.tarefas} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <TarefasTeste index={2} />
+        <TarefasTeste index={2} tarefas={props.tarefas} />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <TarefasConcluidas index={3} />
+        <TarefasConcluidas index={3} tarefas={props.tarefas} />
       </TabPanel>
     </>
   );

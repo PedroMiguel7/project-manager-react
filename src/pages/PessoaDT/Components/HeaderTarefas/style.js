@@ -20,7 +20,7 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.h5`
-    color: 'var(--corTexto)'
+    color: 'var(--corTexto)';
     margin: 0;
 `;
 

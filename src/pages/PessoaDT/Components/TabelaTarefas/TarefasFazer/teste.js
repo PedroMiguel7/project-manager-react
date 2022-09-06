@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Component } from "react";
 import api from "../../../../../api";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -21,38 +20,53 @@ import Tooltip from "@mui/material/Tooltip";
 import TasksNotFound from "../../../../../assets/empty-states/tasks-not-found.svg";
 import { EmptyState, EmptyStateImg, EmptyStateTitle, Head, HeadCol, TableContainer, Table, TableBody, Row, Col, PriorityIcons, SpinnerBox, Spinner, LoadingMessage } from './style';
 
-class TarefasFazer extends Component {
-  state = {
-    tarefas: [],
-    tarefasId: 0,
-    openAlert: false,
-    openSnackbar: false,
-    changeIcon: false,
-    loading: false,
-  }
-  async componentDidMount() {
-    const pessoaPath = window.location.pathname;
+export default function TarefasFazer(props) {
+  //const tarefas = props.tarefa;
+  const [tarefas, setTarefas] = useState([]);
+  const [tarefasId, setTarefasId] = useState(0);
+  const [openAlert, setOpenAlert] = useState(false);
+  //const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [changeIcon, setChangeIcon] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-    this.setState({ loading: true })
-    try {
-      const response = await api.get(pessoaPath + '/tasks');
-      this.setState({ loading: false, tarefas: response.data });
-    } catch(err){
-      this.setState({ loading: false })
-      console.log(err);
+  // state = {
+  //   tarefas: [],
+  //   tarefasId: 0,
+  //   openAlert: false,
+  //   openSnackbar: false,
+  //   changeIcon: false,
+  //   loading: false,
+  // }
+
+  useEffect(() => {
+    const getTarefas = async () => {
+      setLoading(true);
+      try {
+        const tarefas = await props.tarefas?.filter(
+          (t) => t.status === "A Fazer"
+        );
+        setTarefas(tarefas);
+        setLoading(false);
+      } catch(err){
+        setLoading(false);
+        console.log(err);
+      }
     }
-  }
+    getTarefas();
+  }, []);
 
-  Header = (props) => {
-    const qtdTarefas = props.tarefas;
+  console.log(tarefas)
+  
+  function Header() {
+    //const qtdTarefas = props.tarefas;
 
-    if (qtdTarefas !== null) {
-      var qtdFazer = qtdTarefas?.filter(
-        (tarefas) => tarefas.status === "A Fazer"
-      );
-    }
+    // if (qtdTarefas !== null) {
+    //   var qtdFazer = qtdTarefas?.filter(
+    //     (tarefas) => tarefas.status === "A Fazer"
+    //   );
+    // }
 
-    if (qtdTarefas === null || qtdFazer.length === 0) {
+    if (tarefas === null || tarefas?.length === 0) {
       return <></>;
     } else {
       return (
@@ -70,29 +84,29 @@ class TarefasFazer extends Component {
     }
   };
 
-  ImprimeTarefas = (props) => {
-    const qtdTarefas = props.tarefas;
+  function ImprimeTarefas() {
+    // const qtdTarefas = props.tarefas;
 
-    if (qtdTarefas !== null) {
-      var qtdFazer = qtdTarefas?.filter(
-        (tarefas) => tarefas.status === "A Fazer"
-      );
-    }
+    // if (qtdTarefas !== null) {
+    //   var qtdFazer = qtdTarefas?.filter(
+    //     (tarefas) => tarefas.status === "A Fazer"
+    //   );
+    // }
 
     const handleCheck = (id) => {
       console.log(id);
-      this.setState({ tarefasId: id });
-      this.setState({ openAlert: true });
+      setTarefasId(id);
+      setOpenAlert(true);
     };
 
     const icon =
-      this.state.changeIcon === true ? (
+      changeIcon ? (
         <TaskAltRoundedIcon sx={{ color: "#F46E27" }} />
       ) : (
         <RadioButtonUncheckedIcon sx={{ color: "#C2C3C6" }} />
       );
 
-    if (qtdTarefas === null || qtdFazer.length === 0) {
+    if (tarefas === null || tarefas?.length === 0) {
       return (
         <>
           <EmptyState>
@@ -152,51 +166,48 @@ class TarefasFazer extends Component {
       }
 
       var getId;
-      return props.tarefas?.map((t) => {
-        if (t.status === "A Fazer")
-          return (
-            <>
-              <Row id={t.id_task} key={t.id_task}>
-                <Col>
-                  <IconButton
-                    onClick={() => {
-                      handleCheck(t.id_task);
-                    }}
-                  >
-                    {icon}
-                  </IconButton>
-                </Col>
-                <Col>{t.descricao_task}</Col>
-                <Col>{Prioridade(t.prioridade)}</Col>
-                <Col>
-                  <AccessTimeIcon
-                    sx={{ fontSize: "1.1rem", marginRight: "0.2rem" }}
-                  />
-                  {TempoRestante(t.prazo_entrega)}
-                </Col>
-                <Col>{Inicio(t.data_criacao)}</Col>
-                <Col>
-                  <TarefasMenu equipe_id={t.id_equipe} id_task={t.id_task} />
-                </Col>
-              </Row>
-            </>
-          );
-      });
+      return (
+        tarefas?.map((t) => {
+              <>
+                <Row id={t.id_task} key={t.id_task}>
+                  <Col>
+                    <IconButton
+                      onClick={() => {
+                        handleCheck(t.id_task);
+                      }}
+                    >
+                      {icon}
+                    </IconButton>
+                  </Col>
+                  <Col>{t.descricao_task}</Col>
+                  <Col>{Prioridade(t.prioridade)}</Col>
+                  <Col>
+                    <AccessTimeIcon
+                      sx={{ fontSize: "1.1rem", marginRight: "0.2rem" }}
+                    />
+                    {TempoRestante(t.prazo_entrega)}
+                  </Col>
+                  <Col>{Inicio(t.data_criacao)}</Col>
+                  <Col>
+                    <TarefasMenu equipe_id={t.id_equipe} id_task={t.id_task} />
+                  </Col>
+                </Row>
+              </>
+        })
+      )
     }
   };
 
-  Alerta = () => {
-    const handleCloseAlert = () => {
-      this.setState({ openAlert: false });
-    };
+  function Alerta() {
+    const handleCloseAlert = () => setOpenAlert(false);
 
-    const [openSnackbar, setOpenSnackbar] = React.useState(false);
+    const [openSnackbar, setOpenSnackbar] = useState(false);
 
     const handleClickSim = (id) => {
       EditaTask(id);
       setOpenSnackbar(true);
-      this.setState({ openAlert: false });
-      console.log(this.state.tarefasId);
+      setOpenAlert(false);
+      console.log(tarefasId);
     };
 
     function EditaTask(id) {
@@ -214,7 +225,7 @@ class TarefasFazer extends Component {
     return (
       <>
         <Dialog
-          open={this.state.openAlert}
+          open={openAlert}
           onClose={handleCloseAlert}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
@@ -242,7 +253,7 @@ class TarefasFazer extends Component {
             <Button
               autoFocus
               onClick={() => {
-                handleClickSim(this.state.tarefasId);
+                handleClickSim(tarefasId);
               }}
               variant="contained"
               sx={{
@@ -262,7 +273,7 @@ class TarefasFazer extends Component {
     );
   };
 
-  LoadingSpinner = () => {
+  function LoadingSpinner() {
     return (
       <SpinnerBox>
         <Spinner size={60} thickness={1} />
@@ -271,24 +282,17 @@ class TarefasFazer extends Component {
     )
   }
 
-  render() {
-    const { tarefas } = this.state;
-    const { loading } = this.state;
-
     return (
       <>
         <TableContainer className="table-responsive">
           <Table id="table" className="table align-middle text-center">
             <TableBody>
-              <this.Header tarefas={tarefas} />
-              {loading ? <this.LoadingSpinner /> : <this.ImprimeTarefas tarefas={tarefas} />}
-              <this.Alerta tarefas={tarefas} />
+              <Header />
+              {loading ? <LoadingSpinner /> : <ImprimeTarefas />}
+              <Alerta />
             </TableBody>
           </Table>
         </TableContainer>
       </>
     );
-  }
 }
-
-export default TarefasFazer;
