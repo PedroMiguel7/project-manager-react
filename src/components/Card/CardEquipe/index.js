@@ -58,7 +58,7 @@ export default function CardEquipe(props) {
                                         '& .MuiAvatarGroup-avatar': {
                                             border: "1px solid #21222D",
                                             color: "#1E1F28",
-                                            background: "#494A58",
+                                            background: "#87888C",
                                         }
                                     }}>
                                     {p.pessoas !== null ?

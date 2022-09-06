@@ -27,6 +27,7 @@ import { PageContainer, HeaderContainer, ContentContainer, FirstContentCol, Seco
 import ImprimeMembros from "./Components/ImprimeMembros";
 import AddMembro from "./Components/AddMembros";
 import ImprimeTarefas from "./Components/ImprimeTarefas";
+import ImprimeProjetos from "./Components/ImprimeProjetos";
 
 class equipeDT_index extends Component {
     state = {
@@ -62,191 +63,6 @@ class equipeDT_index extends Component {
                 <TarefasSelect parentCallback={this.handleCallbackTarefa} />
             </>
         )
-    }
-
-    ImprimeProjetos = (props) => {
-        if (props.projetos === null) {
-            return (
-                <>
-                    <EmptyStateContainer>
-                        <img src={ProjectNotFound} />
-                        <h5>
-                            Essa equipe ainda não possui projetos.
-                        </h5>
-                    </EmptyStateContainer>
-                </>
-            );
-        } else {
-            function TempoRestante(prazo) {
-                const dataHojeFormatada = new Date();
-
-                const dataPrazoFormatada = new Date(prazo);
-
-                if ((dataPrazoFormatada - dataHojeFormatada) <= 86400000 && (dataPrazoFormatada - dataHojeFormatada) > 0) {
-                    return '1 dia restante';
-                } else if (dataPrazoFormatada < dataHojeFormatada) {
-                    return 'Atrasado'
-                } else {
-                    const tempo = (dataPrazoFormatada - dataHojeFormatada) / 86400000;
-                    return `${tempo.toFixed()} dias restantes`;
-                }
-            }
-
-            if (props.status === 1) {
-                const ToDo = props.projetos?.filter((projetos) => projetos.status === "A Fazer");
-
-                if (ToDo.length === 0) {
-                    return (
-                        <div className="EmptyStateContainer">
-                            <img src={ProjectNotFound} />
-                            <h5>
-                                Sem projetos a fazer.
-                            </h5>
-                        </div>
-                    )
-                } else {
-                    return (
-                        ToDo?.map(p => (
-                            <li className="ProjetosLi">
-                                <div>
-                                    <h5>{p.nome_projeto}</h5>
-                                    <span>
-                                        <AccessTimeIcon sx={{ fontSize: '1rem', marginRight: '0.2rem' }} />
-                                        {TempoRestante(p.prazo_entrega)}
-                                    </span>
-                                </div>
-                                <div className="d-flex align-items-center   ">
-                                    <div className="d-flex align-items-center">
-                                        <ProgressoProjetos key={1} id_projeto={p.id_projeto} status={p.status} />
-                                    </div>
-                                    <div className="d-flex justify-content-end">
-                                        <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
-                                    </div>
-                                </div>
-                            </li>
-                        ))
-                    )
-                }
-
-            } else if (props.status === 2) {
-                const OnGoing = props.projetos?.filter((projetos) => projetos.status === "Em Andamento");
-
-                if (OnGoing.length === 0) {
-                    return (
-                        <div className="EmptyStateContainer">
-                            <img src={ProjectNotFound} />
-                            <h5>
-                                Sem projetos em andamento.
-                            </h5>
-                        </div>
-                    )
-                } else {
-                    return (
-                        OnGoing?.map(p => (
-                            <li className="ProjetosLi">
-                                <div>
-                                    <h5>{p.nome_projeto}</h5>
-                                    <span>
-                                        <AccessTimeIcon sx={{ fontSize: '1rem', marginRight: '0.2rem' }} />
-                                        {TempoRestante(p.prazo_entrega)}
-                                    </span>
-                                </div>
-                                <div className="d-flex align-items-center   ">
-                                    <div className="d-flex align-items-center">
-                                        <ProgressoProjetos key={2} id_projeto={p.id_projeto} status={p.status} />
-                                    </div>
-                                    <div className="d-flex justify-content-end">
-                                        <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
-                                    </div>
-                                </div>
-                            </li>
-                        ))
-                    )
-                }
-            } else if (props.status === 3) {
-                const Done = props.projetos?.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
-
-                if (Done.length === 0) {
-                    return (
-                        <div className="EmptyStateContainer">
-                            <img src={ProjectNotFound} />
-                            <h5>
-                                Sem projetos concluidos.
-                            </h5>
-                        </div>
-                    )
-                } else {
-                    function FormatarData(data) {
-                        let Data = new Date(data);
-                        return Data.toLocaleDateString("pt-BR");
-                    }
-
-                    return (
-                        Done?.map(p => (
-                            <li className="ProjetosLi">
-                                <div>
-                                    <h5>{p.nome_projeto}</h5>
-                                    <span>
-                                        <CheckCircleRoundedIcon sx={{ fontSize: '1rem', marginRight: '0.2rem' }} />
-                                        {FormatarData(p.data_conclusao)}
-                                    </span>
-                                </div>
-                                <div className="d-flex align-items-center   ">
-                                    <div className="d-flex align-items-center">
-                                        <ProgressoProjetos key={3} id_projeto={p.id_projeto} status={p.status} />
-                                    </div>
-                                    <div className="d-flex justify-content-end">
-                                        <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
-                                    </div>
-                                </div>
-                            </li>
-                        ))
-                    )
-                }
-
-
-            } else {
-                function DataConclusão(data) {
-                    let Data = new Date(data);
-                    return (
-                        <>
-                            <CheckCircleRoundedIcon sx={{ fontSize: '1rem', marginRight: '0.2rem' }} />
-                            {Data.toLocaleDateString("pt-BR")}
-                        </>
-                    )
-                }
-
-                function NaoConcluidos(prazo) {
-                    return (
-                        <>
-                            <AccessTimeIcon sx={{ fontSize: '1rem', marginRight: '0.2rem' }} />
-                            {TempoRestante(prazo)}
-                        </>
-                    )
-                }
-
-                return (
-                    props.projetos?.map(p => (
-                        <li className="ProjetosLi">
-                            <div>
-                                <h5>{p.nome_projeto}</h5>
-                                <span>
-                                    {p.status === "Concluido" ? DataConclusão(p.data_conclusao) : NaoConcluidos(p.prazo_entrega)}
-                                </span>
-                            </div>
-                            <div className="d-flex align-items-center   ">
-                                <div className="d-flex align-items-center">
-                                    <ProgressoProjetos key={0} id_projeto={p.id_projeto} status={p.status} />
-                                </div>
-                                <div className="d-flex justify-content-end">
-                                    <a className="LinkProjeto" href={`/projetos/${p.id_projeto}`} target="_blank"><ArrowForwardRoundedIcon /></a>
-                                </div>
-                            </div>
-                        </li>
-                    ))
-                );
-            }
-        }
     }
 
     handleCallbackProjeto = (childData) => {
@@ -395,7 +211,7 @@ class equipeDT_index extends Component {
                                     <this.SelectStatusProjeto status={statusProjeto} />
                                 </HeaderProjetos>
                                 <ProjetosUl>
-                                    <this.ImprimeProjetos projetos={projetos} status={statusProjeto} />
+                                    <ImprimeProjetos projetos={projetos} status={statusProjeto} />
                                 </ProjetosUl>
                             </ProjetosContainer>
                         </FirstContentCol>

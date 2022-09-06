@@ -38,11 +38,11 @@ export default function ImprimeTarefas(props) {
 
             if (ToDo.length === 0) {
                 return (
-                    <li className="TarefasLi">
+                    <TarefasLi>
                         <span>
                             Sem Tarefas A Fazer
                         </span>
-                    </li>
+                    </TarefasLi>
                 )
             } else {
                 return (
@@ -67,11 +67,11 @@ export default function ImprimeTarefas(props) {
 
             if (OnGoing.length === 0) {
                 return (
-                    <li className="TarefasLi">
+                    <TarefasLi>
                         <span>
                             Sem Tarefas Em Andamento
                         </span>
-                    </li>
+                    </TarefasLi>
                 )
             } else {
                 return (
@@ -96,11 +96,11 @@ export default function ImprimeTarefas(props) {
 
             if (Testing.length === 0) {
                 return (
-                    <li className="TarefasLi">
+                    <TarefasLi>
                         <span>
                             Sem Tarefas Em Teste
                         </span>
-                    </li>
+                    </TarefasLi>
                 )
             } else {
                 return (
@@ -130,11 +130,11 @@ export default function ImprimeTarefas(props) {
 
             if (Done.length === 0) {
                 return (
-                    <li className="TarefasLi">
+                    <TarefasLi>
                         <span>
                             Sem Tarefas Concluidas
                         </span>
-                    </li>
+                    </TarefasLi>
                 )
             } else {
                 return (

@@ -601,9 +601,9 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 1.2rem 0.7rem;
 }
 
-.ProjetosLi:nth-last-child(1){
+/* .ProjetosLi:nth-last-child(1){
     border-bottom: none;
-}
+} */
 
 .ProgressoProjetoContainer {
     width: 160px;

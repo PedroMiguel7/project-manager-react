@@ -10,11 +10,15 @@ export const HeaderProgresso = styled.div`
 `;
 
 export const Status = styled.span`
-    color: "#287CB8";
+    color: #287CB8;
+    font-weight: 500;
+    font-size: 0.93rem;
 `;
 
 export const Percentual = styled.span`
-    color: "#494A58";
+    color: #494A58;
+    font-weight: 500;
+    font-size: 0.93rem;
 `;
 
 export const Progresso = styled.div`
