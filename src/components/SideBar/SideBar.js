@@ -78,7 +78,7 @@ function SideBar(props) {
                 <TipoLogo src={logo} alt="" />
                 <Nav>
                     <NavItem>
-                        <FixedNavLink to="/home" >
+                        <FixedNavLink to="/home" id='SideHome'>
                             {location.pathname === "/home"
                                 ? <>
                                     <img src={homeActive} alt="" />
@@ -92,7 +92,7 @@ function SideBar(props) {
                         </FixedNavLink>
                     </NavItem>
                     <NavItem>
-                        <FixedNavLink to="/projetos" >
+                        <FixedNavLink to="/projetos" id='SideProjeto'>
                             {location.pathname === "/projetos" || location.pathname === `/projetos/${pathId}`
                                 ? <>
                                     <img src={projectActive} alt="" />
@@ -106,7 +106,7 @@ function SideBar(props) {
                         </FixedNavLink>
                     </NavItem>
                     <NavItem>
-                        <FixedNavLink to="/equipes">
+                        <FixedNavLink to="/equipes" id='SideEquipe'>
                             {location.pathname === "/equipes" || location.pathname === `/equipes/${pathId}`
                                 ? <>
                                     <img src={teamActive} alt="" />
@@ -120,7 +120,7 @@ function SideBar(props) {
                         </FixedNavLink>
                     </NavItem>
                     <NavItem>
-                        <FixedNavLink to="/pessoas">
+                        <FixedNavLink to="/pessoas" id='SidePessoa'>
                             {location.pathname === "/pessoas" || location.pathname === `/pessoas/${pathId}`
                                 ? <>
                                     <img src={personActive} alt="" />
@@ -135,14 +135,15 @@ function SideBar(props) {
                     </NavItem>
                 </Nav>
                 <Nav>
-                    <NavItem>
+                    <NavItem id='SideLogout'>
                         <LogoutRoundedIcon sx={{ color: "#87888C" }} onClick={(e) => [signout(e), navigate('/')]}>
                             logout
                         </LogoutRoundedIcon>
                     </NavItem>
                     <NavItem>
-                        <div>
+                        <div id='SideTema'>
                             <DarkModeToggle
+                                
                                 style={{ display: 'flex' }}
                                 mode={mode}
                                 dark="Dark"

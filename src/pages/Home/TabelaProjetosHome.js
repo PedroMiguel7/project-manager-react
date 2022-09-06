@@ -145,7 +145,7 @@ export default function CardBaixoHome(props) {
                                         color: "#F4F5FA",
                                         background: "var(--corBotao)"
                                     }}
-                                        variant="contained" >DETALHAR</Button></Link>
+                                        variant="contained"  id='BotaoDetalhar'>DETALHAR</Button></Link>
                                     </td>
                                     {/*<td><Button  style={{color: "#F4F5FA", background: "red"}} variant="danger" onClick={() => this.DeletaProjeto(p.id_projeto)}>EXCLUIR</Button></td>*/}
                                 </tr>
