@@ -46,7 +46,7 @@ export default function CardPessoas(props) {
         return (
             <>
                 {props.Pessoas?.map(p => (
-                    <CardContainer to={'/pessoas/' + p.id_pessoa}>
+                    <CardContainer to={'/pessoas/' + p.id_pessoa} id='CardPessoa'>
                         {MudarBackground(p.funcao_pessoa)}
                         <CardInformations key={p.id_pessoa}>
                             <CardTitle style={{ color: 'var(--corTextComponente)' }}>{p.nome_pessoa}</CardTitle>

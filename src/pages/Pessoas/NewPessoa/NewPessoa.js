@@ -99,7 +99,7 @@ export default function BasicModalPessoa(props) {
 
   return (
     <div>
-      <button onClick={handleOpen} className="new-project "><LogoNew/></button>
+      <button id='NovaPessoa' onClick={handleOpen} className="new-project "><LogoNew/></button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -138,6 +138,7 @@ export default function BasicModalPessoa(props) {
             <Box sx={{ minWidth: 120 }}>
               <CssTextField 
               select
+              id='selecionaFuncao'
               label="Função"
               fullWidth
               margin="dense"
@@ -155,7 +156,7 @@ export default function BasicModalPessoa(props) {
                 }
               }}
               >
-                <MenuItem value={"Back-End"}>Back-End</MenuItem>
+                <MenuItem id='escolheFuncao' value={"Back-End"}>Back-End</MenuItem>
                 <MenuItem value={"Front-End"}>Front-End</MenuItem>
                 <MenuItem value={"Tester"}>Tester</MenuItem>
                 <MenuItem value={"Gerente de Projeto"}>Gerente de Projeto</MenuItem>
@@ -165,6 +166,7 @@ export default function BasicModalPessoa(props) {
             <Box sx={{ minWidth: 120 }}>
               <CssTextField
               select
+              id='selecionaEquipe'
               label="Equipe"
               fullWidth
               margin="dense"
@@ -183,7 +185,7 @@ export default function BasicModalPessoa(props) {
               }}
               >
                 {equipe?.map(p => (
-                  <MenuItem value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
+                  <MenuItem id='escolheEquipe' value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
                 )}
               </CssTextField>
             </Box>
@@ -195,14 +197,14 @@ export default function BasicModalPessoa(props) {
                 opacity: 0.5,
                 textTransform: 'capitalize'
               }}
-                variant="text" className='' onClick={handleClose}>Cancelar</Button>
+                variant="text" id='cancelarAdd' onClick={handleClose}>Cancelar</Button>
               <Button style={{
                 color: "#F4F5FA",
                 background: "var(--corBotao)",
                 textTransform: 'capitalize',
                 boxShadow: 'none'
               }}
-                variant="contained" type="submit" onClick={PostaPessoa}>Salvar</Button>
+                variant="contained" id='aceitarAdd' type="submit" onClick={PostaPessoa}>Salvar</Button>
             </div>
           </form>
         </Box>

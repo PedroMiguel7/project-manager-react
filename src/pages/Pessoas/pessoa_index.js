@@ -74,7 +74,7 @@ export default function Pessoas() {
             <Main>
                 <Header>
                     <Title>Pessoas</Title>
-                    <Search onChange={handleChange}type="search" name="main-search" placeholder="Pesquise aqui..." />
+                    <Search id='pesquisa' onChange={handleChange}type="search" name="main-search" placeholder="Pesquise aqui..." />
                 </Header>
                 <OptionsContainer>
                     <div>
@@ -83,7 +83,7 @@ export default function Pessoas() {
                     </div>
                     <Options>
                         <BasicModalPessoa atualiza={Atualiza} />
-                        <OrderSelect onClick={e => handleOrder('nome_pessoa')} name="order-select">
+                        <OrderSelect id='OrdenaPessoa' onClick={e => handleOrder('nome_pessoa')} name="order-select">
                             A - Z
                         </OrderSelect>
                         {/*<select className="ps-1" name="order-select" id="order-select">
