@@ -115,8 +115,8 @@ function FilterPopper(props) {
 
 
     return (
-        <>
-            <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
+        <div id='filtro'>
+            <Popper  open={open} anchorEl={anchorEl} placement={placement} transition>
                 {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={250}>
 
@@ -148,9 +148,9 @@ function FilterPopper(props) {
                                 <div className='d-flex align-items-center mb-2'>
                                     <span className='me-5 PopperTitle'>Status</span>
                                     <FormGroup className='PopperOptions d-flex flex-row gap-2'>
-                                        <FormControlLabel checked={checkedFA} onChange={handleChangeFA} control={<CheckboxStyle defaultChecked size="small" />} label="A fazer" />
-                                        <FormControlLabel checked={checkedAN} onChange={handleChangeAN} control={<CheckboxStyle defaultChecked size="small" />} label="Em Andamento" />
-                                        <FormControlLabel checked={checkedCO} onChange={handleChangeCO} control={<CheckboxStyle defaultChecked size="small" />} label="Concluído" />
+                                        <FormControlLabel checked={checkedFA} onChange={handleChangeFA} control={<CheckboxStyle defaultChecked size="small" />} label="A fazer" id='AFAZER' />
+                                        <FormControlLabel checked={checkedAN} onChange={handleChangeAN} control={<CheckboxStyle defaultChecked size="small" />} label="Em Andamento" id='EMANDAMENTO'/>
+                                        <FormControlLabel checked={checkedCO} onChange={handleChangeCO} control={<CheckboxStyle defaultChecked size="small" />} label="Concluído" id='CONCLUIDO' />
                                     </FormGroup>
                                 </div>
                                 <Divider />
@@ -227,7 +227,7 @@ function FilterPopper(props) {
                                             color: "#C2C3C6",
                                             textTransform: 'capitalize'
                                         }}
-                                            variant="text" className='' type="submit" onClick={Filtrar}>Salvar</Button>
+                                            variant="text" id='salvarFiltro' type="submit" onClick={Filtrar}>Salvar</Button>
                                     </div>
                                 </div>
                             </div>
@@ -238,7 +238,7 @@ function FilterPopper(props) {
             <button onClick={handleClick('bottom-end')} className="filter px-2 py-1">
                 <span>Filtro</span> <img src={filter} alt="" />
             </button>
-        </>
+        </div>
 
     )
 

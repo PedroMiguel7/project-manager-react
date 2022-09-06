@@ -74,7 +74,7 @@ export default function Equipes() {
             <Main>
                 <Header>
                     <Title>Equipes</Title>
-                    <Search onChange={handleChange} type="search" name="main-search" placeholder="Pesquise aqui..." />
+                    <Search id='pesquisa' onChange={handleChange} type="search" name="main-search" placeholder="Pesquise aqui..." />
                 </Header>
                 <Divider />
                 <OptionsContainer>
@@ -84,7 +84,7 @@ export default function Equipes() {
                     </div>
                     <Options>
                         <BasicModalEquipe atualiza={Atualiza} />
-                        <OrderSelect onClick={e => handleOrder('nome_equipe')} name="order-select" >
+                        <OrderSelect id='OrdenaEquipe' onClick={e => handleOrder('nome_equipe')} name="order-select" >
                             A - Z
                         </OrderSelect>
                         {/*<select className="ps-1" name="order-select" id="order-select">

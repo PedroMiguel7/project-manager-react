@@ -75,7 +75,7 @@ export default function ProjetoIndex() {
             <Main>
                 <Header>
                     <Title>Projetos</Title>
-                    <Search onChange={handleChange} type="search" name="main-search" placeholder="Pesquise aqui..."/>
+                    <Search id='pesquisa' onChange={handleChange} type="search" name="main-search" placeholder="Pesquise aqui..."/>
                 </Header>
                 <Divider />
                 <OptionsContainer>
@@ -85,7 +85,7 @@ export default function ProjetoIndex() {
                     </div> */}
                     <Options>
                         <BasicModal atualiza={Atualiza}/>
-                        <OrderSelect onClick={e => handleOrder('nome_projeto')} name="order-select">
+                        <OrderSelect id='OrdenaProjeto' onClick={e => handleOrder('nome_projeto')} name="order-select">
                             A - Z
                         </OrderSelect>
 
@@ -94,7 +94,7 @@ export default function ProjetoIndex() {
                             <option onClick={e => handleOrder('nome_projeto')} value="decrescente">Z - A</option>
                         </select>*/}
 
-                        <FilterPopper PROJETOS={projetos} SET={setProjetos} atualiza={Atualiza}/>
+                        <FilterPopper id='filtro' PROJETOS={projetos} SET={setProjetos} atualiza={Atualiza}/>
                     </Options>
                 </OptionsContainer>
                 {

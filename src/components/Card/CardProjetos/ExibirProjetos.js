@@ -22,13 +22,13 @@ export default function Cards(props) {
     props.Projetos.reverse();
     return (
       props.Projetos?.map(p => (
-        <CardContainer key={p.id_projeto}
+        <CardContainer id='CardProjeto' key={p.id_projeto}
         to={"/projetos/" + p.id_projeto}
       >
         <CardInformations>
           <CardHeader>
             <CardTitle>{p.nome_projeto}</CardTitle>
-            <Link to="/home">
+            <Link to="/home" >
               <EditaProjeto id_projeto={p.id_projeto} projetinho={p} equipe_id={p.equipe_id} atualiza={props.atualiza} />
             </Link>
           </CardHeader>
@@ -75,13 +75,13 @@ export default function Cards(props) {
     props.Projetos.reverse();
     return (
       props.Projetos?.map(p => (
-        <CardContainer key={p.id_projeto}
+        <CardContainer id='CardProjeto' key={p.id_projeto}
           to={"/projetos/" + p.id_projeto}
         >
           <CardInformations>
             <CardHeader>
               <CardTitle>{p.nome_projeto}</CardTitle>
-              <Link to="/projetos">
+              <Link to="/projetos" >
                 <EditaProjeto id_projeto={p.id_projeto} projetinho={p} equipe_id={p.equipe_id} atualiza={props.atualiza} />
               </Link>
             </CardHeader>
