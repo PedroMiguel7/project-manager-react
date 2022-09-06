@@ -75,7 +75,7 @@ export default function BasicModalEquipe(props) {
 
   return (
     <div>
-      <button onClick={handleOpen} className="new-project "><LogoNew/></button>
+      <button id='NovaEquipe' onClick={handleOpen} className="new-project "><LogoNew/></button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -110,7 +110,7 @@ export default function BasicModalEquipe(props) {
                 opacity: 0.5,
                 textTransform: 'capitalize'
               }}
-                variant="text" className='' onClick={handleClose}>Cancelar</Button>
+                variant="text" id='cancelarAdd' onClick={handleClose}>Cancelar</Button>
               <Button style={{
                 color: "#F4F5FA",
                 background: "var(--corBotao)",

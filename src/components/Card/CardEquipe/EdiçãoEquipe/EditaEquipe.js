@@ -148,10 +148,10 @@ export default function EditaEquipe(props) {
           },
         }}
       >
-        <MenuItem onClick={handleClickEdit} sx={{ color: '#C2C3C6' }} className="gap-1">
+        <MenuItem id='EditaEquipe' onClick={handleClickEdit} sx={{ color: '#C2C3C6' }} className="gap-1">
           <EditIcon sx={{ color: '#C2C3C6' }} /> <span>Editar</span>
         </MenuItem>
-        <MenuItem onClick={handleClickDelete} sx={{ color: '#C2C3C6' }} className="gap-1">
+        <MenuItem id='DeletaEquipe' onClick={handleClickDelete} sx={{ color: '#C2C3C6' }} className="gap-1">
           <DeleteIcon sx={{ color: '#C2C3C6' }} /> <span>Deletar</span>
         </MenuItem>
         <Dialog
@@ -180,7 +180,9 @@ export default function EditaEquipe(props) {
               sx={{
                 color: "#C2C3C6",
                 opacity: 0.7
-              }}>Cancelar</Button>
+              }}
+              id='cancelarDeletar'
+              >Cancelar</Button>
             <Button autoFocus variant="contained"
               sx={{
                 color: "#FFF",
@@ -228,7 +230,7 @@ export default function EditaEquipe(props) {
                   opacity: 0.5,
                   textTransform: 'capitalize'
                 }}
-                  variant="text" className='' onClick={handleCloseEdit}>Cancelar</Button>
+                  variant="text" id='cancelarEdicao' onClick={handleCloseEdit}>Cancelar</Button>
                 <Button style={{
                   color: "#F4F5FA",
                   background: "var(--corBotao)",
