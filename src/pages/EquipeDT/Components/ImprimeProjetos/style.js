@@ -41,6 +41,7 @@ export const Container = styled.div`
 export const ProgressContainer = styled.div`
     display: flex;
     align-items: center;
+    gap: 4px;
 `;
 
 export const LinkProjeto = styled.a`
