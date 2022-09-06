@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import aim from "../../../assets/icons/aim.svg";
+import { Aaim } from "../../../assets/icons/ICONS lightThema/icones";
 import ProjectNotFound from "../../../assets/empty-states/project-not-found.svg";
 import EditaProjeto from "../CardProjetos/EdiçãoProjeto";
 import BarraProgresso from "../CardProjetos/BarraDeProgresso";
@@ -36,7 +36,7 @@ export default function Cards(props) {
             {p.descricao_projeto}
           </CardDescription>
           <TeamContainer>
-            <Aim src={aim} alt="" />
+            <Aaim/>
             <TeamName>{p.nome_equipe}</TeamName>
           </TeamContainer>
         </CardInformations>
@@ -89,7 +89,7 @@ export default function Cards(props) {
               {p.descricao_projeto}
             </CardDescription>
             <TeamContainer>
-              <Aim src={aim} alt="" />
+              <Aaim/>
               <TeamName>{p.nome_equipe}</TeamName>
             </TeamContainer>
           </CardInformations>

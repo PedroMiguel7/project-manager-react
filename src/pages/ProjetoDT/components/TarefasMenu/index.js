@@ -29,7 +29,7 @@ const CssTextField = styled(TextField)({
     svg: { color: '#F4F5FA' },
     '&.Mui-focused': {
       borderColor: '#F4F5FA',
-      svg: { color: '#F57D3D' }
+      svg: { color: 'var(--corBotao)' }
     },
     '& fieldset': {
       borderColor: '#F4F5FA',
@@ -39,7 +39,7 @@ const CssTextField = styled(TextField)({
       borderColor: '#C2C3C6',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#F46E27',
+      borderColor: 'var(--corBotao)',
     },
     '& .MuiInputAdornment-root': {
       color: '#87888C',
@@ -48,7 +48,7 @@ const CssTextField = styled(TextField)({
   '.MuiInputLabel-outlined': {
     color: '#F4F5FA',
     '&.Mui-focused': {
-      color: '#F46E27',
+      color: 'var(--corBotao)',
     },
   },
 })
@@ -236,7 +236,7 @@ export default function TarefasMenu(props) {
             <ClearRoundedIcon className='ClearRoundedIcon' onClick={handleClose} />
             <form onSubmit={EditaTask}>
               <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center mb-4'>
-                Editar<span style={{ color: '#F46E27' }}> Tarefa</span>
+                Editar<span style={{ color: 'var(--corBotao)' }}> Tarefa</span>
               </Typography>
 
               <CssTextField
@@ -316,7 +316,7 @@ export default function TarefasMenu(props) {
                   variant="text" className='' onClick={handleCloseEdit}>Cancelar</Button>
                 <Button style={{
                   color: "#F4F5FA",
-                  background: "#F46E27",
+                  background: "var(--corBotao)",
                   textTransform: 'capitalize',
                   boxShadow: 'none'
                 }}
