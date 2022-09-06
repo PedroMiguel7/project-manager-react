@@ -11,7 +11,7 @@ function HeaderDt({ link, pagina, titulo, status, FUNC1, FUNC2 }) {
             case "Concluido":
                 return '#28f33cb3';
                 break;
-            case "Cancelado":
+            case "A Fazer":
                 return '#898989b3';
                 break;
         }
@@ -29,10 +29,10 @@ function HeaderDt({ link, pagina, titulo, status, FUNC1, FUNC2 }) {
                 <Status color={setTag(status)}>
                     {status}
                 </Status>
-                {/* <div>
+                <div>
                     {FUNC1}
                     {FUNC2}
-                </div> */}
+                </div> 
             </Container>
         </>
 
