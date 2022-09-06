@@ -22,7 +22,7 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import ProjectNotFound from '../../assets/empty-states/project-not-found.svg';
 import PeopleNotFound from '../../assets/empty-states/people-not-found.svg';
 import TasksNotFound from '../../assets/empty-states/tasks-not-found.svg';
-import { PageContainer, HeaderContainer, ContentContainer, FirstContentCol, SecondContentCol, MembrosContainer, MembrosUl, ProjetosContainer, HeaderProjetos, ProjetosUl, TarefasContainer, HeaderTarefas, TarefasUl, StatsCol, Top3, TarefasCircularProgress, ProjetosCircularProgress, TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa, EmptyStateContainer } from "./style";
+import { PageContainer, HeaderContainer, ContentContainer, FirstContentCol, SecondContentCol, MembrosContainer, MembrosUl, ProjetosContainer, HeaderProjetos, ProjetosUl, TarefasContainer, HeaderTarefas, TarefasUl, StatsCol, Top3, Top3Title, Top3Subtitle, TarefasCircularProgress, ProjetosCircularProgress, CircularProgressTitle,  TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa, EmptyStateContainer } from "./style";
 
 import ImprimeMembros from "./Components/ImprimeMembros";
 import AddMembro from "./Components/AddMembros";
@@ -57,7 +57,7 @@ class equipeDT_index extends Component {
         this.setState({ statusTarefa: childData })
     }
 
-    SelectStatusTarefa = (props) => {
+    SelectStatusTarefa = () => {
         return (
             <>
                 <TarefasSelect parentCallback={this.handleCallbackTarefa} />
@@ -69,7 +69,7 @@ class equipeDT_index extends Component {
         this.setState({ statusProjeto: childData })
     }
 
-    SelectStatusProjeto = (props) => {
+    SelectStatusProjeto = () => {
         return (
             <>
                 <ProjetosSelect parentCallback={this.handleCallbackProjeto} />
@@ -79,78 +79,76 @@ class equipeDT_index extends Component {
 
     ImprimeMembrosStats = (props) => {
         return (
-            <BarChart tarefas={props.equipe.tasks} />
+            <BarChart tarefas={props.tarefas} />
         )
     }
 
     ImprimeTarefasStats = (props) => {
-        let TarefasEquipe = props.equipe.tasks;
-        if (props.equipe.tasks === null) {
+        const tarefas = props.tarefas;
+        if (tarefas === null) {
             return (
                 <ProgressoCircular Total={0} StatsTitle="Tarefas" ValueAndamento={0} ValueConcluido={0} op="tarefas" />
             )
 
         } else {
-            let TotalTarefas = TarefasEquipe?.length;
-            console.log(TotalTarefas);
+            const TotalTarefas = tarefas?.length;
 
-            const TarefasFazer = TarefasEquipe?.filter((tarefas) => tarefas.status === "A Fazer");
-            let QtdFazer = TarefasFazer?.length;
+            const TarefasFazer = tarefas?.filter((tarefas) => tarefas.status === "A Fazer");
+            const QtdFazer = TarefasFazer?.length;
 
-            const TarefasAndamento = TarefasEquipe?.filter((tarefas) => tarefas.status === "Em Andamento");
-            let QtdAndamento = TarefasAndamento?.length;
+            const TarefasAndamento = tarefas?.filter((tarefas) => tarefas.status === "Em Andamento");
+            const QtdAndamento = TarefasAndamento?.length;
 
-            const TarefasTeste = TarefasEquipe?.filter((tarefas) => tarefas.status === "Em Teste");
-            let QtdTeste = TarefasTeste?.length;
+            const TarefasTeste = tarefas?.filter((tarefas) => tarefas.status === "Em Teste");
+            const QtdTeste = TarefasTeste?.length;
 
-            const TarefasConcluidos = TarefasEquipe?.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
-            let QtdConcluidos = TarefasConcluidos?.length;
+            const TarefasConcluidos = tarefas?.filter((tarefas) => tarefas.status === "Concluido" || tarefas.status === "Concluído");
+            const QtdConcluidos = TarefasConcluidos?.length;
 
 
-            let PorcFazer = (QtdFazer / TotalTarefas) * 100;
-            let PorcAndamento = (QtdAndamento / TotalTarefas) * 100;
-            let PorcTeste = (QtdTeste / TotalTarefas) * 100;
-            let PorcConcluidos = (QtdConcluidos / TotalTarefas) * 100;
+            const PorcFazer = (QtdFazer / TotalTarefas) * 100;
+            const PorcAndamento = (QtdAndamento / TotalTarefas) * 100;
+            const PorcTeste = (QtdTeste / TotalTarefas) * 100;
+            const PorcConcluidos = (QtdConcluidos / TotalTarefas) * 100;
 
             return (
                 <>
                     <ProgressoCircular op="tarefas" Total={0} StatsTitle="Tarefas" ValueFazer={PorcFazer} ValueAndamento={PorcAndamento} ValueTeste={PorcTeste} ValueConcluido={PorcConcluidos} />
                 </>
-
             )
         }
     }
 
     ImprimeProjetosStats = (props) => {
-        if (props.projetos === null) {
+        const projetos = props.projetos;
+        if (projetos === null) {
             return (
                 <ProgressoCircular Total={0} StatsTitle="Projetos" ValueAndamento={0} ValueConcluido={0} />
             )
 
         } else {
-            var TotalProjetos = props.projetos?.length;
+            const TotalProjetos = projetos?.length;
 
-            const ProjetosFazer = props.projetos?.filter((projetos) => projetos.status === "A Fazer");
-            let QtdFazer = ProjetosFazer?.length;
+            const ProjetosFazer = projetos?.filter((projetos) => projetos.status === "A Fazer");
+            const QtdFazer = ProjetosFazer?.length;
 
-            const ProjetosAndamento = props.projetos?.filter((projetos) => projetos.status === "Em Andamento");
-            let QtdAndamento = ProjetosAndamento?.length;
+            const ProjetosAndamento = projetos?.filter((projetos) => projetos.status === "Em Andamento");
+            const QtdAndamento = ProjetosAndamento?.length;
 
-            const ProjetosConcluidos = props.projetos?.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
-            let QtdConcluidos = ProjetosConcluidos?.length;
+            const ProjetosConcluidos = projetos?.filter((projetos) => projetos.status === "Concluido" || projetos.status === "Concluído");
+            const QtdConcluidos = ProjetosConcluidos?.length;
 
-            let PorcFazer = (QtdFazer / TotalProjetos) * 100;
+            const PorcFazer = (QtdFazer / TotalProjetos) * 100;
 
-            let PorcAndamento = (QtdAndamento / TotalProjetos) * 100;
+            const PorcAndamento = (QtdAndamento / TotalProjetos) * 100;
 
-            let PorcConcluidos = (QtdConcluidos / TotalProjetos) * 100;
+            const PorcConcluidos = (QtdConcluidos / TotalProjetos) * 100;
 
             return (
                 <>
                     <ProgressoCircular Total={TotalProjetos} StatsTitle="Projetos" ValueFazer={PorcFazer}
                         ValueAndamento={PorcAndamento} ValueConcluido={PorcConcluidos} />
                 </>
-
             )
         }
     }
@@ -159,8 +157,8 @@ class equipeDT_index extends Component {
         const { equipe } = this.state;
         const { statusProjeto } = this.state;
         const { statusTarefa } = this.state;
-        
-        const pessoas =  equipe?.pessoas;
+
+        const pessoas = equipe?.pessoas;
         const tarefas = equipe?.tasks;
         const projetos = equipe?.projetos;
 
@@ -227,20 +225,20 @@ class equipeDT_index extends Component {
                             </TarefasContainer>
                         </SecondContentCol>
                         <StatsCol>
-                                <Top3>
-                                    <h6>Membros mais produtivos</h6>
-                                    <p>Por tarefas concluídas</p>
-                                    <this.ImprimeMembrosStats equipe={equipe} />
-                                </Top3>
-                                <TarefasCircularProgress>
-                                    <h5>Tarefas</h5>
-                                    <this.ImprimeTarefasStats equipe={equipe} />
-                                </TarefasCircularProgress>
+                            <Top3>
+                                <Top3Title>Membros mais produtivos</Top3Title>
+                                <Top3Subtitle>Por tarefas concluídas</Top3Subtitle>
+                                <this.ImprimeMembrosStats tarefas={tarefas} />
+                            </Top3>
+                            <TarefasCircularProgress>
+                                <CircularProgressTitle>Tarefas</CircularProgressTitle>
+                                <this.ImprimeTarefasStats tarefas={tarefas} />
+                            </TarefasCircularProgress>
 
-                                <ProjetosCircularProgress>
-                                    <h5>Projetos</h5>
-                                    <this.ImprimeProjetosStats projetos={projetos} />
-                                </ProjetosCircularProgress>
+                            <ProjetosCircularProgress>
+                                <CircularProgressTitle>Projetos</CircularProgressTitle>
+                                <this.ImprimeProjetosStats projetos={projetos} />
+                            </ProjetosCircularProgress>
                         </StatsCol>
                     </ContentContainer>
                 </PageContainer>

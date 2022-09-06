@@ -186,6 +186,7 @@ export const Top3 = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: var(--preto-medio);
     list-style: none;
     padding: 2%;
@@ -193,6 +194,17 @@ export const Top3 = styled.div`
     width: 100%;
     height: 100%;
     grid-area: grafBar;
+`;
+
+export const Top3Title = styled.h5`
+    margin: 0;
+    font-size: 0.99rem;
+`;
+
+export const Top3Subtitle = styled.span`
+    font-size: 0.93rem;
+    color: #87888C;
+    margin-bottom: 5%;
 `;
 
 export const TarefasCircularProgress = styled.div`
@@ -220,6 +232,10 @@ export const ProjetosCircularProgress = styled.div`
     padding: 2%;
     border-radius: 10px;
     grid-area: grafProjetos;
+`;
+
+export const CircularProgressTitle = styled.h5`
+    margin: 0;
 `;
 
 // Imprime Tarefas

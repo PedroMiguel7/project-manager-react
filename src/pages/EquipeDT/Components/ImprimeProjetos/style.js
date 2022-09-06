@@ -34,9 +34,7 @@ export const Prazo = styled.span`
     font-size: 0.93rem;
 `;
 
-export const Container = styled.div`
-
-`;
+export const Container = styled.div``;
 
 export const ProgressContainer = styled.div`
     display: flex;

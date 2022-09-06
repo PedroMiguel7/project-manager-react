@@ -1,6 +1,12 @@
-import { ResponsiveRadialBar } from '@nivo/radial-bar'
+import React, { useState } from 'react';
+import { ResponsiveRadialBar } from '@nivo/radial-bar';
 
 export default function RadialBarChart(props) {
+    const [matches, setMatches] = useState(window.matchMedia("(min-height: 870px)").matches);
+
+    //const handler = (e) => setVisible(false)
+    window.matchMedia("(min-height: 870px)").addEventListener("change", e => setMatches( e.matches ));
+
     if (props.op === "tarefas") {
         const data = [
             {
@@ -78,7 +84,7 @@ export default function RadialBarChart(props) {
                 radialAxisStart={null}
                 circularAxisOuter={null}
                 label="category"
-                legends={[
+                legends={ matches ? [
                     {
                         dataFrom: 'keys',
                         anchor: 'bottom',
@@ -92,7 +98,7 @@ export default function RadialBarChart(props) {
                         symbolSize: 9,
                         itemDirection: 'left-to-right'
                     }
-                ]}
+                ] : false}
             />
         )
     } else {

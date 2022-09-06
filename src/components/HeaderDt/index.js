@@ -20,7 +20,7 @@ function HeaderDt({ link, pagina, titulo, status, FUNC1, FUNC2 }) {
     return (
         <>
             <Container>
-                <PreviousPage to={link}>
+                <PreviousPage id='voltar' to={link}>
                     <PreviousPageIcon src={BackIcon} />
                 </PreviousPage>
                 <Title>{pagina}

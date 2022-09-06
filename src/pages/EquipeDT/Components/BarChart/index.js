@@ -1,4 +1,5 @@
 import { ResponsiveBar } from '@nivo/bar';
+import { Container } from './style';
 
 export default function BarChart(props) {
     let TarefasEquipe = props.tarefas;
@@ -41,7 +42,7 @@ export default function BarChart(props) {
                 Object.keys(counts).length < 3 ? 
                 <h1>Tem nada n</h1> 
                 : 
-                <div style={{ width: "100%", height: "220px" }}>
+                <Container>
                     <ResponsiveBar
                         data={data}
                         keys={[
@@ -105,6 +106,7 @@ export default function BarChart(props) {
                         axisTop={null}
                         axisRight={null}
                         axisBottom={{
+                            format: e => Math.floor(e) === e && e,
                             tickSize: 0,
                             tickPadding: 6,
                             tickRotation: 0,
@@ -141,7 +143,7 @@ export default function BarChart(props) {
                         ariaLabel="Nivo bar chart demo"
                         barAriaLabel={function (e) { return e.id + ": " + e.formattedValue + " in country: " + e.indexValue }}
                     />
-                </div>
+                </Container>
             }
         </>
     )
