@@ -3,7 +3,7 @@ describe('Test in my pessoas page', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.get('#email').type('root@root.com');
-    cy.get('#senha').type('salmo34');
+    cy.get('#senha').type('******');
     cy.get('#button').click();
     cy.url().should('eq', `${Cypress.config().baseUrl}/home`);
   })
