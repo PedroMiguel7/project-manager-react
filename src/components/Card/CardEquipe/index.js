@@ -56,13 +56,14 @@ export default function CardEquipe(props) {
                                         '& .MuiAvatar-root': { width: 30, height: 30, fontSize: 15 },
 
                                         '& .MuiAvatarGroup-avatar': {
-                                            border: "1px solid #1E1F28",
-                                            color: "#1E1F28"
+                                            border: "1px solid #21222D",
+                                            color: "#C2C3C6",
+                                            background: "#40404F",
                                         }
                                     }}>
                                     {p.pessoas !== null ?
                                         p.pessoas.map(pe => (
-                                            <Avatar sx={{ bgcolor: `${stringToHslColor(pe.nome_pessoa, 50, 70)}`, color: "#1E1F28" }}>{stringAvatar(pe.nome_pessoa)}</Avatar>
+                                            <Avatar sx={{ bgcolor: `${stringToHslColor(pe.nome_pessoa, 50, 70)} !important`, color: "#1E1F28 !important", borderColor: "#21222D !important" }}>{stringAvatar(pe.nome_pessoa)}</Avatar>
                                         ))
                                         : " "}
                                 </AvatarGroup>
