@@ -156,7 +156,7 @@ class TarefasFazer extends Component {
         if (t.status === "A Fazer")
           return (
             <>
-              <Row id={t.id_task} key={t.id_task}>
+              <Row id={t.id_task} key={t.id_task} style={{color: 'var(--corTexto'}}>
                 <Col>
                   <IconButton
                     onClick={() => {

@@ -120,7 +120,7 @@ class TarefasConcluidas extends Component {
         props.tarefas?.map(t => {
           if (t.status === "Concluido")
             return (
-              <Row id={t.id_task} key={t.id_task}>
+              <Row id={t.id_task} key={t.id_task} style={{color: 'var(--corTexto'}}>
                 <Col>
                   <IconButton onLoad={setIcon}>
                     {icon}
