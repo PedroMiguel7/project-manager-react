@@ -76,7 +76,7 @@ class CardPessoas extends Component {
                         </div>
                         <div key={pessoas.id_pessoa} className=" ">
                             <div className="CardPessoas1 mb-3">
-                                <h2 class="NomePessoa">{p.nome_pessoa}</h2>
+                                <h2 className="NomePessoa">{p.nome_pessoa}</h2>
                                 
                                 <div className="mb-3">
                                     <img src={aim} alt="" /> <span>{p.equipe_id}</span>

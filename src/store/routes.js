@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes, } from 'react-router-dom';
-import Home from "./pages/Home/home";
-import ProjetoIndex from ".//pages/Projetos/projeto_index";
-import ProjetoDT from ".//pages/ProjetoDT/projetoDT_index";
-import Equipes from ".//pages/Equipes/equipe_index"
-import EquipeDT from ".//pages/EquipeDT/equipesDT_index"
-import Pessoas from ".//pages/Pessoas/pessoa_index"
-import PessoaDT from ".//pages/PessoaDT/pessoaDT_index"
-import Signin from ".//pages/Login/signin";
+import Home from "../pages/Home/home";
+import ProjetoIndex from "../pages/Projetos/projeto_index";
+import ProjetoDT from "../pages/ProjetoDT/projetoDT_index";
+import Equipes from "../pages/Equipes/equipe_index"
+import EquipeDT from "../pages/EquipeDT/equipesDT_index"
+import Pessoas from "../pages/Pessoas/pessoa_index"
+import PessoaDT from "../pages/PessoaDT/pessoaDT_index"
+import Signin from "../pages/Login/signin";
 //import useAuth from "./pages/Login/hooks/useAuth"
 
 const Private = ({Item}) =>{

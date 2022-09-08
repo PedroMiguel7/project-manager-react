@@ -92,8 +92,8 @@ export default function BasicTabs() {
         </StyledTabs>
       <div>
           <span>4/5 Completas</span>
-          <div class="progress Progress" >
-              <div class="ProgressBar progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+          <div className="progress Progress" >
+              <div className="ProgressBar progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
       </div>
     </div>
