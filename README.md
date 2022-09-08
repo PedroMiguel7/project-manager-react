@@ -1,18 +1,15 @@
   # Desafio API -  ETAPA 2
   
-Sistema criado para cadastrar projetos e equipes, um projeto possui uma equipe e tem tarefas dentro, onde os membros
-da equipe podem se atribuir.
+Sistema criado para cadastrar projetos e equipes, um projeto possui uma equipe e tem tarefas dentro, onde os membros(usuários) da equipe podem se atribuir.
 
 ## Detalhes
 
 - Rodando em: https://api-brisa-react.vercel.app/
-- Utilizando Go e gin, ReactJS e PostgreSQL
-- Disponível em(HEROKU): 
-- Swagger: (ainda não finalizado)
+- Utilizando ReactJS e Axios. 
+
 <div style="display: inline_block"><br>
-<img align="center" alt="miguel-Golang" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg" />
 <img align="center" alt="miguel-React" height="60" width="70"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" />
-<img align="center" alt="miguel-PostgreSQL" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" />
+
           
 </div>
 

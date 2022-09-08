@@ -39,9 +39,8 @@ function SideBar(props) {
     //const [modeT] = localStorage.getItem('theme');
     //const [mode, setMode] = useState(modeT.title === 'light' ? 'light' : 'dark');
 
-    let teminha = localStorage.getItem('theme')
-    let teminhaConvertido = JSON.parse(teminha)
-    const [mode, setMode] = useState(teminhaConvertido.title);
+
+    const [mode, setMode] = useState('dark');
 
     const [homeActive, setHomeActive] = useState(mode === 'dark' ? homeActiveD : homeActiveL)
     const [projectActive, setProjectActive] = useState(mode === 'dark' ? projectActiveD : projectActiveL)
@@ -51,7 +50,10 @@ function SideBar(props) {
     const [TipoLogo, setTipoLogo] = useState(Logo)
 
     function MudaIcon() {
-        if (mode === 'light') {
+        let teminha = localStorage.getItem('theme')
+        let teminhaConvertido = JSON.parse(teminha)
+
+        if (mode === 'light' && teminhaConvertido.title === 'light') {
             setTipoLogo(Logo)
             setLogo(logoD)
             setHomeActive(homeActiveD)
