@@ -27,7 +27,7 @@ export default function BasicModalEquipe(props) {
       {
         nome_equipe: nome[0].toUpperCase() + nome.slice(1),
       })
-      props.atualiza()
+    props.atualiza()
   }
 
   function FechaModal() {
@@ -36,9 +36,9 @@ export default function BasicModalEquipe(props) {
   }
 
   return (
-    <div>
+    <>
       <AddButton onClick={handleOpen} variant="contained" size="small" >
-        <AddRoundedIcon sx={{fontSize: "1.2rem"}} /><ButtonContent>Adicionar</ButtonContent>
+        <AddRoundedIcon sx={{ fontSize: "1.2rem" }} /><ButtonContent>Adicionar</ButtonContent>
       </AddButton>
 
       <Modal
@@ -76,12 +76,12 @@ export default function BasicModalEquipe(props) {
               </CancelButton>
               <SaveButton
                 variant="contained" type="submit" onClick={PostaEquipe}>
-                  Salvar
+                Salvar
               </SaveButton>
             </ButtonsContainer>
           </form>
         </Box>
       </Modal>
-    </div>
+    </>
   );
 }
