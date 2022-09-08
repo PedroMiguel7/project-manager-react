@@ -18,8 +18,8 @@ da equipe podem se atribuir.
 
 
 ## Membros:
-<div>-<a href="https://github.com/caiosousaf"> Caio Sousa:</a>  Desenvolvimento dos metódos GET, POST, PUT e DELETE, mais conexão com o Banco de dados, desenvolvimento do swagger.</div>
-<div>-<a href="https://github.com/PedroMiguel7"> Pedro Miguel:</a>  Desenvolvimento do FrontEnd, definição de rotas </div> 
+<div>-<a href="https://github.com/caiosousaf"> Caio Sousa:</a>  Desenvolvimento do BackEnd, disponível em: <a href="https://github.com/caiosousaf/api_Golang_PostGresql_Heroku"> api_Golang_PostGresql_Heroku </a> </div>
+<div>-<a href="https://github.com/PedroMiguel7"> Pedro Miguel:</a>  Desenvolvimento do FrontEnd, definição de rotas, conexão primária com a api </div> 
 <div>-<a href="https://github.com/dayannebugarim"> Dayanne Bugarim:</a> Desenvolvimento do FrontEnd</div>
 
 
@@ -27,10 +27,12 @@ da equipe podem se atribuir.
 
 | Funcionalidade         | Estado |
 | ------------- |:-------------:|
-| Mostrar equipe(s)      | ✔️❤️ |
-| Mostrar projeto(s)      | ✔️❤️ |
-| Cadastrar projeto   | ✔️❤️ | 
-| Associar equipe a projeto | ✔️❤️ | 
-| Criar tarefa no projeto | ✔️❤️ | 
-| Atribuir tarefa | ✔️❤️ |
-| Login e Logout | ✔️❤️ |
+| CRUD(get, post, put e delete) equipe(s)      | ✔️❤️ |
+| CRUD(get, post, put e delete) projeto(s)     | ✔️❤️ |
+| CRUD(get, post, put e delete) pessoa(s)      | ✔️❤️ |
+| CRUD(get, post, put e delete) tarefa(s)      | ✔️❤️ |
+| Associar equipe a projeto                    | ✔️❤️ | 
+| Criar tarefa no projeto                      | ✔️❤️ | 
+| Atribuir tarefa                              | ✔️❤️ |
+| Login e Logout                               | ✔️❤️ |
+| Usuários                                     | ❌ |
