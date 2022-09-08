@@ -32,8 +32,8 @@ const [tasks, setTasks] = useState([]);
 
     return (
         <>
-            <div class="progress mt-2" style={{ backgroundColor: "gray" }}>
-                <div class="progress-bar" role="progressbar" style={{ backgroundColor: "var(--corBotaoInverso)", width:`${BarrinhaProgresso}%` }} aria-valuenow="25"  aria-valuemin="0" aria-valuemax="100">{Math.round(BarrinhaProgresso)}%</div>
+            <div className="progress mt-2" style={{ backgroundColor: "gray" }}>
+                <div className="progress-bar" role="progressbar" style={{ backgroundColor: "var(--corBotaoInverso)", width:`${BarrinhaProgresso}%` }} aria-valuenow="25"  aria-valuemin="0" aria-valuemax="100">{Math.round(BarrinhaProgresso)}%</div>
             </div>
         </>
     )
