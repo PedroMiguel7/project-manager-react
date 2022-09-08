@@ -1,11 +1,10 @@
 import TemporaryDrawer from "./Drawer";
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
 import { FixedNavContainer, LogoL, Logo, Nav, NavItem, FixedNavLink, ItemName } from './style';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
-import useTema from "./Teminha";
 
 // icons SVG
 import home from '../../assets/icons/home.svg';
