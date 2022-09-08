@@ -40,7 +40,9 @@ function SideBar(props) {
     //const [modeT] = localStorage.getItem('theme');
     //const [mode, setMode] = useState(modeT.title === 'light' ? 'light' : 'dark');
 
-    const [mode, setMode] = useState('dark');
+    let teminha = localStorage.getItem('theme')
+    let teminhaConvertido = JSON.parse(teminha)
+    const [mode, setMode] = useState(teminhaConvertido.title);
 
     const [homeActive, setHomeActive] = useState(mode === 'dark' ? homeActiveD : homeActiveL)
     const [projectActive, setProjectActive] = useState(mode === 'dark' ? projectActiveD : projectActiveL)
