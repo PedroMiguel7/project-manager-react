@@ -1,22 +1,16 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-//import Fade from '@mui/material/Fade';
-import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
-import { LogoNew } from '../../../assets/icons/ICONS lightThema/icones';
-import { useState } from 'react';
 import { AddButton, ButtonContent, ModalHeader, OcuparEspaco, HeaderTitle, HighlightedTitle, ButtonsContainer, CancelButton, SaveButton } from "./style";
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { Textfield, style } from "./muiStyle";
 import api from "../../../services/api";
 
 export default function BasicModalEquipe(props) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => { setOpen(false); setNome() }
 
