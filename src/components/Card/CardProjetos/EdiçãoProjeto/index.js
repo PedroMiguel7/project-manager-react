@@ -115,9 +115,6 @@ export default function EditaProjeto(props) {
 
   var [nome, setNome] = useState(props.projetinho.nome_projeto);
   var [descricao, setDescricao] = useState(props.projetinho.descricao_projeto);
-  var [equipe, setEquipe] = useState();
-
-
 
   function DeletaProjeto() {
     api.delete('/projetos/' + props.id_projeto)
@@ -181,14 +178,14 @@ export default function EditaProjeto(props) {
             aria-describedby="alert-dialog-description"
             PaperProps={{
               style: {
-                backgroundColor: '#494A58',
-                color: '#fff'
+                backgroundColor: 'var(--componentes)',
+                color: 'var(--corTextComponente)'
               },
             }}
           >
             <DialogTitle id="alert-dialog-title">
               <WarningIcon />
-              {"Tem certeza que deseja excluir esta tarefa?"}
+              {"Tem certeza que deseja excluir este projeto?"}
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description" sx={{ color: '#C2C3C6' }}>
