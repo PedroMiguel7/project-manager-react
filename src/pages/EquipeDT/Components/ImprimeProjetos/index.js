@@ -5,14 +5,12 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ProgressoProjetos from "../ProgressoProjetos";
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import DataLoading from "../../../../components/DataLoading";
 
 export default function ImprimeProjetos(props) {
     if (!props.projetos) {
         return (
-            <SpinnerBox>
-                <Spinner size={50} thickness={1} />
-                <LoadingMessage>Carregando os dados...</LoadingMessage>
-            </SpinnerBox>
+            <DataLoading />
         )
     } else if (props.projetos === null) {
         return (
