@@ -19,6 +19,7 @@ import PrioridadeBaixa from '../../../../../assets/icons/prioridade-baixa.svg';
 import Tooltip from '@mui/material/Tooltip';
 import TasksNotFound from "../../../../../assets/empty-states/tasks-not-found.svg";
 import { EmptyState, EmptyStateImg, EmptyStateTitle, Head, HeadCol, TableContainer, Table, TableBody, Row, Col, PriorityIcons, SpinnerBox, Spinner, LoadingMessage } from './style';
+import DataLoading from "../../../../../components/DataLoading";
 
 
 class TarefasAndamento extends Component {
@@ -244,15 +245,6 @@ class TarefasAndamento extends Component {
     )
   }
 
-  LoadingSpinner = () => {
-    return (
-      <SpinnerBox>
-        <Spinner size={60} thickness={1} />
-        <LoadingMessage>Carregando os dados...</LoadingMessage>
-      </SpinnerBox>
-    )
-  }
-
   render() {
     const { tarefas } = this.state;
     const { loading } = this.state;
@@ -263,7 +255,7 @@ class TarefasAndamento extends Component {
           <Table id='table' className="table align-middle text-center">
             <TableBody>
               <this.Header tarefas={tarefas} />
-              {loading ? <this.LoadingSpinner /> : <this.ImprimeTarefas tarefas={tarefas} />}
+              {loading ? <DataLoading height="29vh" /> : <this.ImprimeTarefas tarefas={tarefas} />}
               <this.Alerta />
             </TableBody>
           </Table>

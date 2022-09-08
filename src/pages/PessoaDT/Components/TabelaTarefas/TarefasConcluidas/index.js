@@ -11,6 +11,7 @@ import PrioridadeBaixa from '../../../../../assets/icons/prioridade-baixa.svg';
 import Tooltip from '@mui/material/Tooltip';
 import TasksNotFound from "../../../../../assets/empty-states/tasks-not-found.svg";
 import { EmptyState, EmptyStateImg, EmptyStateTitle, Head, HeadCol, TableContainer, Table, TableBody, Row, Col, PriorityIcons, SpinnerBox, Spinner, LoadingMessage } from './style';
+import DataLoading from "../../../../../components/DataLoading";
 
 class TarefasConcluidas extends Component {
   state = {
@@ -24,7 +25,7 @@ class TarefasConcluidas extends Component {
     try {
       const response = await api.get(pessoaPath + '/tasks');
       this.setState({ loading: false, tarefas: response.data });
-    } catch(err){
+    } catch (err) {
       this.setState({ loading: false })
       console.log(err);
     }
@@ -120,7 +121,7 @@ class TarefasConcluidas extends Component {
         props.tarefas?.map(t => {
           if (t.status === "Concluido")
             return (
-              <Row id={t.id_task} key={t.id_task} style={{color: 'var(--corTexto'}}>
+              <Row id={t.id_task} key={t.id_task} style={{ color: 'var(--corTexto' }}>
                 <Col>
                   <IconButton onLoad={setIcon}>
                     {icon}
@@ -148,15 +149,6 @@ class TarefasConcluidas extends Component {
     }
   }
 
-  LoadingSpinner = () => {
-    return (
-      <SpinnerBox>
-        <Spinner size={60} thickness={1} />
-        <LoadingMessage>Carregando os dados...</LoadingMessage>
-      </SpinnerBox>
-    )
-  }
-
   render() {
     const { tarefas } = this.state;
     const { loading } = this.state;
@@ -167,7 +159,7 @@ class TarefasConcluidas extends Component {
           <Table className="table align-middle text-center">
             <TableBody>
               <this.Header tarefas={tarefas} />
-              {loading ? <this.LoadingSpinner /> : <this.ImprimeTarefas tarefas={tarefas} />}
+              {loading ? <DataLoading height="29vh" /> : <this.ImprimeTarefas tarefas={tarefas} />}
             </TableBody>
           </Table>
         </TableContainer>
