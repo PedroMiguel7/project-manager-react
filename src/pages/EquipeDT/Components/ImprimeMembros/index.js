@@ -2,17 +2,28 @@ import React from "react";
 import Avatar from '@mui/material/Avatar';
 import PeopleNotFound from '../../../../assets/empty-states/people-not-found.svg';
 import MenuMembros from "../MenuMembros";
+import { EmptyStateContainer, EmptyStateImg, EmptyStateMessage, MembroLi, MainDiv, PersonInformations, Nome, Funcao } from "./style";
+import MembrosSkeleton from "../Skeleton";
 
 export default function ImprimeMembros(props) {
-    if (props.pessoas === null) {
+    if (!props.pessoas) {
         return (
             <>
-                <div className="EmptyStateContainer">
-                    <img src={PeopleNotFound} />
-                    <h5>
+                <MembrosSkeleton />
+                <MembrosSkeleton />
+                <MembrosSkeleton />
+                <MembrosSkeleton />
+            </>
+        )
+    } else if (props.pessoas === null) {
+        return (
+            <>
+                <EmptyStateContainer>
+                    <EmptyStateImg src={PeopleNotFound} />
+                    <EmptyStateMessage>
                         Essa equipe ainda não possui membros.
-                    </h5>
-                </div>
+                    </EmptyStateMessage>
+                </EmptyStateContainer>
             </>
         );
     } else {
@@ -42,23 +53,20 @@ export default function ImprimeMembros(props) {
 
         return (
             props.pessoas?.map(p => (
-                <li className="MembroLi d-flex justify-content-between align-items-center">
-                    <div className="d-flex align-items-center">
+                <MembroLi>
+                    <MainDiv>
                         <Avatar sx={{ bgcolor: `${stringToHslColor(p.nome_pessoa, 50, 70)}`, color: "#1E1F28" }}>
                             {stringAvatar(p.nome_pessoa)}
                         </Avatar>
-                        <div className="d-flex flex-column ms-2">
-                            <span>{p.nome_pessoa}</span>
-                            <span>{p.funcao_pessoa}</span>
-                        </div>
-                    </div>
+                        <PersonInformations>
+                            <Nome>{p.nome_pessoa}</Nome>
+                            <Funcao>{p.funcao_pessoa}</Funcao>
+                        </PersonInformations>
+                    </MainDiv>
+                    <MenuMembros id={p.id_pessoa} path={path} />
 
-                    <div className="d-flex me-2">
-                        <MenuMembros id={p.id_pessoa} path={path} />
-
-                        {/*<a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>*/}
-                    </div>
-                </li>
+                    {/*<a className="LinkProjeto" href={`/pessoas/${p.id_pessoa}`} target="_blank">Ver Pessoa</a>*/}
+                </MembroLi>
             ))
         );
     }

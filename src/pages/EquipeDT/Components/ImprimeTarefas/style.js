@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 export const EmptyStateContainer = styled.div`
     display: flex;
@@ -39,4 +41,25 @@ export const NomeTarefa = styled.h5`
 export const PrazoTarefa = styled.span`
     color: #87888C;
     font-size: 0.93rem;
+`;
+
+//Spinner
+export const SpinnerBox = styled(Box)`
+    height: 100%;
+    background-color: hsla(234, 17%, 12%, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+`;
+
+export const Spinner = styled(CircularProgress)`
+    .MuiCircularProgress-circle {
+        color: #F46E27;
+    }
+`;
+
+export const LoadingMessage = styled.p`
+    color: #40404F;
 `;

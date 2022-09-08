@@ -1,12 +1,19 @@
 import React from "react";
-import { EmptyStateContainer, TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa } from "./style";
+import { EmptyStateContainer, TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa, SpinnerBox, Spinner, LoadingMessage } from "./style";
 import TasksNotFound from '../../../../assets/empty-states/tasks-not-found.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
 export default function ImprimeTarefas(props) {
-    let tarefas = props.equipe.tasks;
-    if (tarefas === null) {
+    const tarefas = props.equipe.tasks;
+    if (!tarefas) {
+        return (
+            <SpinnerBox>
+                <Spinner size={50} thickness={1} />
+                <LoadingMessage>Carregando os dados...</LoadingMessage>
+            </SpinnerBox>
+        )
+    } else if (tarefas === null) {
         return (
             <>
                 <EmptyStateContainer>
