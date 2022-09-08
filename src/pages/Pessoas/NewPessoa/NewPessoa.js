@@ -11,47 +11,10 @@ import { createContext, useState, useEffect } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import api from "../../../services/api";
 import { LogoNew } from '../../../assets/icons/ICONS lightThema/icones';
+import { AddButton, ButtonContent, ModalHeader, OcuparEspaco, HeaderTitle, HighlightedTitle, ButtonsContainer, CancelButton, SaveButton } from "./style";
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import { Textfield, style } from "../../../styles/muiStyles.js";
 
-
-const CssTextField = styled(TextField)({
-  '& .MuiOutlinedInput-root': {
-    color: '#F4F5FA',
-    svg: { color: '#F4F5FA' },
-    '&.Mui-focused': {
-      borderColor: '#F4F5FA',
-      svg: { color: 'var(--corBotao)' }
-    },
-    '& fieldset': {
-      borderColor: '#F4F5FA',
-      borderRadius: 5
-    },
-    '&:hover fieldset': {
-      borderColor: '#C2C3C6',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: 'var(--corBotao)',
-    },
-  },
-  '.MuiInputLabel-outlined': {
-    color: '#F4F5FA',
-    '&.Mui-focused': {
-      color: 'var(--corBotao)',
-    },
-  },
-})
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  bgcolor: '#21222D',
-  borderRadius: 2,
-  boxShadow: 24,
-  p: 5,
-  minWidth: '400px',
-  width: '25vw'
-};
 
 export default function BasicModalPessoa(props) {
   const [open, setOpen] = React.useState(false);
@@ -82,9 +45,9 @@ export default function BasicModalPessoa(props) {
         funcao_pessoa: funcao,
         equipe_Id: parseInt(dadoEquipe),
       })
-      props.atualiza()
+    props.atualiza()
   }
-  
+
   useEffect(() => {
     const fetchequipe = async () => {
       try {
@@ -98,8 +61,10 @@ export default function BasicModalPessoa(props) {
   }, []);
 
   return (
-    <div>
-      <button id='NovaPessoa' onClick={handleOpen} className="new-project "><LogoNew/></button>
+    <>
+      <AddButton id='NovaPessoa' onClick={handleOpen} variant="contained" size="small" >
+        <AddRoundedIcon sx={{ fontSize: "1.2rem" }} /><ButtonContent>Adicionar</ButtonContent>
+      </AddButton>
       <Modal
         open={open}
         onClose={handleClose}
@@ -107,15 +72,16 @@ export default function BasicModalPessoa(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className='d-flex align-items-center justify-content-between mb-4'>
-            <div className='OcuparEspaco'></div>
+          <ModalHeader>
+            <OcuparEspaco></OcuparEspaco>
             <ClearRoundedIcon className='ClearRoundedIcon order-2' onClick={handleClose} />
-            <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center order-1'>
-              Adicionar<span style={{ color: 'var(--corBotao)' }}> Pessoa</span>
-            </Typography>
-          </div>
+            <HeaderTitle>
+              Adicionar<HighlightedTitle> Pessoa</HighlightedTitle>
+            </HeaderTitle>
+          </ModalHeader>
+
           <form onSubmit={FechaModal}>
-            <CssTextField
+            <Textfield
               required
               id="nome"
               name='nome'
@@ -123,92 +89,78 @@ export default function BasicModalPessoa(props) {
               onChange={(e) => setNome(e.target.value)}
               variant="outlined"
               margin="dense"
-              color='primary'
               fullWidth
-              className='textField'
-              sx={{
-                "& label": {
-                  color: '#F4F5FA'
-                },
-                "& label.Mui-focused": {
-                  color: '#F46E27'
-                },
-              }} />
+              className='textField' />
 
             <Box sx={{ minWidth: 120 }}>
-              <CssTextField 
-              select
-              id='selecionaFuncao'
-              label="Função"
-              fullWidth
-              margin="dense"
-              value={funcao}
-              onChange={handleChangeFun}
-              SelectProps={{
-                MenuProps: {
-                  PaperProps: {
-                    style: {
-                      maxHeight: '23vh',
-                      backgroundColor: '#494A58',
-                      color: '#fff',
+              <Textfield
+                select
+                id='selecionaFuncao'
+                label="Função"
+                fullWidth
+                margin="dense"
+                value={funcao}
+                onChange={handleChangeFun}
+                SelectProps={{
+                  MenuProps: {
+                    PaperProps: {
+                      style: {
+                        maxHeight: '23vh',
+                        backgroundColor: '#494A58',
+                        color: '#fff',
+                      }
                     }
                   }
-                }
-              }}
+                }}
               >
                 <MenuItem id='escolheFuncao' value={"Back-End"}>Back-End</MenuItem>
                 <MenuItem value={"Front-End"}>Front-End</MenuItem>
                 <MenuItem value={"Tester"}>Tester</MenuItem>
                 <MenuItem value={"Gerente de Projeto"}>Gerente de Projeto</MenuItem>
-              </CssTextField>
+              </Textfield>
             </Box>
 
             <Box sx={{ minWidth: 120 }}>
-              <CssTextField
-              select
-              id='selecionaEquipe'
-              label="Equipe"
-              fullWidth
-              margin="dense"
-              value={dadoEquipe}
-              onChange={handleChangeAge}
-              SelectProps={{
-                MenuProps: {
-                  PaperProps: {
-                    style: {
-                      maxHeight: '23vh',
-                      backgroundColor: '#494A58',
-                      color: '#fff',
+              <Textfield
+                select
+                id='selecionaEquipe'
+                label="Equipe"
+                fullWidth
+                margin="dense"
+                value={dadoEquipe}
+                onChange={handleChangeAge}
+                SelectProps={{
+                  MenuProps: {
+                    PaperProps: {
+                      style: {
+                        maxHeight: '23vh',
+                        backgroundColor: '#494A58',
+                        color: '#fff',
+                      }
                     }
                   }
-                }
-              }}
+                }}
               >
                 {equipe?.map(p => (
                   <MenuItem id='escolheEquipe' value={p.id_equipe} key={p.id_equipe}>{p.nome_equipe}</MenuItem>)
                 )}
-              </CssTextField>
+              </Textfield>
             </Box>
 
             <Divider light className='mt-3' />
-            <div className='d-flex justify-content-end mt-5'>
-              <Button style={{
-                color: "#F4F5FA",
-                opacity: 0.5,
-                textTransform: 'capitalize'
-              }}
-                variant="text" id='cancelarAdd' onClick={handleClose}>Cancelar</Button>
-              <Button style={{
-                color: "#F4F5FA",
-                background: "var(--corBotao)",
-                textTransform: 'capitalize',
-                boxShadow: 'none'
-              }}
-                variant="contained" id='aceitarAdd' type="submit" onClick={PostaPessoa}>Salvar</Button>
-            </div>
+            <ButtonsContainer>
+              <CancelButton
+                variant="text" id='cancelarAdd' onClick={handleClose}>
+                Cancelar
+              </CancelButton>
+              <SaveButton
+                variant="contained" id='aceitarAdd' type="submit" onClick={PostaPessoa}>
+                Salvar
+              </SaveButton>
+            </ButtonsContainer>
           </form>
         </Box>
       </Modal>
-    </div>
+    </>
   );
 }
