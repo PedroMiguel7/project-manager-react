@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from "react";
-import api from '../../../../../api';
+import api from '../../../../../services/api';
 import TarefasMenu from '../../TarefasMenu';
 import IconButton from '@mui/material/IconButton';
 import TaskAltRoundedIcon from '@mui/icons-material/TaskAltRounded';

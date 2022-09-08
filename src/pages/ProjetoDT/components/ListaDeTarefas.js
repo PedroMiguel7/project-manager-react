@@ -1,5 +1,5 @@
 import { useDrop } from 'react-dnd';
-import api from '../../../api';
+import api from '../../../services/api';
 import MostrarTarefasCard from './cardTarefas';
 import BasicModalTarefa from "./NewTarefa/AddTarefa";
 

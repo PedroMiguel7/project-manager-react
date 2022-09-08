@@ -21,7 +21,7 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
-import api from '../../../../api';
+import api from '../../../../services/api';
 import { useEffect, useState } from 'react';
 
 const CssTextField = styled(TextField)({

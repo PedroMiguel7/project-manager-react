@@ -13,7 +13,7 @@ import ContadorTarefas from "../ContadorTarefas";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { HeaderContainer, Header, Title, TableContainer, Table } from "./style";
 import { set } from "react-hook-form";
-import api from "../../../../api";
+import api from "../../../../services/api";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from "react";
-import api from '../../../../../api';
+import api from '../../../../../services/api';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import TarefasMenu from '../../TarefasMenu';
 import IconButton from '@mui/material/IconButton';

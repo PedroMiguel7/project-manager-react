@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import api from "../../api";
+import api from "../../services/api";
 import aim from "../../assets/icons/aim.svg";
 import HeaderTarefas from "./Components/HeaderTarefas";
 import LinearChart from "./Components/LinearChart";

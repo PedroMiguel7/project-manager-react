@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
-import api from '../../api';
+import api from '../../services/api';
 import HeaderDt from "../../components/HeaderDt"
 import Button from '@mui/material/Button';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';

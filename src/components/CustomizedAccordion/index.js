@@ -10,7 +10,7 @@ import SwapHorizRoundedIcon from '@mui/icons-material/SwapHorizRounded';
 import ExternalLink from '../../assets/icons/external-link.svg';
 import Tooltip from '@mui/material/Tooltip';
 import { useEffect, useState } from 'react';
-import api from '../../api';
+import api from '../../services/api';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />

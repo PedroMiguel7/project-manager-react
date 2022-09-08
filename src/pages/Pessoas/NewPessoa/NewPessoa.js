@@ -9,7 +9,7 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import { createContext, useState, useEffect } from 'react';
 import MenuItem from '@mui/material/MenuItem';
-import api from "../../../api";
+import api from "../../../services/api";
 import { LogoNew } from '../../../assets/icons/ICONS lightThema/icones';
 
 

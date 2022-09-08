@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from "react";
-import api from '../../../../../api';
+import api from '../../../../../services/api';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';

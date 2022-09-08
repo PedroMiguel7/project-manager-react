@@ -1,7 +1,7 @@
 import AdicionarProjeto from '../Projetos/components/NewProjeto/index'
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
 import { useState, useEffect } from "react";
-import api from "../../api";
+import api from "../../services/api";
 import CardBaixoHome from "../Home/TabelaProjetosHome";
 import {
   Chart as ChartJS,

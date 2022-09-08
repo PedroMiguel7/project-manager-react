@@ -1,6 +1,6 @@
 import HeaderDt from "../../components/HeaderDt";
 import React, { Component, useEffect, useState } from "react";
-import api from "../../api";
+import api from "../../services/api";
 import MostrarLIstaTarefas from "./components/ListaDeTarefas";
 import { Link } from "react-router-dom";
 import { ResponsivePie } from "@nivo/pie";
@@ -397,7 +397,7 @@ class ProjetoDT extends Component {
           }}
         >
           {icon}
-          <h5 style={{ color: "white", marginTop: "9px" }}>Concluir Projeto</h5>
+          <h5 style={{ color: "var(--corTexto)", marginTop: "9px" }}>Concluir Projeto</h5>
         </IconButton>
       );
     } else {

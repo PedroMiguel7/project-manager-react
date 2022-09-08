@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import aim from '../../../assets/icons/aim.svg'
 import profile from '../../../assets/icons/Profile.svg'
 import {useState, useEffect} from 'react';
-import api from '../../../api';
+import api from '../../../services/api';
 import TagPessoas from "../../TagPessoas";
 
 

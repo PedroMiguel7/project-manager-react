@@ -11,7 +11,7 @@ import Divider from '@mui/material/Divider';
 import { LogoNew } from '../../../assets/icons/ICONS lightThema/icones';
 import { useState } from 'react';
 //import { PropaneSharp } from '@mui/icons-material';
-import api from "../../../api";
+import api from "../../../services/api";
 
 const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {

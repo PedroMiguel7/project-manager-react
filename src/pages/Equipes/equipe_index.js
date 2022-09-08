@@ -2,7 +2,7 @@ import Divider from '@mui/material/Divider';
 import ExibirEquipes from "../../components/Card/CardEquipe/index.js";
 import BasicModalEquipe from "./NewEquipe";
 import { useEffect, useState } from "react";
-import api from "../../api";
+import api from "../../services/api";
 import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
 import { NotFoundContainer, Main, Header, Title, Search, OptionsContainer, Options, OrderSelect, CardsContainer } from './style.js';
 

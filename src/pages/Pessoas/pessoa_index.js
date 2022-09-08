@@ -2,7 +2,7 @@ import filter from '../../assets/icons/filter.svg';
 import BasicModalPessoa from '../Pessoas/NewPessoa/NewPessoa';
 import CardPessoas from "../../components/Card/CardPessoas";
 import { useState, useEffect } from "react";
-import api from "../../api";
+import api from "../../services/api";
 import SearchNotFound from "../../assets/empty-states/search-not-found.svg";
 import { NotFoundContainer, Main, Header, Title, Search, OptionsContainer, Options, OrderSelect, CardsContainer } from "./style.js"
 
