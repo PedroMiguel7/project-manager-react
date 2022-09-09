@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import IconButton from '@mui/material/IconButton';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { Link } from "react-router-dom";
 
 // Fixed
@@ -15,8 +13,15 @@ export const FixedNavContainer = styled.nav`
     background-color: var(--sideBar);
     height: 100vh;
     box-shadow: 0 30px 60px rgb(0, 0, 0, 0.3);
-    min-width: 60px;
+    min-width: 70px;
+    //width: 12%;
     z-index: 5;
+    transition: 0.3s;
+
+    &:hover {
+        width: 11%;
+        transition: width 0.3s ease-in-out;
+    }
 
     @media(max-width: 992px) {
         display: none;
@@ -49,7 +54,6 @@ export const Nav = styled.ul`
 export const NavItem = styled.li`
     transition: 0.3s;
     cursor: pointer;
-    //align-self: flex-start;
 
     &:hover {
         opacity: 0.85;
@@ -81,12 +85,13 @@ export const FixedNavLink = styled(Link)`
     font-size: 0.95rem;
     gap: 0.8rem;
     width: 25px;
+    transition: 0.3s;
 
-    &:hover {
+    ${FixedNavContainer}:hover & {
         color: #87888C;
         text-decoration: none;
         width: 80px;
-        transition: width 0.5s ease-in-out;
+        transition: width 0.3s ease-in-out;
     }
 `;
 
@@ -94,8 +99,9 @@ export const ItemName = styled.span`
     
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 0.2s linear;
-    ${FixedNavLink}:hover & {
+    transition: 0.4s;
+    ${FixedNavContainer}:hover & {
+        transition: visibility 0s, opacity 0.4s linear;
         visibility: visible;
         opacity: 1;
     }
