@@ -129,4 +129,5 @@ export const TarefasPessoa = styled.div`
     box-shadow: 0px 2px 12px 5px rgb(0, 0, 0, 0.08);
     transition: 0.5s;
     grid-area: tarefas;
+    color: var(--corTexto)
 `;

@@ -53,7 +53,7 @@ function SideBar(props) {
         let teminha = localStorage.getItem('theme')
         let teminhaConvertido = JSON.parse(teminha)
 
-        if (mode === 'light' && teminhaConvertido.title === 'light') {
+        if (teminhaConvertido.title === 'light') {
             setTipoLogo(Logo)
             setLogo(logoD)
             setHomeActive(homeActiveD)
