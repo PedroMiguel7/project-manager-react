@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,96 +11,51 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import WarningIcon from '@mui/icons-material/Warning';
-import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
 import { Link } from "react-router-dom";
 
-const CssTextField = styled(TextField)({
-    '& .MuiOutlinedInput-root': {
-      color: '#F4F5FA',
-      svg: { color: '#F4F5FA' },
-      '&.Mui-focused': {
-        borderColor: '#F4F5FA',
-        svg: { color: '#F57D3D' }
-      },
-      '& fieldset': {
-        borderColor: '#F4F5FA',
-        borderRadius: 5
-      },
-      '&:hover fieldset': {
-        borderColor: '#C2C3C6',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#F46E27',
-      },
-      '& .MuiInputAdornment-root': {
-        color: '#87888C',
-      }
-    },
-    '.MuiInputLabel-outlined': {
-      color: '#F4F5FA',
-      '&.Mui-focused': {
-        color: '#F46E27',
-      },
-    },
-  })
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: '#21222D',
-    borderRadius: 2,
-    boxShadow: 24,
-    p: 5,
-    minWidth: '400px',
-    width: '25vw'
-};
-
 export default function MenuMembros(props) {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-    const [openEdit, setOpenEdit] = React.useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
 
-    const [openAlert, setOpenAlert] = React.useState(false);
+  const [openAlert, setOpenAlert] = useState(false);
 
-    const handleClickEdit = () => {
-        setOpenEdit(true);
-    };
+  const handleClickEdit = () => {
+    setOpenEdit(true);
+  };
 
-    const handleClickDelete = () => {
-        setOpenAlert(true);
-    };
+  const handleClickDelete = () => {
+    setOpenAlert(true);
+  };
 
-    const handleCloseEdit = () => {
-        setOpenEdit(false);
-        setOpenAlert(false);
-        setAnchorEl(null);
-    };
+  const handleCloseEdit = () => {
+    setOpenEdit(false);
+    setOpenAlert(false);
+    setAnchorEl(null);
+  };
 
-    const handleCloseAlert = () => {
-        setOpenAlert(false);
-        setAnchorEl(null);
-    };
+  const handleCloseAlert = () => {
+    setOpenAlert(false);
+    setAnchorEl(null);
+  };
 
-    function RemoveMembro() {
-        console.log(`${props.path}/pess${props.id}`);
-        //api.delete('/tasks/' + props.id_task)
-        //this.handleCloseAlert()
-    }
+  function RemoveMembro() {
+    console.log(`${props.path}/pess${props.id}`);
+    //api.delete('/tasks/' + props.id_task)
+    //this.handleCloseAlert()
+  }
 
-    RemoveMembro();
+  RemoveMembro();
 
-    return (
-        <div>
+  return (
+    <>
       <Tooltip title="Opções" placement="right">
         <IconButton
           aria-label="more"
@@ -129,10 +84,10 @@ export default function MenuMembros(props) {
         }}
       >
         <MenuItem onClick={handleClickEdit} sx={{ color: '#C2C3C6' }} className="gap-1">
-            <Link className='Link' to={`/pessoas/${props.id}`} target="_blank">
-                <OpenInNewIcon sx={{ color: '#C2C3C6' }} /> <span>Ver Pessoa</span>    
-            </Link>
-          
+          <Link className='Link' to={`/pessoas/${props.id}`} target="_blank">
+            <OpenInNewIcon sx={{ color: '#C2C3C6' }} /> <span>Ver Pessoa</span>
+          </Link>
+
         </MenuItem>
         <MenuItem onClick={handleClickDelete} sx={{ color: '#C2C3C6' }} className="gap-1">
           <PersonRemoveIcon sx={{ color: '#C2C3C6' }} /> <span>Remover</span>
@@ -172,6 +127,6 @@ export default function MenuMembros(props) {
           </DialogActions>
         </Dialog>
       </Menu>
-    </div>
-    )
+    </>
+  )
 }
