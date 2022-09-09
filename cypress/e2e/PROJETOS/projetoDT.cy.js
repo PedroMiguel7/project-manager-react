@@ -12,6 +12,9 @@ describe('Test in my projetos page', () => {
     cy.get('#SideProjeto').click();
     cy.url().should('eq', `${Cypress.config().baseUrl}/projetos`);
 
+    cy.get('#SideTema').click();
+    cy.get('#SideTema').click();
+
     cy.get('#CardProjeto').click();
   })
 
