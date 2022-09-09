@@ -10,7 +10,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./hooks/useAuth";
-import api from "axios";
+import api from "../../services/api";
 import { AirplanemodeActive } from "@mui/icons-material";
 
 const CssTextField = styled(TextField)({

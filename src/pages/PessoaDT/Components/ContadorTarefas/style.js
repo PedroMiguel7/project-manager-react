@@ -13,7 +13,7 @@ export const ContadorContainer = styled.div`
 
 export const ContadorTarefas = styled.span`
     font-size: 15px;
-    color: var(--branco);
+    color: var(--corTexto);
     text-align: center;
     width: max-content;
 `;
