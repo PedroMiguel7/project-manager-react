@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import { AddButton, ButtonContent, ModalHeader, OcuparEspaco, HeaderTitle, HighlightedTitle, ButtonsContainer, CancelButton, SaveButton } from "./style";
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
-import { Textfield, style } from "./muiStyle";
+import { Textfield, style } from "../../../styles/muiStyles";
 import api from "../../../services/api";
 
 export default function BasicModalEquipe(props) {

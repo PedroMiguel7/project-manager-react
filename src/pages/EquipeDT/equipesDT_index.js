@@ -162,7 +162,7 @@ class equipeDT_index extends Component {
         const tarefas = equipe?.tasks;
         const projetos = equipe?.projetos;
 
-        // console.log(equipe);
+         console.log(equipe);
         // console.log(pessoas);
         // console.log(tarefas);
         // console.log(projetos);
@@ -200,7 +200,7 @@ class equipeDT_index extends Component {
                                 <h3>Membros</h3>
                                 <MembrosUl>
                                     <ImprimeMembros pessoas={pessoas} />
-                                    <AddMembro />
+                                    <AddMembro pessoas={pessoas} />
                                 </MembrosUl>
                             </MembrosContainer>
                             <ProjetosContainer>
