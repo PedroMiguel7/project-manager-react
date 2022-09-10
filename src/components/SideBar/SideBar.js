@@ -146,11 +146,8 @@ function SideBar(props) {
                     <NavItem>
                         <div id='SideTema'>
                             <DarkModeToggle
-                                
                                 style={{ display: 'flex' }}
                                 mode={mode}
-                                dark="Dark"
-                                light="Light"
                                 size="sm"
                                 label='sm'
                                 inactiveTrackColor="#e2e8f0"
