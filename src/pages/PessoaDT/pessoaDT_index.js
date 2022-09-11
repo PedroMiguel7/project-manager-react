@@ -154,7 +154,7 @@ class PessoasDT extends Component {
           <PessoaDashboard>
             <Rendimento>
               <RendimentoHeader>
-                <h5>Rendimento</h5>
+                <h5 style={{color: 'var(--corTexto)'}}>Rendimento</h5>
                 <this.SelectRendimento />
               </RendimentoHeader>
               <ChartContainer>

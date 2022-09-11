@@ -36,10 +36,6 @@ function SideBar(props) {
     let pathId = path.substring(path.lastIndexOf('/') + 1);
     const location = useLocation();
 
-    //const [modeT] = localStorage.getItem('theme');
-    //const [mode, setMode] = useState(modeT.title === 'light' ? 'light' : 'dark');
-
-
     const [mode, setMode] = useState('dark');
 
     const [homeActive, setHomeActive] = useState(mode === 'dark' ? homeActiveD : homeActiveL)
