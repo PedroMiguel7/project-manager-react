@@ -55,7 +55,7 @@ const style = {
 
 export default function Signin() {
   document.title = "Gerenciador de Projetos";
-  const { signin } = useAuth();
+  //const { signin } = useAuth();
   const navigate = useNavigate();
 
   const [Email, setEmail] = useState("");

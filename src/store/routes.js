@@ -14,7 +14,7 @@ import { useJwt } from "react-jwt";
 const Private = ({ Item }) => {
     const token = localStorage.getItem('token');
     const { decodedToken, isExpired, reEvaluateToken } = useJwt(token);
-    //console.log(decodedToken)
+    console.log(decodedToken)
 
     const updateToken = () => {
         const newToken = "A new JWT";
@@ -27,7 +27,6 @@ const Private = ({ Item }) => {
         return <Signin />
     }
 }
-
 
 const Rout = (props) => {
     return (

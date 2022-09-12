@@ -35,7 +35,7 @@ export default function CardPessoas(props) {
         } else {
             return (
                 <Tag>
-                    <TagName>Sem funcao</TagName>
+                    <TagName>{funcao}</TagName>
                 </Tag>
             )
         }

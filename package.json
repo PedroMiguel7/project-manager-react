@@ -5,8 +5,6 @@
   "resolutions": {
     "autoprefixer": "10.4.5"
   },
-  "origin": "*",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "preflightContinue": false,
   "optionsSuccessStatus": 204,
   "dependencies": {
