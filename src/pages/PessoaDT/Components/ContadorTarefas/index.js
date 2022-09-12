@@ -23,14 +23,14 @@ export default function TarefasConcluidas(props) {
 
     return (
         <>
-            <Tooltip title={(progressValue !== NaN) ? `${progressValue}%` : "0%"} arrow>
+            <Tooltip title={progressValue ? `${progressValue}%` : "0%"} arrow>
                 <ContadorContainer>
                     <ContadorTarefas>
                         {Concluidas}/{TotalTarefas} completas
                     </ContadorTarefas>
                     <Progress className="progress">
                         <ProgressBar className="progress-bar"
-                            style={{ width: `${progressValue}%` }}
+                            width={`${progressValue}%`}
                             role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></ProgressBar>
                     </Progress>
                 </ContadorContainer>

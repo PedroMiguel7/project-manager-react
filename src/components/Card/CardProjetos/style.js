@@ -1,6 +1,22 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const EmptyStateContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const EmptyStateImg = styled.img`
+    width: 10vw;
+`;
+
+export const EmptyStateTitle = styled.h3`
+    color: #454756;
+    text-align: center;
+`;
+
 export const CardContainer = styled(Link)`
     color: var(--corTextComponente);
     text-decoration: none;
@@ -69,8 +85,12 @@ export const CardExtraInformations = styled.div`
 
 export const ProgressContainer = styled.div``;
 
+export const ProgressTitle = styled.h6``;
+
 export const ProgressPercentContainer = styled.div``;
 
 export const StatusContainer = styled.div``;
+
+export const StatusTitle = styled.h6``;
 
 export const Status = styled.span``;

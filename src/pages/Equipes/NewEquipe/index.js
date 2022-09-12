@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';

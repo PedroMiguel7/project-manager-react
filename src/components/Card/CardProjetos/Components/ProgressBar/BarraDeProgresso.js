@@ -1,5 +1,6 @@
 import React, {  useEffect, useState } from "react";
-import api from '../../../services/api';
+import api from '../../../../../services/api';
+import { Progress, ProgressBar } from "./style"
 
 function BarraProgresso (props) {
 
@@ -32,9 +33,9 @@ const [tasks, setTasks] = useState([]);
 
     return (
         <>
-            <div className="progress mt-2" style={{ backgroundColor: "gray" }}>
-                <div className="progress-bar" role="progressbar" style={{ backgroundColor: "var(--corBotaoInverso)", width:`${BarrinhaProgresso}%` }} aria-valuenow="25"  aria-valuemin="0" aria-valuemax="100">{Math.round(BarrinhaProgresso)}%</div>
-            </div>
+            <Progress>
+                <ProgressBar width={`${BarrinhaProgresso}%`} aria-valuenow="25"  aria-valuemin="0" aria-valuemax="100">{BarrinhaProgresso ? `${Math.round(BarrinhaProgresso)}%` : ''}</ProgressBar>
+            </Progress>
         </>
     )
 

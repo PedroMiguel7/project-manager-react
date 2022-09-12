@@ -1,10 +1,10 @@
 import styled, { keyframes } from "styled-components";
 
-export const ProgressoContainer = styled.div`
+export const ProgressContainer = styled.div`
     width: 160px;
 `;
 
-export const HeaderProgresso = styled.div`
+export const ProgressHeader = styled.div`
     display: flex;
     justify-content: space-between;
 `;
@@ -21,23 +21,23 @@ export const Percentual = styled.span`
     font-size: 0.93rem;
 `;
 
-export const Progresso = styled.div`
+export const Progress = styled.div`
     width: 160px;
     height: 0.25rem;
     border-radius: 100px;
     background-color: #2B2B36;
 `;
 
-const ProgressAnimation = keyframes`
+const ProgressAnimation = (w) => keyframes`
     from { width: 0}
-    to { width: ${props => props.width}}
+    to { width: ${w}}
 `;
 
-export const ProgressoBar = styled.div`
+export const ProgressBar = styled.div`
     border-radius: 100px;
     background-color: #3B97D9;
     width: ${props => props.width || 0};
-    animation-name: ${ProgressAnimation};
+    animation-name: ${props => ProgressAnimation(props.width)};
     animation-delay: 0.3s;
     animation-duration: 1.2s;
     animation-iteration-count: 1;

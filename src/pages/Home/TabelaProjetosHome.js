@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
-import BarraProgresso from "../../components/Card/CardProjetos/BarraDeProgresso";
+import BarraProgresso from "../../components/Card/CardProjetos/Components/ProgressBar/BarraDeProgresso";
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';

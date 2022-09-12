@@ -1,6 +1,6 @@
 import React, {  useEffect, useState } from "react";
 import api from '../../../../services/api';
-import { ProgressoContainer, HeaderProgresso, Status, Percentual, Progresso, ProgressoBar } from "./style.js"
+import { ProgressContainer, ProgressHeader, Status, Percentual, Progress, ProgressBar } from "./style.js"
 
 function ProgressoProjetos (props) {
     const [tasks, setTasks] = useState([]);
@@ -26,18 +26,18 @@ function ProgressoProjetos (props) {
 
     return (
         <>
-            <ProgressoContainer>
-                <HeaderProgresso>
+            <ProgressContainer>
+                <ProgressHeader>
                     <Status>{props.status}</Status>
                     <Percentual>{BarrinhaProgresso ? Math.round(BarrinhaProgresso) : 0}%</Percentual>    
-                </HeaderProgresso>
+                </ProgressHeader>
                 
-                <Progresso className="progress" >
-                    <ProgressoBar className="progress-bar" 
+                <Progress className="progress" >
+                    <ProgressBar className="progress-bar" 
                     width={`${BarrinhaProgresso}%`}
-                    role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></ProgressoBar>
-                </Progresso>
-            </ProgressoContainer>
+                    role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></ProgressBar>
+                </Progress>
+            </ProgressContainer>
         </>
     )  
 }

@@ -2,19 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Aaim } from "../../../assets/icons/ICONS lightThema/icones";
 import ProjectNotFound from "../../../assets/empty-states/project-not-found.svg";
-import EditaProjeto from "../CardProjetos/EdiçãoProjeto";
-import BarraProgresso from "../CardProjetos/BarraDeProgresso";
-import CardSkeleton from "./Skeleton";
-import { CardContainer, CardInformations, CardHeader, CardTitle, CardDescription, TeamContainer, Aim, TeamName, CardExtraInformations, ProgressContainer, ProgressPercentContainer, StatusContainer, Status } from "./style";
+import EditaProjeto from "./Components/EdiçãoProjeto";
+import BarraProgresso from "./Components/ProgressBar/BarraDeProgresso";
+import CardSkeleton from "./Components/Skeleton";
+import { EmptyStateContainer, EmptyStateImg, EmptyStateTitle, CardContainer, CardInformations, CardHeader, CardTitle, CardDescription, TeamContainer, TeamName, CardExtraInformations, ProgressContainer, ProgressTitle,  StatusContainer, StatusTitle, Status } from "./style";
 
 export default function Cards(props) {
   if (props.Projetos === null) {
     return (
       <>
-        <div className="d-flex flex-column justify-content-center align-items-center">
-          <img src={ProjectNotFound} style={{ width: '10vw' }} />
-          <h3 style={{ color: "#454756", textAlign: "center" }}>Nenhum projeto encontrado.</h3>
-        </div>
+        <EmptyStateContainer>
+          <EmptyStateImg src={ProjectNotFound} />
+          <EmptyStateTitle>Nenhum projeto encontrado.</EmptyStateTitle>
+        </EmptyStateContainer>
       </>
     );
   } else if (props.home === "home") {
@@ -41,11 +41,11 @@ export default function Cards(props) {
         </CardInformations>
         <CardExtraInformations>
           <ProgressContainer>
-            <h6>Progresso</h6>
+            <ProgressTitle>Progresso</ProgressTitle>
             {<BarraProgresso id_projeto={p.id_projeto} op={1} />}%
           </ProgressContainer>
           <StatusContainer>
-            <h6>Status</h6>
+            <StatusTitle>Status</StatusTitle>
             <Status>{p.status}</Status>
           </StatusContainer>
         </CardExtraInformations>
@@ -94,11 +94,11 @@ export default function Cards(props) {
           </CardInformations>
           <CardExtraInformations>
             <ProgressContainer>
-              <h6>Progresso</h6>
+              <ProgressTitle>Progresso</ProgressTitle>
               {<BarraProgresso id_projeto={p.id_projeto} op={1} />}%
             </ProgressContainer>
             <StatusContainer>
-              <h6>Status</h6>
+              <StatusTitle>Status</StatusTitle>
               <Status>{p.status}</Status>
             </StatusContainer>
           </CardExtraInformations>

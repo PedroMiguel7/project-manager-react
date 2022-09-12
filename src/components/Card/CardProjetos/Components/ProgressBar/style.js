@@ -1,28 +1,10 @@
 import styled, { keyframes } from "styled-components";
 
-export const ContadorContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @media (max-width: 992px) {
-        display: none;
-    }
-
-`;
-
-export const ContadorTarefas = styled.span`
-    font-size: 15px;
-    color: var(--corTexto);
-    text-align: center;
-    width: max-content;
-`;
-
 export const Progress = styled.div`
-    width: 100%;
-    height: 0.245rem;
+    //width: 160px;
+    height: 0.9rem;
     border-radius: 100px;
-    background-color: #2B2B36;  
+    background-color: #2B2B36;
 `;
 
 const ProgressAnimation = (w) => keyframes`
@@ -31,11 +13,17 @@ const ProgressAnimation = (w) => keyframes`
 `;
 
 export const ProgressBar = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 0.9rem;
     border-radius: 100px;
-    background-color: var(--azul-claro);
+    background-color: var(--corBotaoInverso);
     width: ${props => props.width || 0};
     animation-name: ${props => ProgressAnimation(props.width)};
     animation-delay: 0.3s;
     animation-duration: 1.2s;
     animation-iteration-count: 1;
+
+    font-size: 0.8rem;
 `;
