@@ -9,29 +9,40 @@ import PessoaDT from "../pages/PessoaDT/pessoaDT_index"
 import Signin from "../pages/Login/signin";
 //import useAuth from "./pages/Login/hooks/useAuth"
 
-const Private = ({Item}) =>{
-    const token  = localStorage.getItem('token');
-    if(token !== null){
+import { useJwt } from "react-jwt";
+
+const Private = ({ Item }) => {
+    const token = localStorage.getItem('token');
+    const { decodedToken, isExpired, reEvaluateToken } = useJwt(token);
+    //console.log(decodedToken)
+
+    const updateToken = () => {
+        const newToken = "A new JWT";
+        reEvaluateToken(newToken); // decodedToken and isExpired will be updated
+    }
+    
+    if (token !== null) {
         return <Item />
     } else {
-        return <Signin/>
+        return <Signin />
     }
 }
 
-const Rout = (props) =>{
-    return(
+
+const Rout = (props) => {
+    return (
         <BrowserRouter>
             <div className='GeneralContainer d-flex row'>
                 {props.SideBar}
                 <Routes>
-                    <Route exect path="/" element={<Signin />}/>
-                    <Route exect path="/home" element={<Private Item={Home} />}/>
-                    <Route exect path="/projetos" element={<Private Item={ProjetoIndex} />}/>
-                    <Route exect path="/projetos/:id" element={<Private Item={ProjetoDT} />}/>
-                    <Route exect path="/equipes" element={<Private Item={Equipes} />}/>
-                    <Route exect path="/equipes/:id" element={<Private Item={EquipeDT} />}/>
-                    <Route exect path="/pessoas" element={<Private Item={Pessoas} />}/>
-                    <Route exect path="/pessoas/:id" element={<Private Item={PessoaDT} />}/>
+                    <Route exect path="/" element={<Signin />} />
+                    <Route exect path="/home" element={<Private Item={Home} />} />
+                    <Route exect path="/projetos" element={<Private Item={ProjetoIndex} />} />
+                    <Route exect path="/projetos/:id" element={<Private Item={ProjetoDT} />} />
+                    <Route exect path="/equipes" element={<Private Item={Equipes} />} />
+                    <Route exect path="/equipes/:id" element={<Private Item={EquipeDT} />} />
+                    <Route exect path="/pessoas" element={<Private Item={Pessoas} />} />
+                    <Route exect path="/pessoas/:id" element={<Private Item={PessoaDT} />} />
                 </Routes>
             </div>
         </BrowserRouter>
