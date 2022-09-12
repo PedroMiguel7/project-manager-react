@@ -139,7 +139,7 @@ export default function RadialBarChart(props) {
                 valueFormat=">-.2~%"
                 startAngle={-90}
                 endAngle={90}
-                innerRadius={0.15}
+                innerRadius={0.25}
                 padding={0.6}
                 cornerRadius={45}
                 margin={{ top: 10, right: 0, bottom: 10, left: 0 }}
