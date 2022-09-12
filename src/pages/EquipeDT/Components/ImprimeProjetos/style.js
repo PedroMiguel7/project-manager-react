@@ -15,6 +15,10 @@ export const EmptyStateContainer = styled.div`
     padding: 0.9rem;
 `;
 
+export const EmptyStateImg = styled.img``;
+
+export const EmptyStateTitle = styled.h5``;
+
 export const ProjetosLi = styled.li`
     border-bottom: 0.15px solid #2C2E3B;
     display: flex;

@@ -1,5 +1,5 @@
 import React from "react";
-import { EmptyStateContainer, ProjetosLi, NomeProjeto, Prazo, Container, ProgressContainer, LinkProjeto, SpinnerBox, Spinner, LoadingMessage } from "./style";
+import { EmptyStateContainer, EmptyStateImg, EmptyStateTitle, ProjetosLi, NomeProjeto, Prazo, Container, ProgressContainer, LinkProjeto } from "./style";
 import ProjectNotFound from "../../../../assets/empty-states/project-not-found.svg";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ProgressoProjetos from "../ProgressoProjetos";
@@ -16,10 +16,10 @@ export default function ImprimeProjetos(props) {
         return (
             <>
                 <EmptyStateContainer>
-                    <img src={ProjectNotFound} />
-                    <h5>
+                    <EmptyStateImg src={ProjectNotFound} />
+                    <EmptyStateTitle>
                         Essa equipe ainda não possui projetos.
-                    </h5>
+                    </EmptyStateTitle>
                 </EmptyStateContainer>
             </>
         );
@@ -45,10 +45,10 @@ export default function ImprimeProjetos(props) {
             if (ToDo.length === 0) {
                 return (
                     <EmptyStateContainer>
-                        <img src={ProjectNotFound} />
-                        <h5>
+                        <EmptyStateImg src={ProjectNotFound} />
+                        <EmptyStateTitle>
                             Sem projetos a fazer.
-                        </h5>
+                        </EmptyStateTitle>
                     </EmptyStateContainer>
                 )
             } else {
@@ -79,10 +79,10 @@ export default function ImprimeProjetos(props) {
             if (OnGoing.length === 0) {
                 return (
                     <EmptyStateContainer>
-                        <img src={ProjectNotFound} />
-                        <h5>
+                        <EmptyStateImg src={ProjectNotFound} />
+                        <EmptyStateTitle>
                             Sem projetos em andamento.
-                        </h5>
+                        </EmptyStateTitle>
                     </EmptyStateContainer>
                 )
             } else {
@@ -112,10 +112,10 @@ export default function ImprimeProjetos(props) {
             if (Done.length === 0) {
                 return (
                     <EmptyStateContainer>
-                        <img src={ProjectNotFound} />
-                        <h5>
+                        <EmptyStateImg src={ProjectNotFound} />
+                        <EmptyStateTitle>
                             Sem projetos concluidos.
-                        </h5>
+                        </EmptyStateTitle>
                     </EmptyStateContainer>
                 )
             } else {

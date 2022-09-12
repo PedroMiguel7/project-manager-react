@@ -29,12 +29,12 @@ function ProgressoProjetos (props) {
             <ProgressoContainer>
                 <HeaderProgresso>
                     <Status>{props.status}</Status>
-                    <Percentual>{Math.round(BarrinhaProgresso)}%</Percentual>    
+                    <Percentual>{BarrinhaProgresso ? Math.round(BarrinhaProgresso) : 0}%</Percentual>    
                 </HeaderProgresso>
                 
                 <Progresso className="progress" >
                     <ProgressoBar className="progress-bar" 
-                    style={{width:`${BarrinhaProgresso}%`}}
+                    width={`${BarrinhaProgresso}%`}
                     role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></ProgressoBar>
                 </Progresso>
             </ProgressoContainer>

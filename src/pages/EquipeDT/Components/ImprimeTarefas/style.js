@@ -15,6 +15,10 @@ export const EmptyStateContainer = styled.div`
     padding: 0.9rem;
 `;
 
+export const EmptyStateImg = styled.img``;
+
+export const EmptyStateTitle = styled.h5``;
+
 export const TarefasLi = styled.li`
     display: flex;
     flex-direction: column;

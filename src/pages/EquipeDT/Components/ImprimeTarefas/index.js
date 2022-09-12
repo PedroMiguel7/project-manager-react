@@ -1,5 +1,5 @@
 import React from "react";
-import { EmptyStateContainer, TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa, SpinnerBox, Spinner, LoadingMessage } from "./style";
+import { EmptyStateContainer, EmptyStateImg, EmptyStateTitle, TarefasLi, StatusTarefa, NomeTarefa, PrazoTarefa } from "./style";
 import TasksNotFound from '../../../../assets/empty-states/tasks-not-found.svg';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
@@ -15,10 +15,10 @@ export default function ImprimeTarefas(props) {
         return (
             <>
                 <EmptyStateContainer>
-                    <img src={TasksNotFound} />
-                    <h5>
+                    <EmptyStateImg src={TasksNotFound} />
+                    <EmptyStateTitle>
                         Essa equipe não possui tarefas.
-                    </h5>
+                    </EmptyStateTitle>
                 </EmptyStateContainer>
             </>
         );
