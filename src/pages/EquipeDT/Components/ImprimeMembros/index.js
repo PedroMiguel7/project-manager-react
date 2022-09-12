@@ -53,7 +53,7 @@ export default function ImprimeMembros(props) {
 
         return (
             props.pessoas?.map(p => (
-                <MembroLi>
+                <MembroLi key={p.id_pessoa}>
                     <MainDiv>
                         <Avatar sx={{ bgcolor: `${stringToHslColor(p.nome_pessoa, 50, 70)}`, color: "#1E1F28" }}>
                             {stringAvatar(p.nome_pessoa)}

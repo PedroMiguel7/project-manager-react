@@ -38,7 +38,7 @@ export const ProgressoBar = styled.div`
     background-color: #3B97D9;
     width: ${props => props.width || 0};
     animation-name: ${ProgressAnimation};
-    animation-delay: 0.5s;
+    animation-delay: 0.3s;
     animation-duration: 1.2s;
     animation-iteration-count: 1;
 `;

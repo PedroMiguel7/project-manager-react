@@ -54,7 +54,7 @@ export default function ImprimeProjetos(props) {
             } else {
                 return (
                     ToDo?.map(p => (
-                        <ProjetosLi>
+                        <ProjetosLi key={p.id_projeto}>
                             <Container>
                                 <NomeProjeto>{p.nome_projeto}</NomeProjeto>
                                 <Prazo>
@@ -88,7 +88,7 @@ export default function ImprimeProjetos(props) {
             } else {
                 return (
                     OnGoing?.map(p => (
-                        <ProjetosLi>
+                        <ProjetosLi key={p.id_projeto}>
                             <Container>
                                 <NomeProjeto>{p.nome_projeto}</NomeProjeto>
                                 <Prazo>
@@ -126,7 +126,7 @@ export default function ImprimeProjetos(props) {
 
                 return (
                     Done?.map(p => (
-                        <ProjetosLi>
+                        <ProjetosLi key={p.id_projeto}>
                             <Container>
                                 <NomeProjeto>{p.nome_projeto}</NomeProjeto>
                                 <Prazo>
@@ -166,7 +166,7 @@ export default function ImprimeProjetos(props) {
 
             return (
                 props.projetos?.map(p => (
-                    <ProjetosLi>
+                    <ProjetosLi key={p.id_projeto}>
                         <Container>
                             <NomeProjeto>{p.nome_projeto}</NomeProjeto>
                             <Prazo>

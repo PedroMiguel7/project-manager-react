@@ -56,6 +56,7 @@ export default function BarChart(props) {
                         indexScale={{ type: 'band', round: true }}
                         colors={{ scheme: 'nivo' }}
                         colorBy="indexValue"
+                        motionConfig="molasses"
                         theme={{
                             textColor: "#C2C3C6",
                             fontSize: 13,

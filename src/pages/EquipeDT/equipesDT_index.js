@@ -186,7 +186,7 @@ class equipeDT_index extends Component {
                 TarefasProjeto.push(f.id_projeto)
             ))
         }
-        console.log(TarefasProjeto)
+        //console.log(TarefasProjeto)
 
         return (
             <>

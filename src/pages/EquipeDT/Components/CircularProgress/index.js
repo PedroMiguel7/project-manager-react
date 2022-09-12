@@ -13,7 +13,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "A Fazer",
-                    "y": props.ValueFazer/100
+                    "y": props.ValueFazer ? props.ValueFazer/100 : 0
                 },
                 ]
             },
@@ -22,7 +22,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Em Andamento",
-                    "y": props.ValueAndamento/100
+                    "y": props.ValueAndamento ? props.ValueAndamento/100 : 0
                 },
                 ]
             },
@@ -31,7 +31,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Em Teste",
-                    "y": props.ValueTeste/100
+                    "y": props.ValueTeste ? props.ValueTeste/100 : 0
                 },
                 ]
             },
@@ -40,7 +40,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Concluídas",
-                    "y": props.ValueConcluido/100
+                    "y": props.ValueConcluido ? props.ValueConcluido/100 : 0
                 },
                 ]
             },
@@ -83,6 +83,7 @@ export default function RadialBarChart(props) {
                 radialAxisStart={null}
                 circularAxisOuter={null}
                 label="category"
+                motionConfig="molasses"
                 legends={ matches ? [
                     {
                         dataFrom: 'keys',
@@ -107,7 +108,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "A Fazer",
-                    "y": props.ValueFazer/100
+                    "y": props.ValueFazer ? props.ValueFazer/100 : 0
                 },
                 ]
             },
@@ -116,7 +117,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Em Andamento",
-                    "y": props.ValueAndamento/100
+                    "y": props.ValueAndamento ? props.ValueAndamento/100 : 0
                 },
                 ]
             },
@@ -125,7 +126,7 @@ export default function RadialBarChart(props) {
                 "data": [
                 {
                     "x": "Concluídos",
-                    "y": props.ValueConcluido/100
+                    "y": props.ValueConcluido ? props.ValueConcluido/100 : 0
                 },
                 ]
             },
@@ -168,6 +169,7 @@ export default function RadialBarChart(props) {
                 radialAxisStart={null}
                 circularAxisOuter={null}
                 label="category"
+                motionConfig="molasses"
                 legends={ matches ? [
                     {
                         dataFrom: 'keys',

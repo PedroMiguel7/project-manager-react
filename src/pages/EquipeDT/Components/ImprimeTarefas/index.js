@@ -52,7 +52,7 @@ export default function ImprimeTarefas(props) {
             } else {
                 return (
                     ToDo.map(t => (
-                        <TarefasLi>
+                        <TarefasLi key={t.id_task}>
                             <StatusTarefa>
                                 {t.status}
                             </StatusTarefa>
@@ -81,7 +81,7 @@ export default function ImprimeTarefas(props) {
             } else {
                 return (
                     OnGoing?.map(t => (
-                        <TarefasLi>
+                        <TarefasLi key={t.id_task}>
                             <StatusTarefa>
                                 {t.status}
                             </StatusTarefa>
@@ -110,7 +110,7 @@ export default function ImprimeTarefas(props) {
             } else {
                 return (
                     Testing?.map(t => (
-                        <TarefasLi>
+                        <TarefasLi key={t.id_task}>
                             <StatusTarefa>
                                 {t.status}
                             </StatusTarefa>
@@ -144,7 +144,7 @@ export default function ImprimeTarefas(props) {
             } else {
                 return (
                     Done?.map(t => (
-                        <TarefasLi>
+                        <TarefasLi key={t.id_task}>
                             <StatusTarefa>
                                 {t.status}
                             </StatusTarefa>
@@ -162,7 +162,7 @@ export default function ImprimeTarefas(props) {
         } else {
             return (
                 tarefas?.map(t => (
-                    <TarefasLi>
+                    <TarefasLi key={t.id_task}>
                         <StatusTarefa>
                             {t.status}
                         </StatusTarefa>
