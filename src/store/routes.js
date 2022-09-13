@@ -14,7 +14,9 @@ import { useJwt } from "react-jwt";
 const Private = ({ Item }) => {
     const token = localStorage.getItem('token');
     const { decodedToken, isExpired, reEvaluateToken } = useJwt(token);
-    console.log(decodedToken)
+    const userType = decodedToken?.sum
+    //console.log(decodedToken)
+    //console.log(userType)
 
     const updateToken = () => {
         const newToken = "A new JWT";
