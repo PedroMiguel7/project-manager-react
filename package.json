@@ -28,7 +28,6 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
     "chart.js": "^3.9.1",
-    "cors": "^2.8.5",
     "i": "^0.3.7",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
