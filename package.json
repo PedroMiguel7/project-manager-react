@@ -6,8 +6,6 @@
     "autoprefixer": "10.4.5"
   },
   "private": true,
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204,
   "dependencies": {
     "@anatoliygatt/dark-mode-toggle": "^1.0.0",
     "@emotion/react": "^11.9.3",
