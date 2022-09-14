@@ -82,6 +82,7 @@ export default function Signin() {
   //   navigate("/home")
   // };
 
+
   const Logar = (e) => {
     e.preventDefault();
     axios
@@ -90,9 +91,16 @@ export default function Signin() {
         password: Senha,
       })
       .then((res) => {
-        localStorage.setItem("token", JSON.stringify(res.data.token));
         //localStorage.setItem('end', navigator.geolocation.getCurrentPosition(true))
-        window.location.href = "/home";
+        const fetchProjetos = async () => { 
+          try {
+            localStorage.setItem("token", JSON.stringify(res.data.token))
+          } catch (error) {
+            console.log(error);
+          }
+          window.location.href = "/home";
+        };
+        fetchProjetos();
       })
       .catch((err) => alert(err));
   };

@@ -38,9 +38,9 @@ export default function Menu_index() {
   useEffect(() => {
     const fetchProjetos = async () => {
       try {
-        const response = await api.get('/projetos/'
-        );
-        setProjetos(response.data);
+          const response = await api.get('/projetos/'
+          );
+          setProjetos(response.data);
       } catch (error) {
         console.log(error);
         if(error.response.status === 401){
@@ -82,8 +82,10 @@ export default function Menu_index() {
 
   const Atualizar = async () => {
     try {
-      const response = await api.get('/projetos/');
-      setProjetos(response.data);
+      if(!localStorage.getItem('token')){
+        const response = await api.get('/projetos/');
+        setProjetos(response.data);
+      }
     } catch (error) {
       console.log(error);
     }
