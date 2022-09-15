@@ -14,7 +14,10 @@ import { useJwt } from "react-jwt";
 const Private = ({ Item }) => {
     const token = localStorage.getItem('token');
     const { decodedToken, isExpired, reEvaluateToken } = useJwt(token);
-    const userType = decodedToken?.sum
+    const userId = decodedToken?.sum
+    const userName = decodedToken?.name
+    const userType = decodedToken?.tipo
+
     //console.log(decodedToken)
     //console.log(userType)
 
