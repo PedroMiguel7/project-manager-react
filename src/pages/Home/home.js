@@ -1,8 +1,9 @@
 import AdicionarProjeto from '../Projetos/components/NewProjeto/index'
 import Cards from "../../components/Card/CardProjetos/ExibirProjetos";
+import Card from './components/Card';
 import { useState, useEffect } from "react";
 import api from "../../services/api";
-import CardBaixoHome from "../Home/TabelaProjetosHome";
+import CardBaixoHome from "./components/TabelaProjeto/TabelaProjetosHome";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -229,6 +230,7 @@ export default function Menu_index() {
         <div className="Teste row  h-lg-50 p-3 mt-2" style={{backgroundColor:'var(--preto-medio)', borderRadius:'1%'}}>
           <CardBaixoHome Projetos={projetos} />
         </div>
+        <Card /*projeto={projeto}*//>
       </main>
     </div>
   );
