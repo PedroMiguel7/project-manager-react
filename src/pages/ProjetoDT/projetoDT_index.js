@@ -105,32 +105,6 @@ class ProjetoDT extends Component {
     }
   };
 
-  MostraTarefas = (props) => {
-    if (props.tarefasPJ !== null) {
-      return props.tarefasPJ?.map((p) => (
-        <tr key={p.id_task}>
-          <th scope="row">{p.id_task}</th>
-          <td className="">{p.descricao_task}</td>
-          <td>{p.nome_pessoa}</td>
-          <td>{p.prioridade}</td>
-          <td>{p.status}</td>
-          <td></td>
-        </tr>
-      ));
-    } else {
-      return (
-        <tr>
-          <th></th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      );
-    }
-  };
-
   GraficoPizza = (props) => {
     if (props.TotalDetasks !== 0) {
       const data = [
@@ -253,7 +227,7 @@ class ProjetoDT extends Component {
         <>
           <EmptyStateImg src={tasksNotFound} />
           <EmptyStateTitle>
-                        Este projeto não possui tarefas.
+            Este projeto não possui tarefas.
           </EmptyStateTitle>
         </>
       );
@@ -425,7 +399,7 @@ class ProjetoDT extends Component {
   render() {
     const { projetos } = this.state;
     const { tarefasPJ } = this.state;
-    
+
     if (!projetos[0]?.nome_projeto) {
       document.title = "Projeto";
     } else {
@@ -442,10 +416,6 @@ class ProjetoDT extends Component {
     var TasksAndamento = [];
     var TasksTeste = [];
     var TasksConcluidas = [];
-
-    //var equipe_id = projetos.map(p =>(p.equipe_id))
-    //var pessoas = []
-    //pessoas = <this.BuscarMembrosFunc equipe_id={equipe_id[0]} QualFoi={'ARRAY'}/>
 
     if (tarefasPJ !== null) {
       totalDetasks = tarefasPJ.length;
@@ -565,7 +535,7 @@ class ProjetoDT extends Component {
                 </div>
               </div>
               <div className="row col-3 TPtrello2 justify-content-between ms-1">
-                <h2 style={{color:'var(--corTexto)'}}>Estatísticas</h2>
+                <h2 style={{ color: 'var(--corTexto)' }}>Estatísticas</h2>
                 <div
                   className="row col-12"
                   style={{
@@ -586,7 +556,7 @@ class ProjetoDT extends Component {
                     CONCLUIDAS={TotalTaksConcluidas}
                   />
                 </div>
-                <h3 className="mt-3" style={{color: 'var(--corTexto)'}}>Info-Gerais</h3>
+                <h3 className="mt-3" style={{ color: 'var(--corTexto)' }}>Info-Gerais</h3>
                 <div
                   className="row"
                   style={{
@@ -598,7 +568,7 @@ class ProjetoDT extends Component {
                     overflowY: "auto",
                   }}
                 >
-                  <div className="align-items-start mt-2 scroll" style={{color:'var(--corTexto)'}}>
+                  <div className="align-items-start mt-2 scroll" style={{ color: 'var(--corTexto)' }}>
                     <h5>Descrição</h5>
                     <p
                       style={{
@@ -620,8 +590,8 @@ class ProjetoDT extends Component {
                     minHeight: "211px",
                   }}
                 >
-                  <div className="container " style={{color:'var(--corTexto)'}}>
-                      Equipe:
+                  <div className="container " style={{ color: 'var(--corTexto)' }}>
+                    Equipe:
                     <Link
                       to={"/equipes/" + p.equipe_id}
                       target="_blank"
@@ -644,7 +614,7 @@ class ProjetoDT extends Component {
                             <th scope="col"></th>
                           </tr>
                         </thead>
-                        <tbody style={{color:'var(--corTexto)'}}>
+                        <tbody style={{ color: 'var(--corTexto)' }}>
                           <this.BuscarMembrosFunc equipe_id={p.equipe_id} />
                         </tbody>
                       </table>
