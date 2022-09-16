@@ -4,6 +4,7 @@ import api from "../../services/api";
 import MostrarLIstaTarefas from "./components/ListaDeTarefas";
 import { Link } from "react-router-dom";
 import { ResponsivePie } from "@nivo/pie";
+import { EmptyStateImg, EmptyStateTitle } from "./style";
 
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
@@ -14,6 +15,8 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
+
+import tasksNotFound from '../../assets/empty-states/tasks-not-found.svg';
 
 class ProjetoDT extends Component {
   constructor(props) {
@@ -246,98 +249,12 @@ class ProjetoDT extends Component {
         </>
       );
     } else {
-      const data = [
-        {
-          id: "SEM TAREFAS",
-          label: " SEM TAREFAS NO MOMENTO",
-          value: 1,
-          color: "hsl(162, 70%, 50%)",
-          //#92D5E6
-        },
-      ];
-
-      const MyResponsivePie = () => (
-        <ResponsivePie
-          data={data}
-          margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
-          innerRadius={0.5}
-          padAngle={0.7}
-          cornerRadius={3}
-          activeOuterRadiusOffset={8}
-          borderWidth={1}
-          borderColor={{ theme: "background" }}
-          arcLinkLabelsSkipAngle={10}
-          arcLinkLabelsTextColor={{ from: "color", modifiers: [] }}
-          colors={{ scheme: "category10" }}
-          arcLinkLabelsThickness={2}
-          arcLinkLabelsColor={{ from: "color", modifiers: [] }}
-          arcLabelsSkipAngle={10}
-          arcLabelsTextColor={{ from: "color", modifiers: [] }}
-          gentle="black"
-          defs={[
-            {
-              id: "dots",
-              type: "patternDots",
-              background: "inherit",
-              color: "rgba(255, 255, 255, 0.3)",
-              size: 4,
-              padding: 1,
-              stagger: true,
-            },
-            {
-              id: "lines",
-              type: "patternLines",
-              background: "inherit",
-              color: "rgba(255, 255, 255, 0.3)",
-              rotation: -45,
-              lineWidth: 6,
-              spacing: 10,
-            },
-          ]}
-          fill={[
-            {
-              match: {
-                id: "python",
-              },
-              id: "dots",
-            },
-            {
-              match: {
-                id: "scala",
-              },
-              id: "lines",
-            },
-          ]}
-          legends={[
-            {
-              anchor: "bottom",
-              direction: "row",
-              justify: false,
-              translateX: 0,
-              translateY: 56,
-              itemsSpacing: 0,
-              itemWidth: 83.5,
-              itemHeight: 18,
-              itemTextColor: "#999",
-              itemDirection: "left-to-right",
-              itemOpacity: 1,
-              symbolSize: 18,
-              symbolShape: "circle",
-              effects: [
-                {
-                  on: "hover",
-                  style: {
-                    itemTextColor: "#fffff",
-                  },
-                },
-              ],
-            },
-          ]}
-        />
-      );
       return (
         <>
-          <MyResponsivePie />
+          <EmptyStateImg src={tasksNotFound} />
+          <EmptyStateTitle>
+                        Este projeto não possui tarefas.
+          </EmptyStateTitle>
         </>
       );
     }
@@ -650,12 +567,15 @@ class ProjetoDT extends Component {
               <div className="row col-3 TPtrello2 justify-content-between ms-1">
                 <h2 style={{color:'var(--corTexto)'}}>Estatísticas</h2>
                 <div
-                  className="row col-12 align-items-center"
+                  className="row col-12"
                   style={{
                     backgroundColor: "var(--preto-medio)",
                     borderRadius: "5%",
                     marginTop: "-px",
                     minHeight: "349px",
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
                   }}
                 >
                   <this.GraficoPizza
