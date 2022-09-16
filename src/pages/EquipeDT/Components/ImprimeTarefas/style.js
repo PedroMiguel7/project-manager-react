@@ -17,7 +17,9 @@ export const EmptyStateContainer = styled.div`
 
 export const EmptyStateImg = styled.img``;
 
-export const EmptyStateTitle = styled.h5``;
+export const EmptyStateTitle = styled.h5`
+    color: var(--corTexto);
+`;
 
 export const TarefasLi = styled.li`
     display: flex;

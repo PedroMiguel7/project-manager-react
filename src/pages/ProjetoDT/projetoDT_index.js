@@ -4,6 +4,7 @@ import api from "../../services/api";
 import MostrarLIstaTarefas from "./components/ListaDeTarefas";
 import { Link } from "react-router-dom";
 import { ResponsivePie } from "@nivo/pie";
+import { EmptyStateImg, EmptyStateTitle } from "./style";
 
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
@@ -14,6 +15,8 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
+
+import tasksNotFound from '../../assets/empty-states/tasks-not-found.svg';
 
 class ProjetoDT extends Component {
   constructor(props) {
@@ -99,32 +102,6 @@ class ProjetoDT extends Component {
       } else {
         return <li>sem pessoa</li>;
       }
-    }
-  };
-
-  MostraTarefas = (props) => {
-    if (props.tarefasPJ !== null) {
-      return props.tarefasPJ?.map((p) => (
-        <tr key={p.id_task}>
-          <th scope="row">{p.id_task}</th>
-          <td className="">{p.descricao_task}</td>
-          <td>{p.nome_pessoa}</td>
-          <td>{p.prioridade}</td>
-          <td>{p.status}</td>
-          <td></td>
-        </tr>
-      ));
-    } else {
-      return (
-        <tr>
-          <th></th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      );
     }
   };
 
@@ -246,98 +223,12 @@ class ProjetoDT extends Component {
         </>
       );
     } else {
-      const data = [
-        {
-          id: "SEM TAREFAS",
-          label: " SEM TAREFAS NO MOMENTO",
-          value: 1,
-          color: "hsl(162, 70%, 50%)",
-          //#92D5E6
-        },
-      ];
-
-      const MyResponsivePie = () => (
-        <ResponsivePie
-          data={data}
-          margin={{ top: 10, right: 80, bottom: 80, left: 80 }}
-          innerRadius={0.5}
-          padAngle={0.7}
-          cornerRadius={3}
-          activeOuterRadiusOffset={8}
-          borderWidth={1}
-          borderColor={{ theme: "background" }}
-          arcLinkLabelsSkipAngle={10}
-          arcLinkLabelsTextColor={{ from: "color", modifiers: [] }}
-          colors={{ scheme: "category10" }}
-          arcLinkLabelsThickness={2}
-          arcLinkLabelsColor={{ from: "color", modifiers: [] }}
-          arcLabelsSkipAngle={10}
-          arcLabelsTextColor={{ from: "color", modifiers: [] }}
-          gentle="black"
-          defs={[
-            {
-              id: "dots",
-              type: "patternDots",
-              background: "inherit",
-              color: "rgba(255, 255, 255, 0.3)",
-              size: 4,
-              padding: 1,
-              stagger: true,
-            },
-            {
-              id: "lines",
-              type: "patternLines",
-              background: "inherit",
-              color: "rgba(255, 255, 255, 0.3)",
-              rotation: -45,
-              lineWidth: 6,
-              spacing: 10,
-            },
-          ]}
-          fill={[
-            {
-              match: {
-                id: "python",
-              },
-              id: "dots",
-            },
-            {
-              match: {
-                id: "scala",
-              },
-              id: "lines",
-            },
-          ]}
-          legends={[
-            {
-              anchor: "bottom",
-              direction: "row",
-              justify: false,
-              translateX: 0,
-              translateY: 56,
-              itemsSpacing: 0,
-              itemWidth: 83.5,
-              itemHeight: 18,
-              itemTextColor: "#999",
-              itemDirection: "left-to-right",
-              itemOpacity: 1,
-              symbolSize: 18,
-              symbolShape: "circle",
-              effects: [
-                {
-                  on: "hover",
-                  style: {
-                    itemTextColor: "#fffff",
-                  },
-                },
-              ],
-            },
-          ]}
-        />
-      );
       return (
         <>
-          <MyResponsivePie />
+          <EmptyStateImg src={tasksNotFound} />
+          <EmptyStateTitle>
+            Este projeto não possui tarefas.
+          </EmptyStateTitle>
         </>
       );
     }
@@ -508,7 +399,7 @@ class ProjetoDT extends Component {
   render() {
     const { projetos } = this.state;
     const { tarefasPJ } = this.state;
-    
+
     if (!projetos[0]?.nome_projeto) {
       document.title = "Projeto";
     } else {
@@ -525,10 +416,6 @@ class ProjetoDT extends Component {
     var TasksAndamento = [];
     var TasksTeste = [];
     var TasksConcluidas = [];
-
-    //var equipe_id = projetos.map(p =>(p.equipe_id))
-    //var pessoas = []
-    //pessoas = <this.BuscarMembrosFunc equipe_id={equipe_id[0]} QualFoi={'ARRAY'}/>
 
     if (tarefasPJ !== null) {
       totalDetasks = tarefasPJ.length;
@@ -648,14 +535,17 @@ class ProjetoDT extends Component {
                 </div>
               </div>
               <div className="row col-3 TPtrello2 justify-content-between ms-1">
-                <h2 style={{color:'var(--corTexto)'}}>Estatísticas</h2>
+                <h2 style={{ color: 'var(--corTexto)' }}>Estatísticas</h2>
                 <div
-                  className="row col-12 align-items-center"
+                  className="row col-12"
                   style={{
                     backgroundColor: "var(--preto-medio)",
                     borderRadius: "5%",
                     marginTop: "-px",
                     minHeight: "349px",
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
                   }}
                 >
                   <this.GraficoPizza
@@ -666,7 +556,7 @@ class ProjetoDT extends Component {
                     CONCLUIDAS={TotalTaksConcluidas}
                   />
                 </div>
-                <h3 className="mt-3" style={{color: 'var(--corTexto)'}}>Info-Gerais</h3>
+                <h3 className="mt-3" style={{ color: 'var(--corTexto)' }}>Info-Gerais</h3>
                 <div
                   className="row"
                   style={{
@@ -678,7 +568,7 @@ class ProjetoDT extends Component {
                     overflowY: "auto",
                   }}
                 >
-                  <div className="align-items-start mt-2 scroll" style={{color:'var(--corTexto)'}}>
+                  <div className="align-items-start mt-2 scroll" style={{ color: 'var(--corTexto)' }}>
                     <h5>Descrição</h5>
                     <p
                       style={{
@@ -700,8 +590,8 @@ class ProjetoDT extends Component {
                     minHeight: "211px",
                   }}
                 >
-                  <div className="container " style={{color:'var(--corTexto)'}}>
-                      Equipe:
+                  <div className="container " style={{ color: 'var(--corTexto)' }}>
+                    Equipe:
                     <Link
                       to={"/equipes/" + p.equipe_id}
                       target="_blank"
@@ -724,7 +614,7 @@ class ProjetoDT extends Component {
                             <th scope="col"></th>
                           </tr>
                         </thead>
-                        <tbody style={{color:'var(--corTexto)'}}>
+                        <tbody style={{ color: 'var(--corTexto)' }}>
                           <this.BuscarMembrosFunc equipe_id={p.equipe_id} />
                         </tbody>
                       </table>
