@@ -8,7 +8,7 @@ describe('Test in my pessoas page', () => {
     cy.url().should('eq', `${Cypress.config().baseUrl}/home`);
   })
 
-  it('Equipes ', () => {
+  it('Pessoas ', () => {
     cy.get('#SidePessoa').click();
     cy.url().should('eq', `${Cypress.config().baseUrl}/pessoas`);
 
