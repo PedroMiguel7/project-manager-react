@@ -40,18 +40,19 @@ export const options = {
 export default function Menu_index() {
   document.title = "Gerenciador de Projetos";
   const [projetos, setProjetos] = useState([]);
+  const [tarefas, setTarefas] = useState([]);
   useEffect(() => {
     const fetchProjetos = async () => {
       try {
-          const response = await api.get('/projetos/'
-          );
-          setProjetos(response.data);
+        const response = await api.get('/projetos/'
+        );
+        setProjetos(response.data);
       } catch (error) {
         console.log(error);
-        if(error.response.status === 401){
+        if (error.response.status === 401) {
           window.location.href = '/'
         }
-      } 
+      }
     };
     fetchProjetos();
   }, []);
@@ -87,7 +88,7 @@ export default function Menu_index() {
 
   const Atualizar = async () => {
     try {
-      if(!localStorage.getItem('token')){
+      if (!localStorage.getItem('token')) {
         const response = await api.get('/projetos/');
         setProjetos(response.data);
       }
@@ -96,17 +97,17 @@ export default function Menu_index() {
     }
   };
 
-/*
-  var QtdTotalEquipes = 0;
-  if (equipes !== null) {
-    QtdTotalEquipes = equipes.length;
-  }
-
-  var QtdTotalPessoas = 0;
-  if (pessoas !== null) {
-    QtdTotalPessoas = pessoas.length;
-  }
-  */
+  /*
+    var QtdTotalEquipes = 0;
+    if (equipes !== null) {
+      QtdTotalEquipes = equipes.length;
+    }
+  
+    var QtdTotalPessoas = 0;
+    if (pessoas !== null) {
+      QtdTotalPessoas = pessoas.length;
+    }
+    */
 
 
   var QtdProjetos = 0;
@@ -128,7 +129,7 @@ export default function Menu_index() {
 
   function Grafico(props) {
 
-    var labels = [ 'PROJETOS' ]
+    var labels = ['PROJETOS']
 
 
     const data = {
@@ -148,28 +149,29 @@ export default function Menu_index() {
           label: 'Concluído',
           data: labels?.map(() => props.CON, ({ min: 0, max: props.total })),
           backgroundColor: '#e3622fcc',
-          
+
         },
       ],
     };
 
     return (
       <>
-        <Bar options={options} data={data} style={{marginTop: "20px"}} width="70%" height="30%"/>
+        <Bar options={options} data={data} style={{ marginTop: "20px" }} width="70%" height="30%" />
       </>
     )
   }
 
+  // filters
   const [period, setPeriod] = useState(1)
   const [byProject, setByProject] = useState()
 
-  function Teste(value){
+  function Teste(value) {
     if (value === 1) {
-      console.log("Select 1") 
+      console.log("Select 1")
     } else if (value === 2) {
-      console.log("Select 2") 
+      console.log("Select 2")
     } else if (value === 3) {
-      console.log("Select 3") 
+      console.log("Select 3")
     }
   }
 
@@ -182,15 +184,8 @@ export default function Menu_index() {
       <main className="col-lg-11 col-sm-12 offset-lg-1 px-5">
         <div className="row mt-5 pb-3 main-header">
           <h1 className="col-lg-3 fs-2">Home</h1>
-          {/*<input
-            className="col-lg-3 offset-lg-6"
-            type="search"
-            name="main-search"
-            id="main-search"
-            placeholder="Pesquise aqui..."
-            />*/}
         </div>
-
+        {/* 
         <div className="Options row align-items-center mt-lg-4">
           <div className="LeftOptions col-lg-2 mt-sm-2">
             <span className="me-2 fs-4">Projetos recentes</span>
@@ -211,8 +206,8 @@ export default function Menu_index() {
           <div className="cardLateralHome d-flex justify-content-center col-lg-6 col-md-12 col-sm-12 mt-2 p-4 mt-4" style={{ width: '795px', height: '345px' }} >
             <div className="mt-2" style={{ width: '775px', height: '365px' }}>
               <Grafico AFAZER={QtdPFazer} EMANDA={QtdAndamento} CON={QtdConcluidos} total={QtdProjetos} />
-            </div>
-            {/*<div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
+            </div> */}
+        {/*<div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
                 <h6 >{QtdTotalEquipes}</h6>
                 <strong>
                   <p className="ms-4 ">Total de <br /> Equipes</p>
@@ -244,21 +239,21 @@ export default function Menu_index() {
                   </div>
                 </div>
               </div>*/}
-          </div>
+        {/* </div>
         </div>
         <div className="Teste row  h-lg-50 p-3 mt-2" style={{backgroundColor:'var(--preto-medio)', borderRadius:'1%'}}>
           <CardBaixoHome Projetos={projetos} />
-        </div>
-            <SelectPeriod setPeriod={setPeriod} />
+        </div> */}
+        <SelectPeriod setPeriod={setPeriod} />
         <div style={{ display: 'flex', gap: '1%', marginTop: '1%' }}>
-          <Card /*projeto={projeto}*//>
+          {/* <Card projeto={projeto} /> */}
           <LinearChartContainer>
             <LinearChartHeader>
               <LinearChartTitle>Tarefas</LinearChartTitle>
               <SelectProject projetos={projetos} setByProject={setByProject} />
             </LinearChartHeader>
-            <GraficoLinear />
-          </LinearChartContainer>  
+            <GraficoLinear projectId={byProject} period={period} />
+          </LinearChartContainer>
         </div>
       </main>
     </div>

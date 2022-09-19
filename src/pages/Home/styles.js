@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const LinearChartContainer = styled.div`
-    width: 50%;
-    height: 400px;
+    width: 100%;
+    height: 350px;
     background-color: var(--componentes);
     color: var(--corTextComponente);
     padding: 1.5%;

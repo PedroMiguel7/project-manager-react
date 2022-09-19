@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MenuItem from '@mui/material/MenuItem';
 import { FilterSelect } from '../../../../styles/muiStyles';
-import Home from "../../home.js";
+import api from "../../../../services/api";
 
 export default function SelectProject({ projetos, setByProject }) {
   const Projetos = projetos;
-  //console.log(Projetos)
   const [projectId, setProjectId] = useState(0)
-  console.log(projectId)
 
   const handleChange = (e) => {
     setProjectId(e.target.value)
@@ -41,7 +39,6 @@ export default function SelectProject({ projetos, setByProject }) {
             <MenuItem value={p.id_projeto} key={p.id_projeto} >{p.nome_projeto}</MenuItem>
           ))
         }
-        
       </FilterSelect>
     </>
   )

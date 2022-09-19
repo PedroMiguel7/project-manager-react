@@ -399,6 +399,8 @@ class ProjetoDT extends Component {
   render() {
     const { projetos } = this.state;
     const { tarefasPJ } = this.state;
+
+    console.log(tarefasPJ)
     
     if (!projetos[0]?.nome_projeto) {
       document.title = "Projeto";
