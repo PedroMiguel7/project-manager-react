@@ -14,6 +14,7 @@ export default function LinearChart(props) {
     }
   ];
 
+  // Semanal
   if (props.selectValue === 1) {
     var datas = new Date();
 
@@ -184,6 +185,7 @@ export default function LinearChart(props) {
       </>
     )
 
+  // Mensal
   } else if (props.selectValue === 2) {
     var datas = new Date();
     var Today = datas.getDate();

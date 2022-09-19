@@ -4,6 +4,7 @@ import Card from './components/Card';
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import CardBaixoHome from "./components/TabelaProjeto/TabelaProjetosHome";
+import { LinearChartContainer, LinearChartHeader, LinearChartTitle } from './styles';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,6 +15,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import SelectPeriod from './components/SelectPeriod';
+import SelectProject from './components/SelectProject';
+import GraficoLinear from './components/GraficoLinear';
 
 ChartJS.register(
   CategoryScale,
@@ -156,6 +160,21 @@ export default function Menu_index() {
     )
   }
 
+  const [period, setPeriod] = useState(1)
+  const [byProject, setByProject] = useState()
+
+  function Teste(value){
+    if (value === 1) {
+      console.log("Select 1") 
+    } else if (value === 2) {
+      console.log("Select 2") 
+    } else if (value === 3) {
+      console.log("Select 3") 
+    }
+  }
+
+  Teste(period)
+  console.log(byProject)
 
   return (
     <div>
@@ -230,7 +249,17 @@ export default function Menu_index() {
         <div className="Teste row  h-lg-50 p-3 mt-2" style={{backgroundColor:'var(--preto-medio)', borderRadius:'1%'}}>
           <CardBaixoHome Projetos={projetos} />
         </div>
-        <Card /*projeto={projeto}*//>
+            <SelectPeriod setPeriod={setPeriod} />
+        <div style={{ display: 'flex', gap: '1%', marginTop: '1%' }}>
+          <Card /*projeto={projeto}*//>
+          <LinearChartContainer>
+            <LinearChartHeader>
+              <LinearChartTitle>Tarefas</LinearChartTitle>
+              <SelectProject projetos={projetos} setByProject={setByProject} />
+            </LinearChartHeader>
+            <GraficoLinear />
+          </LinearChartContainer>  
+        </div>
       </main>
     </div>
   );
