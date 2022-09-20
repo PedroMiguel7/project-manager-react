@@ -86,7 +86,7 @@ export default function Signin() {
   const Logar = (e) => {
     e.preventDefault();
     axios
-      .post("https://golang-posgre-brisanet.herokuapp.com/user/login", {
+      .post("https://golang-posgre-brisanet.herokuapp.com/login", {
         email: Email,
         password: Senha,
       })
