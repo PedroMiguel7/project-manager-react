@@ -227,7 +227,7 @@ class ProjetoDT extends Component {
         <>
           <EmptyStateImg src={tasksNotFound} />
           <EmptyStateTitle>
-                        Este projeto não possui tarefas.
+            Este projeto não possui tarefas.
           </EmptyStateTitle>
         </>
       );
@@ -401,7 +401,7 @@ class ProjetoDT extends Component {
     const { tarefasPJ } = this.state;
 
     console.log(tarefasPJ)
-    
+
     if (!projetos[0]?.nome_projeto) {
       document.title = "Projeto";
     } else {
@@ -473,26 +473,26 @@ class ProjetoDT extends Component {
 
     return (
       <>
-        {projetos?.map((p) => (
+        {projetos?
           <main
             className="col-11 offset-1 col-lg-11 offset-lg-1 px-5"
-            key={p.id_projeto}
+            key={projetos.id_projeto}
           >
             <div className="LeftOptions col mt-sm-2">
               <HeaderDt
                 link="/projetos"
                 pagina="Projeto"
-                titulo={p.nome_projeto}
-                status={p.status}
+                titulo={projetos.nome_projeto}
+                status={projetos.status}
                 FUNC1={
                   <this.MarcarConcluido
                     QTDTAREFAS={totalDetasks}
                     QTDCONCLUIDAS={TotalTaksConcluidas}
-                    status={p.status}
-                    id_projeto={p.id_projeto}
+                    status={projetos.status}
+                    id_projeto={projetos.id_projeto}
                   />
                 }
-                FUNC2={<this.Alerta id={p.id_projeto} />}
+                FUNC2={<this.Alerta id={projetos.id_projeto} />}
               />
             </div>
             <div className="d-flex row">
@@ -500,44 +500,44 @@ class ProjetoDT extends Component {
                 <div className="col-2 TPtrello">
                   <MostrarLIstaTarefas
                     status="A Fazer"
-                    statusṔrojeto={p.status}
-                    id_projeto={p.id_projeto}
+                    statusṔrojeto={projetos.status}
+                    id_projeto={projetos.id_projeto}
                     tarefas={TasksFazer}
-                    equipe_id={p.equipe_id}
+                    equipe_id={projetos.equipe_id}
                     atualiza={this.updateStateByProps}
-                    statusPROJETO={p.status}
+                    statusPROJETO={projetos.status}
                   />
                 </div>
                 <div className="col-2 TPtrello">
                   <MostrarLIstaTarefas
                     status="Em Andamento"
                     tarefas={TasksAndamento}
-                    equipe_id={p.equipe_id}
+                    equipe_id={projetos.equipe_id}
                     atualiza={this.updateStateByProps}
-                    statusPROJETO={p.status}
+                    statusPROJETO={projetos.status}
                   />
                 </div>
                 <div className="col-2 TPtrello">
                   <MostrarLIstaTarefas
                     status="Em Teste"
                     tarefas={TasksTeste}
-                    equipe_id={p.equipe_id}
+                    equipe_id={projetos.equipe_id}
                     atualiza={this.updateStateByProps}
-                    statusPROJETO={p.status}
+                    statusPROJETO={projetos.status}
                   />
                 </div>
                 <div className="col-2 TPtrello">
                   <MostrarLIstaTarefas
                     status="Concluido"
                     tarefas={TasksConcluidas}
-                    equipe_id={p.equipe_id}
+                    equipe_id={projetos.equipe_id}
                     atualiza={this.updateStateByProps}
-                    statusPROJETO={p.status}
+                    statusPROJETO={projetos.status}
                   />
                 </div>
               </div>
               <div className="row col-3 TPtrello2 justify-content-between ms-1">
-                <h2 style={{color:'var(--corTexto)'}}>Estatísticas</h2>
+                <h2 style={{ color: 'var(--corTexto)' }}>Estatísticas</h2>
                 <div
                   className="row col-12"
                   style={{
@@ -558,7 +558,7 @@ class ProjetoDT extends Component {
                     CONCLUIDAS={TotalTaksConcluidas}
                   />
                 </div>
-                <h3 className="mt-3" style={{color: 'var(--corTexto)'}}>Info-Gerais</h3>
+                <h3 className="mt-3" style={{ color: 'var(--corTexto)' }}>Info-Gerais</h3>
                 <div
                   className="row"
                   style={{
@@ -570,7 +570,7 @@ class ProjetoDT extends Component {
                     overflowY: "auto",
                   }}
                 >
-                  <div className="align-items-start mt-2 scroll" style={{color:'var(--corTexto)'}}>
+                  <div className="align-items-start mt-2 scroll" style={{ color: 'var(--corTexto)' }}>
                     <h5>Descrição</h5>
                     <p
                       style={{
@@ -580,7 +580,7 @@ class ProjetoDT extends Component {
                         scroll: "auto",
                       }}
                     >
-                      {p.descricao_projeto}
+                      {projetos.descricao_projeto}
                     </p>
                   </div>
                 </div>
@@ -592,15 +592,15 @@ class ProjetoDT extends Component {
                     minHeight: "211px",
                   }}
                 >
-                  <div className="container " style={{color:'var(--corTexto)'}}>
-                      Equipe:
+                  <div className="container " style={{ color: 'var(--corTexto)' }}>
+                    Equipe:
                     <Link
-                      to={"/equipes/" + p.equipe_id}
+                      to={"/equipes/" + projetos.equipe_id}
                       target="_blank"
                       className="ms-2 Link text-reset text-decoration-none"
                     >
                       <h5 style={{ color: "var(--laranja)" }}>
-                        {p.nome_equipe}
+                        {projetos.nome_equipe}
                       </h5>
                     </Link>
                   </div>
@@ -616,8 +616,8 @@ class ProjetoDT extends Component {
                             <th scope="col"></th>
                           </tr>
                         </thead>
-                        <tbody style={{color:'var(--corTexto)'}}>
-                          <this.BuscarMembrosFunc equipe_id={p.equipe_id} />
+                        <tbody style={{ color: 'var(--corTexto)' }}>
+                          <this.BuscarMembrosFunc equipe_id={projetos.equipe_id} />
                         </tbody>
                       </table>
                     </div>
@@ -626,7 +626,8 @@ class ProjetoDT extends Component {
               </div>
             </div>
           </main>
-        ))}
+        : <></>
+        } 
       </>
     );
   }
