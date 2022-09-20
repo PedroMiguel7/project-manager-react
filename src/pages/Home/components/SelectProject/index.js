@@ -5,13 +5,23 @@ import api from "../../../../services/api";
 
 export default function SelectProject({ projetos, setByProject }) {
   const Projetos = projetos;
-  const [projectId, setProjectId] = useState(0)
+  const [firstProject, setFirstProject] = useState(98)
+  const [projectId, setProjectId] = useState(98)
+
+  // useEffect(() => {
+  //   const getFistProject = async () => {
+  //     const firstId = await Projetos[0].id_projeto; 
+  //     setFirstProject(firstId)
+  //   }
+  //   getFistProject()
+  // }, [])
 
   const handleChange = (e) => {
     setProjectId(e.target.value)
     setByProject(e.target.value)
   }
 
+  //console.log(firstProject)
   return (
     <>
       <FilterSelect
@@ -20,7 +30,7 @@ export default function SelectProject({ projetos, setByProject }) {
         displayEmpty
         value={projectId}
         onChange={handleChange}
-        defaultValue={0}
+        defaultValue={98}
         SelectProps={{
           MenuProps: {
             PaperProps: {
@@ -33,7 +43,7 @@ export default function SelectProject({ projetos, setByProject }) {
         }}
         InputProps={{ disableUnderline: true }}
       >
-        <MenuItem value={0} key={0} >Todos os projetos</MenuItem>
+        <MenuItem value={0}>Teste</MenuItem>
         {
           Projetos?.map(p => (
             <MenuItem value={p.id_projeto} key={p.id_projeto} >{p.nome_projeto}</MenuItem>
