@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { ResponsiveLine } from '@nivo/line';
 import { linearGradientDef } from '@nivo/core';
+import { BasicTooltip } from '@nivo/tooltip';
 import DataLoading from "../../../../components/DataLoading";
 import api from "../../../../services/api";
+import dayjs from 'dayjs';
 
 export default function GraficoLinear(props) {
     const [tarefasConcluidas, setTarefasConcluidas] = useState([]);
@@ -294,16 +296,28 @@ export default function GraficoLinear(props) {
           console.log(TarefasConcluidas)
 
           for (let i = 0; i < 30; i++) {
-            let uFormatada = `${UltimosDias[i].getDate()}/${UltimosDias[i].getMonth() + 1}`;
+            let uFormatada = `${("0"+UltimosDias[i].getDate()).slice(-2)}/${("0"+(UltimosDias[i].getMonth() + 1)).slice(-2)}`;
             const obj = { "x": uFormatada, "y": TarefasConcluidas[i] };
             data[0].data.push(obj);
           }
+
+          const BarTooltip = (e) => {
+            //const dayStr = dayjs(props.data.month).format('ll');
+            return (
+                <BasicTooltip
+                    id="Ago"
+                    value={`${2} tarefas concluídas`}
+                    color="white"
+                    //enableChip
+                />
+            );
+        };
 
         return (
             <>  
                 <ResponsiveLine
                     data={data}
-                    margin={{ top: 40, right: 20, bottom: 60, left: 35 }}
+                    margin={{ top: 40, right: 20, bottom: 70, left: 35 }}
                     theme={{
                         textColor: "#C2C3C6",
                         axis: {
@@ -342,9 +356,11 @@ export default function GraficoLinear(props) {
                     axisRight={null}
                     axisBottom={{
                         orient: 'bottom',
+                        //format: e => { return TarefasConcluidas.length > 20 ? `${("0" + e).slice(-2)}/${("0" + (datas.getMonth() + 1)).slice(-2)}` : !(Math.floor(e) === e && e) ? '' : `${("0" + e).slice(-2)}/${("0" + (datas.getMonth() + 1)).slice(-2)}` },
+                        tickValues: 14,
                         tickSize: 0,
                         tickPadding: 15,
-                        tickRotation: 0,
+                        tickRotation: -45,
                     }}
                     axisLeft={{
                         orient: 'left',
@@ -367,7 +383,8 @@ export default function GraficoLinear(props) {
                     areaBlendMode="normal"
                     areaOpacity={0.17}
                     areaBaselineValue={0}
-                    enableSlices="x"
+                    //enableSlices="x"
+                    //tooltip={BarTooltip} 
                     useMesh={true}
                     defs={[
                         // using helpers

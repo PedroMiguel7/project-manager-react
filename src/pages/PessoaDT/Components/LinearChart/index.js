@@ -289,7 +289,7 @@ export default function LinearChart(props) {
           axisRight={null}
           axisBottom={{
             orient: 'bottom',
-            format: e => { return TarefasAndamento.length > 20 ? `${("0" + e).slice(-2)}/${("0" + (datas.getMonth() + 1)).slice(-2)}` : (Math.floor(e) === e && e) === false ? '' : `${("0" + e).slice(-2)}/${("0" + (datas.getMonth() + 1)).slice(-2)}` },
+            format: e => { return TarefasAndamento.length > 20 ? `${("0" + e).slice(-2)}/${("0" + (datas.getMonth() + 1)).slice(-2)}` : !(Math.floor(e) === e && e) ? '' : `${("0" + e).slice(-2)}/${("0" + (datas.getMonth() + 1)).slice(-2)}` },
             tickValues: TarefasAndamento.length > 20 ? 14 : 30,
             tickSize: 0,
             tickPadding: 15,
