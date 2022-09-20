@@ -55,7 +55,7 @@ class ProjetoDT extends Component {
 
   BuscarMembrosFunc = (props) => {
     const [pessoas, setPessoas] = useState([]);
-    const url = "/equipes/" + props.equipe_id + "/pessoas";
+    const url = "/equipes/" + props.equipe_id + "/membros";
     useEffect(() => {
       const fetchEquipe = async () => {
         try {
