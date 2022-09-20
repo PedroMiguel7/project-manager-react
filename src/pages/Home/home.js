@@ -4,29 +4,30 @@ import Card from './components/Card';
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import CardBaixoHome from "./components/TabelaProjeto/TabelaProjetosHome";
-import { LinearChartContainer, LinearChartHeader, LinearChartTitle } from './styles';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+// import {
+//   Chart as ChartJS,
+//   CategoryScale,
+//   LinearScale,
+//   BarElement,
+//   Title,
+//   Tooltip,
+//   Legend,
+// } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import SelectPeriod from './components/SelectPeriod';
 import SelectProject from './components/SelectProject';
 import GraficoLinear from './components/GraficoLinear';
+import { TrendingUpRounded, TrendingDownRounded } from '@mui/icons-material';
+import { NotFoundContainer, Main, Header, Title, ProjectSummaryHeader, ProjectSummaryTitle, ProjectSummaryContainer, ProjectCountersContainer, ProjectCounterContainer, ProjectCounterTitle, CounterNumContainer, ProjectCounterNum, TagContainer, TagTitle, ProjectCounterSubtitle, LinearChartContainer, LinearChartHeader, LinearChartTitle } from './styles.js';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+// ChartJS.register(
+//   CategoryScale,
+//   LinearScale,
+//   BarElement,
+//   Title,
+//   Tooltip,
+//   Legend
+// );
 
 export const options = {
   responsive: true,
@@ -179,83 +180,100 @@ export default function Menu_index() {
   console.log(byProject)
 
   return (
-    <div>
-      {/*<Sidebar />*/}
-      <main className="col-lg-11 col-sm-12 offset-lg-1 px-5">
-        <div className="row mt-5 pb-3 main-header">
-          <h1 className="col-lg-3 fs-2">Home</h1>
-        </div>
-        {/* 
-        <div className="Options row align-items-center mt-lg-4">
-          <div className="LeftOptions col-lg-2 mt-sm-2">
-            <span className="me-2 fs-4">Projetos recentes</span>
-          </div>
-          <div className=" col-lg-2 offset-lg-8 mt-sm-2">
-            <AdicionarProjeto atualiza={Atualizar} />
-          </div>
-        </div>
+    <Main>
+      <Header>
+        <Title>
+          Home
+        </Title>
+      </Header>
+      <ProjectSummaryContainer>
+        <ProjectSummaryHeader>
+          <ProjectSummaryTitle>
+            Resumo de Projetos
+          </ProjectSummaryTitle>
+          <SelectPeriod setPeriod={setPeriod} />
+        </ProjectSummaryHeader>
+        <ProjectCountersContainer>
+            <ProjectCounterContainer>
+              <ProjectCounterTitle>
+                Total
+              </ProjectCounterTitle>
+              <CounterNumContainer>    
+                <ProjectCounterNum>
+                  23
+                </ProjectCounterNum>
+                <TagContainer>
+                  <TrendingUpRounded fontSize='small' />
+                  <TagTitle>
+                    7.5%
+                  </TagTitle>
+                </TagContainer>
+              </CounterNumContainer>
+              <ProjectCounterSubtitle>Projetos</ProjectCounterSubtitle>
+            </ProjectCounterContainer>
+            
+            <ProjectCounterContainer>
+              <ProjectCounterTitle>
+                A Fazer
+              </ProjectCounterTitle>
+              <CounterNumContainer>    
+                <ProjectCounterNum>
+                  6
+                </ProjectCounterNum>
+                <TagContainer>
+                  <TrendingUpRounded fontSize='small' />
+                  <TagTitle>
+                    7.5%
+                  </TagTitle>
+                </TagContainer>
+              </CounterNumContainer>
+              <ProjectCounterSubtitle>Projetos</ProjectCounterSubtitle>
+            </ProjectCounterContainer>
 
-        <div
-          className="row d-flex justify-content-between flex-wrap"
-        >
-          <div className="CardlateralesquerdoHome col-lg-5 col-md-12 mt-2 ms-3">
-            <div className="row CardsContainer my-4 mt-4 d-flex">
-              <Cards Projetos={projetos} atualiza={Atualizar} home={"home"} />
-            </div>
-          </div>
-          <div className="cardLateralHome d-flex justify-content-center col-lg-6 col-md-12 col-sm-12 mt-2 p-4 mt-4" style={{ width: '795px', height: '345px' }} >
-            <div className="mt-2" style={{ width: '775px', height: '365px' }}>
-              <Grafico AFAZER={QtdPFazer} EMANDA={QtdAndamento} CON={QtdConcluidos} total={QtdProjetos} />
-            </div> */}
-        {/*<div className="TotColaboradores d-flex align-items-center justify-content-center col-12">
-                <h6 >{QtdTotalEquipes}</h6>
-                <strong>
-                  <p className="ms-4 ">Total de <br /> Equipes</p>
-                </strong>
-                <h6 className="ms-5" style={{ color: "var(--azul-claro)" }}>{QtdTotalPessoas}</h6>
-                <strong>
-                  <p className="ms-4 ">Total de <br /> pessoas</p>
-                </strong>
-              </div>
-              <div className="row col-12">
-                <div className="TotTarefas col-6 d-flex flex-column align-items-center justify-content-center">
-                  <h6 className="col">{QtdProjetos}</h6>
-                  <strong>
-                    <p className="text-center col">Total de <br /> Projetos</p>
-                  </strong>
-                </div>
-                <div className="col-6 d-flex flex-column align-items-center justify-content-center">
-                  <div className="TarefasAnd d-flex align-items-center justify-content-center">
-                    <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{QtdAndamento}</h6>
-                    <strong>
-                      <p className="ms-2">Projetos em Andamento</p>
-                    </strong>
-                  </div>
-                  <div className="TarefasConc d-flex align-items-center justify-content-center">
-                    <h6 className="col-4 md-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>{QtdConcluidos}</h6>
-                    <strong>
-                      <p className=" ms-2">Projetos Concluídos</p>
-                    </strong>
-                  </div>
-                </div>
-              </div>*/}
-        {/* </div>
-        </div>
-        <div className="Teste row  h-lg-50 p-3 mt-2" style={{backgroundColor:'var(--preto-medio)', borderRadius:'1%'}}>
-          <CardBaixoHome Projetos={projetos} />
-        </div> */}
-        <SelectPeriod setPeriod={setPeriod} />
-        <div style={{ display: 'flex', gap: '1%', marginTop: '1%' }}>
-          {/* <Card projeto={projeto} /> */}
-          <LinearChartContainer>
-            <LinearChartHeader>
-              <LinearChartTitle>Tarefas</LinearChartTitle>
-              <SelectProject projetos={projetos} setByProject={setByProject} />
-            </LinearChartHeader>
-            <GraficoLinear projectId={byProject} period={period} />
-          </LinearChartContainer>
-        </div>
-      </main>
-    </div>
+            <ProjectCounterContainer>
+              <ProjectCounterTitle>
+                Em Andamento
+              </ProjectCounterTitle>
+              <CounterNumContainer>    
+                <ProjectCounterNum>
+                  11
+                </ProjectCounterNum>
+                <TagContainer>
+                  <TrendingUpRounded fontSize='small' />
+                  <TagTitle>
+                    7.5%
+                  </TagTitle>
+                </TagContainer>
+              </CounterNumContainer>
+              <ProjectCounterSubtitle>Projetos</ProjectCounterSubtitle>
+            </ProjectCounterContainer>
+
+            <ProjectCounterContainer>
+              <ProjectCounterTitle>
+                Concluídos
+              </ProjectCounterTitle>
+              <CounterNumContainer>    
+                <ProjectCounterNum>
+                  6
+                </ProjectCounterNum>
+                <TagContainer>
+                  <TrendingUpRounded fontSize='small' />
+                  <TagTitle>
+                    7.5%
+                  </TagTitle>
+                </TagContainer>
+              </CounterNumContainer>
+              <ProjectCounterSubtitle>Projetos</ProjectCounterSubtitle>
+            </ProjectCounterContainer>
+        </ProjectCountersContainer>
+        <LinearChartContainer>
+          <LinearChartHeader>
+            <LinearChartTitle>Tarefas</LinearChartTitle>
+            <SelectProject projetos={projetos} setByProject={setByProject} />
+          </LinearChartHeader>
+          <GraficoLinear projectId={byProject} period={period} />
+        </LinearChartContainer>
+      </ProjectSummaryContainer>
+    </Main>
   );
 }
