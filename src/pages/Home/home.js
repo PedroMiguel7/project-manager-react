@@ -21,6 +21,7 @@ import TrendingUp from '../../assets/icons/ph_trend-up.svg';
 import TrendingDown from '../../assets/icons/ph_trend-down.svg';
 import { TrendingUpRounded, TrendingDownRounded } from '@mui/icons-material';
 import { NotFoundContainer, Main, Header, Title, ProjectSummaryHeader, ProjectSummaryTitle, ProjectSummaryContainer, ProjectCountersContainer, ProjectCounterContainer, ProjectCounterTitle, CounterNumContainer, ProjectCounterNum, TagContainer, TagIcon, TagTitle, ProjectCounterSubtitle, LinearChartContainer, LinearChartHeader, LinearChartTitle } from './styles.js';
+//import { useQuery } from 'react-query';
 
 // ChartJS.register(
 //   CategoryScale,
@@ -167,6 +168,8 @@ export default function Menu_index() {
   // filters
   const [period, setPeriod] = useState(1)
   const [byProject, setByProject] = useState()
+  const [nomeProjeto, setNomeProjeto] = useState('')
+  const [resumoTarefas, setResumoTarefas] = useState(false);
 
   function Teste(value) {
     if (value === 1) {
@@ -191,14 +194,14 @@ export default function Menu_index() {
       <ProjectSummaryContainer>
         <ProjectSummaryHeader>
           <ProjectSummaryTitle>
-            Resumo de Projetos
+            Resumo de {resumoTarefas ? "Tarefas" : "Projetos"}
           </ProjectSummaryTitle>
           <SelectPeriod setPeriod={setPeriod} />
         </ProjectSummaryHeader>
         <ProjectCountersContainer>
             <ProjectCounterContainer>
               <ProjectCounterTitle>
-                Total
+                {!resumoTarefas ? "Total" : "A Fazer"}
               </ProjectCounterTitle>
               <CounterNumContainer>    
                 <ProjectCounterNum>
@@ -211,12 +214,12 @@ export default function Menu_index() {
                   </TagTitle>
                 </TagContainer>
               </CounterNumContainer>
-              <ProjectCounterSubtitle>Projetos</ProjectCounterSubtitle>
+              <ProjectCounterSubtitle>{resumoTarefas ? "Tarefas" : "Projetos"}</ProjectCounterSubtitle>
             </ProjectCounterContainer>
             
             <ProjectCounterContainer>
               <ProjectCounterTitle>
-                A Fazer
+                {!resumoTarefas ? "A Fazer" : "Em Andamento"}
               </ProjectCounterTitle>
               <CounterNumContainer>    
                 <ProjectCounterNum>
@@ -229,12 +232,12 @@ export default function Menu_index() {
                   </TagTitle>
                 </TagContainer>
               </CounterNumContainer>
-              <ProjectCounterSubtitle>Projetos</ProjectCounterSubtitle>
+              <ProjectCounterSubtitle>{resumoTarefas ? "Tarefas" : "Projetos"}</ProjectCounterSubtitle>
             </ProjectCounterContainer>
 
             <ProjectCounterContainer>
               <ProjectCounterTitle>
-                Em Andamento
+                {!resumoTarefas ? "Em Andamento" : "Em Teste"}
               </ProjectCounterTitle>
               <CounterNumContainer>    
                 <ProjectCounterNum>
@@ -247,12 +250,12 @@ export default function Menu_index() {
                   </TagTitle>
                 </TagContainer>
               </CounterNumContainer>
-              <ProjectCounterSubtitle>Projetos</ProjectCounterSubtitle>
+              <ProjectCounterSubtitle>{resumoTarefas ? "Tarefas" : "Projetos"}</ProjectCounterSubtitle>
             </ProjectCounterContainer>
 
             <ProjectCounterContainer>
               <ProjectCounterTitle>
-                Concluídos
+                {!resumoTarefas ? "Concluídos" : "Concluídas"}
               </ProjectCounterTitle>
               <CounterNumContainer>    
                 <ProjectCounterNum>
@@ -265,13 +268,14 @@ export default function Menu_index() {
                   </TagTitle>
                 </TagContainer>
               </CounterNumContainer>
-              <ProjectCounterSubtitle>Projetos</ProjectCounterSubtitle>
+              <ProjectCounterSubtitle>{resumoTarefas ? "Tarefas" : "Projetos"}</ProjectCounterSubtitle>
             </ProjectCounterContainer>
         </ProjectCountersContainer>
+
         <LinearChartContainer>
           <LinearChartHeader>
             <LinearChartTitle>Tarefas</LinearChartTitle>
-            <SelectProject projetos={projetos} setByProject={setByProject} />
+            <SelectProject projetos={projetos} setByProject={setByProject} setResumoTarefas={setResumoTarefas} setNomeProjeto={setNomeProjeto} />
           </LinearChartHeader>
           <GraficoLinear projectId={byProject} period={period} />
         </LinearChartContainer>
