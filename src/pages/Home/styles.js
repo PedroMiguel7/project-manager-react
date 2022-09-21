@@ -167,6 +167,8 @@ export const TagContainer = styled.div`
     gap: 4px;
 `;
 
+export const TagIcon = styled.img``;
+
 export const TagTitle = styled.span`
     font-weight: 500;
     font-size: 0.85rem;

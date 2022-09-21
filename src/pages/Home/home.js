@@ -17,8 +17,10 @@ import { Bar } from 'react-chartjs-2';
 import SelectPeriod from './components/SelectPeriod';
 import SelectProject from './components/SelectProject';
 import GraficoLinear from './components/GraficoLinear';
+import TrendingUp from '../../assets/icons/ph_trend-up.svg';
+import TrendingDown from '../../assets/icons/ph_trend-down.svg';
 import { TrendingUpRounded, TrendingDownRounded } from '@mui/icons-material';
-import { NotFoundContainer, Main, Header, Title, ProjectSummaryHeader, ProjectSummaryTitle, ProjectSummaryContainer, ProjectCountersContainer, ProjectCounterContainer, ProjectCounterTitle, CounterNumContainer, ProjectCounterNum, TagContainer, TagTitle, ProjectCounterSubtitle, LinearChartContainer, LinearChartHeader, LinearChartTitle } from './styles.js';
+import { NotFoundContainer, Main, Header, Title, ProjectSummaryHeader, ProjectSummaryTitle, ProjectSummaryContainer, ProjectCountersContainer, ProjectCounterContainer, ProjectCounterTitle, CounterNumContainer, ProjectCounterNum, TagContainer, TagIcon, TagTitle, ProjectCounterSubtitle, LinearChartContainer, LinearChartHeader, LinearChartTitle } from './styles.js';
 
 // ChartJS.register(
 //   CategoryScale,
@@ -111,10 +113,10 @@ export default function Menu_index() {
     */
 
 
-  var QtdProjetos = 0;
-  var QtdAndamento = 0;
-  var QtdConcluidos = 0;
-  var QtdPFazer = 0;
+  let QtdProjetos = 0;
+  let QtdAndamento = 0;
+  let QtdConcluidos = 0;
+  let QtdPFazer = 0;
   if (projetos !== null) {
     QtdProjetos = projetos.length;
     if (projetos?.filter(projetos => projetos.status === "Em Andamento") !== null) {
@@ -200,10 +202,10 @@ export default function Menu_index() {
               </ProjectCounterTitle>
               <CounterNumContainer>    
                 <ProjectCounterNum>
-                  23
+                  {QtdProjetos}
                 </ProjectCounterNum>
                 <TagContainer>
-                  <TrendingUpRounded fontSize='small' />
+                  <TagIcon src={TrendingUp} />
                   <TagTitle>
                     7.5%
                   </TagTitle>
@@ -218,10 +220,10 @@ export default function Menu_index() {
               </ProjectCounterTitle>
               <CounterNumContainer>    
                 <ProjectCounterNum>
-                  6
+                  {QtdPFazer}
                 </ProjectCounterNum>
                 <TagContainer>
-                  <TrendingUpRounded fontSize='small' />
+                  <TagIcon src={TrendingUp} />
                   <TagTitle>
                     7.5%
                   </TagTitle>
@@ -236,10 +238,10 @@ export default function Menu_index() {
               </ProjectCounterTitle>
               <CounterNumContainer>    
                 <ProjectCounterNum>
-                  11
+                  {QtdAndamento}
                 </ProjectCounterNum>
                 <TagContainer>
-                  <TrendingUpRounded fontSize='small' />
+                  <TagIcon src={TrendingUp} />
                   <TagTitle>
                     7.5%
                   </TagTitle>
@@ -254,10 +256,10 @@ export default function Menu_index() {
               </ProjectCounterTitle>
               <CounterNumContainer>    
                 <ProjectCounterNum>
-                  6
+                  {QtdConcluidos}
                 </ProjectCounterNum>
                 <TagContainer>
-                  <TrendingUpRounded fontSize='small' />
+                  <TagIcon src={TrendingUp} />
                   <TagTitle>
                     7.5%
                   </TagTitle>
