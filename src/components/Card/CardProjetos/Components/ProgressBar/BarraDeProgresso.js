@@ -14,6 +14,7 @@ const [tasks, setTasks] = useState([]);
         fetchTask()
     }, []);
 
+    var TASKS = []
     var QtdTasksConcluidas = 0
     var BarrinhaProgresso = 0
     if((tasks != null)){
@@ -23,11 +24,14 @@ const [tasks, setTasks] = useState([]);
             QtdTasksConcluidas = tasksConcluidas.length
         }
         BarrinhaProgresso = (QtdTasksConcluidas*100)/QtdTasks
-    }
-   
+
+    } else setTasks(0)
+    
+    TASKS.push(tasks.length, QtdTasksConcluidas, Math.round(BarrinhaProgresso))
+    
     if(props.op === 1){
         return(
-            Math.round(BarrinhaProgresso)
+            TASKS[2]
         )
     }
 
